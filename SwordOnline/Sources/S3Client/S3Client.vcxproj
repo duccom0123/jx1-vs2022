@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>"$/SwordOnline/Sources/S3Client", VRDAAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <ProjectGuid>{1CC2C808-7B4B-005C-2C06-D26FCD918B79}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Game</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <AdditionalIncludeDirectories>../Engine/src;../Core/src;../Engine/include;../../Headers;..\KMp3LibClass\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;SWORDONLINE_SHOW_DBUG_INFO;SWORDONLINE_USE_MD5_PASSWORD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\S3Client.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>KWin32.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>md ..\..\..\bin\client\debug\
+copy debug\Game.exe ..\..\..\bin\Client\Game.exe
+copy debug\Game.exe ..\..\..\bin\Client\debug\Game.exe</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\S3Client.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\S3Client.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>Debug/Game.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Winmm.lib;shlwapi.lib;lualibdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>../Engine/src;../Core/src;../Engine/include;../../Headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG_WINDOWS;SWORDONLINE_USE_MD5_PASSWORD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\S3Client.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>KWin32.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>md ..\..\..\bin\client\release\
+copy Release\Game.exe ..\..\..\bin\Client\Game.exe
+copy Release\Game.exe ..\..\..\bin\Client\release\Game.exe
+copy Release\Game.pdb ..\..\..\bin\Client\release\Game.pdb
+copy Release\Game.map ..\..\..\bin\Client\release\Game.map</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TypeLibraryName>.\Release\S3Client.tlb</TypeLibraryName>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\S3Client.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>Release/Game.exe</OutputFile>
+      <AdditionalLibraryDirectories>../../lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Winmm.lib;shlwapi.lib;lualibdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Ui\Elem\AutoLocateWnd.cpp" />
+    <ClCompile Include="Ui\Elem\ComWindow.cpp" />
+    <ClCompile Include="Ui\Elem\MouseHover.cpp" />
+    <ClCompile Include="Ui\Elem\PopupMenu.cpp" />
+    <ClCompile Include="Ui\Elem\SpaceOver.cpp" />
+    <ClCompile Include="Ui\Elem\SpecialFuncs.cpp" />
+    <ClCompile Include="Ui\Elem\TextPic.cpp" />
+    <ClCompile Include="Ui\Elem\UiCursor.cpp" />
+    <ClCompile Include="Ui\Elem\UiImage.cpp" />
+    <ClCompile Include="Ui\Elem\WndBorder.cpp" />
+    <ClCompile Include="Ui\Elem\WndButton.cpp" />
+    <ClCompile Include="Ui\Elem\WndEdit.cpp" />
+    <ClCompile Include="Ui\Elem\WndImage.cpp" />
+    <ClCompile Include="Ui\Elem\WndImagePart.cpp" />
+    <ClCompile Include="Ui\Elem\WndLabeledButton.cpp" />
+    <ClCompile Include="Ui\Elem\WndList.cpp" />
+    <ClCompile Include="Ui\Elem\WndList2.cpp" />
+    <ClCompile Include="Ui\Elem\WndMessageListBox.cpp" />
+    <ClCompile Include="Ui\Elem\WndMovingImage.cpp" />
+    <ClCompile Include="Ui\Elem\WndObjContainer.cpp" />
+    <ClCompile Include="Ui\Elem\WndPage.cpp" />
+    <ClCompile Include="Ui\Elem\WndPureTextBtn.cpp" />
+    <ClCompile Include="Ui\Elem\Wnds.cpp" />
+    <ClCompile Include="Ui\Elem\WndScrollBar.cpp" />
+    <ClCompile Include="Ui\elem\WndShadow.cpp" />
+    <ClCompile Include="Ui\Elem\WndShowAnimate.cpp" />
+    <ClCompile Include="Ui\Elem\WndText.cpp" />
+    <ClCompile Include="Ui\Elem\WndToolBar.cpp" />
+    <ClCompile Include="Ui\Elem\WndValueImage.cpp" />
+    <ClCompile Include="Ui\Elem\WndWindow.cpp" />
+    <ClCompile Include="Ui\UiCase\UiConnectInfo.cpp" />
+    <ClCompile Include="Ui\UiCase\UiLogin.cpp" />
+    <ClCompile Include="Ui\UiCase\UiLoginBg.cpp" />
+    <ClCompile Include="Ui\UiCase\UiNotice.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSelServer.cpp" />
+    <ClCompile Include="Ui\UiCase\UiChooseFace.cpp" />
+    <ClCompile Include="Ui\UiCase\UiContainer.cpp" />
+    <ClCompile Include="Ui\UiCase\UiFaceSelector.cpp" />
+    <ClCompile Include="Ui\UiCase\UiPlayerBar.cpp">
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
+    </ClCompile>
+    <ClCompile Include="Ui\UiCase\UiPlayerControlBar.cpp" />
+    <ClCompile Include="Ui\UiCase\UiStatus.cpp" />
+    <ClCompile Include="Ui\UiCase\UiOptions.cpp" />
+    <ClCompile Include="Ui\UiCase\UiInit.cpp" />
+    <ClCompile Include="Ui\UiCase\UiAutoPlay.cpp" />
+    <ClCompile Include="Ui\UiCase\UiPlayerLock.cpp" />
+    <ClCompile Include="Ui\UiCase\UiBreakItem.cpp" />
+    <ClCompile Include="Ui\UiCase\UiExpandItem.cpp" />
+    <ClCompile Include="Ui\UiCase\UiGetMoney.cpp" />
+    <ClCompile Include="Ui\UiCase\UiGive.cpp" />
+    <ClCompile Include="Ui\UiCase\UiItem.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSkills.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSkillTree.cpp" />
+    <ClCompile Include="Ui\uicase\UiStoreBox.cpp" />
+    <ClCompile Include="Ui\UiCase\UiESCDlg.cpp" />
+    <ClCompile Include="Ui\UiCase\UiGetString.cpp" />
+    <ClCompile Include="Ui\UiCase\UiMsgSel.cpp" />
+    <ClCompile Include="Ui\UiCase\UiParadeItem.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSelPlayerNearby.cpp" />
+    <ClCompile Include="Ui\UiCase\UiNewPlayer.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSelNativePlace.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSelPlayer.cpp" />
+    <ClCompile Include="Ui\UiCase\UiChatCentre.cpp" />
+    <ClCompile Include="Ui\UiChatPhrase.cpp" />
+    <ClCompile Include="Ui\UiCase\UiChatRoom.cpp" />
+    <ClCompile Include="Ui\UiCase\UiInformation.cpp" />
+    <ClCompile Include="Ui\UiCase\UiInformation1.cpp" />
+    <ClCompile Include="Ui\UiCase\UiInformation2.cpp" />
+    <ClCompile Include="Ui\UiCase\UiTeamManage.cpp" />
+    <ClCompile Include="Ui\UiCase\UiChatItem.cpp" />
+    <ClCompile Include="Ui\UiCase\UiHeaderControlBar.cpp" />
+    <ClCompile Include="Ui\uicase\UiMsgCentrePad.cpp" />
+    <ClCompile Include="Ui\UiCase\UiRankData.cpp" />
+    <ClCompile Include="Ui\UiCase\UiToolsControlBar.cpp" />
+    <ClCompile Include="Ui\UiCase\UiPlayerShop.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSetPrice.cpp" />
+    <ClCompile Include="Ui\UIcase\UiShop.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSuperShop.cpp" />
+    <ClCompile Include="Ui\UiCase\UiTrade.cpp" />
+    <ClCompile Include="Ui\UiCase\UiTradeConfirmWnd.cpp" />
+    <ClCompile Include="Ui\UiCase\UiGame.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSysMsgCentre.cpp" />
+    <ClCompile Include="Ui\UiCase\UiCaveList.cpp" />
+    <ClCompile Include="Ui\uicase\UiMiniMap.cpp" />
+    <ClCompile Include="Ui\UiCase\UiSelColor.cpp" />
+    <ClCompile Include="Ui\UiCase\UiNewPlayerStartMsg.cpp" />
+    <ClCompile Include="Ui\UiCase\UiHelper.cpp" />
+    <ClCompile Include="Ui\UiCase\UiHelper2.cpp" />
+    <ClCompile Include="Ui\UiCase\UiReconnect.cpp" />
+    <ClCompile Include="Ui\UiCase\UiTaskDataFile.cpp" />
+    <ClCompile Include="Ui\UiCase\UiTaskNote.cpp" />
+    <ClCompile Include="Ui\UiCase\UiWorldMap.cpp" />
+    <ClCompile Include="Ui\UiCase\UiNewsMessage.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">KWin32.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Ui\UiCase\UiNewsMessage2.cpp" />
+    <ClCompile Include="Ui\UiCase\UiNewsSysMsg.cpp" />
+    <ClCompile Include="Ui\UiCase\UiStrengthRank.cpp" />
+    <ClCompile Include="ui\uicase\UiTongAssignBox.cpp" />
+    <ClCompile Include="ui\uicase\UiTongCreateSheet.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Ui\UiCase\UiTongGetString.cpp" />
+    <ClCompile Include="ui\uicase\UiTongManager.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Ui\UiCase\UiEnchase.cpp" />
+    <ClCompile Include="Ui\UiSoundSetting.cpp" />
+    <ClCompile Include="Ui\GameSpaceChangedNotify.cpp" />
+    <ClCompile Include="Ui\ShortcutKey.cpp" />
+    <ClCompile Include="Ui\UiBase.cpp" />
+    <ClCompile Include="Ui\UiShell.cpp" />
+    <ClCompile Include="Ui\ChatFilter.cpp" />
+    <ClCompile Include="Ui\FilterTextLib.cpp" />
+    <ClCompile Include="S3Client.cpp" />
+    <ClCompile Include="NetConnect\NetConnectAgent.cpp" />
+    <ClCompile Include="Login\Login.cpp" />
+    <ClCompile Include="TextCtrlCmd\TextCtrlCmd.cpp" />
+    <ClCompile Include="ErrorCode.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">KWin32.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">KWin32.h</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ui\Elem\AutoLocateWnd.h" />
+    <ClInclude Include="Ui\Elem\ComWindow.h" />
+    <ClInclude Include="Ui\Elem\MouseHover.h" />
+    <ClInclude Include="Ui\Elem\PopupMenu.h" />
+    <ClInclude Include="Ui\Elem\SpaceOver.h" />
+    <ClInclude Include="Ui\Elem\SpecialFuncs.h" />
+    <ClInclude Include="Ui\Elem\TextPic.h" />
+    <ClInclude Include="Ui\Elem\UiCursor.h" />
+    <ClInclude Include="Ui\Elem\UiImage.h" />
+    <ClInclude Include="Ui\Elem\WndBorder.h" />
+    <ClInclude Include="Ui\Elem\WndButton.h" />
+    <ClInclude Include="Ui\Elem\WndEdit.h" />
+    <ClInclude Include="Ui\Elem\WndGameSpace.h" />
+    <ClInclude Include="Ui\Elem\WndImage.h" />
+    <ClInclude Include="Ui\Elem\WndImagePart.h" />
+    <ClInclude Include="Ui\Elem\WndLabeledButton.h" />
+    <ClInclude Include="Ui\Elem\WndList.h" />
+    <ClInclude Include="Ui\Elem\WndList2.h" />
+    <ClInclude Include="Ui\Elem\WndMessage.h" />
+    <ClInclude Include="Ui\Elem\WndMessageListBox.h" />
+    <ClInclude Include="Ui\Elem\WndMovingImage.h" />
+    <ClInclude Include="Ui\Elem\WndObjContainer.h" />
+    <ClInclude Include="Ui\Elem\WndPage.h" />
+    <ClInclude Include="Ui\Elem\WndPureTextBtn.h" />
+    <ClInclude Include="Ui\Elem\Wnds.h" />
+    <ClInclude Include="Ui\Elem\WndScrollBar.h" />
+    <ClInclude Include="Ui\elem\WndShadow.h" />
+    <ClInclude Include="Ui\Elem\WndShowAnimate.h" />
+    <ClInclude Include="Ui\Elem\WndText.h" />
+    <ClInclude Include="Ui\Elem\WndToolBar.h" />
+    <ClInclude Include="Ui\Elem\WndValueImage.h" />
+    <ClInclude Include="Ui\Elem\WndWindow.h" />
+    <ClInclude Include="Ui\UiCase\UiConnectInfo.h" />
+    <ClInclude Include="Ui\UiCase\UiLogin.h" />
+    <ClInclude Include="Ui\UiCase\UiLoginBg.h" />
+    <ClInclude Include="Ui\UiCase\UiNotice.h" />
+    <ClInclude Include="Ui\UiCase\UiSelServer.h" />
+    <ClInclude Include="Ui\UiCase\UiChooseFace.h" />
+    <ClInclude Include="Ui\UiCase\UiContainer.h" />
+    <ClInclude Include="Ui\UiCase\UiFaceSelector.h" />
+    <ClInclude Include="Ui\UiCase\UiPlayerBar.h" />
+    <ClInclude Include="Ui\UiCase\UiPlayerControlBar.h" />
+    <ClInclude Include="Ui\UiCase\UiStatus.h" />
+    <ClInclude Include="Ui\UiCase\UiOptions.h" />
+    <ClInclude Include="Ui\UiCase\UiInit.h" />
+    <ClInclude Include="Ui\UiCase\UiAutoPlay.h" />
+    <ClInclude Include="Ui\UiCase\UiPlayerLock.h" />
+    <ClInclude Include="Ui\UiCase\UiBreakItem.h" />
+    <ClInclude Include="Ui\UiCase\UiExpandItem.h" />
+    <ClInclude Include="Ui\UiCase\UiGetMoney.h" />
+    <ClInclude Include="Ui\UiCase\UiGive.h" />
+    <ClInclude Include="Ui\UiCase\UiItem.h" />
+    <ClInclude Include="Ui\UiCase\UiSkills.h" />
+    <ClInclude Include="Ui\UiCase\UiSkillTree.h" />
+    <ClInclude Include="Ui\uicase\UiStoreBox.h" />
+    <ClInclude Include="Ui\UiCase\UiESCDlg.h" />
+    <ClInclude Include="Ui\UiCase\UiGetString.h" />
+    <ClInclude Include="Ui\UiCase\UiMsgSel.h" />
+    <ClInclude Include="Ui\UiCase\UiParadeItem.h" />
+    <ClInclude Include="Ui\UiCase\UiSelPlayerNearby.h" />
+    <ClInclude Include="Ui\UiCase\UiNewPlayer.h" />
+    <ClInclude Include="Ui\UiCase\UiSelNativePlace.h" />
+    <ClInclude Include="Ui\UiCase\UiSelPlayer.h" />
+    <ClInclude Include="Ui\UiCase\UiChatCentre.h" />
+    <ClInclude Include="Ui\UiChatPhrase.h" />
+    <ClInclude Include="Ui\UiCase\UiChatRoom.h" />
+    <ClInclude Include="Ui\UiCase\UiInformation.h" />
+    <ClInclude Include="Ui\UiCase\UiInformation1.h" />
+    <ClInclude Include="Ui\UiCase\UiInformation2.h" />
+    <ClInclude Include="Ui\UiCase\UiTeamManage.h" />
+    <ClInclude Include="Ui\UiCase\UiChatItem.h" />
+    <ClInclude Include="Ui\UiCase\UiHeaderControlBar.h" />
+    <ClInclude Include="Ui\UiCase\UiMsgCentrePad.h" />
+    <ClInclude Include="Ui\UiCase\UiRankData.h" />
+    <ClInclude Include="Ui\UiCase\UiToolsControlBar.h" />
+    <ClInclude Include="Ui\UiCase\UiPlayerShop.h" />
+    <ClInclude Include="Ui\UiCase\UiSetPrice.h" />
+    <ClInclude Include="Ui\UIcase\UiShop.h" />
+    <ClInclude Include="Ui\UiCase\UiSuperShop.h" />
+    <ClInclude Include="Ui\UiCase\UiTrade.h" />
+    <ClInclude Include="Ui\UiCase\UiTradeConfirmWnd.h" />
+    <ClInclude Include="Ui\UiCase\UiGame.h" />
+    <ClInclude Include="Ui\UiCase\UiSysMsgCentre.h" />
+    <ClInclude Include="Ui\UiCase\UiCaveList.h" />
+    <ClInclude Include="Ui\uicase\UiMiniMap.h" />
+    <ClInclude Include="Ui\UiCase\UiSelColor.h" />
+    <ClInclude Include="Ui\UiCase\UiNewPlayerStartMsg.h" />
+    <ClInclude Include="Ui\UiCase\UiHelper.h" />
+    <ClInclude Include="Ui\UiCase\UiHelper2.h" />
+    <ClInclude Include="Ui\UiCase\UiReconnect.h" />
+    <ClInclude Include="Ui\UiCase\UiTaskDataFile.h" />
+    <ClInclude Include="Ui\UiCase\UiTaskNote.h" />
+    <ClInclude Include="Ui\UiCase\UiWorldMap.h" />
+    <ClInclude Include="Ui\UiCase\UiNewsMessage.h" />
+    <ClInclude Include="Ui\UiCase\UiNewsMessage2.h" />
+    <ClInclude Include="Ui\UiCase\UiNewsSysMsg.h" />
+    <ClInclude Include="Ui\UiCase\UiStrengthRank.h" />
+    <ClInclude Include="ui\uicase\UiTongAssignBox.h" />
+    <ClInclude Include="ui\uicase\UiTongCreateSheet.h" />
+    <ClInclude Include="Ui\UiCase\UiTongGetString.h" />
+    <ClInclude Include="ui\uicase\UiTongManager.h" />
+    <ClInclude Include="Ui\UiCase\UiEnchase.h" />
+    <ClInclude Include="Ui\UiSoundSetting.h" />
+    <ClInclude Include="Ui\ShortcutKey.h" />
+    <ClInclude Include="Ui\UiBase.h" />
+    <ClInclude Include="Ui\UiShell.h" />
+    <ClInclude Include="Ui\ChatFilter.h" />
+    <ClInclude Include="Ui\FilterTextLib.h" />
+    <ClInclude Include="S3Client.h" />
+    <ClInclude Include="NetConnect\NetConnectAgent.h" />
+    <ClInclude Include="NetConnect\NetMsgTargetObject.h" />
+    <ClInclude Include="Login\Login.h" />
+    <ClInclude Include="Login\LoginDef.h" />
+    <ClInclude Include="TextCtrlCmd\TextCtrlCmd.h" />
+    <ClInclude Include="ErrorCode.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\Lib\debug\engine.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\Lib\debug\CoreClient.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\Lib\release\engine.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\Lib\release\CoreClient.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Script1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="VLTK.ICO" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

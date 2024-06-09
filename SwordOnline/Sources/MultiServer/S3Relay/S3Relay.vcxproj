@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>"$/SwordOnline/Sources/MultiServer/S3Relay", BSSAAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <ProjectGuid>{A27D6D86-FBD5-1992-0ABC-0675DA76CFBE}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;_WORKMODE_SINGLETHREAD;_TESTING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\S3Relay.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>md ..\..\..\..\bin\Server\release\
+copy release\S3Relay.exe ..\..\..\..\bin\Server\S3Relay.exe
+copy release\S3Relay.exe ..\..\..\..\bin\Server\release\S3Relay.exe</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\S3Relay.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\S3Relay.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\Release\S3Relay.exe</OutputFile>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Ws2_32.lib;lualibdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_WORKMODE_SINGLETHREAD;_TESTING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Debug\S3Relay.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>md ..\..\..\..\bin\server\debug\
+copy debug\S3Relay.exe ..\..\..\..\bin\server\S3Relay.exe
+copy debug\S3Relay.exe ..\..\..\..\bin\server\debug\S3Relay.exe</Command>
+    </PostBuildEvent>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\S3Relay.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\S3Relay.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\Debug\S3Relay.exe</OutputFile>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;Ws2_32.lib;lualibdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ChannelMgr.cpp" />
+    <ClCompile Include="ChatConnect.cpp" />
+    <ClCompile Include="ChatServer.cpp" />
+    <ClCompile Include="DBConnect.cpp" />
+    <ClCompile Include="DBTable.cpp" />
+    <ClCompile Include="DealRelay.cpp" />
+    <ClCompile Include="DoScript.cpp" />
+    <ClCompile Include="FriendMgr.cpp" />
+    <ClCompile Include="GatewayCenter.cpp" />
+    <ClCompile Include="GatewayClient.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="HeavenLib.cpp" />
+    <ClCompile Include="HostConnect.cpp" />
+    <ClCompile Include="HostServer.cpp" />
+    <ClCompile Include="KThread.cpp" />
+    <ClCompile Include="Lock.cpp" />
+    <ClCompile Include="LogFile.cpp" />
+    <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="NetCenter.cpp" />
+    <ClCompile Include="NetClient.cpp" />
+    <ClCompile Include="NetConnect.cpp" />
+    <ClCompile Include="NetServer.cpp" />
+    <ClCompile Include="NetSockDupEx.cpp" />
+    <ClCompile Include="RainbowLib.cpp" />
+    <ClCompile Include="RelayCenter.cpp" />
+    <ClCompile Include="RelayClient.cpp" />
+    <ClCompile Include="RelayConnect.cpp" />
+    <ClCompile Include="RelayServer.cpp" />
+    <ClCompile Include="RootCenter.cpp" />
+    <ClCompile Include="RootClient.cpp" />
+    <ClCompile Include="S3Relay.cpp" />
+    <ClCompile Include="SockThread.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="TongConnect.cpp" />
+    <ClCompile Include="TongServer.cpp" />
+    <ClCompile Include="KTongControl.cpp" />
+    <ClCompile Include="KTongSet.cpp" />
+    <ClCompile Include="TONGDB.CPP" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="S3Relay.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChannelMgr.h" />
+    <ClInclude Include="ChatConnect.h" />
+    <ClInclude Include="ChatServer.h" />
+    <ClInclude Include="DBConnect.h" />
+    <ClInclude Include="DBTable.h" />
+    <ClInclude Include="DealRelay.h" />
+    <ClInclude Include="DoScript.h" />
+    <ClInclude Include="FriendMgr.h" />
+    <ClInclude Include="GatewayCenter.h" />
+    <ClInclude Include="GatewayClient.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="HeavenLib.h" />
+    <ClInclude Include="HostConnect.h" />
+    <ClInclude Include="HostServer.h" />
+    <ClInclude Include="KThread.h" />
+    <ClInclude Include="Lock.h" />
+    <ClInclude Include="LogFile.h" />
+    <ClInclude Include="Memory.h" />
+    <ClInclude Include="NetCenter.h" />
+    <ClInclude Include="NetClient.h" />
+    <ClInclude Include="NetConnect.h" />
+    <ClInclude Include="NetServer.h" />
+    <ClInclude Include="NetSockDupEx.h" />
+    <ClInclude Include="RainbowLib.h" />
+    <ClInclude Include="RelayCenter.h" />
+    <ClInclude Include="RelayClient.h" />
+    <ClInclude Include="RelayConnect.h" />
+    <ClInclude Include="RelayServer.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RootCenter.h" />
+    <ClInclude Include="RootClient.h" />
+    <ClInclude Include="S3Relay.h" />
+    <ClInclude Include="SockThread.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="TongConnect.h" />
+    <ClInclude Include="TongServer.h" />
+    <ClInclude Include="KTongControl.h" />
+    <ClInclude Include="KTongSet.h" />
+    <ClInclude Include="TONGDB.H" />
+    <ClInclude Include="..\..\..\Headers\KRelayProtocol.h" />
+    <ClInclude Include="..\..\..\Headers\KTongProtocol.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="S3Relay.ico" />
+    <CustomBuild Include="small.ico" />
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\..\Lib\debug\engine.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\..\Lib\libdb62d.lib" />
+    <Library Include="..\..\..\Lib\release\engine.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Library>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
