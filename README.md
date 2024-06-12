@@ -19,4 +19,4 @@
         - fix văng gs khi chuyển pk(file liên quan):
             * SwordOnline\Headers\KProtocol.h dòng 1358-1370 sửa thành 1372-1380 (tagSHOW_MSG_SYNC)
             * SwordOnline\Sources\Core\Src\KPlayerPK.cpp dòng 353
-            * ... vài file liên quan nữa ae tìm theo tagSHOW_MSG_SYNC
+            * ... vài file liên quan nữa ae tìm theo tagSHOW_MSG_SYNC (https://github.com/duccom0123/jx1-vs2022/commit/a1f54536d17c66b02a2ad8a14e1a09a2dc07205d)
