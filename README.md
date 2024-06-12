@@ -6,7 +6,8 @@
 - ⚡ Sử dụng:
     * B1: git clone https://github.com/duccom0123/jx1-vs2022.git
     * B2: mở SwordOnline\Sources\JXAll.sln bằng vs2022
-    * B3: build solution
+    * B3: sửa id và pass của bishop tại SwordOnline\Sources\MultiServer\Bishop\Application.cpp dòng 78 (hiện tại đang là "fsjx", "1234")
+    * B4: build solution
 - Build ở chế độ debug với các file liên quan đến server
 - Build ở chế độ client debug với các file liên quan đến client
 - Các file sau khi build sẽ ở thư mục bin
