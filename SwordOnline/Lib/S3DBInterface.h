@@ -1,3 +1,14 @@
+//	Editer	: duccom01Editer	: duccom0123 EditTime:	2024/06/12 11:42:53om0123 EditTime:	2024-6-12//	Editer	: duccom0123 EditTime:	2024-6-12
+//	Editer	: duccom0123 EditTime:	2024-6-12
+/*****************************************************************************************
+//	Editer	:   duccom0123
+//	EditTime:	2024-6-12
+------------------------------------------------------------------------------------------
+
+//	Editer	:   duccom0123
+//	EditTime:	2024-6-12
+------------------------------------------------------------------------------------------
+* ****************************************************************************************/ 
 //#include "kstdafx.h"
 #ifndef S3DBINTERFACE_H
 #define S3DBINTERFACE_H
@@ -318,7 +329,7 @@ enum
 
 
 
-//	IniÎÄ¼þ¸÷×Ö¶Î¶¨Òå---------------------------------------------------
+//	Iniï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ö¶Î¶ï¿½ï¿½ï¿½---------------------------------------------------
 #define SECTION_ROLE		"ROLE"	
 
 #define SECTION_ITEMLIST	"ITEMS"	
@@ -357,7 +368,7 @@ enum
 #define S3DBI_API
 #endif
 
-//¸Ä»ØÊ¹ÓÃcore\kprotocol.hÀïµÄS3DBI_RoleBaseInfo
+//ï¿½Ä»ï¿½Ê¹ï¿½ï¿½core\kprotocol.hï¿½ï¿½ï¿½S3DBI_RoleBaseInfo
 /*struct S3DBI_RoleBaseInfo
 {
 	char szRoleName[32];
@@ -452,16 +463,16 @@ struct TDBPlayerData :TDBTableData
 
 */
 #define S3_DB_TABLENAME  S3DBI_TABLENAME
-S3DBI_API int S3DBI_InitDBInterface();			//³õÊ¼»¯Êý¾Ý¿âÒýÇæ
-S3DBI_API void S3DBI_ReleaseDBInterface();		//ÊÍ·ÅÊý¾Ý¿âÒýÇæ
+S3DBI_API int S3DBI_InitDBInterface();			//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+S3DBI_API void S3DBI_ReleaseDBInterface();		//ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
 
-//»ñµÃ½ÇÉ«µÄÐÅÏ¢²¢ÒÔIniÎÄ¼þµÄ¸ñÊ½·ÅÖÃ
+//ï¿½ï¿½Ã½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Iniï¿½Ä¼ï¿½ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 //S3DBI_API int	S3DBI_GetRoleInfo(IN char * strUser, IN OUT KIniFile * pIniFile);
 S3DBI_API void *	S3DBI_GetRoleInfo(IN OUT BYTE * pRoleBuffer, IN char * strUser, IN OUT int &nBufLen);
 
-//±£´æ½ÇÉ«µÄÐÅÏ¢£¬Èç¹ûÊý¾Ý¿â²»´æÔÚ¸ÃÍæ¼Ò£¬ÔòÔö¼Ó¸ÃÍæ¼Ò
-//bAutoInsertWhenNoExistUser ÉèÎªTRUEÊ±±íÊ¾£¬Èç¹ûÐèÒª±£´æµÄ¸ÃÍæ¼ÒÔÚÊý¾Ý¿âÖÐ²¢²»´æÔÚÔò×Ô¶¯¼ÓÈëµ½Êý¾Ý¿âÖÐ£¬FALSEÔò²»Ôö¼ÓÖ±½Ó·µ»Ø´íÎó
-//×¢ÒâINIÎÄ¼þÖ»Ðë´æ·Å½«ÐèÒª¸Ä¶¯µÄÊý¾Ý£¬²»Ðè¸Ä¶¯µÄÊý¾Ý½«×Ô¶¯±£´æÔ­×´¡£
+//ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â²»ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ï¿½
+//bAutoInsertWhenNoExistUser ï¿½ï¿½ÎªTRUEÊ±ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð£ï¿½FALSEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
+//×¢ï¿½ï¿½INIï¿½Ä¼ï¿½Ö»ï¿½ï¿½ï¿½Å½ï¿½ï¿½ï¿½Òªï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ô­×´ï¿½ï¿½
 S3DBI_API int	S3DBI_SaveRoleInfo(IN BYTE * pRoleBuffer, IN char * strUser, BOOL bAutoInsertWhenNoExistUser);
 S3DBI_API void S3DBI_ShowDebugInfo(IN BYTE * pRoleBuffer, char * pShowString);
 
@@ -469,15 +480,15 @@ S3DBI_API BOOL S3DBI_IsRoleNameExisted(char * strUser);
 S3DBI_API void S3DBI_SaveRoleLogData(const char * strUser, ROLE_LOG eLogType, time_t logtime = 0);
 S3DBI_API time_t S3DBI_GetDataBaseSysTime();
 
-//  eLogType±êÊ¶ÈÕÖ¾µÄÀàÐÍ
-//	log_create_role , ¼ÇÂ¼½ÇÉ«½¨Á¢µÄÊ±¼ä
-//	log_begin_game,   ¼ÇÂ¼½ÇÉ«±¾´ÎÓÎÏ·µÇÈëµÄÊ±¼ä
-//	log_save_game,	  ¼ÇÂ¼½ÇÉ«±¾´ÎÓÎÏ·¹ý³ÌÖÐÉÏÒ»´Î´æµµµÄÊ±¼ä
-//  Êý¾Ý¿â±£´æ´æµµµÄÊ±¼äµÄÄ¿µÄÊÇÎªÁË
+//  eLogTypeï¿½ï¿½Ê¶ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	log_create_role , ï¿½ï¿½Â¼ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+//	log_begin_game,   ï¿½ï¿½Â¼ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+//	log_save_game,	  ï¿½ï¿½Â¼ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î´æµµï¿½ï¿½Ê±ï¿½ï¿½
+//  ï¿½ï¿½ï¿½Ý¿â±£ï¿½ï¿½æµµï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
 
 S3DBI_API int S3DBI_GetRoleListOfAccount(char * szAccountName, S3DBI_RoleBaseInfo * RoleBaseList, int nMaxCount);
 
-//É¾³ý½ÇÉ«
+//É¾ï¿½ï¿½ï¿½ï¿½É«
 S3DBI_API int	S3DBI_DeleteRole(char * strUser);
 
 
