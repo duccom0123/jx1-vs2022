@@ -11,3 +11,4 @@
 - Build ở chế độ client debug với các file liên quan đến client
 - Các file sau khi build sẽ ở thư mục bin
 - Đây là phiên bản sơ khai chưa hoàn thiện mục đích để học hỏi là chính, nên ae lưu ý khi sử dụng.
+- Client & Server: https://drive.google.com/file/d/1dr8izoH0Cm15w3TE7aP3NKPefMaqXHPS/view?usp=sharing
