@@ -1,5 +1,5 @@
-/*****************************************************************************************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÎÄ±¾´°¿Ú
+ï»¿/*****************************************************************************************
+//	Â½Ã§ÃƒÃ¦Â´Â°Â¿ÃšÃŒÃ¥ÃÂµÂ½Ã¡Â¹Â¹--ÃÃ„Â±Â¾Â´Â°Â¿Ãš
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-23
@@ -16,22 +16,22 @@
 
 #include "../../../Represent/iRepresent/iRepresentShell.h"
 extern iRepresentShell*	g_pRepresentShell;
-unsigned int KWndText::ms_uBtnTipTextColor = 0xffffffff;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-int			 KWndText::ms_nDisableBtnTip   = false;		//ÊÇ·ñ¾²Ö¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
+unsigned int KWndText::ms_uBtnTipTextColor = 0xffffffff;	//Â°Â´Ã…Â¥ÃŒÃ¡ÃŠÂ¾ÃƒÃ»Â³Ã†ÃÃ„Ã—Ã–ÂµÃ„Ã‘Ã•Ã‰Â«
+int			 KWndText::ms_nDisableBtnTip   = false;		//ÃŠÃ‡Â·Ã±Â¾Â²Ã–Â¹Â°Â´Ã…Â¥ÂµÃ„ÃŒÃ¡ÃŠÂ¾ÃÃ„Ã—Ã–
 
-//ÉèÖÃ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
+//Ã‰Ã¨Ã–ÃƒÂ°Â´Ã…Â¥ÃŒÃ¡ÃŠÂ¾ÃƒÃ»Â³Ã†ÃÃ„Ã—Ã–ÂµÃ„Ã‘Ã•Ã‰Â«
 void KWndText::SetAllButtonTipTextColor(unsigned int uColor)
 {
 	ms_uBtnTipTextColor = uColor;
 }
 
-//½ûÖ¹/ÔÊĞí°´Å¥µÄÌáÊ¾ÎÄ×Ö
+//Â½Ã»Ã–Â¹/Ã”ÃŠÃÃ­Â°Â´Ã…Â¥ÂµÃ„ÃŒÃ¡ÃŠÂ¾ÃÃ„Ã—Ã–
 void KWndText::EnableAllButtonTip(int bEnable)
 {
 	ms_nDisableBtnTip = !bEnable;
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KWndText::KWndText()
 {
@@ -45,7 +45,7 @@ KWndText::KWndText()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃÎÄ±¾ÎÄ×Ö
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Ã–ÃƒÃÃ„Â±Â¾ÃÃ„Ã—Ã–
 //--------------------------------------------------------------------------
 void KWndText::SetText(const char* pText, int nLen/*= -1*/)
 {
@@ -78,7 +78,7 @@ void KWndText::SetText(const char* pText, int nLen/*= -1*/)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡×Ö·û´®ÄÚÈİ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ»Ã±ÃˆÂ¡Ã—Ã–Â·Ã»Â´Â®Ã„ÃšÃˆÃ
 //--------------------------------------------------------------------------
 int KWndText::GetText(char* pBuffer, int nSize)
 {
@@ -109,7 +109,7 @@ void KWndText::Clear(bool bSafe)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºset the index of the first visible line int the text control wnd
+//	Â¹Â¦Ã„ÃœÂ£Âºset the index of the first visible line int the text control wnd
 //--------------------------------------------------------------------------
 int	KWndText::SetTopLine(int nTopLine)
 {
@@ -119,7 +119,7 @@ int	KWndText::SetTopLine(int nTopLine)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃÎÄ±¾»º³åÇøÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Ã–ÃƒÃÃ„Â±Â¾Â»ÂºÂ³Ã¥Ã‡Ã¸Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 void KWndText::SetTextPtr(char* pText, int nMaxLen)
 {
@@ -158,14 +158,14 @@ void KWndText::SetFontSize(int nFontSize)
 	m_nFontSize = nFontSize;
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 int KWndText::Init(KIniFile* pIniFile, const char* pSection)
 {
 	if (KWndWindow::Init(pIniFile, pSection))
 	{
 		pIniFile->GetInteger(pSection, "Font", 12, &m_nFontSize);
-		//====¶ÁÈ¡ÎÄ×Ö¶ÔÆë·½Ê½====
+		//====Â¶ÃÃˆÂ¡ÃÃ„Ã—Ã–Â¶Ã”Ã†Ã«Â·Â½ÃŠÂ½====
 		m_Style &= ~WNDTEXT_ES_ALIGN_FILTER;
 		int	nValue;
 		pIniFile->GetInteger(pSection, "HAlign", 0, &nValue);		
@@ -179,7 +179,7 @@ int KWndText::Init(KIniFile* pIniFile, const char* pSection)
 		else if (nValue == 2)
 			m_Style |= WNDTEXT_ES_VALIGN_BOTTOM;
 
-		//===¶ÁÈ¡ÎÄ×Ö====
+		//===Â¶ÃÃˆÂ¡ÃÃ„Ã—Ã–====
 		char	Buff[256];
 		pIniFile->GetString(pSection, "Color", "0,0,0", Buff, 16);
 		m_TextColor = GetColor(Buff);
@@ -305,7 +305,7 @@ int KWndText::SetToolTipInfo(char* szTip, int nMax)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»æÖÆ´°¿Ú
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ»Ã¦Ã–Ã†Â´Â°Â¿Ãš
 //--------------------------------------------------------------------------
 void KWndText::PaintWindow()
 {
@@ -321,12 +321,12 @@ void KWndText::PaintWindow()
 	{
 		switch(m_Style & WNDTEXT_ES_HALIGN_FILTER)
 		{
-		case WNDTEXT_ES_HALIGN_CENTRE:// ¾ÓÖĞ
+		case WNDTEXT_ES_HALIGN_CENTRE:// Â¾Ã“Ã–Ã
 			Param.nX += (m_Width - m_nTextLen * m_nFontSize / 2) / 2;
 			if (Param.nX < m_nAbsoluteLeft)
 				Param.nX = m_nAbsoluteLeft;
 			break;
-		case WNDTEXT_ES_HALIGN_RIGHT:// ¾ÓÓÒ
+		case WNDTEXT_ES_HALIGN_RIGHT:// Â¾Ã“Ã“Ã’
 			Param.nX += m_Width - m_nTextLen * m_nFontSize / 2;
 			if (Param.nX < m_nAbsoluteLeft)
 				Param.nX = m_nAbsoluteLeft;
@@ -343,7 +343,7 @@ void KWndText::PaintWindow()
 		}
 		Param.nNumLine = 1;
 	}
-	else	//¶àĞĞ		
+	else	//Â¶Ã ÃÃ		
 		Param.nNumLine = m_Height / (m_nFontSize + 1);
 
 	Param.nSkipLine = m_nTopLine;
@@ -353,7 +353,7 @@ void KWndText::PaintWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃÎÄ±¾ÎÄ×ÖÑÕÉ«
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Ã–ÃƒÃÃ„Â±Â¾ÃÃ„Ã—Ã–Ã‘Ã•Ã‰Â«
 //--------------------------------------------------------------------------
 void KWndText::SetTextColor(unsigned int Color)
 {
@@ -365,7 +365,7 @@ void KWndText::SetBorderTextColor(unsigned int Color)
 	m_BorderColor = Color;
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃÊıÖµÎÄ×Ö
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Ã–ÃƒÃŠÃ½Ã–ÂµÃÃ„Ã—Ã–
 //--------------------------------------------------------------------------
 void KWndText::SetIntText(int nNumber, char Separator)
 {
@@ -387,7 +387,7 @@ void KWndText::SetExtPointText(int nNumber)
     int        nLen;
     if (m_pText)
     {
-        nLen = sprintf(Buff, "%d ®ång", nNumber);
+        nLen = sprintf(Buff, "%d Â®Ã¥ng", nNumber);
         SetText(Buff, nLen);
     }
 }
@@ -399,19 +399,19 @@ void KWndText::SetMoneyUnitText(int nMoneyUnit)
 	if (m_pText)
 	{
 		if (nMoneyUnit == moneyunit_extpoint)
-			nLen = sprintf(Buff, "®ång");
+			nLen = sprintf(Buff, "Â®Ã¥ng");
 		else if (nMoneyUnit == moneyunit_fuyuan)
-			nLen = sprintf(Buff, "p.duyªn");
+			nLen = sprintf(Buff, "p.duyÂªn");
 		else if (nMoneyUnit == moneyunit_repute)
-			nLen = sprintf(Buff, "d.väng");
+			nLen = sprintf(Buff, "d.vÃ¤ng");
 		else if (nMoneyUnit == moneyunit_accum)
-			nLen = sprintf(Buff, "t.lòy");
+			nLen = sprintf(Buff, "t.lÃ²y");
 		else if (nMoneyUnit == moneyunit_honor)
-			nLen = sprintf(Buff, "vinh dù");
+			nLen = sprintf(Buff, "vinh dÃ¹");
 		else if (nMoneyUnit == moneyunit_respect)
 			nLen = sprintf(Buff, "uy danh");
 		else
-			nLen = sprintf(Buff, "l­îng");
+			nLen = sprintf(Buff, "lÂ­Ã®ng");
 	   SetText(Buff, nLen);
 	}
 }
@@ -423,19 +423,19 @@ void KWndText::SetMoneyUnitPrice(int nPrice, int nMoneyUnit)
 	if (m_pText)
 	{
 		if (nMoneyUnit == moneyunit_extpoint)
-			nLen = sprintf(Buff, "%d ®ång", nPrice);
+			nLen = sprintf(Buff, "%d Â®Ã¥ng", nPrice);
 		else if (nMoneyUnit == moneyunit_fuyuan)
-			nLen = sprintf(Buff, "%d p.duyªn", nPrice);
+			nLen = sprintf(Buff, "%d p.duyÂªn", nPrice);
 		else if (nMoneyUnit == moneyunit_repute)
-			nLen = sprintf(Buff, "%d d.väng", nPrice);
+			nLen = sprintf(Buff, "%d d.vÃ¤ng", nPrice);
 		else if (nMoneyUnit == moneyunit_accum)
-			nLen = sprintf(Buff, "%d t.lòy", nPrice);
+			nLen = sprintf(Buff, "%d t.lÃ²y", nPrice);
 		else if (nMoneyUnit == moneyunit_honor)
-			nLen = sprintf(Buff, "%d vinh dù", nPrice);
+			nLen = sprintf(Buff, "%d vinh dÃ¹", nPrice);
 		else if (nMoneyUnit == moneyunit_respect)
 			nLen = sprintf(Buff, "%d uy danh", nPrice);
 		else
-			nLen = sprintf(Buff, "%d l­îng", nPrice);
+			nLen = sprintf(Buff, "%d lÂ­Ã®ng", nPrice);
 	   SetText(Buff, nLen);
 	}
 }
@@ -453,13 +453,13 @@ void KWndText::Set3IntText(int nNumber, bool bRound, const char* szUnit)
 			else
 			{
 				if (bRound)
-					nLen = sprintf(Buff, "%d v¹n %s", vNumber, szUnit);
+					nLen = sprintf(Buff, "%d vÂ¹n %s", vNumber, szUnit);
 				else
 				{
 				if(lNumber == 0)
-					nLen = sprintf(Buff, "%d v¹n %s", vNumber, szUnit);
+					nLen = sprintf(Buff, "%d vÂ¹n %s", vNumber, szUnit);
 				else
-					nLen = sprintf(Buff, "%d v¹n %d %s", vNumber, lNumber, szUnit);
+					nLen = sprintf(Buff, "%d vÂ¹n %d %s", vNumber, lNumber, szUnit);
 				}
 			}
 		SetText(Buff, nLen);
@@ -473,9 +473,9 @@ void KWndText::Set4IntText(int nNumber)
 	if (m_pText)
 	{
 		if (nNumber)
-			nLen = sprintf(Buff, "Trïng sinh %d", nNumber);	
+			nLen = sprintf(Buff, "TrÃ¯ng sinh %d", nNumber);	
 		else
-			nLen = sprintf(Buff, "Ch­a trïng sinh");	
+			nLen = sprintf(Buff, "ChÂ­a trÃ¯ng sinh");	
 
 		if (nLen)
 			SetText(Buff, nLen);
@@ -492,14 +492,14 @@ void KWndText::Set5IntText(int nNumber, bool bFlag)
 		if (nNumber == 0)
 		{
 			if (bFlag)
-				nLen = sprintf(Buff, "H¹ng ?");
+				nLen = sprintf(Buff, "HÂ¹ng ?");
 			else
 				nLen = sprintf(Buff, "?");
 		}
 		else
 		{
 			if (bFlag)
-				nLen = sprintf(Buff, "H¹ng %d", nNumber);
+				nLen = sprintf(Buff, "HÂ¹ng %d", nNumber);
 			else
 				nLen = sprintf(Buff, "%d", nNumber);
 		}	
@@ -561,7 +561,7 @@ void KWndText::SetResistPlus(int nNumber, char Separator)
 }
 //--------------------------------
 
-//	¹¦ÄÜ£ºÉèÖÃÊıÖµÎÄ×Ö
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Ã–ÃƒÃŠÃ½Ã–ÂµÃÃ„Ã—Ã–
 //--------------------------------------------------------------------------
 void KWndText::Set2IntText(int nNumber1, int nNumber2, char Separator)
 {
@@ -598,7 +598,7 @@ void KWndText::Set2IntText2(int nNumber1, int nNumber2, char Separator1, char Se
 	}
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KWndText32::KWndText32()
 {
@@ -607,7 +607,7 @@ KWndText32::KWndText32()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KWndText80::KWndText80()
 {
@@ -616,7 +616,7 @@ KWndText80::KWndText80()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KWndText256::KWndText256()
 {
@@ -625,7 +625,7 @@ KWndText256::KWndText256()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KWndText512::KWndText512()
 {
