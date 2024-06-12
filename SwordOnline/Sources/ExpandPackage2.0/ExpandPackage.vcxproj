@@ -126,6 +126,7 @@ copy release\ExpandPackage.dll ..\..\..\bin\Client\release\ExpandPackage.dll</Co
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\ExpandPackage.dll ..\..\..\bin\Client\ExpandPackage.dll

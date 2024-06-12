@@ -123,6 +123,7 @@ copy release\Sword3PaySys.exe ..\..\..\..\bin\server\release\Sword3PaySys.exe</C
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PostBuildEvent>
       <Command>md ..\..\..\..\bin\server\debug\
