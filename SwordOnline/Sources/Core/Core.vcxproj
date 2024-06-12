@@ -231,6 +231,7 @@ copy ClientRelease\CoreClient.lib ..\..\lib\release\CoreClient.lib</Command>
       <ProgramDataBaseFileName>.\ServerDebug\</ProgramDataBaseFileName>
       <AdditionalOptions> /LD </AdditionalOptions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PostBuildEvent>
       <Command>md ..\..\..\bin\server\debug

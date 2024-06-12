@@ -127,6 +127,7 @@ copy Release\GameServer.map ..\..\..\..\bin\Server\release\GameServer.map</Comma
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PostBuildEvent>
       <Command>md ..\..\..\..\bin\server\debug
