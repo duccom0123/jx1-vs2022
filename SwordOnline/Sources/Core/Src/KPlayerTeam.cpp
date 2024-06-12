@@ -448,7 +448,7 @@ void	KPlayerTeam::InviteAdd(int nIdx, TEAM_INVITE_ADD_COMMAND *pAdd)
 	sMsg.ProtocolType = s2c_msgshow;
 	sMsg.m_wMsgID = enumMSG_ID_GET_INVITE_TEAM_REPLY;
 	sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(sAdd.m_szName);
-	sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+	sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 	memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 	memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), sAdd.m_szName, sizeof(sAdd.m_szName));
 	g_pServer->PackDataToClient(Player[nIdx].m_nNetConnectIdx, sMsg.m_lpBuf, sMsg.m_wLength + 1);
@@ -500,7 +500,7 @@ void	KPlayerTeam::GetInviteReply(int nSelfIdx, int nTargetIdx, int nResult)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TEAM_REFUSE_INVITE;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(Npc[Player[nTargetIdx].m_nIndex].Name);
-		sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+		sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 		memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 		memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[nTargetIdx].m_nIndex].Name, sizeof(Npc[Player[nTargetIdx].m_nIndex].Name));
 		g_pServer->PackDataToClient(Player[nSelfIdx].m_nNetConnectIdx, sMsg.m_lpBuf, sMsg.m_wLength + 1);

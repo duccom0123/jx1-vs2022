@@ -423,7 +423,7 @@ int	CoreServerShell::GetGameData(unsigned int uDataId, unsigned int uParam, int 
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_TONG_APPLY_ADD_ERROR;
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + nLength;
-				sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+				sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 
 				memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 				memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[pAdd->m_nSelfIdx].m_nIndex].Name, nLength);
@@ -1664,7 +1664,7 @@ BOOL CoreServerShell::PayForSpeech(int nIndex, int nType)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_FUNCTION_CHAT_FORBIDDENED;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)Player[nIndex].m_nForbiddenTm;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Player[nIndex].m_nForbiddenTm;
 		g_pServer->PackDataToClient(Player[nIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return FALSE;

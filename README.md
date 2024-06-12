@@ -13,3 +13,10 @@
 - Các file sau khi build sẽ ở thư mục bin
 - Đây là phiên bản sơ khai chưa hoàn thiện mục đích để học hỏi là chính, nên ae lưu ý khi sử dụng.
 - Client & Server: https://drive.google.com/file/d/1dr8izoH0Cm15w3TE7aP3NKPefMaqXHPS/view?usp=sharing
+
+- ⚡ Cập nhật:
+    * 0.0.1:
+        - fix văng gs khi chuyển pk(file liên quan):
+            * SwordOnline\Headers\KProtocol.h dòng 1358-1370 sửa thành 1372-1380 (tagSHOW_MSG_SYNC)
+            * SwordOnline\Sources\Core\Src\KPlayerPK.cpp dòng 353
+            * ... vài file liên quan nữa ae tìm theo tagSHOW_MSG_SYNC

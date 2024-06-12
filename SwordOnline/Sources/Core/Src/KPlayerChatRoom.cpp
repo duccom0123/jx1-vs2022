@@ -529,7 +529,7 @@ void	KChatRoom::Dice(int nIsHight)
 	sMsg.ProtocolType = s2c_msgshow;
 	sMsg.m_wMsgID = enumMSG_ID_CHATROOM_REVERSE;
 	sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(m_szRoomName);
-	sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+	sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 	memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 	memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), m_szRoomName, sizeof(m_szRoomName));
 	for (int i = 0; i <	MAX_CHATROOM_MEMBER; i++)
@@ -722,7 +722,7 @@ int	KChatRoomSet::JoinRoom(int nPlayerIndex, int nRoomIndex, int nRoomPw)
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_CHATROOM_JOIN;
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(Npc[Player[nPlayerIndex].m_nIndex].Name);
-				sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+				sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 				memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 				memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[nPlayerIndex].m_nIndex].Name, sizeof(Npc[Player[nPlayerIndex].m_nIndex].Name));
 				for(int k = 0;k < MAX_CHATROOM_MEMBER; k++)
@@ -825,7 +825,7 @@ BOOL	KChatRoomSet::LeaveRoom(int nPlayerIndex, int nRoomID)
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_CHATROOM_LEAVE;
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(Npc[Player[nPlayerIndex].m_nIndex].Name);
-				sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+				sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 				memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 				memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[nPlayerIndex].m_nIndex].Name, sizeof(Npc[Player[nPlayerIndex].m_nIndex].Name));
 				g_pServer->PackDataToClient(Player[g_ChatRoom[nRoomID].m_nMember[i]].m_nNetConnectIdx, sMsg.m_lpBuf, sMsg.m_wLength + 1);
@@ -902,7 +902,7 @@ BOOL	KChatRoomSet::AddBlackList(int nPlayerIndex, int nRoomID, int nListIndex)
 						sMsg.ProtocolType = s2c_msgshow;
 						sMsg.m_wMsgID = enumMSG_ID_CHATROOM_BEKICK;
 						sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(Npc[Player[g_ChatRoom[nRoomID].m_nMember[nListIndex]].m_nIndex].Name);
-						sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+						sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 						memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 						memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[g_ChatRoom[nRoomID].m_nMember[nListIndex]].m_nIndex].Name, sizeof(Npc[Player[g_ChatRoom[nRoomID].m_nMember[nListIndex]].m_nIndex].Name));
 
@@ -1011,7 +1011,7 @@ BOOL	KChatRoomSet::OpenGame(int nPlayerIndex, int nRoomID, int n)
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_CHATROOM_OPENGAME;
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-				sMsg.m_lpBuf = (LPVOID)n;
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)n;
 				for(int i =0; i < MAX_CHATROOM_MEMBER; i++)
 				{
 					g_ChatRoom[nRoomID].m_nMemParam[i] = 0;
