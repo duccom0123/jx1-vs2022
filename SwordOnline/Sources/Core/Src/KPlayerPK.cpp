@@ -17,7 +17,7 @@
 #ifndef _SERVER
 #include "CoreShell.h"
 #endif
-
+#include <memory>
 #ifdef _SERVER
 
 //-------------------------------------------------------------------------
@@ -66,7 +66,7 @@ BOOL	KPlayerPK::CheckSwitchPK(BYTE bFlag, BOOL bCaptainSet)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_PK_HIGHT_LOCK_NOT_SWITCH;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)NpcSet.m_nPKNotSwitchPKWhenLock;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)NpcSet.m_nPKNotSwitchPKWhenLock;
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return FALSE;
@@ -196,7 +196,7 @@ BOOL	KPlayerPK::CheckSwitchPK(BYTE bFlag, BOOL bCaptainSet)
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_PK_IS_LOCK7;
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-				sMsg.m_lpBuf = (LPVOID)NpcSet.m_nFightPKTimeLong;
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)NpcSet.m_nFightPKTimeLong;
 				g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 				return FALSE;
 			}
@@ -217,7 +217,7 @@ BOOL	KPlayerPK::CheckSwitchPK(BYTE bFlag, BOOL bCaptainSet)
 			sMsg.ProtocolType = s2c_msgshow;
 			sMsg.m_wMsgID = enumMSG_ID_PK_IS_LOCK;
 			sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-			sMsg.m_lpBuf = (LPVOID)NpcSet.m_nNormalPKTimeLong;
+			sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)NpcSet.m_nNormalPKTimeLong;
 			g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 			return FALSE;
 		}
@@ -350,7 +350,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_PK_HIGHT_LOCK_NOT_SWITCH;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)NpcSet.m_nPKNotSwitchPKWhenLock;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)NpcSet.m_nPKNotSwitchPKWhenLock;
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return FALSE;

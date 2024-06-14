@@ -1466,7 +1466,7 @@ void	KPlayer::LeaveTeam(BYTE* pProtocol)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TEAM_LEAVE;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (void*)Npc[this->m_nIndex].m_dwID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[this->m_nIndex].m_dwID;
 		
 		g_pServer->PackDataToClient(Player[g_Team[m_cTeam.m_nID].m_nCaptain].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		for (int i = 0; i < MAX_TEAM_MEMBER; i++)
@@ -1558,7 +1558,7 @@ void	KPlayer::TeamKickOne(BYTE* pProtocol)
 	sMsg.ProtocolType = s2c_msgshow;
 	sMsg.m_wMsgID = enumMSG_ID_TEAM_KICK_ONE;
 	sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + nLength;
-	sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+	sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 	
 	memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 	memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[nPlayerNo].m_nIndex].Name, nLength);
@@ -1607,7 +1607,7 @@ BOOL	KPlayer::TeamChangeCaptain(BYTE* pProtocol)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TEAM_CHANGE_CAPTAIN_FAIL2;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)pChange->m_dwNpcID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)pChange->m_dwNpcID;
 		g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return FALSE;
@@ -1619,7 +1619,7 @@ BOOL	KPlayer::TeamChangeCaptain(BYTE* pProtocol)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TEAM_CHANGE_CAPTAIN_FAIL;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)pChange->m_dwNpcID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)pChange->m_dwNpcID;
 		g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return FALSE;
@@ -4353,7 +4353,7 @@ BOOL	KPlayer::ServerPickUpItem(BYTE* pProtocol)
 			SHOW_MSG_SYNC	sMsg;
 			sMsg.ProtocolType = s2c_msgshow;
 			sMsg.m_wMsgID = enumMSG_ID_GET_ITEM;
-			sMsg.m_lpBuf = (LPVOID)MAKELONG(Item[m_ItemList.m_Items[nItemIdx].nIdx].GetID(), nStackNum);
+			sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)MAKELONG(Item[m_ItemList.m_Items[nItemIdx].nIdx].GetID(), nStackNum);
 			sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
 			g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 			sMsg.m_lpBuf = 0;
@@ -5020,7 +5020,7 @@ void	KPlayer::c2sTradeReplyStart(BYTE* pProtocol)
 
 		sMsg.m_wMsgID = enumMSG_ID_FIGHT_MODE_ERROR3;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)Npc[m_nIndex].m_dwID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[m_nIndex].m_dwID;
 		g_pServer->PackDataToClient(Player[nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		return;
 	}
@@ -5034,7 +5034,7 @@ void	KPlayer::c2sTradeReplyStart(BYTE* pProtocol)
 
 		sMsg.m_wMsgID = enumMSG_ID_FIGHT_MODE_ERROR3;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)Npc[Player[nPlayerIdx].m_nIndex].m_dwID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[Player[nPlayerIdx].m_nIndex].m_dwID;
 		g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		return;
 	}
@@ -5070,7 +5070,7 @@ void	KPlayer::c2sTradeReplyStart(BYTE* pProtocol)
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TRADE_REFUSE_APPLY;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-		sMsg.m_lpBuf = (LPVOID)Npc[m_nIndex].m_dwID;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[m_nIndex].m_dwID;
 		g_pServer->PackDataToClient(Player[nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		sMsg.m_lpBuf = 0;
 		return;
@@ -5101,7 +5101,7 @@ void	KPlayer::c2sTradeReplyStart(BYTE* pProtocol)
 				g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-				sMsg.m_lpBuf = (LPVOID)Npc[Player[m_nPlayerIndex].m_nIndex].m_dwID;
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[Player[m_nPlayerIndex].m_nIndex].m_dwID;
 				sMsg.m_wMsgID = enumMSG_ID_TRADEFOLKGAME_DEST_ROOM_FULL;
 				g_pServer->PackDataToClient(Player[nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 			}
@@ -5115,7 +5115,7 @@ void	KPlayer::c2sTradeReplyStart(BYTE* pProtocol)
 				g_pServer->PackDataToClient(Player[nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-				sMsg.m_lpBuf = (LPVOID)Npc[Player[nPlayerIdx].m_nIndex].m_dwID;
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[Player[nPlayerIdx].m_nIndex].m_dwID;
 				sMsg.m_wMsgID = enumMSG_ID_TRADEFOLKGAME_DEST_ROOM_FULL;
 				g_pServer->PackDataToClient(m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 			}

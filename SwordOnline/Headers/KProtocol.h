@@ -14,7 +14,7 @@
 
 #include "KProtocolDef.h"
 #include "KRelayProtocol.h"
-
+#include <memory>
 #pragma pack(push, enter_protocol)
 #pragma	pack(1)
 
@@ -1355,15 +1355,33 @@ typedef struct
 	int				m_nObjID;
 } OBJ_MOUSE_CLICK_SYNC;
 
-typedef struct tagSHOW_MSG_SYNC
-{
-	BYTE			ProtocolType;
-	WORD			m_wLength;
-	WORD			m_wMsgID;
-	LPVOID			m_lpBuf;
-	tagSHOW_MSG_SYNC() {m_lpBuf = NULL;};
-	~tagSHOW_MSG_SYNC() {Release();}
-	void	Release() {if (m_lpBuf) delete []m_lpBuf; m_lpBuf = NULL;}
+//typedef struct tagSHOW_MSG_SYNC
+//{
+//	BYTE			ProtocolType;
+//	WORD			m_wLength;
+//	WORD			m_wMsgID;
+//	LPVOID			m_lpBuf;
+//	tagSHOW_MSG_SYNC() {m_lpBuf = NULL;};
+//	~tagSHOW_MSG_SYNC() {Release();}
+//	void	Release() {
+//		if (m_lpBuf) 
+//			m_lpBuf = NULL;
+//	}
+//} SHOW_MSG_SYNC;
+
+typedef struct tagSHOW_MSG_SYNC {
+	BYTE ProtocolType;
+	WORD m_wLength;
+	WORD m_wMsgID;
+	std::unique_ptr<BYTE[]> *m_lpBuf;
+
+	tagSHOW_MSG_SYNC() : ProtocolType(0), m_wLength(0), m_wMsgID(0), m_lpBuf(nullptr) {}
+
+	~tagSHOW_MSG_SYNC() = default;
+
+	void Release() {m_lpBuf->reset(); }
+
+	void AllocateBuffer(std::size_t size) {m_lpBuf = &std::make_unique<BYTE[]>(size);}
 } SHOW_MSG_SYNC;
 
 typedef struct

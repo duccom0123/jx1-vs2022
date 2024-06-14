@@ -4945,7 +4945,7 @@ void KProtocolProcess::c2sPKApplyEnmity(int nIndex, BYTE* pProtocol)
 			sMsg.ProtocolType = s2c_msgshow;
 			sMsg.m_wMsgID = enumMSG_ID_SPAR_REFUSE_APPLY;
 			sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-			sMsg.m_lpBuf = (LPVOID)Npc[Player[nIndex].m_nIndex].m_dwID;
+			sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[Player[nIndex].m_nIndex].m_dwID;
 			g_pServer->PackDataToClient(Player[Npc[nIdx].GetPlayerIdx()].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 			sMsg.m_lpBuf = 0;
 		}

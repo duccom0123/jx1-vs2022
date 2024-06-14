@@ -1335,7 +1335,7 @@ void KNpc::DoDeath(int nMode/* = 0*/)
 		if (m_nLastDamageIdx && Npc[m_nLastDamageIdx].m_Kind == kind_player)
 		{
 			sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
-			sMsg.m_lpBuf = (LPVOID)Npc[m_nLastDamageIdx].m_dwID;
+			sMsg.m_lpBuf = (std::unique_ptr<BYTE[]>*)Npc[m_nLastDamageIdx].m_dwID;
 			sMsg.m_wMsgID = enumMSG_ID_NPC_RENASCENCE_SOMEONE;
 		}
 		else
@@ -6057,7 +6057,7 @@ void KNpc::DeathPunish(int nMode, int nBelongPlayer)
 				SHOW_MSG_SYNC	sMsg;
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_DEC_MONEY;
-				sMsg.m_lpBuf = (void *)(nMoney);
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]> *)(nMoney);
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
 				g_pServer->PackDataToClient(Player[m_nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 				sMsg.m_lpBuf = 0;
@@ -6109,7 +6109,7 @@ void KNpc::DeathPunish(int nMode, int nBelongPlayer)
 				SHOW_MSG_SYNC	sMsg;
 				sMsg.ProtocolType = s2c_msgshow;
 				sMsg.m_wMsgID = enumMSG_ID_DEC_MONEY;
-				sMsg.m_lpBuf = (void *)(nMoney);
+				sMsg.m_lpBuf = (std::unique_ptr<BYTE[]> *)(nMoney);
 				sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
 				g_pServer->PackDataToClient(Player[m_nPlayerIdx].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 				sMsg.m_lpBuf = 0;

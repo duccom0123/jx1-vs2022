@@ -3907,7 +3907,7 @@ void	KItemList::AutoLoseItemFromEquipmentRoom(int nRate)
 			sMsg.ProtocolType = s2c_msgshow;
 			sMsg.m_wMsgID = enumMSG_ID_DEATH_LOSE_ITEM;
 			sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(sInfo.m_szName);
-			sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+			sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 			memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 			memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), sInfo.m_szName, sizeof(sInfo.m_szName));
 			g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, sMsg.m_lpBuf, sMsg.m_wLength + 1);
@@ -4003,7 +4003,7 @@ void	KItemList::AutoLoseEquip()
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_DEATH_LOSE_ITEM;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + sizeof(sInfo.m_szName);
-		sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+		sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 		memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 		memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), sInfo.m_szName, sizeof(sInfo.m_szName));
 		g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, sMsg.m_lpBuf, sMsg.m_wLength + 1);

@@ -520,7 +520,7 @@ void	KPlayerTong::SendRefuseMessage(int nPlayerIdx, DWORD dwNameID)
 	sMsg.ProtocolType = s2c_msgshow;
 	sMsg.m_wMsgID = enumMSG_ID_TONG_REFUSE_ADD;
 	sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1 - sizeof(LPVOID) + nLength;
-	sMsg.m_lpBuf = new BYTE[sMsg.m_wLength + 1];
+	sMsg.AllocateBuffer(sMsg.m_wLength + 1);
 
 	memcpy(sMsg.m_lpBuf, &sMsg, sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID));
 	memcpy((char*)sMsg.m_lpBuf + sizeof(SHOW_MSG_SYNC) - sizeof(LPVOID), Npc[Player[m_nPlayerIndex].m_nIndex].Name, nLength);
@@ -1422,7 +1422,7 @@ void	KPlayerTong::Leave(STONG_SERVER_TO_CORE_LEAVE *pLeave)
 		// 离开帮会成功
 		sMsg.ProtocolType = s2c_msgshow;
 		sMsg.m_wMsgID = enumMSG_ID_TONG_LEAVE_SUCCESS;
-		sMsg.m_lpBuf = (void *)Player[m_nPlayerIndex].m_cTong.m_dwLeaveTime;
+		sMsg.m_lpBuf = (std::unique_ptr<BYTE[]> *)Player[m_nPlayerIndex].m_cTong.m_dwLeaveTime;
 		sMsg.m_wLength = sizeof(SHOW_MSG_SYNC) - 1;
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 	}
