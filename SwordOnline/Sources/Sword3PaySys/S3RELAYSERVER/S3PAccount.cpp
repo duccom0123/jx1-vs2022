@@ -48,25 +48,29 @@ int S3PAccount::ServerLogin(S3PDBConVBC* pConn, const char* strAccName, const ch
 			}
 			else
 			{
-				_variant_t vaddr;
-				_variant_t vaMac;
-				if (pResult->get_field_data(0, &vaddr, sizeof(_variant_t)) &&
-					pResult->get_field_data(3, &vaMac, sizeof(_variant_t)) &&
-					vaddr.vt == VT_BSTR && vaMac.vt == VT_BSTR)
-				{
-					//DWORD addr = inet_addr((const char *)(_bstr_t)vaddr);
-					/*char szmac[15];
-					sprintf(szmac, "%02X%02X-%02X%02X-%02X%02X", Mac[0], Mac[1], Mac[2], Mac[3],Mac[4], Mac[5]);
-					szmac[14] = 0;
-					if (addr == Address &&
-						strcmpi((const char *)(_bstr_t)vaMac, szmac) == 0)*/
-					{
-						_variant_t gameid = 0L;
-						pResult->get_field_data(2, &gameid, sizeof(_variant_t));
-						nGameID = gameid.lVal;
-						iRet = ACTION_SUCCESS;
-					}
-				}
+				// _variant_t vaddr;
+				// _variant_t vaMac;
+				// if (pResult->get_field_data(0, &vaddr, sizeof(_variant_t)) &&
+				// 	pResult->get_field_data(3, &vaMac, sizeof(_variant_t)) &&
+				// 	vaddr.vt == VT_BSTR && vaMac.vt == VT_BSTR)
+				// {
+				// 	//DWORD addr = inet_addr((const char *)(_bstr_t)vaddr);
+				// 	/*char szmac[15];
+				// 	sprintf(szmac, "%02X%02X-%02X%02X-%02X%02X", Mac[0], Mac[1], Mac[2], Mac[3],Mac[4], Mac[5]);
+				// 	szmac[14] = 0;
+				// 	if (addr == Address &&
+				// 		strcmpi((const char *)(_bstr_t)vaMac, szmac) == 0)*/
+				// 	{
+				// 		_variant_t gameid = 0L;
+				// 		pResult->get_field_data(2, &gameid, sizeof(_variant_t));
+				// 		nGameID = gameid.lVal;
+				// 		iRet = ACTION_SUCCESS;
+				// 	}
+				// }
+				_variant_t gameid = 0L;
+				pResult->get_field_data(2, &gameid, sizeof(_variant_t));
+				nGameID = gameid.lVal;
+				iRet = ACTION_SUCCESS;
 			}
 		}
 	}
@@ -271,11 +275,11 @@ int S3PAccount::GetAccountsTime(S3PDBConVBC* pConn, DWORD ClientID, DWORD dwMinS
 			pResult->get_field_data(3, &usesencond, sizeof(_variant_t));
 			long liLeft = left.lVal;
 
-			if (diffDate.vt == VT_I4 && diffDate.lVal > 0)	//°üÔÂÓÐÐ§
+			if (diffDate.vt == VT_I4 && diffDate.lVal > 0)	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
 			{
 				liLeft += diffDate.lVal;
 			}
-			else if (usesencond.vt == VT_I4 && usesencond.lVal < 0)	//µã¿¨¿ÛµãÆð×÷ÓÃÁË
+			else if (usesencond.vt == VT_I4 && usesencond.lVal < 0)	//ï¿½ã¿¨ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			{
 				liLeft += usesencond.lVal;
 			}
