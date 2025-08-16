@@ -285,6 +285,9 @@
     <Library Include="..\..\..\Lib\libdb62d.lib">
       <Filter>Library\debug</Filter>
     </Library>
+    <Library Include="..\..\..\Lib\debug\LuaLibDll.lib">
+      <Filter>Library\debug</Filter>
+    </Library>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="S3Relay.ico">
