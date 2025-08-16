@@ -1577,30 +1577,30 @@ BOOL CChannelMgr::Block_ClearPlayer(DWORD ip, unsigned long param)
 			continue;
 
 		IP2PLAYERSMAP::iterator itIP = rChannInfo.mapIp2Players.find(ip);
-		if (itIP == rChannInfo.mapIp2Players.end())	//Ã»ÕÒµ½´ËGS
+		if (itIP == rChannInfo.mapIp2Players.end())	//æ²¡æ‰¾åˆ°æ­¤GS
 			continue;
 
 		IP2PLAYERSMAP::iterator itIPMe = itIP++;
 		PLAYERSMAP& rPlayers = (*itIPMe).second;
 
-		//É¾³ı´ËÈË
+		//åˆ é™¤æ­¤äºº
 		rPlayers.erase(param);
 
-		if (!rPlayers.empty())	//´ËGSÉÏ»¹ÓĞÈË
+		if (!rPlayers.empty())	//æ­¤GSä¸Šè¿˜æœ‰äºº
 			continue;
 
-		//GSÉÏÎŞÈË£¬É¾³ı´ËGS
+		//GSä¸Šæ— äººï¼Œåˆ é™¤æ­¤GS
 		rChannInfo.mapIp2Players.erase(itIPMe);
 
-		if (rChannInfo.stock || rChannInfo.gmuse)	//ÆµµÀ²»¿ÉÉ¾
+		if (rChannInfo.stock || rChannInfo.gmuse)	//é¢‘é“ä¸å¯åˆ 
 			continue;
 
-		if (!rChannInfo.mapIp2Players.empty())	//Èç¹û´ËÆµµÀ»¹ÓĞGS
+		if (!rChannInfo.mapIp2Players.empty())	//å¦‚æœæ­¤é¢‘é“è¿˜æœ‰GS
 			continue;
 
 		KGLogPrintf(LOG_INFO,"Destroy Channel: <%08X> %s\n", channid, rChannInfo.channname.c_str());
 
-		//É¾³ıÆµµÀ
+		//åˆ é™¤é¢‘é“
 		m_mapChann2ID.erase(rChannInfo.channname);
 		m_mapChannid2Info.erase(itChannMe);
 	}

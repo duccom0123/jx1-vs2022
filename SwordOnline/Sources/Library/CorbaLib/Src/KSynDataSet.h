@@ -55,18 +55,18 @@ public:
 	
 	DataSeq* SaveData();
 	
-	//´æ·ÅKSynDataÊı¾İµÄÖ¸ÕëÊı×é
+	//å­˜æ”¾KSynDataæ•°æ®çš„æŒ‡é’ˆæ•°ç»„
 	KSynData *  m_Sets[MAX_UNITNUM];
 	
-	//´æ·ÅKSynLockËø±íµÄÊı×é
+	//å­˜æ”¾KSynLocké”è¡¨çš„æ•°ç»„
 	KSynLock m_LockSets[MAX_UNITNUM];
 	
-	//Ôö¼ÓÊı¾İÖÁÁĞ±íÖĞ
+	//å¢åŠ æ•°æ®è‡³åˆ—è¡¨ä¸­
 	BOOL AddData(KSynData * pData, long id);
 //	BOOL DelData(id);
 	long m_nTopIndex;
-	KList m_ReqLockList;//ÇëÇóËø¶¨ÁĞ±í
-	KList m_ServerList;//·şÎñÆ÷ÁĞ±í
+	KList m_ReqLockList;//è¯·æ±‚é”å®šåˆ—è¡¨
+	KList m_ServerList;//æœåŠ¡å™¨åˆ—è¡¨
 	
 };
 

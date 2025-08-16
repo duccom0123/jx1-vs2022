@@ -10,8 +10,8 @@
 #include <windows.h>
 #include "KJpegLib.h"
 /****************************************************************************	
-DU µÄ½âÂë
-Ã¿¸ö DU ÀïµÄÊı¾İ°´ÏÂÃæ´ÎĞò(µ¹Ğò)ÖØÅÅÁĞ¹ı, µÃµ½Ô­Ê¼´ÎĞò
+DU çš„è§£ç 
+æ¯ä¸ª DU é‡Œçš„æ•°æ®æŒ‰ä¸‹é¢æ¬¡åº(å€’åº)é‡æ’åˆ—è¿‡, å¾—åˆ°åŸå§‹æ¬¡åº
 BYTE jpeg_zigzag[64] = {
 	0, 63,62,55,47,54,61,60,
 	53,46,39,31,38,45,52,59,
@@ -23,7 +23,7 @@ BYTE jpeg_zigzag[64] = {
 	17,10,3,2, 9, 16,8, 1 
 };
 ****************************************************************************/
-// ANN Ëã·¨ĞèÒª×ªÖÃ¾ØÕó
+// ANN ç®—æ³•éœ€è¦è½¬ç½®çŸ©é˜µ
 BYTE jpeg_zigzag[64] = {
 	0,63,55,62,61,54,47,39,
 	46,53,60,59,52,45,38,31,
@@ -35,10 +35,10 @@ BYTE jpeg_zigzag[64] = {
 	10,17,24,16,9,2,1,8
 };
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_Preprocess
-// ¹¦ÄÜ:	Ô¤´¦Àí, È¥µô 0xFF
-// ²ÎÊı:	stream		JPEGÊı¾İÁ÷
-// ·µ»Ø:	void
+// å‡½æ•°:	jpeg_Preprocess
+// åŠŸèƒ½:	é¢„å¤„ç†, å»æ‰ 0xFF
+// å‚æ•°:	stream		JPEGæ•°æ®æµ
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void jpeg_preprocess(LPBYTE stream)
 {
@@ -62,7 +62,7 @@ _getFF:
 		inc edi;
 		jmp _loop;
 _not0:
-		cmp al,0xd9;	// ½áÊø?
+		cmp al,0xd9;	// ç»“æŸ?
 		jz _end;
 		cmp al,0xff;
 		jz _getFF;
@@ -70,11 +70,11 @@ _end:
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_decode_DU
-// ¹¦ÄÜ:	´ÓÊı¾İÁ÷ jpeg_stream ½âÂëÒ»¸ö DU µ½ buf
-// ²ÎÊı:	buf		½âÂëºóµÄ»º´æ
+// å‡½æ•°:	jpeg_decode_DU
+// åŠŸèƒ½:	ä»æ•°æ®æµ jpeg_stream è§£ç ä¸€ä¸ª DU åˆ° buf
+// å‚æ•°:	buf		è§£ç åçš„ç¼“å­˜
 //			com		jpeg componet
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void jpeg_decode_DU(short *buf, int com)
 {
@@ -83,7 +83,7 @@ void jpeg_decode_DU(short *buf, int com)
 	JPEG_HTABLE*	DCT = &jpeg_htable[jpeg_head.component[com].dct];
 	short			JpegDC = jpeg_DC[com];
 
-	// DC µÄ½âÂë
+	// DC çš„è§£ç 
 	__asm
 	{
 		mov edx,DCT;
@@ -112,10 +112,10 @@ _loop_dct:
 
 _decode_dct:
 		mov ch,cl;
-		mov cl,jpeg_bit;	// ¸Õ²ÅÓÃµô cl ¸öbit
+		mov cl,jpeg_bit;	// åˆšæ‰ç”¨æ‰ cl ä¸ªbit
 		shr ebx,cl;
-		add cl,ch; // Ò»¹²ÓÃµô bit Êı
-		cmp cl,32; // ÓÃÍê 4 ×Ö½Ú?
+		add cl,ch; // ä¸€å…±ç”¨æ‰ bit æ•°
+		cmp cl,32; // ç”¨å®Œ 4 å­—èŠ‚?
 		jl _lt4byte_dc;
 		sub cl,32;
 		lodsd;
@@ -159,9 +159,9 @@ _get_diff:
 		add edi,2;
 		mov [edx],ax;
 
-// AC µÄ½âÂë. cl ÊÇÇ°Ãæ±»Ê¹ÓÃµôµÄ bit Êı, ebx ÊÇÉÏ4byte 
+// AC çš„è§£ç . cl æ˜¯å‰é¢è¢«ä½¿ç”¨æ‰çš„ bit æ•°, ebx æ˜¯ä¸Š4byte 
 
-		cmp cl,32;	// ÓÃÍê 4 ×Ö½Ú?
+		cmp cl,32;	// ç”¨å®Œ 4 å­—èŠ‚?
 		jl _lt4byte_dc0;
 		sub cl,32;
 		lodsd;
@@ -172,8 +172,8 @@ _lt4byte_dc0:
 		mov eax,[esi];
 		bswap eax;
 		shld ebx,eax,cl;
-		mov jpeg_bit,cl;	//ÓÃµô cl ¸ö bit
-		mov cx,63;	// ´¦Àí 63 ¸ö AC
+		mov jpeg_bit,cl;	//ç”¨æ‰ cl ä¸ª bit
+		mov cx,63;	// å¤„ç† 63 ä¸ª AC
 
 _loop_decode_act:
 		mov edx,ACT;
@@ -192,12 +192,12 @@ _loop_act:
 		jmp _loop_act;
 
 _decode_act:
-// [edx]JPEG_HCODE.num ÊÇ½Ó³öÀ´µÄÂë
+// [edx]JPEG_HCODE.num æ˜¯æ¥å‡ºæ¥çš„ç 
 		mov ch,cl;
-		mov cl,jpeg_bit;	// ¸Õ²ÅÓÃµô cl ¸öbit
+		mov cl,jpeg_bit;	// åˆšæ‰ç”¨æ‰ cl ä¸ªbit
 		shr ebx,cl;
-		add cl,ch; // Ò»¹²ÓÃµô bit Êı
-		cmp cl,32;	// ÓÃÍê 4 ×Ö½Ú?
+		add cl,ch; // ä¸€å…±ç”¨æ‰ bit æ•°
+		cmp cl,32;	// ç”¨å®Œ 4 å­—èŠ‚?
 		jl _lt4byte;
 		sub cl,32;
 		lodsd;
@@ -208,7 +208,7 @@ _lt4byte:
 		mov eax,[esi];
 		bswap eax;
 		shld ebx,eax,cl;
-		mov jpeg_bit,cl;//Ê¹ÓÃÁËÏÂ4byteµÄ cl bit
+		mov jpeg_bit,cl;//ä½¿ç”¨äº†ä¸‹4byteçš„ cl bit
 
 		movzx eax,byte ptr[edx]JPEG_HCODE.num;
 		bswap ecx;
@@ -256,10 +256,10 @@ _skip_set0:
 _get_ac:
 		inc cl;
 		imul word ptr[edi];
-// dx==0 Ê±, ÕıÊı,ÎŞ½øÎ»
+// dx==0 æ—¶, æ­£æ•°,æ— è¿›ä½
 		test dx,dx;
 		jz _2byte;
-// dx==0xffff Ê±, ¸ºÊı,ÎŞ½øÎ»
+// dx==0xffff æ—¶, è´Ÿæ•°,æ— è¿›ä½
 		inc dx;
 		jz _2byte;
 
@@ -281,8 +281,8 @@ _2byte:
 		mov ch,cl;
 		mov cl,jpeg_bit;
 		shr ebx,cl;
-		add cl,ch;	// ÀÛ¼ÆÊ¹ÓÃ bit Êı
-		cmp cl,32;	// ÓÃÍê 4 ×Ö½Ú?
+		add cl,ch;	// ç´¯è®¡ä½¿ç”¨ bit æ•°
+		cmp cl,32;	// ç”¨å®Œ 4 å­—èŠ‚?
 		jl _lt4byte_2;
 		sub cl,32;
 		lodsd;
@@ -293,7 +293,7 @@ _lt4byte_2:
 		mov eax,[esi];
 		bswap eax;
 		shld ebx,eax,cl;
-		mov jpeg_bit,cl;//Ê¹ÓÃÁËÏÂ4byteµÄ cl bit
+		mov jpeg_bit,cl;//ä½¿ç”¨äº†ä¸‹4byteçš„ cl bit
 		bswap ecx;
 
 		dec cx;
@@ -316,7 +316,7 @@ _end:
 		mov jpeg_stream,esi;
 	}
 	
-	// iDCT ½âÂë
+	// iDCT è§£ç 
 	jpeg_IDCT(buf);
 }
 //---------------------------------------------------------------------------

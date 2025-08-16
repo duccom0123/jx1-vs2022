@@ -9,10 +9,10 @@
 #include "KWin32.h"
 #include "KBmp2Spr.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KBmp2Spr
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KBmp2Spr
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KBmp2Spr::KBmp2Spr()
 {
@@ -23,12 +23,12 @@ KBmp2Spr::KBmp2Spr()
 	m_pBitmap = NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Convert
-// ¹¦ÄÜ:	¸ñÊ½×ª»»
-// ²ÎÊı:	pBitmap		Î»Í¼Ö¸Õë
-//			bTransp		ÊÇ·ñÍ¸Ã÷
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Convert
+// åŠŸèƒ½:	æ ¼å¼è½¬æ¢
+// å‚æ•°:	pBitmap		ä½å›¾æŒ‡é’ˆ
+//			bTransp		æ˜¯å¦é€æ˜
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmp2Spr::Convert(KBitmap* pBitmap, BOOL bTransp)
 {
@@ -51,19 +51,19 @@ BOOL KBmp2Spr::Convert(KBitmap* pBitmap, BOOL bTransp)
 
 	// convert image rect
 	RECT rc;
-	GetMiniRect(&rc);//È¡µÃ°üº¬Í¼ĞÎµÄ×îĞ¡ÇøÓò
+	GetMiniRect(&rc);//å–å¾—åŒ…å«å›¾å½¢çš„æœ€å°åŒºåŸŸ
 	m_nLength = ConvertRect(&rc, (PBYTE)m_Sprite.GetMemPtr());
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ConvertRect
-// ¹¦ÄÜ:	×ª»»Ò»¸ö¾ØĞÎÇøÓò
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-//			nHeight		¸ß¶È
-//			pBuffer		»º´æ
-// ·µ»Ø:	×ª»»ºóµÄ´óĞ¡(in bytes)
+// å‡½æ•°:	ConvertRect
+// åŠŸèƒ½:	è½¬æ¢ä¸€ä¸ªçŸ©å½¢åŒºåŸŸ
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+//			nHeight		é«˜åº¦
+//			pBuffer		ç¼“å­˜
+// è¿”å›:	è½¬æ¢åçš„å¤§å°(in bytes)
 //---------------------------------------------------------------------------
 long KBmp2Spr::ConvertRect(LPRECT lpRect, PBYTE pBuffer)
 {
@@ -90,13 +90,13 @@ long KBmp2Spr::ConvertRect(LPRECT lpRect, PBYTE pBuffer)
 	return nSize;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ConvertLine
-// ¹¦ÄÜ:	×ª»»Ò»ĞĞÍ¼ĞÎÊı¾İ
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-//			pBuffer		»º´æ
-// ·µ»Ø:	×ª»»ºóµÄ´óĞ¡(in bytes)
+// å‡½æ•°:	ConvertLine
+// åŠŸèƒ½:	è½¬æ¢ä¸€è¡Œå›¾å½¢æ•°æ®
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+//			pBuffer		ç¼“å­˜
+// è¿”å›:	è½¬æ¢åçš„å¤§å°(in bytes)
 //---------------------------------------------------------------------------
 long KBmp2Spr::ConvertLine(int nX, int nY, int nWidth, PBYTE pBuffer)
 {
@@ -137,12 +137,12 @@ long KBmp2Spr::ConvertLine(int nX, int nY, int nWidth, PBYTE pBuffer)
 	return (long)(pSprite - pBuffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetTransCount
-// ¹¦ÄÜ:	È¡µÃÍ¸Ã÷ÏóËØµÄ¸öÊı
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-// ·µ»Ø:	Í¸Ã÷ÏóËØµÄ¸öÊı
+// å‡½æ•°:	GetTransCount
+// åŠŸèƒ½:	å–å¾—é€æ˜è±¡ç´ çš„ä¸ªæ•°
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+// è¿”å›:	é€æ˜è±¡ç´ çš„ä¸ªæ•°
 //---------------------------------------------------------------------------
 long KBmp2Spr::GetTransCount(int nX, int nY, int nWidth)
 {
@@ -166,12 +166,12 @@ long KBmp2Spr::GetTransCount(int nX, int nY, int nWidth)
 	return nCount;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetPixelCount
-// ¹¦ÄÜ:	È¡µÃ²»Í¸Ã÷ÏóËØµÄ¸öÊı
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-// ·µ»Ø:	²»Í¸Ã÷ÏóËØµÄ¸öÊı
+// å‡½æ•°:	GetPixelCount
+// åŠŸèƒ½:	å–å¾—ä¸é€æ˜è±¡ç´ çš„ä¸ªæ•°
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+// è¿”å›:	ä¸é€æ˜è±¡ç´ çš„ä¸ªæ•°
 //---------------------------------------------------------------------------
 long KBmp2Spr::GetPixelCount(int nX, int nY, int nWidth)
 {
@@ -192,10 +192,10 @@ long KBmp2Spr::GetPixelCount(int nX, int nY, int nWidth)
 	return nCount;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetMiniRect
-// ¹¦ÄÜ:	È¡µÃ×îĞ¡Í¼ÏóÇøÓò
-// ²ÎÊı:	lpRect
-// ·µ»Ø:	void
+// å‡½æ•°:	GetMiniRect
+// åŠŸèƒ½:	å–å¾—æœ€å°å›¾è±¡åŒºåŸŸ
+// å‚æ•°:	lpRect
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KBmp2Spr::GetMiniRect(LPRECT lpRect)
 {

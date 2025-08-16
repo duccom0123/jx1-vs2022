@@ -180,9 +180,9 @@ int KBuySell::Init()
 			{
 				continue;
 			}
-			_ASSERT(m_SellItem[i][j] > 0);		// ²ß»®ÊÇ´Ó1¿ªÊ¼µÄ
+			_ASSERT(m_SellItem[i][j] > 0);		// ç­–åˆ’æ˜¯ä»1å¼€å§‹çš„
 			if (m_SellItem[i][j] > 0)
-				m_SellItem[i][j] -= 1;			// ÎªÁË²ß»®´Ó1¿ªÊ¼Ìî±í
+				m_SellItem[i][j] -= 1;			// ä¸ºäº†ç­–åˆ’ä»1å¼€å§‹å¡«è¡¨
 		}
 	}
 #ifndef _SERVER
@@ -426,7 +426,7 @@ BOOL KBuySell::Buy(int nPlayerIdx, int nBuy, int nBuyIdx, BYTE nBuyNumber)
 	return TRUE;
 }
 /*******************************************************************************
-²ÎÊı nIdx Ö¸ÓÎÏ·ÀïItemÊı×éµÄ±àºÅ
+å‚æ•° nIdx æŒ‡æ¸¸æˆé‡ŒItemæ•°ç»„çš„ç¼–å·
 *******************************************************************************/
 BOOL KBuySell::Sell(int nPlayerIdx, int nBuy, int nIdx, int nBuyNumber)
 {

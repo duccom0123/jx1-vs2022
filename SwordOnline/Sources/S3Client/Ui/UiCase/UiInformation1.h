@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÏûÏ¢´°¿Ú
+//	Â½Ã§ÃƒÃ¦--ÃÃ»ÃÂ¢Â´Â°Â¿Ãš
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-14
@@ -15,22 +15,22 @@
 class KUiInformation1 : protected KWndShowAnimate
 {
 public:
-	void	Initialize();							//³õÊ¼»¯
-	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
+	void	Initialize();							//Â³ÃµÃŠÂ¼Â»Â¯
+	void	LoadScheme(const char* pScheme);		//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 	void	Show(const char* pInformation, int nMsgLen = -1, 
-				const char* pszFirstBtnText = "§ång ı",
+				const char* pszFirstBtnText = "Â§Ã¥ng Ã½",
 				const char* pszSecondBtnText = 0,
 				KWndWindow* pCallerWnd = 0,
 				unsigned int uParam = 0,
 				const char* pszImage = 0,
-				int nLeftTime = -1);			//ÏÔÊ¾´°¿Ú
-	void	SpeakWords(KUiInformationParam* pWordDataList, int nCount, int nLeftTime = -1);	//ÏÔÊ¾¶Ô»°ÄÚÈİ
-	void	Close();								//¹Ø±Õ´°¿Ú£¬²»Í¨Öªµ÷ÓÃ´°¿Ú
+				int nLeftTime = -1);			//ÃÃ”ÃŠÂ¾Â´Â°Â¿Ãš
+	void	SpeakWords(KUiInformationParam* pWordDataList, int nCount, int nLeftTime = -1);	//ÃÃ”ÃŠÂ¾Â¶Ã”Â»Â°Ã„ÃšÃˆÃ
+	void	Close();								//Â¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬Â²Â»ÃÂ¨Ã–ÂªÂµÃ·Ã“ÃƒÂ´Â°Â¿Ãš
 	KUiInformation1();
 
 private:
-	void	Hide(int nBtnIndex);					//Òş²Ø´°¿Ú
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Hide(int nBtnIndex);					//Ã’Ã¾Â²Ã˜Â´Â°Â¿Ãš
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 	void	PaintWindow();
 	void	Breathe();
 private:
@@ -47,7 +47,7 @@ private:
 };
 
 void UIMessageBox1(const char* pMsg, int nMsgLen = -1, KWndWindow* pCaller = 0, 
-				  const char* pszFirstBtnText = "§ång ı",
+				  const char* pszFirstBtnText = "Â§Ã¥ng Ã½",
 				  const char* pszSecondBtnText = 0,
 				  unsigned int uParam = 0,
 				  const char* pszImage = 0,

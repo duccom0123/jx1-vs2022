@@ -34,10 +34,10 @@ public:
 	~KTabFile();
 	BOOL		Load(LPSTR FileName);
 	BOOL		IsTabExist(LPSTR FileName);
-	BOOL		Save(LPSTR FileName){return FALSE;}; //ÎŞ·¨±£´æ
+	BOOL		Save(LPSTR FileName){return FALSE;}; //æ— æ³•ä¿å­˜
 	BOOL		LoadPack(LPSTR FileName);
-	int			FindRow(LPSTR szRow);//·µ»ØÒÔ1ÎªÆğµãµÄÖµ
-	int			FindColumn(LPSTR szColumn);//·µ»ØÒÔ1ÎªÆğµãµÄÖµ
+	int			FindRow(LPSTR szRow);//è¿”å›ä»¥1ä¸ºèµ·ç‚¹çš„å€¼
+	int			FindColumn(LPSTR szColumn);//è¿”å›ä»¥1ä¸ºèµ·ç‚¹çš„å€¼
 	void		Col2Str(int nCol, LPSTR szColumn);
 	int			GetWidth() { return m_Width;};
 	int			GetHeight() { return m_Height;};

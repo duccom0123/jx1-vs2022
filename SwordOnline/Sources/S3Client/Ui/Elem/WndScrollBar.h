@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--¹ö¶¯Ìõ´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--æ»šåŠ¨æ¡çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
@@ -9,43 +9,43 @@
 #include "WndWindow.h"
 #include "WndButton.h"
 
-#define WNDSCROLL_ES_VERTICAL		0x0001		//´¹Ö±ĞÍµÄ¹ö¶¯Ìõ
-#define	WNDSCROLL_F_DRAGGING_SLIDE	0x0100		//¹ö¶¯ÌõµÄ»¬¿éÕıÔÚ±»ÍÏ¶¯
+#define WNDSCROLL_ES_VERTICAL		0x0001		//å‚ç›´å‹çš„æ»šåŠ¨æ¡
+#define	WNDSCROLL_F_DRAGGING_SLIDE	0x0100		//æ»šåŠ¨æ¡çš„æ»‘å—æ­£åœ¨è¢«æ‹–åŠ¨
 
 class KWndScrollBar : public KWndImage
 {
 private:
 	unsigned int	m_Flag;
-	int			m_nMinValue;	//×îĞ¡Öµ
-	int			m_nMaxValue;	//×î´óÖµ
-	int			m_nCurValue;	//µ±Ç°Öµ
-//	int			m_nLineSize;	//Ò»ĞĞ´óĞ¡
-	int			m_nPageSize;	//Ò»Ò³´óĞ¡
-	int			m_nMinPosition;	//»¬¶¯»î¶¯ÆğÊ¼Î»ÖÃ
-	int			m_nMaxPosition;	//»¬¶¯»î¶¯ÖÕÖ¹Î»ÖÃ
-	int			m_nImgRange;	//ÖØ¸´ÌùÍ¼Ê±£¬ÌùÍ¼µÄ¿í¶È»ò¸ß¶È
+	int			m_nMinValue;	//æœ€å°å€¼
+	int			m_nMaxValue;	//æœ€å¤§å€¼
+	int			m_nCurValue;	//å½“å‰å€¼
+//	int			m_nLineSize;	//ä¸€è¡Œå¤§å°
+	int			m_nPageSize;	//ä¸€é¡µå¤§å°
+	int			m_nMinPosition;	//æ»‘åŠ¨æ´»åŠ¨èµ·å§‹ä½ç½®
+	int			m_nMaxPosition;	//æ»‘åŠ¨æ´»åŠ¨ç»ˆæ­¢ä½ç½®
+	int			m_nImgRange;	//é‡å¤è´´å›¾æ—¶ï¼Œè´´å›¾çš„å®½åº¦æˆ–é«˜åº¦
 public:
-	KWndButton	m_SlideBtn;		//»¬¶¯°´Å¥
+	KWndButton	m_SlideBtn;		//æ»‘åŠ¨æŒ‰é’®
 public:
 	KWndScrollBar();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual void	PaintWindow();							//´°Ìå»æÖÆ
-	void			SetSize(int nWidth, int nHeight);		//ÉèÖÃ´°¿Ú´óĞ¡
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
+	void			SetSize(int nWidth, int nHeight);		//è®¾ç½®çª—å£å¤§å°
 
 	int				ScrollLine(bool bPre);
 	int				ScrollPage(bool bPre);
-	void			SetScrollPos(int nPosition);				//ÉèÖÃÎ»ÖÃ
-	int				GetScrollPos() { return m_nCurValue; }		//»ñÈ¡Î»ÖÃ
-	void			SetValueRange(int nMinValue, int nMaxValue);	//ÉèÖÃÈ¡Öµ·¶Î§
-	int				GetMaxValue() { return m_nMaxValue;}	//È¡Öµ·¶Î§
-	int				GetMinValue() { return m_nMinValue;}	//È¡Öµ·¶Î§
+	void			SetScrollPos(int nPosition);				//è®¾ç½®ä½ç½®
+	int				GetScrollPos() { return m_nCurValue; }		//è·å–ä½ç½®
+	void			SetValueRange(int nMinValue, int nMaxValue);	//è®¾ç½®å–å€¼èŒƒå›´
+	int				GetMaxValue() { return m_nMaxValue;}	//å–å€¼èŒƒå›´
+	int				GetMinValue() { return m_nMinValue;}	//å–å€¼èŒƒå›´
 	void			Clone(KWndScrollBar* pCopy);
 	int				GetMinHeight();
 	BOOL			IsDraggingSlide() {return (m_Flag & WNDSCROLL_F_DRAGGING_SLIDE);};
 private:
-	void			OnLButtonDown(int x,int y);					//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂ
-	void			OnSlideBtnPressed();						//ÏìÓ¦»¬¶¯°´Å¥±»°´ÏÂ
-	void			OnDraggingSlide(int x, int y);				//ÕıÔÚÍÏ¶¯»¬¶¯°´Å¥
-	void			SetSlideBtnPos();							//ÉèÖÃ»¬¶¯¿é´°¿ÚÎ»ÖÃ
+	void			OnLButtonDown(int x,int y);					//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹
+	void			OnSlideBtnPressed();						//å“åº”æ»‘åŠ¨æŒ‰é’®è¢«æŒ‰ä¸‹
+	void			OnDraggingSlide(int x, int y);				//æ­£åœ¨æ‹–åŠ¨æ»‘åŠ¨æŒ‰é’®
+	void			SetSlideBtnPos();							//è®¾ç½®æ»‘åŠ¨å—çª—å£ä½ç½®
 };

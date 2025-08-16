@@ -12,33 +12,33 @@
 class CDBDump  
 {
 private:
-	char m_FilePath[MAX_PATH];							//ÎÄ¼şÃû
+	char m_FilePath[MAX_PATH];							//æ–‡ä»¶å
 	FILE* m_output;
 	bool m_IsOpened;
 	//unsigned long offset;
 public:
 	CDBDump();
 	virtual ~CDBDump(){};
-	bool Open(char* aFilePath);	//´ò¿ª°üÎÄ¼ş
-	bool Close();								//±£´æ°üÎÄ¼ş
-	bool AddData(char* key, const size_t keysize, char *aData, const size_t size);		//Ìí¼ÓÊı¾İ
+	bool Open(char* aFilePath);	//æ‰“å¼€åŒ…æ–‡ä»¶
+	bool Close();								//ä¿å­˜åŒ…æ–‡ä»¶
+	bool AddData(char* key, const size_t keysize, char *aData, const size_t size);		//æ·»åŠ æ•°æ®
 
 };
 
 class CDBLoad
 {
 private:
-	char m_FilePath[MAX_PATH];							//ÎÄ¼şÃû
+	char m_FilePath[MAX_PATH];							//æ–‡ä»¶å
 	FILE* m_output;
 	bool m_IsOpened;
 	//unsigned long offset;
 public:
 	CDBLoad();
 	virtual ~CDBLoad(){};
-	bool Open(char* aFilePath);	//´ò¿ª°üÎÄ¼ş
-	bool Close();								//¹Ø±Õ°üÎÄ¼ş
-	bool ReadData(char* key, size_t& keysize, char *aData, size_t& size);		//¶ÁÈ¡Êı¾İ
-	void GotoHead();					//°ÑÎÄ¼şÖ¸ÕëÒÆ¶¯µ½ÎÄ¼şÍ·
-	bool SearchData(char* key, char *aData, size_t& size);		//ËÑË÷Êı¾İ
+	bool Open(char* aFilePath);	//æ‰“å¼€åŒ…æ–‡ä»¶
+	bool Close();								//å…³é—­åŒ…æ–‡ä»¶
+	bool ReadData(char* key, size_t& keysize, char *aData, size_t& size);		//è¯»å–æ•°æ®
+	void GotoHead();					//æŠŠæ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°æ–‡ä»¶å¤´
+	bool SearchData(char* key, char *aData, size_t& size);		//æœç´¢æ•°æ®
 };
 #endif // !defined(AFX_DBDUMPLOAD_H__956A6AC3_33CD_44D2_B4B2_771DE290B32F__INCLUDED_)

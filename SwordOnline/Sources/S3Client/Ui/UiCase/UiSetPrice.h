@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	½»Ò×È·ÈÏ¿ò
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2003-5-28
+//	æ–‡ä»¶å		ï¼š	äº¤æ˜“ç¡®è®¤æ¡†
+//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-5-28
 // -------------------------------------------------------------------------
 #ifndef __UiSetPrice_H__
 #define __UiSetPrice_H__
@@ -15,17 +15,17 @@
 class KUiSetPrice : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiSetPrice*	OpenWindow(int nMoney, KUiObjAtContRegion* pObj, KUiItemBuySelInfo* pPriceInfo);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiSetPrice*	GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiSetPrice*	OpenWindow(int nMoney, KUiObjAtContRegion* pObj, KUiItemBuySelInfo* pPriceInfo);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiSetPrice*	GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
 private:
 	KUiSetPrice();
 	~KUiSetPrice() {}
-	int		Initialize();								//³õÊ¼»¯
+	int		Initialize();								//åˆå§‹åŒ–
 	void	Show();
 	void	Hide();
-	void	LoadScheme(const char* pScheme);			//ÔØÈë½çÃæ·½°¸
+	void	LoadScheme(const char* pScheme);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	OnCancel();
 	void	OnSetPrice();

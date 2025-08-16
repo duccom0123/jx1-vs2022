@@ -21,7 +21,7 @@ public:
 
 private:
 	CTongControl**	m_pcTong;
-	int				m_nTongPointSize;		// Ö¸Õë m_pcTong µ±Ç°·ÖÅäÄÚ´æµÄ´óĞ¡(¶àÉÙ¸ö)
+	int				m_nTongPointSize;		// æŒ‡é’ˆ m_pcTong å½“å‰åˆ†é…å†…å­˜çš„å¤§å°(å¤šå°‘ä¸ª)
 
 public:
 	void			Init();
@@ -30,11 +30,11 @@ public:
 
 	BOOL			SearchOne(DWORD dwTongNameID, char *lpszName, STONG_ONE_LEADER_INFO *pInfo);
 
-	// ´´½¨Ò»¸ö°ï»á
+	// åˆ›å»ºä¸€ä¸ªå¸®ä¼š
 	int				Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszTongName, int nSex = 0, int nJoinTm = 0, int nSaveEff =0,int nTongJiyuParam = 0, char *szTongJiyuNotify = "");
-	// Ìí¼ÓÒ»¸ö°ï»á³ÉÔ±£¬if return == 0 ³É¹¦ else return error id
+	// æ·»åŠ ä¸€ä¸ªå¸®ä¼šæˆå‘˜ï¼Œif return == 0 æˆåŠŸ else return error id
 	int				AddMember(char *lpszPlayerName, char *lpszTongName, int nSex = 0, int nJoinTm = 0, int nSaveEff = 0);
-	// »ñµÃ°ï»áÕóÓª
+	// è·å¾—å¸®ä¼šé˜µè¥
 	int				GetTongCamp(int nTongIdx);
 	int				GetTongMemberNum(int nTongIdx);
 	DWORD			GetTongMoney(int nTongIdx);

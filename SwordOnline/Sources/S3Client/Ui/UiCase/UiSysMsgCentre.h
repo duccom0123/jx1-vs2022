@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÏµÍ³ÏûÏ¢ÖĞĞÄ
+//	ç•Œé¢--ç³»ç»Ÿæ¶ˆæ¯ä¸­å¿ƒ
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-15
@@ -17,10 +17,10 @@
 class KUiSysMsgCentre : protected KWndWindow
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiSysMsgCentre*	OpenWindow();		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static void				CloseWindow();		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸	
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiSysMsgCentre*	OpenWindow();		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static void				CloseWindow();		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ	
 
 	static bool				AMessageArrival(KSystemMessage* pMsg, void* pParam);
 
@@ -29,18 +29,18 @@ private:
 	~KUiSysMsgCentre();
 	void	Initialize();
 	void	Clear();
-	void	LoadScheme(KIniFile* pIni);			//ÔØÈë½çÃæ·½°¸
+	void	LoadScheme(KIniFile* pIni);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	KSystemMessage*	GetAMsgSpace(int nParamSize);
 	bool	AddAMsgToHeap(KSystemMessage*pMsg, int nHeapIndex, bool bSort);
 	void	DeleteMsgInHeap(int nHeapIndex, int nMsgIndex, bool bImmedDel, bool bTobeConfirm);
 	void	ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel);
 	void	MovePopupedMsgToHeap();
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 
-	void	OnConfirmOperFinished(unsigned int uParam, int nSelAction);	//ÏìÓ¦²Ù×÷½áÊø£¬Íæ¼ÒÒÑ¾­×ö³öÑ¡Ôñ¡£
+	void	OnConfirmOperFinished(unsigned int uParam, int nSelAction);	//å“åº”æ“ä½œç»“æŸï¼Œç©å®¶å·²ç»åšå‡ºé€‰æ‹©ã€‚
 	void	SetPopupMsgDest();
-	void	PaintWindow();							//»æÖÆ´°¿Ú
-	int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
+	void	PaintWindow();							//ç»˜åˆ¶çª—å£
+	int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
 	void	Breathe();
 	bool	FilterSameMsg(KSystemMessage* pMsg, void* pParam);
 private:
@@ -48,17 +48,17 @@ private:
 private:
 	struct	SYS_MSG_HEAP
 	{
-		KSystemMessage**	pMsgList;						//ÏûÏ¢Ö¸ÕëµÄÁĞ±í
-		int					nListSpace;						//ÏûÏ¢Ö¸ÕëÁĞ±íµÄ´óĞ¡£¨°üº¬¶àÉÙ¸öÖ¸Õë¿Õ¼ä£©
-		int					nNumValid;						//ÁĞ±íÖĞÓĞĞ§µÄÏûÏ¢µÄÊıÄ¿
+		KSystemMessage**	pMsgList;						//æ¶ˆæ¯æŒ‡é’ˆçš„åˆ—è¡¨
+		int					nListSpace;						//æ¶ˆæ¯æŒ‡é’ˆåˆ—è¡¨çš„å¤§å°ï¼ˆåŒ…å«å¤šå°‘ä¸ªæŒ‡é’ˆç©ºé—´ï¼‰
+		int					nNumValid;						//åˆ—è¡¨ä¸­æœ‰æ•ˆçš„æ¶ˆæ¯çš„æ•°ç›®
 	}						m_MsgHeap[SMT_WAR + 2];
 
-	KUiMsgParam				m_SysMsgParam;					//´«¸øÁÄÌìĞÅÏ¢´°¿ÚµÄ²ÎÊı
+	KUiMsgParam				m_SysMsgParam;					//ä¼ ç»™èŠå¤©ä¿¡æ¯çª—å£çš„å‚æ•°
 
-	int						m_nPopupMsgDestX;				//µ¯³öÏûÏ¢µÄÖÕµãÎ»ÖÃºáÏò×ø±ê
-	int						m_nPopupMsgX;					//µ¯³öÏûÏ¢µÄµ±Ç°Î»ÖÃºáÏò×ø±ê
-	int						m_nPopupMsgY;					//µ¯³öÏûÏ¢µÄµ±Ç°µãÎ»ÖÃ×İÏò×ø±ê
-	int						m_nPopupMsgDestIndex;			//µ¯³öÏûÏ¢µÄÖÕµãÎ»ÖÃÔÚÄÄ¸öÍ¼±ê°´Å¥ÉÏ
+	int						m_nPopupMsgDestX;				//å¼¹å‡ºæ¶ˆæ¯çš„ç»ˆç‚¹ä½ç½®æ¨ªå‘åæ ‡
+	int						m_nPopupMsgX;					//å¼¹å‡ºæ¶ˆæ¯çš„å½“å‰ä½ç½®æ¨ªå‘åæ ‡
+	int						m_nPopupMsgY;					//å¼¹å‡ºæ¶ˆæ¯çš„å½“å‰ç‚¹ä½ç½®çºµå‘åæ ‡
+	int						m_nPopupMsgDestIndex;			//å¼¹å‡ºæ¶ˆæ¯çš„ç»ˆç‚¹ä½ç½®åœ¨å“ªä¸ªå›¾æ ‡æŒ‰é’®ä¸Š
 	unsigned int			m_uLastMovementTime;
 	unsigned int			m_uMoveInterval;
 	unsigned int			m_uDisappearInterval;
@@ -68,8 +68,8 @@ private:
 
 	KWndButton				m_MsgIconBtn[SMT_WAR];
 
-	KUiImageRef				m_MsgIcon[SMT_WAR];	//ÏûÏ¢Í¼±êµÄÍ¼ĞÎ
-	short					m_nMsgIconFrame[SMT_WAR];//ÏûÏ¢Í¼±êµÄÍ¼ĞÎÖ¡Ë÷Òı
+	KUiImageRef				m_MsgIcon[SMT_WAR];	//æ¶ˆæ¯å›¾æ ‡çš„å›¾å½¢
+	short					m_nMsgIconFrame[SMT_WAR];//æ¶ˆæ¯å›¾æ ‡çš„å›¾å½¢å¸§ç´¢å¼•
 
 	KSystemMessage*			m_pHandlingMsg;
 };

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½£ÏÀÒıÇæ£¬½çÃæ´°¿ÚÌåÏµ½á¹¹µÄ×î»ù±¾´°¿Ú¶ÔÏó
+//	å‰‘ä¾ å¼•æ“ï¼Œç•Œé¢çª—å£ä½“ç³»ç»“æ„çš„æœ€åŸºæœ¬çª—å£å¯¹è±¡
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-9
@@ -7,18 +7,18 @@
 *****************************************************************************************/
 #pragma once
 
-//============´°¿Ú·ç¸ñ================
-#define WND_S_VISIBLE				0x80000000	//¿É¼û
-#define WND_S_DISABLED				0x40000000	//²»¿É²Ù×÷
-#define	WND_S_TOPMOST				0x20000000	//ÖÃ¶¥´°¿Ú
-#define	WND_S_MOVEALBE				0x10000000	//¿É±»ÍÏ¶¯
-#define	WND_S_DISABLE				0x04000000	//´°¿Ú²»¿É±»²Ù×÷
+//============çª—å£é£æ ¼================
+#define WND_S_VISIBLE				0x80000000	//å¯è§
+#define WND_S_DISABLED				0x40000000	//ä¸å¯æ“ä½œ
+#define	WND_S_TOPMOST				0x20000000	//ç½®é¡¶çª—å£
+#define	WND_S_MOVEALBE				0x10000000	//å¯è¢«æ‹–åŠ¨
+#define	WND_S_DISABLE				0x04000000	//çª—å£ä¸å¯è¢«æ“ä½œ
 #define	WND_S_TOBEDESTROY			0x02000000	//window is to be destroy
-#define	WND_S_MOVE_WITH_R_EDGE		0x01000000	//¸úËæ¸¸´°¿ÚÓÒÏÂ±ß½çµÄ±ä»¯ÒÆ¶¯´°¿Ú
-#define	WND_S_MOVE_WITH_B_EDGE		0x00800000	//¸úËæ¸¸´°¿ÚÓÒÏÂ±ß½çµÄ±ä»¯ÒÆ¶¯´°¿Ú
-#define	WND_S_SIZE_WITH_R_EDGE		0x00400000	//¸úËæ¸¸´°¿Ú´óĞ¡µÄ±ä»¯µ÷Õû´°¿Ú´óĞ¡
-#define	WND_S_SIZE_WITH_B_EDGE		0x00200000	//¸úËæ¸¸´°¿Ú´óĞ¡µÄ±ä»¯µ÷Õû´°¿Ú´óĞ¡
-#define	WND_S_SIZE_WITH_ALL_CHILD	0x00100000	//ÒÔ×Ó´°¿ÚµÄ·¶Î§²âÊÔµÄ¼¯ºÏ×÷Îª×Ô¼ºµÄ·¶Î§²âÊÔµÄ¼¯ºÏ
+#define	WND_S_MOVE_WITH_R_EDGE		0x01000000	//è·Ÿéšçˆ¶çª—å£å³ä¸‹è¾¹ç•Œçš„å˜åŒ–ç§»åŠ¨çª—å£
+#define	WND_S_MOVE_WITH_B_EDGE		0x00800000	//è·Ÿéšçˆ¶çª—å£å³ä¸‹è¾¹ç•Œçš„å˜åŒ–ç§»åŠ¨çª—å£
+#define	WND_S_SIZE_WITH_R_EDGE		0x00400000	//è·Ÿéšçˆ¶çª—å£å¤§å°çš„å˜åŒ–è°ƒæ•´çª—å£å¤§å°
+#define	WND_S_SIZE_WITH_B_EDGE		0x00200000	//è·Ÿéšçˆ¶çª—å£å¤§å°çš„å˜åŒ–è°ƒæ•´çª—å£å¤§å°
+#define	WND_S_SIZE_WITH_ALL_CHILD	0x00100000	//ä»¥å­çª—å£çš„èŒƒå›´æµ‹è¯•çš„é›†åˆä½œä¸ºè‡ªå·±çš„èŒƒå›´æµ‹è¯•çš„é›†åˆ
 
 extern	int WND_SHOW_DEBUG_FRAME_TEXT;
 
@@ -27,28 +27,28 @@ class KIniFile;
 class KWndWindow
 {
 protected:
-	//----´°¿Ú²ÎÊı----
-	unsigned int m_Style;			//´°¿Ú·ç¸ñ,¼ûWnd.hÖĞ´°¿Ú·ç¸ñµÄ¶¨Òå
-	int			m_Left;				//×óÉÏ½ÇX×ø±ê£¬Ïà¶ÔÓÚ¸¸´°¿Ú
-	int			m_Top;				//×óÉÏ½ÇY×ø±ê£¬Ïà¶ÔÓÚ¸¸´°¿Ú
-	int			m_Width;			//¿í¶È
-	int			m_Height;			//¸ß¶È
-	int			m_nAbsoluteLeft;	//´°¿Ú×óÉÏ½ÇµÄ¾ø¶Ô×ø±êx
-	int			m_nAbsoluteTop;		//´°¿Ú×óÉÏ½ÇµÄ¾ø¶Ô×ø±êy
+	//----çª—å£å‚æ•°----
+	unsigned int m_Style;			//çª—å£é£æ ¼,è§Wnd.hä¸­çª—å£é£æ ¼çš„å®šä¹‰
+	int			m_Left;				//å·¦ä¸Šè§’Xåæ ‡ï¼Œç›¸å¯¹äºçˆ¶çª—å£
+	int			m_Top;				//å·¦ä¸Šè§’Yåæ ‡ï¼Œç›¸å¯¹äºçˆ¶çª—å£
+	int			m_Width;			//å®½åº¦
+	int			m_Height;			//é«˜åº¦
+	int			m_nAbsoluteLeft;	//çª—å£å·¦ä¸Šè§’çš„ç»å¯¹åæ ‡x
+	int			m_nAbsoluteTop;		//çª—å£å·¦ä¸Šè§’çš„ç»å¯¹åæ ‡y
 	int			m_nValue;
 #ifdef _DEBUG
-	char		m_Caption[64];		//±êÌâÎÄ×Ö
+	char		m_Caption[64];		//æ ‡é¢˜æ–‡å­—
 #endif
 
 	int			m_bMoving;
 	int			m_nLastMouseHoldPosX;
 	int			m_nLastMouseHoldPosY;
 
-	//----ÓëÆäËû´°¿ÚµÄ¼¶Á¬¹ØÏµ----
-	KWndWindow*	m_pPreviousWnd;		//Ç°Ò»¸öÍ¬¼¶´°¿Ú
-	KWndWindow*	m_pNextWnd;			//ºóÒ»¸öÍ¬¼¶´°¿Ú
-	KWndWindow*	m_pFirstChild;		//µÚÒ»¸ö×Ó´°¿Ú
-	KWndWindow*	m_pParentWnd;		//¸¸´°¿Ú
+	//----ä¸å…¶ä»–çª—å£çš„çº§è¿å…³ç³»----
+	KWndWindow*	m_pPreviousWnd;		//å‰ä¸€ä¸ªåŒçº§çª—å£
+	KWndWindow*	m_pNextWnd;			//åä¸€ä¸ªåŒçº§çª—å£
+	KWndWindow*	m_pFirstChild;		//ç¬¬ä¸€ä¸ªå­çª—å£
+	KWndWindow*	m_pParentWnd;		//çˆ¶çª—å£
 
 public:
 	KWndWindow();
@@ -57,54 +57,54 @@ public:
 	void	Destroy();
 	virtual void UpdateData(){}
 
-	//====¿ÉÖØÔØµÄº¯Êı====
+	//====å¯é‡è½½çš„å‡½æ•°====
 	// flying add this function
 	virtual int		CloseWindow(bool bDestory){return 0;};
 
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
 
-	virtual void	PaintWindow();							//´°Ìå»æÖÆ
+	virtual void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
 	void			PaintDebugInfo();
 
-	virtual void	SetSize(int nWidth, int nHeight);		//ÉèÖÃ´°¿Ú´óĞ¡
+	virtual void	SetSize(int nWidth, int nHeight);		//è®¾ç½®çª—å£å¤§å°
 
-	//====´°¿ÚĞĞÎª²Ù×÷====
-	void			BringToTop();							//°Ñ´°¿ÚÖÃ¶¥
-	void			GetPosition(int* pLeft, int* pTop);		//»ñÈ¡´°¿ÚÎ»ÖÃ£¬Ïà¶Ô×ø±ê
-	void			SetPosition(int nLeft, int nTop);		//ÉèÖÃ´°¿ÚÎ»ÖÃ£¬Ïà¶Ô×ø±ê
-	void			GetAbsolutePos(int* pLeft, int* pTop);	//»ñÈ¡´°¿ÚÎ»ÖÃ£¬¾ø¶Ô×ø±ê
-	void			GetSize(int* pWidth, int* pHeight);		//»ñÈ¡´°¿Ú´óĞ¡
-	void			SetCursorAbove();						//Ê¹Êó±êÖ¸ÕëÒÔÒÆ¶¯µ½Ğü¸¡ÔÚ´Ë´°¿ÚÖĞµÄÎ»ÖÃÉÏ
-	void			GetAllChildLayoutRect(RECT* pRect);		//È¡µÃ°üº¬ËùÓĞ×Ó´°¿Ú·Ö²¼ÇøÓòµÄ×îĞ¡ÇøÓò
+	//====çª—å£è¡Œä¸ºæ“ä½œ====
+	void			BringToTop();							//æŠŠçª—å£ç½®é¡¶
+	void			GetPosition(int* pLeft, int* pTop);		//è·å–çª—å£ä½ç½®ï¼Œç›¸å¯¹åæ ‡
+	void			SetPosition(int nLeft, int nTop);		//è®¾ç½®çª—å£ä½ç½®ï¼Œç›¸å¯¹åæ ‡
+	void			GetAbsolutePos(int* pLeft, int* pTop);	//è·å–çª—å£ä½ç½®ï¼Œç»å¯¹åæ ‡
+	void			GetSize(int* pWidth, int* pHeight);		//è·å–çª—å£å¤§å°
+	void			SetCursorAbove();						//ä½¿é¼ æ ‡æŒ‡é’ˆä»¥ç§»åŠ¨åˆ°æ‚¬æµ®åœ¨æ­¤çª—å£ä¸­çš„ä½ç½®ä¸Š
+	void			GetAllChildLayoutRect(RECT* pRect);		//å–å¾—åŒ…å«æ‰€æœ‰å­çª—å£åˆ†å¸ƒåŒºåŸŸçš„æœ€å°åŒºåŸŸ
 	void			SetValue(int nValue) {m_nValue = nValue;};
 	int				GetValue() {return m_nValue;};
 	
-	virtual void	Show();									//ÏÔÊ¾´°¿Ú
-	virtual void	Hide();									//Òş²Ø´°¿Ú
-	int				IsVisible();							//ÅĞ¶Ï´°¿ÚÊÇ·ñ±»ÏÔÊ¾
-	int				IsEnable();							//ÅĞ¶Ï´°¿ÚÊÇ·ñ±»ÏÔÊ¾
-	virtual	void	Enable(int bEnable);					//½ûÖ¹»òÕßÔÊĞíÊ¹´°¿Ú±»²Ù×÷
-//	void			SetStyle(DWORD	dwStyle);				//ĞŞ¸Ä´°¿Ú·ç¸ñ
-	void			AddChild(KWndWindow* pChild);			//Ìí¼Ó×Ó´°¿Ú
-	void			AddBrother(KWndWindow* pBrother);		//Ìí¼ÓĞÖµÜ´°¿Ú
+	virtual void	Show();									//æ˜¾ç¤ºçª—å£
+	virtual void	Hide();									//éšè—çª—å£
+	int				IsVisible();							//åˆ¤æ–­çª—å£æ˜¯å¦è¢«æ˜¾ç¤º
+	int				IsEnable();							//åˆ¤æ–­çª—å£æ˜¯å¦è¢«æ˜¾ç¤º
+	virtual	void	Enable(int bEnable);					//ç¦æ­¢æˆ–è€…å…è®¸ä½¿çª—å£è¢«æ“ä½œ
+//	void			SetStyle(DWORD	dwStyle);				//ä¿®æ”¹çª—å£é£æ ¼
+	void			AddChild(KWndWindow* pChild);			//æ·»åŠ å­çª—å£
+	void			AddBrother(KWndWindow* pBrother);		//æ·»åŠ å…„å¼Ÿçª—å£
 
-	virtual KWndWindow*	TopChildFromPoint(int x, int y);	//µÃµ½´¦ÓÚÖ¸¶¨×ø±êÎ»ÖÃµÄ×îÉÏ²ã´°¿Ú£¬´«ÈëµÄ×ø±êÎª¾ø¶Ô×ø±ê
+	virtual KWndWindow*	TopChildFromPoint(int x, int y);	//å¾—åˆ°å¤„äºæŒ‡å®šåæ ‡ä½ç½®çš„æœ€ä¸Šå±‚çª—å£ï¼Œä¼ å…¥çš„åæ ‡ä¸ºç»å¯¹åæ ‡
 
-	KWndWindow*		GetPreWnd() const { return m_pPreviousWnd; }	//µÃµ½Ç°Ò»¸öĞÖµÜ´°¿Ú
-	KWndWindow*		GetNextWnd() const { return m_pNextWnd; }		//µÃµ½ºóÒ»¸öĞÖµÜ´°¿Ú
-	KWndWindow*		GetParent() const { return m_pParentWnd; }		//µÃµ½¸¸´°¿Ú
-	KWndWindow*		GetFirstChild() const { return m_pFirstChild; }	//µÃµ½µÚÒ»¸ö×Ó´°¿Ú
-	KWndWindow*		GetOwner();								//»ñµÃ²»ÔÙÓĞ¸¸´°¿ÚµÄ×æÏÈ´°¿Ú
+	KWndWindow*		GetPreWnd() const { return m_pPreviousWnd; }	//å¾—åˆ°å‰ä¸€ä¸ªå…„å¼Ÿçª—å£
+	KWndWindow*		GetNextWnd() const { return m_pNextWnd; }		//å¾—åˆ°åä¸€ä¸ªå…„å¼Ÿçª—å£
+	KWndWindow*		GetParent() const { return m_pParentWnd; }		//å¾—åˆ°çˆ¶çª—å£
+	KWndWindow*		GetFirstChild() const { return m_pFirstChild; }	//å¾—åˆ°ç¬¬ä¸€ä¸ªå­çª—å£
+	KWndWindow*		GetOwner();								//è·å¾—ä¸å†æœ‰çˆ¶çª—å£çš„ç¥–å…ˆçª—å£
 
-	void			Paint();								//»æÖÆ
-	void			LetMeBreathe();							//ÈÃ´°¿Ú»î¶¯
+	void			Paint();								//ç»˜åˆ¶
+	void			LetMeBreathe();							//è®©çª—å£æ´»åŠ¨
 
-	void			SplitSmaleFamily();						//°Ñ×Ô¼º£¨¼°×Ó´°¿Ú£©´Ó´°¿ÚÊ÷ÀïÃæÀïÃæ·ÖÀë³öÀ´
-	void			LeaveAlone();							//ÊÀ¼äÔÙÎŞ´°ÔÚÎÒ×óÓÒ£¬Ò»ÎŞÇ£Á¬
+	void			SplitSmaleFamily();						//æŠŠè‡ªå·±ï¼ˆåŠå­çª—å£ï¼‰ä»çª—å£æ ‘é‡Œé¢é‡Œé¢åˆ†ç¦»å‡ºæ¥
+	void			LeaveAlone();							//ä¸–é—´å†æ— çª—åœ¨æˆ‘å·¦å³ï¼Œä¸€æ— ç‰µè¿
 
-	//----ÊôĞÔÉèÖÃ£¬»ñÈ¡----
+	//----å±æ€§è®¾ç½®ï¼Œè·å–----
 #ifdef _DEBUG
 	void			SetCaption(char* pszCaption);
 #endif
@@ -120,15 +120,15 @@ protected:
 	void			Clone(KWndWindow* pCopy);
 
 private:
-	virtual void	Breathe() {}							//´°¿ÚµÄ³ÖĞøĞĞÎª
-	void			OnLBtnDown(int x, int y);				//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂµÄ²Ù×÷£¬´«ÈëµÄ×ø±êÎª¾ø¶Ô×ø±ê
-	void			OnMoveWnd();							//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂÒÆ¶¯µÄ²Ù×÷£¬´«ÈëµÄ×ø±êÎª¾ø¶Ô×ø±ê
+	virtual void	Breathe() {}							//çª—å£çš„æŒç»­è¡Œä¸º
+	void			OnLBtnDown(int x, int y);				//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹çš„æ“ä½œï¼Œä¼ å…¥çš„åæ ‡ä¸ºç»å¯¹åæ ‡
+	void			OnMoveWnd();							//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹ç§»åŠ¨çš„æ“ä½œï¼Œä¼ å…¥çš„åæ ‡ä¸ºç»å¯¹åæ ‡
 
 private:
-	void			AbsoluteMove(int dx, int dy);			//¾ø¶Ô×ø±êµÄµ÷Õû
+	void			AbsoluteMove(int dx, int dy);			//ç»å¯¹åæ ‡çš„è°ƒæ•´
 };
 
-//°Ñ×Ö·û´®±íÊ¾µÄÑÕÉ«ĞÅÏ¢×ªÎªÊıÖµ±íÊ¾
+//æŠŠå­—ç¬¦ä¸²è¡¨ç¤ºçš„é¢œè‰²ä¿¡æ¯è½¬ä¸ºæ•°å€¼è¡¨ç¤º
 unsigned int	GetColor(const char* pString);
-//°ÑÊıÖµ±íÊ¾µÄÑÕÉ«ĞÅÏ¢×ªÎª×Ö·û´®±íÊ¾
+//æŠŠæ•°å€¼è¡¨ç¤ºçš„é¢œè‰²ä¿¡æ¯è½¬ä¸ºå­—ç¬¦ä¸²è¡¨ç¤º
 const char* GetColorString(unsigned int nColor);

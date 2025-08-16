@@ -16,8 +16,8 @@
 class KMemNode : public KNode
 {
 public:
-	DWORD	m_dwMemSize;//ÄÚ´æ´óÐ¡
-	DWORD	m_dwMemSign;//ÄÚ´æ±êÖ¾
+	DWORD	m_dwMemSize;//å†…å­˜å¤§å°
+	DWORD	m_dwMemSign;//å†…å­˜æ ‡å¿—
 };
 //---------------------------------------------------------------------------
 class KMemList : public KList
@@ -48,10 +48,10 @@ static KMemList m_MemList;
 //---------------------------------------------------------------------------
 #define MEMSIGN 1234567890
 //---------------------------------------------------------------------------
-// º¯Êý:	g_MemInfo
-// ¹¦ÄÜ:	Memory Infomation
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	g_MemInfo
+// åŠŸèƒ½:	Memory Infomation
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemInfo()
 {
@@ -64,10 +64,10 @@ ENGINE_API void g_MemInfo()
 //	g_DebugLog("%d percent of memory is in use.", stat.dwMemoryLoad);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	g_MemAlloc
-// ¹¦ÄÜ:	·ÖÅäÄÚ´æ
-// ²ÎÊý:	dwSize		ÄÚ´æ¿é´óÐ¡
-// ·µ»Ø:	lpMem (lpMem = NULL ±íÊ¾·ÖÅäÊ§°Ü)
+// å‡½æ•°:	g_MemAlloc
+// åŠŸèƒ½:	åˆ†é…å†…å­˜
+// å‚æ•°:	dwSize		å†…å­˜å—å¤§å°
+// è¿”å›ž:	lpMem (lpMem = NULL è¡¨ç¤ºåˆ†é…å¤±è´¥)
 //---------------------------------------------------------------------------
 ENGINE_API LPVOID g_MemAlloc(DWORD dwSize)
 {
@@ -94,10 +94,10 @@ ENGINE_API LPVOID g_MemAlloc(DWORD dwSize)
 //	return 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	g_MemFree
-// ¹¦ÄÜ:	ÊÍ·ÅÄÚ´æ
-// ²ÎÊý:	lpMem		ÒªÊÍ·ÅµÄÄÚ´æÖ¸Õë
-// ·µ»Ø:	void
+// å‡½æ•°:	g_MemFree
+// åŠŸèƒ½:	é‡Šæ”¾å†…å­˜
+// å‚æ•°:	lpMem		è¦é‡Šæ”¾çš„å†…å­˜æŒ‡é’ˆ
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemFree(LPVOID lpMem)
 {
@@ -116,12 +116,12 @@ ENGINE_API void g_MemFree(LPVOID lpMem)
 	delete[] lpMem;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryCopy
-// ¹¦ÄÜ:	ÄÚ´æ¿½±´
-// ²ÎÊý:	lpDest	:	Ä¿±êÄÚ´æ¿é
-//			lpSrc	:	Ô´ÄÚ´æ¿é
-//			dwLen	:	¿½±´³¤¶È
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryCopy
+// åŠŸèƒ½:	å†…å­˜æ‹·è´
+// å‚æ•°:	lpDest	:	ç›®æ ‡å†…å­˜å—
+//			lpSrc	:	æºå†…å­˜å—
+//			dwLen	:	æ‹·è´é•¿åº¦
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemCopy(PVOID lpDest, PVOID lpSrc, DWORD dwLen)
 {	
@@ -143,12 +143,12 @@ ENGINE_API void g_MemCopy(PVOID lpDest, PVOID lpSrc, DWORD dwLen)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryCopyMmx
-// ¹¦ÄÜ:	ÄÚ´æ¿½±´£¨MMX°æ±¾£©
-// ²ÎÊý:	lpDest	:	Ä¿±êÄÚ´æ¿é
-//			lpSrc	:	Ô´ÄÚ´æ¿é
-//			dwLen	:	¿½±´³¤¶È
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryCopyMmx
+// åŠŸèƒ½:	å†…å­˜æ‹·è´ï¼ˆMMXç‰ˆæœ¬ï¼‰
+// å‚æ•°:	lpDest	:	ç›®æ ‡å†…å­˜å—
+//			lpSrc	:	æºå†…å­˜å—
+//			dwLen	:	æ‹·è´é•¿åº¦
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemCopyMmx(PVOID lpDest, PVOID lpSrc, DWORD dwLen)
 {
@@ -183,13 +183,13 @@ loc_copy_mmx2:
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryComp
-// ¹¦ÄÜ:	ÄÚ´æ±È½Ï
-// ²ÎÊý:	lpDest	:	ÄÚ´æ¿é1
-//			lpSrc	:	ÄÚ´æ¿é2
-//			dwLen	:	±È½Ï³¤¶È
-// ·µ»Ø:	TRUE	:	ÏàÍ¬
-//			FALSE	:	²»Í¬	
+// å‡½æ•°:	MemoryComp
+// åŠŸèƒ½:	å†…å­˜æ¯”è¾ƒ
+// å‚æ•°:	lpDest	:	å†…å­˜å—1
+//			lpSrc	:	å†…å­˜å—2
+//			dwLen	:	æ¯”è¾ƒé•¿åº¦
+// è¿”å›ž:	TRUE	:	ç›¸åŒ
+//			FALSE	:	ä¸åŒ	
 //---------------------------------------------------------------------------
 ENGINE_API BOOL g_MemComp(PVOID lpDest, PVOID lpSrc, DWORD dwLen)
 {	
@@ -218,12 +218,12 @@ loc_not_equal:
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryFill
-// ¹¦ÄÜ:	ÄÚ´æÌî³ä
-// ²ÎÊý:	lpDest	:	ÄÚ´æµØÖ·
-//			dwLen	:	ÄÚ´æ³¤¶È
-//			byFill	:	Ìî³ä×Ö½Ú
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryFill
+// åŠŸèƒ½:	å†…å­˜å¡«å……
+// å‚æ•°:	lpDest	:	å†…å­˜åœ°å€
+//			dwLen	:	å†…å­˜é•¿åº¦
+//			byFill	:	å¡«å……å­—èŠ‚
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, BYTE byFill)
 {
@@ -249,12 +249,12 @@ ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, BYTE byFill)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryFill
-// ¹¦ÄÜ:	ÄÚ´æÌî³ä
-// ²ÎÊý:	lpDest	:	ÄÚ´æµØÖ·
-//			dwLen	:	ÄÚ´æ³¤¶È
-//			wFill	:	Ìî³ä×Ö
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryFill
+// åŠŸèƒ½:	å†…å­˜å¡«å……
+// å‚æ•°:	lpDest	:	å†…å­˜åœ°å€
+//			dwLen	:	å†…å­˜é•¿åº¦
+//			wFill	:	å¡«å……å­—
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, WORD wFill)
 {	
@@ -279,12 +279,12 @@ ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, WORD wFill)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryFill
-// ¹¦ÄÜ:	ÄÚ´æÌî³ä
-// ²ÎÊý:	lpDest	:	ÄÚ´æµØÖ·
-//			dwLen	:	ÄÚ´æ³¤¶È
-//			dwFill	:	Ìî³ä×Ö
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryFill
+// åŠŸèƒ½:	å†…å­˜å¡«å……
+// å‚æ•°:	lpDest	:	å†…å­˜åœ°å€
+//			dwLen	:	å†…å­˜é•¿åº¦
+//			dwFill	:	å¡«å……å­—
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, DWORD dwFill)
 {	
@@ -301,11 +301,11 @@ ENGINE_API void g_MemFill(PVOID lpDest, DWORD dwLen, DWORD dwFill)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryZero
-// ¹¦ÄÜ:	ÄÚ´æÇåÁã
-// ²ÎÊý:	lpDest	:	ÄÚ´æµØÖ·
-//			dwLen	:	ÄÚ´æ³¤¶È
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryZero
+// åŠŸèƒ½:	å†…å­˜æ¸…é›¶
+// å‚æ•°:	lpDest	:	å†…å­˜åœ°å€
+//			dwLen	:	å†…å­˜é•¿åº¦
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemZero(PVOID lpDest, DWORD dwLen)
 {
@@ -327,12 +327,12 @@ ENGINE_API void g_MemZero(PVOID lpDest, DWORD dwLen)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	MemoryXore
-// ¹¦ÄÜ:	ÄÚ´æÒì»ò
-// ²ÎÊý:	lpDest	:	ÄÚ´æµØÖ·
-//			dwLen	:	ÄÚ´æ³¤¶È
-//			dwXor	:	Òì»ò×Ö½Ú
-// ·µ»Ø:	void
+// å‡½æ•°:	MemoryXore
+// åŠŸèƒ½:	å†…å­˜å¼‚æˆ–
+// å‚æ•°:	lpDest	:	å†…å­˜åœ°å€
+//			dwLen	:	å†…å­˜é•¿åº¦
+//			dwXor	:	å¼‚æˆ–å­—èŠ‚
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_MemXore(PVOID lpDest, DWORD dwLen, DWORD dwXor)
 {

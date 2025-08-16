@@ -13,16 +13,16 @@
 /*
 enum NPC_ENCHANT
 {
-	enchant_treasure = 0,				// µôµÄ×°±¸¸ü¶à
-	enchant_aura,						// ¹â»·¼¼ÄÜ
-	enchant_lifeenhance,				// ÉúÃü¸ü³¤
-	enchant_lifereplenish,				// ×Ô¶¯»ØÑª
-	enchant_attackratingenhance,		// ´òµÃ¸ü×¼
-	enchant_defenseenhance,				// ·ÀÓù¼ÓÇ¿
-	enchant_damageenhance,				// ÉËº¦¸ü¸ß
-	enchant_speedenhance,				// ËÙ¶È¸ü¿ì
-	enchant_selfresist,					// ×Ô¼ºµÄÎåĞĞÊôĞÔµÄ¿¹ĞÔÎª100%
-	enchant_conquerresist,				// ÏàÉúµÄÎåĞĞÊôĞÔµÄ¿¹ĞÔÎª100%
+	enchant_treasure = 0,				// æ‰çš„è£…å¤‡æ›´å¤š
+	enchant_aura,						// å…‰ç¯æŠ€èƒ½
+	enchant_lifeenhance,				// ç”Ÿå‘½æ›´é•¿
+	enchant_lifereplenish,				// è‡ªåŠ¨å›è¡€
+	enchant_attackratingenhance,		// æ‰“å¾—æ›´å‡†
+	enchant_defenseenhance,				// é˜²å¾¡åŠ å¼º
+	enchant_damageenhance,				// ä¼¤å®³æ›´é«˜
+	enchant_speedenhance,				// é€Ÿåº¦æ›´å¿«
+	enchant_selfresist,					// è‡ªå·±çš„äº”è¡Œå±æ€§çš„æŠ—æ€§ä¸º100%
+	enchant_conquerresist,				// ç›¸ç”Ÿçš„äº”è¡Œå±æ€§çš„æŠ—æ€§ä¸º100%
 	enchant_num,
 };
 */
@@ -37,8 +37,8 @@ private:
 	char	m_szSprName[MAX_INSTANT_STATE][FILE_NAME_LENGTH];
 	char	m_szSoundName[MAX_INSTANT_SOUND][FILE_NAME_LENGTH];
 
-	KCacheNode	*m_pSoundNode;	// ÉùĞ§Ö¸Õë
-	KWavSound	*m_pWave;		// ÉùĞ§wavÖ¸Õë
+	KCacheNode	*m_pSoundNode;	// å£°æ•ˆæŒ‡é’ˆ
+	KWavSound	*m_pWave;		// å£°æ•ˆwavæŒ‡é’ˆ
 
 private:
 	void	LoadSprName();
@@ -73,22 +73,22 @@ typedef struct
 class KNpcSet
 {
 public:
-	PlayerBaseValue		m_cPlayerBaseValue;					// Íæ¼Ò±ê×¼Êı¾İ
+	PlayerBaseValue		m_cPlayerBaseValue;					// ç©å®¶æ ‡å‡†æ•°æ®
 
 #ifdef _SERVER
-	int					m_nPKDamageRate;					// PKÊ±ÉËº¦³ËÒ»¸öÏµÊı
-	int					m_nLevelPKDamageRate;					// PKÊ±ÉËº¦³ËÒ»¸öÏµÊı
-	int					m_nNpcSpecialDamageRate;					// PKÊ±ÉËº¦³ËÒ»¸öÏµÊı
-	int					m_nFactionPKFactionAddPKValue;		// Èı´óÕóÓªÖ®¼äPK£¬µÈ¼¶²îÌ«´óÊ±PKÕßPKÖµÔö¼Ó
-	int					m_nKillerPKFactionAddPKValue;		// É±ÊÖÓëÈı´óÕóÓªPK£¬µÈ¼¶²îÌ«´óÊ±PKÕßPKÖµÔö¼Ó
-	int					m_nEnmityAddPKValue;				// ³ğÉ±Ê±PKÕßPKÖµÔö¼Ó
-	int					m_nBeKilledAddPKValue;				// ±»PKÖÂËÀ×ÅPKÖµÔö¼Ó£¬Ó¦¸ÃÊÇ¸ö¸ºÊı
-	int					m_nLevelDistance;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
-	int					m_nLevelBoundaryPKPunish;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
-	int					m_nButcherPKExercise;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
-	int					m_nNotSubPKExpPercent;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
-	int					m_nNotEnmityExpPercent;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
-	int					m_nNotFightExpPercent;					// µÈ¼¶²î¶àÉÙËãÊÇPKĞÂÊÖ
+	int					m_nPKDamageRate;					// PKæ—¶ä¼¤å®³ä¹˜ä¸€ä¸ªç³»æ•°
+	int					m_nLevelPKDamageRate;					// PKæ—¶ä¼¤å®³ä¹˜ä¸€ä¸ªç³»æ•°
+	int					m_nNpcSpecialDamageRate;					// PKæ—¶ä¼¤å®³ä¹˜ä¸€ä¸ªç³»æ•°
+	int					m_nFactionPKFactionAddPKValue;		// ä¸‰å¤§é˜µè¥ä¹‹é—´PKï¼Œç­‰çº§å·®å¤ªå¤§æ—¶PKè€…PKå€¼å¢åŠ 
+	int					m_nKillerPKFactionAddPKValue;		// æ€æ‰‹ä¸ä¸‰å¤§é˜µè¥PKï¼Œç­‰çº§å·®å¤ªå¤§æ—¶PKè€…PKå€¼å¢åŠ 
+	int					m_nEnmityAddPKValue;				// ä»‡æ€æ—¶PKè€…PKå€¼å¢åŠ 
+	int					m_nBeKilledAddPKValue;				// è¢«PKè‡´æ­»ç€PKå€¼å¢åŠ ï¼Œåº”è¯¥æ˜¯ä¸ªè´Ÿæ•°
+	int					m_nLevelDistance;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
+	int					m_nLevelBoundaryPKPunish;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
+	int					m_nButcherPKExercise;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
+	int					m_nNotSubPKExpPercent;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
+	int					m_nNotEnmityExpPercent;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
+	int					m_nNotFightExpPercent;					// ç­‰çº§å·®å¤šå°‘ç®—æ˜¯PKæ–°æ‰‹
 	int					m_nMurderAddPKValue;
 	int					m_nPKWarOpen;
 	int					m_nPKMurderOpen;
@@ -104,9 +104,9 @@ public:
 	KInstantSpecial		m_cInstantSpecial;
 #endif
 private:
-	DWORD				m_dwIDCreator;						//	ÓÎÏ·ÊÀ½çÖĞµÄID¼ÆÊıÆ÷
-	KLinkArray			m_FreeIdx;							//	¿ÉÓÃ±í
-	KLinkArray			m_UseIdx;							//	ÒÑÓÃ±í
+	DWORD				m_dwIDCreator;						//	æ¸¸æˆä¸–ç•Œä¸­çš„IDè®¡æ•°å™¨
+	KLinkArray			m_FreeIdx;							//	å¯ç”¨è¡¨
+	KLinkArray			m_UseIdx;							//	å·²ç”¨è¡¨
 #ifndef _SERVER
 	enum
 	{
@@ -116,10 +116,10 @@ private:
 		PATE_LIFEF = 0x08,
 		PATE_OBJ   = 0x10,
 	};
-	int					m_nShowPateFlag;					// ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÃû×ÖÔÚÍ·¶¥ÉÏ zroc add
-	RequestNpc			m_RequestNpc[MAX_NPC_REQUEST];		//	Ïò·şÎñÆ÷ÉêÇëµÄID±í
-	KLinkArray			m_RequestFreeIdx;					//	Ïò·şÎñÆ÷ÉêÇë¿ÉÓÃ±í
-	KLinkArray			m_RequestUseIdx;					//	Ïò·şÎñÆ÷ÉêÇë¿ÕÏĞ±í
+	int					m_nShowPateFlag;					// æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„åå­—åœ¨å¤´é¡¶ä¸Š zroc add
+	RequestNpc			m_RequestNpc[MAX_NPC_REQUEST];		//	å‘æœåŠ¡å™¨ç”³è¯·çš„IDè¡¨
+	KLinkArray			m_RequestFreeIdx;					//	å‘æœåŠ¡å™¨ç”³è¯·å¯ç”¨è¡¨
+	KLinkArray			m_RequestUseIdx;					//	å‘æœåŠ¡å™¨ç”³è¯·ç©ºé—²è¡¨
 #endif
 public:
 	KNpcSet();
@@ -140,7 +140,7 @@ public:
 	static int		GetDistance(int nIdx1, int nIdx2);
 	static int		GetDistanceSquare(int nIdx1, int nIdx2);
 	int				GetNextIdx(int nIdx);
-	// °ÑËùÓĞnpcµÄ bActivateFlag ÉèÎª FALSE (Ã¿´ÎÓÎÏ·Ñ­»·´¦ÀíËùÓĞnpcµÄactivateÖ®Ç°×öÕâ¸ö´¦Àí)
+	// æŠŠæ‰€æœ‰npcçš„ bActivateFlag è®¾ä¸º FALSE (æ¯æ¬¡æ¸¸æˆå¾ªç¯å¤„ç†æ‰€æœ‰npcçš„activateä¹‹å‰åšè¿™ä¸ªå¤„ç†)
 	void			ClearActivateFlagOfAllNpc();
 	void			LoadPlayerBaseValue(LPSTR szFile);
 	int				GetPlayerWalkSpeed() { return m_cPlayerBaseValue.nWalkSpeed; };
@@ -173,30 +173,30 @@ public:
 	void			InsertNpcRequest(DWORD dwID);
 	void			RemoveNpcRequest(DWORD dwID);
 	int				GetRequestIndex(DWORD dwID);
-	// Ìí¼ÓÒ»¸ö¿Í»§¶Ënpc£¨ĞèÒªÉè¶¨ClientNpcID£©
+	// æ·»åŠ ä¸€ä¸ªå®¢æˆ·ç«¯npcï¼ˆéœ€è¦è®¾å®šClientNpcIDï¼‰
 	int				AddClientNpc(int nTemplateID, int nRegionX, int nRegionY, int nMpsX, int nMpsY, int nNo);
-	// ´ÓnpcÊı×éÖĞÑ°ÕÒÊôÓÚÄ³¸öregionµÄ client npc £¬Ìí¼Ó½øÈ¥
+	// ä»npcæ•°ç»„ä¸­å¯»æ‰¾å±äºæŸä¸ªregionçš„ client npc ï¼Œæ·»åŠ è¿›å»
 	void			InsertNpcToRegion(int nRegionIdx);
-	// ²éÕÒÄ³¸öClientIDµÄnpcÊÇ·ñ´æÔÚ
+	// æŸ¥æ‰¾æŸä¸ªClientIDçš„npcæ˜¯å¦å­˜åœ¨
 	int				SearchClientID(KClientNpcID sClientID);
-	// Ä³×ù±êÉÏ¾«È·²éÕÒNpc£¬¿Í»§¶Ë×¨ÓÃ
+	// æŸåº§æ ‡ä¸Šç²¾ç¡®æŸ¥æ‰¾Npcï¼Œå®¢æˆ·ç«¯ä¸“ç”¨
 	int				SearchNpcAt(int nX, int nY, int nRelation, int nRange);
 	void			CheckBalance();
-	int				GetAroundPlayerForTeamInvite(KUiPlayerItem *pList, int nCount);	// »ñµÃÖÜÎ§Íæ¼ÒÁĞ±í(ÓÃÓÚ¶ÓÎéÑûÇëÁĞ±í)
-	void			GetAroundOpenCaptain(int nCamp);		// »ñµÃÖÜÎ§Í¬ÕóÓªµÄÒÑ¿ª·Å¶ÓÎé¶Ó³¤ÁĞ±í
-	int				GetAroundPlayer(KUiPlayerItem *pList, int nCount);	// »ñµÃÖÜÎ§Íæ¼ÒÁĞ±í(ÓÃÓÚÁĞ±í)
+	int				GetAroundPlayerForTeamInvite(KUiPlayerItem *pList, int nCount);	// è·å¾—å‘¨å›´ç©å®¶åˆ—è¡¨(ç”¨äºé˜Ÿä¼é‚€è¯·åˆ—è¡¨)
+	void			GetAroundOpenCaptain(int nCamp);		// è·å¾—å‘¨å›´åŒé˜µè¥çš„å·²å¼€æ”¾é˜Ÿä¼é˜Ÿé•¿åˆ—è¡¨
+	int				GetAroundPlayer(KUiPlayerItem *pList, int nCount);	// è·å¾—å‘¨å›´ç©å®¶åˆ—è¡¨(ç”¨äºåˆ—è¡¨)
 
-	// Éè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÃû×Ö  bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
+	// è®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„åå­—  bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
 	void			SetShowNameFlag(BOOL bFlag);
-	// ÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÃû×Ö  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
+	// åˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„åå­—  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
 	BOOL			CheckShowName();
-	// Éè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÑª  bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
+	// è®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„è¡€  bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
 	void			SetShowLifeFlag(BOOL bFlag);
-	// ÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÑª  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
+	// åˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„è¡€  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
 	BOOL			CheckShowLife();
-	// Éè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÄÚÁ¦  bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
+	// è®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„å†…åŠ›  bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
 	void			SetShowObjFlag(BOOL bFlag);
-	// ÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÄÚÁ¦  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
+	// åˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„å†…åŠ›  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
 	BOOL			CheckShowObj();
 	
 #endif
@@ -217,7 +217,7 @@ private:
 };
 
 // modify by Freeway Chen in 2003.7.14
-// È·¶¨Á½¸öNPCÖ®¼äµÄÕ½¶·¹ØÏµ
+// ç¡®å®šä¸¤ä¸ªNPCä¹‹é—´çš„æˆ˜æ–—å…³ç³»
 
 extern KNpcSet NpcSet;
 #endif

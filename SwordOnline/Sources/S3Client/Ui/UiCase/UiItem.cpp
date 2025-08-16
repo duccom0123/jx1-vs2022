@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiItem.cpp
-//	Author		£º	ÂÀ¹ğ»ª, Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2002-9-16 11:26:43
-//	¹¦ÄÜÃèÊö	£º	
+//	ÃÃ„Â¼Ã¾ÃƒÃ»		Â£Âº	UiItem.cpp
+//	Author		Â£Âº	Ã‚Ã€Â¹Ã°Â»Âª, Wooy(Wu yue)
+//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2002-9-16 11:26:43
+//	Â¹Â¦Ã„ÃœÃƒÃ¨ÃŠÃ¶	Â£Âº	
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -47,7 +47,7 @@ enum WAIT_OTHER_WND_OPER_PARAM
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiItem* KUiItem::GetIfVisible()
 {
@@ -57,7 +57,7 @@ KUiItem* KUiItem::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiItem* KUiItem::OpenWindow(bool bFlag)
 {
@@ -83,7 +83,7 @@ KUiItem* KUiItem::OpenWindow(bool bFlag)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiItem::CloseWindow(bool bDestroy)
 {
@@ -102,7 +102,7 @@ void KUiItem::CloseWindow(bool bDestroy)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ³õÊ¼»¯
+// Â¹Â¦Ã„Ãœ	: Â³ÃµÃŠÂ¼Â»Â¯
 // -------------------------------------------------------------------------
 void KUiItem::Initialize()
 {
@@ -130,7 +130,7 @@ void KUiItem::Initialize()
 	Wnd_AddWindow(this);
 }
 
-//»î¶¯º¯Êı
+//Â»Ã®Â¶Â¯ÂºÂ¯ÃŠÃ½
 void KUiItem::Breathe()
 {
 	if (!g_pCoreShell->GetTradeState())
@@ -159,7 +159,7 @@ void KUiItem::OnNpcTradeMode(bool bTrue)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 void KUiItem::UpdateData()
 {
@@ -175,7 +175,7 @@ void KUiItem::UpdateData()
 
 	if (pObjs = (KUiObjAtRegion*)malloc(sizeof(KUiObjAtRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(GDI_ITEM_TAKEN_WITH, (unsigned int)pObjs, nCount);//µ¥Ïß³ÌÖ´ĞĞ£¬nCountÖµ²»±ä
+		g_pCoreShell->GetGameData(GDI_ITEM_TAKEN_WITH, (unsigned int)pObjs, nCount);//ÂµÂ¥ÃÃŸÂ³ÃŒÃ–Â´ÃÃÂ£Â¬nCountÃ–ÂµÂ²Â»Â±Ã¤
 		for (int i = 0; i < nCount; i++)
 		{
 			KUiDraggedObject no;
@@ -193,7 +193,7 @@ void KUiItem::UpdateData()
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ÎïÆ·±ä»¯¸üĞÂ
+// Â¹Â¦Ã„Ãœ	: ÃÃ¯Ã†Â·Â±Ã¤Â»Â¯Â¸Ã¼ÃÃ‚
 // -------------------------------------------------------------------------
 void KUiItem::UpdateItem(KUiObjAtRegion* pItem, int bAdd)
 {
@@ -218,7 +218,7 @@ void KUiItem::UpdateItem(KUiObjAtRegion* pItem, int bAdd)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ÔØÈë½çÃæ·½°¸
+// Â¹Â¦Ã„Ãœ	: Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 // -------------------------------------------------------------------------
 void KUiItem::LoadScheme(const char* pScheme)
 {
@@ -295,7 +295,7 @@ void KUiItem::OnClickItem(KUiDraggedObject* pItem, bool bDoImmed)
 					Msg.byPriority = 0;
 					Msg.eType = SMT_NORMAL;
 					Msg.uReservedForUi = 0;
-					strcpy(Msg.szMessage, "NhÊn gi÷ phİm Shift ®ång thêi nhÊn chuét ph¶i lËp tøc b¸n ®­îc vËt phÈm!");
+					strcpy(Msg.szMessage, "NhÃŠn giÃ· phÃm Shift Â®Ã¥ng thÃªi nhÃŠn chuÃ©t phÂ¶i lÃ‹p tÃ¸c bÂ¸n Â®Â­Ã®c vÃ‹t phÃˆm!");
 					KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 				}
 			}
@@ -330,7 +330,7 @@ void KUiItem::OnRepairItem(KUiDraggedObject* pItem)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ´°¿Úº¯Êı
+// Â¹Â¦Ã„Ãœ	: Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 // -------------------------------------------------------------------------
 int KUiItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

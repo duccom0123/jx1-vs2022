@@ -14,12 +14,12 @@ void g_DrawBitmap16(void* node, void* canvas)
 {
 	KDrawNode* pNode = (KDrawNode *)node;
 	KCanvas* pCanvas = (KCanvas *)canvas;
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(pNode->m_nX, pNode->m_nY, pNode->m_nWidth, pNode->m_nHeight, &Clipper))
 		return;
 
-	// pBufferÖ¸ÏòÆÁÄ»»æÖÆĞĞµÄÍ·Ò»¸öÏñµã´¦
+	// pBufferæŒ‡å‘å±å¹•ç»˜åˆ¶è¡Œçš„å¤´ä¸€ä¸ªåƒç‚¹å¤„
 
 	int nPitch;
 	void* pBuffer = pCanvas->LockCanvas(nPitch);
@@ -29,20 +29,20 @@ void g_DrawBitmap16(void* node, void* canvas)
 	void* pBitmap = (char*)pNode->m_pBitmap;
 	int   nWidth = pNode->m_nWidth;
 
-	//¼ÆËã»º³åÇøÏÂÒ»ĞĞµÄÆ«ÒÆ
+	//è®¡ç®—ç¼“å†²åŒºä¸‹ä¸€è¡Œçš„åç§»
 	long nNextLine = nPitch - Clipper.width * 2;
 	long nBitmapOffset;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
-		//Ê¹ediÖ¸Ïòcanvas»æÖÆÆğµã
+		//ä½¿ediæŒ‡å‘canvasç»˜åˆ¶èµ·ç‚¹
 		mov		edi, pBuffer
 		mov		eax, Clipper.x
 		add		eax, eax
 		add		edi, eax
 
-		//esiÖ¸ÏòÍ¼¿éÊı¾İ»æÖÆµÄ¿ªÊ¼Î»ÖÃ
+		//esiæŒ‡å‘å›¾å—æ•°æ®ç»˜åˆ¶çš„å¼€å§‹ä½ç½®
 		mov		esi, pBitmap
 		mov		eax, Clipper.top
 		mul		nWidth
@@ -50,7 +50,7 @@ void g_DrawBitmap16(void* node, void* canvas)
 		add		eax, eax
 		add		esi, eax
 
-		// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+		// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 		mov		eax, nWidth
 		sub		eax, Clipper.width
 		add		eax, eax
@@ -105,10 +105,10 @@ void g_DrawBitmap16(void* node, void* canvas)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawBitmap16
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	node, canvas
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawBitmap16
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	node, canvas
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 /*void g_DrawBitmap16_OLD(void* node, void* canvas)
 {
@@ -121,7 +121,7 @@ void g_DrawBitmap16(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	void* lpBitmap = pNode->m_pBitmap;// bitmap pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -131,17 +131,17 @@ void g_DrawBitmap16(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
-	// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 	long BitmapOffset = (nWidth - Clipper.width) * 2;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -153,7 +153,7 @@ void g_DrawBitmap16(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-//  ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+//  åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //  esi += (nWidth * Clipper.top + Clipper.left) * 2
 //---------------------------------------------------------------------------
 		mov		ecx, Clipper.top
@@ -188,10 +188,10 @@ loc_DrawBitmap16_0001:
 }*/
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawBitmap16mmx
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	node, canvas
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawBitmap16mmx
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	node, canvas
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawBitmap16mmx(void* node, void* canvas)
 {
@@ -204,7 +204,7 @@ void g_DrawBitmap16mmx(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	void* lpBitmap = pNode->m_pBitmap;// bitmap pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -214,17 +214,17 @@ void g_DrawBitmap16mmx(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
-	// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 	long BitmapOffset = nWidth * 2 - Clipper.width * 2;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -236,7 +236,7 @@ void g_DrawBitmap16mmx(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-//  ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+//  åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //  esi += (nWidth * Clipper.top + Clipper.left) * 2
 //---------------------------------------------------------------------------
 		mov		ecx, Clipper.top
@@ -247,7 +247,7 @@ void g_DrawBitmap16mmx(void* node, void* canvas)
 		mov		esi, lpBitmap
 		add     esi, eax
 //---------------------------------------------------------------------------
-// ÒÔÒ»´Î4¸öµãµÄ·½Ê½À´»æÖÆÎ»Í¼
+// ä»¥ä¸€æ¬¡4ä¸ªç‚¹çš„æ–¹å¼æ¥ç»˜åˆ¶ä½å›¾
 //---------------------------------------------------------------------------
 		mov		edx, Clipper.height
 		mov		ebx, Clipper.width
@@ -282,10 +282,10 @@ loc_DrawBitmap16mmx_0003:
 	pCanvas->UnlockCanvas();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawBitmap16win
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	node, canvas
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawBitmap16win
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	node, canvas
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawBitmap16win(void* node, void* canvas)
 {
@@ -298,7 +298,7 @@ void g_DrawBitmap16win(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	void* lpBitmap = pNode->m_pBitmap;// bitmap pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -308,19 +308,19 @@ void g_DrawBitmap16win(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
-	// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 	long BitmapOffset = nWidth * 2 + Clipper.width * 2;
 	long BitmapStarts = nWidth * (nHeight - 1) * 2;
 
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -332,7 +332,7 @@ void g_DrawBitmap16win(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-//  ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+//  åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //  esi += (nWidth * Clipper.top + Clipper.left) * 2
 //---------------------------------------------------------------------------
 		mov		ecx, Clipper.top
@@ -345,7 +345,7 @@ void g_DrawBitmap16win(void* node, void* canvas)
 		add		esi, ebx
 		sub     esi, eax
 //---------------------------------------------------------------------------
-// ÒÔÒ»´Î4¸öµãµÄ·½Ê½À´»æÖÆÎ»Í¼
+// ä»¥ä¸€æ¬¡4ä¸ªç‚¹çš„æ–¹å¼æ¥ç»˜åˆ¶ä½å›¾
 //---------------------------------------------------------------------------
 		mov		edx, Clipper.height
 		mov		ebx, Clipper.width

@@ -1,5 +1,5 @@
  /******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42**********************
-//	¿ì½Ý¼üÏµÍ³
+//	å¿«æ·é”®ç³»ç»Ÿ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-1-13
@@ -133,27 +133,27 @@ void KShortcutKeyCentre::Enable(bool b)
 
 /////////////////////////////////////////////////////////////////////////
 
-//´°¿ÚÁÐ±í
+//çª—å£åˆ—è¡¨
 char* l_WindowList[] =
 {
-	"team",		//0 ¶ÓÎé
-	"map",		//1 µØÍ¼
-	"status",	//2 ×´Ì¬
-	"items",	//3 ÎïÆ·
-	"skills",	//4 ¼¼ÄÜ
-	"system",	//5 ÏµÍ³
-	"friend",	//6 ºÃÓÑ
-	"help",		//7 ÏêÏ¸°ïÖú
-	"tasknote",	//8 ÈÎÎñ¼ÇÊÂ
-	"leftskill",	//9 ×óÊÖ¼¼ÄÜ
-	"rightskill",	//10 ÓÒÊÖ¼¼ÄÜ
-	"commandline",	//11 ÃüÁîÐÐ
-	"options",		//12 Ñ¡Ïî
-	"statustool",	//13 ×´Ì¬¹¤¾ßÌõ
-	"normaltool",	//14 ³£ÓÃ¹¤¾ßÌõ
-	"chatroom",		//15 ÁÄÌì´°¿Ú
-	"newsmessage",  //16 ÐÂÎÅ´°¿Ú
-	"itemex",	//17 ÎïÆ·
+	"team",		//0 é˜Ÿä¼
+	"map",		//1 åœ°å›¾
+	"status",	//2 çŠ¶æ€
+	"items",	//3 ç‰©å“
+	"skills",	//4 æŠ€èƒ½
+	"system",	//5 ç³»ç»Ÿ
+	"friend",	//6 å¥½å‹
+	"help",		//7 è¯¦ç»†å¸®åŠ©
+	"tasknote",	//8 ä»»åŠ¡è®°äº‹
+	"leftskill",	//9 å·¦æ‰‹æŠ€èƒ½
+	"rightskill",	//10 å³æ‰‹æŠ€èƒ½
+	"commandline",	//11 å‘½ä»¤è¡Œ
+	"options",		//12 é€‰é¡¹
+	"statustool",	//13 çŠ¶æ€å·¥å…·æ¡
+	"normaltool",	//14 å¸¸ç”¨å·¥å…·æ¡
+	"chatroom",		//15 èŠå¤©çª—å£
+	"newsmessage",  //16 æ–°é—»çª—å£
+	"itemex",	//17 ç‰©å“
 	"tong",		//18
 	"rankdata", //19
 	"market",//20
@@ -185,7 +185,7 @@ int LuaOpenWindow(Lua_State * L)
 	{
 		switch(FindWindow(strWindow))
 		{
-		case 0:	//¶ÓÎé
+		case 0:	//é˜Ÿä¼
 			if (KUiTeamManage::GetIfVisible())
 				KUiTeamManage::CloseWindow();
 			else
@@ -193,87 +193,87 @@ int LuaOpenWindow(Lua_State * L)
 				KUiTeamManage::OpenWindow();
 			}
 			break;
-		case 1:	//µØÍ¼
+		case 1:	//åœ°å›¾
 			MapToggleStatus();
 			break;
-		case 2:	//×´Ì¬
+		case 2:	//çŠ¶æ€
 			if (KUiStatus::GetIfVisible())
 				KUiStatus::CloseWindow(false);
 			else
 				KUiStatus::OpenWindow();
 			break;
-		case 3:	//ÎïÆ·
+		case 3:	//ç‰©å“
 			if (KUiItem::GetIfVisible())
 				KUiItem::CloseWindow(false);
 			else
 				KUiItem::OpenWindow();
 			break;
-		case 4:	//¼¼ÄÜ
+		case 4:	//æŠ€èƒ½
 			if (KUiSkills::GetIfVisible())
 				KUiSkills::CloseWindow(false);
 			else
 				KUiSkills::OpenWindow();
 			break;
-		case 5:	//ÏµÍ³
+		case 5:	//ç³»ç»Ÿ
 			if (UiCloseWndsInGame(false) == false)
 				KUiESCDlg::OpenWindow();
 			break;
-			//Ñ¡Ïî
-		case 6: //ºÃÓÑ
+			//é€‰é¡¹
+		case 6: //å¥½å‹
 			if (KUiChatCentre::GetIfVisible())
 				KUiChatCentre::CloseWindow(false);
 			else
 				KUiChatCentre::OpenWindow(true);
 			break;
-		case 7: //ÏêÏ¸°ïÖú
+		case 7: //è¯¦ç»†å¸®åŠ©
 			if (KUiHelper2::GetIfVisible())
 				KUiHelper2::CloseWindow(false);
 			else
 				KUiHelper2::OpenWindow(true);
 			break;
-		case 8: //ÈÎÎñ¼ÇÊÂ
+		case 8: //ä»»åŠ¡è®°äº‹
 			if (KUiTaskNote::GetIfVisible())
 				KUiTaskNote::CloseWindow(false);
 			else
 				KUiTaskNote::OpenWindow();
 			break;
-		case 9: //×óÊÖ¼¼ÄÜ
+		case 9: //å·¦æ‰‹æŠ€èƒ½
 			if (KUiSkillTree::GetIfVisible())
 				KUiSkillTree::CloseWindow(false);
 			else
 				KUiSkillTree::OpenWindow(true);
 			break;
-		case 10: //ÓÒÊÖ¼¼ÄÜ
+		case 10: //å³æ‰‹æŠ€èƒ½
 			if (KUiSkillTree::GetIfVisible())
 				KUiSkillTree::CloseWindow(false);
 			else
 				KUiSkillTree::OpenWindow(false);
 			break;
-		case 12: //Ñ¡Ïî
+		case 12: //é€‰é¡¹
 			if (KUiOptions::GetIfVisible())
 				KUiOptions::CloseWindow();
 			else
 				KUiOptions::OpenWindow();
 			break;
-		case 16: //ÐÂÎÅ
+		case 16: //æ–°é—»
 			if (KUiNewsMessage::GetIfVisible())
 				KUiNewsMessage::CloseWindow();
 			else
 				KUiNewsMessage::OpenWindow();
 			break;
-		case 17: //µ÷ÊÔÓÃµÄ
+		case 17: //è°ƒè¯•ç”¨çš„
 			if (KUiExpandItem::GetIfVisible())
 				KUiExpandItem::CloseWindow();
 			else
 				KUiExpandItem::OpenWindow();
 			break;
-		case 18: //µ÷ÊÔÓÃµÄ
+		case 18: //è°ƒè¯•ç”¨çš„
 			if (KUiTongManager::GetIfVisible())
 				KUiTongManager::CloseWindow();
 			else
 				KUiTongManager::OpenWindow(NULL);
 			break;
-		case 19: //µ÷ÊÔÓÃµÄ
+		case 19: //è°ƒè¯•ç”¨çš„
 			if (Wnd_GetFocusWnd() == NULL)
 			{
 			if (KUiRankData::GetIfVisible())
@@ -282,10 +282,10 @@ int LuaOpenWindow(Lua_State * L)
 				KUiRankData::OpenWindow();
 			}
 			break;
-		case 20: //µ÷ÊÔÓÃµÄ
+		case 20: //è°ƒè¯•ç”¨çš„
 			g_pCoreShell->OperationRequest(GOI_SUPERSHOP, 0, 0);
 			break;
-		case 21: //µ÷ÊÔÓÃµÄ
+		case 21: //è°ƒè¯•ç”¨çš„
 			MapSetMode(MINIMAP_M_BRIEF_PIC_BROWSEEX);
 			break;
 		}
@@ -299,16 +299,16 @@ KWndWindow* FindWndWindow(const char* szname)
 	KWndWindow* pWin = NULL;
 	switch(FindWindow(szname))
 	{
-	case 1:		//1 µØÍ¼
+	case 1:		//1 åœ°å›¾
 		pWin = KUiMiniMap::GetSelf();
 		break;
-	case 13:	//13 ×´Ì¬¹¤¾ßÌõ
+	case 13:	//13 çŠ¶æ€å·¥å…·æ¡
 		pWin = KUiHeaderControlBar::GetSelf();
 		break;
-	case 14:	//14 ³£ÓÃ¹¤¾ßÌõ
+	case 14:	//14 å¸¸ç”¨å·¥å…·æ¡
 		pWin = KUiToolsControlBar::GetSelf();
 		break;
-	case 15:	//15 ÁÄÌì´°¿Ú
+	case 15:	//15 èŠå¤©çª—å£
 		pWin = KUiMsgCentrePad::GetSelf();
 		break;
 	}
@@ -385,7 +385,7 @@ int LuaFocusWindow(Lua_State * L)
 	{
 		switch(FindWindow(strWindow))
 		{
-		case 11:	// ÃüÁîÐÐ
+		case 11:	// å‘½ä»¤è¡Œ
 			KUiPlayerBar::InputNameMsg(false, "", true);
 			break;
 		}
@@ -425,24 +425,24 @@ int LuaShortcutUseItem(Lua_State * L)
 
 	int nIndex = (int)Lua_ValueToNumber(L, 1);
 
-	//¿ì½ÝÎïÆ·µÄÊ¹ÓÃ
+	//å¿«æ·ç‰©å“çš„ä½¿ç”¨
 	KUiPlayerBar::OnUseItem(nIndex);
 
 	return 0;
 }
 
-//×´Ì¬ÁÐ±í
+//çŠ¶æ€åˆ—è¡¨
 char* l_StatusList[] =
 {
-	"run",		//0 ÅÜ²½
-	"sit",		//1 ´ò×ø
-	"trade",	//2 ½»Ò×
+	"run",		//0 è·‘æ­¥
+	"sit",		//1 æ‰“å
+	"trade",	//2 äº¤æ˜“
 	"pk",		//3 PK
 	"fastpk",		//4 PK
-	"horse",	//5 Âí
-	"showplayername",	//6 ÏÔÊ¾Íæ¼ÒÃû×Ö
-	"showplayerlife",	//7 ÏÔÊ¾Íæ¼ÒÉúÃü
-	"showplayernumber",	//8 ½çÃæÏÔÊ¾Íæ¼ÒÊý×Ö
+	"horse",	//5 é©¬
+	"showplayername",	//6 æ˜¾ç¤ºçŽ©å®¶åå­—
+	"showplayerlife",	//7 æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
+	"showplayernumber",	//8 ç•Œé¢æ˜¾ç¤ºçŽ©å®¶æ•°å­—
     "showobjname", //9 hien ten obj duoi dat
 	"chatroom", //10
 	"setautostate",//11
@@ -471,15 +471,15 @@ int LuaSwitchStatus(Lua_State * L)
 	{
 		switch(FindStatus(strStatus))
 		{
-		case 0:		//ÅÜ²½
+		case 0:		//è·‘æ­¥
 			if (g_pCoreShell)
 				g_pCoreShell->OperationRequest(GOI_PLAYER_ACTION, PA_RUN, 0);
 			break;
-		case 1:		//´ò×ø
+		case 1:		//æ‰“å
 			if (g_pCoreShell)
 				g_pCoreShell->OperationRequest(GOI_PLAYER_ACTION, PA_SIT, 0);
 			break;
-		case 2:	//½»Ò×
+		case 2:	//äº¤æ˜“
 		{
 			if (g_pCoreShell)
 				g_pCoreShell->OperationRequest(GOI_TRADE_WILLING, 0, true);
@@ -497,11 +497,11 @@ int LuaSwitchStatus(Lua_State * L)
 				KUiToolsControlBar::SwitchFastPK();
 			}
 			break;
-		case 5: //Âí	
+		case 5: //é©¬	
 			if (g_pCoreShell)
 				g_pCoreShell->OperationRequest(GOI_PLAYER_ACTION, PA_RIDE, 0);
 			break;
-		case 6:	//ÏÔÊ¾Íæ¼ÒÃû×Ö
+		case 6:	//æ˜¾ç¤ºçŽ©å®¶åå­—
 			if (g_pCoreShell)
 			{
 				g_pCoreShell->OperationRequest(GOI_SHOW_PLAYERS_NAME, 0, 
@@ -509,35 +509,35 @@ int LuaSwitchStatus(Lua_State * L)
 			}
 			break;
 						
-		case 7:	//ÏÔÊ¾Íæ¼ÒÉúÃü
+		case 7:	//æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
 			if (g_pCoreShell)
 			{
 				g_pCoreShell->OperationRequest(GOI_SHOW_PLAYERS_LIFE, 0, 
 					!g_pCoreShell->GetGameData(GDI_SHOW_PLAYERS_LIFE, 0, 0));
 			}
 			break;
-		case 8: //½çÃæÏÔÊ¾Íæ¼ÒÊý×Ö
+		case 8: //ç•Œé¢æ˜¾ç¤ºçŽ©å®¶æ•°å­—
 			Player_Life::m_bText = !Player_Life::m_bText;
 			Player_Mana::m_bText = !Player_Mana::m_bText;
 			Player_Stamina::m_bText = !Player_Stamina::m_bText;
 			Player_Exp::m_bText = !Player_Exp::m_bText;
 			break;
-        case 9:    //ÏÔÊ¾Íæ¼ÒÉúÃü
+        case 9:    //æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
             if (g_pCoreShell)
 				g_pCoreShell->OperationRequest(GOI_SHOW_OBJ_NAME, 0, 
 				!g_pCoreShell->GetGameData(GDI_SHOW_OBJ_NAME, 0, 0));
             break;
-       case 10:    //ÏÔÊ¾Íæ¼ÒÉúÃü
+       case 10:    //æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
 			if (KUiChatRoom::GetIfVisible())
 				KUiChatRoom::CloseWindow(false);
 			else
 				KUiChatRoom::OpenWindow();
 			break;
-        case 11:    //ÏÔÊ¾Íæ¼ÒÉúÃü
+        case 11:    //æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
 			if (g_pCoreShell)
 				g_pCoreShell->PAIOperation(GPI_SWITCH_ACTIVE, NULL, NULL, NULL);
 			break;
-        case 12:    //ÏÔÊ¾Íæ¼ÒÉúÃü
+        case 12:    //æ˜¾ç¤ºçŽ©å®¶ç”Ÿå‘½
 			if (KUiAutoPlay::GetIfVisible())
 				KUiAutoPlay::CloseWindow(false);
 			else
@@ -932,7 +932,7 @@ int LuaRemoveCommand(Lua_State * L)
 		cs.szCommand[31] = 0;
 		KShortcutKeyCentre::RemoveCommand(KShortcutKeyCentre::FindCommand(cs.szCommand));
 	}
-	else	//Çå³ýËùÓÐÃüÁî
+	else	//æ¸…é™¤æ‰€æœ‰å‘½ä»¤
 	{
 		KShortcutKeyCentre::RemoveCommandAll();
 	}
@@ -1170,7 +1170,7 @@ int LuaChat(Lua_State * L)
 
 	return 0;
 }
-#define GAME_CONFIG_STRING_INI "\\Ui\\ÔÓ»â.ini"
+#define GAME_CONFIG_STRING_INI "\\Ui\\æ‚çƒ©.ini"
 int LuaAutoReply(Lua_State * L)
 {
 	int nParamNum = Lua_GetTopIndex(L);
@@ -1262,7 +1262,7 @@ int LuaSayPhrase(Lua_State * L)
 	if (nLen > 0)
 	{
 		DWORD nChannelID = -1;
-		//¸½½üÍæ¼Ò
+		//é™„è¿‘çŽ©å®¶
 		int nChannelDataCount = KUiMsgCentrePad::GetChannelCount();
 		int n;
 		for (n = 0; n < nChannelDataCount; n++)
@@ -1548,7 +1548,7 @@ int Mouse_Action(Lua_State * L)
 	if (g_pCoreShell == NULL)
 		return 0;
 
-	if (g_pCoreShell->ThrowAwayItem())	//ÏÈÈÓµôÊÖÀïµÄÎïÆ·
+	if (g_pCoreShell->ThrowAwayItem())	//å…ˆæ‰”æŽ‰æ‰‹é‡Œçš„ç‰©å“
 		return 0;
 	if (g_pCoreShell->CheckMouse())
 		return 0;
@@ -1564,8 +1564,8 @@ int Mouse_Action(Lua_State * L)
 			memset(&immedItemSkillInfo, 0, sizeof(KUiPlayerImmedItemSkill));
 			g_pCoreShell->GetGameData(GDI_PLAYER_IMMED_ITEMSKILL, (int)&immedItemSkillInfo, 0);
 
-			if (!g_pCoreShell->LockSomeoneUseSkill(SelectPlayer.nIndex, immedItemSkillInfo.IMmediaSkill[0].uId))	//Ëø¶¨Ê§°Ü
-				g_pCoreShell->LockSomeoneAction(0);	//½âËø
+			if (!g_pCoreShell->LockSomeoneUseSkill(SelectPlayer.nIndex, immedItemSkillInfo.IMmediaSkill[0].uId))	//é”å®šå¤±è´¥
+				g_pCoreShell->LockSomeoneAction(0);	//è§£é”
 		}
 		else if (nRelation == relation_dialog)
 		{
@@ -1601,7 +1601,7 @@ int Mouse_Force0(Lua_State * L)
 	if (g_pCoreShell == NULL)
 		return 0;
 
-	if (g_pCoreShell->ThrowAwayItem())	//ÏÈÈÓµôÊÖÀïµÄÎïÆ·
+	if (g_pCoreShell->ThrowAwayItem())	//å…ˆæ‰”æŽ‰æ‰‹é‡Œçš„ç‰©å“
 		return 0;
 	if (g_pCoreShell->CheckMouse())
 		return 0;
@@ -1622,7 +1622,7 @@ int Mouse_Force1(Lua_State * L)
 	if (g_pCoreShell == NULL)
 		return 0;
 
-	if (g_pCoreShell->ThrowAwayItem())	//ÏÈÈÓµôÊÖÀïµÄÎïÆ·
+	if (g_pCoreShell->ThrowAwayItem())	//å…ˆæ‰”æŽ‰æ‰‹é‡Œçš„ç‰©å“
 		return 0;
 	if (g_pCoreShell->CheckMouse())
 		return 0;
@@ -2394,7 +2394,7 @@ BOOL KShortcutKeyCentre::LoadPrivateSetting(KIniFile* pFile)
 	if (pFileDefault)
 		pFileDefault->GetInteger("ShortcutSet", "Version", 0, &nVersionDefault);
 
-	if (nVersion < nVersionDefault)	//Ã»ÓÐÏµÍ³È±Ê¡°æ±¾¸ßµÄË½ÈË°æ±¾²»¼ÓÔØ
+	if (nVersion < nVersionDefault)	//æ²¡æœ‰ç³»ç»Ÿç¼ºçœç‰ˆæœ¬é«˜çš„ç§äººç‰ˆæœ¬ä¸åŠ è½½
 		return FALSE;
 
 	ClearScript();
@@ -2644,7 +2644,7 @@ size_t Compile(const char* src, char* dst, size_t dstlen)
 			{
 				int nParamCount = cntToken - 1;
 				if (iFun->second.nParamNum - nParamCount > 0)
-				{	//²¹Ä¬ÈÏ²ÎÊý
+				{	//è¡¥é»˜è®¤å‚æ•°
 					_ASSERT(iFun->second.strDefaultParam.size() == iFun->second.nParamNum);
 					PARAMLIST::iterator iP = iFun->second.strDefaultParam.begin();
 					for (int nSkip = nParamCount; nSkip > 0; nSkip--)
@@ -2685,17 +2685,17 @@ BOOL KShortcutKeyCentre::TranslateExcuteScript(const char * ScriptCommand)
 {
 	if (ScriptCommand && ScriptCommand[0] != 0)
 	{
-		int nIndex = FindCommand(ScriptCommand);	//Ê×ÏÈÑ°ÕÒ¿ì½Ý¼ü´øµÄÃû³Æ
+		int nIndex = FindCommand(ScriptCommand);	//é¦–å…ˆå¯»æ‰¾å¿«æ·é”®å¸¦çš„åç§°
 		if (nIndex >= 0)
 		{
 			if (ms_pCommands[nIndex].szDo[0] != 0)
 				return ExcuteScript(ms_pCommands[nIndex].szDo);
 		}
-		else//·­ÒëÍ¨³£Óï·¨ÎªÑÏ¸ñÓï·¨
+		else//ç¿»è¯‘é€šå¸¸è¯­æ³•ä¸ºä¸¥æ ¼è¯­æ³•
 		{
 			char szTrueCommand[MAX_MESSAGE_LENGTH];
 			szTrueCommand[0] = 0;
-			//Óï·¨×ª»»ºÍº¯ÊýÃû×ª»»
+			//è¯­æ³•è½¬æ¢å’Œå‡½æ•°åè½¬æ¢
 			int nLen = Compile(ScriptCommand, szTrueCommand, 511);
 			szTrueCommand[nLen] = 0;
 			return ExcuteScript(szTrueCommand);
@@ -2734,7 +2734,7 @@ BOOL KShortcutKeyCentre::ExcuteHWNDScript(const char * ScriptCommand)
 	return FALSE;
 }
 
-int KShortcutKeyCentre::AddCommand(COMMAND_SETTING* pAdd)	//¸´ÖÆAddÊý¾Ý²¢Ôö¼Óµ½CommandsÖÐ£¬Èç¹ûuKey!=0Ôò¸²¸ÇÔ­uKey£¬·ñÔòÈçszCommand[0]!=0Ôò¸²¸ÇszCommandÏàÍ¬Õß
+int KShortcutKeyCentre::AddCommand(COMMAND_SETTING* pAdd)	//å¤åˆ¶Addæ•°æ®å¹¶å¢žåŠ åˆ°Commandsä¸­ï¼Œå¦‚æžœuKey!=0åˆ™è¦†ç›–åŽŸuKeyï¼Œå¦åˆ™å¦‚szCommand[0]!=0åˆ™è¦†ç›–szCommandç›¸åŒè€…
 {
 	int nIndex = -1;
 	if (pAdd == NULL)
@@ -2774,7 +2774,7 @@ int KShortcutKeyCentre::AddCommand(COMMAND_SETTING* pAdd)	//¸´ÖÆAddÊý¾Ý²¢Ôö¼Óµ½C
 	return nIndex;
 }
 
-int	KShortcutKeyCentre::RemoveCommand(int nIndex)	//·µ»ØÊ£ÓàCommandµÄ×ÜÊý
+int	KShortcutKeyCentre::RemoveCommand(int nIndex)	//è¿”å›žå‰©ä½™Commandçš„æ€»æ•°
 {
 	if (ms_pCommands && nIndex >= 0 && nIndex < ms_nCommands)
 	{

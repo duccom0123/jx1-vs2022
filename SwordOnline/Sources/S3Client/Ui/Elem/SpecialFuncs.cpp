@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ÌØ±ğ¹¦ÄÜµÄÒ»Ğ©»ù´¡º¯Êı
+//	ç‰¹åˆ«åŠŸèƒ½çš„ä¸€äº›åŸºç¡€å‡½æ•°
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-7-26
@@ -16,9 +16,9 @@ extern iRepresentShell*	g_pRepresentShell;
 #define	SCREEN_PIC_SAVE_PATH	"\\UserData\\PrintScreen\\"
 static char szScrPicPath[MAX_PATH] = "";
 
-//Êä³ö°üº¬tab·Ö¸ñµÄ×Ö·û´®£¬¿ÉÒÔÊÇ¶àĞĞ£¬·µ»ØÖµ±íÊ¾Êä³öÄÚÈİ¹²¼¸ĞĞ
-//²»Ö§³Ö×Ö·û´®´®ÖĞµÄµ¥ĞĞ×Ö·û¿í¶È£¬³¬³öÏŞ¶¨ĞĞ¿íµÄÇé¿ö
-//nLineWidth µÄµ¥Î»ÊÇÆÁÄ»ÏñËØµã
+//è¾“å‡ºåŒ…å«tabåˆ†æ ¼çš„å­—ç¬¦ä¸²ï¼Œå¯ä»¥æ˜¯å¤šè¡Œï¼Œè¿”å›å€¼è¡¨ç¤ºè¾“å‡ºå†…å®¹å…±å‡ è¡Œ
+//ä¸æ”¯æŒå­—ç¬¦ä¸²ä¸²ä¸­çš„å•è¡Œå­—ç¬¦å®½åº¦ï¼Œè¶…å‡ºé™å®šè¡Œå®½çš„æƒ…å†µ
+//nLineWidth çš„å•ä½æ˜¯å±å¹•åƒç´ ç‚¹
 int OutputTabSplitText(const char* pBuffer, int nCount,
 			int nLineWidth, int nFontId,
 			KOutputTextParam* pParam)
@@ -42,7 +42,7 @@ int OutputTabSplitText(const char* pBuffer, int nCount,
 		
 		int nLen;
 
-		//====Êä³ötabÇ°µÄ²¿·Ö£¬¿¿×ó¶ÔÆë===
+		//====è¾“å‡ºtabå‰çš„éƒ¨åˆ†ï¼Œé å·¦å¯¹é½===
 		if (nTabPos >= 0)
 			nLen = nTabPos - nCurrentPos;
 		else if (nLineEndPos >= 0)
@@ -52,7 +52,7 @@ int OutputTabSplitText(const char* pBuffer, int nCount,
 
 		g_pRepresentShell->OutputRichText(nFontId, pParam, pBuffer + nCurrentPos, nLen);
 
-		//====Êä³ötabºóµÄ²¿·Ö£¬¿¿ÓÒ¶ÔÆë===
+		//====è¾“å‡ºtabåçš„éƒ¨åˆ†ï¼Œé å³å¯¹é½===
 		nCurrentPos += nLen;
 		if (nTabPos >= 0)
 		{
@@ -85,7 +85,7 @@ bool SetScrPicPath(const char* szPath)
 	{
 		if(!SHGetSpecialFolderPath(NULL, szScrPicPath, CSIDL_DESKTOPDIRECTORY , false))
 			return false;
-		strcat(szScrPicPath,"\\½£ÏÀ½ØÍ¼\\");
+		strcat(szScrPicPath,"\\å‰‘ä¾ æˆªå›¾\\");
 	}
 	else
 	{
@@ -103,7 +103,7 @@ bool SetScrPicPath(const char* szPath)
 	return true;
 }
 
-//¸ù¾İÊ±¼ä¹¹Ôì½ØÆÁÎÄ¼şÃû
+//æ ¹æ®æ—¶é—´æ„é€ æˆªå±æ–‡ä»¶å
 bool GetAPrintScreenFileName(char *buf, int nBufLen)
 {
 	if(nBufLen < 128)
@@ -122,7 +122,7 @@ void SaveScreenToFile(ScreenFileType eType, unsigned int nQuality)
 	if(!szScrPicPath[0] && !SetScrPicPath(NULL))
 		return;
 
-	// ×Ö·û´®³¤¶È²»ÄÜĞ¡ÓÚ128
+	// å­—ç¬¦ä¸²é•¿åº¦ä¸èƒ½å°äº128
 	char	szFile[256];
 	int		nLen;
 	nLen = sprintf(szFile, "%s", szScrPicPath);	
@@ -142,7 +142,7 @@ void SaveScreenToFile(ScreenFileType eType, unsigned int nQuality)
 		Msg.byPriority = 0;
 		Msg.eType = SMT_NORMAL;
 		Msg.uReservedForUi = 0;
-		sprintf(Msg.szMessage, "File l­u t¹i %s", szFile);
+		sprintf(Msg.szMessage, "File lï¿½u tï¿½i %s", szFile);
 		KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 	}
 }

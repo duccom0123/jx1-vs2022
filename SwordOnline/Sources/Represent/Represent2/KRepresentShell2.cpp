@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//  ±íÏÖÄ£¿éµÄ¶ÔÍâ½Ó¿ÚµÄ¶şÎ¬°æ±¾ÊµÏÖ¡£
+//  è¡¨ç°æ¨¡å—çš„å¯¹å¤–æ¥å£çš„äºŒç»´ç‰ˆæœ¬å®ç°ã€‚
 //	Copyright : Kingsoft 2002
 //	Author	:   Spe(huyi)
 //	CreateTime:	2002-11-11
@@ -16,20 +16,20 @@
 #include <assert.h>
 
 
-//¸ù¾İSPRÍ·Ö¸Õë£¬»ñÈ¡µ÷É«°æ»º³åÇøÖ¸Õë
+//æ ¹æ®SPRå¤´æŒ‡é’ˆï¼Œè·å–è°ƒè‰²ç‰ˆç¼“å†²åŒºæŒ‡é’ˆ
 #define GET_SPR_PALETTE(pHeader)	( ((char*)pHeader) + sizeof(SPRHEAD))
 
-//=========´´½¨Ò»¸öiRepresentShell½Ó¿ÚµÄÊµÀı===============
+//=========åˆ›å»ºä¸€ä¸ªiRepresentShellæ¥å£çš„å®ä¾‹===============
 extern "C" __declspec(dllexport)
 iRepresentShell* CreateRepresentShell()
 {
 	return (new KRepresentShell2);
 }
 
-IInlinePicEngineSink* g_pIInlinePicSinkRP = NULL;	//Ç¶ÈëÊ½Í¼Æ¬µÄ´¦Àí½Ó¿Ú[wxb 2003-6-20]
+IInlinePicEngineSink* g_pIInlinePicSinkRP = NULL;	//åµŒå…¥å¼å›¾ç‰‡çš„å¤„ç†æ¥å£[wxb 2003-6-20]
 HRESULT KRepresentShell2::AdviseRepresent(IInlinePicEngineSink* pSink)
 {
-	assert(NULL == g_pIInlinePicSinkRP);	//Ò»°ã²»»á¹Ò½ÓÁ½´Î
+	assert(NULL == g_pIInlinePicSinkRP);	//ä¸€èˆ¬ä¸ä¼šæŒ‚æ¥ä¸¤æ¬¡
 	g_pIInlinePicSinkRP = pSink;
 	return S_OK;
 }
@@ -64,7 +64,7 @@ KRepresentShell2::~KRepresentShell2()
 	}
 }
 
-//ÉèÖÃÆ«É«ÁĞ±í
+//è®¾ç½®åè‰²åˆ—è¡¨
 unsigned int KRepresentShell2::SetAdjustColorList(unsigned int* puColorList, unsigned int uCount)
 {
 	return m_ImageStore.SetAdjustColorList(puColorList, uCount);
@@ -80,7 +80,7 @@ bool KRepresentShell2::Create(int nWidth, int nHeight, bool bFullScreen)
 		m_Canvas.Init(nWidth, nHeight);
 		m_ImageStore.Init();
 		RIO_Set16BitImageFormat(m_DirectDraw.GetRGBBitMask16() == RGB_565);
-		// ³õÊ¼»¯Gdi+
+		// åˆå§‹åŒ–Gdi+
 		InitGdiplus();
 		return true;
 	}
@@ -112,7 +112,7 @@ bool KRepresentShell2::CreateAFont(const char* pszFontFile, CHARACTER_CODE_SET C
 
 	if (pszFontFile[0] == '#')
 	{
-		//¹²ÏíÒÑ¾­´ò¿ªµÄ×Ö¿â
+		//å…±äº«å·²ç»æ‰“å¼€çš„å­—åº“
 		int nShareWithId = atoi(pszFontFile + 1);
 		for (int j = 0; j < RS2_MAX_FONT_ITEM_NUM; j++)
 		{
@@ -516,10 +516,10 @@ void KRepresentShell2::DrawPrimitives(int nPrimitiveCount, KRepresentUnit* pPrim
 				}
 				int	Color = g_RGB(pTemp->Color.Color_b.r,
 					pTemp->Color.Color_b.g, pTemp->Color.Color_b.b);
-				m_Canvas.DrawLine(nX1, nY1, nX2, nY1, Color);	//ÉÏ±ß
-				m_Canvas.DrawLine(nX1, nY2, nX2, nY2, Color);	//ÏÂ±ß
-				m_Canvas.DrawLine(nX1, nY1, nX1, nY2, Color);	//×ó±ß
-				m_Canvas.DrawLine(nX2, nY1, nX2, nY2, Color);	//ÓÒ±ß
+				m_Canvas.DrawLine(nX1, nY1, nX2, nY1, Color);	//ä¸Šè¾¹
+				m_Canvas.DrawLine(nX1, nY2, nX2, nY2, Color);	//ä¸‹è¾¹
+				m_Canvas.DrawLine(nX1, nY1, nX1, nY2, Color);	//å·¦è¾¹
+				m_Canvas.DrawLine(nX2, nY1, nX2, nY2, Color);	//å³è¾¹
 			}
 		}
 		break;
@@ -668,7 +668,7 @@ void KRepresentShell2::DrawPrimitivesOnImage(int nPrimitiveCount, KRepresentUnit
 }
 
 //##Documentation
-//## Çå³ıÍ¼ĞÎÊı¾İ
+//## æ¸…é™¤å›¾å½¢æ•°æ®
 void KRepresentShell2::ClearImageData(const char* pszImage, unsigned int uImage, short nImagePosition)
 {
 	void* pFrame;
@@ -727,7 +727,7 @@ void* KRepresentShell2::GetBitmapDataBuffer(const char* pszImage, KBitmapDataBuf
 	return pBuffer;
 }
 
-//##ÊÍ·Å¶Ô(Í¨¹ıGetBitmapDataBufferµ÷ÓÃ»ñÈ¡µÃµÄ)Í¼ĞÎÏñµãÊı¾İ»º³åÇøµÄ¿ØÖÆ
+//##é‡Šæ”¾å¯¹(é€šè¿‡GetBitmapDataBufferè°ƒç”¨è·å–å¾—çš„)å›¾å½¢åƒç‚¹æ•°æ®ç¼“å†²åŒºçš„æ§åˆ¶
 void KRepresentShell2::ReleaseBitmapDataBuffer(const char* pszImage, void* pBuffer)
 {
 	unsigned int uImage = 0;
@@ -787,7 +787,7 @@ void KRepresentShell2::OutputText(int nFontId, const char* psText, int nCount, i
 
 //##ModelId=3DB655B2000E
 //##Documentation
-//## Êä³öÎÄ×Ö¡£
+//## è¾“å‡ºæ–‡å­—ã€‚
 int KRepresentShell2::OutputRichText(int nFontId, KOutputTextParam* pParam, 
 		const char* psText, int nCount, int nLineWidth)
 {
@@ -819,7 +819,7 @@ int KRepresentShell2::OutputRichText(int nFontId, KOutputTextParam* pParam,
 	return 0;
 }
 
-//## ·µ»ØÖ¸¶¨×ø±êÔÚ×Ö·û´®ÖĞ×î½üµÄ×Ö·ûÆ«ÒÆ
+//## è¿”å›æŒ‡å®šåæ ‡åœ¨å­—ç¬¦ä¸²ä¸­æœ€è¿‘çš„å­—ç¬¦åç§»
 int KRepresentShell2::LocateRichText(int nX, int nY,
 						int nFontId, KOutputTextParam* pParam, 
 						const char* psText, int nCount, int nLineWidth)
@@ -955,7 +955,7 @@ void KRepresentShell2::RepresentEnd()
 	m_Canvas.UpdateScreen();
 }
 
-//ÊÓÍ¼/»æÍ¼Éè±¸×ø±ê ×ª»¯Îª¿Õ¼ä×ø±ê
+//è§†å›¾/ç»˜å›¾è®¾å¤‡åæ ‡ è½¬åŒ–ä¸ºç©ºé—´åæ ‡
 void KRepresentShell2::ViewPortCoordToSpaceCoord(int& nX,	int& nY, int  nZ)
 {
 	nX = nX + m_nLeft;
@@ -971,7 +971,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName)
 
 	int nPicWidth, nPicHeight, nDesktopWidth, nDesktopHeight, nPicOffX, nPicOffY;
 	{
-		//È«ÆÁÄ£Ê½²ÎÊıÉè¶¨
+		//å…¨å±æ¨¡å¼å‚æ•°è®¾å®š
 		nPicOffX = 0;
 		nPicOffY = 0;
 		nDesktopWidth = nPicWidth = m_Canvas.m_nWidth;
@@ -981,14 +981,14 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName)
 	WORD *pSrc;
 	BYTE *pDes, *pTemp;
 
-	// ·ÖÅär8g8b8»º³åÇø	
+	// åˆ†é…r8g8b8ç¼“å†²åŒº	
 	pTemp = pDes = new BYTE[nPicWidth * nPicHeight * 3];
 	if(!pDes)
 		return false;
 
 	pSrc = (WORD*)m_Canvas.m_pCanvas;
 	
-	// ¿½±´ÆÁÄ»Êı¾İµ½»º³åÇø
+	// æ‹·è´å±å¹•æ•°æ®åˆ°ç¼“å†²åŒº
 	for(int i=0; i<nPicHeight; i++)
 	{
 		for(int j=0; j<nPicWidth; j++)
@@ -1010,7 +1010,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName)
 		}
 	}
 
-	// Éú³É24Î»bmpÎÄ¼ş
+	// ç”Ÿæˆ24ä½bmpæ–‡ä»¶
 	if(!KBmpFile24::SaveBuffer24((char*)pszName, pTemp, nPicWidth*3, nPicWidth, nPicHeight))
 	{
 		delete[] pTemp;
@@ -1031,7 +1031,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	int nPicWidth, nPicHeight, nDesktopWidth, nDesktopHeight, nPicOffX, nPicOffY;
 	if(m_DirectDraw.GetScreenMode() == WINDOWMODE)
 	{
-		// ´°¿ÚÄ£Ê½²ÎÊıÉè¶¨
+		// çª—å£æ¨¡å¼å‚æ•°è®¾å®š
 		RECT rect;
 		POINT ptLT, ptRB;
 		HWND hWnd = g_GetMainHWnd();
@@ -1044,7 +1044,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 		nDesktopWidth = m_DirectDraw.GetScreenWidth();
 		nDesktopHeight = m_DirectDraw.GetScreenHeight();
 
-		// Èç¹û´°¿Ú¿Í»§Çø³¬³öÆÁÄ»Ôò·µ»Ø
+		// å¦‚æœçª—å£å®¢æˆ·åŒºè¶…å‡ºå±å¹•åˆ™è¿”å›
 		if(ptLT.x >= nDesktopWidth || ptLT.y >= nDesktopHeight || ptRB.x <= 0 || ptRB.y <= 0)
 			return false;
 		if(ptLT.x < 0)
@@ -1063,7 +1063,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	}
 	else
 	{
-		//È«ÆÁÄ£Ê½²ÎÊıÉè¶¨
+		//å…¨å±æ¨¡å¼å‚æ•°è®¾å®š
 		nPicOffX = 0;
 		nPicOffY = 0;
 		nDesktopWidth = nPicWidth = m_Canvas.GetWidth();
@@ -1073,7 +1073,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	WORD *pSrc;
 	BYTE *pDes, *pTemp;
 
-	// ·ÖÅär8g8b8»º³åÇø	
+	// åˆ†é…r8g8b8ç¼“å†²åŒº	
 	pTemp = pDes = new BYTE[nPicWidth * nPicHeight * 3];
 	if(!pDes)
 		return false;
@@ -1087,7 +1087,7 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	pSrc += nPicOffY * nPitch / 2 + nPicOffX;
 	int nLineAdd = nPitch / 2 - nPicWidth;
 	
-	// ¿½±´ÆÁÄ»Êı¾İµ½»º³åÇø
+	// æ‹·è´å±å¹•æ•°æ®åˆ°ç¼“å†²åŒº
 	for(int i=0; i<nPicHeight; i++)
 	{
 		for(int j=0; j<nPicWidth; j++)
@@ -1114,10 +1114,10 @@ bool KRepresentShell2::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 
 	BOOL bRet;
 	if(eType == SCRFILETYPE_BMP)
-		// ±£´æ24Î»bmpÎÄ¼ş
+		// ä¿å­˜24ä½bmpæ–‡ä»¶
 		bRet = KBmpFile24::SaveBuffer24((char*)pszName, pTemp, nPicWidth*3, nPicWidth, nPicHeight);
 	else
-		// ±£´æ24Î»jpgÎÄ¼ş
+		// ä¿å­˜24ä½jpgæ–‡ä»¶
 		bRet = SaveBufferToJpgFile24((char*)pszName, pTemp, nPicWidth*3, nPicWidth, nPicHeight, nQuality);
 	if(!bRet)
 	{

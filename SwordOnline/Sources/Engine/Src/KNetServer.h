@@ -31,22 +31,22 @@ enum LOGSTATUS
 
 typedef struct {
                 char   id[4];//"PACK"
-				int    CountNum;//·şÎñÆ÷Ñ­»·Êı
-				WORD   isCompressed;//0 ²»Ñ¹Ëõ 1£ºÑ¹Ëõ
-				WORD   DataNum;//Êı¾İ¿éÊıÄ¿
-				WORD   dwSize;//Õû¸ö¿ÉÓÃÊı¾İ°ü´óĞ¡£¨²»°üº¬DataÒÔÇ°µÄÊı¾İÍ·£©
-                WORD   dwCompSize;//Ñ¹Ëõºó¿ÉÓÃÊı¾İ°ü´óĞ¡£¬²»Ñ¹ËõÊ±´ËÖµÓëdwSizeÏàÍ¬ 
-				WORD   CipherVerify;//ÃÜÔ¿Ğ£ÑéºÍ
+				int    CountNum;//æœåŠ¡å™¨å¾ªç¯æ•°
+				WORD   isCompressed;//0 ä¸å‹ç¼© 1ï¼šå‹ç¼©
+				WORD   DataNum;//æ•°æ®å—æ•°ç›®
+				WORD   dwSize;//æ•´ä¸ªå¯ç”¨æ•°æ®åŒ…å¤§å°ï¼ˆä¸åŒ…å«Dataä»¥å‰çš„æ•°æ®å¤´ï¼‰
+                WORD   dwCompSize;//å‹ç¼©åå¯ç”¨æ•°æ®åŒ…å¤§å°ï¼Œä¸å‹ç¼©æ—¶æ­¤å€¼ä¸dwSizeç›¸åŒ 
+				WORD   CipherVerify;//å¯†é’¥æ ¡éªŒå’Œ
 				WORD   wResered;
-				BYTE   Data[SEND_BUFFER_SIZE];//Êı¾İÇø
+				BYTE   Data[SEND_BUFFER_SIZE];//æ•°æ®åŒº
         		}SEND_DATA;
 
 typedef struct {
                 SOCKET          Socket;
 				struct sockaddr_in m_ClientAddr;
-				int             m_nEnterLoopRate;//½øÈëÊ±µÄÏµÍ³¼ÆÊı    
-                int             LogStatus;//0 Î´Á¬½Ó 1Á¬½Ó 2ÉêÇë¼ÓÈë 3ÒÑ¼ÓÈë 4Òì³£¶ÏÏß
-	            int             IsolateNum;    //·¢ËÍÊ§°Ü´ÎÊı
+				int             m_nEnterLoopRate;//è¿›å…¥æ—¶çš„ç³»ç»Ÿè®¡æ•°    
+                int             LogStatus;//0 æœªè¿æ¥ 1è¿æ¥ 2ç”³è¯·åŠ å…¥ 3å·²åŠ å…¥ 4å¼‚å¸¸æ–­çº¿
+	            int             IsolateNum;    //å‘é€å¤±è´¥æ¬¡æ•°
 				BYTE            RecieveBuffer[RECIEVE_BUFFER_SIZE];
 				int             LastRecvSize;
 				BYTE            RecieveTemp[8*RECIEVE_BUFFER_SIZE];
@@ -57,10 +57,10 @@ typedef struct {
                 SEND_DATA       SendBuffer; 
                 SEND_DATA       SendTemp; 
                 SEND_DATA       SendDest;   
-                WORD            CurOffset;//µ±Ç°Êı¾İ¿éÆ«ÒÆ
+                WORD            CurOffset;//å½“å‰æ•°æ®å—åç§»
 				BYTE            Cipher[16];
 				BYTE            NextCipher[16];
-				WORD            CipherVerify;//ÃÜÔ¿Ğ£ÑéºÍ
+				WORD            CipherVerify;//å¯†é’¥æ ¡éªŒå’Œ
          		}CLIENT_DATA;
 //---------------------------------------------------------------------------
 
@@ -68,8 +68,8 @@ class ENGINE_API KNetServer
 {
 private:
 	struct sockaddr_in m_HostAddr;
-	int                n_ClientNum;   //ÒÑ¾­Á¬½ÓµÄ¿Í»§¶ËÊıÄ¿
-    timeval            tval;          //¼ì²â¼ä¸ô (Îª1ºÁÃë)
+	int                n_ClientNum;   //å·²ç»è¿æ¥çš„å®¢æˆ·ç«¯æ•°ç›®
+    timeval            tval;          //æ£€æµ‹é—´éš” (ä¸º1æ¯«ç§’)
     void*	           pCodec;
 
 //
@@ -79,9 +79,9 @@ public:
     SOCKET m_Socket;
     CLIENT_DATA Client_data_array[MAX_CLIENT_NUMBER];
 //for debug only    
-	DWORD  n_SendSize;   //×Ü¹²·¢ËÍµÄÊı¾İÁ¿
-    WORD   n_SendRecord[16];//×î½ü16´Î·¢ËÍµÄÊı¾İÁ¿
-	int    n_RecordIndex;//×îĞÂÎ»ÖÃÖ¸Õë
+	DWORD  n_SendSize;   //æ€»å…±å‘é€çš„æ•°æ®é‡
+    WORD   n_SendRecord[16];//æœ€è¿‘16æ¬¡å‘é€çš„æ•°æ®é‡
+	int    n_RecordIndex;//æœ€æ–°ä½ç½®æŒ‡é’ˆ
 //
 
     KNetServer(void);

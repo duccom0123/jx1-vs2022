@@ -10,10 +10,10 @@ public:
 	virtual BOOL			operator>(TBinTreeNode& p) = 0;
 	virtual BOOL			operator==(TBinTreeNode& p) = 0;
  	virtual BOOL			operator<(TBinTreeNode& p) = 0;
-	TBinTreeNode			* pParent;				//¸¸
-	TBinTreeNode			* pLeftChild;			//×ó×Ó
-	TBinTreeNode			* pRightChild;			//ÓÒ×Ó
-};		//°´ÕÕÎÄ¼þÃû»òÆäËüÊôÐÔ×÷Îª½Å±¾±êÊ¶µÄÅÅÐò¶þ²æÊ÷
+	TBinTreeNode			* pParent;				//çˆ¶
+	TBinTreeNode			* pLeftChild;			//å·¦å­
+	TBinTreeNode			* pRightChild;			//å³å­
+};		//æŒ‰ç…§æ–‡ä»¶åæˆ–å…¶å®ƒå±žæ€§ä½œä¸ºè„šæœ¬æ ‡è¯†çš„æŽ’åºäºŒå‰æ ‘
 
 
 class ENGINE_API KBinTree
@@ -21,17 +21,17 @@ class ENGINE_API KBinTree
 public:
 	KBinTree();
 
-	//²éÕÒ¹Ø¼ü×ÖÓëpKeyNodeÒ»ÖÂµÄ½áµã£¬³É¹¦*pResultÎªTrue²¢·µ»Ø½áµãÖ¸Õë.
+	//æŸ¥æ‰¾å…³é”®å­—ä¸ŽpKeyNodeä¸€è‡´çš„ç»“ç‚¹ï¼ŒæˆåŠŸ*pResultä¸ºTrueå¹¶è¿”å›žç»“ç‚¹æŒ‡é’ˆ.
 	TBinTreeNode * Search(TBinTreeNode* pKeyNode, BOOL * pResult);
 
-	//²åÈë½áµã£¬³É¹¦·µ»ØÐÂ²åµÄ½áµãÖ¸Õë£¬·ñÔòÎª¿Õ
+	//æ’å…¥ç»“ç‚¹ï¼ŒæˆåŠŸè¿”å›žæ–°æ’çš„ç»“ç‚¹æŒ‡é’ˆï¼Œå¦åˆ™ä¸ºç©º
 	TBinTreeNode * Insert(TBinTreeNode *pNewNode);
 	
 	
-	//É¾³ý±¾½áµã
+	//åˆ é™¤æœ¬ç»“ç‚¹
 	BOOL		   RemoveThisNode(TBinTreeNode * pNode);
 	
-	//É¾³ý¶þ²æÊ÷ÖÐÓëpKeyNodeÒ»ÖÂµÄ½áµã
+	//åˆ é™¤äºŒå‰æ ‘ä¸­ä¸ŽpKeyNodeä¸€è‡´çš„ç»“ç‚¹
 	BOOL		   RemoveKeyNode(TBinTreeNode * pNode);
 		
 	DWORD		   GetCount()
@@ -42,13 +42,13 @@ public:
 		
 
 private:
-	TBinTreeNode * m_pTreeRoot;		//¶þ²æÊ÷¸ùÖ§µã
+	TBinTreeNode * m_pTreeRoot;		//äºŒå‰æ ‘æ ¹æ”¯ç‚¹
 	int				m_TempCount;
 	TBinTreeNode * AddNode(TBinTreeNode *pNewNode, TBinTreeNode *pTBinTreeNode);
 	TBinTreeNode * RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeNode ** ppRootTBinTreeNode);
 	TBinTreeNode * Search(TBinTreeNode * pParentTBinTreeNode, TBinTreeNode * pTBinTreeNode, TBinTreeNode * pKeyNode, BOOL * pResult);
 	TBinTreeNode * FindLess(TBinTreeNode * pTBinTreeNode);
-	DWORD		   InOrder(TBinTreeNode * pTBinTreeNode);//ÖÐÐò±éÀú
+	DWORD		   InOrder(TBinTreeNode * pTBinTreeNode);//ä¸­åºéåŽ†
 };
 
 

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	����--login���̱�������
+//	界面--login过程背景窗口
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-16
@@ -44,7 +44,7 @@ KUiConnectInfo::KUiConnectInfo()
 }
 
 //--------------------------------------------------------------------------
-//	���ܣ��򿪴��ڣ�����Ψһ��һ�������ʵ��
+//	功能：打开窗口，返回唯一的一个类对象实例
 //--------------------------------------------------------------------------
 KUiConnectInfo* KUiConnectInfo::OpenWindow(LOGIN_BG_INFO_MSG_INDEX eIndex,
 										int eDesireLoginStatus,
@@ -72,7 +72,7 @@ KUiConnectInfo* KUiConnectInfo::OpenWindow(LOGIN_BG_INFO_MSG_INDEX eIndex,
 }
 
 //--------------------------------------------------------------------------
-//	���ܣ��رմ��ڣ�ͬʱ����ѡ���Ƿ�ɾ������ʵ��
+//	功能：关闭窗口，同时可以选则是否删除对象实例
 //--------------------------------------------------------------------------
 void KUiConnectInfo::CloseWindow(bool bDestroy)
 {
@@ -92,7 +92,7 @@ void KUiConnectInfo::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	���ܣ���ʼ��
+//	功能：初始化
 //--------------------------------------------------------------------------
 void KUiConnectInfo::Initialize()
 {
@@ -104,7 +104,7 @@ void KUiConnectInfo::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	���ܣ����봰�ڵĽ��淽��
+//	功能：载入窗口的界面方案
 //--------------------------------------------------------------------------
 void KUiConnectInfo::LoadScheme(const char* pScheme)
 {
@@ -175,7 +175,7 @@ void KUiConnectInfo::OnClickConfirmBtn()
         UiPostQuitMsg();
 		break;
 	default:
-		//ȡ�����ڽ��еĲ���
+		//取消正在进行的操作
 		Hide();
 		g_LoginLogic.ReturnToIdle();
 		KUiSelServer::OpenWindow();
@@ -290,7 +290,7 @@ void KUiConnectInfo::SetInfoMsg(LOGIN_BG_INFO_MSG_INDEX eIndex)
 		}
 	}
 
-	if (eIndex == CI_MI_TO_DEL_ROLE)	//13=Ҫɾ����ɫ
+	if (eIndex == CI_MI_TO_DEL_ROLE)	//13=要删除角色
 	{
 		AddChild(&m_DelRoleBgImg);
 		AddChild(&m_InputPwdWnd);
@@ -309,43 +309,43 @@ void KUiConnectInfo::GotoNextStep()
 	LOGIN_LOGIC_STATUS eStatus = g_LoginLogic.GetStatus();
 	switch(eStatus)
 	{
-	case LL_S_IDLE:	//����
+	case LL_S_IDLE:	//空闲
 		Hide();
 		KUiSelServer::OpenWindow();
 		break;
-	case LL_S_WAIT_INPUT_ACCOUNT:	//�ȴ����˺�����
+	case LL_S_WAIT_INPUT_ACCOUNT:	//等待传账号密码
 		Hide();
 		KUiLogin::OpenWindow();
 		break;
-	case LL_S_ACCOUNT_CONFIRMING:	//�ȴ��˺�������֤
+	case LL_S_ACCOUNT_CONFIRMING:	//等待账号密码验证
 		SetInfoMsg(CI_MI_CONNECTING);
 		break;
-	case LL_S_WAIT_ROLE_LIST:		//�ȴ����ս�ɫ�б�����
+	case LL_S_WAIT_ROLE_LIST:		//等待接收角色列表数据
 		SetInfoMsg(CI_MI_GETTING_ROLE_DATA);
 		break;
-	case LL_S_ROLE_LIST_READY:		//��ɫ�б�����
+	case LL_S_ROLE_LIST_READY:		//角色列表就绪
 		Hide();
 		KUiSelPlayer::OpenWindow();
 		break;
-	case LL_S_CREATING_ROLE:		//�����½���ɫ
+	case LL_S_CREATING_ROLE:		//正在新建角色
 		SetInfoMsg(CI_MI_CREATING_ROLE);
 		break;
-	case LL_S_DELETING_ROLE:		//����ɾ����ɫ
+	case LL_S_DELETING_ROLE:		//正在删除角色
 		SetInfoMsg(CI_MI_DELETING_ROLE);
 		break;
-	case LL_S_WAIT_TO_LOGIN_GAMESERVER:	//�ȴ���½��Ϸ������
+	case LL_S_WAIT_TO_LOGIN_GAMESERVER:	//等待登陆游戏服务器
 		SetInfoMsg(CI_MI_CONNECTING);
 		break;
-	case LL_S_ENTERING_GAME:		//���ڽ�����Ϸ
+	case LL_S_ENTERING_GAME:		//正在进入游戏
 		SetInfoMsg(CI_MI_ENTERING_GAME);
 		break;
-	case LL_S_IN_GAME:				//��Ϸ����ʱ
+	case LL_S_IN_GAME:				//游戏运行时
 		UiStartGame();
 		break;
 	}
 }
 
-//�����
+//活动函数
 void KUiConnectInfo::Breathe()
 {
 	if (m_nDesireLoginStatus >= CI_NS_INIT_WND)
@@ -386,11 +386,11 @@ void KUiConnectInfo::Breathe()
 		SetInfoMsg(CI_MI_ACCOUNT_FREEZE);
 		m_nDesireLoginStatus = CI_NS_LOGIN_WND;
 		break;
-	case LL_R_INVALID_ROLENAME:		//(�½�)��ɫ�����ֲ��Ϸ�
+	case LL_R_INVALID_ROLENAME:		//(新建)角色的名字不合法
 		SetInfoMsg(CI_MI_ERROR_ROLE_NAME);
 		m_nDesireLoginStatus = CI_NS_NEW_ROLE_WND;
 		break;
-	case LL_R_SERVER_SHUTDOWN:		//��Ϸ����������������ά����
+	case LL_R_SERVER_SHUTDOWN:		//游戏服务器已满或正在维护中
 		SetInfoMsg(CI_MI_SVRDOWN);
 		m_nDesireLoginStatus = CI_NS_SEL_SERVER;
 		break;

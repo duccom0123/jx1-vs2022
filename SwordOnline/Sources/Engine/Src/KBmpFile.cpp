@@ -13,12 +13,12 @@
 #include "KPalette.h"
 #include "KBmpFile.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	Load
-// ¹¦ÄÜ:	´ò¿ªBMPÎÄ¼ş
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-//			lpBitmap	8bitÎ»Í¼
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Load
+// åŠŸèƒ½:	æ‰“å¼€BMPæ–‡ä»¶
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+//			lpBitmap	8bitä½å›¾
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile::Load(LPSTR lpFileName, KBitmap* lpBitmap)
 {
@@ -87,12 +87,12 @@ BOOL KBmpFile::Load(LPSTR lpFileName, KBitmap* lpBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Save
-// ¹¦ÄÜ:	±£´æBMPÎÄ¼ş
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-//			lpBitmap	8bitÎ»Í¼
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Save
+// åŠŸèƒ½:	ä¿å­˜BMPæ–‡ä»¶
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+//			lpBitmap	8bitä½å›¾
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile::Save(LPSTR lpFileName, KBitmap* lpBitmap)
 {
@@ -163,11 +163,11 @@ BOOL KBmpFile::Save(LPSTR lpFileName, KBitmap* lpBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Decode
-// ¹¦ÄÜ:	½âÂë
-// ²ÎÊı:	lpDes	Ä¿µÄ
-//			lpSrc	Ô´
-// ·µ»Ø:	void
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	è§£ç 
+// å‚æ•°:	lpDes	ç›®çš„
+//			lpSrc	æº
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KBmpFile::Decode(void* lpDes, void* lpSrc)
 {
@@ -183,11 +183,11 @@ void KBmpFile::Decode(void* lpDes, void* lpSrc)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Encode
-// ¹¦ÄÜ:	±àÂë
-// ²ÎÊı:	lpDes	Ä¿µÄ
-//			lpSrc	Ô´
-// ·µ»Ø:	void
+// å‡½æ•°:	Encode
+// åŠŸèƒ½:	ç¼–ç 
+// å‚æ•°:	lpDes	ç›®çš„
+//			lpSrc	æº
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KBmpFile::Encode(void* lpDes, void* lpSrc)
 {

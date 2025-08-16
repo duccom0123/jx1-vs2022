@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--Ñ¡ÔñÓÎÏ··þÎñÆ÷´°¿Ú
+//	ç•Œé¢--é€‰æ‹©æ¸¸æˆæœåŠ¡å™¨çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-12
@@ -25,7 +25,7 @@ extern iCoreShell*		g_pCoreShell;
 KUiPlayerLock* KUiPlayerLock::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êý
+//	åŠŸèƒ½ï¼šæž„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KUiPlayerLock::KUiPlayerLock()
 {
@@ -45,7 +45,7 @@ KUiPlayerLock* KUiPlayerLock::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀý
+//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›žå”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®žä¾‹
 //--------------------------------------------------------------------------
 KUiPlayerLock* KUiPlayerLock::OpenWindow()
 {
@@ -65,7 +65,7 @@ KUiPlayerLock* KUiPlayerLock::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
+//	åŠŸèƒ½ï¼šå…³é—­çª—å£
 //--------------------------------------------------------------------------
 void KUiPlayerLock::CloseWindow()
 {
@@ -78,7 +78,7 @@ void KUiPlayerLock::CloseWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
 //--------------------------------------------------------------------------
 void KUiPlayerLock::Initialize()
 {
@@ -96,7 +96,7 @@ void KUiPlayerLock::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	åŠŸèƒ½ï¼šè½½å…¥çª—å£çš„ç•Œé¢æ–¹æ¡ˆ
 //--------------------------------------------------------------------------
 void KUiPlayerLock::LoadScheme(const char* pScheme)
 {
@@ -129,7 +129,7 @@ void KUiPlayerLock::UpdateNotice()
 //	m_MessageList.AddOneMessage(m_szMessage, strlen(m_szMessage));
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿Úº¯Êý
+//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
 //--------------------------------------------------------------------------
 int KUiPlayerLock::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -142,7 +142,7 @@ int KUiPlayerLock::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 		else if (uParam == (unsigned int)(KWndWindow*)&m_UnlockBtn)
 		{
 			if (g_pCoreShell->GetLockState())
-				KUiGetString::OpenWindow(GSA_PW, "NhËp mËt khÈu", "", this, 0, 0, 1,16);
+				KUiGetString::OpenWindow(GSA_PW, "Nhï¿½p mï¿½t khï¿½u", "", this, 0, 0, 1,16);
 			else
 				g_pCoreShell->OperationRequest(GOI_LOCKSTATE, 0, 0);
 		}			

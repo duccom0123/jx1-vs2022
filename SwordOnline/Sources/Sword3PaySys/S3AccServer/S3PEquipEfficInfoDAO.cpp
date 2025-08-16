@@ -1,11 +1,11 @@
 /**************************************************/
 /*                                                */
-/*  ÎÄ¼þÃû:    S3PEquipEfficInfoDAO                */
-/*  ÃèÊö    :  EquipEfficInfo±íµÄÎ¬»¤Àà            */
+/*  æ–‡ä»¶å:    S3PEquipEfficInfoDAO                */
+/*  æè¿°    :  EquipEfficInfoè¡¨çš„ç»´æŠ¤ç±»            */
 /*                                                */
-/*	×÷Õß	 : Liu Wansong                        */
-/*	´´½¨ÈÕÆÚ : 8/26/2002                          */
-/*  ÐÞ¸ÄÈÕÆÚ : 8/26/2002                          */
+/*	ä½œè€…	 : Liu Wansong                        */
+/*	åˆ›å»ºæ—¥æœŸ : 8/26/2002                          */
+/*  ä¿®æ”¹æ—¥æœŸ : 8/26/2002                          */
 /**************************************************/
 
 #include "S3PEquipEfficInfoDAO.h"

@@ -45,7 +45,7 @@ CORBA::Long KSynDataSet::Lock(CORBA::Long id, const char* ObjName)
 	char e_name[20];
 	
 	itoa(id, e_name,10);
-	//Í¬Ê±Ö»ÄÜÓÐÒ»¸öÏß³ÌÉêÇëLock·þÎñ¡£
+	//åŒæ—¶åªèƒ½æœ‰ä¸€ä¸ªçº¿ç¨‹ç”³è¯·LockæœåŠ¡ã€‚
 	hevent = OpenEvent(EVENT_ALL_ACCESS, FALSE, e_name);
 	if (!hevent)
 		hevent = CreateEvent(NULL,TRUE,TRUE,e_name);
@@ -69,7 +69,7 @@ CORBA::Long KSynDataSet::Lock(CORBA::Long id, const char* ObjName)
 		
 		if(!m_ServerList.IsEmpty())
 		{
-			//ÔÚ·þÎñ¶ÔÏóÁÐ±íÖÐ²éÕÒÊÇ·ñÓÐÒ»ÖÂidµÄ·þÎñÆ÷¶ÔÏó
+			//åœ¨æœåŠ¡å¯¹è±¡åˆ—è¡¨ä¸­æŸ¥æ‰¾æ˜¯å¦æœ‰ä¸€è‡´idçš„æœåŠ¡å™¨å¯¹è±¡
 			for( pServerData = (TServerNode*) m_ServerList.GetHead(); pServerData != NULL; )
 			{
 				if (pServerData->ServerId == ServerId)
@@ -90,7 +90,7 @@ CORBA::Long KSynDataSet::Lock(CORBA::Long id, const char* ObjName)
 			
 		}
 		
-		//Î´ÕÒµ½µÄ»°
+		//æœªæ‰¾åˆ°çš„è¯
 		if (!pNode->pServer)//Server  is Not Exist ,Then Build a New Server Connection
 		{
 			char cString[100];
@@ -141,7 +141,7 @@ CORBA::Long KSynDataSet::UnLock(CORBA::Long id, CORBA::Long index)
 	itoa(id, e_name+1,10);
 	
 	
-	//Í¬Ê±Ö»ÄÜÓÐÒ»¸öÏß³ÌÉêÇëUnLock·þÎñ
+	//åŒæ—¶åªèƒ½æœ‰ä¸€ä¸ªçº¿ç¨‹ç”³è¯·UnLockæœåŠ¡
 	hevent = OpenEvent(EVENT_ALL_ACCESS, FALSE, e_name);
 	if (!hevent)
 		hevent = CreateEvent(NULL,TRUE,TRUE,e_name);
@@ -155,13 +155,13 @@ CORBA::Long KSynDataSet::UnLock(CORBA::Long id, CORBA::Long index)
 	fflush(stream1);
 	
 	
-	if (m_LockSets[id].UnLock(index) == TRUE)//Èç¹û±¾´Î½âËø³É¹¦
+	if (m_LockSets[id].UnLock(index) == TRUE)//å¦‚æžœæœ¬æ¬¡è§£é”æˆåŠŸ
 	{
 		
 		
 		if(!m_ReqLockList.IsEmpty())
 		{
-			///ÔÚÊý¾ÝËø¶¨ÇëÇóÁÐ±íÖÐÕÒµ½ÏÂÒ»¸öÇëÇóÏà¹ØµÄ¶ÔÏó£¬²¢µ÷ÓÃÍ¨ÖªÆä¡£
+			///åœ¨æ•°æ®é”å®šè¯·æ±‚åˆ—è¡¨ä¸­æ‰¾åˆ°ä¸‹ä¸€ä¸ªè¯·æ±‚ç›¸å…³çš„å¯¹è±¡ï¼Œå¹¶è°ƒç”¨é€šçŸ¥å…¶ã€‚
 			
 			
 			if (m_LockSets[id].GetCurId() > 0)

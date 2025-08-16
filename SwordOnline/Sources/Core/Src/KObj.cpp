@@ -3,7 +3,7 @@
 //
 // File:	KObj.cpp
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 #include "KCore.h"
@@ -31,7 +31,7 @@
 KObj	Object[MAX_OBJECT];
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	³õÊ¼»¯
+//	åŠŸèƒ½ï¼š	åˆå§‹åŒ–
 //-------------------------------------------------------------------------
 KObj::KObj()
 {
@@ -39,7 +39,7 @@ KObj::KObj()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Îï¼şÇå¿Õ
+//	åŠŸèƒ½ï¼š	ç‰©ä»¶æ¸…ç©º
 //-------------------------------------------------------------------------
 void	KObj::Release()
 {
@@ -117,7 +117,7 @@ void	KObj::Release()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨Îï¼şµÄË÷ÒıÖµ
+//	åŠŸèƒ½ï¼š	è®¾å®šç‰©ä»¶çš„ç´¢å¼•å€¼
 //-------------------------------------------------------------------------
 void	KObj::SetIndex(int nIndex)
 {
@@ -128,7 +128,7 @@ void	KObj::SetIndex(int nIndex)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨Îï¼şÊÀ½çÎ¨Ò» ID £¨×¢£ºÖ»ÔÚ¿Í»§¶Ë´æÔÚµÄÎï¼şÆä ID Í³Ò»Îª 0£©
+//	åŠŸèƒ½ï¼š	è®¾å®šç‰©ä»¶ä¸–ç•Œå”¯ä¸€ ID ï¼ˆæ³¨ï¼šåªåœ¨å®¢æˆ·ç«¯å­˜åœ¨çš„ç‰©ä»¶å…¶ ID ç»Ÿä¸€ä¸º 0ï¼‰
 //-------------------------------------------------------------------------
 void	KObj::SetWorldID(int nID)
 {
@@ -139,7 +139,7 @@ void	KObj::SetWorldID(int nID)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨Îï¼şµÄÉúÃüÊ±¼ä £¨×¢£ºÖ»¶ÔÊ¬Ìå¡¢×°±¸µÈÀàĞÍÎï¼şÓĞĞ§£©
+//	åŠŸèƒ½ï¼š	è®¾å®šç‰©ä»¶çš„ç”Ÿå‘½æ—¶é—´ ï¼ˆæ³¨ï¼šåªå¯¹å°¸ä½“ã€è£…å¤‡ç­‰ç±»å‹ç‰©ä»¶æœ‰æ•ˆï¼‰
 //-------------------------------------------------------------------------
 void	KObj::SetLifeTime(int nLifeTime)
 {
@@ -149,7 +149,7 @@ void	KObj::SetLifeTime(int nLifeTime)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨Îï¼ş×´Ì¬
+//	åŠŸèƒ½ï¼š	è®¾å®šç‰©ä»¶çŠ¶æ€
 //-------------------------------------------------------------------------
 void	KObj::SetState(int nState, int nPlaySoundFlag/* = 0*/)
 {
@@ -189,7 +189,7 @@ void	KObj::SetState(int nState, int nPlaySoundFlag/* = 0*/)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	±¦Ïä´ò¿ª
+//	åŠŸèƒ½ï¼š	å®ç®±æ‰“å¼€
 //-------------------------------------------------------------------------
 void	KObj::BoxOpen()
 {
@@ -202,7 +202,7 @@ void	KObj::BoxOpen()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	±¦Ïä¹Ø±Õ
+//	åŠŸèƒ½ï¼š	å®ç®±å…³é—­
 //-------------------------------------------------------------------------
 void	KObj::BoxClose()
 {
@@ -215,7 +215,7 @@ void	KObj::BoxClose()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	ÃÅ´ò¿ª
+//	åŠŸèƒ½ï¼š	é—¨æ‰“å¼€
 //-------------------------------------------------------------------------
 void	KObj::DoorOpen()
 {
@@ -225,11 +225,11 @@ void	KObj::DoorOpen()
 #endif
 	m_nState = 1;
 
-	// È±ÉÙ´¦ÀíÎï¼şÕÏ°­
+	// ç¼ºå°‘å¤„ç†ç‰©ä»¶éšœç¢
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	ÃÅ¹Ø±Õ
+//	åŠŸèƒ½ï¼š	é—¨å…³é—­
 //-------------------------------------------------------------------------
 void	KObj::DoorClose()
 {
@@ -239,7 +239,7 @@ void	KObj::DoorClose()
 #endif
 	m_nState = 0;
 
-	// È±ÉÙ´¦ÀíÎï¼şÕÏ°­
+	// ç¼ºå°‘å¤„ç†ç‰©ä»¶éšœç¢
 }
 
 BOOL	KObj::SetDir(int n64Dir)
@@ -319,17 +319,17 @@ void KObj::DrawInfo(int nFontSize)
 		nHeightOff = OBJ_SHOW_NAME_Y_OFF;
 		if (m_nMoneyNum < MONEY_FLOOR)
 		{
-			sprintf(szName,"%d l­îng",m_nMoneyNum);
+			sprintf(szName,"%d lï¿½ï¿½ng",m_nMoneyNum);
 			g_pRepresent->OutputText(nFontSize, szName, KRF_ZERO_END, nMpsX - 12 * g_StrLen(szName) / 4, nMpsY, 0x00ffffff, 0, nHeightOff);
 		}
 		else if ((m_nMoneyNum % MONEY_FLOOR) == 0)
 		{
-			sprintf(szName,"%d v¹n l­îng",m_nMoneyNum / MONEY_FLOOR);
+			sprintf(szName,"%d vï¿½n lï¿½ï¿½ng",m_nMoneyNum / MONEY_FLOOR);
 			g_pRepresent->OutputText(nFontSize, szName, KRF_ZERO_END, nMpsX - 12 * g_StrLen(szName) / 4, nMpsY, 0x00ffffff, 0, nHeightOff);
 		}
 		else
 		{
-			sprintf(szName,"%d v¹n %d l­îng",m_nMoneyNum / MONEY_FLOOR, m_nMoneyNum % MONEY_FLOOR);
+			sprintf(szName,"%d vï¿½n %d lï¿½ï¿½ng",m_nMoneyNum / MONEY_FLOOR, m_nMoneyNum % MONEY_FLOOR);
 			g_pRepresent->OutputText(nFontSize, szName, KRF_ZERO_END, nMpsX - 12 * g_StrLen(szName) / 4, nMpsY, 0x00ffffff, 0, nHeightOff);
 		}
 
@@ -345,7 +345,7 @@ void KObj::DrawInfo(int nFontSize)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Îï¼ş»æÖÆ
+//	åŠŸèƒ½ï¼š	ç‰©ä»¶ç»˜åˆ¶
 //-------------------------------------------------------------------------
 void KObj::Draw()
 {
@@ -368,7 +368,7 @@ void KObj::Draw()
 	m_Image.nISPosition = IMAGE_IS_POSITION_INIT;
 	m_Image.nType = ISI_T_SPR;
 	m_Image.oPosition.nZ = 0;
-	if (m_nKind == Obj_Kind_Item && m_nDropState == 1)	// ÎïÆ·µô³ö¶¯»­
+	if (m_nKind == Obj_Kind_Item && m_nDropState == 1)	// ç‰©å“æ‰å‡ºåŠ¨ç”»
 	{
 		m_Image.nFrame = m_cImageDrop.m_nCurFrame;
 		m_Image.oPosition.nX = x;// - m_cImageDrop.m_nCgXpos;
@@ -401,7 +401,7 @@ void KObj::Draw()
 #endif
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	¸÷ÖÖÎï¼şµÄ´¦Àí
+//	åŠŸèƒ½ï¼š	å„ç§ç‰©ä»¶çš„å¤„ç†
 //-------------------------------------------------------------------------
 void	KObj::Activate()
 {
@@ -417,57 +417,57 @@ void	KObj::Activate()
 	switch(m_nKind)
 	{
 #ifndef _SERVER
-	case Obj_Kind_MapObj:					// µØÍ¼Îï¼ş¶¯»­
-		if (m_nState == 0)					// µØÍ¼Îï¼ş¶¯»­Ñ­»·²¥·Å
+	case Obj_Kind_MapObj:					// åœ°å›¾ç‰©ä»¶åŠ¨ç”»
+		if (m_nState == 0)					// åœ°å›¾ç‰©ä»¶åŠ¨ç”»å¾ªç¯æ’­æ”¾
 			m_cImage.GetNextFrame();
 		nMask = IPOT_RL_OBJECT | IPOT_RL_INFRONTOF_ALL;
 		break;
-	case Obj_Kind_Light:					// ¹âÔ´
+	case Obj_Kind_Light:					// å…‰æº
 		if (m_nState == 0)
 			m_cImage.GetNextFrame();
 		nMask = IPOT_RL_OBJECT | IPOT_RL_INFRONTOF_ALL;
 		break;
-	case Obj_Kind_LoopSound:				// Ñ­»·ÒôĞ§
+	case Obj_Kind_LoopSound:				// å¾ªç¯éŸ³æ•ˆ
 		PlayLoopSound();
 		break;
-	case Obj_Kind_RandSound:				// Ëæ»úÒôĞ§
+	case Obj_Kind_RandSound:				// éšæœºéŸ³æ•ˆ
 		PlayRandSound();
 		break;
-	case Obj_Kind_Body:						// Ê¬ÌåÖğ½¥ÏûÊ§
-		m_cImage.GetNextFrame(FALSE);		// Ê¬Ìå¶¯»­µ¥·½Ïò²¥·Å
+	case Obj_Kind_Body:						// å°¸ä½“é€æ¸æ¶ˆå¤±
+		m_cImage.GetNextFrame(FALSE);		// å°¸ä½“åŠ¨ç”»å•æ–¹å‘æ’­æ”¾
 		m_nLifeTime--;
 		if (m_nLifeTime <= 0)
 			Remove(FALSE);
 		nMask = IPOT_RL_COVER_GROUND | IPOT_RL_INFRONTOF_ALL;
 		break;
 #endif
-	case Obj_Kind_Box:						// ±¦Ïä
+	case Obj_Kind_Box:						// å®ç®±
 #ifdef _SERVER
-		if (m_nState == OBJ_BOX_STATE_OPEN)	// ±¦Ïä¹Ø±ÕÖØÉú
+		if (m_nState == OBJ_BOX_STATE_OPEN)	// å®ç®±å…³é—­é‡ç”Ÿ
 		{
 			m_nBornTime--;
 			if (m_nBornTime <= 0)
 				SetState(OBJ_BOX_STATE_CLOSE);
 		}
 #else
-		if (m_nState == OBJ_BOX_STATE_CLOSE)// ±¦Ïä¹Ø±Õ×´Ì¬
+		if (m_nState == OBJ_BOX_STATE_CLOSE)// å®ç®±å…³é—­çŠ¶æ€
 			m_cImage.GetPrevFrame(FALSE);
-		else// if (m_nState == OBJ_BOX_STATE_OPEN)// ±¦Ïä´ò¿ª×´Ì¬
+		else// if (m_nState == OBJ_BOX_STATE_OPEN)// å®ç®±æ‰“å¼€çŠ¶æ€
 			m_cImage.GetNextFrame(FALSE);
 		nMask = IPOT_RL_OBJECT | IPOT_RL_INFRONTOF_ALL;
 #endif
 		break;
-	case Obj_Kind_Door:						// ÃÅ
+	case Obj_Kind_Door:						// é—¨
 #ifdef _SERVER
 #else
-		if (m_nState == OBJ_DOOR_STATE_CLOSE)// ÃÅ¹Ø±Õ×´Ì¬
+		if (m_nState == OBJ_DOOR_STATE_CLOSE)// é—¨å…³é—­çŠ¶æ€
 			m_cImage.GetPrevFrame(FALSE);
-		else// if (m_nState == OBJ_DOOR_STATE_OPEN)// ÃÅ´ò¿ª×´Ì¬
+		else// if (m_nState == OBJ_DOOR_STATE_OPEN)// é—¨æ‰“å¼€çŠ¶æ€
 			m_cImage.GetNextFrame(FALSE);
 		nMask = IPOT_RL_OBJECT | IPOT_RL_INFRONTOF_ALL;
 #endif
 		break;
-	case Obj_Kind_Item:						// ×°±¸¶¯»­Ñ­»·²¥·Å
+	case Obj_Kind_Item:						// è£…å¤‡åŠ¨ç”»å¾ªç¯æ’­æ”¾
 #ifdef _SERVER
 		if (m_nBelong >= 0)
 		{
@@ -483,13 +483,13 @@ void	KObj::Activate()
 		if (m_nLifeTime <= 0)
 			Remove(FALSE);
 #else
-		if (this->m_nDropState == 1)		// ÎïÆ·µô³ö¶¯»­
+		if (this->m_nDropState == 1)		// ç‰©å“æ‰å‡ºåŠ¨ç”»
 		{
 			if (m_cImageDrop.GetNextFrame(FALSE))
 			{
 				if (m_cImageDrop.CheckEnd())
 				{
-					m_nDropState = 0;			// ÎïÆ·µô³ö¶¯»­²¥·ÅÍêÁË£¬¸ÄÎª·ÅÖÃÑ­»·¶¯»­
+					m_nDropState = 0;			// ç‰©å“æ‰å‡ºåŠ¨ç”»æ’­æ”¾å®Œäº†ï¼Œæ”¹ä¸ºæ”¾ç½®å¾ªç¯åŠ¨ç”»
 					m_Image.uImage = 0;
 				}
 			}
@@ -547,11 +547,11 @@ void	KObj::Activate()
 		break;
 	case Obj_Kind_Prop:
 #ifdef _SERVER
-		if (m_nState == OBJ_PROP_STATE_HIDE)	// µÀ¾ßÒş²Ø×´Ì¬
+		if (m_nState == OBJ_PROP_STATE_HIDE)	// é“å…·éšè—çŠ¶æ€
 		{
 			m_nBornTime--;
 			if (m_nBornTime <= 0)
-				SetState(OBJ_PROP_STATE_DISPLAY);// µÀ¾ßÖØÉú
+				SetState(OBJ_PROP_STATE_DISPLAY);// é“å…·é‡ç”Ÿ
 		}
 #else
 		if (m_nState == OBJ_PROP_STATE_DISPLAY)
@@ -573,7 +573,7 @@ void	KObj::Activate()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	²¥·ÅÑ­»·ÒôĞ§
+//	åŠŸèƒ½ï¼š	æ’­æ”¾å¾ªç¯éŸ³æ•ˆ
 //-------------------------------------------------------------------------
 void	KObj::PlayLoopSound()
 {
@@ -597,7 +597,7 @@ void	KObj::PlayLoopSound()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	²¥·ÅËæ»úÒôĞ§
+//	åŠŸèƒ½ï¼š	æ’­æ”¾éšæœºéŸ³æ•ˆ
 //-------------------------------------------------------------------------
 void	KObj::PlayRandSound()
 {
@@ -618,7 +618,7 @@ void	KObj::PlayRandSound()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	µÃµ½ÉùÒôÒôÏà´óĞ¡
+//	åŠŸèƒ½ï¼š	å¾—åˆ°å£°éŸ³éŸ³ç›¸å¤§å°
 //-------------------------------------------------------------------------
 int		KObj::GetSoundPan()
 {
@@ -645,7 +645,7 @@ int		KObj::GetSoundPan()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	µÃµ½ÉùÒôÒôÁ¿´óĞ¡
+//	åŠŸèƒ½ï¼š	å¾—åˆ°å£°éŸ³éŸ³é‡å¤§å°
 //-------------------------------------------------------------------------
 int		KObj::GetSoundVolume()
 {
@@ -673,7 +673,7 @@ int		KObj::GetSoundVolume()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	²¥·ÅÉùÒô
+//	åŠŸèƒ½ï¼š	æ’­æ”¾å£°éŸ³
 //-------------------------------------------------------------------------
 void	KObj::PlaySound()
 {
@@ -693,7 +693,7 @@ void	KObj::PlaySound()
 #endif
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	ÔËĞĞÎï¼ş½Å±¾
+//	åŠŸèƒ½ï¼š	è¿è¡Œç‰©ä»¶è„šæœ¬
 //-------------------------------------------------------------------------
 void	KObj::ExecScript(int nPlayerIdx)
 {
@@ -923,15 +923,15 @@ int		KObj::GetKind()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Í¹¶à±ßĞÎ×ª»»ÎªÕÏ°­ĞÅÏ¢
+//	åŠŸèƒ½ï¼š	å‡¸å¤šè¾¹å½¢è½¬æ¢ä¸ºéšœç¢ä¿¡æ¯
 //-------------------------------------------------------------------------
 void	KObj::PolygonChangeToBar(
-								 KPolygon Polygon,	// Í¹¶à±ßĞÎ
-								 int nGridWidth,	// ¸ñ×Ó³¤
-								 int nGridHeight,	// ¸ñ×Ó¿í
-								 int nTableWidth,	// ±í¸ñ³¤
-								 int nTableHeight,	// ±í¸ñ¿í
-								 BYTE *lpbBarTable)	// ±í¸ñÄÚÈİ
+								 KPolygon Polygon,	// å‡¸å¤šè¾¹å½¢
+								 int nGridWidth,	// æ ¼å­é•¿
+								 int nGridHeight,	// æ ¼å­å®½
+								 int nTableWidth,	// è¡¨æ ¼é•¿
+								 int nTableHeight,	// è¡¨æ ¼å®½
+								 BYTE *lpbBarTable)	// è¡¨æ ¼å†…å®¹
 {
 	if ( !lpbBarTable )
 		return;
@@ -943,18 +943,18 @@ void	KObj::PolygonChangeToBar(
 	for (int i = 0; i < nTableWidth * nTableHeight; i++)
 	{
 		Polygon.GetCenterPos(&TempPos);
-		// ×óÉÏ
+		// å·¦ä¸Š
 		TempPos.x += ((i % nTableWidth) * nGridWidth) - ((nTableWidth / 2) * nGridWidth + nGridWidth / 2);
 		TempPos.y += ((i / nTableWidth) * nGridHeight) - ((nTableHeight / 2) * nGridHeight + nGridHeight / 2);
 		nTempLT = Polygon.IsPointInPolygon(TempPos);
-		// ÓÒÉÏ
+		// å³ä¸Š
 		TempPos.x += nGridWidth;
 		nTempRT = Polygon.IsPointInPolygon(TempPos);
-		// ×óÏÂ
+		// å·¦ä¸‹
 		TempPos.x -= nGridWidth;
 		TempPos.y += nGridHeight;
 		nTempLB = Polygon.IsPointInPolygon(TempPos);
-		// ÓÒÏÂ
+		// å³ä¸‹
 		TempPos.x += nGridWidth;
 		nTempRB = Polygon.IsPointInPolygon(TempPos);
 
@@ -1001,7 +1001,7 @@ void	ServerImage::Release()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨×ÜÖ¡Êı
+//	åŠŸèƒ½ï¼š	è®¾å®šæ€»å¸§æ•°
 //---------------------------------------------------------------------------
 void	ServerImage::SetTotalFrame(int nTotalFrame)
 {
@@ -1013,7 +1013,7 @@ void	ServerImage::SetTotalFrame(int nTotalFrame)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨µ±Ç°Ö¡
+//	åŠŸèƒ½ï¼š	è®¾å®šå½“å‰å¸§
 //---------------------------------------------------------------------------
 void	ServerImage::SetCurFrame(int nCurFrame)
 {
@@ -1028,7 +1028,7 @@ void	ServerImage::SetCurFrame(int nCurFrame)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨×Ü·½ÏòÊı
+//	åŠŸèƒ½ï¼š	è®¾å®šæ€»æ–¹å‘æ•°
 //---------------------------------------------------------------------------
 void	ServerImage::SetTotalDir(int nTotalDir)
 {
@@ -1040,7 +1040,7 @@ void	ServerImage::SetTotalDir(int nTotalDir)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨µ±Ç°·½Ïò
+//	åŠŸèƒ½ï¼š	è®¾å®šå½“å‰æ–¹å‘
 //---------------------------------------------------------------------------
 BOOL	ServerImage::SetCurDir(int nDir)
 {
@@ -1055,7 +1055,7 @@ BOOL	ServerImage::SetCurDir(int nDir)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨Ö¡¼ä¸ô
+//	åŠŸèƒ½ï¼š	è®¾å®šå¸§é—´éš”
 //---------------------------------------------------------------------------
 void	ServerImage::SetInterVal(DWORD dwInterval)
 {
@@ -1063,7 +1063,7 @@ void	ServerImage::SetInterVal(DWORD dwInterval)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	»ñµÃµ¥·½ÏòÖ¡Êı
+//	åŠŸèƒ½ï¼š	è·å¾—å•æ–¹å‘å¸§æ•°
 //---------------------------------------------------------------------------
 int		ServerImage::GetOneDirFrames()
 {
@@ -1071,7 +1071,7 @@ int		ServerImage::GetOneDirFrames()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	ÅĞ¶Ï¶¯»­ÊÇ·ñ²¥·Åµ½×îºó£¬µ±Ç°ÊÇµÚ 0 Ö¡
+//	åŠŸèƒ½ï¼š	åˆ¤æ–­åŠ¨ç”»æ˜¯å¦æ’­æ”¾åˆ°æœ€åï¼Œå½“å‰æ˜¯ç¬¬ 0 å¸§
 //---------------------------------------------------------------------------
 BOOL	ServerImage::CheckEnd()
 {
@@ -1081,7 +1081,7 @@ BOOL	ServerImage::CheckEnd()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡ÎªµÚÒ»Ö¡
+//	åŠŸèƒ½ï¼š	è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºç¬¬ä¸€å¸§
 //---------------------------------------------------------------------------
 void	ServerImage::SetDirStart()
 {
@@ -1089,7 +1089,7 @@ void	ServerImage::SetDirStart()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡Îª×îºóÒ»Ö¡
+//	åŠŸèƒ½ï¼š	è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºæœ€åä¸€å¸§
 //---------------------------------------------------------------------------
 void	ServerImage::SetDirEnd()
 {
@@ -1097,7 +1097,7 @@ void	ServerImage::SetDirEnd()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	È¡µÃµ±Ç°·½ÏòµÄÏÂÒ»Ö¡
+//	åŠŸèƒ½ï¼š	å–å¾—å½“å‰æ–¹å‘çš„ä¸‹ä¸€å¸§
 //---------------------------------------------------------------------------
 BOOL	ServerImage::GetNextFrame(BOOL bLoop)
 {
@@ -1119,7 +1119,7 @@ BOOL	ServerImage::GetNextFrame(BOOL bLoop)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	È¡µÃµ±Ç°·½ÏòµÄÇ°Ò»Ö¡
+//	åŠŸèƒ½ï¼š	å–å¾—å½“å‰æ–¹å‘çš„å‰ä¸€å¸§
 //---------------------------------------------------------------------------
 BOOL	ServerImage::GetPrevFrame(BOOL bLoop)
 {
@@ -1141,7 +1141,7 @@ BOOL	ServerImage::GetPrevFrame(BOOL bLoop)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	Éè¶¨µ±Ç°·½Ïò(·½ÏòĞè´Ó64·½Ïò×ª»»µ½ÕæÕıµÄ·½Ïò)
+//	åŠŸèƒ½ï¼š	è®¾å®šå½“å‰æ–¹å‘(æ–¹å‘éœ€ä»64æ–¹å‘è½¬æ¢åˆ°çœŸæ­£çš„æ–¹å‘)
 //---------------------------------------------------------------------------
 BOOL	ServerImage::SetCurDir64(int nDir)
 {
@@ -1162,7 +1162,7 @@ BOOL	ServerImage::SetCurDir64(int nDir)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	»ñµÃµ±Ç°·½ÏòµÚ¼¸Ö¡
+//	åŠŸèƒ½ï¼š	è·å¾—å½“å‰æ–¹å‘ç¬¬å‡ å¸§
 //---------------------------------------------------------------------------
 int		ServerImage::GetCurDirFrameNo()
 {

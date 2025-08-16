@@ -1,29 +1,29 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	�浵��ɫѡ��
+//	存档角色选择
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-12
 
-//	�������ƴ�ģ�������600-800�У����蹤ʱ8-12Сʱ������
+//	■■估计此模块代码量600-800行，尚需工时8-12小时。■■
 ------------------------------------------------------------------------------------------
-	��ģ�����ڻ�ȡ����Ѿ�ӵ�еĽ�ɫ����Ϣ�������Խ�������/ɾ��/�����ɫ�Ȳ�����
+	此模块用于获取玩家已经拥有的角色的信息，并可以进行添加/删除/载入角色等操作。
 
-	ӦΪ��ģ�齫���ӷ�����ִ�в��������Ե��÷���LoadData��NewCharacter��DeleteCharacter��
-SelCharacter���������صĶ���(������ʾ�Ĳ���ֵ)��ʾ���Ͳ��������Ƿ�ɹ�(0ֵ��ʾʧ�ܣ���0ֵ
-��ʾ�ɹ�)�������ǲ�����ʵ�ʽ����ͨ��GetLastActionResult��������֪�����һ�β�����ִ�н����
+	应为此模块将连接服务器执行操作，所以调用方法LoadData、NewCharacter、DeleteCharacter、
+SelCharacter，立即返回的都是(整数表示的布尔值)表示发送操作请求是否成功(0值表示失败，非0值
+表示成功)，而不是操作的实际结果。通过GetLastActionResult方法可以知道最后一次操作的执行结果。
 
-	���ڴ�ģ���״̬��
-	1 ģ���ʼ��ʱ����'����'״̬(SSC_S_IDLE)��
-	2 ����LoadData������������浵��ɫ���ݣ������ɫ����ʱ����'�����ɫ������'״̬(SSC_S_LOADING_DATA)��
-	����ɹ����л�Ϊ'��ɫ�Ѿ�����'״̬(SSC_S_STANDBY)�����ʧ���򷵻�'����'״̬(SSC_S_IDLE)��
-	3 ����SSC_S_STANDBY״̬��ʱ�����ִ��NewCharacter��DeleteCharacter��SelCharacter������
-	4 �ɹ�ִ��NewCharacter��ת��'�����½���ɫ'״̬(SSC_S_CREATING_CHARACTER)������������
-	���۳ɹ����ת��SSC_S_STANDBY״̬��������ִ�н��ͨ��GetLastActionResult������á�
-	5 �ɹ�ִ��DeleteCharacter��ת��'����ɾ����ɫ'״̬(SSC_S_DELETING_CHARACTER)������������
-	���۳ɹ����ת��SSC_S_STANDBY״̬��������ִ�н��ͨ��GetLastActionResult������á�
-	6 �ɹ�ִ��SelCharacter��ת��'�ѽ�ɫ������Ϸ��'״̬(SSC_S_LOADING_CHARACTER)������������
-	�ɹ���ת��'��ɫ�Ѿ��ɹ�������Ϸ'״̬(SSC_S_LOAD_CHARACTER_LOADED)��ʧ����ת��SSC_S_STANDBY
-	״̬��
+	关于此模块的状态：
+	1 模块初始的时候是'空闲'状态(SSC_S_IDLE)。
+	2 调用LoadData方法请求载入存档角色数据，载入角色数据时处于'载入角色数据中'状态(SSC_S_LOADING_DATA)，
+	如果成功则切换为'角色已经载入'状态(SSC_S_STANDBY)，如果失败则返回'空闲'状态(SSC_S_IDLE)。
+	3 处于SSC_S_STANDBY状态的时候可以执行NewCharacter、DeleteCharacter、SelCharacter操作。
+	4 成功执行NewCharacter后转入'正在新建角色'状态(SSC_S_CREATING_CHARACTER)，操作结束后，
+	无论成功与否都转入SSC_S_STANDBY状态。操作的执行结果通过GetLastActionResult方法获得。
+	5 成功执行DeleteCharacter后转入'正在删除角色'状态(SSC_S_DELETING_CHARACTER)，操作结束后，
+	无论成功与否都转入SSC_S_STANDBY状态。操作的执行结果通过GetLastActionResult方法获得。
+	6 成功执行SelCharacter后转入'把角色载入游戏中'状态(SSC_S_LOADING_CHARACTER)，操作结束后，
+	成功则转入'角色已经成功载入游戏'状态(SSC_S_LOAD_CHARACTER_LOADED)，失败泽转入SSC_S_STANDBY
+	状态。
 *****************************************************************************************/
 #pragma once
 
@@ -34,73 +34,73 @@ SelCharacter���������صĶ���(������ʾ�Ĳ���ֵ)��ʾ���Ͳ��������Ƿ�ɹ�(0ֵ��ʾʧ
 #endif
 
 //=====================================
-//	KSelSavedCharacter��״̬����
+//	KSelSavedCharacter的状态定义
 //=====================================
 enum SSC_STATUS
 {
-	SSC_S_IDLE	= 0,				//����״̬
-	SSC_S_LOADING_DATA,				//�����ɫ������
-	SSC_S_STANDBY,					//��ɫ�Ѿ�����
-	SSC_S_LOADING_CHARACTER,		//�ѽ�ɫ������Ϸ��
-	SSC_S_LOAD_CHARACTER_LOADED,	//��ɫ�Ѿ��ɹ�������Ϸ
-	SSC_S_CREATING_CHARACTER,		//�����½���ɫ
-	SSC_S_DELETING_CHARACTER,		//����ɾ����ɫ
+	SSC_S_IDLE	= 0,				//空闲状态
+	SSC_S_LOADING_DATA,				//载入角色数据中
+	SSC_S_STANDBY,					//角色已经载入
+	SSC_S_LOADING_CHARACTER,		//把角色载入游戏中
+	SSC_S_LOAD_CHARACTER_LOADED,	//角色已经成功载入游戏
+	SSC_S_CREATING_CHARACTER,		//正在新建角色
+	SSC_S_DELETING_CHARACTER,		//正在删除角色
 };
 
 //=====================================
-//	KSelSavedCharacter�Ĳ������ؽ��
+//	KSelSavedCharacter的操作返回结果
 //=====================================
 enum SSC_RESULT
 {
-	SSC_R_IN_PROGRESS = 0,	//����ִ����
-	SSC_R_NOTHING,			//������ϣ�û�б仯
-	SSC_R_UPDATE,			//����
-	SSC_R_INVALID_ROLENAME,	//�½��Ľ�ɫ�����ֲ��Ϸ����Դ���
-	SSC_R_CREATE_ROLE_SUCCEED,//������ɫ�ɹ�
-	SSC_R_START_GAME,		//��ʼ��Ϸ
-	SSC_R_SVR_DOWN,			//�Ҳ�����Ч�ķ�����
-	SSC_R_FAILED,			//ʧ��
+	SSC_R_IN_PROGRESS = 0,	//操作执行中
+	SSC_R_NOTHING,			//操作完毕，没有变化
+	SSC_R_UPDATE,			//更新
+	SSC_R_INVALID_ROLENAME,	//新建的角色的名字不合法或以存在
+	SSC_R_CREATE_ROLE_SUCCEED,//创建角色成功
+	SSC_R_START_GAME,		//开始游戏
+	SSC_R_SVR_DOWN,			//找不到有效的服务器
+	SSC_R_FAILED,			//失败
 };
 
 //=====================================
-//	�½���ɫʱ��Ҫ�Ľ�ɫ�����Ϣ�ṹ
+//	新建角色时需要的角色相关信息结构
 //=====================================
 struct KNewCharacterInfo
 {
-	char				Name[32];		//����
-	unsigned	char	Gender;			//�Ա�	be one of the SSC_CHARACTER_GENDER value
-	unsigned	char	Attribute;		//��������
+	char				Name[32];		//姓名
+	unsigned	char	Gender;			//性别	be one of the SSC_CHARACTER_GENDER value
+	unsigned	char	Attribute;		//五行属性
 	union
 	{
-		unsigned short	NativePlaceId;	//������ID
-		short			nLevel;			//�ȼ�
+		unsigned short	NativePlaceId;	//出生地ID
+		short			nLevel;			//等级
 	};
 };
 
 class KSelSavedCharacter
 {
 public:
-	KSelSavedCharacter();				//���캯��
-	~KSelSavedCharacter();				//��������
-	void	AcceptNetMsg(void* pMsgData);//����������Ϣ
-	int		LoadData();					//��ʼ�����ɫ����
-	int		GetStatus();				//����ֵΪ÷��SSC_STATUS��ȡֵ֮һ������ֵ�����뿴��ص�ֵ����
-	void	SetLastActionResult(int nResult);		//�������һ�β����ķ��ؽ��
-	int		GetLastActionResult();		//�õ����һ�β����ķ��ؽ��
-	int		GetCharacterNum();			//��ȡ��ɫ����Ŀ
-	int		GetCharacterInfo(int nIndex, KNewCharacterInfo* pInfo);	//��ȡĳ����ɫ����Ϣ
-	int		NewCharacter(KNewCharacterInfo* pData);					//�����½�һ����ɫ
-	int		DeleteCharacter(int nIndex, const char* pszPassword);	//����ɾ��һ����ɫ
-	int		SelCharacter(int nIndex);								//ѡ��ĳ����ɫ
-	void	FreeData();												//�ͷŽ�ɫ����
+	KSelSavedCharacter();				//构造函数
+	~KSelSavedCharacter();				//析构函数
+	void	AcceptNetMsg(void* pMsgData);//接受网络消息
+	int		LoadData();					//开始载入角色数据
+	int		GetStatus();				//返回值为梅举SSC_STATUS的取值之一，返回值含义请看相关的值声明
+	void	SetLastActionResult(int nResult);		//设置最后一次操作的返回结果
+	int		GetLastActionResult();		//得到最后一次操作的返回结果
+	int		GetCharacterNum();			//获取角色的数目
+	int		GetCharacterInfo(int nIndex, KNewCharacterInfo* pInfo);	//获取某个角色的信息
+	int		NewCharacter(KNewCharacterInfo* pData);					//请求新建一个角色
+	int		DeleteCharacter(int nIndex, const char* pszPassword);	//请求删除一个角色
+	int		SelCharacter(int nIndex);								//选择某个角色
+	void	FreeData();												//释放角色数据
 	void	SetCharacterBaseInfo(int nNum, const RoleBaseInfo *pInfo);
 	void	SetAccountName(const char* pAccount);
 private:
 	SSC_STATUS			m_Status;
 	RoleBaseInfo		m_BaseInfo[MAX_PLAYER_PER_ACCOUNT];
-	int					m_nNumCharacter;	//��ɫ����Ŀ
-	unsigned int		m_nRequestTime;		//���������ʱ��
-	int					m_nLastOperResult;	//�ϴεĲ������ؽ��
+	int					m_nNumCharacter;	//角色的数目
+	unsigned int		m_nRequestTime;		//发出情求的时间
+	int					m_nLastOperResult;	//上次的操作返回结果
 	char				m_AccountName[32];
 	char				m_szProcessingRoleName[32];
 };

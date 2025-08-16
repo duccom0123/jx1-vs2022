@@ -66,12 +66,12 @@ void FreePackArray(vector<Package * >& PackArray)
 
 void ConstructionPackArray(vector<Package*>& PackArray,int Count,char * FileName[])
 {
-//	cout << "°üÎÄ¼þ²É¼¯:"<<endl;
+//	cout << "åŒ…æ–‡ä»¶é‡‡é›†:"<<endl;
 	for (int j=0;j<Count;j++)
 	{
 		Package  * PackFile = new Package(FileName[j]);
 		
-	//	cout <<"°üÎÄ¼þ"<< j<<":"<< FileName[j]<<endl;
+	//	cout <<"åŒ…æ–‡ä»¶"<< j<<":"<< FileName[j]<<endl;
 		PackArray.push_back (PackFile); 
 		
 
@@ -175,12 +175,12 @@ __declspec(dllexport) int __stdcall CombinatPackage(char * SourceFileName ,char 
 		ResultSource = AddDataSource(PackageArray);
 		
 		
-		//	cout << "Êý¾ÝÔ´ÑùÆ·²É¼¯Íê³É:"<<endl<<endl;
+		//	cout << "æ•°æ®æºæ ·å“é‡‡é›†å®Œæˆ:"<<endl<<endl;
 		
 		//DisplaySource(ResultSource);
 		
 		
-		//	cout << "¿ªÊ¼¹¹ÔìÐÂÑùÆ·:"<<argv[argc -1 ]<<endl<<endl;
+		//	cout << "å¼€å§‹æž„é€ æ–°æ ·å“:"<<argv[argc -1 ]<<endl<<endl;
 		
 		
 		
@@ -188,7 +188,7 @@ __declspec(dllexport) int __stdcall CombinatPackage(char * SourceFileName ,char 
 		string TempFileFullName = GetCurrentTempFileName();
 		
 		CreatePackFile(TempFileFullName.c_str() ,ResultSource);
-		//cout << "ÐÂÑùÆ·¹¹ÔìÍê³É"<<endl<<endl;
+		//cout << "æ–°æ ·å“æž„é€ å®Œæˆ"<<endl<<endl;
 		
 		FreePackArray(PackageArray);
 		

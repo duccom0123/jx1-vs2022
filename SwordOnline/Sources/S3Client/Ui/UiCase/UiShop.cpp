@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼þÃû		£º	UiTrade.h
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2002-12-21
-//	¹¦ÄÜÃèÊö	£º	npc½»Ò×ÏµÍ³½çÃæ
+//	ÃŽÃ„Â¼Ã¾ÃƒÃ»		Â£Âº	UiTrade.h
+//	Â´Â´Â½Â¨Ã•ÃŸ		Â£Âº	Wooy(Wu yue)
+//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2002-12-21
+//	Â¹Â¦Ã„ÃœÃƒÃ¨ÃŠÃ¶	Â£Âº	npcÂ½Â»Ã’Ã—ÃÂµÃÂ³Â½Ã§ÃƒÃ¦
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -34,7 +34,7 @@ KUiShop::KUiShop()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕý±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀýÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiShop* KUiShop::GetIfVisible()
 {
@@ -42,7 +42,7 @@ KUiShop* KUiShop::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀý
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃŽÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiShop* KUiShop::OpenWindow()
 {
@@ -68,7 +68,7 @@ KUiShop* KUiShop::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ý¶ÔÏóÊµÀý
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiShop::CloseWindow()
 {
@@ -82,7 +82,7 @@ void KUiShop::CloseWindow()
 	}
 }
 
-//³õÊ¼»¯
+//Â³ÃµÃŠÂ¼Â»Â¯
 void KUiShop::Initialize()
 {
 	AddChild(&m_ItemsBox);
@@ -100,7 +100,7 @@ void KUiShop::Initialize()
 	LoadScheme(Scheme);
 }
 
-//ÔØÈë½çÃæ·½°¸
+//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 void KUiShop::LoadScheme(const char* pScheme)
 {
 	if (m_pSelf)
@@ -129,7 +129,7 @@ void KUiShop::CancelTrade()
 	CloseWindow();
 }
 
-//´°¿Úº¯Êý
+//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 int	KUiShop::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch (uMsg)
@@ -215,7 +215,7 @@ void KUiShop::OnBuyItem(KUiDraggedObject* pItem, bool bDoImmed)
 					Msg.byPriority = 0;
 					Msg.eType = SMT_NORMAL;
 					Msg.uReservedForUi = 0;
-					strcpy(Msg.szMessage, "NhÊn gi÷ phÝm Shift ®ång thêi nhÊn chuét ph¶i lËp tøc mua ®­îc vËt phÈm!");
+					strcpy(Msg.szMessage, "NhÃŠn giÃ· phÃm Shift Â®Ã¥ng thÃªi nhÃŠn chuÃ©t phÂ¶i lÃ‹p tÃ¸c mua Â®Â­Ã®c vÃ‹t phÃˆm!");
 					KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 					return;
 				}	
@@ -317,7 +317,7 @@ void KUiShop::UpdateData()
 
 	if (m_pObjsList = (KUiObjAtContRegion*)malloc(sizeof(KUiObjAtContRegion) * m_nObjCount))
 	{
-		g_pCoreShell->GetGameData(GDI_TRADE_NPC_ITEM, (unsigned int)m_pObjsList, m_nObjCount);//µ¥Ïß³ÌÖ´ÐÐ£¬nCountÖµ²»±ä
+		g_pCoreShell->GetGameData(GDI_TRADE_NPC_ITEM, (unsigned int)m_pObjsList, m_nObjCount);//ÂµÂ¥ÃÃŸÂ³ÃŒÃ–Â´ÃÃÂ£Â¬nCountÃ–ÂµÂ²Â»Â±Ã¤
 		m_nPageCount = m_pObjsList[m_nObjCount - 1].nContainer + 1;
 		SetPage(0);
 		m_PreBtn.Enable(m_nPageCount > 1);

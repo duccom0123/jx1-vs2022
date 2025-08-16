@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÓÎÏ·ÏÔÊ¾Íæ¼ÒĞÅÏ¢Ö÷½çÃæ
+//	ç•Œé¢--æ¸¸æˆæ˜¾ç¤ºç©å®¶ä¿¡æ¯ä¸»ç•Œé¢
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-16
@@ -41,7 +41,7 @@ class GameWorld_DateTime : public KWndLabeledButton
 public:
 	DECLARE_COMCLASS(GameWorld_DateTime)
 	GameWorld_DateTime();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
 	void            UpdateData();
 
 private:
@@ -75,16 +75,16 @@ struct KPopupMenuData;
 class KUiPlayerBar : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiPlayerBar* OpenWindow();					//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiPlayerBar* GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiPlayerBar* OpenWindow();					//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiPlayerBar* GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 
 	static void			InputNameMsg(char bChannel, const char* szName, bool bFocus);
 	static int			FindRecentPlayer(const char* szName);
 	static int          AddRecentPlayer(const char* szName);
-	static char*        GetRecentPlayerName(int nIndex);//¸ù¾İindexÈ¡µÃÄ³ÃÜÁÄÆµµÀµÄÄ¿±êÍæ¼ÒÃû
+	static char*        GetRecentPlayerName(int nIndex);//æ ¹æ®indexå–å¾—æŸå¯†èŠé¢‘é“çš„ç›®æ ‡ç©å®¶å
 
 	static const char*	SelfName()
 	{
@@ -100,13 +100,13 @@ public:
 		}
 		return FALSE;
 	}
-	static void	OnUseItem(int nIndex);				//Ê¹ÓÃ¿ì½İÎïÆ·
-	static BOOL	IsCanSendMessage(const char* Buffer, int nLen, char* szDestName, int nChannelID);				//ÄÜ·¢ËÍÂğ?
-	static void	OnSendChannelMessage(DWORD nChannelID, const char* Buffer, int nLen);				//·¢ËÍÆµµÀÁÄÌìµ½·şÎñÆ÷
-	static void	OnSendSomeoneMessage(const char* Name, const char* Buffer, int nLen);				//·¢ËÍsomeoneÁÄÌìµ½·şÎñÆ÷
+	static void	OnUseItem(int nIndex);				//ä½¿ç”¨å¿«æ·ç‰©å“
+	static BOOL	IsCanSendMessage(const char* Buffer, int nLen, char* szDestName, int nChannelID);				//èƒ½å‘é€å—?
+	static void	OnSendChannelMessage(DWORD nChannelID, const char* Buffer, int nLen);				//å‘é€é¢‘é“èŠå¤©åˆ°æœåŠ¡å™¨
+	static void	OnSendSomeoneMessage(const char* Name, const char* Buffer, int nLen);				//å‘é€someoneèŠå¤©åˆ°æœåŠ¡å™¨
 
-	void	UpdateItem(int nIndex, unsigned int uGenre, unsigned int uId);	//±ä¸üÎïÆ·°Ú»»
-	void	UpdateSkill(int nIndex, unsigned int uGenre, unsigned int uId);	//±ä¸ü¿ì½İ¼¼ÄÜ
+	void	UpdateItem(int nIndex, unsigned int uGenre, unsigned int uId);	//å˜æ›´ç‰©å“æ‘†æ¢
+	void	UpdateSkill(int nIndex, unsigned int uGenre, unsigned int uId);	//å˜æ›´å¿«æ·æŠ€èƒ½
 
 	static	bool		GetExp(int& nFull, int& nCurrLevelExp, int& nCurrentExp);
 
@@ -114,39 +114,39 @@ public:
 	static int			SavePrivateSetting(KIniFile* pFile);
 
 	static void         SetCurrentChannel(int nIndex);
-	static void         SwitchChannel(BOOL bUp = FALSE);  //ÇĞ»»µ½ÏÂÒ»¸öÆµµÀ£¬µ½µ×ÁË¾ÍÇĞ»»µ½µÚÒ»¸ö£¬Ñ­»·
-	                                                      //bUpÊÇtrue¾ÍÉÏÉı£¬·ñÔòÏÂ½µ
-	                                                      //e...ÏÂ±êÊÇ0ÊÇ×î¶¥²¿µÄ¸ÅÄî
-    static int          GetCurChannel();                  //µÃµ½PlayerBarÀïµ±Ç°µÄÆµµÀ
+	static void         SwitchChannel(BOOL bUp = FALSE);  //åˆ‡æ¢åˆ°ä¸‹ä¸€ä¸ªé¢‘é“ï¼Œåˆ°åº•äº†å°±åˆ‡æ¢åˆ°ç¬¬ä¸€ä¸ªï¼Œå¾ªç¯
+	                                                      //bUpæ˜¯trueå°±ä¸Šå‡ï¼Œå¦åˆ™ä¸‹é™
+	                                                      //e...ä¸‹æ ‡æ˜¯0æ˜¯æœ€é¡¶éƒ¨çš„æ¦‚å¿µ
+    static int          GetCurChannel();                  //å¾—åˆ°PlayerBaré‡Œå½“å‰çš„é¢‘é“
 	BOOL				TextMsgFilterItem();
 	static void			InputItemMsg(unsigned int uId);
 
 private:
 	KUiPlayerBar();
 	~KUiPlayerBar();
-	void	Breathe();									//»î¶¯º¯Êı
-	void	Initialize();								//³õÊ¼»¯
+	void	Breathe();									//æ´»åŠ¨å‡½æ•°
+	void	Initialize();								//åˆå§‹åŒ–
 	void	PaintWindow();
 
-	void	UpdateData();								//¸üĞÂÊı¾İ
-	void	UpdateXXXNumber(int& nMana, int& nFullMana);							//¸üĞÂ³£±äµÄÄÇĞ©ÊıÖµÊı¾İ
+	void	UpdateData();								//æ›´æ–°æ•°æ®
+	void	UpdateXXXNumber(int& nMana, int& nFullMana);							//æ›´æ–°å¸¸å˜çš„é‚£äº›æ•°å€¼æ•°æ®
 	void	UpdateRuntimeAttribute(int& nMoney, int& nLevel);
 
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	void	OnObjPickedDropped(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);//ÏìÓ¦½çÃæ²Ù×÷È¡Æğ·ÅÏÂ¶«Î÷
-	void	LoadScheme(KIniFile* pIni);//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	void	OnObjPickedDropped(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);//å“åº”ç•Œé¢æ“ä½œå–èµ·æ”¾ä¸‹ä¸œè¥¿
+	void	LoadScheme(KIniFile* pIni);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 
 	void	OnSend(BOOL bDirectSend);
-	void	OnDirectSendChannelMessage(DWORD nChannelID, BYTE cost, const char* Buffer, int nLen);				//·¢ËÍÆµµÀÁÄÌìµ½·şÎñÆ÷
+	void	OnDirectSendChannelMessage(DWORD nChannelID, BYTE cost, const char* Buffer, int nLen);				//å‘é€é¢‘é“èŠå¤©åˆ°æœåŠ¡å™¨
 	void	PopupChannelMenu(int x, int y);
 	void	PopupPhraseMenu(int x, int y, bool bFirstItem);
 	void	InputRecentMsg(bool bPrior);
-	void	OnSwitchSize();			//ÇĞ»»´óĞ¡
+	void	OnSwitchSize();			//åˆ‡æ¢å¤§å°
 
 	int 	GetChannelIndex(const char* pTitle);
 	//void SetCurrentChannel(int nIndex);
 	void 	InputCurrentChannel(int nIndex, bool bFocus);
-	//·µ»ØÔÚChannelÖĞµÄË÷Òı, < 0 Ê§°Ü
+	//è¿”å›åœ¨Channelä¸­çš„ç´¢å¼•, < 0 å¤±è´¥
 	//int AddRecentPlayer(const char* szName);
 	void 	ReplaceSpecialName(char* szDest, size_t nDestSize, char* szSrc);
 	
@@ -154,10 +154,10 @@ private:
 private:
 	static KUiPlayerBar* m_pSelf;
 private:
-	KWndButton		m_Face, m_EscDlg, m_Friend, m_Market;		//±íÇé
+	KWndButton		m_Face, m_EscDlg, m_Friend, m_Market;		//è¡¨æƒ…
 	KWndImage		m_InputBack;
 
-	GameWorld_DateTime		m_DateTime;		//Ê±¼ä
+	GameWorld_DateTime		m_DateTime;		//æ—¶é—´
 #define	UPB_IMMEDIA_ITEM_COUNT	9
 	KImmediaItem	m_ImmediaItem[UPB_IMMEDIA_ITEM_COUNT];
 	KWndObjectBox	m_ImmediaSkill[2];
@@ -170,13 +170,13 @@ private:
 	KWndButton		m_AutoPlay;
 	KWndButton		m_Support;
 
-	KWndButton	m_SendBtn;	//·¢ËÍ
-	KWndEdit512	m_InputEdit;	//ÊäÈë¿ò
-	KWndPureTextBtn	m_ChannelSwitchBtn;	//ÇĞ»»ÆµµÀ
-	KWndButton	m_ChannelOpenBtn;	//ÆµµÀ´ò¿ª
+	KWndButton	m_SendBtn;	//å‘é€
+	KWndEdit512	m_InputEdit;	//è¾“å…¥æ¡†
+	KWndPureTextBtn	m_ChannelSwitchBtn;	//åˆ‡æ¢é¢‘é“
+	KWndButton	m_ChannelOpenBtn;	//é¢‘é“æ‰“å¼€
 	
 private:
-	KWndButton	m_SwitchBtn;	//ÇĞ»»´óĞ¡
+	KWndButton	m_SwitchBtn;	//åˆ‡æ¢å¤§å°
 
 	char		m_cPreMsgCounter;
 	char		m_cLatestMsgIndex;
@@ -190,7 +190,7 @@ private:
 
 	int				m_bMiniMode;
 	
-	char			m_szSelfName[32];	//×Ô¼ºµÄÃû×Ö
+	char			m_szSelfName[32];	//è‡ªå·±çš„åå­—
 
 	int				m_nExperienceFull;
 	int				m_nCurLevelExperience;

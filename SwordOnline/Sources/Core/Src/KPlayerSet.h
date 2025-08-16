@@ -16,23 +16,23 @@ typedef struct
 class KLevelAdd
 {
 private:
-	int		m_nLevelExp[MAX_LEVEL];				// Éı¼¶¾­Ñé
-	int		m_nLevelExpAdd[MAX_TRANSLIFE_VALUE][MAX_LEVEL];				// Éı¼¶¾­Ñé
-	int		m_nLifePerLevel[MAX_SERIES];			// Ã¿¸öÏµÉı¼¶¼ÓÉúÃüµã
-	int		m_nStaminaMalePerLevel[MAX_SERIES];			// Ã¿¸öÏµÉı¼¶¼ÓÌåÁ¦µã
-	int		m_nStaminaFemalePerLevel[MAX_SERIES];			// Ã¿¸öÏµÉı¼¶¼ÓÌåÁ¦µã
-	int		m_nManaPerLevel[MAX_SERIES];			// Ã¿¸öÏµÉı¼¶¼ÓÄÚÁ¦µã
-	int		m_nLifePerVitality[MAX_SERIES];			// Ã¿¸öÏµ»îÁ¦µãÔö¼ÓÒ»µãºóÉúÃüµãÔö³¤
-	int		m_nStaminaPerVitality[MAX_SERIES];		// Ã¿¸öÏµ»îÁ¦µãÔö¼ÓÒ»µãºóÌåÁ¦µãÔö³¤
-	int		m_nManaPerEnergy[MAX_SERIES];			// Ã¿¸öÏµ¾«Á¦µãÔö¼ÓÒ»µãºóÄÚÁ¦µãÔö³¤
-	int		m_nLeadExpShare[MAX_SERIES];			// Ã¿¸öÏµ»ñµÃÕ½¶·¾­ÑéÊ±·ÖÅäÍ³ÂÊÁ¦¾­ÑéµÄ²ÎÊı
-	int		m_nFireResistPerLevel[MAX_SERIES];		// Ã¿¸öÏµÉı¼¶¼Ó»ğ¿¹ĞÔ
-	int		m_nColdResistPerLevel[MAX_SERIES];		// Ã¿¸öÏµÉı¼¶¼Ó±ù¿¹ĞÔ
-	int		m_nPoisonResistPerLevel[MAX_SERIES];	// Ã¿¸öÏµÉı¼¶¼Ó¶¾¿¹ĞÔ
-	int		m_nLightResistPerLevel[MAX_SERIES];		// Ã¿¸öÏµÉı¼¶¼Óµç¿¹ĞÔ
-	int		m_nPhysicsResistPerLevel[MAX_SERIES];	// Ã¿¸öÏµÉı¼¶¼ÓÎïÀí¿¹ĞÔ
-	int		m_nStaminaMaleBase[MAX_SERIES];	// Ã¿¸öÏµÉı¼¶¼ÓÎïÀí¿¹ĞÔ
-	int		m_nStaminaFemaleBase[MAX_SERIES];	// Ã¿¸öÏµÉı¼¶¼ÓÎïÀí¿¹ĞÔ
+	int		m_nLevelExp[MAX_LEVEL];				// å‡çº§ç»éªŒ
+	int		m_nLevelExpAdd[MAX_TRANSLIFE_VALUE][MAX_LEVEL];				// å‡çº§ç»éªŒ
+	int		m_nLifePerLevel[MAX_SERIES];			// æ¯ä¸ªç³»å‡çº§åŠ ç”Ÿå‘½ç‚¹
+	int		m_nStaminaMalePerLevel[MAX_SERIES];			// æ¯ä¸ªç³»å‡çº§åŠ ä½“åŠ›ç‚¹
+	int		m_nStaminaFemalePerLevel[MAX_SERIES];			// æ¯ä¸ªç³»å‡çº§åŠ ä½“åŠ›ç‚¹
+	int		m_nManaPerLevel[MAX_SERIES];			// æ¯ä¸ªç³»å‡çº§åŠ å†…åŠ›ç‚¹
+	int		m_nLifePerVitality[MAX_SERIES];			// æ¯ä¸ªç³»æ´»åŠ›ç‚¹å¢åŠ ä¸€ç‚¹åç”Ÿå‘½ç‚¹å¢é•¿
+	int		m_nStaminaPerVitality[MAX_SERIES];		// æ¯ä¸ªç³»æ´»åŠ›ç‚¹å¢åŠ ä¸€ç‚¹åä½“åŠ›ç‚¹å¢é•¿
+	int		m_nManaPerEnergy[MAX_SERIES];			// æ¯ä¸ªç³»ç²¾åŠ›ç‚¹å¢åŠ ä¸€ç‚¹åå†…åŠ›ç‚¹å¢é•¿
+	int		m_nLeadExpShare[MAX_SERIES];			// æ¯ä¸ªç³»è·å¾—æˆ˜æ–—ç»éªŒæ—¶åˆ†é…ç»Ÿç‡åŠ›ç»éªŒçš„å‚æ•°
+	int		m_nFireResistPerLevel[MAX_SERIES];		// æ¯ä¸ªç³»å‡çº§åŠ ç«æŠ—æ€§
+	int		m_nColdResistPerLevel[MAX_SERIES];		// æ¯ä¸ªç³»å‡çº§åŠ å†°æŠ—æ€§
+	int		m_nPoisonResistPerLevel[MAX_SERIES];	// æ¯ä¸ªç³»å‡çº§åŠ æ¯’æŠ—æ€§
+	int		m_nLightResistPerLevel[MAX_SERIES];		// æ¯ä¸ªç³»å‡çº§åŠ ç”µæŠ—æ€§
+	int		m_nPhysicsResistPerLevel[MAX_SERIES];	// æ¯ä¸ªç³»å‡çº§åŠ ç‰©ç†æŠ—æ€§
+	int		m_nStaminaMaleBase[MAX_SERIES];	// æ¯ä¸ªç³»å‡çº§åŠ ç‰©ç†æŠ—æ€§
+	int		m_nStaminaFemaleBase[MAX_SERIES];	// æ¯ä¸ªç³»å‡çº§åŠ ç‰©ç†æŠ—æ€§
 public:
 	KLevelAdd();
 	BOOL		Init();
@@ -68,16 +68,16 @@ class KTeamLeadExp
 public:
 	struct LEADLEVEL
 	{
-		DWORD	m_dwExp;								// Í³ÂÊÁ¦Éı¼¶¾­Ñé
-		DWORD	m_dwMemNum;								// Í³ÂÊµÈ¼¶¾ö¶¨ÄÜÍ³ÂÊµÄ¶ÓÔ±ÈËÊı
+		DWORD	m_dwExp;								// ç»Ÿç‡åŠ›å‡çº§ç»éªŒ
+		DWORD	m_dwMemNum;								// ç»Ÿç‡ç­‰çº§å†³å®šèƒ½ç»Ÿç‡çš„é˜Ÿå‘˜äººæ•°
 	}	m_sPerLevel[MAX_LEAD_LEVEL];
 public:
 	KTeamLeadExp();
-	BOOL		Init();									// ³õÊ¼»¯
-	int			GetLevel(DWORD dwExp, int nCurLeadLevel = 0);// ´«Èë¾­Ñé»ñµÃµÈ¼¶Êı (Èç¹û´«Èëµ±Ç°µÈ¼¶£¬¿ÉÒÔ¼Ó¿ìËÑË÷ËÙ¶È)
-	int			GetMemNumFromExp(DWORD dwExp);			// ´«Èë¾­Ñé»ñµÃ¿É´ø¶ÓÔ±Êı
-	int			GetMemNumFromLevel(int nLevel);			// ´«ÈëµÈ¼¶»ñµÃ¿É´ø¶ÓÔ±Êı
-	int			GetLevelExp(int nLevel);				// ´«ÈëµÈ¼¶»ñµÃÉı¼¶ËùĞè¾­ÑéÖµ
+	BOOL		Init();									// åˆå§‹åŒ–
+	int			GetLevel(DWORD dwExp, int nCurLeadLevel = 0);// ä¼ å…¥ç»éªŒè·å¾—ç­‰çº§æ•° (å¦‚æœä¼ å…¥å½“å‰ç­‰çº§ï¼Œå¯ä»¥åŠ å¿«æœç´¢é€Ÿåº¦)
+	int			GetMemNumFromExp(DWORD dwExp);			// ä¼ å…¥ç»éªŒè·å¾—å¯å¸¦é˜Ÿå‘˜æ•°
+	int			GetMemNumFromLevel(int nLevel);			// ä¼ å…¥ç­‰çº§è·å¾—å¯å¸¦é˜Ÿå‘˜æ•°
+	int			GetLevelExp(int nLevel);				// ä¼ å…¥ç­‰çº§è·å¾—å‡çº§æ‰€éœ€ç»éªŒå€¼
 };
 
 class KNewPlayerAttribute
@@ -109,10 +109,10 @@ public:
 
 class KPlayerSet
 {
-private:	// ÓÃÓÚÓÅ»¯²éÕÒËÙ¶È
-	KLinkArray		m_FreeIdx;				//	¿ÉÓÃ±í
-	KLinkArray		m_UseIdx;				//	ÒÑÓÃ±í
-	int				m_nListCurIdx;			// ÓÃÓÚ GetFirstPlayer ºÍ GetNextPlayer
+private:	// ç”¨äºä¼˜åŒ–æŸ¥æ‰¾é€Ÿåº¦
+	KLinkArray		m_FreeIdx;				//	å¯ç”¨è¡¨
+	KLinkArray		m_UseIdx;				//	å·²ç”¨è¡¨
+	int				m_nListCurIdx;			// ç”¨äº GetFirstPlayer å’Œ GetNextPlayer
 #ifdef _SERVER
 	unsigned long	m_ulNextSaveTime;
 	unsigned long	m_ulDelayTimePerSave;	//1mins
@@ -133,7 +133,7 @@ public:
 #endif
 
 #ifdef _SERVER
-	KPK_DEATH_PUNISH_PARAM	m_sPKPunishParam[MAX_DEATH_PUNISH_PK_VALUE + 1];	// PK³Í·£²ÎÊı
+	KPK_DEATH_PUNISH_PARAM	m_sPKPunishParam[MAX_DEATH_PUNISH_PK_VALUE + 1];	// PKæƒ©ç½šå‚æ•°
 #endif
 
 public:
@@ -141,8 +141,8 @@ public:
 	~KPlayerSet();
 	BOOL	Init();
 	int		FindSame(DWORD dwID);
-	int		GetFirstPlayer();				// ±éÀúËùÓĞÍæ¼ÒµÚÒ»²½
-	int		GetNextPlayer();				// ±éÀúËùÓĞÍæ¼ÒÏÂÒ»²½(ÕâÖ§º¯Êı±ØĞëÔÚÉÏÒ»Ö§µ÷ÓÃÖ®ºó²ÅÄÜµ÷ÓÃ)
+	int		GetFirstPlayer();				// éå†æ‰€æœ‰ç©å®¶ç¬¬ä¸€æ­¥
+	int		GetNextPlayer();				// éå†æ‰€æœ‰ç©å®¶ä¸‹ä¸€æ­¥(è¿™æ”¯å‡½æ•°å¿…é¡»åœ¨ä¸Šä¸€æ”¯è°ƒç”¨ä¹‹åæ‰èƒ½è°ƒç”¨)
 	int		GetOnlinePlayerCount() { return m_UseIdx.GetCount(); }
 //	int		FindClient(int nClient);
 

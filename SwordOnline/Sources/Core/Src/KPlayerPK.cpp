@@ -3,7 +3,7 @@
 //
 // File:	KPlayerPK.cpp
 // Date:	2003.07.15
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	PlayerPK Class
 //---------------------------------------------------------------------------
 
@@ -21,7 +21,7 @@
 #ifdef _SERVER
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //-------------------------------------------------------------------------
 KPlayerPK::KPlayerPK()
 {
@@ -29,7 +29,7 @@ KPlayerPK::KPlayerPK()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
 //-------------------------------------------------------------------------
 void	KPlayerPK::Init(int nPlayerIdx)
 {
@@ -225,7 +225,7 @@ BOOL	KPlayerPK::CheckSwitchPK(BYTE bFlag, BOOL bCaptainSet)
 	return TRUE;
 }
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨Õı³£PK×´Ì¬ TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
+//	åŠŸèƒ½ï¼šè®¾å®šæ­£å¸¸PKçŠ¶æ€ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetNormalPKState(BYTE bFlag, BOOL bCaptainSet)
 {
@@ -282,7 +282,7 @@ void KPlayerPK::SetLockPKState(BYTE bFlag, BYTE btState)
 	g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sFlag, sizeof(PK_NORMAL_FLAG_SYNC));
 }
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÕı³£PK×´Ì¬ TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
+//	åŠŸèƒ½ï¼šè·å¾—æ­£å¸¸PKçŠ¶æ€ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
 //-------------------------------------------------------------------------
 BOOL	KPlayerPK::GetNormalPKState()
 {
@@ -290,7 +290,7 @@ BOOL	KPlayerPK::GetNormalPKState()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ³ğÉ±PK
+//	åŠŸèƒ½ï¼šå…³é—­ä»‡æ€PK
 //-------------------------------------------------------------------------
 void	KPlayerPK::EnmityPKClose(BOOL bIsPKing)
 {
@@ -335,14 +335,14 @@ void	KPlayerPK::EnmityPKClose(BOOL bIsPKing)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º³ğÉ±PK¿ªÊ¼
+//	åŠŸèƒ½ï¼šä»‡æ€PKå¼€å§‹
 //-------------------------------------------------------------------------
 BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 {
-	// ³ö´í
+	// å‡ºé”™
 	if (nAim <= 0 || nAim >= MAX_PLAYER || Player[nAim].m_nIndex < 1)
 		return FALSE;
-	// ·ÇÕ½¶·Ä£Ê½
+	// éæˆ˜æ–—æ¨¡å¼
 	if (!bSpar && ((m_nPKValue >= NpcSet.m_nPKNotSwitchPKWhenLock) && 
 		Player[m_nPlayerIndex].GetLockState()))
 	{
@@ -397,7 +397,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 			return FALSE;
 		}
 	}
-	// ×Ô¼ºÊÇĞÂÊÖ
+	// è‡ªå·±æ˜¯æ–°æ‰‹
 	if (Npc[Player[m_nPlayerIndex].m_nIndex].m_Camp == camp_begin)
 	{
 		if(bSpar && NpcSet.m_nSparPacific)
@@ -413,7 +413,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 			return FALSE;
 		}
 	}
-	// ÕıÔÚÇĞ´è
+	// æ­£åœ¨åˆ‡ç£‹
 	if (m_nExercisePKFlag == TRUE)
 	{
 		SHOW_MSG_SYNC	sMsg;
@@ -423,7 +423,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		return FALSE;
 	}
-	// ¶Ô·½ÕıÔÚÇĞ´è
+	// å¯¹æ–¹æ­£åœ¨åˆ‡ç£‹
 	if (Player[nAim].m_cPK.GetExercisePKState())
 	{
 		SHOW_MSG_SYNC	sMsg;
@@ -433,7 +433,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		return FALSE;
 	}
-	// ÕıÔÚ³ğÉ±
+	// æ­£åœ¨ä»‡æ€
 	if (m_nEnmityPKState != enumPK_ENMITY_STATE_CLOSE)
 	{
 		SHOW_MSG_SYNC	sMsg;
@@ -443,7 +443,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, &sMsg, sMsg.m_wLength + 1);
 		return FALSE;
 	}
-	// ¶Ô·½ÊÇĞÂÊÖ
+	// å¯¹æ–¹æ˜¯æ–°æ‰‹
 	if (Npc[Player[nAim].m_nIndex].m_Camp == camp_begin)
 	{
 		SHOW_MSG_SYNC	sMsg;
@@ -516,7 +516,7 @@ BOOL	KPlayerPK::EnmityPKOpen(int nAim, BOOL bSpar)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃ³ğÉ±×´Ì¬£¬¶ÔÓ¦ enumPK_ANMITY_STATE
+//	åŠŸèƒ½ï¼šè·å¾—ä»‡æ€çŠ¶æ€ï¼Œå¯¹åº” enumPK_ANMITY_STATE
 //-------------------------------------------------------------------------
 int		KPlayerPK::GetEnmityPKState()
 {
@@ -524,7 +524,7 @@ int		KPlayerPK::GetEnmityPKState()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃ³ğÉ±Ä¿±ê if Ä¿±ê==0 ²»ÔÚ³ğÉ±×´Ì¬ else µÃµ½³ğÉ±Ä¿±ê
+//	åŠŸèƒ½ï¼šè·å¾—ä»‡æ€ç›®æ ‡ if ç›®æ ‡==0 ä¸åœ¨ä»‡æ€çŠ¶æ€ else å¾—åˆ°ä»‡æ€ç›®æ ‡
 //-------------------------------------------------------------------------
 int		KPlayerPK::GetEnmityPKAim()
 {
@@ -532,7 +532,7 @@ int		KPlayerPK::GetEnmityPKAim()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±ÕÇĞ´èPK
+//	åŠŸèƒ½ï¼šå…³é—­åˆ‡ç£‹PK
 //-------------------------------------------------------------------------
 void	KPlayerPK::ExercisePKClose()
 {
@@ -558,20 +558,20 @@ void	KPlayerPK::ExercisePKClose()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ªÇĞ´èPK
+//	åŠŸèƒ½ï¼šæ‰“å¼€åˆ‡ç£‹PK
 //-------------------------------------------------------------------------
 BOOL	KPlayerPK::ExercisePKOpen(int nAim)
 {
-	// ×Ô¼ºÊÇĞÂÊÖ
+	// è‡ªå·±æ˜¯æ–°æ‰‹
 	if (Npc[Player[m_nPlayerIndex].m_nIndex].m_Camp == camp_begin)
 		return FALSE;
-	// ÕıÔÚÇĞ´è
+	// æ­£åœ¨åˆ‡ç£‹
 	if (m_nExercisePKFlag == TRUE)
 		return FALSE;
-	// ³ö´í
+	// å‡ºé”™
 	if (nAim <= 0 || nAim >= MAX_PLAYER || Player[nAim].m_nIndex < 1)
 		return FALSE;
-	// ¶Ô·½ÊÇĞÂÊÖ
+	// å¯¹æ–¹æ˜¯æ–°æ‰‹
 	if (Npc[Player[nAim].m_nIndex].m_Camp == camp_begin)
 		return FALSE;
 
@@ -600,7 +600,7 @@ BOOL	KPlayerPK::ExercisePKOpen(int nAim)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÇĞ´èÄ¿±ê if Ä¿±ê==0 ²»ÔÚÇĞ´è×´Ì¬ else µÃµ½ÇĞ´èÄ¿±ê
+//	åŠŸèƒ½ï¼šè·å¾—åˆ‡ç£‹ç›®æ ‡ if ç›®æ ‡==0 ä¸åœ¨åˆ‡ç£‹çŠ¶æ€ else å¾—åˆ°åˆ‡ç£‹ç›®æ ‡
 //-------------------------------------------------------------------------
 int		KPlayerPK::GetExercisePKAim()
 {
@@ -608,7 +608,7 @@ int		KPlayerPK::GetExercisePKAim()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨PKÖµ
+//	åŠŸèƒ½ï¼šè®¾å®šPKå€¼
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetPKValue(int nValue)
 {
@@ -629,7 +629,7 @@ void	KPlayerPK::SetPKValue(int nValue)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃPKÖµ
+//	åŠŸèƒ½ï¼šè·å¾—PKå€¼
 //-------------------------------------------------------------------------
 int		KPlayerPK::GetPKValue()
 {
@@ -637,7 +637,7 @@ int		KPlayerPK::GetPKValue()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔö¼Ó(»ò¼õÉÙ)PKÖµ£¬PKÖµ×î¶à¼õÉÙµ½0
+//	åŠŸèƒ½ï¼šå¢åŠ (æˆ–å‡å°‘)PKå€¼ï¼ŒPKå€¼æœ€å¤šå‡å°‘åˆ°0
 //-------------------------------------------------------------------------
 void	KPlayerPK::AddPKValue(int nAdd)
 {
@@ -661,7 +661,7 @@ void	KPlayerPK::AddPKValue(int nAdd)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ³ğÉ±PKºÍÇĞ´èPK
+//	åŠŸèƒ½ï¼šå…³é—­ä»‡æ€PKå’Œåˆ‡ç£‹PK
 //-------------------------------------------------------------------------
 void	KPlayerPK::CloseAll()
 {
@@ -670,7 +670,7 @@ void	KPlayerPK::CloseAll()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º³ğÉ±µ¹¼ÆÊ±
+//	åŠŸèƒ½ï¼šä»‡æ€å€’è®¡æ—¶
 //-------------------------------------------------------------------------
 void	KPlayerPK::EnmityPKCountDown()
 {
@@ -715,7 +715,7 @@ void	KPlayerPK::EnmityPKCountDown()
 #ifndef _SERVER
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
 //-------------------------------------------------------------------------
 void	KPlayerPK::Init()
 {
@@ -736,7 +736,7 @@ void	KPlayerPK::Active()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨Õı³£PK×´Ì¬ TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
+//	åŠŸèƒ½ï¼šè®¾å®šæ­£å¸¸PKçŠ¶æ€ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetNormalPKState(int bFlag, BOOL bShowMsg/* = TRUE*/)
 {
@@ -767,7 +767,7 @@ void	KPlayerPK::SetNormalPKState(int bFlag, BOOL bShowMsg/* = TRUE*/)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏò·şÎñÆ÷ÉêÇë´ò¿ª¡¢¹Ø±ÕÕı³£PK×´Ì¬
+//	åŠŸèƒ½ï¼šå‘æœåŠ¡å™¨ç”³è¯·æ‰“å¼€ã€å…³é—­æ­£å¸¸PKçŠ¶æ€
 //-------------------------------------------------------------------------
 void	KPlayerPK::ApplySetNormalPKState(BYTE bFlag)
 {
@@ -781,7 +781,7 @@ void	KPlayerPK::ApplySetNormalPKState(BYTE bFlag)
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÕı³£PK×´Ì¬ TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
+//	åŠŸèƒ½ï¼šè·å¾—æ­£å¸¸PKçŠ¶æ€ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
 //-------------------------------------------------------------------------
 BOOL	KPlayerPK::GetNormalPKState()
 {
@@ -789,7 +789,7 @@ BOOL	KPlayerPK::GetNormalPKState()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏò·şÎñÆ÷ÉêÇë³ğÉ±Ä³ÈË
+//	åŠŸèƒ½ï¼šå‘æœåŠ¡å™¨ç”³è¯·ä»‡æ€æŸäºº
 //-------------------------------------------------------------------------
 void	KPlayerPK::ApplyEnmityPK(int nNpcID)
 {
@@ -887,7 +887,7 @@ void	KPlayerPK::ReplyInvite(int nNpcID, int nResult)
 		g_pClient->SendPackToServer(&sApply, sizeof(PK_APPLY_ENMITY_COMMAND));
 }
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨³ğÉ±PK×´Ì¬
+//	åŠŸèƒ½ï¼šè®¾å®šä»‡æ€PKçŠ¶æ€
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetEnmityPKState(int nState, int nNpcID/* = 0*/, char *lpszName/* = NULL*/, BOOL bAim /* = 0*/, BOOL bSpar)
 {
@@ -963,7 +963,7 @@ void	KPlayerPK::SetEnmityPKState(int nState, int nNpcID/* = 0*/, char *lpszName/
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£º³ğÉ±µ¹¼ÆÊ±
+//	åŠŸèƒ½ï¼šä»‡æ€å€’è®¡æ—¶
 //-------------------------------------------------------------------------
 void	KPlayerPK::EnmityPKCountDown()
 {
@@ -976,7 +976,7 @@ void	KPlayerPK::EnmityPKCountDown()
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨ÇĞ´è×´Ì¬
+//	åŠŸèƒ½ï¼šè®¾å®šåˆ‡ç£‹çŠ¶æ€
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetExercisePKState(int nState, int nNpcID/* = 0*/, char *lpszName/* = NULL*/)
 {
@@ -999,7 +999,7 @@ void	KPlayerPK::SetExercisePKState(int nState, int nNpcID/* = 0*/, char *lpszNam
 }
 
 //-------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨PKÖµ
+//	åŠŸèƒ½ï¼šè®¾å®šPKå€¼
 //-------------------------------------------------------------------------
 void	KPlayerPK::SetPKValue(int nValue)
 {

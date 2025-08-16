@@ -3,14 +3,14 @@
 class KSellItem
 {
 private:
-	DWORD		m_dwSellID;				// ¶Ô·½Íæ¼ÒµÄ npc µÄ id
+	DWORD		m_dwSellID;				// å¯¹æ–¹ç©å®¶çš„ npc çš„ id
 	int			m_nSellCount;
 public:
-	PlayerItem	m_sItem[MAX_EQUIPMENT_ITEM];	// ¶Ô·½Íæ¼Ò´©ÔÚÉíÉÏµÄ×°±¸ÔÚ¿Í»§¶Ë Item Êı×éÖĞµÄÎ»ÖÃĞÅÏ¢
+	PlayerItem	m_sItem[MAX_EQUIPMENT_ITEM];	// å¯¹æ–¹ç©å®¶ç©¿åœ¨èº«ä¸Šçš„è£…å¤‡åœ¨å®¢æˆ·ç«¯ Item æ•°ç»„ä¸­çš„ä½ç½®ä¿¡æ¯
 	int			m_nSellItem[MAX_EQUIPMENT_ITEM];
 public:
-	KSellItem();						// ¹¹Ôì
-	void		Init();					// ³õÊ¼»¯
+	KSellItem();						// æ„é€ 
+	void		Init();					// åˆå§‹åŒ–
 	int			GetCount();
 	void		Release();
 	void		GetData(BYTE* pMsg);

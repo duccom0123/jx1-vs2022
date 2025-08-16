@@ -19,9 +19,9 @@ ZMapFile::ZMapFile(const char *file_name) {
 }
 
 char *ZMapFile::map(unsigned long offset, unsigned long size) {
-	unsigned long align = offset % 0x10000;									//64K±ß½ç
+	unsigned long align = offset % 0x10000;									//64Kè¾¹ç•Œ
 	if(m_Ptr) {
-		if(offset > old_offset && (offset + size < old_offset + MINIMIZE_MAP_SIZE)) {			//ÒÑ¾­Ó³ÉäÁË
+		if(offset > old_offset && (offset + size < old_offset + MINIMIZE_MAP_SIZE)) {			//å·²ç»æ˜ å°„äº†
 			return m_Ptr + offset - old_offset;
 		}
 		UnmapViewOfFile(m_Ptr);
@@ -30,7 +30,7 @@ char *ZMapFile::map(unsigned long offset, unsigned long size) {
 	size = MINIMIZE_MAP_SIZE;
 	if(old_offset + size > m_Size) size = m_Size - old_offset;
 	m_Ptr = (char *)MapViewOfFile(m_hMap, FILE_MAP_READ, 0, old_offset, size);		
-	if(m_Ptr) return m_Ptr + align;					//³É¹¦ÁË£¡
+	if(m_Ptr) return m_Ptr + align;					//æˆåŠŸäº†ï¼
 	else return NULL;
 }
 
@@ -47,7 +47,7 @@ ZMapFile::~ZMapFile() {
 }
 
 ZCache::ZCache(long size) {
-	long align = size % 0x10000;				//±ØĞëÊÇ64k¶ÔÆëµÄ£¬²»È»»á½µµÍĞ§ÂÊ
+	long align = size % 0x10000;				//å¿…é¡»æ˜¯64kå¯¹é½çš„ï¼Œä¸ç„¶ä¼šé™ä½æ•ˆç‡
 	if(align) size += 0x10000 - align;
 	buffer = new char[size];
 	cache_size = size;
@@ -63,9 +63,9 @@ ZCache::~ZCache() {
 	if(buffer) delete[] buffer;
 }
 
-//½øĞĞÓÅ»¯,¼ÇÂ¼×î½üÊ¹ÓÃµÄ5Ïî
+//è¿›è¡Œä¼˜åŒ–,è®°å½•æœ€è¿‘ä½¿ç”¨çš„5é¡¹
 
-char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long size) {			//µÃµ½Ò»¸ö¿ÕÏĞ»º³åÇøÊı¾İ¿é
+char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long size) {			//å¾—åˆ°ä¸€ä¸ªç©ºé—²ç¼“å†²åŒºæ•°æ®å—
 	size += sizeof(item_info);
 	unsigned long align = size % MINIMIZE_BLOCK_SIZE;
 	if(align) size += MINIMIZE_BLOCK_SIZE - align;
@@ -73,9 +73,9 @@ char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long si
 	if(size > cache_size) return 0;
 	m_Mutex.Lock();
 	item_info *next;
-	while(free_items->size < size) {										//É¾³ıºóÃæµÄÏîÄ¿Ö±µ½ÓĞ×ã¹»µÄ¿Õ¼äÎªÖ¹
-		next = (item_info *)((char *)free_items + free_items->size);		//ÏÂÒ»¸ö½Úµã
-		if((char *)next - buffer >= cache_size) {							//ÒÑ¾­µ½ÁË½áÊøµÄÎ»ÖÃ£¬»ØµÚÒ»¸ö
+	while(free_items->size < size) {										//åˆ é™¤åé¢çš„é¡¹ç›®ç›´åˆ°æœ‰è¶³å¤Ÿçš„ç©ºé—´ä¸ºæ­¢
+		next = (item_info *)((char *)free_items + free_items->size);		//ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+		if((char *)next - buffer >= cache_size) {							//å·²ç»åˆ°äº†ç»“æŸçš„ä½ç½®ï¼Œå›ç¬¬ä¸€ä¸ª
 			free_items = (item_info *)buffer;
 			free_items->index_high = 0;
 		}
@@ -129,7 +129,7 @@ char *ZCache::searchNode(unsigned long index_high, unsigned long index_low) {
 	return 0;
 }
 
-int ZPackFile::getNodeIndex(unsigned long id) {								//¶ş·Ö·¨ÕÒµ½Ö¸¶¨µÄË÷Òı
+int ZPackFile::getNodeIndex(unsigned long id) {								//äºŒåˆ†æ³•æ‰¾åˆ°æŒ‡å®šçš„ç´¢å¼•
 	int nBegin, nEnd, nMid;
 	nBegin = 0;
 	nEnd = header.count;
@@ -139,7 +139,7 @@ int ZPackFile::getNodeIndex(unsigned long id) {								//¶ş·Ö·¨ÕÒµ½Ö¸¶¨µÄË÷Òı
 		if (id < index_list[nMid].id) nEnd = nMid - 1;
 		else nBegin = nMid + 1;
 	}
-	if(id != index_list[nMid].id) return -1;								//Êı¾İÎÄ¼şÀïÃæÒ²Ã»ÓĞ
+	if(id != index_list[nMid].id) return -1;								//æ•°æ®æ–‡ä»¶é‡Œé¢ä¹Ÿæ²¡æœ‰
 	return nMid;
 }
 
@@ -155,7 +155,7 @@ bool ZPackFile::_readData(int node_index, char *node) {
 	unsigned int dest_length;
 	unsigned long compress_type = index_list[node_index].compress_size >> 24;
 	int r = 1;
-	if((compress_type == TYPE_UCL) | (compress_type == TYPE_BZIP2)) {									//ÕûÌåÑ¹Ëõ
+	if((compress_type == TYPE_UCL) | (compress_type == TYPE_BZIP2)) {									//æ•´ä½“å‹ç¼©
 		if(compress_type == TYPE_UCL) {
 			r = ucl_nrv2b_decompress_8((BYTE *)source, index_list[node_index].compress_size & 0x00FFFFFF, (BYTE *)node, &dest_length, NULL);
 		}
@@ -210,7 +210,7 @@ char *ZPackFile::getData(unsigned long id) {
 	else return 0;
 }
 
-char *ZPackFile::getData(const char *name) {											//»ñÈ¡Ö¸¶¨µÄÎÄ¼şÊı¾İ
+char *ZPackFile::getData(const char *name) {											//è·å–æŒ‡å®šçš„æ–‡ä»¶æ•°æ®
 	unsigned long id = hash(name);
 	return getData(id);
 }

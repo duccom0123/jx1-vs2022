@@ -924,7 +924,7 @@ UINT CGamePlayer::WaitForAccPwd()
 
             if (bCheckProtocolVersion)
             {
-                // Èç¹ûÐ­Òé°æ±¾ÏàÍ¬£¬¼ÌÐøÅÐ¶ÏÕËºÅ
+                // å¦‚æžœåè®®ç‰ˆæœ¬ç›¸åŒï¼Œç»§ç»­åˆ¤æ–­è´¦å·
                 if (pAccName[0]) 
 		        {
 			        nNextTask = enumToNextTask;
@@ -936,13 +936,13 @@ UINT CGamePlayer::WaitForAccPwd()
             }
             else
             {
-                // Èç¹ûÐ­Òé°æ±¾²»Í¬£¬¾ÍÌáÊ¾ÓÃ»§³ö´í£¬ÐèÒªÉý¼¶µ½ÐÂ°æ±¾
+                // å¦‚æžœåè®®ç‰ˆæœ¬ä¸åŒï¼Œå°±æç¤ºç”¨æˆ·å‡ºé”™ï¼Œéœ€è¦å‡çº§åˆ°æ–°ç‰ˆæœ¬
 				UINT nQueryResult = LOGIN_A_LOGIN | LOGIN_R_INVALID_PROTOCOLVERSION;
 
                 _VerifyAccount_ToPlayer(nQueryResult, 0);
 
-                // ÊÇ·ñÐèÒªÍæ¼Ò¶Ï¿ª? ÐèÒª½øÒ»²½È·ÈÏ
-    			//m_pPlayerServer->ShutdownClient( m_lnIdentityID ); // ¶Ï¿ªÍæ¼Ò
+                // æ˜¯å¦éœ€è¦çŽ©å®¶æ–­å¼€? éœ€è¦è¿›ä¸€æ­¥ç¡®è®¤
+    			//m_pPlayerServer->ShutdownClient( m_lnIdentityID ); // æ–­å¼€çŽ©å®¶
             }
         }
 
@@ -1419,7 +1419,7 @@ UINT CGamePlayer::DelRole_WaitForVerify()
 
             m_pPlayerServer->SendData( m_lnIdentityID, ( const void * )&ndrr, sizeof( tagNewDelRoleResponse ) );
 
-            nNextTask = enumSelAddDelRole;  // ±íÊ¾Õâ´ÎµÄ¶¯×÷Íê³É£¬½øÈëÏÂÒ»¸öµÈ´ýÁ÷³Ì
+            nNextTask = enumSelAddDelRole;  // è¡¨ç¤ºè¿™æ¬¡çš„åŠ¨ä½œå®Œæˆï¼Œè¿›å…¥ä¸‹ä¸€ä¸ªç­‰å¾…æµç¨‹
         }
 
 		SAFE_RELEASE( pRetBuffer );
@@ -1771,7 +1771,7 @@ bool CGamePlayer::_SyncRoleInfo_ToGameServer( const void *pData, size_t dataLeng
 			m_theDataQueue[enumOwnerPlayer].Empty();
 
 			ok = pGServer->DispatchTask( CGameServer::enumSyncRoleInfo, pData, dataLength, max(m_nExtPoint, 0) );
-			m_nExtPoint = -1;	//ÓÃÍê¾ÍÇåµô
+			m_nExtPoint = -1;	//ç”¨å®Œå°±æ¸…æŽ‰
 		}
 	}
 

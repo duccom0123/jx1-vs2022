@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ³¡¾°µØÍ¼ÖĞ¶ÔÏó¼¯ºÏÊ÷
+// åœºæ™¯åœ°å›¾ä¸­å¯¹è±¡é›†åˆæ ‘
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-19
@@ -25,7 +25,7 @@ struct KIpotLeaf;
 struct KIpotRuntimeObj;
 class  KIpotBranch;
 
-// ÓÃÓÚ´æ´¢ÕÚµ²ĞÅÏ¢µÄ½á¹¹
+// ç”¨äºå­˜å‚¨é®æŒ¡ä¿¡æ¯çš„ç»“æ„
 struct KVector2
 {
 	float fX;
@@ -34,18 +34,18 @@ struct KVector2
 
 struct KLObstacle
 {
-	int nObstacle;						// ÕÚµ²ID
-	KVector2 vDir;						// ÕÏ°­·½Ïò
+	int nObstacle;						// é®æŒ¡ID
+	KVector2 vDir;						// éšœç¢æ–¹å‘
     unsigned nReserveForAlign;
 };
 
 class KLightBase
 {
 public:
-	KIpotLeaf* m_pParent;				// ¹âÔ´ËùÊô¶ÔÏóÖ¸Õë
-	KPosition3 m_oPosition;				// ¹âÔ´Î»ÖÃ
-	DWORD m_dwColor;					// ¹âÔ´ÑÕÉ«¼°ÁÁ¶È
-	long  m_nRadius;					// ×÷ÓÃ°ë¾¶
+	KIpotLeaf* m_pParent;				// å…‰æºæ‰€å±å¯¹è±¡æŒ‡é’ˆ
+	KPosition3 m_oPosition;				// å…‰æºä½ç½®
+	DWORD m_dwColor;					// å…‰æºé¢œè‰²åŠäº®åº¦
+	long  m_nRadius;					// ä½œç”¨åŠå¾„
 public:
 	virtual void Breath(){}
 };
@@ -53,12 +53,12 @@ public:
 class KSelfBreathLight : public KLightBase
 {
 public:
-	float	fMinRange;					// ×îĞ¡°ë¾¶
-	float	fMaxRange;					// ×î´ó°ë¾¶
-	float	fRadius;					// ÒÔ¸¡µãÊı±íÊ¾µÄ¹âÔ´°ë¾¶
-	float	fCycle;						// Ñ­»·ÖÜÆÚ,ºÁÃë
-	int		nDir;						// °ë¾¶±ä»¯·½Ïò
-	DWORD	dwLastBreathTime;			// ÉÏ´ÎºôÎüÊ±¼ä
+	float	fMinRange;					// æœ€å°åŠå¾„
+	float	fMaxRange;					// æœ€å¤§åŠå¾„
+	float	fRadius;					// ä»¥æµ®ç‚¹æ•°è¡¨ç¤ºçš„å…‰æºåŠå¾„
+	float	fCycle;						// å¾ªç¯å‘¨æœŸ,æ¯«ç§’
+	int		nDir;						// åŠå¾„å˜åŒ–æ–¹å‘
+	DWORD	dwLastBreathTime;			// ä¸Šæ¬¡å‘¼å¸æ—¶é—´
 public:
 	KSelfBreathLight();
 	virtual void Breath();
@@ -66,7 +66,7 @@ public:
 
 //##ModelId=3DD95FC001F8
 //##Documentation
-//## ³¡¾°ÖĞµÄ¶ÔÏó¸ù¾İ¿Õ¼äÏà»¥Î»ÖÃ£¬ÅÅÁĞÎªÌØÊâµÄÊ÷ĞÎ½á¹¹µÄ¼¯ºÏ¡£
+//## åœºæ™¯ä¸­çš„å¯¹è±¡æ ¹æ®ç©ºé—´ç›¸äº’ä½ç½®ï¼Œæ’åˆ—ä¸ºç‰¹æ®Šçš„æ ‘å½¢ç»“æ„çš„é›†åˆã€‚
 class KIpoTree
 {
   public:
@@ -79,67 +79,67 @@ class KIpoTree
 
 	//##ModelId=3DD9ECFD00E6
 	//##Documentation
-	//## »æÖÆÕâ¿Ã¶ÔÏó¼¯ºÏÊ÷
+	//## ç»˜åˆ¶è¿™æ£µå¯¹è±¡é›†åˆæ ‘
 	void Paint(RECT* pRepresentArea, enum IPOT_RENDER_LAYER eLayer);
 
 	//##ModelId=3DDA96360240
 	//##Documentation
-	//## Çå¿ÕÊ÷ÖĞËùÓĞµÄÄÚÈİ¡£°üÀ¨Ê÷Ö¦µÈÔÚÄÚ¡£ÈÔ±»Íâ²¿ÒıÓÃ¶ø²»ÄÜÉ¾³ıµÄÒ¶×Ó£¬Ôò×ªµ½m_PermanetBranchÖ¦ÉÏ¡£
+	//## æ¸…ç©ºæ ‘ä¸­æ‰€æœ‰çš„å†…å®¹ã€‚åŒ…æ‹¬æ ‘æç­‰åœ¨å†…ã€‚ä»è¢«å¤–éƒ¨å¼•ç”¨è€Œä¸èƒ½åˆ é™¤çš„å¶å­ï¼Œåˆ™è½¬åˆ°m_PermanetBranchæä¸Šã€‚
 	void Clear();
 
 	//##ModelId=3DE1D38A0173
 	//##Documentation
-	//## Çå¿ÕÊ÷ÖĞËùÓĞµÄÄÚÈİ¡£°üÀ¨Ê÷Ö¦µÈÔÚÄÚ¡£µ«ÊÇÊ÷ÉÏµÄKIpotRuntimeObjÀàĞÍµÄÒ¶×ÓÈ«²¿ÕªÏÂ,×ªµ½m_PermanetBranchÖ¦ÉÏ¡£
+	//## æ¸…ç©ºæ ‘ä¸­æ‰€æœ‰çš„å†…å®¹ã€‚åŒ…æ‹¬æ ‘æç­‰åœ¨å†…ã€‚ä½†æ˜¯æ ‘ä¸Šçš„KIpotRuntimeObjç±»å‹çš„å¶å­å…¨éƒ¨æ‘˜ä¸‹,è½¬åˆ°m_PermanetBranchæä¸Šã€‚
 	void Fell();
 
-	//m_PermanentLeafÉÏÁ¬½ÓµÄKIpotRuntimeObjÀàĞÍµÄÒ¶×Ó£¬ÊôÓÚKeepRtoArea·¶Î§µÄÈ«²¿ÒÆ¶¯µ½Ê÷Ö¦ÉÏ£¬ÆäËüµÄ¶¼Å×Æú¡£
+	//m_PermanentLeafä¸Šè¿æ¥çš„KIpotRuntimeObjç±»å‹çš„å¶å­ï¼Œå±äºKeepRtoAreaèŒƒå›´çš„å…¨éƒ¨ç§»åŠ¨åˆ°æ ‘æä¸Šï¼Œå…¶å®ƒçš„éƒ½æŠ›å¼ƒã€‚
 	void StrewRtoLeafs(RECT& KeepRtoArea);
 
 	//##ModelId=3DDAB2E20352
 	//##Documentation
-	//## Ìí¼ÓÊ÷Ö¦¡£
-	//## ³É¹¦·µ»Ø·Ç0Öµ£¬·ñÔò·µ»Ø0Öµ¡£
+	//## æ·»åŠ æ ‘æã€‚
+	//## æˆåŠŸè¿”å›é0å€¼ï¼Œå¦åˆ™è¿”å›0å€¼ã€‚
 	void AddBranch(
 		//##Documentation
-		//## Ê÷Ö¦Ëù¹ØÁªµÄ¶ÔÏóµÄÖ¸Õë
+		//## æ ‘ææ‰€å…³è”çš„å¯¹è±¡çš„æŒ‡é’ˆ
 		KIpotBuildinObj* pBranchObj);
 
 	//##ModelId=3DDA96780082
 	//##Documentation
-	//## É¾³ıÊ÷ÖĞËùÓĞ±íÊö³¡¾°ÖĞÔËĞĞÊ±¶ÔÏóµÄÊ÷Ò¶¡£
+	//## åˆ é™¤æ ‘ä¸­æ‰€æœ‰è¡¨è¿°åœºæ™¯ä¸­è¿è¡Œæ—¶å¯¹è±¡çš„æ ‘å¶ã€‚
 //	void RemoveAllRtoLeafs();
 
 	//##ModelId=3DE2A05601A3
 	//##Documentation
-	//## É¾³ıÈ«²¿³¬³ö·¶Î§µÄrtoÒ¶×Ó¡£
+	//## åˆ é™¤å…¨éƒ¨è¶…å‡ºèŒƒå›´çš„rtoå¶å­ã€‚
 /*	void RemoveOutsideRtoLeafs(
 		//##Documentation
-		//## Ö¸¶¨µÄ·¶Î§
+		//## æŒ‡å®šçš„èŒƒå›´
 		RECT& rc);
 */
 	//##ModelId=3DE3D4AB036F
 	//##Documentation
-	//## Ìí¼ÓÒÔÏß·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏóÒ¶×Ó
+	//## æ·»åŠ ä»¥çº¿æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡å¶å­
 	void AddLeafLine(
 		//##Documentation
-		//## ÒÔÏß·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+		//## ä»¥çº¿æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 		KIpotBuildinObj* pLeaf);
 
 	//##ModelId=3DE3D4AB0371
 	//##Documentation
-	//## Ìí¼ÓÒÔµã·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏóÒ¶×Ó
+	//## æ·»åŠ ä»¥ç‚¹æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡å¶å­
 	void AddLeafPoint(
 		//##Documentation
-		//## ÒÔµã·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+		//## ä»¥ç‚¹æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 		KIpotLeaf* pLeaf);
 
-	//ÉèÖÃÓÀ¾ÃÊ÷Ö¦µÄÎ»ÖÃ
+	//è®¾ç½®æ°¸ä¹…æ ‘æçš„ä½ç½®
 	void SetPermanentBranchPos(int nLeftX, int nRightX, int y);
 
-	// É¾³ıÒ»¸öKIpotRuntimeObj£¬Í¬Ê±É¾³ı¸½´øµÄ¹âÔ´
+	// åˆ é™¤ä¸€ä¸ªKIpotRuntimeObjï¼ŒåŒæ—¶åˆ é™¤é™„å¸¦çš„å…‰æº
 	void PluckRto(KIpotRuntimeObj* pLeaf);
 
-	// ÉèÖÃ¾Å¸ö½¹µãÇøÓò×óÉÏ½Ç×ø±ê
+	// è®¾ç½®ä¹ä¸ªç„¦ç‚¹åŒºåŸŸå·¦ä¸Šè§’åæ ‡
 	void SetLightenAreaLeftTopPos(int nX, int nY)
 	{
 		m_nLeftTopX = nX;
@@ -150,25 +150,25 @@ class KIpoTree
 
 	void AddBuildinLight(KBuildInLightInfo* pLights, int nCount);
 
-	// ÉèÖÃµ±Ç°Ê±¼ä£¬nCurrentTimeÎª´ÓÁè³¿¿ªÊ¼µÄ·ÖÖÓÊı
+	// è®¾ç½®å½“å‰æ—¶é—´ï¼ŒnCurrentTimeä¸ºä»å‡Œæ™¨å¼€å§‹çš„åˆ†é’Ÿæ•°
 	void SetCurrentTime(int nCurrentTime){m_nCurrentTime = nCurrentTime;}
-	// ÉèÖÃÊÇ·ñÊÇÊÒÄÚ
+	// è®¾ç½®æ˜¯å¦æ˜¯å®¤å†…
 	void SetIsIndoor(bool bIsIndoor){m_bIsIndoor = bIsIndoor;}
 	
-	// ÉèÖÃ»·¾³¹âµÄÑÕÉ«ºÍÁÁ¶È
+	// è®¾ç½®ç¯å¢ƒå…‰çš„é¢œè‰²å’Œäº®åº¦
 	void SetAmbient(DWORD dwAmbient){m_dwAmbient = dwAmbient;}
 
-	// äÖÈ¾¹âÕÕÍ¼
+	// æ¸²æŸ“å…‰ç…§å›¾
 	void RenderLightMap();
 
-	// ÉèÖÃÊÇ·ñ´¦ÀíµØÍ¼ÄÚ½¨¹âÔ´£¬ÓÃÓÚ±íÏÖ°×ÌìºÍÍíÉÏ
+	// è®¾ç½®æ˜¯å¦å¤„ç†åœ°å›¾å†…å»ºå…‰æºï¼Œç”¨äºè¡¨ç°ç™½å¤©å’Œæ™šä¸Š
 	void EnableBioLights(bool bEnable);
-	// ÉèÖÃÊÇ·ñ´¦Àí¶¯Ì¬¹âÕÕ
+	// è®¾ç½®æ˜¯å¦å¤„ç†åŠ¨æ€å…‰ç…§
 	void EnableDynamicLights(bool bEnable);
 
   private:
 
-	//É¾³ıÓëÓÀÔ¶µÄÊ÷Ò¶Ò»ÆğµÄrtoÒ¶×Ó
+	//åˆ é™¤ä¸æ°¸è¿œçš„æ ‘å¶ä¸€èµ·çš„rtoå¶å­
 	void RemoveRtoGroupWithPermanentLeaf();
 
   private:
@@ -177,10 +177,10 @@ class KIpoTree
 	enum PARAM
 	{
 		//##Documentation
-		//## Ò¶×Ó±ê¼ÇÊıÖµÖĞÒ¶×Ó°ëÖ¸ÕëÊı¾İµÄmask
+		//## å¶å­æ ‡è®°æ•°å€¼ä¸­å¶å­åŠæŒ‡é’ˆæ•°æ®çš„mask
 		LEAF_IDVALUE_HALF_POINTER_MASK = 0xFFFF, 
 		//##Documentation
-		//## Ò¶×Ó±ê¼ÇÊıÖµÖĞËùÔÚÊ÷Ö¦ÖµµÄmask
+		//## å¶å­æ ‡è®°æ•°å€¼ä¸­æ‰€åœ¨æ ‘æå€¼çš„mask
 		LEAF_IDVALUE_BRANCH_VALUE_MASK = 0xFF0000
 	};
 
@@ -188,44 +188,44 @@ class KIpoTree
 	
 	//##ModelId=3DDA93C50327
 	//##Documentation
-	//## Ö¸ÏòÖ÷¸ÉÊ÷Ö¦½á¹¹¡£
+	//## æŒ‡å‘ä¸»å¹²æ ‘æç»“æ„ã€‚
 	KIpotBranch* m_pMainBranch;
 
 	//##ModelId=3DE1D266030D
 	//##Documentation
-	//## ÓÀÔ¶µÄÊ÷Ö¦¡£Ê÷ÔÚÖ¦ÔÚ£¬Ê÷ÍöÖ¦Íö¡£
+	//## æ°¸è¿œçš„æ ‘æã€‚æ ‘åœ¨æåœ¨ï¼Œæ ‘äº¡æäº¡ã€‚
 	KIpotBranch m_DefaultBranch;
 
-	//ÓÀÔ¶µÄrtoÊ÷Ò¶£¬ÓÃÓÚ×éÖ¯Ã»ÓĞ¼ÓÈëÊ÷Ö¦µÄrtoÒ¶×Ó
+	//æ°¸è¿œçš„rtoæ ‘å¶ï¼Œç”¨äºç»„ç»‡æ²¡æœ‰åŠ å…¥æ ‘æçš„rtoå¶å­
 	KIpotLeaf	m_PermanentLeaf;
 
-	// ¾Å¸ö½¹µãÇøÓò×óÉÏ½ÇX×ø±ê
+	// ä¹ä¸ªç„¦ç‚¹åŒºåŸŸå·¦ä¸Šè§’Xåæ ‡
 	int m_nLeftTopX;
-	// ¾Å¸ö½¹µãÇøÓò×óÉÏ½ÇY×ø±ê
+	// ä¹ä¸ªç„¦ç‚¹åŒºåŸŸå·¦ä¸Šè§’Yåæ ‡
 	int m_nLeftTopY;
 	
 	int m_nCurrentTime;
 	bool m_bIsIndoor;
 
-	// ÊÇ·ñ´¦ÀíµØÍ¼ÄÚ½¨¹âÔ´
+	// æ˜¯å¦å¤„ç†åœ°å›¾å†…å»ºå…‰æº
 	bool m_bProcessBioLights;
-	// ÊÇ·ñ´¦Àí¶¯Ì¬¹â
+	// æ˜¯å¦å¤„ç†åŠ¨æ€å…‰
 	bool m_bDynamicLighting;
 
-	// »·¾³¹âµÄÑÕÉ«ºÍÇ¿¶È
+	// ç¯å¢ƒå…‰çš„é¢œè‰²å’Œå¼ºåº¦
 	DWORD m_dwAmbient;
-	KLObstacle pObstacle[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];	// µ²¹âĞÅÏ¢Êı×é
-	//KLColor pLColor[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];		// ±£´æ¹âÕÕ¼ÆËãµÄÖĞ¼ä½á¹û
-	KLColor *pLColor;                                           		// ±£´æ¹âÕÕ¼ÆËãµÄÖĞ¼ä½á¹û
+	KLObstacle pObstacle[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];	// æŒ¡å…‰ä¿¡æ¯æ•°ç»„
+	//KLColor pLColor[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];		// ä¿å­˜å…‰ç…§è®¡ç®—çš„ä¸­é—´ç»“æœ
+	KLColor *pLColor;                                           		// ä¿å­˜å…‰ç…§è®¡ç®—çš„ä¸­é—´ç»“æœ
     unsigned char *m_pbyLColorBase;
-	KLColor *ptp;                                                       // ±£´æ¾­¹ıÆ½»¬¹ı¶ÉµÄ¹âÕÕ¼ÆËãµÄÖĞ¼ä½á¹û
+	KLColor *ptp;                                                       // ä¿å­˜ç»è¿‡å¹³æ»‘è¿‡æ¸¡çš„å…‰ç…§è®¡ç®—çš„ä¸­é—´ç»“æœ
 	unsigned char *m_pby_ptpBase;
 
 
-	DWORD pLightingArray[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];	// ¹âÕÕÍ¼ĞÅÏ¢Êı×é
+	DWORD pLightingArray[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];	// å…‰ç…§å›¾ä¿¡æ¯æ•°ç»„
 	list<KLightBase*> m_LightList;
 
-	// ¼ÆËã¹âÕÕ×èµ²µÄ»Øµ÷º¯Êı
+	// è®¡ç®—å…‰ç…§é˜»æŒ¡çš„å›è°ƒå‡½æ•°
 	static void ObjectsCallback(void* p, KIpotLeaf* pLeaf);
 	void FillLineObstacle(int nX1, int nY1, int nX2, int nY2, int nObstacleID);
 	bool CanLighting(int x, int y, int nLightPosX, int nLightPosY);

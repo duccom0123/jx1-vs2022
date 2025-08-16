@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	¸¡¶¯ÌáÊ¾´°¿Ú
+//	æµ®åŠ¨æç¤ºçª—å£
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-23
@@ -22,44 +22,44 @@ public:
     void    SetSpaceOverTitle(const char *pcszTitleText, int nTitleTextLen, UINT uColor);
 	void	CancelSpaceOverInfo();
 	void	PaintSpaceOverInfo();
-	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
-	void	UpdateCursorPos(int nX, int nY);		//Êó±êµÄÎ»ÖÃ¸üĞÂÁË
+	void	LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void	UpdateCursorPos(int nX, int nY);		//é¼ æ ‡çš„ä½ç½®æ›´æ–°äº†
 	void	OnWndClosed(void* pWnd);
 private:
 	void	Update(int nX, int nY);
 private:
-	int		m_nLeft;		        //´°¿Ú×óÉÏ½Çºá×ø±ê
-	int		m_nTop;			        //´°¿Ú×óÉÏ½Ç×İ×ø±ê
-	int		m_nWndWidth;	        //¶¯Ì¬µÄ´°¿ÚË®Æ½¿í
-	int		m_nWndHeight;	        //¶¯Ì¬µÄ´°¿Ú´¹Ö±¿í
-	int		m_nWndWidthReduce;	        //¶¯Ì¬µÄ´°¿ÚË®Æ½¿í
-	int		m_nWndHeightReduce;	        //¶¯Ì¬µÄ´°¿Ú´¹Ö±¿í
+	int		m_nLeft;		        //çª—å£å·¦ä¸Šè§’æ¨ªåæ ‡
+	int		m_nTop;			        //çª—å£å·¦ä¸Šè§’çºµåæ ‡
+	int		m_nWndWidth;	        //åŠ¨æ€çš„çª—å£æ°´å¹³å®½
+	int		m_nWndHeight;	        //åŠ¨æ€çš„çª—å£å‚ç›´å®½
+	int		m_nWndWidthReduce;	        //åŠ¨æ€çš„çª—å£æ°´å¹³å®½
+	int		m_nWndHeightReduce;	        //åŠ¨æ€çš„çª—å£å‚ç›´å®½
 	int		m_nWidthReduce;
 	int		m_nHeightReduce;
 	int		m_nMaxWidthReduce;
 	int		m_nMaxHeightReduce;
-	int		m_nIndent;		        //ÎÄ×ÖËõ½ø£¨Óë±ß¿òµÄË®Æ½Ïà¸ô¾àÀë£©
-	int		m_nFontSize;	        //ÎÄ×Ö×ÖÌå(´óĞ¡)
+	int		m_nIndent;		        //æ–‡å­—ç¼©è¿›ï¼ˆä¸è¾¹æ¡†çš„æ°´å¹³ç›¸éš”è·ç¦»ï¼‰
+	int		m_nFontSize;	        //æ–‡å­—å­—ä½“(å¤§å°)
 
-	int     m_nApplyX;              //Íâ²¿Ìá½»µÄ¸¡¶¯´°¿ÚµÄX×ø±ê
-	int     m_nApplyY;              //Íâ²¿Ìá½»µÄ¸¡¶¯´°¿ÚµÄY×ø±ê
-	int     m_nTitleLineNum;        //±êÌâ(Ãû×Ö)²¿·ÖµÄĞĞÊı
-	int     m_nMaxLineLen;          //Èı²¿·ÖÒ»ÆğËã×î³¤µÄĞĞµÄ³¤¶È
+	int     m_nApplyX;              //å¤–éƒ¨æäº¤çš„æµ®åŠ¨çª—å£çš„Xåæ ‡
+	int     m_nApplyY;              //å¤–éƒ¨æäº¤çš„æµ®åŠ¨çª—å£çš„Yåæ ‡
+	int     m_nTitleLineNum;        //æ ‡é¢˜(åå­—)éƒ¨åˆ†çš„è¡Œæ•°
+	int     m_nMaxLineLen;          //ä¸‰éƒ¨åˆ†ä¸€èµ·ç®—æœ€é•¿çš„è¡Œçš„é•¿åº¦
 
-	unsigned int m_uTitleBgColor;   //±êÌâ(Ãû×Ö)±³¾°ÑÕÉ«
-	unsigned int m_uTitleColor;     //±êÌâ(Ãû×Ö)ÎÄ×ÖÑÕÉ«
+	unsigned int m_uTitleBgColor;   //æ ‡é¢˜(åå­—)èƒŒæ™¯é¢œè‰²
+	unsigned int m_uTitleColor;     //æ ‡é¢˜(åå­—)æ–‡å­—é¢œè‰²
 	/////////////////////////
-	unsigned int m_uBoderShadowColor;      //ÊôĞÔÎÄ×ÖÑÕÉ«
+	unsigned int m_uBoderShadowColor;      //å±æ€§æ–‡å­—é¢œè‰²
 	/////////////////////////
-	KRUImagePart m_Image;	        //±ß¿òÍ¼ĞÎ
+	KRUImagePart m_Image;	        //è¾¹æ¡†å›¾å½¢
 
-	void*	m_pSpaceOverWnd;		//Êó±êÍ£ÁôµÄ´°¿Ú
+	void*	m_pSpaceOverWnd;		//é¼ æ ‡åœç•™çš„çª—å£
 	int		m_nObj;
 	char    m_ObjTitle[GOD_MAX_OBJ_TITLE_LEN];
 	int		m_nTitleLen;
-	bool	m_bTempImg;			//ÊÇ·ñÏÔÊ¾ÌáÍ·Óë½áÎ²±ß¿òÍ¼
+	bool	m_bTempImg;			//æ˜¯å¦æ˜¾ç¤ºæå¤´ä¸ç»“å°¾è¾¹æ¡†å›¾
 	bool	m_LAlign;
-	bool	m_bFollowCursor;		//ÊÇ·ñ¸ú×ÙÊó±êÖ¸ÕëµÄÎ»ÖÃ£¬Ò»ÆğÒÆ¶¯£¬£¨Í¬Ê±Ã»ÓĞºá¿í×î¶ÌÏŞÖÆ£©
+	bool	m_bFollowCursor;		//æ˜¯å¦è·Ÿè¸ªé¼ æ ‡æŒ‡é’ˆçš„ä½ç½®ï¼Œä¸€èµ·ç§»åŠ¨ï¼Œï¼ˆåŒæ—¶æ²¡æœ‰æ¨ªå®½æœ€çŸ­é™åˆ¶ï¼‰
 	BOOL	m_bShow;
 	unsigned int	m_uHoverTime;
 	unsigned int	m_uLastHoverTime;
@@ -73,4 +73,4 @@ extern KSpaceOver	g_SpaceOver;
 void SetSpaceOverObjDescColor(unsigned int uColor);
 void SetSpaceOverObjectDesc(void* pWnd, int nObj, unsigned int uGenre,
 			unsigned int uId, int nContainer, int x, int y, unsigned int uHoverTime, bool LAlign = false);
-//»æÖÆ±»ÍÏ¶¯ÓÎÏ·¶ÔÏóµÄº¯Êı
+//ç»˜åˆ¶è¢«æ‹–åŠ¨æ¸¸æˆå¯¹è±¡çš„å‡½æ•°

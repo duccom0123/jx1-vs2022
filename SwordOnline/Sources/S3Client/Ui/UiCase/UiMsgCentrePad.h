@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÏûÏ¢ÖĞĞÄÃæ°å
+//	ç•Œé¢--æ¶ˆæ¯ä¸­å¿ƒé¢æ¿
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-13
@@ -52,11 +52,11 @@ struct KChannelResourceInfo
 	char cMenuDeactivateText[32];
 	KRColor uMenuBkColor;
 	WORD nTextPicIndex;
-	char cFormatName[32];	//ÓÃÓÚÆµµÀ¶©ÔÄ
+	char cFormatName[32];	//ç”¨äºé¢‘é“è®¢é˜…
 	int nNeverClose;
 	char szSoundFileName[80];
-	unsigned int uSendMsgInterval;	//ÓÃÓÚ·¢ËÍÏûÏ¢µÄÊ±¼ä¼ä¸ô(ºÁÃë)
-	unsigned int uSendMsgNum;	//ÓÃÓÚ»º´æ´ı·¢ËÍÏûÏ¢×î´óÊıÄ¿,×î´ó10¾ä
+	unsigned int uSendMsgInterval;	//ç”¨äºå‘é€æ¶ˆæ¯çš„æ—¶é—´é—´éš”(æ¯«ç§’)
+	unsigned int uSendMsgNum;	//ç”¨äºç¼“å­˜å¾…å‘é€æ¶ˆæ¯æœ€å¤§æ•°ç›®,æœ€å¤§10å¥
 };
 
 struct KChannelActivateInfo
@@ -64,10 +64,10 @@ struct KChannelActivateInfo
 	DWORD nChannelID;
 	BYTE cost;
 	bool bSubscribe;
-	int ResourceIndex;	//-1±íÊ¾ÎŞ×ÊÔ´
-	unsigned int uLastSendMsgTime;	//ÉÏ´Î·¢ÏûÏ¢µÄÊ±¼ä
-	unsigned int uLeftSendMsgNum;	//ÒÑ¾­»º´æµÄ´ú·¢ÏûÏ¢
-	unsigned int uBufferOffset;	//¿ÉÓÃ¿Õ¼äµÄÆğÊ¼Î»ÖÃ
+	int ResourceIndex;	//-1è¡¨ç¤ºæ— èµ„æº
+	unsigned int uLastSendMsgTime;	//ä¸Šæ¬¡å‘æ¶ˆæ¯çš„æ—¶é—´
+	unsigned int uLeftSendMsgNum;	//å·²ç»ç¼“å­˜çš„ä»£å‘æ¶ˆæ¯
+	unsigned int uBufferOffset;	//å¯ç”¨ç©ºé—´çš„èµ·å§‹ä½ç½®
 	char Buffer[1024 * 10];
 };
 
@@ -108,30 +108,30 @@ public:
 	KWndButton				m_DownButton;
 	
 	KWndMessageListBox		m_SysRoom;
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	void ScrollBottom();
 };
 
 class KUiMsgCentrePad : public KWndWindow
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiMsgCentrePad* OpenWindow();					//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static void				CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiMsgCentrePad* OpenWindow();					//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static void				CloseWindow(bool bDestroy);		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
 	static KUiMsgCentrePad* GetIfVisible();
 	static void				Clear();
 	static void				Expand();
-	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
-	static void				DefaultScheme(const char* pScheme);//ÖØĞÂ³õÊ¼»¯½çÃæ
-	static void				HideAllMessage();//Òş²ØËùÓĞÊä³ö
-	static void				ShowAllMessage();//ÏÔÊ¾ËùÓĞÊä³ö
+	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static void				DefaultScheme(const char* pScheme);//é‡æ–°åˆå§‹åŒ–ç•Œé¢
+	static void				HideAllMessage();//éšè—æ‰€æœ‰è¾“å‡º
+	static void				ShowAllMessage();//æ˜¾ç¤ºæ‰€æœ‰è¾“å‡º
 
 	static void				SystemMessageArrival(const char* pMsgBuff, unsigned short nMsgLength);
-	//ÓÃÓÚĞÂÁÄÌìĞ­Òéµ½´ïµÄ´¦Àí
+	//ç”¨äºæ–°èŠå¤©åè®®åˆ°è¾¾çš„å¤„ç†
 	static int				NewChannelMessageArrival(DWORD nChannelID, char* szSendName, const char* pMsgBuff, unsigned short nMsgLength, const char* pItem = 0, BYTE btSomeFlag = 0);
 	static void				NewMSNMessageArrival(char* szSourceName, char* szSendName, const char* pMsgBuff, unsigned short nMsgLength, const char* pItem = 0);
-	static void				OpenChannel(char* channelName, DWORD nChannelID, BYTE cost);	//Í¬Ê±¶©ÔÄ
-	//ÓÃÓÚÍâ¹ÒµÄÁÄÌì
+	static void				OpenChannel(char* channelName, DWORD nChannelID, BYTE cost);	//åŒæ—¶è®¢é˜…
+	//ç”¨äºå¤–æŒ‚çš„èŠå¤©
 	static void				ShowSomeoneMessage(char* szSourceName, const char* pMsgBuff, unsigned short nMsgLength);
 	enum  SelfChannel
 	{
@@ -143,7 +143,7 @@ public:
 		ch_Screen,
 		ch_GM
 	};
-	static void				CloseSelfChannel(SelfChannel type);	//Í¬Ê±ÍË¶©
+	static void				CloseSelfChannel(SelfChannel type);	//åŒæ—¶é€€è®¢
 
 	static void				QueryAllChannel();
 	static void				ReplaceChannelName(char* szDest, size_t nDestSize, char* szSrc);
@@ -155,7 +155,7 @@ public:
 	static DWORD			GetChannelCount();
 	static int				GetChannelIndex(char* channelName);
 	static int				GetChannelIndex(DWORD dwID);
-	static int				ReleaseActivateChannelAll();	//·µ»ØÔ­À´µÄ×Ü¸öÊı
+	static int				ReleaseActivateChannelAll();	//è¿”å›åŸæ¥çš„æ€»ä¸ªæ•°
 	static bool				GetChannelSubscribe(int nChannelIndex);
 	static bool				IsChannelType(int nChannelIndex, SelfChannel type);
 	static int				CheckChannel(int nChannelIndex, bool b);
@@ -175,23 +175,23 @@ public:
 	static int	GetChannelData(DWORD& dwID, BYTE& cost, char*& Buffer, int& nLen);
 	static int	PopChannelData(DWORD dwID);
 
-	void	Breathe();								//»î¶¯º¯Êı
+	void	Breathe();								//æ´»åŠ¨å‡½æ•°
 private:
 	KUiMsgCentrePad();
 	~KUiMsgCentrePad()
 	{
 		ReleaseActivateChannelAll();
 	}
-	void	Initialize();							//³õÊ¼»¯
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Initialize();							//åˆå§‹åŒ–
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	int		ChanageHeight(int nOffsetY, bool bAtTop);
 	void	LoadScheme(KIniFile* pIni);
-	int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÂäÔÚ´°¿ÚÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
-	void	SetAutoDelMsgInterval(unsigned int uInterval = 0);	//ÉèÖÃ×Ô¶¯É¾³ıÏûÏ¢µÄÊ±¼ä¼ä¸ô
-				//²ÎÊıÄ¬ÈÏÖµÎª0£¬±íÊ¾²»°´ÕÕÊ±¼ä¼ä¸ô×Ô¶¯É¾³ı£¬Ê±¼äµ¥Î»ºÁÃë
+	int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦è½åœ¨çª—å£å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
+	void	SetAutoDelMsgInterval(unsigned int uInterval = 0);	//è®¾ç½®è‡ªåŠ¨åˆ é™¤æ¶ˆæ¯çš„æ—¶é—´é—´éš”
+				//å‚æ•°é»˜è®¤å€¼ä¸º0ï¼Œè¡¨ç¤ºä¸æŒ‰ç…§æ—¶é—´é—´éš”è‡ªåŠ¨åˆ é™¤ï¼Œæ—¶é—´å•ä½æ¯«ç§’
 	void	DragWndSize(int nMoveOffset);
 	void	DragWndPos(int nMoveOffset);
-	void	PaintWindow();							//»æÖÆ´°¿Ú
+	void	PaintWindow();							//ç»˜åˆ¶çª—å£
 
 	int		FindActivateChannelResourceIndex(char* cTitle);
 	int		FindActivateChannelIndex(char* cTitle);
@@ -205,9 +205,9 @@ private:
 	void	ShowMSNMessage(char* szName, const char* pMsgBuff, unsigned short nMsgLength, KWndMessageListBox* pM, KRColor uColor, KRColor uBKColor, KRColor uBorderColor, WORD nPic, const char* pItem = 0);
 	void	SendQueryChannelID(int nChannelResourceIndex);
 	void	SendChannelSubscribe(int nChannelIndex, bool b);
-	int		AddActivateChannel(const KChannelActivateInfo& Item);	//·µ»ØÔö¼ÓItemµÄIndex
-	int		ReleaseActivateChannel(int nChannelIndex);	//·µ»ØÊ£ÓàµÄ×Ü¸öÊı
-	void	CloseActivateChannel(int nChannelIndex);	//Í¬Ê±ÍË¶©
+	int		AddActivateChannel(const KChannelActivateInfo& Item);	//è¿”å›å¢åŠ Itemçš„Index
+	int		ReleaseActivateChannel(int nChannelIndex);	//è¿”å›å‰©ä½™çš„æ€»ä¸ªæ•°
+	void	CloseActivateChannel(int nChannelIndex);	//åŒæ—¶é€€è®¢
 
 	void	PopupChannelMenu(int x, int y);
 	
@@ -245,8 +245,8 @@ private:
 	bool				m_bExpandWnd;
 	RECT				m_nLastWndSize;
 #define SECOND_AUTODELMSG 20000
-	unsigned int	m_uAutoDelMsgInterval;	//×Ô¶¯É¾³ıÏûÏ¢µÄ¼ä¸ôÊ±¼ä£¬µ¥Î»ºÁÃë
-	unsigned int	m_uLastDelMsgTime;		//ÉÏ´ÎÉ¾³ıÏûÏ¢Ê±µÄÊ±¼ä
+	unsigned int	m_uAutoDelMsgInterval;	//è‡ªåŠ¨åˆ é™¤æ¶ˆæ¯çš„é—´éš”æ—¶é—´ï¼Œå•ä½æ¯«ç§’
+	unsigned int	m_uLastDelMsgTime;		//ä¸Šæ¬¡åˆ é™¤æ¶ˆæ¯æ—¶çš„æ—¶é—´
 
 
 	KScrollMessageListBox m_MessageChannel[CHANNELTAB_NUM];

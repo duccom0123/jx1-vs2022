@@ -14,7 +14,7 @@
 typedef  KSkill KFightSkill;
 class KMissle;
 class KSkill;
-//Skill[0]ÎŞÓÃ£¬Ã¿¸öskillµÄ[0]ÎŞÓÃ!!×¢Òâ£¡
+//Skill[0]æ— ç”¨ï¼Œæ¯ä¸ªskillçš„[0]æ— ç”¨!!æ³¨æ„ï¼
 enum
 {
 	Missle_StartEvent = 1,
@@ -35,8 +35,8 @@ public:
 	unsigned long		m_ulLevel;
 
 #ifdef _SERVER
-	DWORD				m_dwSkillLevelUpScriptID;	//Íæ¼ÒµãÉı¼¶¼¼ÄÜµÈ¼¶Ê±´¥·¢µÄ½Å±¾ID
-	DWORD				m_dwSkillLevelDataScriptId; //¸Ã¼¼ÄÜÉı¼¶µÄ±ä¶¯Êı¾İ¶ÔÓ¦½Å±¾ID
+	DWORD				m_dwSkillLevelUpScriptID;	//ç©å®¶ç‚¹å‡çº§æŠ€èƒ½ç­‰çº§æ—¶è§¦å‘çš„è„šæœ¬ID
+	DWORD				m_dwSkillLevelDataScriptId; //è¯¥æŠ€èƒ½å‡çº§çš„å˜åŠ¨æ•°æ®å¯¹åº”è„šæœ¬ID
 #endif
 
 #ifndef _SERVER
@@ -44,85 +44,85 @@ public:
 	char				m_szPreCastEffectFile[100];
 	char				m_szManPreCastSoundFile[100];
 	char				m_szFMPreCastSoundFile[100];
-	eSkillLRInfo		m_eLRSkillInfo;			//0 ±íÊ¾×óÓÒ¼ü½Ô¿É£¬1±íÊ¾Ö»¿ÉÒÔ×÷ÓÒ¼ü¼¼ÄÜ£¬2±íÊ¾×óÓÒ¼ü¶¼²»¿É×÷
+	eSkillLRInfo		m_eLRSkillInfo;			//0 è¡¨ç¤ºå·¦å³é”®çš†å¯ï¼Œ1è¡¨ç¤ºåªå¯ä»¥ä½œå³é”®æŠ€èƒ½ï¼Œ2è¡¨ç¤ºå·¦å³é”®éƒ½ä¸å¯ä½œ
 #endif
-	unsigned short		m_usReqLevel;//		¼¼ÄÜĞèÒªµÄ×îĞ¡µÈ¼¶
+	unsigned short		m_usReqLevel;//		æŠ€èƒ½éœ€è¦çš„æœ€å°ç­‰çº§
 private:
-	int					m_nCharClass;			//	ÊôÄÄ¸öÏµµÄ
-	eSKillStyle			m_eSkillStyle;			//  µ±Ç°µÄ¼¼ÄÜÀàĞÍ
-	int					m_nSkillTime;			//	¸Ã¼¼ÄÜµÄ×÷ÓÃÊ±¼ä
-	BOOL				m_bClientSend;			//  ¸Ã¼¼ÄÜÊÇ·ñ¶Ô·şÎñÆ÷À´ËµÓĞĞ§
-	BOOL				m_bHaveLoad;			//	±êÊ¶¸Ã¼¼ÄÜÊÇ·ñÒÑ¾­¼ÓÔØ£¬Èç¹ûÃ»ÓĞÔò¼ÓÔØÏÈ
-	int					m_nInteruptTypeWhenMove;//×Óµ¯µÄ¼¤»îÊÇ·ñÊÜ·¢ËÍÕßµÄÒÆ¶¯¶øÖĞÖ¹
-	BOOL				m_bHeelAtParent;	//	µ±×Óµ¯Êµ¼Ê¼¤»îÊ±£¬Î»ÖÃ¸ù¾İ¸¸µ±Ç°Î»ÖÃ¶øÈ·¶¨,¶ø²»ÊÇÓÉ²úÉúÄÇ¿ÌparentÎ»ÖÃ¾ö¶¨
+	int					m_nCharClass;			//	å±å“ªä¸ªç³»çš„
+	eSKillStyle			m_eSkillStyle;			//  å½“å‰çš„æŠ€èƒ½ç±»å‹
+	int					m_nSkillTime;			//	è¯¥æŠ€èƒ½çš„ä½œç”¨æ—¶é—´
+	BOOL				m_bClientSend;			//  è¯¥æŠ€èƒ½æ˜¯å¦å¯¹æœåŠ¡å™¨æ¥è¯´æœ‰æ•ˆ
+	BOOL				m_bHaveLoad;			//	æ ‡è¯†è¯¥æŠ€èƒ½æ˜¯å¦å·²ç»åŠ è½½ï¼Œå¦‚æœæ²¡æœ‰åˆ™åŠ è½½å…ˆ
+	int					m_nInteruptTypeWhenMove;//å­å¼¹çš„æ¿€æ´»æ˜¯å¦å—å‘é€è€…çš„ç§»åŠ¨è€Œä¸­æ­¢
+	BOOL				m_bHeelAtParent;	//	å½“å­å¼¹å®é™…æ¿€æ´»æ—¶ï¼Œä½ç½®æ ¹æ®çˆ¶å½“å‰ä½ç½®è€Œç¡®å®š,è€Œä¸æ˜¯ç”±äº§ç”Ÿé‚£åˆ»parentä½ç½®å†³å®š
 
-	//¼¼ÄÜÏŞÖÆÏî
-	CLIENTACTION		m_nCharActionId;		//	·¢Õâ¸ö¼¼ÄÜÊ±ÈËÎï×öÊ²Ã´¶¯×÷
-	int					m_nWaitTime;			//	¸Ã¼¼ÄÜÕı³£Çé¿öÏÂÕæÕı²úÉúµÄÊ±¼ä
-	BOOL				m_bIsAura;				//	ÊÇ·ñÎª¹â»·¼¼ÄÜ
-	BOOL				m_bIsPassivity;			//	ÊÇ·ñÎª±»¶¯¼¼ÄÜ
-	BOOL				m_bIsMelee;				//	ÊÇ·ñÎª½üÉí¹¥»÷£¬½üÉí¹¥»÷Ê±
+	//æŠ€èƒ½é™åˆ¶é¡¹
+	CLIENTACTION		m_nCharActionId;		//	å‘è¿™ä¸ªæŠ€èƒ½æ—¶äººç‰©åšä»€ä¹ˆåŠ¨ä½œ
+	int					m_nWaitTime;			//	è¯¥æŠ€èƒ½æ­£å¸¸æƒ…å†µä¸‹çœŸæ­£äº§ç”Ÿçš„æ—¶é—´
+	BOOL				m_bIsAura;				//	æ˜¯å¦ä¸ºå…‰ç¯æŠ€èƒ½
+	BOOL				m_bIsPassivity;			//	æ˜¯å¦ä¸ºè¢«åŠ¨æŠ€èƒ½
+	BOOL				m_bIsMelee;				//	æ˜¯å¦ä¸ºè¿‘èº«æ”»å‡»ï¼Œè¿‘èº«æ”»å‡»æ—¶
 	DWORD 				nId;
-	BOOL				m_bUseAttackRate;		//	ÊÇ·ñ¿¼ÂÇÃüÖĞÂÊ
-	BOOL				m_bTargetOnly;			//	Ö»ÓĞÑ¡ÖĞÄ¿±êµÄÊ±ºò²ÅÄÜ·¢³ö
-	BOOL				m_bTargetEnemy;			//	¼¼ÄÜµÄÄ¿±êÊÇ·ñÎªµĞÈË
-	BOOL				m_bTargetAlly;			//	¼¼ÄÜµÄÄ¿±êÊÇ·ñÎªÍ¬°é
-	BOOL				m_bTargetObj;			//	¼¼ÄÜµÄÄ¿±êÊÇ·ñÎªÎï¼ş
+	BOOL				m_bUseAttackRate;		//	æ˜¯å¦è€ƒè™‘å‘½ä¸­ç‡
+	BOOL				m_bTargetOnly;			//	åªæœ‰é€‰ä¸­ç›®æ ‡çš„æ—¶å€™æ‰èƒ½å‘å‡º
+	BOOL				m_bTargetEnemy;			//	æŠ€èƒ½çš„ç›®æ ‡æ˜¯å¦ä¸ºæ•Œäºº
+	BOOL				m_bTargetAlly;			//	æŠ€èƒ½çš„ç›®æ ‡æ˜¯å¦ä¸ºåŒä¼´
+	BOOL				m_bTargetObj;			//	æŠ€èƒ½çš„ç›®æ ‡æ˜¯å¦ä¸ºç‰©ä»¶
 	BOOL				m_bTargetNoNpc;
-	BOOL				m_bTargetSelf;			//	¼¼ÄÜµÄÄ¿±êÊÇ·ñ¿ÉÒÔÎª×ÔÒÑ
+	BOOL				m_bTargetSelf;			//	æŠ€èƒ½çš„ç›®æ ‡æ˜¯å¦å¯ä»¥ä¸ºè‡ªå·²
 	int					m_eRelation;
-	char				m_szName[64];			//	¼¼ÄÜÃû³Æ
+	char				m_szName[64];			//	æŠ€èƒ½åç§°
 	int					m_nAttrib;
-	DWORD				m_nId;					//	¼¼ÄÜId
-	BOOL				m_bBaseSkill;			//	ÊÇ·ñÎª×î»ù±¾¼¼ÄÜ
-	BOOL				m_bByMissle;			//	µ±ÓÉ¸¸¼¼ÄÜ²úÉúÊ±£¬ÊÇ·ñÊÇ¸ù¾İÍæ¼ÒÎª»ùµã»¹ÊÇÒÔµ±Ç°µÄ×Óµ¯Îª»ùµã
-	BOOL				m_bIsPhysical;			//	ÊÇ·ñÎªÎïÀí¼¼ÄÜ
-	int					m_nCost;				//	¼¼ÄÜÊ¹ÓÃÊ±ËùĞèÒª»¨·ÑµÄÄÚÁ¦¡¢ÌåÁ¦¡¢¾«Á¦¡¢½ğÇ®µÄÀàĞÍ
-	NPCATTRIB			m_nSkillCostType;		//	·¢¸Ã¼¼ÄÜËùĞèµÄÄÚÁ¦¡¢ÌåÁ¦µÈµÄÏûºÄ
-	int					m_nMinTimePerCast;		//	·¢¸Ã¼¼ÄÜµÄ×îĞ¡¼ä¸óÊ±¼ä
+	DWORD				m_nId;					//	æŠ€èƒ½Id
+	BOOL				m_bBaseSkill;			//	æ˜¯å¦ä¸ºæœ€åŸºæœ¬æŠ€èƒ½
+	BOOL				m_bByMissle;			//	å½“ç”±çˆ¶æŠ€èƒ½äº§ç”Ÿæ—¶ï¼Œæ˜¯å¦æ˜¯æ ¹æ®ç©å®¶ä¸ºåŸºç‚¹è¿˜æ˜¯ä»¥å½“å‰çš„å­å¼¹ä¸ºåŸºç‚¹
+	BOOL				m_bIsPhysical;			//	æ˜¯å¦ä¸ºç‰©ç†æŠ€èƒ½
+	int					m_nCost;				//	æŠ€èƒ½ä½¿ç”¨æ—¶æ‰€éœ€è¦èŠ±è´¹çš„å†…åŠ›ã€ä½“åŠ›ã€ç²¾åŠ›ã€é‡‘é’±çš„ç±»å‹
+	NPCATTRIB			m_nSkillCostType;		//	å‘è¯¥æŠ€èƒ½æ‰€éœ€çš„å†…åŠ›ã€ä½“åŠ›ç­‰çš„æ¶ˆè€—
+	int					m_nMinTimePerCast;		//	å‘è¯¥æŠ€èƒ½çš„æœ€å°é—´é˜æ—¶é—´
 	int					m_nMinTimePerCastOnHorse;
-	int					m_nChildSkillNum;		//	Í¬Ê±·¢Éä×Ó¼¼ÄÜµÄÊıÁ¿	
-	eMisslesForm		m_eMisslesForm;			//	¶à¸ö×Óµ¯µÄÆğÊ¼¸ñÊ½
-	int					m_nValue1;				//	¸½¼ÓÕûĞÎÊı¾İ1
-	int					m_nValue2;				//	¸½¼ÓÕûĞÎÊı¾İ2
+	int					m_nChildSkillNum;		//	åŒæ—¶å‘å°„å­æŠ€èƒ½çš„æ•°é‡	
+	eMisslesForm		m_eMisslesForm;			//	å¤šä¸ªå­å¼¹çš„èµ·å§‹æ ¼å¼
+	int					m_nValue1;				//	é™„åŠ æ•´å½¢æ•°æ®1
+	int					m_nValue2;				//	é™„åŠ æ•´å½¢æ•°æ®2
 	int					m_nEventSkillLevel;
-	KMagicAttrib		m_MissleAttribs[MAXSKILLLEVELSETTINGNUM];//Éú³É×Óµ¯µÄÏà¹ØÊı¾İ¡£²»Í¬µÈ¼¶µÄ¼¼ÄÜ£¬×Óµ¯µÄÏà¹ØÊôĞÔ¿ÉÒÔ±ä»¯¡£
+	KMagicAttrib		m_MissleAttribs[MAXSKILLLEVELSETTINGNUM];//ç”Ÿæˆå­å¼¹çš„ç›¸å…³æ•°æ®ã€‚ä¸åŒç­‰çº§çš„æŠ€èƒ½ï¼Œå­å¼¹çš„ç›¸å…³å±æ€§å¯ä»¥å˜åŒ–ã€‚
 	int					m_nMissleAttribsNum;
-	KMagicAttrib		m_DamageAttribs[MAX_MISSLE_DAMAGEATTRIB];	//Ó¦ÓÃµ½·Ç×´Ì¬Ïà¹ØµÄÊı¾İ
+	KMagicAttrib		m_DamageAttribs[MAX_MISSLE_DAMAGEATTRIB];	//åº”ç”¨åˆ°éçŠ¶æ€ç›¸å…³çš„æ•°æ®
 	int					m_nDamageAttribsNum;
-	KMagicAttrib		m_ImmediateAttribs[MAXSKILLLEVELSETTINGNUM];//·Ç×´Ì¬ÀàÊı¾İ,Á¢¼´ÉËº¦£¬¼¼ÄÜ·¢µÄ×Óµ¯´òÖĞ¶Ô·½¾ÍÁ¢¼´ÉúĞ§µÄÉËº¦,²»Ëæ¼¼ÄÜµÈ¼¶±ä»¯¶ø¸Ä±ä.
+	KMagicAttrib		m_ImmediateAttribs[MAXSKILLLEVELSETTINGNUM];//éçŠ¶æ€ç±»æ•°æ®,ç«‹å³ä¼¤å®³ï¼ŒæŠ€èƒ½å‘çš„å­å¼¹æ‰“ä¸­å¯¹æ–¹å°±ç«‹å³ç”Ÿæ•ˆçš„ä¼¤å®³,ä¸éšæŠ€èƒ½ç­‰çº§å˜åŒ–è€Œæ”¹å˜.
 	int					m_nImmediateAttribsNum;
-	KMagicAttrib		m_StateAttribs[MAXSKILLLEVELSETTINGNUM];     //Ó¦ÓÃµ½×´Ì¬Ïà¹ØµÄÊı¾İ
-	int					m_nStateAttribsNum;		//¸öÊı£¬×î´ó10
+	KMagicAttrib		m_StateAttribs[MAXSKILLLEVELSETTINGNUM];     //åº”ç”¨åˆ°çŠ¶æ€ç›¸å…³çš„æ•°æ®
+	int					m_nStateAttribsNum;		//ä¸ªæ•°ï¼Œæœ€å¤§10
 	eMissleFollowKind   m_eMissleFollowKind;	
 	int					m_nFollowKindIndex;		
 	DWORD				m_dwFollowKindID;
-	int					m_nChildSkillId;		//	¼¼ÄÜÒı·¢µÄ×Ó¼¼ÄÜId;	//µ±¸Ã¼¼ÄÜÎª»ù±¾¼¼ÄÜÊ±£¬ÕâÏîÎŞÓÃ
+	int					m_nChildSkillId;		//	æŠ€èƒ½å¼•å‘çš„å­æŠ€èƒ½Id;	//å½“è¯¥æŠ€èƒ½ä¸ºåŸºæœ¬æŠ€èƒ½æ—¶ï¼Œè¿™é¡¹æ— ç”¨
 	int					m_nChildSkillLevel;
-	BOOL				m_bFlyingEvent;			//	ÊÇ·ñĞèÒªÔÚ·ÉĞĞ¹ı³ÌÏûÏ¢·¢ÉúÊÇ£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bStartEvent;			//	ÊÇ·ñĞèÒªÔÚ¼¼ÄÜµÚÒ»´ÎActiveÊ±£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bCollideEvent;		//	ÊÇ·ñĞèÒªÔÚ×Ó¼¼ÄÜÄ§·¨Åö×²Ê±£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bVanishedEvent;		//	ÊÇ·ñĞèÒªÔÚ×Ó¼¼ÄÜÏûÍöÊ±£¬µ÷ÓÃÏà¹ØµÄ»Øµ÷º¯Êı
-	int					m_nFlySkillId;			//	Õû ¸ö·ÉĞĞµÄÏà¹Ø¼¼ÄÜ
-	int					m_nFlyEventTime;		//	Ã¿¶àÉÙÖ¡»Øµ÷FlyEvent;
-	int					m_nStartSkillId;		//	¼¼ÄÜ¸Õ¸Õ²Å·¢³öÊ±ËùÒı·¢µÄÊÂ¼şÊ±£¬ËùĞèÒªµÄÏà¹Ø¼¼ÄÜid
-	int					m_nVanishedSkillId;		//	¼¼ÄÜ·¢³öµÄ×Óµ¯½áÊøÊ±Òı·¢µÄ¼¼ÄÜId;
-	int					m_nCollideSkillId;		//	¼¼ÄÜ·¢³öµÄ×Óµ¯Åö×²µ½Îï¼şÒı·¢µÄ¼¼ÄÜId;
-	BOOL				m_bMustBeHit;			//	ÊÇ·ñÎª±ØÖĞ¼¼ÄÜ£¬¼´¶ÔÆä´¦Àí¼òµ¥»¯ÒÔ±ã½µµÍ·şÎñÆ÷¸ººÉ
-	eMisslesGenerateStyle m_eMisslesGenerateStyle;//Í¬Ê±Éú³ÉµÄ¶à¸ö×Óµ¯£¬DoWaitµÄÊ±¼äË³Ğò	
-	int					m_nMisslesGenerateData;	//Ïà¹ØÊı¾İ
-	int					m_nMaxShadowNum;		//	×î´ó±£ÁôµÄ²ĞÓ°Á¿
+	BOOL				m_bFlyingEvent;			//	æ˜¯å¦éœ€è¦åœ¨é£è¡Œè¿‡ç¨‹æ¶ˆæ¯å‘ç”Ÿæ˜¯ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bStartEvent;			//	æ˜¯å¦éœ€è¦åœ¨æŠ€èƒ½ç¬¬ä¸€æ¬¡Activeæ—¶ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bCollideEvent;		//	æ˜¯å¦éœ€è¦åœ¨å­æŠ€èƒ½é­”æ³•ç¢°æ’æ—¶ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bVanishedEvent;		//	æ˜¯å¦éœ€è¦åœ¨å­æŠ€èƒ½æ¶ˆäº¡æ—¶ï¼Œè°ƒç”¨ç›¸å…³çš„å›è°ƒå‡½æ•°
+	int					m_nFlySkillId;			//	æ•´ ä¸ªé£è¡Œçš„ç›¸å…³æŠ€èƒ½
+	int					m_nFlyEventTime;		//	æ¯å¤šå°‘å¸§å›è°ƒFlyEvent;
+	int					m_nStartSkillId;		//	æŠ€èƒ½åˆšåˆšæ‰å‘å‡ºæ—¶æ‰€å¼•å‘çš„äº‹ä»¶æ—¶ï¼Œæ‰€éœ€è¦çš„ç›¸å…³æŠ€èƒ½id
+	int					m_nVanishedSkillId;		//	æŠ€èƒ½å‘å‡ºçš„å­å¼¹ç»“æŸæ—¶å¼•å‘çš„æŠ€èƒ½Id;
+	int					m_nCollideSkillId;		//	æŠ€èƒ½å‘å‡ºçš„å­å¼¹ç¢°æ’åˆ°ç‰©ä»¶å¼•å‘çš„æŠ€èƒ½Id;
+	BOOL				m_bMustBeHit;			//	æ˜¯å¦ä¸ºå¿…ä¸­æŠ€èƒ½ï¼Œå³å¯¹å…¶å¤„ç†ç®€å•åŒ–ä»¥ä¾¿é™ä½æœåŠ¡å™¨è´Ÿè·
+	eMisslesGenerateStyle m_eMisslesGenerateStyle;//åŒæ—¶ç”Ÿæˆçš„å¤šä¸ªå­å¼¹ï¼ŒDoWaitçš„æ—¶é—´é¡ºåº	
+	int					m_nMisslesGenerateData;	//ç›¸å…³æ•°æ®
+	int					m_nMaxShadowNum;		//	æœ€å¤§ä¿ç•™çš„æ®‹å½±é‡
 	BOOL				m_bNeedShadow;
-	int					m_nAttackRadius;		// Éä³Ì
-	int					m_nStateSpecialId;		//×´Ì¬ĞÔÄ§·¨¹â»·idºÅ
-	int					m_nMaxTimes;			//Ä³Ğ©ÈçÏİÚåÄ§·¨£¬×î´óÍ¬Ê±³öÏÖ¶àÉÙ¸öÏİÚå
+	int					m_nAttackRadius;		// å°„ç¨‹
+	int					m_nStateSpecialId;		//çŠ¶æ€æ€§é­”æ³•å…‰ç¯idå·
+	int					m_nMaxTimes;			//æŸäº›å¦‚é™·é˜±é­”æ³•ï¼Œæœ€å¤§åŒæ—¶å‡ºç°å¤šå°‘ä¸ªé™·é˜±
 	int					m_nShowEvent;
 	
-	int					m_nEquiptLimited;		//·¢¼¼ÄÜÊ±¶Ôµ±Ç°×°±¸µÄÏŞÖÆ
+	int					m_nEquiptLimited;		//å‘æŠ€èƒ½æ—¶å¯¹å½“å‰è£…å¤‡çš„é™åˆ¶
 	
-	int					m_nHorseLimited;		//ÆïÂíÏŞÖÆ 0±íÊ¾Ã»ÈÎºÎÏŞÖÆ
-												//		   1±íÊ¾²»ÄÜÆïÂí
-												//		   2±íÊ¾±ØĞëÆïÂí
+	int					m_nHorseLimited;		//éª‘é©¬é™åˆ¶ 0è¡¨ç¤ºæ²¡ä»»ä½•é™åˆ¶
+												//		   1è¡¨ç¤ºä¸èƒ½éª‘é©¬
+												//		   2è¡¨ç¤ºå¿…é¡»éª‘é©¬
 	int					m_nAppendSkillNum;
 	int					m_nAppendSkillId[MAX_APPENDSKILL];
 	BOOL				m_bSkillReduceResist;
@@ -137,7 +137,7 @@ private:
 public:
 	KSkill();
 	virtual ~KSkill();
-	//ÔØÈëÏà¶ÔÓÚg_OrdinSkillsSettingµÄÁĞºÅ
+	//è½½å…¥ç›¸å¯¹äºg_OrdinSkillsSettingçš„åˆ—å·
 	//BOOL				
 	BOOL				OnMissleEvent(unsigned short usEvent, KMissle * pMissle) const;
 	BOOL				IsTargetOnly() const {return m_bTargetOnly;};
@@ -170,10 +170,10 @@ public:
 	BOOL				GetInfoFromTabFile(int nCol);
 	BOOL				GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow);
 	BOOL				Load(int nCol);
-	BOOL				Cast(int nLauncher,   int nParam1, int nParam2, int nWaitTime = 0, eSkillLauncherType eLauncherType = SKILL_SLT_Npc) const;	//·¢³öÊ±µ÷ÓÃ
+	BOOL				Cast(int nLauncher,   int nParam1, int nParam2, int nWaitTime = 0, eSkillLauncherType eLauncherType = SKILL_SLT_Npc) const;	//å‘å‡ºæ—¶è°ƒç”¨
 	int					GetChildSkillNum(int nLevel)const;
 	int					GetAttackRadius() const{	return m_nAttackRadius;};
-	void				LoadSkillLevelData(unsigned long  ulLevel , int nParam); //´Ó¼¼ÄÜÉı¼¶ÎÄ¼şÖĞ»ñµÃnLevelµÈ¼¶µÄÊôĞÔ±ä¶¯£¬²¢ÉèÖÃ
+	void				LoadSkillLevelData(unsigned long  ulLevel , int nParam); //ä»æŠ€èƒ½å‡çº§æ–‡ä»¶ä¸­è·å¾—nLevelç­‰çº§çš„å±æ€§å˜åŠ¨ï¼Œå¹¶è®¾ç½®
 	friend	class		KMissle;
 	int					GetSkillCost(void *)const{return m_nCost;};
 	NPCATTRIB			GetSkillCostType()const{return m_nSkillCostType;};
@@ -245,7 +245,7 @@ private:
 public:
 	void				DrawSkillIcon(int x, int y, int Width, int Height);
 	KRUImage			m_RUIconImage;
-	char				m_szSkillDesc[256];//¼¼ÄÜµÄÃèÊö
+	char				m_szSkillDesc[256];//æŠ€èƒ½çš„æè¿°
 	static void			GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * pszMsg, int nOwnerIndex,  bool bNextLevelDesc);
 	void				GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg,  BOOL bNextLevel = FALSE, BOOL bAddSkillDamage = FALSE, BOOL bEventSkill = FALSE);
 	int					GetHorseLimited(){return m_nHorseLimited;};

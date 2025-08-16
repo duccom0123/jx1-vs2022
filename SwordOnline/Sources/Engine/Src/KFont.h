@@ -3,7 +3,7 @@
 // File:	KFont.h
 // Date:	2000.08.08
 // Code:	Daniel Wang, Wooy
-// Desc:	Ä¿Ç°Ö§³ÖChinese GBK and Chinese GB2132Á½ÖÖ±àÂë×Ö·û¼¯
+// Desc:	ç›®å‰æ”¯æŒChinese GBK and Chinese GB2132ä¸¤ç§ç¼–ç å­—ç¬¦é›†
 //---------------------------------------------------------------------------
 #ifndef KFont_H
 #define KFont_H
@@ -12,7 +12,7 @@
 #include "KBitmap.h"
 //---------------------------------------------------------------------------
 
-//Ê¹ÓÃµÄ±àÂë×Ö·û¼¯¶¨Òå
+//ä½¿ç”¨çš„ç¼–ç å­—ç¬¦é›†å®šä¹‰
 enum CHARASET
 {
 	CHARASET_GBK	= 1,
@@ -29,11 +29,11 @@ enum CHARASET
       
 //---------------------------------------------------------------------------
 typedef struct _FontHead {
-	char		Id[4];				// ±êÊ¶
-	DWORD		Size;				// ´óĞ¡
-	DWORD		Count;				// ÊıÁ¿
-	WORD		Width;				// ¿í¶È
-	WORD		Height;				// ¸ß¶È
+	char		Id[4];				// æ ‡è¯†
+	DWORD		Size;				// å¤§å°
+	DWORD		Count;				// æ•°é‡
+	WORD		Width;				// å®½åº¦
+	WORD		Height;				// é«˜åº¦
 } TFontHead;
 //---------------------------------------------------------------------------
 class ENGINE_API KFont
@@ -41,7 +41,7 @@ class ENGINE_API KFont
 protected:
 	KMemClass	m_Font;				// font data
 	DWORD*		m_pdwOffs;			// offset table
-	int			m_nOffsetSpace;		// offset buff °üº¬DWORDÔªËØµÄÊıÄ¿
+	int			m_nOffsetSpace;		// offset buff åŒ…å«DWORDå…ƒç´ çš„æ•°ç›®
 	DWORD		m_dwSize;			// size of font data
 	int			m_nCount;			// count of word
 	int			m_nFontW;			// width of font
@@ -49,7 +49,7 @@ protected:
 	int			m_nLineW;			// width of line
 	int			m_nLineH;			// height of line
 	DWORD		m_dwColor;			// color of text
-	int         m_TextStyle;        //ÎÄ×Ö·ç¸ñ
+	int         m_TextStyle;        //æ–‡å­—é£æ ¼
 	CHARASET	m_CharaSet;
 protected:
 	int		GetFontRect(int nX, int nY, KBitmap* pBmp, PBYTE pBuf);

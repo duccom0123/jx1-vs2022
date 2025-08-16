@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	µ¯³öÑ¡Ôñ²Ëµ¥
+//	å¼¹å‡ºé€‰æ‹©èœå•
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-2-21
@@ -31,16 +31,16 @@ short			KPopupMenu::m_nIndent = 0;
 short			KPopupMenu::m_nFrame = 0;
 int				KPopupMenu::m_nMenuHeight = 0;
 char			KPopupMenu::m_szImage[128] = "";
-unsigned int	KPopupMenu::m_uDefBorderLineColor = 0xff000000;	//²Ëµ¥µÄ±ä¿òÑÕÉ«£¬Îª0ÔòÎŞ
-unsigned int	KPopupMenu::m_uDefTextColor		 = 0xffffffff;	//²Ëµ¥ÏîµÄÎÄ×ÖÉ«
-unsigned int	KPopupMenu::m_uDefTextBorderColor= 0xff000000;	//²Ëµ¥ÏîµÄÎÄ×Ö±ßÔµÉ«
-unsigned int	KPopupMenu::m_uDefSelTextColor	 = 0xffe0e0e0;	//±»Ñ¡ÖĞ²Ëµ¥ÏîµÄÎÄ×ÖÉ«
-unsigned int	KPopupMenu::m_uDefSelTextBorderColor = 0xff000000;	//±»Ñ¡ÖĞ²Ëµ¥ÏîµÄÎÄ×Ö±ßÔµÉ«
-unsigned int	KPopupMenu::m_uDefItemBgColor	 = 0x0a404040;	//²Ëµ¥ÏîµÄ±³¾°É«
-unsigned int	KPopupMenu::m_uDefSelItemBgColor = 0x0a202020;	//±»Ñ¡ÖĞ²Ëµ¥ÏîµÄ±³¾°É«
+unsigned int	KPopupMenu::m_uDefBorderLineColor = 0xff000000;	//èœå•çš„å˜æ¡†é¢œè‰²ï¼Œä¸º0åˆ™æ— 
+unsigned int	KPopupMenu::m_uDefTextColor		 = 0xffffffff;	//èœå•é¡¹çš„æ–‡å­—è‰²
+unsigned int	KPopupMenu::m_uDefTextBorderColor= 0xff000000;	//èœå•é¡¹çš„æ–‡å­—è¾¹ç¼˜è‰²
+unsigned int	KPopupMenu::m_uDefSelTextColor	 = 0xffe0e0e0;	//è¢«é€‰ä¸­èœå•é¡¹çš„æ–‡å­—è‰²
+unsigned int	KPopupMenu::m_uDefSelTextBorderColor = 0xff000000;	//è¢«é€‰ä¸­èœå•é¡¹çš„æ–‡å­—è¾¹ç¼˜è‰²
+unsigned int	KPopupMenu::m_uDefItemBgColor	 = 0x0a404040;	//èœå•é¡¹çš„èƒŒæ™¯è‰²
+unsigned int	KPopupMenu::m_uDefSelItemBgColor = 0x0a202020;	//è¢«é€‰ä¸­èœå•é¡¹çš„èƒŒæ™¯è‰²
 
 
-#define	SCHEME_INI				"µ¯³öËµÃ÷ÎÄ×Ö.ini"
+#define	SCHEME_INI				"å¼¹å‡ºè¯´æ˜æ–‡å­—.ini"
 
 void KPopupMenu::OnWndDelete(KWndWindow* pWnd)
 {
@@ -67,11 +67,11 @@ void KPopupMenu::Popup(KPopupMenuData* pMenu, KWndWindow* pCaller, unsigned int 
 	m_pCaller = pCaller;
 	m_uCallerParam = uParam;
 
-	//----´¦ÀíÍ·Î²Í¼ĞÎ----
+	//----å¤„ç†å¤´å°¾å›¾å½¢----
 	if (m_szImage[0] == 0 || m_nImgWidth == 0)
 		m_pMenu->usMenuFlag &= ~PM_F_HAVE_HEAD_TAIL_IMG;
 
-	//----´¦ÀíÎÄ×ÖËõ½ø----
+	//----å¤„ç†æ–‡å­—ç¼©è¿›----
 	if (m_pMenu->nItemTitleIndent == MENU_ITEM_DEFAULT_INDENT)
 		m_pMenu->nItemTitleIndent = m_nIndent;
 
@@ -84,8 +84,8 @@ void KPopupMenu::Popup(KPopupMenuData* pMenu, KWndWindow* pCaller, unsigned int 
 			bCalcRightWidth = true;
 	}
 
-	//----´¦Àí²Ëµ¥ºáÏò¿í¶È----
-	//----´¦Àí²Ëµ¥ÏîµÄ×İÏò¸ß¶È----
+	//----å¤„ç†èœå•æ¨ªå‘å®½åº¦----
+	//----å¤„ç†èœå•é¡¹çš„çºµå‘é«˜åº¦----
 	int nLenWid, nMaxItemWid = 0, nLenHei, nMaxItemHei = 0, nMaxRightLen = 0;
 	for (int i = 0; i < m_pMenu->nNumItem; i++)
 	{
@@ -139,11 +139,11 @@ void KPopupMenu::Popup(KPopupMenuData* pMenu, KWndWindow* pCaller, unsigned int 
 	if (m_pMenu->nItemHeight < 1)
 		m_pMenu->nItemHeight = 1;
 
-	//----µ÷ÕûÑ¡ÖĞ²Ëµ¥Ïî----
+	//----è°ƒæ•´é€‰ä¸­èœå•é¡¹----
 	if (m_pMenu->nSelectedItem >= m_pMenu->nNumItem)
 		m_pMenu->nSelectedItem = -1;
 
-	//----¼ÆËãÕû¸ö²Ëµ¥µÄ×İÏò¸ß¶È----
+	//----è®¡ç®—æ•´ä¸ªèœå•çš„çºµå‘é«˜åº¦----
 	m_nMenuHeight = m_pMenu->nItemHeight * m_pMenu->nNumItem;
 	
 	if (m_pMenu->usMenuFlag & PM_F_HAVE_ITEM_SEPARATOR)
@@ -153,7 +153,7 @@ void KPopupMenu::Popup(KPopupMenuData* pMenu, KWndWindow* pCaller, unsigned int 
 		m_nMenuHeight += 2 * m_nImgHeight;
 	
 
-	//----¼ÆËã²Ëµ¥´°¿ÚµÄÎ»ÖÃ----
+	//----è®¡ç®—èœå•çª—å£çš„ä½ç½®----
 	int x, y;
 	if (m_pMenu->nX == MENU_DEFAULT_POS)
 	{
@@ -184,7 +184,7 @@ void KPopupMenu::PaintMenu()
 	Shadow.oEndPos.nY = Shadow.oPosition.nY + m_nMenuHeight;
 	Shadow.oPosition.nZ = 0;
 
-	//»æÖÆÉÏÏÂ±ßµÄÍ¼ĞÎ
+	//ç»˜åˆ¶ä¸Šä¸‹è¾¹çš„å›¾å½¢
 	if (m_pMenu->usMenuFlag & PM_F_HAVE_HEAD_TAIL_IMG)
 	{
 		Shadow.oPosition.nY += m_nImgHeight;
@@ -233,7 +233,7 @@ void KPopupMenu::PaintMenu()
 	KRULine	Lines[2];
 	if (m_pMenu->uBorderLineColor)
 	{
-		//»æÖÆ×óÓÒÁ½²àµÄ±ßÏß
+		//ç»˜åˆ¶å·¦å³ä¸¤ä¾§çš„è¾¹çº¿
 		Lines[0].Color.Color_dw = m_pMenu->uBorderLineColor;
 		Lines[0].oPosition.nX = Shadow.oPosition.nX - 1;
 		Lines[0].oPosition.nY = m_pMenu->nY;
@@ -259,7 +259,7 @@ void KPopupMenu::PaintMenu()
 		Lines[0].Color.Color_dw = m_pMenu->uBorderLineColor;
 	}
 
-	//»æÖÆ·ÇÑ¡ÖĞµÄ²Ëµ¥Ïî
+	//ç»˜åˆ¶éé€‰ä¸­çš„èœå•é¡¹
 	int nTextStartX = Shadow.oPosition.nX + m_pMenu->nItemTitleIndent;
 
 	for (char i = 0; i < m_pMenu->nNumItem; i++)
@@ -306,7 +306,7 @@ void KPopupMenu::PaintMenu()
 		g_pRepresentShell->DrawPrimitives(1, &Lines[0], RU_T_LINE, true);
 	}
 
-	//»æÖÆÑ¡ÖĞµÄ²Ëµ¥Ïî
+	//ç»˜åˆ¶é€‰ä¸­çš„èœå•é¡¹
 	if (m_pMenu->nSelectedItem >= 0)
 	{
 		Shadow.oPosition.nY -= m_pMenu->nItemHeight * (m_pMenu->nNumItem - m_pMenu->nSelectedItem);
@@ -379,7 +379,7 @@ void KPopupMenu::PaintMenu()
 	}
 }
 
-//´°¿Úº¯Êı
+//çª—å£å‡½æ•°
 int	KPopupMenu::HandleInput(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	int nRet = 0;
@@ -551,7 +551,7 @@ void KPopupMenu::InitMenuData(KPopupMenuData* pMenu, int nNumItem)
 	}
 }
 
-//ÔØÈë½çÃæ·½°¸
+//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 void KPopupMenu::LoadTheme(const char* pScheme)
 {
 	if (pScheme == NULL)

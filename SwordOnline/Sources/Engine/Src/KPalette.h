@@ -10,19 +10,19 @@
 #define KPalette_H
 //---------------------------------------------------------------------------
 typedef struct {
-	BYTE		Blue;		// ю╪и╚╥жа©
-	BYTE		Green;		// бли╚╥жа©
-	BYTE		Red;		// ╨Ли╚╥жа©
-	BYTE		Alpha;		// м╦цВ╥жа©
-} KPAL32;					// 32н╩и╚ел
+	BYTE		Blue;		// Е┘╟Х┴╡Е┬├И┤▐
+	BYTE		Green;		// Г╩©Х┴╡Е┬├И┤▐
+	BYTE		Red;		// Г╨╒Х┴╡Е┬├И┤▐
+	BYTE		Alpha;		// И─▐Ф≤▌Е┬├И┤▐
+} KPAL32;					// 32Д╫█Х┴╡Г⌡≤
 //---------------------------------------------------------------------------
 typedef struct {
-	BYTE		Red;		// ╨Ли╚╥жа©
-	BYTE		Green;		// бли╚╥жа©
-	BYTE		Blue;		// ю╪и╚╥жа©
-} KPAL24;					// 24н╩и╚ел
+	BYTE		Red;		// Г╨╒Х┴╡Е┬├И┤▐
+	BYTE		Green;		// Г╩©Х┴╡Е┬├И┤▐
+	BYTE		Blue;		// Е┘╟Х┴╡Е┬├И┤▐
+} KPAL24;					// 24Д╫█Х┴╡Г⌡≤
 //---------------------------------------------------------------------------
-typedef WORD	KPAL16;		// 16н╩и╚ел
+typedef WORD	KPAL16;		// 16Д╫█Х┴╡Г⌡≤
 //---------------------------------------------------------------------------
 void ENGINE_API	g_Pal32ToPal16(KPAL32* pPal32, KPAL16* pPal16, int nColors);
 void ENGINE_API	g_Pal32ToPal24(KPAL32* pPal32, KPAL24* pPal24, int nColors);

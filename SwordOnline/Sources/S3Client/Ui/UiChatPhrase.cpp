@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	½çÃæ--ÁÄÌì¿ì½İÊäÈë¶ÌÓï
+//	ç•Œé¢--èŠå¤©å¿«æ·è¾“å…¥çŸ­è¯­
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-3-23
@@ -17,7 +17,7 @@
 
 #define EMOTE_INI_FILE "\\Ui\\Emote.ini"
 
-//¹¹ÔìÔÚµ÷ÓÃShortcutKey::LuaRegisterFunctionAlias×¢²áSayEmoteº¯Êı±ğÃûÊ±ËùĞè²ÎÊıµÄ¶¨Òå
+//æ„é€ åœ¨è°ƒç”¨ShortcutKey::LuaRegisterFunctionAliasæ³¨å†ŒSayEmoteå‡½æ•°åˆ«åæ—¶æ‰€éœ€å‚æ•°çš„å®šä¹‰
 #define SAY_EMOTE_FUNCTION "SayEmote"
 #define SAY_EMOTE_PARAM_DEST_PLAYER "GetRecentPlayerName()"
 #define SAY_EMOTE_PARAM_DEST_CHANNEL "GetCurrentChannelName()"
@@ -103,7 +103,7 @@ int	KUiChatPhrase::SavePrivateSetting(KIniFile* pFile, LPCSTR lpSection, int nSt
 
 
 /************************************************************************
-* ÔØÈëËùÓĞµÄÁÄÌì±íÇé¶¯×÷ÎÄ¼ş
+* è½½å…¥æ‰€æœ‰çš„èŠå¤©è¡¨æƒ…åŠ¨ä½œæ–‡ä»¶
 *************************************************************************/
 int KUiChatPhrase::LoadEntireEmote()
 {
@@ -124,7 +124,7 @@ int KUiChatPhrase::LoadEntireEmote()
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÉèÖÃÁÄÌì¶¯×÷£¬ÓĞ¸ø³öindexµÄ¾Í¸ÄindexµÄ£¬Ã»ÓĞ¾Í¸ù¾İCmdÑ°ÕÒÒªÌæ»»µÄ
+* åŠŸèƒ½ï¼šè®¾ç½®èŠå¤©åŠ¨ä½œï¼Œæœ‰ç»™å‡ºindexçš„å°±æ”¹indexçš„ï¼Œæ²¡æœ‰å°±æ ¹æ®Cmdå¯»æ‰¾è¦æ›¿æ¢çš„
 *************************************************************************/
 int KUiChatPhrase::SetEmote(char *szCmd, char *szName, char *szStringTarget, char *szStringSelf, int nIndex)
 {
@@ -172,7 +172,7 @@ int KUiChatPhrase::SetEmote(char *szCmd, char *szName, char *szStringTarget, cha
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÔØÈëÒ»°ãÁÄÌì±íÇé¶¯×÷ÎÄ¼ş
+* åŠŸèƒ½ï¼šè½½å…¥ä¸€èˆ¬èŠå¤©è¡¨æƒ…åŠ¨ä½œæ–‡ä»¶
 *************************************************************************/
 int KUiChatPhrase::LoadEmotePhrase(KIniFile *pIni)
 {
@@ -195,7 +195,7 @@ int KUiChatPhrase::LoadEmotePhrase(KIniFile *pIni)
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÔØÈëALTÓÒ¼ü²Ëµ¥µÄÁÄÌì±íÇé¶¯×÷ÎÄ¼ş
+* åŠŸèƒ½ï¼šè½½å…¥ALTå³é”®èœå•çš„èŠå¤©è¡¨æƒ…åŠ¨ä½œæ–‡ä»¶
 *************************************************************************/
 int KUiChatPhrase::LoadMenuEmote(KIniFile *pIni)
 {
@@ -218,7 +218,7 @@ int KUiChatPhrase::LoadMenuEmote(KIniFile *pIni)
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÔØÈëÊı¾İµÄÎÄ¼ş
+* åŠŸèƒ½ï¼šè½½å…¥æ•°æ®çš„æ–‡ä»¶
 *************************************************************************/
 int KUiChatPhrase::HandleLoad(KIniFile *pIni, EMOTE_PHRASE *pData, int nCount, const char *szSection)
 {
@@ -259,7 +259,7 @@ int KUiChatPhrase::HandleLoad(KIniFile *pIni, EMOTE_PHRASE *pData, int nCount, c
 
 
 /************************************************************************
-* ¹¦ÄÜ£º°Ñ¶ÁÈ¡µ½µÄEmoteĞÅÏ¢¹¹Ôì½øÈ¥ShortcutÏµÍ³ÖĞµÄº¯Êı±ğÃû±í
+* åŠŸèƒ½ï¼šæŠŠè¯»å–åˆ°çš„Emoteä¿¡æ¯æ„é€ è¿›å»Shortcutç³»ç»Ÿä¸­çš„å‡½æ•°åˆ«åè¡¨
 *************************************************************************/
 int KUiChatPhrase::ConstructFunctionAlias()
 {
@@ -291,7 +291,7 @@ int KUiChatPhrase::ConstructFunctionAlias()
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÈ¡µÃÄ³ÖÖ±íÇé¶¯×÷µÄ¸öÊı
+* åŠŸèƒ½ï¼šå–å¾—æŸç§è¡¨æƒ…åŠ¨ä½œçš„ä¸ªæ•°
 *************************************************************************/
 int KUiChatPhrase::GetEmoteCount(EMOTE_TYPE eType)
 {
@@ -307,8 +307,8 @@ int KUiChatPhrase::GetEmoteCount(EMOTE_TYPE eType)
 
 
 /************************************************************************
-* ¹¦ÄÜ£º¸ù¾İÃüÁî»ñÈ¡Ò»¸ö¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬
-*       ÕâÀïÊÇ°üÀ¨ÁËMENUºÍPHRASEµÄ
+* åŠŸèƒ½ï¼šæ ¹æ®å‘½ä»¤è·å–ä¸€ä¸ªåŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œ
+*       è¿™é‡Œæ˜¯åŒ…æ‹¬äº†MENUå’ŒPHRASEçš„
 *************************************************************************/
 int KUiChatPhrase::GetEmote(const char *szCmd, char *pBuff, int nBuffLen, int nType)
 {
@@ -321,10 +321,10 @@ int KUiChatPhrase::GetEmote(const char *szCmd, char *pBuff, int nBuffLen, int nT
 
 	return GetEmote(nIndex, pBuff, nBuffLen, nType);
 }
-//ÉÏÃæµÄ¶àÌ¬
+//ä¸Šé¢çš„å¤šæ€
 /************************************************************************
-* ¹¦ÄÜ£º¸ù¾İË÷Òı»ñÈ¡Ò»¸ö¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬
-*       ÕâÀïÊÇ°üÀ¨ÁËMENUºÍPHRASEµÄ
+* åŠŸèƒ½ï¼šæ ¹æ®ç´¢å¼•è·å–ä¸€ä¸ªåŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œ
+*       è¿™é‡Œæ˜¯åŒ…æ‹¬äº†MENUå’ŒPHRASEçš„
 *************************************************************************/
 int KUiChatPhrase::GetEmote(int nIndex, char *pBuff, int nBuffLen, int nType)
 {
@@ -359,7 +359,7 @@ int KUiChatPhrase::GetEmote(int nIndex, char *pBuff, int nBuffLen, int nType)
 
 
 /**************************************************************************
-* ¹¦ÄÜ£º¸ù¾İÃüÁî»ñÈ¡Ò»¸öÓÃÓÚ²Ëµ¥ÉÏµÄ¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬½ö½öMENU
+* åŠŸèƒ½ï¼šæ ¹æ®å‘½ä»¤è·å–ä¸€ä¸ªç”¨äºèœå•ä¸Šçš„åŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œä»…ä»…MENU
 ***************************************************************************/
 int KUiChatPhrase::GetMenuEmote(const char *szCmd, char *pBuff, int nBuffLen, int nType)
 {
@@ -367,9 +367,9 @@ int KUiChatPhrase::GetMenuEmote(const char *szCmd, char *pBuff, int nBuffLen, in
 
 	return GetMenuEmote(nIndex, pBuff, nBuffLen, nType);
 }
-//ÉÏÃæµÄ¶àÌ¬
+//ä¸Šé¢çš„å¤šæ€
 /**************************************************************************
-* ¹¦ÄÜ£º¸ù¾İË÷Òı»ñÈ¡Ò»¸öÓÃÓÚ²Ëµ¥ÉÏµÄ¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬½ö½öMENU
+* åŠŸèƒ½ï¼šæ ¹æ®ç´¢å¼•è·å–ä¸€ä¸ªç”¨äºèœå•ä¸Šçš„åŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œä»…ä»…MENU
 ***************************************************************************/
 int KUiChatPhrase::GetMenuEmote(int nIndex, char *pBuff, int nBuffLen, int nType)
 {
@@ -396,7 +396,7 @@ int KUiChatPhrase::GetMenuEmote(int nIndex, char *pBuff, int nBuffLen, int nType
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÈ¡³öÖ¸¶¨Ë÷ÒıµÄ¶¯×÷Ãû×Ö
+* åŠŸèƒ½ï¼šå–å‡ºæŒ‡å®šç´¢å¼•çš„åŠ¨ä½œåå­—
 *************************************************************************/
 int KUiChatPhrase::GetMenuEmoteName(int nIndex, char *pBuff, int nBuffLen)
 {
@@ -415,7 +415,7 @@ int KUiChatPhrase::GetMenuEmoteName(int nIndex, char *pBuff, int nBuffLen)
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÑ°ÕÒÒ»¸öÃüÁîËù¶ÔÓ¦µÄ±íÇéÊı¾İµÄË÷Òı
+* åŠŸèƒ½ï¼šå¯»æ‰¾ä¸€ä¸ªå‘½ä»¤æ‰€å¯¹åº”çš„è¡¨æƒ…æ•°æ®çš„ç´¢å¼•
 *************************************************************************/
 int KUiChatPhrase::FindEmote(EMOTE_TYPE eType, const char *szCmd)
 {
@@ -449,7 +449,7 @@ int KUiChatPhrase::FindEmote(EMOTE_TYPE eType, const char *szCmd)
 
 
 /************************************************************************
-* ¹¦ÄÜ£ºÖÆ×÷×Ö·û´®
+* åŠŸèƒ½ï¼šåˆ¶ä½œå­—ç¬¦ä¸²
 *************************************************************************/
 int KUiChatPhrase::ConvertEmoteString(char *szString, int nStringLen, const char *szMyName, const char *szTarName)
 {

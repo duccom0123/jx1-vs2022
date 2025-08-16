@@ -54,134 +54,134 @@ class CORE_API KMissle
 	friend class	KSkill;
 private:
 public:
-	//	×Óµ¯Éè¶¨ÎÄ¼ş»ñµÃµÄÊı¾İ
+	//	å­å¼¹è®¾å®šæ–‡ä»¶è·å¾—çš„æ•°æ®
 	KIndexNode			m_Node;
-	char				m_szMissleName[30];		//	×Óµ¯µÄÃû³Æ
-	int					m_nAction;				//	µ±Ç°ĞĞÎª
-	BOOL				m_bIsSlow;				//	ÊÇ·ñ±»¼õËÙ
-	BOOL				m_bClientSend;			//	ÊÇ·ñĞèÒª
-	BOOL				m_bRemoving;			//	»ñÖªĞèÒªÏÂÒ»¸öÑ­»·É¾³ı¸Ã×Óµ¯ËùÓĞ×ÊÔ´
-	BOOL				m_bIsMelee;				//	×Óµ¯ÊÇ·ñÊÇ½üÉí¹¥»÷
+	char				m_szMissleName[30];		//	å­å¼¹çš„åç§°
+	int					m_nAction;				//	å½“å‰è¡Œä¸º
+	BOOL				m_bIsSlow;				//	æ˜¯å¦è¢«å‡é€Ÿ
+	BOOL				m_bClientSend;			//	æ˜¯å¦éœ€è¦
+	BOOL				m_bRemoving;			//	è·çŸ¥éœ€è¦ä¸‹ä¸€ä¸ªå¾ªç¯åˆ é™¤è¯¥å­å¼¹æ‰€æœ‰èµ„æº
+	BOOL				m_bIsMelee;				//	å­å¼¹æ˜¯å¦æ˜¯è¿‘èº«æ”»å‡»
 	DWORD 				nId;
-	eMissleMoveKind		m_eMoveKind;			//	×Óµ¯ÔË¶¯ÀàĞÍ(±¬Õ¨¡¢Ö±Ïß·ÉĞĞµÈ¡­¡­)
-	eMissleFollowKind	m_eFollowKind;			//	×Óµú·¢³öÊ±µÄ²ÎÕÕÀàĞÍ
-	int					m_nHeight;				//	×Óµ¯¸ß¶È
-	int					m_nHeightSpeed;			//	×Óµ¯×İĞĞµÄ·ÉĞĞËÙ¶È
-	int					m_nLifeTime;			//	ÉúÃüÖÜÆÚ
-	int					m_nSpeed;				//	·ÉĞĞËÙ¶È
-	int					m_nSkillId;				//	¶ÔÓ¦ÄÄ¸ö¼¼ÄÜ
-	BOOL				m_bRangeDamage;			//	ÊÇ·ñÎªÇøÓòÉËº¦£¬¼´ÊÇ·ñ¶àÈËÊÜµ½ÉËº¦
-	int					m_eRelation;			//	Ä¿±êÓë·¢ÉäÕßµÄ¹ØÏµ
+	eMissleMoveKind		m_eMoveKind;			//	å­å¼¹è¿åŠ¨ç±»å‹(çˆ†ç‚¸ã€ç›´çº¿é£è¡Œç­‰â€¦â€¦)
+	eMissleFollowKind	m_eFollowKind;			//	å­ç¢Ÿå‘å‡ºæ—¶çš„å‚ç…§ç±»å‹
+	int					m_nHeight;				//	å­å¼¹é«˜åº¦
+	int					m_nHeightSpeed;			//	å­å¼¹çºµè¡Œçš„é£è¡Œé€Ÿåº¦
+	int					m_nLifeTime;			//	ç”Ÿå‘½å‘¨æœŸ
+	int					m_nSpeed;				//	é£è¡Œé€Ÿåº¦
+	int					m_nSkillId;				//	å¯¹åº”å“ªä¸ªæŠ€èƒ½
+	BOOL				m_bRangeDamage;			//	æ˜¯å¦ä¸ºåŒºåŸŸä¼¤å®³ï¼Œå³æ˜¯å¦å¤šäººå—åˆ°ä¼¤å®³
+	int					m_eRelation;			//	ç›®æ ‡ä¸å‘å°„è€…çš„å…³ç³»
 	BOOL				m_bAutoExplode;			//  Is Missle Would AutoExpode ItSelf For Collision When It's LiftTime Is Over;
 	BOOL				m_bTargetSelf;
-	BOOL				m_bByMissle;			//	µ±ÓÉ¸¸¼¼ÄÜ²úÉúÊ±£¬ÊÇ·ñÊÇ¸ù¾İÍæ¼ÒÎª»ùµã»¹ÊÇÒÔµ±Ç°µÄ×Óµ¯Îª»ùµã
-	INT					m_nInteruptTypeWhenMove;		//×Óµ¯µÄ¼¤»îÊÇ·ñÊÜ·¢ËÍÕßµÄÒÆ¶¯¶øÖĞÖ¹
-	BOOL				m_bHeelAtParent;		//	µ±×Óµ¯Êµ¼Ê¼¤»îÊ±£¬Î»ÖÃ¸ù¾İ¸¸µ±Ç°Î»ÖÃ¶øÈ·¶¨,¶ø²»ÊÇÓÉ²úÉúÄÇ¿ÌparentÎ»ÖÃ¾ö¶¨
+	BOOL				m_bByMissle;			//	å½“ç”±çˆ¶æŠ€èƒ½äº§ç”Ÿæ—¶ï¼Œæ˜¯å¦æ˜¯æ ¹æ®ç©å®¶ä¸ºåŸºç‚¹è¿˜æ˜¯ä»¥å½“å‰çš„å­å¼¹ä¸ºåŸºç‚¹
+	INT					m_nInteruptTypeWhenMove;		//å­å¼¹çš„æ¿€æ´»æ˜¯å¦å—å‘é€è€…çš„ç§»åŠ¨è€Œä¸­æ­¢
+	BOOL				m_bHeelAtParent;		//	å½“å­å¼¹å®é™…æ¿€æ´»æ—¶ï¼Œä½ç½®æ ¹æ®çˆ¶å½“å‰ä½ç½®è€Œç¡®å®š,è€Œä¸æ˜¯ç”±äº§ç”Ÿé‚£åˆ»parentä½ç½®å†³å®š
 	int					m_nLauncherSrcPX;		
 	int					m_nLauncherSrcPY;
-	int					m_nCollideRange;		//	Åö×²·¶Î§£¨¼ò»¯¶à±ßĞÎÅö×²ÓÃ£©
-	int					m_nDamageRange;			//	ÉËº¦·¶Î§
-	BOOL				m_bCollideVanish;		//	Åö×²ºóÊÇ·ñÏûÍö
-	BOOL				m_bCollideFriend;		//	ÊÇ·ñ»áÅö×²µ½Í¬°é
-	BOOL				m_bCanSlow;				//	ÊÇ·ñ»á±»¼õËÙ£¨±ÈÈçËµSlow MissleÀàµÄ¼¼ÄÜ£©
+	int					m_nCollideRange;		//	ç¢°æ’èŒƒå›´ï¼ˆç®€åŒ–å¤šè¾¹å½¢ç¢°æ’ç”¨ï¼‰
+	int					m_nDamageRange;			//	ä¼¤å®³èŒƒå›´
+	BOOL				m_bCollideVanish;		//	ç¢°æ’åæ˜¯å¦æ¶ˆäº¡
+	BOOL				m_bCollideFriend;		//	æ˜¯å¦ä¼šç¢°æ’åˆ°åŒä¼´
+	BOOL				m_bCanSlow;				//	æ˜¯å¦ä¼šè¢«å‡é€Ÿï¼ˆæ¯”å¦‚è¯´Slow Missleç±»çš„æŠ€èƒ½ï¼‰
 	
-	BOOL				m_bFlyEvent;			//	Õû¸ö·ÉĞĞ¹ı³ÌÖĞµÄ
+	BOOL				m_bFlyEvent;			//	æ•´ä¸ªé£è¡Œè¿‡ç¨‹ä¸­çš„
 	int					m_nFlyEventTime;
-	BOOL				m_bSubEvent;			//	ÊÇ·ñĞèÒªÔÚ·ÉĞĞ¹ı³ÌÏûÏ¢·¢ÉúÊÇ£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bStartEvent;			//	ÊÇ·ñĞèÒªÔÚ¼¼ÄÜµÚÒ»´ÎActiveÊ±£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bCollideEvent;		//	ÊÇ·ñĞèÒªÔÚ×Ó¼¼ÄÜÄ§·¨Åö×²Ê±£¬µ÷ÓÃÏà¹Ø»Øµ÷º¯Êı
-	BOOL				m_bVanishedEvent;		//	ÊÇ·ñĞèÒªÔÚ×Ó¼¼ÄÜÏûÍöÊ±£¬µ÷ÓÃÏà¹ØµÄ»Øµ÷º¯Êı
+	BOOL				m_bSubEvent;			//	æ˜¯å¦éœ€è¦åœ¨é£è¡Œè¿‡ç¨‹æ¶ˆæ¯å‘ç”Ÿæ˜¯ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bStartEvent;			//	æ˜¯å¦éœ€è¦åœ¨æŠ€èƒ½ç¬¬ä¸€æ¬¡Activeæ—¶ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bCollideEvent;		//	æ˜¯å¦éœ€è¦åœ¨å­æŠ€èƒ½é­”æ³•ç¢°æ’æ—¶ï¼Œè°ƒç”¨ç›¸å…³å›è°ƒå‡½æ•°
+	BOOL				m_bVanishedEvent;		//	æ˜¯å¦éœ€è¦åœ¨å­æŠ€èƒ½æ¶ˆäº¡æ—¶ï¼Œè°ƒç”¨ç›¸å…³çš„å›è°ƒå‡½æ•°
 	
-	unsigned long		m_ulDamageInterval;		//	ÉËº¦¼ÆËãµÄ¼ä¸ôÊ±¼ä,Ö÷ÒªÖ¸¶ÔÀàĞÍ»ğÇ½¼¼ÄÜ
-	BOOL				m_bMustBeHit;			//  ±ØÖĞ£¬¼´×Óµ¯ÎŞÌØÊâÇé¿öÒ»¶¨ÄÜ´òÖĞ¶Ô·½£¬ÎŞÂÛÊÇ·ñÊµ¼ÊÅö×²µ½¶Ô·½.
-	//	¼¼ÄÜ»ñµÃµÄÊı¾İ
-	int					m_nCurrentLife;			//	µ±Ç°ÉúÃüÊ±¼ä
-	int					m_nStartLifeTime;		//	µ±¼¼ÄÜ·¢Éúºó£¬µÚ¼¸Ö¡¿ªÊ¼
+	unsigned long		m_ulDamageInterval;		//	ä¼¤å®³è®¡ç®—çš„é—´éš”æ—¶é—´,ä¸»è¦æŒ‡å¯¹ç±»å‹ç«å¢™æŠ€èƒ½
+	BOOL				m_bMustBeHit;			//  å¿…ä¸­ï¼Œå³å­å¼¹æ— ç‰¹æ®Šæƒ…å†µä¸€å®šèƒ½æ‰“ä¸­å¯¹æ–¹ï¼Œæ— è®ºæ˜¯å¦å®é™…ç¢°æ’åˆ°å¯¹æ–¹.
+	//	æŠ€èƒ½è·å¾—çš„æ•°æ®
+	int					m_nCurrentLife;			//	å½“å‰ç”Ÿå‘½æ—¶é—´
+	int					m_nStartLifeTime;		//	å½“æŠ€èƒ½å‘ç”Ÿåï¼Œç¬¬å‡ å¸§å¼€å§‹
 	int					m_nCollideOrVanishTime; 
-	int					m_nCurrentMapX;			//	µ±Ç°µÄX×ø±ê
-	int					m_nCurrentMapY;			//	µ±Ç°µÄY×ø±ê
-	int					m_nCurrentMapZ;			//	µ±Ç°µÄZ×ø±ê
-	int					m_nXOffset;				//	µ±Ç°µÄX·½ÏòÆ«ÒÆ
-	int					m_nYOffset;				//	µ±Ç°µÄY·½ÏòÆ«ÒÆ
+	int					m_nCurrentMapX;			//	å½“å‰çš„Xåæ ‡
+	int					m_nCurrentMapY;			//	å½“å‰çš„Yåæ ‡
+	int					m_nCurrentMapZ;			//	å½“å‰çš„Zåæ ‡
+	int					m_nXOffset;				//	å½“å‰çš„Xæ–¹å‘åç§»
+	int					m_nYOffset;				//	å½“å‰çš„Yæ–¹å‘åç§»
 	int					m_nRefPX;
 	int					m_nRefPY;
 	
-	int					m_nDesMapX;				//µ¥¿Å×Óµ¥Ê±£¬Ä¿µÄ×ø±ê
+	int					m_nDesMapX;				//å•é¢—å­å•æ—¶ï¼Œç›®çš„åæ ‡
 	int					m_nDesMapY;				
 	int					m_nDesRegion;
-	BOOL				m_bNeedReclaim;			//ÊÇ·ñÒÑ¾ÀÕı¹ıÒ»´Î×Óµ¥µÄ·½ÏòÎÊÌâ
+	BOOL				m_bNeedReclaim;			//æ˜¯å¦å·²çº æ­£è¿‡ä¸€æ¬¡å­å•çš„æ–¹å‘é—®é¢˜
 
-	BOOL				m_nDoHurtP;				//ÊÜÉËÊ±ÊÇ·ñĞèÒª×÷ÊÜÉË¶¯×÷
+	BOOL				m_nDoHurtP;				//å—ä¼¤æ—¶æ˜¯å¦éœ€è¦ä½œå—ä¼¤åŠ¨ä½œ
 	
-	//µ¥Ò»·ÉĞĞ×Óµ¥Ê±£¬¾«È·ÃüÖĞ£¡
+	//å•ä¸€é£è¡Œå­å•æ—¶ï¼Œç²¾ç¡®å‘½ä¸­ï¼
 	int					m_nXFactor;
 	int					m_nYFactor;
-	int					m_nLevel;				//	¼¼ÄÜµÈ¼¶
+	int					m_nLevel;				//	æŠ€èƒ½ç­‰çº§
 	
 	int					m_nMissRate;
 	int					m_nHitCount;
 	int					m_nLastDoCollisionIdx;
 
-	int					m_nFollowNpcIdx;		//	¸úËæË­
+	int					m_nFollowNpcIdx;		//	è·Ÿéšè°
 	DWORD				m_dwFollowNpcID;		//	
 	
-	int					m_nLauncher;			//	·¢ÉäÕßÔÚNpcSetÖĞµÄIndex
-	DWORD				m_dwLauncherId;			//	·¢ÉäÕßµÄÎ¨Ò»ID
+	int					m_nLauncher;			//	å‘å°„è€…åœ¨NpcSetä¸­çš„Index
+	DWORD				m_dwLauncherId;			//	å‘å°„è€…çš„å”¯ä¸€ID
 	int					m_nPKFlag;
 	int					m_nMissleSeries;
 	int					m_nParentMissleIndex;   // if 0 then means parent is npclauncher
 	
-	//	×ÔÉú³ÉµÄ¶¯Ì¬Êı¾İ	
-	int					m_nCurrentSpeed;		//	µ±Ç°ËÙ¶È£¨¿ÉÄÜ±»¼õËÙ£©
-	int					m_nZAcceleration;		//	ZÖáµÄ¼ÓËÙ¶È
-	eMissleStatus		m_eMissleStatus;		//	×Óµ¯µ±Ç°µÄ×´Ì¬
-	int					m_nMissleId;			//	×Óµ¯ÔÚMissleÖĞµÄID
-	int					m_nSubWorldId;			//	×ÓÊÀ½çID
-	int					m_nRegionId;			//	ÇøÓòID
-	//¸÷ÏîÉËº¦Êı¾İ
-	int					m_nMaxDamage;			//	×î´óÉËº¦
-	int					m_nElementType;			//	ÔªËØÉËº¦ÀàĞÍ
-	int					m_nMaxElementDamage;	//	×î´óÔªËØÉËº¦(Ê×´Î)
-	int					m_nElementTime;			//	ÔªËØ³ÖĞøÊ±¼ä
-	int					m_nElementInterval;		//	ÔªËØ¼ä¸ôÊ±¼ä
-	int					m_nElementPerDamage;	//	ÔªËØÉËº¦Ê±£¬Ã¿´Î·¢×÷ËùÊÜµÄÉËº¦Öµ
-	int					m_nParam1;				//	²ÎÊıÒ»
-	int					m_nParam2;				//	²ÎÊı¶ş
-	int					m_nParam3;				//	²ÎÊıÈı
+	//	è‡ªç”Ÿæˆçš„åŠ¨æ€æ•°æ®	
+	int					m_nCurrentSpeed;		//	å½“å‰é€Ÿåº¦ï¼ˆå¯èƒ½è¢«å‡é€Ÿï¼‰
+	int					m_nZAcceleration;		//	Zè½´çš„åŠ é€Ÿåº¦
+	eMissleStatus		m_eMissleStatus;		//	å­å¼¹å½“å‰çš„çŠ¶æ€
+	int					m_nMissleId;			//	å­å¼¹åœ¨Missleä¸­çš„ID
+	int					m_nSubWorldId;			//	å­ä¸–ç•ŒID
+	int					m_nRegionId;			//	åŒºåŸŸID
+	//å„é¡¹ä¼¤å®³æ•°æ®
+	int					m_nMaxDamage;			//	æœ€å¤§ä¼¤å®³
+	int					m_nElementType;			//	å…ƒç´ ä¼¤å®³ç±»å‹
+	int					m_nMaxElementDamage;	//	æœ€å¤§å…ƒç´ ä¼¤å®³(é¦–æ¬¡)
+	int					m_nElementTime;			//	å…ƒç´ æŒç»­æ—¶é—´
+	int					m_nElementInterval;		//	å…ƒç´ é—´éš”æ—¶é—´
+	int					m_nElementPerDamage;	//	å…ƒç´ ä¼¤å®³æ—¶ï¼Œæ¯æ¬¡å‘ä½œæ‰€å—çš„ä¼¤å®³å€¼
+	int					m_nParam1;				//	å‚æ•°ä¸€
+	int					m_nParam2;				//	å‚æ•°äºŒ
+	int					m_nParam3;				//	å‚æ•°ä¸‰
 	
 	int					m_nFirstReclaimTime;
 	int					m_nEndReclaimTime;
 
-	int					m_nTempParam1;			//	ÔËĞĞÆÚÊ¹ÓÃµÄ²ÎÊı
+	int					m_nTempParam1;			//	è¿è¡ŒæœŸä½¿ç”¨çš„å‚æ•°
 	int					m_nTempParam2;
 	
-	int					m_nDirIndex;			//	µ±Ç°ÔË¶¯·½ÏòµÄË÷Òı
-	int					m_nDir;					//	µ±Ç°µÄÔËĞĞ·½Ïò
+	int					m_nDirIndex;			//	å½“å‰è¿åŠ¨æ–¹å‘çš„ç´¢å¼•
+	int					m_nDir;					//	å½“å‰çš„è¿è¡Œæ–¹å‘
 	int					m_nAngle;				//	
-	DWORD				m_dwBornTime;			//	¸Ã×Óµ¯²úÉúÊ±µÄÊ±¼ä
+	DWORD				m_dwBornTime;			//	è¯¥å­å¼¹äº§ç”Ÿæ—¶çš„æ—¶é—´
 	BOOL				m_bUseAttackRating;		
 	
 #ifdef _SERVER
-	unsigned long		m_ulNextCalDamageTime;	//	ÏÂÒ»´Î¼ÆËãÉËº¦µÄÓÎÏ·ÊÀ½çÊ±¼ä
+	unsigned long		m_ulNextCalDamageTime;	//	ä¸‹ä¸€æ¬¡è®¡ç®—ä¼¤å®³çš„æ¸¸æˆä¸–ç•Œæ—¶é—´
 #endif
 
 #ifndef _SERVER
-	BOOL				m_bMultiShow;			//	×Óµ¯ÓĞÁ½¸öÏÔÊ¾
-	BOOL				m_bFollowNpcWhenCollid; //	±¬Õ¨Ğ§¹û¸úËæ±»»÷ÖĞµÄÈËÎï
+	BOOL				m_bMultiShow;			//	å­å¼¹æœ‰ä¸¤ä¸ªæ˜¾ç¤º
+	BOOL				m_bFollowNpcWhenCollid; //	çˆ†ç‚¸æ•ˆæœè·Ÿéšè¢«å‡»ä¸­çš„äººç‰©
 	int					m_btRedLum;
 	int					m_btGreenLum;
 	int					m_btBlueLum;
 	unsigned short		m_usLightRadius;
-	KMissleRes			m_MissleRes;			//	×Óµ¯µÄ×ÊÔ´
+	KMissleRes			m_MissleRes;			//	å­å¼¹çš„èµ„æº
 	unsigned int		m_SceneID;
 #endif
 	
 	
 private:
 	BOOL				Init( int nLauncher, int nMissleId, int nXFactor, int nYFactor, int nLevel);
-	void				OnVanish();//¼´½«ÏûÊ§
-	void				OnCollision();//Åö×²
-	void				OnFly();//·ÉĞĞ¹ı³ÌÖĞ
+	void				OnVanish();//å³å°†æ¶ˆå¤±
+	void				OnCollision();//ç¢°æ’
+	void				OnFly();//é£è¡Œè¿‡ç¨‹ä¸­
 	void				OnWait();
 	void				DoWait();
 	void				DoFly();
@@ -191,12 +191,12 @@ private:
 	int					CheckNearestCollision();
 	friend				class KMissleSet;
 	void				Release();
-	int					CheckCollision();//¼ì²âÊÇ·ñÅö×²// 1±íÊ¾Õı³£Åö×²µ½ÎïÌå£¬0±íÊ¾Î´Åö×²µ½ÈÎºÎÎïÌå, -1±íÊ¾ÂäµØ
-	BOOL				CheckBeyondRegion(int nDOffsetX, int nDOffsetY);//¼ì²âÊÇ·ñÔ½½ç   //FALSE±íÊ¾Ô½µ½Ò»¸öÎŞĞ§µÄÎ»ÖÃ£¬TRUE±íÊ¾OK
+	int					CheckCollision();//æ£€æµ‹æ˜¯å¦ç¢°æ’// 1è¡¨ç¤ºæ­£å¸¸ç¢°æ’åˆ°ç‰©ä½“ï¼Œ0è¡¨ç¤ºæœªç¢°æ’åˆ°ä»»ä½•ç‰©ä½“, -1è¡¨ç¤ºè½åœ°
+	BOOL				CheckBeyondRegion(int nDOffsetX, int nDOffsetY);//æ£€æµ‹æ˜¯å¦è¶Šç•Œ   //FALSEè¡¨ç¤ºè¶Šåˆ°ä¸€ä¸ªæ— æ•ˆçš„ä½ç½®ï¼ŒTRUEè¡¨ç¤ºOK
 	int					GetDir(int dx,int dy);
 	KMissle&			operator=(KMissle& Missle);
 	DWORD				GetCurrentSubWorldTime();
-	int					ProcessCollision();//´¦ÀíÅö×²
+	int					ProcessCollision();//å¤„ç†ç¢°æ’
 	int					ProcessCollision(int nLauncherIdx, int nRegionId, int nMapX, int nMapY, int nRange , int eRelation);
 
 	inline void	ZAxisMove()
@@ -209,7 +209,7 @@ private:
 			m_nCurrentMapZ = m_nHeight >> 10;
 		}
 	}
-	//TRUE±íÊ¾Óöµ½ÕÏ°­£¬FALSE±íÊ¾Î´Óöµ½£¬Ò»ÇĞÕı³£
+	//TRUEè¡¨ç¤ºé‡åˆ°éšœç¢ï¼ŒFALSEè¡¨ç¤ºæœªé‡åˆ°ï¼Œä¸€åˆ‡æ­£å¸¸
 	inline BOOL TestBarrier()
 	{
 		int nBarrierKind = SubWorld[m_nSubWorldId].TestBarrier(m_nRegionId, m_nCurrentMapX, m_nCurrentMapY, m_nXOffset, m_nYOffset, 0, 0);

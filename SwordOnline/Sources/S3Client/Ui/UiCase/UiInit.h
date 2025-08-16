@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiInit.h
-//	´´½¨Õß		£º	Åí½¨²¨
-//	´´½¨Ê±¼ä	£º	2002-9-10 11:25:36
-//	¹¦ÄÜÃèÊö	£º	³õÊ¼½çÃæ	
+//	æ–‡ä»¶å		ï¼š	UiInit.h
+//	åˆ›å»ºè€…		ï¼š	å½­å»ºæ³¢
+//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-10 11:25:36
+//	åŠŸèƒ½æè¿°	ï¼š	åˆå§‹ç•Œé¢	
 //
 // -------------------------------------------------------------------------
 #ifndef __UIINIT_H__
@@ -15,9 +15,9 @@
 class KUiInit : protected KWndShowAnimate
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiInit*		OpenWindow(bool bStartMusic = true, bool bJustLauched = false);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static void			CloseWindow();							//¹Ø±Õ´°¿Ú
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiInit*		OpenWindow(bool bStartMusic = true, bool bJustLauched = false);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static void			CloseWindow();							//å…³é—­çª—å£
 	static void			PlayTitleMusic();
 	static void			StopTitleMusic();
 
@@ -25,11 +25,11 @@ private:
 	KUiInit() {}
 	~KUiInit() {}
     void    ShowCompleted();
-	void	Initialize();						//³õÊ¼»¯
-	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	void	Initialize();						//åˆå§‹åŒ–
+	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 private:
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	OnClickButton(KWndButton* pWnd);	//ÏìÓ¦µã»÷°´Å¥
+	void	OnClickButton(KWndButton* pWnd);	//å“åº”ç‚¹å‡»æŒ‰é’®
 	KWndButton*	GetActiveBtn();
 	void	OnAutoLogin();
 	int		OnKeyDown(unsigned int uKey);
@@ -38,11 +38,11 @@ private:
 private:
 	char		m_szLoginBg[32];
 
-	KWndButton m_EnterGame;					// ½øÈëÓÎÏ·
-	KWndButton m_GameConfig;				// ÓÎÏ·ÉèÖÃ
-	KWndButton m_OpenRep;				// ÖÆ×÷ÈËÔ±Ãûµ¥
-	KWndButton m_DesignerList;				// ÖÆ×÷ÈËÔ±Ãûµ¥
-	KWndButton m_ExitGame;					// ÍË³öÓÎÏ·
+	KWndButton m_EnterGame;					// è¿›å…¥æ¸¸æˆ
+	KWndButton m_GameConfig;				// æ¸¸æˆè®¾ç½®
+	KWndButton m_OpenRep;				// åˆ¶ä½œäººå‘˜åå•
+	KWndButton m_DesignerList;				// åˆ¶ä½œäººå‘˜åå•
+	KWndButton m_ExitGame;					// é€€å‡ºæ¸¸æˆ
 	KWndButton m_EnterGameBorder;
 	KWndButton m_GameConfigBorder;
 	KWndButton m_OpenRepBorder;

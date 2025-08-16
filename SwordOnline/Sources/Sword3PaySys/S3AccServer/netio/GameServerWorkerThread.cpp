@@ -104,7 +104,7 @@ void CGameServerWorkerThread::ProcessCommand(
 		Output( _T("Package[length:") + ToString( wDataLen ) + _T("]\n") + DumpData( pData, datalength, 40 ) );
 		
 		S3PDBSocketPool::Process( pSocket, ( IBYTE* )pData, datalength );
-		//douhao 采集socket层接收的数据
+		//douhao 閲囬泦socket灞傛帴鏀剁殑鏁版嵁
 		
 		// ====================  END  =======================
 	}

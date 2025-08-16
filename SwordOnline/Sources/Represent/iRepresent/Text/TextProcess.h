@@ -1,17 +1,17 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//  ÎÄ±¾´®´¦Àí£º»ñÈ¡ÎÄ±¾´®ÖĞµ¥Ò»ĞÔÖÊµÄÍ¬Ò»ĞĞµÄ×Ó´®£¬ÒÔ¼°ÎÄ±¾´®×ÜµÄº¬ÊıÄ¿¡£
+//  æ–‡æœ¬ä¸²å¤„ç†ï¼šè·å–æ–‡æœ¬ä¸²ä¸­å•ä¸€æ€§è´¨çš„åŒä¸€è¡Œçš„å­ä¸²ï¼Œä»¥åŠæ–‡æœ¬ä¸²æ€»çš„å«æ•°ç›®ã€‚
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-29
 ------------------------------------------------------------------------------------------
-//	Comment :  ÊäÈëµÄÎÄ±¾´®ÖĞ°üº¬¿ØÖÆ·ûºÅ£¬²»ÊÇÔ­Ê¼µÄ±êÇ©¿ØÖÆ·û£¬ÊÇ¾­¹ı±àÂëµÄ¡£ÎÄ±¾´®ÖĞ²»
-//	ÄÜ³öÏÖÎŞĞ§×Ö·û£¬·ñÔò´ËÄ£¿é¿ÉÄÜ»á²úÉúÄÚ´æÎ¥Àı·ÃÎÊ´íÎó¡£²Î¿´EngineÖĞµÄText.h£¬»ñµÃ¶ÔÎÄ
-//	±¾´®ÖĞµÄ¿ØÖÆ·û½øĞĞ±àÂëÒÔ¼°¹ıÂËÎŞĞ§×Ö·ûµÄ¹¦ÄÜ¡£
-//		¿ÉÒÔÔÚ¹¹Ôì´¦Àí¶ÔÏóÊµÀıÊ±´«ÈëÒª´¦ÀíµÄ×Ö·û´®¼°Ïà¹ØÊı¾İ£¬Ò²¿ÉÒÔµ÷ÓÃSetContentÀ´ÉèÖÃ
-//	Òª´¦ÀíµÄ×Ö·û´®¡£
-//		¶à´Îµ÷ÓÃGetSimplexText½«Öğ¸ö»ñÈ¡×Ö·û´®ÖĞÍ¬ĞĞµÄµ¥Ò»ĞÔÖÊµÄ×Ó´®£¬ÔÚ×Ö·û´®±»±éÀ÷Íê±Ï
-//	Ö®ºó½«ÔÚÉèÖÃµ÷ÓÃ²ÎÊıTailCtrlÖĞµÄĞĞÄ©¿ØÖÆÂëÎªÎÄ±¾´®½áÊø¿ØÖÆÂë¡£ÏÂ´ÎÔÙµ÷ÓÃÓÖ½«ÖØĞÂ´ÓÎÄ
-//	±¾´®ÆğÊ¼´¦»ñÈ¡×Ó´®¡£
+//	Comment :  è¾“å…¥çš„æ–‡æœ¬ä¸²ä¸­åŒ…å«æ§åˆ¶ç¬¦å·ï¼Œä¸æ˜¯åŸå§‹çš„æ ‡ç­¾æ§åˆ¶ç¬¦ï¼Œæ˜¯ç»è¿‡ç¼–ç çš„ã€‚æ–‡æœ¬ä¸²ä¸­ä¸
+//	èƒ½å‡ºç°æ— æ•ˆå­—ç¬¦ï¼Œå¦åˆ™æ­¤æ¨¡å—å¯èƒ½ä¼šäº§ç”Ÿå†…å­˜è¿ä¾‹è®¿é—®é”™è¯¯ã€‚å‚çœ‹Engineä¸­çš„Text.hï¼Œè·å¾—å¯¹æ–‡
+//	æœ¬ä¸²ä¸­çš„æ§åˆ¶ç¬¦è¿›è¡Œç¼–ç ä»¥åŠè¿‡æ»¤æ— æ•ˆå­—ç¬¦çš„åŠŸèƒ½ã€‚
+//		å¯ä»¥åœ¨æ„é€ å¤„ç†å¯¹è±¡å®ä¾‹æ—¶ä¼ å…¥è¦å¤„ç†çš„å­—ç¬¦ä¸²åŠç›¸å…³æ•°æ®ï¼Œä¹Ÿå¯ä»¥è°ƒç”¨SetContentæ¥è®¾ç½®
+//	è¦å¤„ç†çš„å­—ç¬¦ä¸²ã€‚
+//		å¤šæ¬¡è°ƒç”¨GetSimplexTextå°†é€ä¸ªè·å–å­—ç¬¦ä¸²ä¸­åŒè¡Œçš„å•ä¸€æ€§è´¨çš„å­ä¸²ï¼Œåœ¨å­—ç¬¦ä¸²è¢«éå‰å®Œæ¯•
+//	ä¹‹åå°†åœ¨è®¾ç½®è°ƒç”¨å‚æ•°TailCtrlä¸­çš„è¡Œæœ«æ§åˆ¶ç ä¸ºæ–‡æœ¬ä¸²ç»“æŸæ§åˆ¶ç ã€‚ä¸‹æ¬¡å†è°ƒç”¨åˆå°†é‡æ–°ä»æ–‡
+//	æœ¬ä¸²èµ·å§‹å¤„è·å–å­ä¸²ã€‚
 *****************************************************************************************/
 
 struct iFont;
@@ -20,14 +20,14 @@ struct iFont;
 class KTextProcess
 {
 private:
-	//ÃèÊöÎÄ±¾¿ØÖÆµÄ½á¹¹
+	//æè¿°æ–‡æœ¬æ§åˆ¶çš„ç»“æ„
 #pragma pack(push, 1)
 	struct KTP_CTRL
 	{
-		unsigned char cCtrl;	//´Ë³ÉÔ±È¡ÖµÎªText.hÖĞÃ·¾ÙKTEXT_CTRL_CODEÖĞµÄÒ»¸öÖµ
+		unsigned char cCtrl;	//æ­¤æˆå‘˜å–å€¼ä¸ºText.hä¸­æ¢…ä¸¾KTEXT_CTRL_CODEä¸­çš„ä¸€ä¸ªå€¼
 		union{
 			struct {
-				unsigned char cParam0;	//´Ë¼°ÒÔÏÂÁ½¸ö³ÉÔ±µÄÈ¡ÖµÓëº¬ÒåÒÀ¾İcCtrlµÄÈ¡Öµ¶ø¶¨
+				unsigned char cParam0;	//æ­¤åŠä»¥ä¸‹ä¸¤ä¸ªæˆå‘˜çš„å–å€¼ä¸å«ä¹‰ä¾æ®cCtrlçš„å–å€¼è€Œå®š
 				unsigned char cParam1;
 				unsigned char cParam2;
 			};
@@ -36,26 +36,26 @@ private:
 	};
 #pragma pack(pop)
 public:
-	//ÔÚÖ¸¶¨µÄÎ»ÖÃ»æÖÆ×Ö·û´®ÖĞÖ¸¶¨µÄÄÚÈİ
+	//åœ¨æŒ‡å®šçš„ä½ç½®ç»˜åˆ¶å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„å†…å®¹
 	int		DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pParam);
 
-	//ÅĞ¶ÏÄ³Ò»¸ö×ø±ê£¬ÔÚÖ¸¶¨µÄÎ»ÖÃÊä³öµÄ×Ö·û´®ÖĞ£¬ËùÕ¼µÄÆ«ÒÆÁ¿
-	//×¢Òâ£ºÈç¹û³¬³ö×Ö·ûËùÕ¼µÄ¾ØĞÎÔò·µ»ØµÄÆ«ÒÆÎªÀëÖ¸¶¨×ø±ê×î½üµÄÒ»¸ö×Ö·ûµÄÆ«ÒÆ
+	//åˆ¤æ–­æŸä¸€ä¸ªåæ ‡ï¼Œåœ¨æŒ‡å®šçš„ä½ç½®è¾“å‡ºçš„å­—ç¬¦ä¸²ä¸­ï¼Œæ‰€å çš„åç§»é‡
+	//æ³¨æ„ï¼šå¦‚æœè¶…å‡ºå­—ç¬¦æ‰€å çš„çŸ©å½¢åˆ™è¿”å›çš„åç§»ä¸ºç¦»æŒ‡å®šåæ ‡æœ€è¿‘çš„ä¸€ä¸ªå­—ç¬¦çš„åç§»
 	int		TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFontSize, KOutputTextParam* pParam);
 
-	//Ìøµ½Ö¸¶¨ĞĞ¿ªÊ¼´¦
+	//è·³åˆ°æŒ‡å®šè¡Œå¼€å§‹å¤„
 	int		SeekToSpecialLine(int nLineIndex, KTP_CTRL& Ctrl1, KTP_CTRL& Ctrl2,
 							  int& nSkipedHalfLines, int nFontSize, int bPicPackInSingleLine);
-	//ÉèÖÃÒª´¦ÀíµÄÎÄ±¾´®ÄÚÈİ
+	//è®¾ç½®è¦å¤„ç†çš„æ–‡æœ¬ä¸²å†…å®¹
 	void	SetContent(const char* pBuffer, int nCount, int nLineLen);
 
 	void SetEncodePlugin(fnTextProcessEncodePlugin fnPlugin);
 
 	void SetDrawPlugin(fnTextProcessEncodePlugin fnPlugin);
 
-	//¼ÆËãÒ»ĞĞµÄ¸ß¶È [wxb 2003-6-20]
+	//è®¡ç®—ä¸€è¡Œçš„é«˜åº¦ [wxb 2003-6-20]
 	void GetCurLineHeight(int& nSpanLines, int& nHeight, int nFontSize, int bPicPackInSingleLine);
-	//±£´æºÍ»Ö¸´ÄÚ²¿±äÁ¿ [wxb 2003-6-20]
+	//ä¿å­˜å’Œæ¢å¤å†…éƒ¨å˜é‡ [wxb 2003-6-20]
 	void Backup()
 	{
 		//_ASSERT(!m_bBackuped);
@@ -79,21 +79,21 @@ public:
 		m_bBackuped = 0;	//false
 	}
 
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	KTextProcess();
 	KTextProcess(const char* pBuffer, int nCount, int nLineLen);
 
 private:
-	//»ñÈ¡×Ö·û´®Àïµ¥Ò»ĞÔÖÊÍ¬ĞĞµÄÒ»¸ö×Ó´®
+	//è·å–å­—ç¬¦ä¸²é‡Œå•ä¸€æ€§è´¨åŒè¡Œçš„ä¸€ä¸ªå­ä¸²
 	int		GetSimplexText(int &nSimplexStartPos, KTP_CTRL& HeadCtrl, KTP_CTRL& TailCtrl, int nFontSize);
 
 private:
-	const char*	m_pBuffer;	//ÎÄ±¾»º³åÇøµÄÖ¸Õë
-	int			m_nCount;	//ÎÄ±¾»º³åÇøÊı¾İµÄ³¤¶È(ÒÔBYTEÎªµ¥Î»)
+	const char*	m_pBuffer;	//æ–‡æœ¬ç¼“å†²åŒºçš„æŒ‡é’ˆ
+	int			m_nCount;	//æ–‡æœ¬ç¼“å†²åŒºæ•°æ®çš„é•¿åº¦(ä»¥BYTEä¸ºå•ä½)
 	int			m_nCurrentLineLen;
 	float		m_fCurrentLineLen;
-	int			m_nMaxLineLen;	//Ã¿ĞĞ¿ÉÒÔÈİÄÉµÄ£¨°ë½Ç£©×Ö·ûµÄÊıÄ¿
-	int			m_nReadPos;	//µ±Ç°¶È¶ÁÈ¡µÄÎ»ÖÃ
+	int			m_nMaxLineLen;	//æ¯è¡Œå¯ä»¥å®¹çº³çš„ï¼ˆåŠè§’ï¼‰å­—ç¬¦çš„æ•°ç›®
+	int			m_nReadPos;	//å½“å‰åº¦è¯»å–çš„ä½ç½®
 
 	//for backup
 	int			m_bBackuped;

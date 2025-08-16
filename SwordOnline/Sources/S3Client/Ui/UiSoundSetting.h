@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	½çÃæÉùÒô
+//	ç•Œé¢å£°éŸ³
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-5-15
@@ -9,16 +9,16 @@
 
 enum UI_SOUND_INDEX
 {
-	UI_SI_WND_OPENCLOSE = 0,	//µ¯³ö»ò¹Ø±Õ½çÃæÊ±Ë¢µÄÒ»Éù
-	UI_SI_POPUP_OUTGAME_WND,	//½øÈëÓÎÏ·ÍâµÄ½çÃæµÄÉùÒô
-	UI_SI_OVER_OUTGAME_WND_BTN,	//Êó±êÒÆ¶¯µ½ÓÎÏ·ÍâµÄ½çÃæµÄ°´Å¥ÉÏ
-	UI_SI_PICKPUT_ITEM,			//ÄÃÆð»ò·ÅÖÃµÀ¾ßµ½ÎïÆ·À¹Ê±µÄÉùÒô
-	UI_SI_PLAYER_ATTRIB,		//Ñ¡ÈË¼°ÎåÐÐÊôÐÔÉùÒô
-	UI_SI_FRIEND_ONLINE,		//ºÃÓÑÉÏÏßÌáÊ¾Éù
+	UI_SI_WND_OPENCLOSE = 0,	//å¼¹å‡ºæˆ–å…³é—­ç•Œé¢æ—¶åˆ·çš„ä¸€å£°
+	UI_SI_POPUP_OUTGAME_WND,	//è¿›å…¥æ¸¸æˆå¤–çš„ç•Œé¢çš„å£°éŸ³
+	UI_SI_OVER_OUTGAME_WND_BTN,	//é¼ æ ‡ç§»åŠ¨åˆ°æ¸¸æˆå¤–çš„ç•Œé¢çš„æŒ‰é’®ä¸Š
+	UI_SI_PICKPUT_ITEM,			//æ‹¿èµ·æˆ–æ”¾ç½®é“å…·åˆ°ç‰©å“æ‹¦æ—¶çš„å£°éŸ³
+	UI_SI_PLAYER_ATTRIB,		//é€‰äººåŠäº”è¡Œå±žæ€§å£°éŸ³
+	UI_SI_FRIEND_ONLINE,		//å¥½å‹ä¸Šçº¿æç¤ºå£°
 
 	UI_SOUND_COUNT
 };
 
-bool UiSoundLoadSetting();		//ÔØÈëÉè¶¨
-void UiSoundPlay(UI_SOUND_INDEX eIndex);	//²¥·ÅÖ¸¶¨µÄÉùÒô
-void UiSoundPlay(char* SoundFileName);	//²¥·ÅÖ¸¶¨µÄÉùÒô
+bool UiSoundLoadSetting();		//è½½å…¥è®¾å®š
+void UiSoundPlay(UI_SOUND_INDEX eIndex);	//æ’­æ”¾æŒ‡å®šçš„å£°éŸ³
+void UiSoundPlay(char* SoundFileName);	//æ’­æ”¾æŒ‡å®šçš„å£°éŸ³

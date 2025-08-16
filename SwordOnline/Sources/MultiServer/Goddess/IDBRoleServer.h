@@ -25,19 +25,19 @@ int GetRoleListOfAccount( char * szAccountName, S3DBI_RoleBaseInfo * RoleBaseLis
 
 bool DeleteRole( const char * strUser );
 
-char* GetAccountByUser(char * strUser);//Í¨¹ıÓÃ»§Ãû²éÕÒÕÊ»§
+char* GetAccountByUser(char * strUser);//é€šè¿‡ç”¨æˆ·åæŸ¥æ‰¾å¸æˆ·
 
 //------------------------------------------------------------------------
-//Êı¾İ¿â±¸·İÓëÊı¾İÍ³¼Æ Add By Fellow At 2003.08.14
-bool StartBackupTimer(int aTime, DWORD bTime);		//¿ªÊ¼ÔËĞĞ±¸·İÏß³Ì
-bool StopBackupTimer();							//½áÊøÔËĞĞ±¸·İÏß³Ì
-bool SuspendBackupTimer();						//¹ÒÆğÏß³Ì
-bool ResumeBackupTimer();						//¼ÌĞøÔËĞĞÏß³Ì
-bool IsBackupThreadWorking();					//Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
-bool IsBackupWorking();							//ÊÇ·ñÔÚ±¸·İ
-bool DoManualBackup();							//ÊÖ¹¤±¸·İ
+//æ•°æ®åº“å¤‡ä»½ä¸æ•°æ®ç»Ÿè®¡ Add By Fellow At 2003.08.14
+bool StartBackupTimer(int aTime, DWORD bTime);		//å¼€å§‹è¿è¡Œå¤‡ä»½çº¿ç¨‹
+bool StopBackupTimer();							//ç»“æŸè¿è¡Œå¤‡ä»½çº¿ç¨‹
+bool SuspendBackupTimer();						//æŒ‚èµ·çº¿ç¨‹
+bool ResumeBackupTimer();						//ç»§ç»­è¿è¡Œçº¿ç¨‹
+bool IsBackupThreadWorking();					//çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œ
+bool IsBackupWorking();							//æ˜¯å¦åœ¨å¤‡ä»½
+bool DoManualBackup();							//æ‰‹å·¥å¤‡ä»½
 
-bool GetGameStat(TGAME_STAT_DATA* aStatData);//È¡µÃÓÃ»§Í³¼ÆÊı¾İ
+bool GetGameStat(TGAME_STAT_DATA* aStatData);//å–å¾—ç”¨æˆ·ç»Ÿè®¡æ•°æ®
 //------------------------------------------------------------------------
-void AddOutputString(HWND hListCtrl, char* aStr);//Ìí¼Ó²Ù×÷Êä³öÎÄ×Ö
+void AddOutputString(HWND hListCtrl, char* aStr);//æ·»åŠ æ“ä½œè¾“å‡ºæ–‡å­—
 #endif // __INCLUDE_IDBROLESERVER_H__

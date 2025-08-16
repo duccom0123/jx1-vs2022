@@ -10,10 +10,10 @@
 #include "KCanvas.h"
 #include "KDrawBitmap.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawBitmap
-// ¹¦ÄÜ:	»æÖÆ256É«Î»Í¼
-// ²ÎÊı:	void* node, void* canvas
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawBitmap
+// åŠŸèƒ½:	ç»˜åˆ¶256è‰²ä½å›¾
+// å‚æ•°:	void* node, void* canvas
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawBitmap(void* node, void* canvas)
 {
@@ -27,7 +27,7 @@ void g_DrawBitmap(void* node, void* canvas)
 	void* lpBitmap = pNode->m_pBitmap;// bitmap pointer
 	void* lpPalette	= pNode->m_pPalette;// palette pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -37,17 +37,17 @@ void g_DrawBitmap(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
-	// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 	long BitmapOffset = nWidth - Clipper.width;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = nPitch * Clipper.y + nX * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -59,7 +59,7 @@ void g_DrawBitmap(void* node, void* canvas)
 		mov 	edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-//  ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+//  åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //  esi = nWidth * Clipper.top + Clipper.left + lpBitmap
 //---------------------------------------------------------------------------
 		mov		eax, nWidth
@@ -69,7 +69,7 @@ void g_DrawBitmap(void* node, void* canvas)
 		mov		esi, lpBitmap
 		add     esi, eax
 //---------------------------------------------------------------------------
-//  ³õÊ¼»¯ EBX Ö¸Ïòµ÷É«°åÆğÊ¼µØÖ·
+//  åˆå§‹åŒ– EBX æŒ‡å‘è°ƒè‰²æ¿èµ·å§‹åœ°å€
 //  ebx = lpPalette
 //---------------------------------------------------------------------------
 		mov     ebx, lpPalette

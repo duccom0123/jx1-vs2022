@@ -25,7 +25,7 @@ extern iRepresentShell*	g_pRepresentShell;
 
 #define 	SCHEME_INI_TASKNOTE			"UiTaskNote.ini"
 #define 	SCHEME_INI_MISSIONNOTE		"UiTaskNote-MissionNote.ini"
-#define		DEFAULT_TASK				"\\spr\\ui3\\新任务系统\\任务图标\\icon_task_003.spr"
+#define		DEFAULT_TASK				"\\spr\\ui3\\鏂颁换鍔＄郴缁焅\浠诲姟鍥炬爣\\icon_task_003.spr"
 
 
 KUiTaskNote*	KUiTaskNote::m_pSelf = NULL;
@@ -96,7 +96,7 @@ void KUiTaskNote::InitData()
 	UpdateData(m_nTabSel);
 }
 
-//保存数据
+//淇濆瓨鏁版嵁
 void KUiTaskNote::SaveData()
 {
 	KTaskDataFile::SaveData();
@@ -348,7 +348,7 @@ void KUiTaskNote::UpdateList(int nId)
 
 		int nOffset=0,nCnt=0,nCntList=0,nCntLine=0,nListCount=KTaskDataFile::GetSystemHeaderCount(m_uCurHeaderId);
 		nCnt = KTaskDataFile::GetSystemRecordCount();
-		m_RecordList.GetMessageListBox()->SetCapability(nListCount);	//+4是多留些空间
+		m_RecordList.GetMessageListBox()->SetCapability(nListCount);	//+4鏄鐣欎簺绌洪棿
 		for (int i = 0; i < nCnt; i++)
 		{
 			const TASK_SYSTEM_RECORD* pRecord = KTaskDataFile::GetSystemRecord(i);

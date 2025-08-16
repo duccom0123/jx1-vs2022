@@ -25,7 +25,7 @@ void ShutdownGdiplus()
 	bGdiplusInitOk = false;
 }
 
-// 获得图象文件编码器类ID
+// 鑾峰緱鍥捐薄鏂囦欢缂栫爜鍣ㄧ被ID
 int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
 {
    UINT  num = 0;          // number of image encoders

@@ -44,7 +44,7 @@ public:
 	BOOL			CanBuy(int nPlayerIdx, int nBuy, int nBuyIdx, int nBuyNumber);
 	void			OpenSale(int nPlayerIdx, int nShop, int nShopMoneyUnit);
 	void			OpenSale(int nPlayerIdx, int nSaleType, int nMoneyUnit, int nShopNum, int *nShopId);
-	BOOL			Buy(int nPlayerIdx, int nBuy, int nBuyIdx, BYTE nBuyNumber);	// ÂòµÚ¼¸¸öÂòÂôÁĞ±íÖĞµÄµÚ¼¸ÏîµÀ¾ß
+	BOOL			Buy(int nPlayerIdx, int nBuy, int nBuyIdx, BYTE nBuyNumber);	// ä¹°ç¬¬å‡ ä¸ªä¹°å–åˆ—è¡¨ä¸­çš„ç¬¬å‡ é¡¹é“å…·
 	BOOL			Sell(int nPlayerIdx, int nBuy, int nIdx, int nBuyNumber);
 #endif
 #ifndef _SERVER

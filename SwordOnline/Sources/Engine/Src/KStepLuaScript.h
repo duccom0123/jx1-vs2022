@@ -29,11 +29,11 @@ struct TScriptMsg
 
 typedef enum
 {
-	ssRunIdle,	// ²¢Î´¼ÓÔØ½Å±¾
-	ssRunMain,	// ½Å±¾ÕıÔÚÖ´ĞĞ
-	ssRunFunc,	// º¯ÊıÕıÔÚÖ´ĞĞ
-	ssRunResume, //ÔİÊ±·µ»Ø
-	ssRunWaitMsg, //µÈ´ıÄ³¸öÏûÏ¢·¢Éú
+	ssRunIdle,	// å¹¶æœªåŠ è½½è„šæœ¬
+	ssRunMain,	// è„šæœ¬æ­£åœ¨æ‰§è¡Œ
+	ssRunFunc,	// å‡½æ•°æ­£åœ¨æ‰§è¡Œ
+	ssRunResume, //æš‚æ—¶è¿”å›
+	ssRunWaitMsg, //ç­‰å¾…æŸä¸ªæ¶ˆæ¯å‘ç”Ÿ
 }
 RunStatus;
 
@@ -50,9 +50,9 @@ public:
 	int			Active();
 	BOOL		GetNextLine(LPBYTE lpByte, char * szLin);
 	BOOL		ExeLine(LPSTR szLine);
-	BOOL		CheckLine(LPSTR szLine);//¼ì²é½«Ö´ĞĞµÄLuaÓï¾äÊÇ·ñ·ûºÏÌõ¼ş£¬Èç²»ÄÜÓĞfor goto 
-	BOOL		GetExeBufferFromFile(char * filename);//»ñµÃµ±Ç°ÎÄ¼şÖĞÖ´ĞĞ¶ÎµÄÓï¾ä
-	BOOL		GetExeBuffer(void *, int len);//»ñµÃÖ´ĞĞ¶ÎµÄÓï¾ä
+	BOOL		CheckLine(LPSTR szLine);//æ£€æŸ¥å°†æ‰§è¡Œçš„Luaè¯­å¥æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œå¦‚ä¸èƒ½æœ‰for goto 
+	BOOL		GetExeBufferFromFile(char * filename);//è·å¾—å½“å‰æ–‡ä»¶ä¸­æ‰§è¡Œæ®µçš„è¯­å¥
+	BOOL		GetExeBuffer(void *, int len);//è·å¾—æ‰§è¡Œæ®µçš„è¯­å¥
 	BOOL		Load(LPSTR szFileName);
 	void		SeekBegin(){m_CurPos = 0;	};
 	void		SeekToExeBegin(){m_CurPos = m_FirstExecuteLine;};
@@ -80,8 +80,8 @@ public:
 private:
 
 	TScriptMsg  *m_pMsgQueue;
-	RunStatus	m_Status;       // ½Å±¾µÄ×´Ì¬
-	BOOL		m_ScriptStyle; //¸Ã½Å±¾ËùÊôÀàĞÍÊÇ·ñÎªÖ÷ÀàĞÍ   »ò¸½ÊôÀàĞÍ
+	RunStatus	m_Status;       // è„šæœ¬çš„çŠ¶æ€
+	BOOL		m_ScriptStyle; //è¯¥è„šæœ¬æ‰€å±ç±»å‹æ˜¯å¦ä¸ºä¸»ç±»å‹   æˆ–é™„å±ç±»å‹
 	long		m_CurLine;
 	long		m_BufLen;
 	long		m_CurPos;

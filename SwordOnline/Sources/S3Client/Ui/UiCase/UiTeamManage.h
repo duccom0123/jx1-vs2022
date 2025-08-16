@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--×é¶Ó¹ÜÀí½çÃæ
+//	ç•Œé¢--ç»„é˜Ÿç®¡ç†ç•Œé¢
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -18,27 +18,27 @@
 class KUiTeamManage : public KWndShowAnimate
 {
 public:
-	static KUiTeamManage* OpenWindow();		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiTeamManage* GetIfVisible();	//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			  CloseWindow();	//¹Ø±Õ´°¿Ú
-	static void			  LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
-//	static void			  UpdateNearbyTeams(KUiTeamItem* pList, int nCount); //¸üĞÂÖÜÎ§¶ÓÎéµÄÁĞ±í
+	static KUiTeamManage* OpenWindow();		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiTeamManage* GetIfVisible();	//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			  CloseWindow();	//å…³é—­çª—å£
+	static void			  LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+//	static void			  UpdateNearbyTeams(KUiTeamItem* pList, int nCount); //æ›´æ–°å‘¨å›´é˜Ÿä¼çš„åˆ—è¡¨
 	void				  UpdateData(KUiPlayerTeam* pInfo);
 
 private:
 	KUiTeamManage();
 	~KUiTeamManage() {}
-	void	Initialize();							//³õÊ¼»¯
-	void	LoadScheme(class KIniFile* pSetting);	//ÔØÈë½çÃæ·½°¸
+	void	Initialize();							//åˆå§‹åŒ–
+	void	LoadScheme(class KIniFile* pSetting);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 protected:
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	//void	OnApplyJoin();					//ÉêÇë¼ÓÈë
-	void	OnKick();						//Ìß³ı¶ÓÔ±
-	void	OnAppoint();					//ÈÎÃü¶Ó³¤
-	void	OnInvite();						//ÑûÇë¼ÓÈë
-	void	OnLeave();						//Àë¿ª¶ÓÎé
-	void	OnDismiss();					//½âÉ¢¶ÓÎé
-	void	OnRefresh();					//Ë¢ĞÂ
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	//void	OnApplyJoin();					//ç”³è¯·åŠ å…¥
+	void	OnKick();						//è¸¢é™¤é˜Ÿå‘˜
+	void	OnAppoint();					//ä»»å‘½é˜Ÿé•¿
+	void	OnInvite();						//é‚€è¯·åŠ å…¥
+	void	OnLeave();						//ç¦»å¼€é˜Ÿä¼
+	void	OnDismiss();					//è§£æ•£é˜Ÿä¼
+	void	OnRefresh();					//åˆ·æ–°
 	void	OnSelTeamMember(int nItem);
 	void	OnSelNearby(int nItem);
 	void	Clear();
@@ -46,23 +46,23 @@ protected:
 private:
 	static KUiTeamManage* m_pSelf;
 
-	KWndText32				m_LeaderAbility;		// Í³Ë§Á¦	
-	KWndList				m_TeamMember;			// ¶ÓÔ±ÁĞ±í
-	KWndList				m_NearbyList;			// ÉêÇë¼ÓÈëÁĞ±í
-	KWndScrollBar			m_MemberScroll;			// ³ÉÔ±ÁĞ±í¹ö¶¯Ìõ
-	KWndScrollBar			m_NearbyScroll;			// ÉêÇë¼ÓÈëÁĞ±í¹ö¶¯Ìõ
+	KWndText32				m_LeaderAbility;		// ç»Ÿå¸…åŠ›	
+	KWndList				m_TeamMember;			// é˜Ÿå‘˜åˆ—è¡¨
+	KWndList				m_NearbyList;			// ç”³è¯·åŠ å…¥åˆ—è¡¨
+	KWndScrollBar			m_MemberScroll;			// æˆå‘˜åˆ—è¡¨æ»šåŠ¨æ¡
+	KWndScrollBar			m_NearbyScroll;			// ç”³è¯·åŠ å…¥åˆ—è¡¨æ»šåŠ¨æ¡
 
-//	KWndButton				m_NearbyPlayerTab;		// ÁĞ³öÖÜÎ§Íæ¼ÒµÄ°´Å¥
-//	KWndButton				m_NearbyTeamTab;		// ÁĞ³öÖÜÎ§Íæ¼ÒµÄ°´Å¥
+//	KWndButton				m_NearbyPlayerTab;		// åˆ—å‡ºå‘¨å›´ç©å®¶çš„æŒ‰é’®
+//	KWndButton				m_NearbyTeamTab;		// åˆ—å‡ºå‘¨å›´ç©å®¶çš„æŒ‰é’®
 
-	KWndLabeledButton		m_btnInvite;			// ÑûÇë
-	KWndLabeledButton		m_btnKick;				// Ìß³ö
-//	KWndButton				m_btnApplyJoin;			// ÉêÇë¼ÓÈë
+	KWndLabeledButton		m_btnInvite;			// é‚€è¯·
+	KWndLabeledButton		m_btnKick;				// è¸¢å‡º
+//	KWndButton				m_btnApplyJoin;			// ç”³è¯·åŠ å…¥
 
-	KWndLabeledButton		m_btnAppoint;			// ÈÎÃü
-	KWndLabeledButton		m_btnLeave, m_btnDismiss;// Àë¶Ó¡¢½âÉ¢
-	KWndLabeledButton		m_btnCloseTeam;			// ¹Ø±Õ×é¶Ó
-	KWndLabeledButton		m_btnRefresh;			// Ë¢ĞÂ
+	KWndLabeledButton		m_btnAppoint;			// ä»»å‘½
+	KWndLabeledButton		m_btnLeave, m_btnDismiss;// ç¦»é˜Ÿã€è§£æ•£
+	KWndLabeledButton		m_btnCloseTeam;			// å…³é—­ç»„é˜Ÿ
+	KWndLabeledButton		m_btnRefresh;			// åˆ·æ–°
 	KWndButton				m_btnCancel;			// cancel button
 
 	KUiPlayerTeam			m_Info;

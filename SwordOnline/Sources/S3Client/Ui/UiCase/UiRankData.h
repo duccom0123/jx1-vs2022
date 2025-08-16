@@ -17,9 +17,9 @@ class KUiRankData : KWndShadow
 public:
 
 public:
-	//打开窗口，返回唯一的一个类对象实例
+	//鎵撳紑绐楀彛锛岃繑鍥炲敮涓�鐨勪竴涓被瀵硅薄瀹炰緥
 	static KUiRankData* OpenWindow();
-	//关闭窗口，同时可以选则是否删除对象实例
+	//鍏抽棴绐楀彛锛屽悓鏃跺彲浠ラ�夊垯鏄惁鍒犻櫎瀵硅薄瀹炰緥
 	static void   CloseWindow(bool bDestory = TRUE); 
 	static KUiRankData*	GetIfVisible();
 public:
@@ -31,7 +31,7 @@ private:
 	~KUiRankData();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void    Initialize();       
-	void	LoadScheme(const char* pScheme);	//载入界面方案
+	void	LoadScheme(const char* pScheme);	//杞藉叆鐣岄潰鏂规
 	void	PaintWindow();
 	void	Breathe();
 

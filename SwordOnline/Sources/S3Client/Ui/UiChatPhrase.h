@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	½çÃæ--ÁÄÌì¿ì½İÊäÈë¶ÌÓï
+//	ç•Œé¢--èŠå¤©å¿«æ·è¾“å…¥çŸ­è¯­
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-3-23
@@ -25,25 +25,25 @@ public:
 		EMOTE_T_PHRASE = 0,
 		EMOTE_T_MENU,
 	};
-	//ÔØÈëËùÓĞÁÄÌì¶¯×÷ÎÄ¼ş
+	//è½½å…¥æ‰€æœ‰èŠå¤©åŠ¨ä½œæ–‡ä»¶
 	int     LoadEntireEmote();
-	//ÉèÖÃÁÄÌì¶¯×÷£¬ÓĞ¸ø³öindexµÄ¾Í¸ÄindexµÄ£¬Ã»ÓĞ¾Í¸ù¾İCmdÑ°ÕÒÒªÌæ»»µÄ
+	//è®¾ç½®èŠå¤©åŠ¨ä½œï¼Œæœ‰ç»™å‡ºindexçš„å°±æ”¹indexçš„ï¼Œæ²¡æœ‰å°±æ ¹æ®Cmdå¯»æ‰¾è¦æ›¿æ¢çš„
 	int     SetEmote(char *szCmd, char *szName, char *szStringTarget, char *szStringSelf, int nIndex = -1);
 	//
 	int     GetEmoteCount(EMOTE_TYPE eType);
-	//¸ù¾İÃüÁî»ñÈ¡Ò»¸ö¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬ÕâÀïÊÇ°üÀ¨ÁËMENUºÍPHRASEµÄ
+	//æ ¹æ®å‘½ä»¤è·å–ä¸€ä¸ªåŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œè¿™é‡Œæ˜¯åŒ…æ‹¬äº†MENUå’ŒPHRASEçš„
 	int     GetEmote(const char *szCmd, char *pBuff, int nBuffLen, int nType = 0);
-	//¸ù¾İË÷Òı»ñÈ¡Ò»¸ö¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬£¬ÕâÀïÊÇ°üÀ¨ÁËMENUºÍPHRASEµÄ
+	//æ ¹æ®ç´¢å¼•è·å–ä¸€ä¸ªåŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œï¼Œè¿™é‡Œæ˜¯åŒ…æ‹¬äº†MENUå’ŒPHRASEçš„
 	int     GetEmote(int nIndex, char *pBuff, int nBuffLen, int nType = 0);
-	//»ñÈ¡Ò»¸öÓÃÓÚ²Ëµ¥ÉÏµÄ¶¯×÷ÃèÊö(pBuff)£¬·µ»ØÃèÊö³¤¶È£¬½ö½öMENU
+	//è·å–ä¸€ä¸ªç”¨äºèœå•ä¸Šçš„åŠ¨ä½œæè¿°(pBuff)ï¼Œè¿”å›æè¿°é•¿åº¦ï¼Œä»…ä»…MENU
 	int     GetMenuEmote(const char *szCmd, char *pBuff, int nBuffLen, int nType = 0);
 	int     GetMenuEmote(int nIndex, char *pBuff, int nBuffLen, int nType = 0);
-	//È¡³öÖ¸¶¨Ë÷ÒıµÄ¶¯×÷Ãû×Ö
+	//å–å‡ºæŒ‡å®šç´¢å¼•çš„åŠ¨ä½œåå­—
 	int     GetMenuEmoteName(int nIndex, char *pBuff, int nBuffLen);
-	//ÖÆ×÷×Ö·û´®
+	//åˆ¶ä½œå­—ç¬¦ä¸²
 	int     ConvertEmoteString(char *szString, int nStringLen, const char *szMyName, const char *szTarName);
 
-	//°Ñ¶ÁÈ¡µ½µÄEmoteĞÅÏ¢¹¹Ôì½øÈ¥ShortcutÏµÍ³ÖĞµÄº¯Êı±ğÃû±í
+	//æŠŠè¯»å–åˆ°çš„Emoteä¿¡æ¯æ„é€ è¿›å»Shortcutç³»ç»Ÿä¸­çš„å‡½æ•°åˆ«åè¡¨
 	int     ConstructFunctionAlias();
 
 private:

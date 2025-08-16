@@ -3,10 +3,10 @@
 
 struct KLightInfo;
 
-//»æÖÆÓÎÏ·¶ÔÏó
+//ç»˜åˆ¶æ¸¸æˆå¯¹è±¡
 void	CoreDrawGameObj(unsigned int uObjGenre, unsigned int uId, int x, int y, int Width, int Height, int nParam);
 
-//²éÑ¯¶ÔÏóµÄ¹âÔ´ÊôĞÔ
+//æŸ¥è¯¢å¯¹è±¡çš„å…‰æºå±æ€§
 void	CoreGetGameObjLightInfo(unsigned int uObjGenre, unsigned int uId, KLightInfo *pLightInfo);
 
 #endif //#ifndef __COREDRAWGAMEOBJ__H__

@@ -21,7 +21,7 @@
 #endif
 
 
-// PKËÀÍö³Í·£µô´©µÄ×°±¸£¬¸÷×°±¸µôÂäµÄÈ¨Öµ
+// PKæ­»äº¡æƒ©ç½šæ‰ç©¿çš„è£…å¤‡ï¼Œå„è£…å¤‡æ‰è½çš„æƒå€¼
 #define		defEQUIP_POWER
 #ifdef defEQUIP_POWER
 	int		g_nEquipPower[itempart_num] =
@@ -84,7 +84,7 @@ KItemList::~KItemList()
 
 /*!*****************************************************************************
 // Function		: KItemList::GetWeaponType
-// Purpose		: È¡µÃÍæ¼Ò×°±¸µÄÎäÆ÷ÀàĞÍ
+// Purpose		: å–å¾—ç©å®¶è£…å¤‡çš„æ­¦å™¨ç±»å‹
 // Return		: int 
 // Comments		:
 // Author		: Spe
@@ -131,14 +131,14 @@ void KItemList::GetWeaponDamage(int* nMin, int* nMax)
 		*nMin = (nDamageMinBase + nMinDamage) * (100 + nEnhance) / 100;
 		*nMax = (nDamageMaxBase + nMaxDamage) * (100 + nEnhance) / 100;
 	}
-	else	// ¿ÕÊÖ
+	else	// ç©ºæ‰‹
 	{
 		/*
 		int nDamageBase = Player[m_PlayerIdx].m_nCurStrength * Player[m_PlayerIdx].m_nCurDexterity;
 		*nMin = nDamageBase >> 9;
 		*nMax = nDamageBase >> 8;
 		*/
-		// ÊıÖµ¼ÆËã·½·¨ĞŞ¸Ä£¨ËïÓ¢ÒªÇó£© by Spe 03/06/11
+		// æ•°å€¼è®¡ç®—æ–¹æ³•ä¿®æ”¹ï¼ˆå­™è‹±è¦æ±‚ï¼‰ by Spe 03/06/11
 		_ASSERT(STRENGTH_SET_DAMAGE_VALUE > 0);
 		*nMin = Player[m_PlayerIdx].m_nCurStrength / STRENGTH_SET_DAMAGE_VALUE;
 		*nMax = Player[m_PlayerIdx].m_nCurStrength / STRENGTH_SET_DAMAGE_VALUE;
@@ -215,9 +215,9 @@ int KItemList::Add(int nIdx, POINT ItemSize, bool bAutoStack)
 }
 /*!*****************************************************************************
 // Function		: KItemList::Add
-// Purpose		: Íæ¼ÒµÃµ½Ò»¸ö×°±¸
+// Purpose		: ç©å®¶å¾—åˆ°ä¸€ä¸ªè£…å¤‡
 // Return		: int 
-// Argumant		: int nIdx		ItemÊı×éµÄidx
+// Argumant		: int nIdx		Itemæ•°ç»„çš„idx
 // Argumant		: int nPlace
 // Argumant		: int nX
 // Argumant		: int nY
@@ -275,7 +275,7 @@ int KItemList::Add(int nIdx, int nPlace, int nX, int nY, bool bAutoStack)
 			return 0;
 		if (m_EquipItem[nX])
 			return 0;
-//	ÓĞ¿ÉÄÜÊÇÌõ¼ş²»¹»£¬±»ÆäËû×°±¸´ÕÉÏµÄ¡£ÊÇ·ñÄÜ×°±¸Ó¦¸Ã·Åµ½EquipÊ±¼ì²é
+//	æœ‰å¯èƒ½æ˜¯æ¡ä»¶ä¸å¤Ÿï¼Œè¢«å…¶ä»–è£…å¤‡å‡‘ä¸Šçš„ã€‚æ˜¯å¦èƒ½è£…å¤‡åº”è¯¥æ”¾åˆ°Equipæ—¶æ£€æŸ¥
 //		if (!CanEquip(nIdx, nX))
 //			return 0;
 		m_Items[i].nPlace = pos_equip;
@@ -432,7 +432,7 @@ int KItemList::Add(int nIdx, int nPlace, int nX, int nY, bool bAutoStack)
 		MOSAICENCRUSTED_UIEP_BOX_3,
 	};
 
-	pInfo.Obj.uGenre = CGOG_ITEM;	//Ô´×°±¸
+	pInfo.Obj.uGenre = CGOG_ITEM;	//æºè£…å¤‡
 	pInfo.Obj.uId = nIdx;
 	pInfo.Region.Width = Item[nIdx].GetWidth();
 	pInfo.Region.Height = Item[nIdx].GetHeight();
@@ -524,9 +524,9 @@ int KItemList::Add(int nIdx, int nPlace, int nX, int nY, bool bAutoStack)
 
 /*!*****************************************************************************
 // Function		: KItemList::Remove
-// Purpose		: Íæ¼ÒÊ§È¥Ò»¸ö×°±¸
+// Purpose		: ç©å®¶å¤±å»ä¸€ä¸ªè£…å¤‡
 // Return		: int 
-// Argumant		: int nGameIdxÎªÓÎÏ·ÊÀ½çÖĞµÀ¾ßÊı×éµÄ±àºÅ
+// Argumant		: int nGameIdxä¸ºæ¸¸æˆä¸–ç•Œä¸­é“å…·æ•°ç»„çš„ç¼–å·
 // Comments		:
 // Author		: Spe
 *****************************************************************************/
@@ -671,10 +671,10 @@ BOOL KItemList::Remove(int nGameIdx)
 		return FALSE;
 	}
 #ifndef _SERVER
-	// ¿Í»§¶Ë´ÓÍæ¼ÒÉíÉÏÈ¥³ı×°±¸¾ÍÓ¦¸Ã´Ó×°±¸±íÖĞÈ¥³ıµô¡£
+	// å®¢æˆ·ç«¯ä»ç©å®¶èº«ä¸Šå»é™¤è£…å¤‡å°±åº”è¯¥ä»è£…å¤‡è¡¨ä¸­å»é™¤æ‰ã€‚
 	ItemSet.Remove(m_Items[nIdx].nIdx);
 
-	// ½çÃæ´¦Àí
+	// ç•Œé¢å¤„ç†
 	KUiObjAtContRegion pInfo;
 
 	int PartConvert[itempart_num] = 
@@ -811,7 +811,7 @@ BOOL KItemList::Remove(int nGameIdx)
 
 /*!*****************************************************************************
 // Function		: KItemList::FindFree
-// Purpose		: ²éÕÒ¿ÉÓÃ¿ÕË÷Òı
+// Purpose		: æŸ¥æ‰¾å¯ç”¨ç©ºç´¢å¼•
 // Return		: int 
 // Comments		:
 // Author		: Spe
@@ -861,7 +861,7 @@ int KItemList::FindSame(DWORD dwID)
 }
 /*!*****************************************************************************
 // Function		: KItemList::Init
-// Purpose		: ³õÊ¼»¯Íæ¼Ò×°±¸ÁĞ±í
+// Purpose		: åˆå§‹åŒ–ç©å®¶è£…å¤‡åˆ—è¡¨
 // Return		: BOOL
 // Comments		:
 // Author		: Spe
@@ -889,12 +889,12 @@ BOOL KItemList::Init(int nPlayerIdx)
 	m_Room[room_give].Init(GIVE_ROOM_WIDTH, GIVE_ROOM_HEIGHT);
 	m_Room[room_compound].Init(MOSAICENCRUSTED_ROOM_WIDTH, MOSAICENCRUSTED_ROOM_HEIGHT);
 #ifndef _SERVER
-	m_Room[room_trade1].Init(TRADE_ROOM_WIDTH, TRADE_ROOM_HEIGHT);		// Õâ¸öµÄ´óĞ¡±ØĞëÓë room_trade µÄ´óĞ¡Ò»Ñù
+	m_Room[room_trade1].Init(TRADE_ROOM_WIDTH, TRADE_ROOM_HEIGHT);		// è¿™ä¸ªçš„å¤§å°å¿…é¡»ä¸ room_trade çš„å¤§å°ä¸€æ ·
 #endif
-	ZeroMemory(m_EquipItem, sizeof(m_EquipItem));				// Íæ¼Ò×°±¸µÄµÀ¾ß£¨¶ÔÓ¦ÓÎÏ·ÊÀ½çÖĞµÀ¾ßÊı×éµÄË÷Òı£©
-	ZeroMemory(m_Items, sizeof(m_Items));						// Íæ¼ÒÓµÓĞµÄËùÓĞµÀ¾ß£¨°üÀ¨×°±¸×ÅµÄºÍÏä×ÓÀï·ÅµÄ£¬¶ÔÓ¦ÓÎÏ·ÊÀ½çÖĞµÀ¾ßÊı×éµÄË÷Òı£©
+	ZeroMemory(m_EquipItem, sizeof(m_EquipItem));				// ç©å®¶è£…å¤‡çš„é“å…·ï¼ˆå¯¹åº”æ¸¸æˆä¸–ç•Œä¸­é“å…·æ•°ç»„çš„ç´¢å¼•ï¼‰
+	ZeroMemory(m_Items, sizeof(m_Items));						// ç©å®¶æ‹¥æœ‰çš„æ‰€æœ‰é“å…·ï¼ˆåŒ…æ‹¬è£…å¤‡ç€çš„å’Œç®±å­é‡Œæ”¾çš„ï¼Œå¯¹åº”æ¸¸æˆä¸–ç•Œä¸­é“å…·æ•°ç»„çš„ç´¢å¼•ï¼‰
 	ZeroMemory(m_CompoundItem, sizeof(m_CompoundItem));
-	m_nListCurIdx = 0;											// ÓÃÓÚ GetFirstItem ºÍ GetNextItem
+	m_nListCurIdx = 0;											// ç”¨äº GetFirstItem å’Œ GetNextItem
 	
 	m_FreeIdx.Init(MAX_PLAYER_ITEM);
 	m_UseIdx.Init(MAX_PLAYER_ITEM);
@@ -1074,8 +1074,8 @@ int KItemList::HaveDamageItem(int nDur)
 // Function		: KItemList::Equip
 // Purpose		: 
 // Return		: BOOL
-// Argumant		: int nIdx£¬ÓÎÏ·ÊÀ½çÖĞµÄµÀ¾ßÊı×é±àºÅ£¬ÒªÇóÒ»¶¨ÊÇ×°±¸ÀàµÀ¾ß
-// Argumant		: int nPlace£¬ÉíÉÏ×°±¸µÄÎ»ÖÃ£¬-1×Ô¶¯ÕÒÎ»ÖÃ
+// Argumant		: int nIdxï¼Œæ¸¸æˆä¸–ç•Œä¸­çš„é“å…·æ•°ç»„ç¼–å·ï¼Œè¦æ±‚ä¸€å®šæ˜¯è£…å¤‡ç±»é“å…·
+// Argumant		: int nPlaceï¼Œèº«ä¸Šè£…å¤‡çš„ä½ç½®ï¼Œ-1è‡ªåŠ¨æ‰¾ä½ç½®
 // Comments		:
 // Author		: Spe
 *****************************************************************************/
@@ -1196,7 +1196,7 @@ BOOL KItemList::Equip(int nIdx, int nPlace /* = -1 */)
 	default:
 		break;
 	}
-	// ¸üĞÂ×°±¸×ÔÉí×ø±ê
+	// æ›´æ–°è£…å¤‡è‡ªèº«åæ ‡
 	m_EquipItem[nEquipPlace] = nIdx;
 	m_Items[nItemListIdx].nPlace = pos_equip;
 	m_Items[nItemListIdx].nX = nEquipPlace;
@@ -1229,10 +1229,10 @@ BOOL KItemList::Equip(int nIdx, int nPlace /* = -1 */)
 
 /*!*****************************************************************************
 // Function		: KItemList::InfectionNextEquip
-// Purpose		: ×°±¸Ó°ÏìÆäËû×°±¸
+// Purpose		: è£…å¤‡å½±å“å…¶ä»–è£…å¤‡
 // Return		: void 
 // Argumant		: int nEquipPlace
-// Argumant		: BOOL bEquipUp ÊÇ×°ÉÏ£¨TRUE£©»¹ÊÇĞ¶ÏÂ£¨FALSE£©
+// Argumant		: BOOL bEquipUp æ˜¯è£…ä¸Šï¼ˆTRUEï¼‰è¿˜æ˜¯å¸ä¸‹ï¼ˆFALSEï¼‰
 // Comments		:
 // Author		: Spe
 *****************************************************************************/
@@ -1262,9 +1262,9 @@ void KItemList::InfectionNextEquip(int nEquipPlace, BOOL bEquip/* = FALSE */)
 }
 /*!*****************************************************************************
 // Function		: KItemList::UnEquip
-// Purpose		: ÒÆ³ı×°±¸
+// Purpose		: ç§»é™¤è£…å¤‡
 // Return		: BOOL 
-// Argumant		: int nIdx ÓÎÏ·ÊÀ½çÖĞµÄµÀ¾ßÊı×éË÷Òı
+// Argumant		: int nIdx æ¸¸æˆä¸–ç•Œä¸­çš„é“å…·æ•°ç»„ç´¢å¼•
 // Comments		: 
 // Author		: Spe
 *****************************************************************************/
@@ -1626,7 +1626,7 @@ int KItemList::GetEquipEnhance(int nPlace)
 		nRet ++;
 	for (int i = 0; i < MAX_ITEM_ACTIVE; i++)
 	{
-		// ¿´¿´¼¤»îÕâ¸ö×°±¸µÄ×°±¸ÖĞÊÇ·ñÏàÉúÕâ¸ö×°±¸
+		// çœ‹çœ‹æ¿€æ´»è¿™ä¸ªè£…å¤‡çš„è£…å¤‡ä¸­æ˜¯å¦ç›¸ç”Ÿè¿™ä¸ªè£…å¤‡
 		int nActivedEquip = m_EquipItem[ms_ActivedEquip[nPlace][i]];
 		if (nActivedEquip)
 		{
@@ -1856,11 +1856,11 @@ void KItemList::ExchangeMoney(int pos1, int pos2, int nMoney)
 		return;
 
 #ifdef _SERVER
-	if (m_Room[pos1].AddMoney(-nMoney))		// Ô´Î»ÖÃÄÜÄÃ³öÕâÃ´¶àÇ®À´
+	if (m_Room[pos1].AddMoney(-nMoney))		// æºä½ç½®èƒ½æ‹¿å‡ºè¿™ä¹ˆå¤šé’±æ¥
 	{
-		if (!m_Room[pos2].AddMoney(nMoney))	// Ä¿µÄµØÄÜ·Å²»ÏÂÈ¥
+		if (!m_Room[pos2].AddMoney(nMoney))	// ç›®çš„åœ°èƒ½æ”¾ä¸ä¸‹å»
 		{
-			m_Room[pos1].AddMoney(nMoney);	// »¹Ô­Ô´Î»ÖÃµÄÇ®
+			m_Room[pos1].AddMoney(nMoney);	// è¿˜åŸæºä½ç½®çš„é’±
 		}
 	}
 	else
@@ -1881,7 +1881,7 @@ void KItemList::ExchangeMoney(int pos1, int pos2, int nMoney)
 }
 
 //----------------------------------------------------------------------
-//	¹¦ÄÜ£ºµÃµ½ÎïÆ·À¸ºÍ´¢ÎïÏäµÄ×ÜÇ®Êı
+//	åŠŸèƒ½ï¼šå¾—åˆ°ç‰©å“æ å’Œå‚¨ç‰©ç®±çš„æ€»é’±æ•°
 //----------------------------------------------------------------------
 int KItemList::GetMoneyAmount()
 {
@@ -1889,7 +1889,7 @@ int KItemList::GetMoneyAmount()
 }
 
 //----------------------------------------------------------------------
-//	¹¦ÄÜ£ºµÃµ½ÎïÆ·À¸ºÍ´¢ÎïÏäµÄÇ®Êı
+//	åŠŸèƒ½ï¼šå¾—åˆ°ç‰©å“æ å’Œå‚¨ç‰©ç®±çš„é’±æ•°
 //----------------------------------------------------------------------
 int KItemList::GetRepositoryMoney()
 {
@@ -1964,17 +1964,17 @@ BOOL KItemList::DecMoney(int nMoney)
 
 #ifdef _SERVER
 //----------------------------------------------------------------------------------
-//	¹¦ÄÜ£ºµ÷ÓÃ´Ë½Ó¿Ú±ØĞë±£Ö¤´«ÈëµÄnMoneyÊÇÒ»¸öÓĞĞ§Êı(ÕıÊıÇÒ²»³¬¹ıËùÓĞÇ®Êı)
+//	åŠŸèƒ½ï¼šè°ƒç”¨æ­¤æ¥å£å¿…é¡»ä¿è¯ä¼ å…¥çš„nMoneyæ˜¯ä¸€ä¸ªæœ‰æ•ˆæ•°(æ­£æ•°ä¸”ä¸è¶…è¿‡æ‰€æœ‰é’±æ•°)
 //----------------------------------------------------------------------------------
 void	KItemList::TradeMoveMoney(int nMoney)
 {
-	// ×Ô¼ºÇ®µÄ´¦Àí
+	// è‡ªå·±é’±çš„å¤„ç†
 	m_Room[room_trade].SetMoney(nMoney);
 	SendMoneySync();
 	char szMsg[128];
 	sprintf(szMsg, MSG_TRADE_INPUT_MONEY, nMoney);
 	KPlayerChat::SendSystemInfo(1, Player[m_PlayerIdx].m_cTrade.m_nTradeDest, MESSAGE_SYSTEM_ANNOUCE_HEAD, (char *) szMsg, strlen(szMsg) );	
-	// ¸ø¶Ô·½·¢ÏûÏ¢
+	// ç»™å¯¹æ–¹å‘æ¶ˆæ¯
 	TRADE_MONEY_SYNC	sMoney;
 	sMoney.ProtocolType = s2c_trademoneysync;
 	sMoney.m_nMoney = nMoney;
@@ -1984,7 +1984,7 @@ void	KItemList::TradeMoveMoney(int nMoney)
 
 #ifdef _SERVER
 //----------------------------------------------------------------------------------
-//	¹¦ÄÜ£º·şÎñÆ÷·¢moneyÍ¬²½ĞÅÏ¢¸ø¿Í»§¶Ë
+//	åŠŸèƒ½ï¼šæœåŠ¡å™¨å‘moneyåŒæ­¥ä¿¡æ¯ç»™å®¢æˆ·ç«¯
 //----------------------------------------------------------------------------------
 void	KItemList::SendMoneySync()
 {
@@ -2043,7 +2043,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 	sMove.m_btUpY = DesPos->nY;
 #endif
 
-	// Ô´×°±¸´ÓSrcPosµ½ÊÖÉÏ£¬ÊÖÉÏµÄ×°±¸µ½DesPos
+	// æºè£…å¤‡ä»SrcPosåˆ°æ‰‹ä¸Šï¼Œæ‰‹ä¸Šçš„è£…å¤‡åˆ°DesPos
 	if (Player[m_PlayerIdx].GetLockMove()->bLock)
 	{
 		if (DesPos->nPlace != pos_equiproom && 
@@ -2062,7 +2062,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		return;
 		break;
 	case pos_equip:
-		if (Player[this->m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[this->m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (SrcPos->nX < 0 || SrcPos->nX >= itempart_num || DesPos->nX < 0 || DesPos->nX >= itempart_num)
 			return;
@@ -2097,9 +2097,9 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		break;
 	case pos_immediacy:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
-		// ÅĞ¶ÏÊÇ·ñÓĞÍ¬ÀàĞÍµÄÎïÆ·£¬ÓĞµÄ»°²»ÈÃ·ÅÏÂÈ¥
+		// åˆ¤æ–­æ˜¯å¦æœ‰åŒç±»å‹çš„ç‰©å“ï¼Œæœ‰çš„è¯ä¸è®©æ”¾ä¸‹å»
 		if (m_Hand)
 		{
 			if (Item[m_Hand].CanShortKey())
@@ -2135,14 +2135,14 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 		
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_immediacy].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
 				return;
 		}
 
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 	if (m_Hand)
 		{
 			if (m_Room[room_immediacy].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2157,13 +2157,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_immediacy].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2178,13 +2178,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		break;
 	case pos_repositoryroom:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		nEquipIdx1 = m_Room[room_repository].FindItem(SrcPos->nX, SrcPos->nY);
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2210,7 +2210,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2225,13 +2225,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2247,7 +2247,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 	//====================================================================================
 	case pos_repositoryroom1:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_btRepositoryNum <= REPOSITORY_ONE)
 			return;
@@ -2255,7 +2255,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository1].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2281,7 +2281,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository1].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2296,13 +2296,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository1].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2318,7 +2318,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 //---------------------------------------------------
 	case pos_repositoryroom2:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_btRepositoryNum <= REPOSITORY_TWO)
 			return;
@@ -2326,7 +2326,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository2].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2352,7 +2352,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository2].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2367,13 +2367,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository2].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2389,7 +2389,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 //----------------------------------------------------------------------
 	case pos_repositoryroom3:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_btRepositoryNum <= REPOSITORY_THREE)
 			return;
@@ -2397,7 +2397,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository3].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2423,7 +2423,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository3].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2438,13 +2438,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository3].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2460,7 +2460,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 	//====================================================================================
 	case pos_repositoryroom4:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_btRepositoryNum <= REPOSITORY_FOUR)
 			return;
@@ -2468,7 +2468,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository4].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2494,7 +2494,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository4].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2509,13 +2509,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository4].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2531,7 +2531,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 	//====================================================================================
 	case pos_repositoryroom5:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_btRepositoryNum <= REPOSITORY_FIVE)
 			return;
@@ -2539,7 +2539,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_repository5].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2565,7 +2565,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_repository5].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2580,13 +2580,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_repository5].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2602,7 +2602,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		break;
 //--------------------------------------------------------------------
 	case pos_equiproomex:
-		if (Player[m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (m_Hand && Player[m_PlayerIdx].m_dwEquipExpandTime <= KSG_GetCurSec())
 			return;
@@ -2610,7 +2610,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_equipmentex].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2637,7 +2637,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_equipmentex].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2652,13 +2652,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_equipmentex].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2679,7 +2679,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_equipment].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
@@ -2706,7 +2706,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				return;				
 			}
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_equipment].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2731,7 +2731,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				if (Player[m_PlayerIdx].GetLockMove()->bLock)
@@ -2743,7 +2743,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				m_Room[room_equipment].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2760,19 +2760,19 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		break;
 	case pos_traderoom:
-		if ( !Player[m_PlayerIdx].CheckTrading() )	// ²»ÔÚ½»Ò×
+		if ( !Player[m_PlayerIdx].CheckTrading() )	// ä¸åœ¨äº¤æ˜“
 			return;
 		nEquipIdx1 = m_Room[room_trade].FindItem(SrcPos->nX, SrcPos->nY);
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_trade].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
 				return;
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		//char szMsg[128];
 		if (m_Hand)
 		{
@@ -2783,15 +2783,15 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				m_Items[nListIdx].nX = DesPos->nX;
 				m_Items[nListIdx].nY = DesPos->nY;
 #ifdef _SERVER
-				// ·¢ÏûÏ¢¸ø½»Ò×¶Ô·½
-				if (nEquipIdx1)	// ½»Ò×À¸ÓĞ¶«Î÷±»¼ñÆğ
+				// å‘æ¶ˆæ¯ç»™äº¤æ˜“å¯¹æ–¹
+				if (nEquipIdx1)	// äº¤æ˜“æ æœ‰ä¸œè¥¿è¢«æ¡èµ·
 				{
 					ITEM_REMOVE_SYNC	sRemove;
 					sRemove.ProtocolType = s2c_removeitem;
 					sRemove.m_ID = Item[nEquipIdx1].m_dwID;
 					g_pServer->PackDataToClient(Player[Player[m_PlayerIdx].m_cTrade.m_nTradeDest].m_nNetConnectIdx, (BYTE*)&sRemove, sizeof(ITEM_REMOVE_SYNC));
 				}
-				// ÊÖÉÏµÄ¶«Î÷·ÅÔÚÁË½»Ò×À¸
+				// æ‰‹ä¸Šçš„ä¸œè¥¿æ”¾åœ¨äº†äº¤æ˜“æ 
 				SyncItem(m_Hand, TRUE, pos_trade1, DesPos->nX, DesPos->nY, Player[m_PlayerIdx].m_cTrade.m_nTradeDest);
 				
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
@@ -2800,18 +2800,18 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				if (FindSame(nEquipIdx1))
 					m_Items[FindSame(nEquipIdx1)].nPlace = pos_hand;
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_trade].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 #ifdef _SERVER
-			// ·¢ÏûÏ¢¸ø½»Ò×¶Ô·½
-			if (nEquipIdx1)	// ½»Ò×À¸ÓĞ¶«Î÷±»¼ñÆğ
+			// å‘æ¶ˆæ¯ç»™äº¤æ˜“å¯¹æ–¹
+			if (nEquipIdx1)	// äº¤æ˜“æ æœ‰ä¸œè¥¿è¢«æ¡èµ·
 			{
 				ITEM_REMOVE_SYNC	sRemove;
 				sRemove.ProtocolType = s2c_removeitem;
@@ -2833,13 +2833,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_give].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
 				return;
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_give].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2854,13 +2854,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_give].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2876,7 +2876,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		break;
 	case pos_compound:
-		if (Player[this->m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[this->m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		if (SrcPos->nX < 0 || SrcPos->nX >= MAX_COMPOUND_ITEM || DesPos->nX < 0 || DesPos->nX >= MAX_COMPOUND_ITEM)
 			return;
@@ -2916,19 +2916,19 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		break;
 	case pos_compoundroom:
-		if (Player[this->m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+		if (Player[this->m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 			return;
 		nEquipIdx1 = m_Room[room_compound].FindItem(SrcPos->nX, SrcPos->nY);
 		if (nEquipIdx1 < 0)
 			return;
 
-		// ÏÈ°Ñ¶«Î÷¼ğÆğÀ´
+		// å…ˆæŠŠä¸œè¥¿æ‹£èµ·æ¥
 		if (nEquipIdx1)
 		{
 			if (!m_Room[room_compound].PickUpItem(nEquipIdx1, SrcPos->nX, SrcPos->nY, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight()))
 				return;
 		}
-		// Èç¹ûÊó±êÉÏÓĞ¶«Î÷£¬ÏÈÊÔÊÔÄÜ²»ÄÜ°ÑËû·ÅÏÂÈ¥£¬Èç¹û²»ĞĞµÄ»°£¬»¹µÃ°ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+		// å¦‚æœé¼ æ ‡ä¸Šæœ‰ä¸œè¥¿ï¼Œå…ˆè¯•è¯•èƒ½ä¸èƒ½æŠŠä»–æ”¾ä¸‹å»ï¼Œå¦‚æœä¸è¡Œçš„è¯ï¼Œè¿˜å¾—æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 		if (m_Hand)
 		{
 			if (m_Room[room_compound].PlaceItem(DesPos->nX, DesPos->nY, m_Hand, Item[m_Hand].GetWidth(), Item[m_Hand].GetHeight()))
@@ -2943,13 +2943,13 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 				g_pServer->PackDataToClient(Player[m_PlayerIdx].m_nNetConnectIdx, (BYTE*)&sMove, sizeof(PLAYER_MOVE_ITEM_SYNC));
 #endif
 			}
-			// °ÑÔ­À´µÄ¶«Î÷·Å»ØÈ¥
+			// æŠŠåŸæ¥çš„ä¸œè¥¿æ”¾å›å»
 			else
 			{
 				m_Room[room_compound].PlaceItem(SrcPos->nX, SrcPos->nY, nEquipIdx1, Item[nEquipIdx1].GetWidth(), Item[nEquipIdx1].GetHeight());
 			}
 		}
-		// Èç¹ûÊó±êÉÏÃ»ÓĞ¶«Î÷£¬Ö»ĞèÒª°Ñ¼ğÆğÀ´µÄ¶«Î÷·Åµ½Êó±êÉÏ
+		// å¦‚æœé¼ æ ‡ä¸Šæ²¡æœ‰ä¸œè¥¿ï¼Œåªéœ€è¦æŠŠæ‹£èµ·æ¥çš„ä¸œè¥¿æ”¾åˆ°é¼ æ ‡ä¸Š
 		else
 		{
 			int nListIdx = FindSame(nEquipIdx1);
@@ -2968,10 +2968,10 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 
 #ifndef _SERVER
 	// Notify to Menu
-	if (m_Hand != nTempHand)	// ½»»»³É¹¦ÁË
+	if (m_Hand != nTempHand)	// äº¤æ¢æˆåŠŸäº†
 	{
-	//uParam = (KUiObjAtRegion*)pInfo -> ÎïÆ·Êı¾İ¼°Æä·ÅÖÃÇøÓòÎ»ÖÃĞÅÏ¢
-	//nParam = bAdd -> 0Öµ±íÊ¾¼õÉÙÕâ¸öÎïÆ·£¬·Ç0Öµ±íÊ¾Ôö¼ÓÕâ¸öÎïÆ·
+	//uParam = (KUiObjAtRegion*)pInfo -> ç‰©å“æ•°æ®åŠå…¶æ”¾ç½®åŒºåŸŸä½ç½®ä¿¡æ¯
+	//nParam = bAdd -> 0å€¼è¡¨ç¤ºå‡å°‘è¿™ä¸ªç‰©å“ï¼Œé0å€¼è¡¨ç¤ºå¢åŠ è¿™ä¸ªç‰©å“
 		KUiObjAtContRegion pInfo1, pInfo2;
 		if (nTempHand == 0)
 		{
@@ -2982,7 +2982,7 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 		}
 		else
 		{
-			pInfo2.Obj.uGenre = CGOG_ITEM;	//Ô´×°±¸
+			pInfo2.Obj.uGenre = CGOG_ITEM;	//æºè£…å¤‡
 			pInfo2.Obj.uId = nTempHand;
 			pInfo2.Region.Width = Item[nTempHand].GetWidth();
 			pInfo2.Region.Height = Item[nTempHand].GetHeight();
@@ -3159,17 +3159,17 @@ void KItemList::ExchangeItem(ItemPos* SrcPos, ItemPos* DesPos)
 
 #ifndef	_SERVER
 //---------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎïÆ·´ÓÒ»¸öµØ·½Ö±½ÓÒÆ¶¯µ½ÁíÒ»¸öµØ·½£¬²»¾­¹ıÊó±êÕâ¸öÖĞ¼ä¹ı³Ì
+//	åŠŸèƒ½ï¼šç‰©å“ä»ä¸€ä¸ªåœ°æ–¹ç›´æ¥ç§»åŠ¨åˆ°å¦ä¸€ä¸ªåœ°æ–¹ï¼Œä¸ç»è¿‡é¼ æ ‡è¿™ä¸ªä¸­é—´è¿‡ç¨‹
 //---------------------------------------------------------------------
 BOOL	KItemList::AutoMoveItem(ItemPos SrcPos,ItemPos DesPos)
 {
-	if (Player[this->m_PlayerIdx].CheckTrading())	// Èç¹ûÕıÔÚ½»Ò×
+	if (Player[this->m_PlayerIdx].CheckTrading())	// å¦‚æœæ­£åœ¨äº¤æ˜“
 		return FALSE;
 
 	BOOL	bMove = FALSE;
 	int		nIdx, nListIdx;
 
-	// Ä¿Ç°Ö»Ö§³Ö´Óroom_equipmentµ½room_immediacy
+	// ç›®å‰åªæ”¯æŒä»room_equipmentåˆ°room_immediacy
 	switch (SrcPos.nPlace)
 	{
 	case pos_equiproom:
@@ -3207,7 +3207,7 @@ BOOL	KItemList::AutoMoveItem(ItemPos SrcPos,ItemPos DesPos)
 	if (!bMove)
 		return bMove;
 
-	// Í¨Öª½çÃæ
+	// é€šçŸ¥ç•Œé¢
 	KUiObjAtContRegion sSrcInfo, sDestInfo;
 
 	sSrcInfo.Obj.uGenre		= CGOG_ITEM;
@@ -3235,7 +3235,7 @@ BOOL	KItemList::AutoMoveItem(ItemPos SrcPos,ItemPos DesPos)
 
 #ifndef	_SERVER
 //---------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎïÆ·´ÓÒ»¸öµØ·½Ö±½ÓÒÆ¶¯µ½ÁíÒ»¸öµØ·½£¬²»¾­¹ıÊó±êÕâ¸öÖĞ¼ä¹ı³Ì
+//	åŠŸèƒ½ï¼šç‰©å“ä»ä¸€ä¸ªåœ°æ–¹ç›´æ¥ç§»åŠ¨åˆ°å¦ä¸€ä¸ªåœ°æ–¹ï¼Œä¸ç»è¿‡é¼ æ ‡è¿™ä¸ªä¸­é—´è¿‡ç¨‹
 //---------------------------------------------------------------------
 void	KItemList::MenuSetMouseItem()
 {
@@ -3346,9 +3346,9 @@ void	KItemList::StartTrade()
 
 /*!*****************************************************************************
 // Function		: KItemList::RemoveAll
-// Purpose		: ÍË³öÊ±Çå³ıËùÓĞµÄ×°±¸
+// Purpose		: é€€å‡ºæ—¶æ¸…é™¤æ‰€æœ‰çš„è£…å¤‡
 // Return		: void
-// Comments		: »áÊµ¼ÊµØ´ÓÓÎÏ·ÊÀ½çÖĞµÄµÀ¾ßÊı×éÖĞÈ¥µô
+// Comments		: ä¼šå®é™…åœ°ä»æ¸¸æˆä¸–ç•Œä¸­çš„é“å…·æ•°ç»„ä¸­å»æ‰
 // Author		: Spe
 *****************************************************************************/
 void KItemList::RemoveAll()
@@ -3361,7 +3361,7 @@ void KItemList::RemoveAll()
 		int nGameIdx = m_Items[nIdx].nIdx;
 		Remove(m_Items[nIdx].nIdx);
 #ifdef _SERVER
-		// ¿Í»§¶ËÔÚÉÏÃæKItemList::Remove()ÒÑ¾­×öÁËItemSet.Remove()
+		// å®¢æˆ·ç«¯åœ¨ä¸Šé¢KItemList::Remove()å·²ç»åšäº†ItemSet.Remove()
 		ItemSet.Remove(nGameIdx);
 #endif
 		nIdx = nIdx1;
@@ -3499,7 +3499,7 @@ int KItemList::RemoveCommonItem(int nCount, int nItemNature, int nItemGenre, int
 
 #ifdef _SERVER
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º½»Ò×ÖĞ°Ñ trade room ÖĞµÄ item µÄ idx width height ĞÅÏ¢Ğ´Èë itemset ÖĞµÄ m_psItemInfo ÖĞÈ¥
+//	åŠŸèƒ½ï¼šäº¤æ˜“ä¸­æŠŠ trade room ä¸­çš„ item çš„ idx width height ä¿¡æ¯å†™å…¥ itemset ä¸­çš„ m_psItemInfo ä¸­å»
 //--------------------------------------------------------------------------
 void	KItemList::GetTradeRoomItemInfo()
 {
@@ -3530,7 +3530,7 @@ void	KItemList::GetTradeRoomItemInfo()
 		nPos++;
 	}
 
-	// ´Ó´óµ½Ğ¡ÅÅĞò
+	// ä»å¤§åˆ°å°æ’åº
 	TRADE_ITEM_INFO	sTemp;
 	for (int i = nPos - 1; i >= 0; i--)
 	{
@@ -3550,7 +3550,7 @@ void	KItemList::GetTradeRoomItemInfo()
 
 #ifdef _SERVER
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º½»Ò×ÖĞÅĞ¶ÏÂò½øµÄÎïÆ·ÄÜ²»ÄÜÍêÈ«·Å½ø×Ô¼ºµÄÎïÆ·À¸
+//	åŠŸèƒ½ï¼šäº¤æ˜“ä¸­åˆ¤æ–­ä¹°è¿›çš„ç‰©å“èƒ½ä¸èƒ½å®Œå…¨æ”¾è¿›è‡ªå·±çš„ç‰©å“æ 
 //--------------------------------------------------------------------------
 BOOL	KItemList::TradeCheckCanPlace()
 {
@@ -3582,10 +3582,10 @@ BOOL	KItemList::TradeCheckCanPlace()
 					if (nNext)
 						break;
 				}
-				// ÕÒµ½Ò»¸öÎ»ÖÃ
+				// æ‰¾åˆ°ä¸€ä¸ªä½ç½®
 				if (!nNext)
 				{
-					// Êı¾İ´¦Àí
+					// æ•°æ®å¤„ç†
 					ItemSet.m_psItemInfo[nPos].m_nX = j;
 					ItemSet.m_psItemInfo[nPos].m_nY = i;
 					for (a = 0; a < ItemSet.m_psItemInfo[nPos].m_nHeight; a++)
@@ -3614,7 +3614,7 @@ BOOL	KItemList::TradeCheckCanPlace()
 #endif
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÅĞ¶ÏÒ»¶¨³¤¿íµÄÎïÆ·ÄÜ·ñ·Å½øÎïÆ·À¸ (ÎªÁË·şÎñÆ÷Ğ§ÂÊ£¬±¾º¯ÊıÀïÃæÃ»ÓĞµ÷ÓÃÆäËûº¯Êı)
+//	åŠŸèƒ½ï¼šåˆ¤æ–­ä¸€å®šé•¿å®½çš„ç‰©å“èƒ½å¦æ”¾è¿›ç‰©å“æ  (ä¸ºäº†æœåŠ¡å™¨æ•ˆç‡ï¼Œæœ¬å‡½æ•°é‡Œé¢æ²¡æœ‰è°ƒç”¨å…¶ä»–å‡½æ•°)
 //--------------------------------------------------------------------------
 BOOL	KItemList::CheckCanPlaceInEquipment(int nWidth, int nHeight, int *pnP, int *pnX, int *pnY)
 {
@@ -3700,7 +3700,7 @@ BOOL	KItemList::FindSameToRemove(int nItemNature, int nItemGenre, int nDetailTyp
 	return m_Room[PositionToRoom(P)].FindSameToRemove(nItemNature, nItemGenre, nDetailType, nLevel, nSeries, pnIdx);
 }
 //------------------------------------------------------------------------------
-//	¹¦ÄÜ£º×Ô¶¯°ÑÒ»¸öÒ©Æ·´Óroom_equipmentÒÆ¶¯µ½room_immediacy
+//	åŠŸèƒ½ï¼šè‡ªåŠ¨æŠŠä¸€ä¸ªè¯å“ä»room_equipmentç§»åŠ¨åˆ°room_immediacy
 //------------------------------------------------------------------------------
 BOOL	KItemList::AutoMoveItemFromEquipmentRoom(int nItemIdx, int nSrcX, int nSrcY, int nDestX, int nDestY)
 {
@@ -3837,7 +3837,7 @@ int KItemList::GetGoldActiveAttribNum(int nIdx)
 
 #ifdef _SERVER
 //-------------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ªÊ§ËæÉíÎïÆ·
+//	åŠŸèƒ½ï¼šä¸¢å¤±éšèº«ç‰©å“
 //-------------------------------------------------------------------------------
 void	KItemList::AutoLoseItemFromEquipmentRoom(int nRate)
 {
@@ -3853,7 +3853,7 @@ void	KItemList::AutoLoseItemFromEquipmentRoom(int nRate)
 	nYpos = 0;
 	nPos = 0;
 
-	// ÏÈÍ³¼ÆËùÓĞÎïÆ·£¬ÅÅ³ıÈÎÎñÎïÆ·
+	// å…ˆç»Ÿè®¡æ‰€æœ‰ç‰©å“ï¼Œæ’é™¤ä»»åŠ¡ç‰©å“
 	while (1)
 	{
 		nItemIdx = m_Room[room_equipment].GetNextItem(nItemIdx, nXpos, nYpos, &nXpos, &nYpos);
@@ -3882,7 +3882,7 @@ void	KItemList::AutoLoseItemFromEquipmentRoom(int nRate)
 			continue;
 		nItemIdx = ItemSet.m_sLoseItemFromEquipmentRoom[i].nIdx;
 		Player[m_PlayerIdx].GetAboutPos(&sMapPos);
-		// ¶ªÆú
+		// ä¸¢å¼ƒ
 		if (Remove(nItemIdx))
 		{
 			sInfo.m_nItemID = nItemIdx;
@@ -3918,7 +3918,7 @@ void	KItemList::AutoLoseItemFromEquipmentRoom(int nRate)
 
 #ifdef _SERVER
 //-------------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ªÊ§Ò»¸ö´©ÔÚÉíÉÏµÄ×°±¸(Âí²»»áµô)
+//	åŠŸèƒ½ï¼šä¸¢å¤±ä¸€ä¸ªç©¿åœ¨èº«ä¸Šçš„è£…å¤‡(é©¬ä¸ä¼šæ‰)
 //-------------------------------------------------------------------------------
 void	KItemList::AutoLoseEquip()
 {
@@ -3954,7 +3954,7 @@ void	KItemList::AutoLoseEquip()
 		nTotalPower += g_nEquipPower[i];
 		ItemSet.m_sLoseEquipItem[nPos].nIdx = m_EquipItem[i];
 		ItemSet.m_sLoseEquipItem[nPos].nPlace = nPos;
-		ItemSet.m_sLoseEquipItem[nPos].nX = nTotalPower;	// nX ½èÓÃÒ»ÏÂ
+		ItemSet.m_sLoseEquipItem[nPos].nX = nTotalPower;	// nX å€Ÿç”¨ä¸€ä¸‹
 		nPos++;
 	}
 	if (nTotalPower == 0)
@@ -4013,7 +4013,7 @@ void	KItemList::AutoLoseEquip()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------------
-//	¹¦ÄÜ£º
+//	åŠŸèƒ½ï¼š
 //-------------------------------------------------------------------------------
 int		KItemList::GetSameDetailItemNum(int nImmediatePos)
 {
@@ -4063,7 +4063,7 @@ void KItemList::Abrade(int nType)
 
 BOOL KItemList::CanCombie(int Source, int Dest)
 {
-	if (Player[m_PlayerIdx].CheckTrading() )	// ²»ÔÚ½»Ò×
+	if (Player[m_PlayerIdx].CheckTrading() )	// ä¸åœ¨äº¤æ˜“
 		return FALSE;
 	if (Player[m_PlayerIdx].GetLockMove()->bLock)
 		return FALSE;
@@ -4094,7 +4094,7 @@ BOOL KItemList::CanCombie(int Source, int Dest)
 
 BOOL KItemList::CompareRemoveItem(int Source, int Dest)
 {
-	if (Player[m_PlayerIdx].CheckTrading() )	// ²»ÔÚ½»Ò×
+	if (Player[m_PlayerIdx].CheckTrading() )	// ä¸åœ¨äº¤æ˜“
 		return FALSE;
 	if (Item[Source].GetNature() == Item[Dest].GetNature() && 
 		Item[Source].GetGenre() == Item[Dest].GetGenre() && 
@@ -4353,7 +4353,7 @@ void KItemList::DropCompound(int nIdx, int nPos/* = -1*/)
 	}
 	else
 	{
-		if (m_CompoundItem[nPos] != nIdx)	// ¶«Î÷²»¶Ô
+		if (m_CompoundItem[nPos] != nIdx)	// ä¸œè¥¿ä¸å¯¹
 			return;
 		i = nPos;
 	}

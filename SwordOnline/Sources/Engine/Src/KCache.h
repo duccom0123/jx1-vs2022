@@ -15,8 +15,8 @@
 class KCacheNode : public KStrNode
 {
 public:
-	PVOID	m_lpData;			//¶ÔÏóÖ¸Õë
-	LONG	m_Ref;				//±¾Ö¡ÊÇ·ñ±»ÒıÓÃ
+	PVOID	m_lpData;			//å¯¹è±¡æŒ‡é’ˆ
+	LONG	m_Ref;				//æœ¬å¸§æ˜¯å¦è¢«å¼•ç”¨
 public:
 	KCacheNode() {m_Ref = 0; m_lpData = NULL;};
 };
@@ -24,9 +24,9 @@ public:
 class ENGINE_API KCache
 {
 public:
-	LONG m_nMaxNode;			//×î´ó¶ÔÏó½ÚµãÊı
-	LONG m_nLimitNode;			//Éè¶¨µÄ¶ÔÏó½ÚµãÊı
-	KStrList m_HashList;		//¶ÔÏó¹şÏ£Á´±í
+	LONG m_nMaxNode;			//æœ€å¤§å¯¹è±¡èŠ‚ç‚¹æ•°
+	LONG m_nLimitNode;			//è®¾å®šçš„å¯¹è±¡èŠ‚ç‚¹æ•°
+	KStrList m_HashList;		//å¯¹è±¡å“ˆå¸Œé“¾è¡¨
 public:
 	KCache();
 	~KCache();
@@ -35,7 +35,7 @@ public:
 	virtual KCacheNode* GetNode(char* lpName, KCacheNode* lpNode);
 	virtual BOOL LoadNode(KCacheNode* lpNode){return FALSE;};
 	virtual void FreeNode(KCacheNode* lpNode){};
-	void	ClearNode(char * lpName);//Çå³ıÄ³¸ö½áµã
+	void	ClearNode(char * lpName);//æ¸…é™¤æŸä¸ªç»“ç‚¹
 	void	Prepare();
     virtual void Release();
 };

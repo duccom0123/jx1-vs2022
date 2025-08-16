@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-// 场景对象树上的树叶的函数
+// 鍦烘櫙瀵硅薄鏍戜笂鐨勬爲鍙剁殑鍑芥暟
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11
@@ -264,7 +264,7 @@ void KIpotLeaf_Clear(KIpotLeaf* pLeaf)
 	};
 }
 
-//生成一个克隆体
+//鐢熸垚涓�涓厠闅嗕綋
 KIpotBuildinObj* KIpotBuildinObj::Clone(POINT* pDivisionPos)
 {
 	_ASSERT(pDivisionPos);

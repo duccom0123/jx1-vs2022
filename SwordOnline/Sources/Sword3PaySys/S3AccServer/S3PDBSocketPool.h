@@ -45,9 +45,9 @@ public:
 
 	char m_ServerName[LOGIN_USER_ACCOUNT_MAX_LEN];
 	unsigned long m_nGameID;
-	unsigned long m_Address;						//·şÎñÆ÷ÓòÃûµØÖ·
+	unsigned long m_Address;						//æœåŠ¡å™¨åŸŸååœ°å€
 	unsigned long m_nConnectID;
-	short m_Port;									//·şÎñÆ÷¶Ë¿ÚºÅ
+	short m_Port;									//æœåŠ¡å™¨ç«¯å£å·
 
 	BOOL ConnectErrorWork(unsigned long nID, unsigned long Address, short Port);
 	BOOL ConnectFreeWork(unsigned long nID, unsigned long Address, short Port);
@@ -65,12 +65,12 @@ public:
 
 	enum
 	{
-		gdp_free = 0,	//¿ÉÒÔ½ÓÊÜÁ¬½Ó,ĞÂ½¨Ê±Ê£ÓàÊ±¼äÆô¶¯
-		gdp_verify,	//ÕıÔÚµÈ´ıĞ£Ñé
-		gdp_work,	//Ğ£ÑéÍ¨¹ı,Õı³£¹¤×÷
-		gdp_again,	//ÕıÔÚµÈ´ıÖØÁ¬,Ê£ÓàÊ±¼äÆô¶¯
-		gdp_verifyagain,	//ÕıÔÚµÈ´ıÖØÁ¬Ğ£Ñé
-		gdp_errorconnect,	//µ±ĞÂÁ¬½Ó±»·¢ÏÖIPÖØ¸´ºó,±»ÉèÖÃµÄ×´Ì¬
+		gdp_free = 0,	//å¯ä»¥æ¥å—è¿æ¥,æ–°å»ºæ—¶å‰©ä½™æ—¶é—´å¯åŠ¨
+		gdp_verify,	//æ­£åœ¨ç­‰å¾…æ ¡éªŒ
+		gdp_work,	//æ ¡éªŒé€šè¿‡,æ­£å¸¸å·¥ä½œ
+		gdp_again,	//æ­£åœ¨ç­‰å¾…é‡è¿,å‰©ä½™æ—¶é—´å¯åŠ¨
+		gdp_verifyagain,	//æ­£åœ¨ç­‰å¾…é‡è¿æ ¡éªŒ
+		gdp_errorconnect,	//å½“æ–°è¿æ¥è¢«å‘ç°IPé‡å¤å,è¢«è®¾ç½®çš„çŠ¶æ€
 	};
 	
 protected:
@@ -95,10 +95,10 @@ protected:
 
 	BOOL ProUndefine(const IBYTE* lpData, const DWORD dwSize);
 
-	DWORD m_LastPingTime;	//ÓÃÓÚ·ÀÖ¹Á¬½ÓµÄ¿Í»§¶ËÊÇ·ñËÀµô
-	int m_nLeftPingTime;	//ÓÃÓÚ¿ØÖÆÊÇ·ñ´¦Àí½ÓÊÜµ½µÄPingµÄÊ±¼ä¼ä¸ô
+	DWORD m_LastPingTime;	//ç”¨äºé˜²æ­¢è¿æ¥çš„å®¢æˆ·ç«¯æ˜¯å¦æ­»æ‰
+	int m_nLeftPingTime;	//ç”¨äºæ§åˆ¶æ˜¯å¦å¤„ç†æ¥å—åˆ°çš„Pingçš„æ—¶é—´é—´éš”
 
-	DWORD m_LastSendPingTime;	//ÓÃÓÚ¿ìËÙÅĞ¶ÏÁ¬½ÓÊÇ·ñÖĞ¶Ï
+	DWORD m_LastSendPingTime;	//ç”¨äºå¿«é€Ÿåˆ¤æ–­è¿æ¥æ˜¯å¦ä¸­æ–­
 
 	DWORD Main(LPVOID lpParam);
 

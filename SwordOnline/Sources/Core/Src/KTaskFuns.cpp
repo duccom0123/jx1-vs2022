@@ -19,8 +19,8 @@ char* g_GetStringRes(int nStringID, char * szString, int nMaxLen)
 
 
 #ifdef _SERVER
-int g_WayPointPriceUnit = 1;//WayPoint±í¸ñÖĞ¼Û¸ñµÄµ¥Î»Á¿£¬WayPoint¼Û¸ñ = µ¥Î»Á¿ * ±í¸ñÊıÖµ
-int g_StationPriceUnit = 1;	//Station±í¸ñÖĞ¼Û¸ñµÄµ¥Î»Á¿£¬Station¼Û¸ñ = µ¥Î»Á¿ * ±í¸ñÊıÖµ
+int g_WayPointPriceUnit = 1;//WayPointè¡¨æ ¼ä¸­ä»·æ ¼çš„å•ä½é‡ï¼ŒWayPointä»·æ ¼ = å•ä½é‡ * è¡¨æ ¼æ•°å€¼
+int g_StationPriceUnit = 1;	//Stationè¡¨æ ¼ä¸­ä»·æ ¼çš„å•ä½é‡ï¼ŒStationä»·æ ¼ = å•ä½é‡ * è¡¨æ ¼æ•°å€¼
 int g_DockPriceUnit	= 1;
 int g_GetPriceToWayPoint(int nStationId, int nWayPoint)
 {
@@ -104,7 +104,7 @@ BOOL	KTimerTaskFun::Activate(PF_TimerCallBackFun TimerCallBackFun)
 {
 	if (m_dwTimeTaskTime && m_dwTimeTaskTime <=  g_SubWorldSet.GetGameTime())
 	{
-		//×Ô¶¯ÉèÖÃÏÂÒ»¸öÖÜÆÚÊ±¼ä
+		//è‡ªåŠ¨è®¾ç½®ä¸‹ä¸€ä¸ªå‘¨æœŸæ—¶é—´
 		m_dwTimeTaskTime = g_SubWorldSet.GetGameTime() + m_dwIntervalTime; 
 		
 		if (m_dwTimerTaskId)
@@ -165,7 +165,7 @@ BOOL	KTimerTaskFun::LoadTask(KPlayer * pPlayer)
 
 BOOL	KTimerTaskFun::SetTimer(size_t ulTime, unsigned short usTimerTaskId)
 {
-	//Èç¹û¼ä¸ôÊ±¼äÎª0£¬±íÊ¾ÖĞÖ¹Timer;
+	//å¦‚æœé—´éš”æ—¶é—´ä¸º0ï¼Œè¡¨ç¤ºä¸­æ­¢Timer;
 	if (ulTime == 0) 
 	{
 		CloseTimer();

@@ -3,7 +3,7 @@
 //
 // File:	KPlayerMenuState.h
 // Date:	2002.12.10
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	PlayerMenuState Class
 //---------------------------------------------------------------------------
 
@@ -27,8 +27,8 @@ class KPlayerMenuState
 {
 public:
 	int			m_nState;
-	int			m_nTradeDest;						// ·şÎñÆ÷¶Ë¼ÇµÄÊÇ player index ¿Í»§¶Ë¼ÇµÄÊÇ npc id
-	int			m_nTradeState;						// ÊÇ·ñÒÑ¾­µãÁËok 0 Ã»ÓĞ 1 µãÁË
+	int			m_nTradeDest;						// æœåŠ¡å™¨ç«¯è®°çš„æ˜¯ player index å®¢æˆ·ç«¯è®°çš„æ˜¯ npc id
+	int			m_nTradeState;						// æ˜¯å¦å·²ç»ç‚¹äº†ok 0 æ²¡æœ‰ 1 ç‚¹äº†
 	char		m_szSentence[MAX_SENTENCE_LENGTH];
 
 #ifdef _SERVER

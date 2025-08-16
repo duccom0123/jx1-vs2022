@@ -231,17 +231,17 @@ LUA_API void *lua_newuserdata (lua_State *L, size_t size);
 
 #define lua_getregistry(L)	lua_getref(L, LUA_REFREGISTRY)
 
-//ĞÂ¼ÓµÄAPI
-LUA_API int lua_compilebuffer(lua_State *L, const char *buff, size_t size, const char *name);//Ö»¶Ôbuffer¾­±àÒï£¬²¢²»Ö´ĞĞÈÎºÎº¯Êı
-LUA_API int lua_compilefile (lua_State *L, const char *filename);//±àÒë´ÓÎÄ¼şÁ÷´«À´µÄ½Å±¾
-LUA_API int lua_execute(lua_State *L);//Ö´ĞĞ¾­¹ı±àÒïÖ®ºóµÄ½Å±¾
-LUA_API void lua_gettopindex(lua_State *L , int * pindex);//»ñµÃµ±Ç°µÄ½Å±¾¶ÑÕ»¶¥µÄË÷Òı
+//æ–°åŠ çš„API
+LUA_API int lua_compilebuffer(lua_State *L, const char *buff, size_t size, const char *name);//åªå¯¹bufferç»ç¼–ç»ï¼Œå¹¶ä¸æ‰§è¡Œä»»ä½•å‡½æ•°
+LUA_API int lua_compilefile (lua_State *L, const char *filename);//ç¼–è¯‘ä»æ–‡ä»¶æµä¼ æ¥çš„è„šæœ¬
+LUA_API int lua_execute(lua_State *L);//æ‰§è¡Œç»è¿‡ç¼–ç»ä¹‹åçš„è„šæœ¬
+LUA_API void lua_gettopindex(lua_State *L , int * pindex);//è·å¾—å½“å‰çš„è„šæœ¬å †æ ˆé¡¶çš„ç´¢å¼•
 
 
 //BaseLib
 
 
-//½Å±¾ÒıÇæ
+//è„šæœ¬å¼•æ“
 #define Lua_CFunction					lua_CFunction
 #define Lua_State						lua_State
 #define Lua_Create(nSize)				lua_open(nSize)

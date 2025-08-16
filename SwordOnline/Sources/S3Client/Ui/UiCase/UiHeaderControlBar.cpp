@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÆÁÄ»¶¥¿ØÖÆ²Ù×÷Ìõ
+//	ç•Œé¢--å±å¹•é¡¶æ§åˆ¶æ“ä½œæ¡
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-22
@@ -21,7 +21,7 @@ extern iCoreShell*		g_pCoreShell;
 KUiHeaderControlBar* KUiHeaderControlBar::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 //--------------------------------------------------------------------------
 KUiHeaderControlBar* KUiHeaderControlBar::OpenWindow()
 {
@@ -38,7 +38,7 @@ KUiHeaderControlBar* KUiHeaderControlBar::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
+//	åŠŸèƒ½ï¼šå…³é—­çª—å£
 //--------------------------------------------------------------------------
 void KUiHeaderControlBar::CloseWindow()
 {
@@ -49,7 +49,7 @@ void KUiHeaderControlBar::CloseWindow()
 	}
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void KUiHeaderControlBar::Initialize()
 {
 	AddChild(&m_LevelText);
@@ -62,7 +62,7 @@ void KUiHeaderControlBar::Initialize()
 	Wnd_AddWindow(this, WL_TOPMOST);
 }
 
-//ÔØÈë½çÃæ·½°¸
+//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 void KUiHeaderControlBar::LoadScheme(const char* pScheme)
 {
 	char		Buff[128];
@@ -79,7 +79,7 @@ void KUiHeaderControlBar::LoadScheme(const char* pScheme)
 	}
 }
 
-//ÖØĞÂ³õÊ¼»¯½çÃæ
+//é‡æ–°åˆå§‹åŒ–ç•Œé¢
 void KUiHeaderControlBar::DefaultScheme(const char* pScheme)
 {
 	char		Buff[128];

@@ -33,10 +33,10 @@ public:
 	int		CalcSameDetailType(int nItemNature, int nItemGenre, int nDetail, int nLevel, int nSeries);
 	BOOL	FindEmptyPlace(int nWidth, int nHeight, POINT *pPos);
 
-	// 输入物品类型和具体类型，察看Inventory里面有没有相同的物品，输出位置和编号
+	// 杈撳叆鐗╁搧绫诲瀷鍜屽叿浣撶被鍨嬶紝瀵熺湅Inventory閲岄潰鏈夋病鏈夌浉鍚岀殑鐗╁搧锛岃緭鍑轰綅缃拰缂栧彿
 	BOOL	FindSameToRemove(int nItemNature, int nItemGenre, int nDetail, int nLevel, int nSeries, int *pnIdx);
 	
-	// 输入物品类型和具体类型，察看Inventory里面有没有相同的物品
+	// 杈撳叆鐗╁搧绫诲瀷鍜屽叿浣撶被鍨嬶紝瀵熺湅Inventory閲岄潰鏈夋病鏈夌浉鍚岀殑鐗╁搧
 	BOOL	CheckSameImmediacyItem(int nIdx);
 	BOOL	FindSameItem(int nItemGenre, int nDetail, int nParticular, int nLevel, int *pnIdx, int *pnX, int *pnY);
 	BOOL	FindSameItemToStack(int nIdx, int *pnIdx, int *pnX, int *pnY);

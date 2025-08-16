@@ -39,15 +39,15 @@ int	g_SpaceRelation(KPolygon Poly1, KPolygon Poly2)
 	Poly2.GetIndexVertex(nLeft, &posLeft[1]);
 	Poly2.GetIndexVertex(nRight, &posRight[1]);
 
-	//	ртобгИ©Жц╩спуз╣╡╧ьо╣
-	if (posLeft[0].x > posRight[1].x		//	к╣цВ╣зр╩╦Ж╤Ю╠ъпнмЙх╚тз╣з╤Ч╦Ж╣дср╠ъ
-		|| posLeft[1].x > posRight[0].x)	//	к╣цВ╣з╤Ч╦Ж╤Ю╠ъпнмЙх╚тз╣зр╩╦Ж╣дср╠ъ
-		return 0;							//	╥╣╩ьа╫╦Ж╤Ю╠ъпннч╧ь
+	//	Д╩╔Д╦▀Ф┐┘Е├╣Ф╡║Ф°┴И│╝Ф▄║Е┘ЁГЁ╩
+	if (posLeft[0].x > posRight[1].x		//	Х╞╢Ф≤▌Г╛╛Д╦─Д╦╙Е╓ Х╬╧Е╫╒Е╝▄Е┘╗Е°╗Г╛╛Д╨▄Д╦╙Г └Е▐ЁХ╬╧
+		|| posLeft[1].x > posRight[0].x)	//	Х╞╢Ф≤▌Г╛╛Д╨▄Д╦╙Е╓ Х╬╧Е╫╒Е╝▄Е┘╗Е°╗Г╛╛Д╦─Д╦╙Г └Е▐ЁХ╬╧
+		return 0;							//	Х©■Е⌡·Д╦╓Д╦╙Е╓ Х╬╧Е╫╒Ф≈═Е┘Ё
 
 	int y, i, j;
 	POINT	p1, p2;
 
-	if (posLeft[0].x < posLeft[1].x)		//	╣зр╩╦Ж╤Ю╠ъпнвНвС╣Ц╠х╣з╤Ч╦Ж╦ЭвС
+	if (posLeft[0].x < posLeft[1].x)		//	Г╛╛Д╦─Д╦╙Е╓ Х╬╧Е╫╒Ф°─Е╥╕Г┌╧Ф╞■Г╛╛Д╨▄Д╦╙Ф⌡╢Е╥╕
 	{
 		for (i = 0; i < Poly1.GetVertexNumber(); i++)
 		{

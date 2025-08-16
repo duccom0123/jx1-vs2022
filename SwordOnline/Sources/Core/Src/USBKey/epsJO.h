@@ -8,8 +8,8 @@
 * Function name		: epj_Init
 * Description	    : 
 * Return type		: int(true/flase) 
-* Argument			: const char*pszPassword:³¬¼¶ÓÃ»§µÄÃÜÂë(³õÊ¼ÃÜÂëÊÇ¡°rockey¡±)
-* Remark			: ×îÏÈµ÷ÓÃ
+* Argument			: const char*pszPassword:è¶…çº§ç”¨æˆ·çš„å¯†ç (åˆå§‹å¯†ç æ˜¯â€œrockeyâ€)
+* Remark			: æœ€å…ˆè°ƒç”¨
 ************************************************/
 int __stdcall epj_Init(const char*pszPassword);
 
@@ -17,55 +17,55 @@ int __stdcall epj_Init(const char*pszPassword);
 * Function name		: epj_UnInit
 * Description	    : 
 * Return type		: void 
-* Remark			: ×îºóµ÷ÓÃ
+* Remark			: æœ€åŽè°ƒç”¨
 ************************************************/
 void __stdcall epj_UnInit();
 
 /************************************************
 * Function name		: epj_ClearUSBKey
-* Description	    : Çå³ýUSBKEYÖÐµÄÄÚÈÝ
+* Description	    : æ¸…é™¤USBKEYä¸­çš„å†…å®¹
 * Return type		: int(true/flase) 
-* Remark			: ÖØÐ´keyÊ±ÐèÒªÇå³ýÒÔÇ°µÄÄÚÈÝ
+* Remark			: é‡å†™keyæ—¶éœ€è¦æ¸…é™¤ä»¥å‰çš„å†…å®¹
 ************************************************/
 int __stdcall epj_ClearUSBKey();
 
 /************************************************
 * Function name		: epj_WriteKeyCode
-* Description	    : ÏòkeyÖÐÐ´ÈëÒ»¶ÎÊý¾Ý
+* Description	    : å‘keyä¸­å†™å…¥ä¸€æ®µæ•°æ®
 * Return type		: int(true/flase) 
-* Argument			: const char* lpExeData£º½«Ëü×÷MD5 hash£¬µÃµ½µÄ16×Ö½ÚÕªÒª×÷Îª
-						DESµÄÃÜÔ¿¼ÓÃÜlpKeyCodeÊý¾Ý
-* Argument			: int nExeDataLen£ºlpExeData³¤¶È
-* Argument			: const char* lpKeyCode£º´ËÊý¾Ý±»¼ÓÃÜºóÐ´ÈëkeyÖÐ
-* Argument			: int nKeyCodeLen£ºlpKeyCodeµÄ³¤¶È
-* Argument			: int nIndex£ºÎ¨Ò»±êÊ¶±»¼ÓÃÜµÄÊý¾Ý(lpKeyCode),±ØÐë >=0 && <256
-* Remark			: USBKEYÖ»ÓÐ32KµÄ´æ´¢¿Õ¼ä
+* Argument			: const char* lpExeDataï¼šå°†å®ƒä½œMD5 hashï¼Œå¾—åˆ°çš„16å­—èŠ‚æ‘˜è¦ä½œä¸º
+						DESçš„å¯†é’¥åŠ å¯†lpKeyCodeæ•°æ®
+* Argument			: int nExeDataLenï¼šlpExeDataé•¿åº¦
+* Argument			: const char* lpKeyCodeï¼šæ­¤æ•°æ®è¢«åŠ å¯†åŽå†™å…¥keyä¸­
+* Argument			: int nKeyCodeLenï¼šlpKeyCodeçš„é•¿åº¦
+* Argument			: int nIndexï¼šå”¯ä¸€æ ‡è¯†è¢«åŠ å¯†çš„æ•°æ®(lpKeyCode),å¿…é¡» >=0 && <256
+* Remark			: USBKEYåªæœ‰32Kçš„å­˜å‚¨ç©ºé—´
 ************************************************/
 int __stdcall epj_WriteKeyCode(const char* lpExeData,int nExeDataLen,
 					  const char* lpKeyCode,int nKeyCodeLen,int nIndex);
 
 /************************************************
 * Function name		: epj_ReadKeyCode
-* Description	    : ´ÓkeyÖÐ¶Á³öÒ»¶ÎÊý¾Ý
+* Description	    : ä»Žkeyä¸­è¯»å‡ºä¸€æ®µæ•°æ®
 * Return type		: int(true/flase) 
-* Argument			: const char* lpExeData£º½«Ëü×÷MD5 hash£¬µÃµ½µÄ16×Ö½ÚÕªÒª×÷Îª
-						DESµÄÃÜÔ¿½âÃÜ´ÓkeyÖÐ¶Á³öµÄÊý¾Ý
-* Argument			: int nExeDataLen£ºlpExeData³¤¶È
-* Argument			: |*out*|char** lppKeyCode£º´æ·Å½âÃÜºóµÄÊý¾Ý£¬ÓÃ::free()ÊÍ·Å¿Õ¼ä
-* Argument			: |*out*|int* pnKeyCodeLen£º½âÃÜºóµÄÊý¾ÝµÄ³¤¶È
-* Argument			: int nIndex£ºÎ¨Ò»±êÊ¶±»¼ÓÃÜµÄÊý¾Ý,±ØÐë >=0 && <256
-* Remark			: ÓÃÍêlppKeyCodeºóÐèÒª::free()µô
+* Argument			: const char* lpExeDataï¼šå°†å®ƒä½œMD5 hashï¼Œå¾—åˆ°çš„16å­—èŠ‚æ‘˜è¦ä½œä¸º
+						DESçš„å¯†é’¥è§£å¯†ä»Žkeyä¸­è¯»å‡ºçš„æ•°æ®
+* Argument			: int nExeDataLenï¼šlpExeDataé•¿åº¦
+* Argument			: |*out*|char** lppKeyCodeï¼šå­˜æ”¾è§£å¯†åŽçš„æ•°æ®ï¼Œç”¨::free()é‡Šæ”¾ç©ºé—´
+* Argument			: |*out*|int* pnKeyCodeLenï¼šè§£å¯†åŽçš„æ•°æ®çš„é•¿åº¦
+* Argument			: int nIndexï¼šå”¯ä¸€æ ‡è¯†è¢«åŠ å¯†çš„æ•°æ®,å¿…é¡» >=0 && <256
+* Remark			: ç”¨å®ŒlppKeyCodeåŽéœ€è¦::free()æŽ‰
 ************************************************/
 int __stdcall epj_ReadKeyCode(const char* lpExeData,int nExeDataLen,
 					 /*out*/char** lppKeyCode,/*out*/int* pnKeyCodeLen,int nIndex);
 
 /************************************************
 * Function name		: epj_IsUSBKeyExist
-* Description	    : ¼ì²éUSNKEYÊÇ·ñ´æÔÚ
-* Return type		: int £ºtrue£º´æÔÚ£»false£º²»´æÔÚ»ò·¢Éú´íÎó
-* Remark			: ÔÚepj_Init()Ê±ÔÚÄÚ´æÉú³ÉÒ»¸öËæ»úÊý(int)£¬ÔÚÃ¿´Îepj_ReadKeyCodeºó½«´Ë
-						Ëæ»úÊýÒì»ò±»½âÃÜÊý¾ÝµÄÇ°4¸ö×Ö½Ú£¬²¢Ð´Èëµ½keyÖÐ£¬µ÷ÓÃepj_IsUSBKeyExist()
-						Ê±£¬±È½ÏkeyÖÐµÄÖµÊÇ·ñÓëÄÚ´æÖÐµÄÖµÏàµÈ£¬²¢´ÓÐÂÉú³ÉËæ»úÊý£¬Ð´Èëµ½keyÖÐ
+* Description	    : æ£€æŸ¥USNKEYæ˜¯å¦å­˜åœ¨
+* Return type		: int ï¼štrueï¼šå­˜åœ¨ï¼›falseï¼šä¸å­˜åœ¨æˆ–å‘ç”Ÿé”™è¯¯
+* Remark			: åœ¨epj_Init()æ—¶åœ¨å†…å­˜ç”Ÿæˆä¸€ä¸ªéšæœºæ•°(int)ï¼Œåœ¨æ¯æ¬¡epj_ReadKeyCodeåŽå°†æ­¤
+						éšæœºæ•°å¼‚æˆ–è¢«è§£å¯†æ•°æ®çš„å‰4ä¸ªå­—èŠ‚ï¼Œå¹¶å†™å…¥åˆ°keyä¸­ï¼Œè°ƒç”¨epj_IsUSBKeyExist()
+						æ—¶ï¼Œæ¯”è¾ƒkeyä¸­çš„å€¼æ˜¯å¦ä¸Žå†…å­˜ä¸­çš„å€¼ç›¸ç­‰ï¼Œå¹¶ä»Žæ–°ç”Ÿæˆéšæœºæ•°ï¼Œå†™å…¥åˆ°keyä¸­
 ************************************************/
 int __stdcall epj_IsUSBKeyExist();
 

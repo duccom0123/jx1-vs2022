@@ -114,7 +114,7 @@ BOOL  ProcessGMCommand(int nPlayerIdx, EGameMasterCommand eCommand, const char *
 		{
 			if (nLen <= 0 || nLen >= 300) 
 				return FALSE;
-			//¼ì²énPlayerIdxµÄÈ¨ÏŞ
+			//æ£€æŸ¥nPlayerIdxçš„æƒé™
 			if (nPlayerIdx < 0 || Player[nPlayerIdx].m_dwID <= 0)
 				return FALSE;
 			char szScriptAction[300];

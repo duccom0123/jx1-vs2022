@@ -81,10 +81,10 @@ BOOL KInventory::PlaceItem(int nX, int nY, int nIdx, int nWidth, int nHeight)
 		{
 			if (!nOldIdx)
 				nOldIdx = m_pArray[j * m_nWidth + i];
-			// Î»ÖÃÉÏÓĞ¶«Î÷
+			// ä½ç½®ä¸Šæœ‰ä¸œè¥¿
 			if (nOldIdx)
 			{
-				// Î»ÖÃÉÏÓĞ¶à¸ö¶«Î÷£¬ÎŞ·¨·ÅÖÃ
+				// ä½ç½®ä¸Šæœ‰å¤šä¸ªä¸œè¥¿ï¼Œæ— æ³•æ”¾ç½®
 				if (nOldIdx != m_pArray[j * m_nWidth + i])
 					return FALSE;
 				return FALSE;
@@ -400,7 +400,7 @@ BOOL	KInventory::FindSameToRemove(int nItemNature, int nItemGenre, int nDetailTy
 	return FALSE;
 }
 //---------------------------------------------------------------------------------
-// ¹¦ÄÜ£ºÊäÈëÎïÆ·ÀàĞÍºÍ¾ßÌåÀàĞÍ£¬²ì¿´InventoryÀïÃæÓĞÃ»ÓĞÏàÍ¬µÄÎïÆ·
+// åŠŸèƒ½ï¼šè¾“å…¥ç‰©å“ç±»å‹å’Œå…·ä½“ç±»å‹ï¼Œå¯Ÿçœ‹Inventoryé‡Œé¢æœ‰æ²¡æœ‰ç›¸åŒçš„ç‰©å“
 //---------------------------------------------------------------------------------
 BOOL	KInventory::CheckSameImmediacyItem(int nIdx)
 {

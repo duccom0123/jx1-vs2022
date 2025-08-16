@@ -38,7 +38,7 @@
 #define errno		(-1)
 #endif
 
-//这个define调试时加的，以后要去掉！！！
+//杩欎釜define璋冭瘯鏃跺姞鐨勶紝浠ュ悗瑕佸幓鎺夛紒锛侊紒
 //#define errno		(-1)//Question
 
 

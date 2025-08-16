@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÁÄÌì´°¿Ú
+//	Â½Ã§ÃƒÃ¦--ÃÃ„ÃŒÃ¬Â´Â°Â¿Ãš
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-27
@@ -34,7 +34,7 @@ KUiFightSkillSubPage::KUiFightSkillSubPage()
 //	m_nSubPagIndex = 0;
 }
 
-//³õÊ¼»¯
+//Â³ÃµÃŠÂ¼Â»Â¯
 void KUiFightSkillSubPage::Initialize(/*int nSubPageIndex*/)
 {
 	for (int i = 0; i < FIGHT_SKILL_COUNT_PER_PAGE; i ++)
@@ -46,7 +46,7 @@ void KUiFightSkillSubPage::Initialize(/*int nSubPageIndex*/)
 //	m_nSubPagIndex = nSubPageIndex;
 }
 
-//ÔØÈë½çÃæ·½°¸
+//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 void KUiFightSkillSubPage::LoadScheme(const char* pScheme)
 {
 	char		Buff[128];
@@ -69,20 +69,20 @@ void KUiFightSkillSubPage::LoadScheme(const char* pScheme)
 	}
 }
 
-//¸üĞÂÉı¼¶µãÊı
+//Â¸Ã¼ÃÃ‚Ã‰Ã½Â¼Â¶ÂµÃ£ÃŠÃ½
 void KUiFightSkillSubPage::UpdateRemainPoint(int nPoint)
 {
 	m_nRemainSkillPoint = nPoint;
 }
 
-//¸üĞÂÉı¼¶µãÊı
+//Â¸Ã¼ÃÃ‚Ã‰Ã½Â¼Â¶ÂµÃ£ÃŠÃ½
 void KUiFightSkillSubPage::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 {
 	_ASSERT(pSkill && nIndex >= 0 && nIndex < FIGHT_SKILL_COUNT_PER_PAGE);
 	m_FightSkills[nIndex].HoldObject(pSkill->uGenre, pSkill->uId, 0, 0);
 }
 
-//¸üĞÂÊı¾İ
+//Â¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
 void KUiFightSkillSubPage::UpdateData(KUiSkillData* pSkills)
 {
 	_ASSERT(pSkills);
@@ -90,7 +90,7 @@ void KUiFightSkillSubPage::UpdateData(KUiSkillData* pSkills)
 		m_FightSkills[i].HoldObject(pSkills[i].uGenre, pSkills[i].uId, pSkills[i].nLevel, 0);
 }
 
-//´°¿Úº¯Êı
+//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 int	KUiFightSkillSubPage::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch (uMsg)
@@ -106,7 +106,7 @@ int	KUiFightSkillSubPage::WndProc(unsigned int uMsg, unsigned int uParam, int nP
 				{
 					if (pObj->uGenre != CGOG_NOTHING)
 					{
-						m_nRemainSkillPoint --;	// Ê¹ÓÃ¼¼ÄÜµãÊı
+						m_nRemainSkillPoint --;	// ÃŠÂ¹Ã“ÃƒÂ¼Â¼Ã„ÃœÂµÃ£ÃŠÃ½
 						g_pCoreShell->OperationRequest(GOI_TONE_UP_SKILL, CGOG_SKILL_FIGHT, pObj->uId);
 					}
 				}
@@ -118,7 +118,7 @@ int	KUiFightSkillSubPage::WndProc(unsigned int uMsg, unsigned int uParam, int nP
 					Msg.byPriority = 0;
 					Msg.eType = SMT_NORMAL;
 					Msg.uReservedForUi = 0;
-					strcpy(Msg.szMessage, "§iÓm kü n¨ng hiÖn t¹i kh«ng ®ñ!");
+					strcpy(Msg.szMessage, "Â§iÃ“m kÃ¼ nÂ¨ng hiÃ–n tÂ¹i khÂ«ng Â®Ã±!");
 					KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 				}
 			}
@@ -132,7 +132,7 @@ int	KUiFightSkillSubPage::WndProc(unsigned int uMsg, unsigned int uParam, int nP
 	return 0;
 }
 
-//»æÖÆ´°¿Ú
+//Â»Ã¦Ã–Ã†Â´Â°Â¿Ãš
 void KUiFightSkillSubPage::PaintWindow()
 {
 	KWndPage::PaintWindow();
@@ -170,7 +170,7 @@ void KUiFightSkillSubPage::PaintWindow()
 	}
 }
 
-//³õÊ¼»¯
+//Â³ÃµÃŠÂ¼Â»Â¯
 void KUiFightSkillSub::Initialize()
 {
 	for (int i = 0; i < FIGHT_SKILL_SUB_PAGE_COUNT; i++)
@@ -180,7 +180,7 @@ void KUiFightSkillSub::Initialize()
 	}
 }
 
-//ÔØÈë½çÃæ·½°¸
+//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 void KUiFightSkillSub::LoadScheme(const char* pScheme)
 {
 	char		Buff[128];
@@ -202,14 +202,14 @@ void KUiFightSkillSub::LoadScheme(const char* pScheme)
 	}
 }
 
-//¸üĞÂÉı¼¶µãÊı
+//Â¸Ã¼ÃÃ‚Ã‰Ã½Â¼Â¶ÂµÃ£ÃŠÃ½
 void KUiFightSkillSub::UpdateRemainPoint(int nPoint)
 {
 	for (int i = 0; i < FIGHT_SKILL_SUB_PAGE_COUNT; i++)
 		m_SubPages[i].UpdateRemainPoint(nPoint);
 }
 
-//¸üĞÂ¼¼ÄÜ
+//Â¸Ã¼ÃÃ‚Â¼Â¼Ã„Ãœ
 void KUiFightSkillSub::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 {
 	_ASSERT(pSkill);
@@ -219,7 +219,7 @@ void KUiFightSkillSub::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 	m_SubPages[nPage].UpdateSkill(pSkill, nIndex);
 }
 
-//¸üĞÂÊı¾İ
+//Â¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
 void KUiFightSkillSub::UpdateData()
 {
 	KUiSkillData	Skills[FIGHT_SKILL_COUNT];
@@ -229,7 +229,7 @@ void KUiFightSkillSub::UpdateData()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiFightSkill::Initialize()
 {
@@ -239,7 +239,7 @@ void KUiFightSkill::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiFightSkill::LoadScheme(const char* pScheme)
 {
@@ -255,7 +255,7 @@ void KUiFightSkill::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂÊı¾İ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
 //--------------------------------------------------------------------------
 void KUiFightSkill::UpdateData()
 {
@@ -266,7 +266,7 @@ void KUiFightSkill::UpdateData()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂ¼¼ÄÜ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â¼Â¼Ã„Ãœ
 //--------------------------------------------------------------------------
 void KUiFightSkill::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 {
@@ -274,7 +274,7 @@ void KUiFightSkill::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂÉı¼¶µãÊı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Ã‰Ã½Â¼Â¶ÂµÃ£ÃŠÃ½
 //--------------------------------------------------------------------------
 void KUiFightSkill::UpdateRemainPoint(int nPoint)
 {
@@ -287,7 +287,7 @@ void KUiFightSkill::UpdateRemainPoint(int nPoint)
 KUiSkills* KUiSkills::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiSkills* KUiSkills::OpenWindow()
 {
@@ -309,7 +309,7 @@ KUiSkills* KUiSkills::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiSkills* KUiSkills::GetIfVisible()
 {
@@ -319,7 +319,7 @@ KUiSkills* KUiSkills::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiSkills::CloseWindow(bool bDestroy)
 {
@@ -336,7 +336,7 @@ void KUiSkills::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiSkills::Initialize()
 {
@@ -353,7 +353,7 @@ void KUiSkills::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiSkills::LoadScheme(const char* pScheme)
 {
@@ -371,7 +371,7 @@ void KUiSkills::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂ¼¼ÄÜ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â¼Â¼Ã„Ãœ
 //--------------------------------------------------------------------------
 void KUiSkills::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 {
@@ -413,19 +413,19 @@ void KUiSkills::UpdateSkill(KUiSkillData* pSkill, int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂÕ½¶·¼¼ÄÜÉı¼¶µãÊı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Ã•Â½Â¶Â·Â¼Â¼Ã„ÃœÃ‰Ã½Â¼Â¶ÂµÃ£ÃŠÃ½
 //--------------------------------------------------------------------------
 void KUiSkills::UpdateFightRemainPoint(int nPoint)
 {
 	m_FightSkillPad.UpdateRemainPoint(nPoint);
 }
 
-//´°¿Úº¯Êı
+//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 int KUiSkills::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	if (uMsg == WND_N_BUTTON_CLICK && (KWndWindow*)uParam == (KWndWindow*)&m_Close)
 	{
-		Hide();	// ¹Ø±Õ×°±¸¿ò
+		Hide();	// Â¹Ã˜Â±Ã•Ã—Â°Â±Â¸Â¿Ã²
 		return 0;
 	}
 	return KWndPageSet::WndProc(uMsg, uParam, nParam);

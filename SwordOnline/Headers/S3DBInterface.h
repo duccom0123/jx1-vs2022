@@ -318,7 +318,7 @@ enum
 
 
 
-//	IniÎÄ¼ş¸÷×Ö¶Î¶¨Òå---------------------------------------------------
+//	Iniæ–‡ä»¶å„å­—æ®µå®šä¹‰---------------------------------------------------
 #define SECTION_ROLE		"ROLE"	
 
 #define SECTION_ITEMLIST	"ITEMS"	
@@ -357,7 +357,7 @@ enum
 #define S3DBI_API
 #endif
 
-//¸Ä»ØÊ¹ÓÃcore\kprotocol.hÀïµÄS3DBI_RoleBaseInfo
+//æ”¹å›ä½¿ç”¨core\kprotocol.hé‡Œçš„S3DBI_RoleBaseInfo
 /*struct S3DBI_RoleBaseInfo
 {
 	char szRoleName[32];
@@ -452,16 +452,16 @@ struct TDBPlayerData :TDBTableData
 
 */
 #define S3_DB_TABLENAME  S3DBI_TABLENAME
-S3DBI_API int S3DBI_InitDBInterface();			//³õÊ¼»¯Êı¾İ¿âÒıÇæ
-S3DBI_API void S3DBI_ReleaseDBInterface();		//ÊÍ·ÅÊı¾İ¿âÒıÇæ
+S3DBI_API int S3DBI_InitDBInterface();			//åˆå§‹åŒ–æ•°æ®åº“å¼•æ“
+S3DBI_API void S3DBI_ReleaseDBInterface();		//é‡Šæ”¾æ•°æ®åº“å¼•æ“
 
-//»ñµÃ½ÇÉ«µÄĞÅÏ¢²¢ÒÔIniÎÄ¼şµÄ¸ñÊ½·ÅÖÃ
+//è·å¾—è§’è‰²çš„ä¿¡æ¯å¹¶ä»¥Iniæ–‡ä»¶çš„æ ¼å¼æ”¾ç½®
 //S3DBI_API int	S3DBI_GetRoleInfo(IN char * strUser, IN OUT KIniFile * pIniFile);
 S3DBI_API void *	S3DBI_GetRoleInfo(IN OUT BYTE * pRoleBuffer, IN char * strUser, IN OUT int &nBufLen);
 
-//±£´æ½ÇÉ«µÄĞÅÏ¢£¬Èç¹ûÊı¾İ¿â²»´æÔÚ¸ÃÍæ¼Ò£¬ÔòÔö¼Ó¸ÃÍæ¼Ò
-//bAutoInsertWhenNoExistUser ÉèÎªTRUEÊ±±íÊ¾£¬Èç¹ûĞèÒª±£´æµÄ¸ÃÍæ¼ÒÔÚÊı¾İ¿âÖĞ²¢²»´æÔÚÔò×Ô¶¯¼ÓÈëµ½Êı¾İ¿âÖĞ£¬FALSEÔò²»Ôö¼ÓÖ±½Ó·µ»Ø´íÎó
-//×¢ÒâINIÎÄ¼şÖ»Ğë´æ·Å½«ĞèÒª¸Ä¶¯µÄÊı¾İ£¬²»Ğè¸Ä¶¯µÄÊı¾İ½«×Ô¶¯±£´æÔ­×´¡£
+//ä¿å­˜è§’è‰²çš„ä¿¡æ¯ï¼Œå¦‚æœæ•°æ®åº“ä¸å­˜åœ¨è¯¥ç©å®¶ï¼Œåˆ™å¢åŠ è¯¥ç©å®¶
+//bAutoInsertWhenNoExistUser è®¾ä¸ºTRUEæ—¶è¡¨ç¤ºï¼Œå¦‚æœéœ€è¦ä¿å­˜çš„è¯¥ç©å®¶åœ¨æ•°æ®åº“ä¸­å¹¶ä¸å­˜åœ¨åˆ™è‡ªåŠ¨åŠ å…¥åˆ°æ•°æ®åº“ä¸­ï¼ŒFALSEåˆ™ä¸å¢åŠ ç›´æ¥è¿”å›é”™è¯¯
+//æ³¨æ„INIæ–‡ä»¶åªé¡»å­˜æ”¾å°†éœ€è¦æ”¹åŠ¨çš„æ•°æ®ï¼Œä¸éœ€æ”¹åŠ¨çš„æ•°æ®å°†è‡ªåŠ¨ä¿å­˜åŸçŠ¶ã€‚
 S3DBI_API int	S3DBI_SaveRoleInfo(IN BYTE * pRoleBuffer, IN char * strUser, BOOL bAutoInsertWhenNoExistUser);
 S3DBI_API void S3DBI_ShowDebugInfo(IN BYTE * pRoleBuffer, char * pShowString);
 
@@ -469,15 +469,15 @@ S3DBI_API BOOL S3DBI_IsRoleNameExisted(char * strUser);
 S3DBI_API void S3DBI_SaveRoleLogData(const char * strUser, ROLE_LOG eLogType, time_t logtime = 0);
 S3DBI_API time_t S3DBI_GetDataBaseSysTime();
 
-//  eLogType±êÊ¶ÈÕÖ¾µÄÀàĞÍ
-//	log_create_role , ¼ÇÂ¼½ÇÉ«½¨Á¢µÄÊ±¼ä
-//	log_begin_game,   ¼ÇÂ¼½ÇÉ«±¾´ÎÓÎÏ·µÇÈëµÄÊ±¼ä
-//	log_save_game,	  ¼ÇÂ¼½ÇÉ«±¾´ÎÓÎÏ·¹ı³ÌÖĞÉÏÒ»´Î´æµµµÄÊ±¼ä
-//  Êı¾İ¿â±£´æ´æµµµÄÊ±¼äµÄÄ¿µÄÊÇÎªÁË
+//  eLogTypeæ ‡è¯†æ—¥å¿—çš„ç±»å‹
+//	log_create_role , è®°å½•è§’è‰²å»ºç«‹çš„æ—¶é—´
+//	log_begin_game,   è®°å½•è§’è‰²æœ¬æ¬¡æ¸¸æˆç™»å…¥çš„æ—¶é—´
+//	log_save_game,	  è®°å½•è§’è‰²æœ¬æ¬¡æ¸¸æˆè¿‡ç¨‹ä¸­ä¸Šä¸€æ¬¡å­˜æ¡£çš„æ—¶é—´
+//  æ•°æ®åº“ä¿å­˜å­˜æ¡£çš„æ—¶é—´çš„ç›®çš„æ˜¯ä¸ºäº†
 
 S3DBI_API int S3DBI_GetRoleListOfAccount(char * szAccountName, S3DBI_RoleBaseInfo * RoleBaseList, int nMaxCount);
 
-//É¾³ı½ÇÉ«
+//åˆ é™¤è§’è‰²
 S3DBI_API int	S3DBI_DeleteRole(char * strUser);
 
 

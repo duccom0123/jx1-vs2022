@@ -1,8 +1,8 @@
 /*********************************************************************************
-*ÎÄ¼ş    £ºUiNewsMessage
-*´´½¨ÈË  £ºFyt(Fan Zhanpeng)
-*´´½¨Ê±¼ä£º08-01-2003
-*¹¦ÄÜÃèÊö£ºÓÎÏ·ÖĞµÄĞÂÏûÏ¢Í¨Öª´°¿Ú
+*æ–‡ä»¶    ï¼šUiNewsMessage
+*åˆ›å»ºäºº  ï¼šFyt(Fan Zhanpeng)
+*åˆ›å»ºæ—¶é—´ï¼š08-01-2003
+*åŠŸèƒ½æè¿°ï¼šæ¸¸æˆä¸­çš„æ–°æ¶ˆæ¯é€šçŸ¥çª—å£
 **********************************************************************************/
 #include "KWin32.h"
 #include "../../../Represent/iRepresent/iRepresentShell.h"
@@ -16,13 +16,13 @@
 
 #define NEWS_MESSAGE_INI "UiNewsMessage.ini"
 #define DEFAULT_MESSAGE  "\\Ui\\DefaultMessage.ini"
-//×î³¤ÎŞÏûÏ¢¿ÕÏĞÊ±¼ä£¬¿ÕÏĞÊ±¼ä³ÖĞø³¬¹ı´ËÖµÊ±£¬¾Í´ÓiniÖĞÈ¡ÏûÏ¢À´ÏÔÊ¾(µ¥Î»£ººÁÃë)
-#define	MAX_IDLE_TIME	600000	//10·ÖÖÓ
-//Í¬Ò»ÏûÏ¢Á½´ÎÏÔÊ¾Ö®¼äµÄ¼ä¸ô(µ¥Î»£ººÁÃë)
+//æœ€é•¿æ— æ¶ˆæ¯ç©ºé—²æ—¶é—´ï¼Œç©ºé—²æ—¶é—´æŒç»­è¶…è¿‡æ­¤å€¼æ—¶ï¼Œå°±ä»iniä¸­å–æ¶ˆæ¯æ¥æ˜¾ç¤º(å•ä½ï¼šæ¯«ç§’)
+#define	MAX_IDLE_TIME	600000	//10åˆ†é’Ÿ
+//åŒä¸€æ¶ˆæ¯ä¸¤æ¬¡æ˜¾ç¤ºä¹‹é—´çš„é—´éš”(å•ä½ï¼šæ¯«ç§’)
 #define SHOW_INTERVAL 30000
-//Á½´Î×Ö·û¹ö¶¯Ö®¼äµÄÊ±¼ä(µ¥Î»£ººÁÃë)
+//ä¸¤æ¬¡å­—ç¬¦æ»šåŠ¨ä¹‹é—´çš„æ—¶é—´(å•ä½ï¼šæ¯«ç§’)
 #define SCROLL_INTERVAL 250
-//Ò»°ãÏûÏ¢×î¶à¹ö¶¯³öÏÖµÄ´ÎÊı
+//ä¸€èˆ¬æ¶ˆæ¯æœ€å¤šæ»šåŠ¨å‡ºç°çš„æ¬¡æ•°
 
 #define NOT_NEED_INSERT	-1
 
@@ -31,7 +31,7 @@ KUiNewsMessage* KUiNewsMessage::m_pSelf = NULL;
 BOOL			KUiNewsMessage::ms_bEnableIdleMsg = FALSE;
 
 /*********************************************************************************
-*¹¦ÄÜ£º¹¹Ôì
+*åŠŸèƒ½ï¼šæ„é€ 
 **********************************************************************************/
 KUiNewsMessage::KUiNewsMessage()
 {
@@ -65,7 +65,7 @@ void KUiNewsMessage::EnableIdleMsg(BOOL bEnable)
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÔö¼ÓÒ»ÌõÏûÏ¢ÔÚ¶ÓÁĞÖĞ
+*åŠŸèƒ½ï¼šå¢åŠ ä¸€æ¡æ¶ˆæ¯åœ¨é˜Ÿåˆ—ä¸­
 **********************************************************************************/
 bool KUiNewsMessage::AddMessage(KNewsMessage* pMsg, unsigned int uTime, unsigned int uTimeParam)
 {
@@ -86,7 +86,7 @@ bool KUiNewsMessage::AddMessage(KNewsMessage* pMsg, unsigned int uTime, unsigned
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£º°Ñm_pHandlingÖ¸ÕëËùÖ¸µÄÏûÏ¢´ÓÁ´±íÖĞ·ÖÀë³öÀ´
+*åŠŸèƒ½ï¼šæŠŠm_pHandlingæŒ‡é’ˆæ‰€æŒ‡çš„æ¶ˆæ¯ä»é“¾è¡¨ä¸­åˆ†ç¦»å‡ºæ¥
 **********************************************************************************/
 KNewsMessageNode* KUiNewsMessage::SeparateMsg()
 {
@@ -114,7 +114,7 @@ KNewsMessageNode* KUiNewsMessage::SeparateMsg()
 	return pNode;
 }
 
-// °ÑpNodeËùÖ¸µÄÏûÏ¢¼Óµ½Á´±íÄ©¶Ë£¡
+// æŠŠpNodeæ‰€æŒ‡çš„æ¶ˆæ¯åŠ åˆ°é“¾è¡¨æœ«ç«¯ï¼
 void KUiNewsMessage::AddToTail(KNewsMessageNode* pNode)
 {
 	if (pNode)
@@ -133,7 +133,7 @@ void KUiNewsMessage::AddToTail(KNewsMessageNode* pNode)
 	}
 }
 
-// Çå³ıËùÓĞµÄÏûÏ¢
+// æ¸…é™¤æ‰€æœ‰çš„æ¶ˆæ¯
 void KUiNewsMessage::Clear()
 {
 	m_IniFile.Clear();
@@ -145,7 +145,7 @@ void KUiNewsMessage::Clear()
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£º´ò¿ª´°¿Ú
+*åŠŸèƒ½ï¼šæ‰“å¼€çª—å£
 **********************************************************************************/
 KUiNewsMessage* KUiNewsMessage::OpenWindow()
 {
@@ -168,7 +168,7 @@ KUiNewsMessage* KUiNewsMessage::OpenWindow()
 
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+*åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
 **********************************************************************************/
 KUiNewsMessage* KUiNewsMessage::GetIfVisible()
 {
@@ -179,7 +179,7 @@ KUiNewsMessage* KUiNewsMessage::GetIfVisible()
 
 
 /*********************************************************************************
-*¹¦ÄÜ£º¹Ø±Õ´°¿Ú
+*åŠŸèƒ½ï¼šå…³é—­çª—å£
 **********************************************************************************/
 void KUiNewsMessage::CloseWindow(BOOL bDestory)
 {
@@ -199,7 +199,7 @@ void KUiNewsMessage::CloseWindow(BOOL bDestory)
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£º³õÊ¼»¯
+*åŠŸèƒ½ï¼šåˆå§‹åŒ–
 **********************************************************************************/
 void KUiNewsMessage::Initialize()
 {
@@ -214,7 +214,7 @@ void KUiNewsMessage::Initialize()
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
+*åŠŸèƒ½ï¼šè½½å…¥ç•Œé¢æ–¹æ¡ˆ
 **********************************************************************************/
 void KUiNewsMessage::LoadScheme(const char* pszScheme)
 {
@@ -248,14 +248,14 @@ void KUiNewsMessage::LoadScheme(const char* pszScheme)
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÁ½¸ö×Ö - ´©Í¸£¡£¡£¡
+*åŠŸèƒ½ï¼šä¸¤ä¸ªå­— - ç©¿é€ï¼ï¼ï¼
 **********************************************************************************/
 int KUiNewsMessage::PtInWindow(int x, int y)
 {
 	return 0;
 }
 
-//ĞÂÎÅÏûÏ¢ÕæµÄÀ´ÁË
+//æ–°é—»æ¶ˆæ¯çœŸçš„æ¥äº†
 void KUiNewsMessage::MessageArrival(KNewsMessage* pMsg, SYSTEMTIME* pTime)
 {
 	unsigned int uTime;
@@ -264,17 +264,17 @@ void KUiNewsMessage::MessageArrival(KNewsMessage* pMsg, SYSTEMTIME* pTime)
 	{
 		switch(pMsg->nType)
 		{
-		case NEWSMESSAGE_NORMAL://Ò»°ãÏûÏ¢
+		case NEWSMESSAGE_NORMAL://ä¸€èˆ¬æ¶ˆæ¯
 			m_pSelf->AddMessage(pMsg, pTime->wSecond, 0);
 			break;
-		case NEWSMESSAGE_COUNTING://µ¹¼Æ£¨Ãë£©ÊıÏûÏ¢
+		case NEWSMESSAGE_COUNTING://å€’è®¡ï¼ˆç§’ï¼‰æ•°æ¶ˆæ¯
 			if (pTime && pTime->wSecond)
 				uTime = pTime->wSecond * 1000;
 			else
 				uTime = 3000;
 			m_pSelf->AddMessage(pMsg, uTime, IR_GetCurrentTime());
 			break;
-		case NEWSMESSAGE_TIMEEND: //¶¨Ê±ÏûÏ¢
+		case NEWSMESSAGE_TIMEEND: //å®šæ—¶æ¶ˆæ¯
 			if (pTime)
 			{
 				SYSTEMTIME Local;
@@ -309,7 +309,7 @@ void KUiNewsMessage::MessageArrival(KNewsMessage* pMsg, SYSTEMTIME* pTime)
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÏÔÊ¾ÏûÏ¢£¬²¢ÔÚÏÔÊ¾Íê³Éºó¶ÔÏûÏ¢½øĞĞ½øÒ»²½´¦Àí
+*åŠŸèƒ½ï¼šæ˜¾ç¤ºæ¶ˆæ¯ï¼Œå¹¶åœ¨æ˜¾ç¤ºå®Œæˆåå¯¹æ¶ˆæ¯è¿›è¡Œè¿›ä¸€æ­¥å¤„ç†
 **********************************************************************************/
 void KUiNewsMessage::PaintWindow()
 {
@@ -317,7 +317,7 @@ void KUiNewsMessage::PaintWindow()
 	{
 		KWndShadow::PaintWindow();
 
-		//»­×Ö´®ÁË  -___________-|||b
+		//ç”»å­—ä¸²äº†  -___________-|||b
 		KOutputTextParam Param;
 		Param.Color       = m_uTextColor;
 		Param.BorderColor = m_uTextBorderColor;
@@ -330,12 +330,12 @@ void KUiNewsMessage::PaintWindow()
 		Param.bPicPackInSingleLine = true;
 
 		if (m_bJustIncoming)
-		{	//ÏûÏ¢ÕıÔÚ½øÈë,(Í·)»¹Î´¿ªÊ¼Àë¿ªÏÔÊ¾ÇøÓò
+		{	//æ¶ˆæ¯æ­£åœ¨è¿›å…¥,(å¤´)è¿˜æœªå¼€å§‹ç¦»å¼€æ˜¾ç¤ºåŒºåŸŸ
 			g_pRepresentShell->OutputRichText(m_nFontSize, &Param,
 				m_CurrentMsg.sMsg, m_nCharIndex, 0);
 		}
 		else
-		{	//ÏûÏ¢Í·ÒÑ¾­Àë¿ªÏÔÊ¾ÇøÓò
+		{	//æ¶ˆæ¯å¤´å·²ç»ç¦»å¼€æ˜¾ç¤ºåŒºåŸŸ
 			KTP_CTRL	Ctrl0, Ctrl1;
 			TGetEncodedTextEffectCtrls(m_CurrentMsg.sMsg, m_nCharIndex, Ctrl0, Ctrl1);
 			char		sBuffer[sizeof(m_CurrentMsg.sMsg)];
@@ -369,7 +369,7 @@ void KUiNewsMessage::PaintWindow()
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÔÚ¶ÓÁĞÖĞ£¬Ñ°ÕÒÊÇ·ñÓĞ·ûºÏÏÔÊ¾Ìõ¼şµÄÏûÏ¢£¬Ê¹Ö¸Õëm_pHandlingÖ¸ÏòÕÒµ½µÄÏûÏ¢
+*åŠŸèƒ½ï¼šåœ¨é˜Ÿåˆ—ä¸­ï¼Œå¯»æ‰¾æ˜¯å¦æœ‰ç¬¦åˆæ˜¾ç¤ºæ¡ä»¶çš„æ¶ˆæ¯ï¼Œä½¿æŒ‡é’ˆm_pHandlingæŒ‡å‘æ‰¾åˆ°çš„æ¶ˆæ¯
 **********************************************************************************/
 bool KUiNewsMessage::PickAMessage()
 {
@@ -379,12 +379,12 @@ bool KUiNewsMessage::PickAMessage()
 	if (m_pHead == NULL)
 	{
 		if (ms_bEnableIdleMsg && uCurrentTime > m_uLastShowTime + m_uMaxIdleTime)
-		{	//Èç¹û¹ıÁËÊ±¼äÁË£¬»¹Ã»ÓĞĞÂÏûÏ¢µ½£¬¾ÍËæ»úÔÚiniÖĞÑ¡Ò»ÌõÏûÏ¢£¬²åÈë¶ÓÁĞÖĞ
+		{	//å¦‚æœè¿‡äº†æ—¶é—´äº†ï¼Œè¿˜æ²¡æœ‰æ–°æ¶ˆæ¯åˆ°ï¼Œå°±éšæœºåœ¨iniä¸­é€‰ä¸€æ¡æ¶ˆæ¯ï¼Œæ’å…¥é˜Ÿåˆ—ä¸­
 			PickFromIni();
 			if (m_pHandling = m_pHead)
 				m_pHandling->uShowTimes++;
 			//ASSERT(m_pHandling->nType == NEWSMESSAGE_NORMAL);
-			m_uLastShowTime = uCurrentTime;	//¶Ô¸¶´ÓiniÖĞÒ²²»ÄÜÈ¡µ½ÏûÏ¢µÄÇé¿ö
+			m_uLastShowTime = uCurrentTime;	//å¯¹ä»˜ä»iniä¸­ä¹Ÿä¸èƒ½å–åˆ°æ¶ˆæ¯çš„æƒ…å†µ
 		}
 	}
 	else
@@ -409,7 +409,7 @@ bool KUiNewsMessage::PickAMessage()
 			{
 				m_pHandling = pNode;
 				if ((unsigned int)time(NULL) >= pNode->uTime)
-					bTobeFree =  true;	//ÏŞÊ±ÏûÏ¢µ½Ê±ÁË£¬ÏûÃğËü
+					bTobeFree =  true;	//é™æ—¶æ¶ˆæ¯åˆ°æ—¶äº†ï¼Œæ¶ˆç­å®ƒ
 				else
 					pNode->uLastShowTime = uCurrentTime;
 			}
@@ -428,7 +428,7 @@ bool KUiNewsMessage::PickAMessage()
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÔÚIniÎÄ¼şÖĞËæ»ú³éÈ¡Ò»ÌõÏûÏ¢²åÈë¶ÓÁĞ
+*åŠŸèƒ½ï¼šåœ¨Iniæ–‡ä»¶ä¸­éšæœºæŠ½å–ä¸€æ¡æ¶ˆæ¯æ’å…¥é˜Ÿåˆ—
 **********************************************************************************/
 void KUiNewsMessage::PickFromIni()
 {
@@ -453,16 +453,16 @@ void KUiNewsMessage::PickFromIni()
 
 
 /*********************************************************************************
-*¹¦ÄÜ£º±£³Ö»î¶¯£¬¸üĞÂÏûÏ¢ĞÅÏ¢
+*åŠŸèƒ½ï¼šä¿æŒæ´»åŠ¨ï¼Œæ›´æ–°æ¶ˆæ¯ä¿¡æ¯
 **********************************************************************************/
 void KUiNewsMessage::Breathe()
 {
 	if(m_pHandling)
-	{	//ÓĞÏûÏ¢ÕıÔÚÏÔÊ¾
+	{	//æœ‰æ¶ˆæ¯æ­£åœ¨æ˜¾ç¤º
 		if (IR_IsTimePassed(m_uScrollInterval, m_uLastScrollTime))
 		{
 			if (ScrollMsg())
-				AddToTail(SeparateMsg());	// µ±Ç°ÏûÏ¢ÏÔÊ¾Íê±Ï,ÒÆµ½Ä©Î²È¥
+				AddToTail(SeparateMsg());	// å½“å‰æ¶ˆæ¯æ˜¾ç¤ºå®Œæ¯•,ç§»åˆ°æœ«å°¾å»
 		}
 	}
 	if (m_pHandling == NULL)
@@ -475,7 +475,7 @@ void KUiNewsMessage::Breathe()
 void KUiNewsMessage::ConvertMsg()
 {
 	//_ASSERT(m_pHandling);
-	//Ìî³äµ±Ç°ÏÔÊ¾ÏûÏ¢µÄÄÚÈİ
+	//å¡«å……å½“å‰æ˜¾ç¤ºæ¶ˆæ¯çš„å†…å®¹
 	m_CurrentMsg.nMsgLen = 0;
 
 	m_nInsertPlace = NOT_NEED_INSERT;
@@ -527,7 +527,7 @@ bool KUiNewsMessage::MakeCountingMsg()
 	}
 	m_nInsertPlace -= 2;
 
-	//´Ë¶ÎÌØÊâµÄ¶îÍâ´¦ÀíÊÇÎªÁË...
+	//æ­¤æ®µç‰¹æ®Šçš„é¢å¤–å¤„ç†æ˜¯ä¸ºäº†...
 	{
 		//_ASSERT(nNumLen > 5);
 		nNumLen = 5 - nNumLen;
@@ -548,7 +548,7 @@ bool KUiNewsMessage::MakeCountingMsg()
 }
 
 /*********************************************************************************
-*¹¦ÄÜ£ºÖØÖÃµ±Ç°ËùÏÔÊ¾ÏûÏ¢µÄÏÔÊ¾×´Ì¬£¬ÖØÖÃ¼ÆÊ±Æ÷
+*åŠŸèƒ½ï¼šé‡ç½®å½“å‰æ‰€æ˜¾ç¤ºæ¶ˆæ¯çš„æ˜¾ç¤ºçŠ¶æ€ï¼Œé‡ç½®è®¡æ—¶å™¨
 **********************************************************************************/
 void KUiNewsMessage::Reset()
 {

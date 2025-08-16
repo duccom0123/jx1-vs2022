@@ -11,10 +11,10 @@
 #include "KCanvas.h"
 #include "KDrawFade.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawFade
-// ¹¦ÄÜ:	ÇøÓòÁÁ¶ÈË¥¼õ
-// ²ÎÊı:	node, canvas
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawFade
+// åŠŸèƒ½:	åŒºåŸŸäº®åº¦è¡°å‡
+// å‚æ•°:	node, canvas
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawFade(void* node, void* canvas)
 {
@@ -27,11 +27,11 @@ void g_DrawFade(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	long nAlpha = pNode->m_nAlpha;// aplha level
 
-	// ¼ì²éALPHAÖµ
+	// æ£€æŸ¥ALPHAå€¼
 	if (nAlpha < 0 || nAlpha > 31)
 		return;
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -41,8 +41,8 @@ void g_DrawFade(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
-	long ScreenOffset = nPitch - Clipper.width /2 * 4;//4µÄ±¶Êı
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
+	long ScreenOffset = nPitch - Clipper.width /2 * 4;//4çš„å€æ•°
 
 	// setup local var
 	DWORD dwRGBMask1, dwRGBMask2;
@@ -60,7 +60,7 @@ void g_DrawFade(void* node, void* canvas)
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = nPitch * Clipper.y + Clipper.x * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -72,47 +72,47 @@ void g_DrawFade(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ¿ªÊ¼Ñ­»· 
+// å¼€å§‹å¾ªç¯ 
 //---------------------------------------------------------------------------
 		mov		ecx, Clipper.height
 
 loc_DrawFade_Loop1:
 		push	ecx
-		// È¡µÃ¿í¶È
+		// å–å¾—å®½åº¦
 		mov		ecx, Clipper.width
-		// Ò»´Î¼ÆËãÁ½¸öµã
+		// ä¸€æ¬¡è®¡ç®—ä¸¤ä¸ªç‚¹
 		shr		ecx, 1
 
 loc_DrawFade_Loop2:
-		// È¡²Ù×÷Êı
+		// å–æ“ä½œæ•°
 		mov		eax, [edi]
 		mov		ebx, eax
-		// ÁôÏÂ _g1_r2_b2
+		// ç•™ä¸‹ _g1_r2_b2
 		and		eax, dwRGBMask1
-		// ÁôÏÂ r1_b1_g2_
+		// ç•™ä¸‹ r1_b1_g2_
 		and		ebx, dwRGBMask2
 		// _g1_r2_b2 * nAlpha
 		imul	eax, nAlpha
 		// _g1_r2_b2 / 32
 		shr		eax, 5
-		// r1_b1_g2_ / 32, Îª·ÀÖ¹Òç³ö,ÏÈ³ıÔÙ³Ë
+		// r1_b1_g2_ / 32, ä¸ºé˜²æ­¢æº¢å‡º,å…ˆé™¤å†ä¹˜
 		shr		ebx, 5
 		// r1_b1_g2_ * nAlpha
 		imul	ebx, nAlpha
-		// ÁôÏÂ _g1_r2_b2
+		// ç•™ä¸‹ _g1_r2_b2
 		and		eax, dwRGBMask1
-		// ÁôÏÂ r1_b1_g2_
+		// ç•™ä¸‹ r1_b1_g2_
 		and		ebx, dwRGBMask2
-		// µÃµ½×îºó½á¹û
+		// å¾—åˆ°æœ€åç»“æœ
 		or		eax, ebx
-		// ¸³Öµ
+		// èµ‹å€¼
 		mov		[edi], eax
-		// Ö¸ÕëºóÒÆ
+		// æŒ‡é’ˆåç§»
 		add		edi, 4
-		// Ñ­»·¼ÌĞø±¾ĞĞ
+		// å¾ªç¯ç»§ç»­æœ¬è¡Œ
 		dec		ecx
 		jnz		loc_DrawFade_Loop2
-		// Ñ­»·ÏÂÒ»ĞĞÏóËØ
+		// å¾ªç¯ä¸‹ä¸€è¡Œè±¡ç´ 
 		add		edi, ScreenOffset
 		pop		ecx
 		dec		ecx

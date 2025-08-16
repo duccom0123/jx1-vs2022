@@ -14,15 +14,15 @@ CDBDump::CDBDump()
 	m_IsOpened = false;
 }
 bool CDBDump::Open(char* aFilePath)
-{//´ò¿ª°üÎÄ¼ş
+{//æ‰“å¼€åŒ…æ–‡ä»¶
 	if(m_IsOpened)return false;
 
 	_finddata_t FindData;
 	long aFileFound =_findfirst(aFilePath, &FindData);
-	if(aFileFound != -1)return false;	//Èç¹û¸ÃÎÄ¼ş´æÔÚ¾Í·µ»Ø²»³É¹¦
+	if(aFileFound != -1)return false;	//å¦‚æœè¯¥æ–‡ä»¶å­˜åœ¨å°±è¿”å›ä¸æˆåŠŸ
 
 	m_output = fopen(aFilePath, "wb");
-	if(!m_output)return false;			//Èç¹û´ò¿ª¸ÃÎÄ¼şÊ§°Ü¾Í·µ»Ø²»³É¹¦
+	if(!m_output)return false;			//å¦‚æœæ‰“å¼€è¯¥æ–‡ä»¶å¤±è´¥å°±è¿”å›ä¸æˆåŠŸ
 
 	strcpy(m_FilePath,aFilePath);
 	m_IsOpened = true;
@@ -30,7 +30,7 @@ bool CDBDump::Open(char* aFilePath)
 }
 
 bool CDBDump::Close()
-{//±£´æ°üÎÄ¼ş
+{//ä¿å­˜åŒ…æ–‡ä»¶
 	if(!m_IsOpened) return false;
 
 	if(fclose(m_output)) return false;
@@ -42,7 +42,7 @@ bool CDBDump::Close()
 }
 
 bool CDBDump::AddData(char* key, const size_t keysize, char *aData, const size_t size)
-{//Ìí¼ÓÎÄ¼ş
+{//æ·»åŠ æ–‡ä»¶
 	if(!m_IsOpened) return false;
 	unsigned long offset = ftell(m_output);
 
@@ -80,14 +80,14 @@ CDBLoad::CDBLoad()
 	m_IsOpened = false;
 }
 bool CDBLoad::Open(char* aFilePath)
-{//´ò¿ª°üÎÄ¼ş
+{//æ‰“å¼€åŒ…æ–‡ä»¶
 	if(m_IsOpened)return false;
 	_finddata_t FindData;
 	long aFileFound =_findfirst(aFilePath, &FindData);
-	if(aFileFound == -1)return false;	//Èç¹û¸ÃÎÄ¼ş²»´æÔÚ¾Í·µ»Ø²»³É¹¦
+	if(aFileFound == -1)return false;	//å¦‚æœè¯¥æ–‡ä»¶ä¸å­˜åœ¨å°±è¿”å›ä¸æˆåŠŸ
 
 	m_output = fopen(aFilePath, "rb");
-	if(!m_output)return false;			//Èç¹û´ò¿ª¸ÃÎÄ¼şÊ§°Ü¾Í·µ»Ø²»³É¹¦
+	if(!m_output)return false;			//å¦‚æœæ‰“å¼€è¯¥æ–‡ä»¶å¤±è´¥å°±è¿”å›ä¸æˆåŠŸ
 
 	strcpy(m_FilePath,aFilePath);
 	m_IsOpened = true;
@@ -95,7 +95,7 @@ bool CDBLoad::Open(char* aFilePath)
 }
 
 bool CDBLoad::Close()
-{//±£´æ°üÎÄ¼ş
+{//ä¿å­˜åŒ…æ–‡ä»¶
 	if(!m_IsOpened) return false;
 
 	if(fclose(m_output)) return false;
@@ -107,7 +107,7 @@ bool CDBLoad::Close()
 }
 
 bool CDBLoad::ReadData(char* key, size_t& keysize, char *aData, size_t& size)
-{//Ìí¼ÓÎÄ¼ş
+{//æ·»åŠ æ–‡ä»¶
 	if(!m_IsOpened) return false;
 
 	if(fread(&keysize, sizeof(size_t), 1, m_output) != 1)
@@ -126,15 +126,15 @@ bool CDBLoad::ReadData(char* key, size_t& keysize, char *aData, size_t& size)
 }
 
 void CDBLoad::GotoHead()
-{//°ÑÎÄ¼şÖ¸ÕëÒÆ¶¯µ½ÎÄ¼şÍ·
+{//æŠŠæ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°æ–‡ä»¶å¤´
 	if(!m_IsOpened) return;
 	if(m_output)
 		fseek(m_output, 0, SEEK_SET);
 }
 
 bool CDBLoad::SearchData(char* key, char *aData, size_t& size)
-{//ËÑË÷Êı¾İ
-	GotoHead();		//°ÑÎÄ¼şÖ¸ÕëÒÆ¶¯µ½ÎÄ¼şÍ·
+{//æœç´¢æ•°æ®
+	GotoHead();		//æŠŠæ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°æ–‡ä»¶å¤´
 
 	char aBuffer[64 * 1024] = {0};
 	char aKeyBuffer[32] = {0};

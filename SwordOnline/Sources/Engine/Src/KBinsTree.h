@@ -1,4 +1,4 @@
-/* ¶ş²æËÑË÷Ê÷
+/* äºŒå‰æœç´¢æ ‘
 * 
 */
 
@@ -12,33 +12,33 @@ template <class T>
 class BinSTree
 {
     private:
-        // Ö¸ÏòÊ÷¸ù¼°µ±Ç°½áµãµÄÖ¸Õë
+        // æŒ‡å‘æ ‘æ ¹åŠå½“å‰ç»“ç‚¹çš„æŒ‡é’ˆ
         TreeNode<T> *root;
         TreeNode<T> *current;
         
-        // Ê÷ÖĞÊı¾İÏî¸öÊı
+        // æ ‘ä¸­æ•°æ®é¡¹ä¸ªæ•°
         int size;
       
-        // ÓÃÓÚ¸´ÖÆ¹¹Ôìº¯Êı¼°¸³ÖµÔËËã·û
+        // ç”¨äºå¤åˆ¶æ„é€ å‡½æ•°åŠèµ‹å€¼è¿ç®—ç¬¦
         TreeNode<T> *CopyTree(TreeNode<T> *t);
         
-        // ÓÃÓÚÎö¹¹º¯Êı£¬¸³ÖµÔËËã·û¼° ClearList ·½·¨
+        // ç”¨äºææ„å‡½æ•°ï¼Œèµ‹å€¼è¿ç®—ç¬¦åŠ ClearList æ–¹æ³•
         void DeleteTree(TreeNode<T> *t);
 
-        // ÔÚº¯Êı Find ºÍ Delete ÖĞÓÃÀ´¶¨Î»½áµã¼°ÆäË«Ç×ÔÚÊ÷ÖĞµÄÎ»ÖÃ
+        // åœ¨å‡½æ•° Find å’Œ Delete ä¸­ç”¨æ¥å®šä½ç»“ç‚¹åŠå…¶åŒäº²åœ¨æ ‘ä¸­çš„ä½ç½®
         TreeNode<T> *FindNode(const T& item, TreeNode<T>* & parent) const;
 
     public:
-        // ¹¹Ôìº¯Êı£¬Îö¹¹º¯Êı
+        // æ„é€ å‡½æ•°ï¼Œææ„å‡½æ•°
         BinSTree(void);
         BinSTree(const BinSTree<T>& tree);
         ~BinSTree(void);
         
-        // ¸³ÖµÔËËã·û
+        // èµ‹å€¼è¿ç®—ç¬¦
         BinSTree<T>& operator= (const BinSTree<T>& rhs);
 		
         
-        // ±ê×¼µÄ±í´¦Àí·½·¨
+        // æ ‡å‡†çš„è¡¨å¤„ç†æ–¹æ³•
         bool Find(T& item);
         void Insert(const T& item);
         void Delete(const T& item);
@@ -46,39 +46,39 @@ class BinSTree
         bool ListEmpty(void) const;
         int ListSize(void) const;
         
-        // Ê÷µÄÌØÊâ·½·¨
+        // æ ‘çš„ç‰¹æ®Šæ–¹æ³•
         void Update(const T& item);
         TreeNode<T> *GetRoot(void) const;
 };
 
-// ¸´ÖÆÊ÷ t ²¢Ê¹Æä´æ´¢ÔÚµ±Ç°¶ÔÏóÖĞ
+// å¤åˆ¶æ ‘ t å¹¶ä½¿å…¶å­˜å‚¨åœ¨å½“å‰å¯¹è±¡ä¸­
 template <class T>
 TreeNode<T> *BinSTree<T>::CopyTree(TreeNode<T> *t)
 {
     TreeNode<T> *newlptr, *newrptr, *newNode;
    
-    // Èç¹ûÊ÷·ÖÖ§Îª¿Õ£¬·µ»Ø NULL
+    // å¦‚æœæ ‘åˆ†æ”¯ä¸ºç©ºï¼Œè¿”å› NULL
     if (t == NULL)
         return NULL;
         
-    // ¸´ÖÆÊ÷ t µÄ×ó×ÓÊ÷²¢½«Æä¸ù·ÖÅä¸ø newlptr
+    // å¤åˆ¶æ ‘ t çš„å·¦å­æ ‘å¹¶å°†å…¶æ ¹åˆ†é…ç»™ newlptr
     if (t->left != NULL) 
         newlptr = CopyTree(t->left);
     else
         newlptr = NULL;
  
-    // ¸´ÖÆÊ÷ t µÄÓÒ×ÓÊ÷²¢½«Æä¸ù·ÖÅä¸ø newrptr
+    // å¤åˆ¶æ ‘ t çš„å³å­æ ‘å¹¶å°†å…¶æ ¹åˆ†é…ç»™ newrptr
     if (t->right != NULL) 
         newrptr = CopyTree(t->right);
     else
         newrptr = NULL;
  
-    // Îªµ±Ç°¸ù½áµã·ÖÅä´æ´¢Æ÷²¢½«ÆäÊı¾İÖµºÍÖ¸Õë·ÖÅä¸øËüµÄ×ÓÊ÷£¬·µ»ØÆäÖ¸Õë
+    // ä¸ºå½“å‰æ ¹ç»“ç‚¹åˆ†é…å­˜å‚¨å™¨å¹¶å°†å…¶æ•°æ®å€¼å’ŒæŒ‡é’ˆåˆ†é…ç»™å®ƒçš„å­æ ‘ï¼Œè¿”å›å…¶æŒ‡é’ˆ
     newNode = new TreeNode<T>(t->data, newlptr, newrptr);
     return newNode;
 }
 
-// É¾³ıµ±Ç°¶ÔÏó´æ´¢µÄÊ÷
+// åˆ é™¤å½“å‰å¯¹è±¡å­˜å‚¨çš„æ ‘
 template <class T>
 void BinSTree<T>::DeleteTree(TreeNode<T> *t)
 {
@@ -90,25 +90,25 @@ void BinSTree<T>::DeleteTree(TreeNode<T> *t)
     }
 }
 
-// ÔÚÊ÷ÖĞËÑË÷Êı¾İÏî£¬ÈôÕÒµ½£¬Ôò·µ»Ø½áµãµØÖ·¼°Ö¸ÏòÆäË«Ç×µÄÖ¸Õë£»·ñÔò£¬·µ»Ø NULL
+// åœ¨æ ‘ä¸­æœç´¢æ•°æ®é¡¹ï¼Œè‹¥æ‰¾åˆ°ï¼Œåˆ™è¿”å›ç»“ç‚¹åœ°å€åŠæŒ‡å‘å…¶åŒäº²çš„æŒ‡é’ˆï¼›å¦åˆ™ï¼Œè¿”å› NULL
 template <class T>
 TreeNode<T> *BinSTree<T>::FindNode(const T& item, TreeNode<T>* & parent) const
 {   
-    // ÓÃÖ¸Õë t ´Ó¸ù¿ªÊ¼±éÀúÊ÷
+    // ç”¨æŒ‡é’ˆ t ä»æ ¹å¼€å§‹éå†æ ‘
     TreeNode<T> *t = root;
     
-    // ¸ùµÄË«Ç×Îª NULL
+    // æ ¹çš„åŒäº²ä¸º NULL
     parent = NULL;
     
-    // Èô×ÓÊ÷Îª¿Õ£¬ÔòÑ­»·½áÊø
+    // è‹¥å­æ ‘ä¸ºç©ºï¼Œåˆ™å¾ªç¯ç»“æŸ
     while(t != NULL)
     {
-        // ÈôÕÒµ½¼üÖµ£¬ÔòÍË³ö
+        // è‹¥æ‰¾åˆ°é”®å€¼ï¼Œåˆ™é€€å‡º
         if (item == t->data)
             break;
         else 
         {
-            // ĞŞ¸ÄË«Ç×Ö¸Õë£¬²¢ÒÆµ½×ó×ÓÊ÷»òÓÒ×ÓÊ÷
+            // ä¿®æ”¹åŒäº²æŒ‡é’ˆï¼Œå¹¶ç§»åˆ°å·¦å­æ ‘æˆ–å³å­æ ‘
             parent = t;
             if (item < t->data)
                 t = t->left;
@@ -117,33 +117,33 @@ TreeNode<T> *BinSTree<T>::FindNode(const T& item, TreeNode<T>* & parent) const
         }
     }
     
-    // ·µ»ØÖ¸Ïò½áµãµÄÖ¸Õë£»ÈôÃ»ÕÒµ½£¬Ôò·µ»Ø NULL
+    // è¿”å›æŒ‡å‘ç»“ç‚¹çš„æŒ‡é’ˆï¼›è‹¥æ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å› NULL
     return t;
 }
 
-// ¹¹Ôìº¯Êı£¬³õÊ¼»¯ root£¬current Îª¿Õ£¬size Îª 0
+// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ– rootï¼Œcurrent ä¸ºç©ºï¼Œsize ä¸º 0
 template <class T>
 BinSTree<T>::BinSTree(void):root(NULL), current(NULL), size(0)
 {}
 
-// ¸´ÖÆ¹¹Ôìº¯Êı
+// å¤åˆ¶æ„é€ å‡½æ•°
 template <class T>
 BinSTree<T>::BinSTree(const BinSTree<T>& tree)
 {
-    // ½« tree ¸´ÖÆµ½µ±Ç°¶ÔÏó£¬·ÖÅä current ºÍ size
+    // å°† tree å¤åˆ¶åˆ°å½“å‰å¯¹è±¡ï¼Œåˆ†é… current å’Œ size
     root = CopyTree(tree.root);
     current = root;
     size = tree.size;
 }
 
-// Îö¹¹º¯Êı
+// ææ„å‡½æ•°
 template <class T>
 BinSTree<T>::~BinSTree(void)
 {
     ClearList();
 }
 
-// É¾³ıÊ÷ÖĞµÄËùÓĞ½áµã
+// åˆ é™¤æ ‘ä¸­çš„æ‰€æœ‰ç»“ç‚¹
 template <class T>
 void BinSTree<T>::ClearList(void)
 {
@@ -152,66 +152,66 @@ void BinSTree<T>::ClearList(void)
     size = 0;
 }
 
-// ¸³ÖµÔËËã·û
+// èµ‹å€¼è¿ç®—ç¬¦
 template <class T>
 BinSTree<T>& BinSTree<T>::operator= (const BinSTree<T>& rhs)
 {
-    // ²»ÄÜ½«Ê÷¸´ÖÆµ½×ÔÉí
+    // ä¸èƒ½å°†æ ‘å¤åˆ¶åˆ°è‡ªèº«
     if (this == &rhs)
         return *this;
         
-    // Çå³ıµ±Ç°Ê÷£¬½«ĞÂÊ÷¸´ÖÆµ½µ±Ç°¶ÔÏó
+    // æ¸…é™¤å½“å‰æ ‘ï¼Œå°†æ–°æ ‘å¤åˆ¶åˆ°å½“å‰å¯¹è±¡
     ClearList();
     root = CopyTree(rhs.root);
     
-    // ½« current Ö¸ÕëÖ¸Ïò root ²¢ÉèÖÃÊ÷µÄ size Öµ
+    // å°† current æŒ‡é’ˆæŒ‡å‘ root å¹¶è®¾ç½®æ ‘çš„ size å€¼
     current = root;
     size = rhs.size;
     
-    // ·µ»Øµ±Ç°¶ÔÏóµÄÖ¸Õë
+    // è¿”å›å½“å‰å¯¹è±¡çš„æŒ‡é’ˆ
     return *this;
 }
 
-// ÔÚÊ÷ÖĞËÑË÷ item£¬ÈôÕÒµ½£¬Ôò½«½áµãÊı¾İ¸³¸ø item
+// åœ¨æ ‘ä¸­æœç´¢ itemï¼Œè‹¥æ‰¾åˆ°ï¼Œåˆ™å°†ç»“ç‚¹æ•°æ®èµ‹ç»™ item
 template <class T>
 bool BinSTree<T>::Find(T& item)
 {
-    // Ê¹ÓÃ FindNode£¬ËüĞèÒª parent ²ÎÊı
+    // ä½¿ç”¨ FindNodeï¼Œå®ƒéœ€è¦ parent å‚æ•°
     TreeNode<T> *parent;
 
-    // ÔÚÊ÷ÖĞËÑË÷ item£¬½«Æ¥ÅäµÄ½áµã¸³¸ø current
+    // åœ¨æ ‘ä¸­æœç´¢ itemï¼Œå°†åŒ¹é…çš„ç»“ç‚¹èµ‹ç»™ current
     current = FindNode(item, parent);
     
-    // ÈôÕÒµ½£¬Ôò½«Êı¾İ¸³¸ø item ²¢·µ»Ø True
+    // è‹¥æ‰¾åˆ°ï¼Œåˆ™å°†æ•°æ®èµ‹ç»™ item å¹¶è¿”å› True
     if (current != NULL)
     {
         item = current->data;
         return true;
     }
     else
-    	// ÔÚÊ÷ÖĞÃ»ÕÒµ½ item£¬·µ»Ø False
+    	// åœ¨æ ‘ä¸­æ²¡æ‰¾åˆ° itemï¼Œè¿”å› False
         return false;
 }
 
-// Ö¸Ê¾Ê÷ÊÇ·ñÎª¿Õ
+// æŒ‡ç¤ºæ ‘æ˜¯å¦ä¸ºç©º
 template <class T>
 bool BinSTree<T>::ListEmpty(void) const
 {
     return (size == 0);
 }
 
-// ·µ»ØÊ÷ÖĞµÄÊı¾İÏî¸öÊı
+// è¿”å›æ ‘ä¸­çš„æ•°æ®é¡¹ä¸ªæ•°
 template <class T>
 int BinSTree<T>::ListSize(void) const
 {
     return size;
 }
 
-// Íù²éÕÒÊ÷ÖĞ²åÈëÊı¾İÏî£¬ÈôÔªËØÖØ¸´£¬Ôò¸üĞÂÏÖÓĞÔªËØ
+// å¾€æŸ¥æ‰¾æ ‘ä¸­æ’å…¥æ•°æ®é¡¹ï¼Œè‹¥å…ƒç´ é‡å¤ï¼Œåˆ™æ›´æ–°ç°æœ‰å…ƒç´ 
 template <class T>
 void BinSTree<T>::Insert(const T& item)
 {
-    // t Îª±éÀú¹ı³ÌÖĞµÄµ±Ç°½áµã£¬parent ÎªÇ°Ò»½áµã
+    // t ä¸ºéå†è¿‡ç¨‹ä¸­çš„å½“å‰ç»“ç‚¹ï¼Œparent ä¸ºå‰ä¸€ç»“ç‚¹
     TreeNode<T> *parent = NULL;
 
 	current = FindNode(item, parent);
@@ -220,60 +220,60 @@ void BinSTree<T>::Insert(const T& item)
 		current->data = item;
 	else
 	{
-		// ´´½¨ĞÂµÄÒ¶×Ó½áµã
+		// åˆ›å»ºæ–°çš„å¶å­ç»“ç‚¹
 		TreeNode<T> *newNode = new TreeNode<T>(item,NULL,NULL);
 		
-		// Èô parent Îª NULL£¬Ôò½«Æä×÷Îª¸ù½áµã²åÈë
+		// è‹¥ parent ä¸º NULLï¼Œåˆ™å°†å…¶ä½œä¸ºæ ¹ç»“ç‚¹æ’å…¥
 		if (parent == NULL)
 			root = newNode;
         
-		// Èô item < parent->data£¬Ôò½«Æä×÷Îª×óº¢×Ó²åÈë        
+		// è‹¥ item < parent->dataï¼Œåˆ™å°†å…¶ä½œä¸ºå·¦å­©å­æ’å…¥        
 		else if (item < parent->data)                   
 			parent->left = newNode;
         
 		else
-			// Èô item >= parent->data£¬×÷ÎªÓÒº¢×Ó²åÈë     
+			// è‹¥ item >= parent->dataï¼Œä½œä¸ºå³å­©å­æ’å…¥     
 			parent->right = newNode;
         
-		// current ¸³ÖµÎªĞÂ½áµãµÄµØÖ·²¢½« size ¼Ó 1
+		// current èµ‹å€¼ä¸ºæ–°ç»“ç‚¹çš„åœ°å€å¹¶å°† size åŠ  1
 		current = newNode;
 		size++;
 	}
 }
 
-// Èç¹û item ÔÚÊ÷ÖĞ£¬½«ÆäÉ¾³ı
+// å¦‚æœ item åœ¨æ ‘ä¸­ï¼Œå°†å…¶åˆ é™¤
 template <class T>
 void BinSTree<T>::Delete(const T& item)
 {
-    // DNodePtr = Ö¸Ïò±»É¾³ı½áµã D µÄÖ¸Õë
-    // PNodePtr = Ö¸¶¨½áµã D µÄË«Ç×½Úµã P µÄÖ¸Õë
-    // RNodePtr = Ö¸ÏòÌæ»» D µÄ½áµã R µÄÖ¸Õë
+    // DNodePtr = æŒ‡å‘è¢«åˆ é™¤ç»“ç‚¹ D çš„æŒ‡é’ˆ
+    // PNodePtr = æŒ‡å®šç»“ç‚¹ D çš„åŒäº²èŠ‚ç‚¹ P çš„æŒ‡é’ˆ
+    // RNodePtr = æŒ‡å‘æ›¿æ¢ D çš„ç»“ç‚¹ R çš„æŒ‡é’ˆ
     TreeNode<T> *DNodePtr, *PNodePtr, *RNodePtr;
     
-    // ËÑË÷Êı¾İÖµÎª item µÄ½áµã£¬²¢±£´æ¸Ã½áµãµÄË«Ç×½áµãµÄÖ¸Õë
+    // æœç´¢æ•°æ®å€¼ä¸º item çš„ç»“ç‚¹ï¼Œå¹¶ä¿å­˜è¯¥ç»“ç‚¹çš„åŒäº²ç»“ç‚¹çš„æŒ‡é’ˆ
     if ((DNodePtr = FindNode (item, PNodePtr)) == NULL)
         return;
     
-    // Èç¹û D ÓĞÒ»¸öÖ¸ÕëÎª NULL£¬ÔòÌæ»»½áµãÎªÆäÁíÒ»Ö¦µÄÄ³Ò»½áµã
+    // å¦‚æœ D æœ‰ä¸€ä¸ªæŒ‡é’ˆä¸º NULLï¼Œåˆ™æ›¿æ¢ç»“ç‚¹ä¸ºå…¶å¦ä¸€æçš„æŸä¸€ç»“ç‚¹
     if (DNodePtr->right == NULL)
         RNodePtr = DNodePtr->left;
     else if (DNodePtr->left == NULL)
         RNodePtr = DNodePtr->right;
         
-    // DNodePtr µÄÁ½¸öÖ¸Õë¾ù²»Îª NULL
+    // DNodePtr çš„ä¸¤ä¸ªæŒ‡é’ˆå‡ä¸ä¸º NULL
     else
     {
-        // Ñ°ÕÒ²¢Ğ¶ÏÂ D µÄÌæ»»½áµã¡£´Ó½áµã D µÄ×ó×ÓÊ÷¿ªÊ¼£¬ÕÒÊı¾İÖµĞ¡ÓÚ D µÄÊı¾İÖµµÄ
-        // ×î´óÖµ£¬½«¸Ã½áµã´ÓÊ÷ÖĞ¶Ï¿ª
+        // å¯»æ‰¾å¹¶å¸ä¸‹ D çš„æ›¿æ¢ç»“ç‚¹ã€‚ä»ç»“ç‚¹ D çš„å·¦å­æ ‘å¼€å§‹ï¼Œæ‰¾æ•°æ®å€¼å°äº D çš„æ•°æ®å€¼çš„
+        // æœ€å¤§å€¼ï¼Œå°†è¯¥ç»“ç‚¹ä»æ ‘ä¸­æ–­å¼€
         
-        // PofRNodePtr = Ö¸ÏòÌæ»»½áµãË«Ç×µÄÖ¸Õë
+        // PofRNodePtr = æŒ‡å‘æ›¿æ¢ç»“ç‚¹åŒäº²çš„æŒ‡é’ˆ
         TreeNode<T> *PofRNodePtr = DNodePtr;
         
-        // µÚÒ»ÖÖ¿ÉÄÜµÄÌæ»»Îª D µÄ×óº¢×Ó
+        // ç¬¬ä¸€ç§å¯èƒ½çš„æ›¿æ¢ä¸º D çš„å·¦å­©å­
         RNodePtr = DNodePtr->left;
     
-        // ´Ó D µÄ×óº¢×ÓµÄÓÒ×ÓÊ÷¼ÌĞøÍùÏÂËÑË÷×î´óÖµ£¬²¢¼ÇÂ¼µ±Ç°½áµã¼°ÆäË«Ç×½áµãµÄ
-        // Ö¸Õë£¬×îºó£¬ÎÒÃÇ½«ÕÒµ½Ìæ»»½áµã
+        // ä» D çš„å·¦å­©å­çš„å³å­æ ‘ç»§ç»­å¾€ä¸‹æœç´¢æœ€å¤§å€¼ï¼Œå¹¶è®°å½•å½“å‰ç»“ç‚¹åŠå…¶åŒäº²ç»“ç‚¹çš„
+        // æŒ‡é’ˆï¼Œæœ€åï¼Œæˆ‘ä»¬å°†æ‰¾åˆ°æ›¿æ¢ç»“ç‚¹
         while(RNodePtr->right != NULL)
         {
             PofRNodePtr = RNodePtr;
@@ -281,35 +281,35 @@ void BinSTree<T>::Delete(const T& item)
         }
         
         if (PofRNodePtr == DNodePtr)
-            // ±»É¾³ı½áµãµÄ×óº¢×ÓÎªÌæ»»½áµã£¬½« D µÄÓÒ×ÓÊ÷¸³¸ø R
+            // è¢«åˆ é™¤ç»“ç‚¹çš„å·¦å­©å­ä¸ºæ›¿æ¢ç»“ç‚¹ï¼Œå°† D çš„å³å­æ ‘èµ‹ç»™ R
             RNodePtr->right = DNodePtr->right;
         else
         {
-            // ÖÁÉÙÍùÓÒ×ÓÊ÷ÒÆ¶¯ÁËÒ»¸ö½áµã£¬´ÓÊ÷ÖĞÉ¾³ıÌæ»»½áµã£¬½«Æä×ó×ÓÊ÷¸³¸øÆäË«Ç×
+            // è‡³å°‘å¾€å³å­æ ‘ç§»åŠ¨äº†ä¸€ä¸ªç»“ç‚¹ï¼Œä»æ ‘ä¸­åˆ é™¤æ›¿æ¢ç»“ç‚¹ï¼Œå°†å…¶å·¦å­æ ‘èµ‹ç»™å…¶åŒäº²
             PofRNodePtr->right = RNodePtr->left;
             
-            // ÓÃÌæ»»½áµã´úÌæ DNodePtr
+            // ç”¨æ›¿æ¢ç»“ç‚¹ä»£æ›¿ DNodePtr
             RNodePtr->left = DNodePtr->left;
             RNodePtr->right = DNodePtr->right;
         }
     }
 
-    // Íê³Éµ½Ë«Ç×½áµãµÄÁ¬½Ó¡£É¾³ı¸ù½áµã£¬²¢¸øĞÂ¸ü¸³Öµ
+    // å®Œæˆåˆ°åŒäº²ç»“ç‚¹çš„è¿æ¥ã€‚åˆ é™¤æ ¹ç»“ç‚¹ï¼Œå¹¶ç»™æ–°æ›´èµ‹å€¼
     if (PNodePtr == NULL)
         root = RNodePtr;
         
-    // ½« R Á¬µ½ P µÄÕıÈ·Ò»Ö¦ÉÏ
+    // å°† R è¿åˆ° P çš„æ­£ç¡®ä¸€æä¸Š
     else if (DNodePtr->data < PNodePtr->data)
         PNodePtr->left = RNodePtr;
     else
         PNodePtr->right = RNodePtr;
         
-    // ÊÍ·Å±»É¾½áµãÄÚ´æ²¢½«Ê÷µÄ´óĞ¡¼õ 1
+    // é‡Šæ”¾è¢«åˆ ç»“ç‚¹å†…å­˜å¹¶å°†æ ‘çš„å¤§å°å‡ 1
     delete DNodePtr;
     size--;
 }
 
-// Èôµ±Ç°½áµãÒÑ¶¨ÒåÇÒÊı¾İÖµÓë¸ø¶¨Êı¾İÖµÏàµÈ£¬Ôò½«½áµãÖµ¸³¸ø item£»·ñÔò£¬½« item ²åÈëµ½Ê÷ÖĞ
+// è‹¥å½“å‰ç»“ç‚¹å·²å®šä¹‰ä¸”æ•°æ®å€¼ä¸ç»™å®šæ•°æ®å€¼ç›¸ç­‰ï¼Œåˆ™å°†ç»“ç‚¹å€¼èµ‹ç»™ itemï¼›å¦åˆ™ï¼Œå°† item æ’å…¥åˆ°æ ‘ä¸­
 template <class T>
 void BinSTree<T>::Update(const T& item)
 {   
@@ -319,7 +319,7 @@ void BinSTree<T>::Update(const T& item)
         Insert(item);
 }
 
-// ·µ»Ø¸ù½áµãµÄµØÖ·
+// è¿”å›æ ¹ç»“ç‚¹çš„åœ°å€
 template <class T>
 TreeNode<T> *BinSTree<T>::GetRoot(void) const
 {

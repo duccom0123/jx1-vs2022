@@ -3,7 +3,7 @@
 //
 // File:	KNpcResList.h
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 
@@ -25,16 +25,16 @@ public:
 
 private:
 
-	// ²éÕÒÍ¬ÃûµÄ NpcResNode ²¢·µ»Ø½Úµã
+	// æŸ¥æ‰¾åŒåçš„ NpcResNode å¹¶è¿”å›èŠ‚ç‚¹
 	KNpcResNode*		FindNpcRes(char *lpszNpcName);
 
 public:
     KNpcResList();
     ~KNpcResList();
 	
-    // ³õÊ¼»¯ ActionName
+    // åˆå§‹åŒ– ActionName
 	BOOL				Init();
-	// Ìí¼ÓÒ»¸ö NpcResNode ²¢·µ»Ø½Úµã£¬Èç¹ûÒÑ´æÔÚ£¬Ö±½Ó·µ»Ø½Úµã
+	// æ·»åŠ ä¸€ä¸ª NpcResNode å¹¶è¿”å›èŠ‚ç‚¹ï¼Œå¦‚æœå·²å­˜åœ¨ï¼Œç›´æ¥è¿”å›èŠ‚ç‚¹
 	KNpcResNode*		AddNpcRes(char *lpszNpcName);
 };
 #ifndef _SERVER

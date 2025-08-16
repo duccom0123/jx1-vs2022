@@ -57,13 +57,13 @@ void	CTongSet::DeleteAll()
 
 int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszTongName, int nSex, int nJoinTm, int nSaveEff, int nTongJiyuParam, char *szTongJiyuNotify)
 {
-	// °ï»áÄ£¿é³ö´í
+	// å¸®ä¼šæ¨¡å—å‡ºé”™
 	if (!m_pcTong || m_nTongPointSize <= 0)
 		return enumTONG_CREATE_ERROR_ID13;
-	// Ãû×Ö×Ö·û´®³ö´í
+	// åå­—å­—ç¬¦ä¸²å‡ºé”™
 	if (!lpszPlayerName || !lpszTongName)
 		return enumTONG_CREATE_ERROR_ID14;
-	// Ãû×Ö×Ö·û´®¹ı³¤
+	// åå­—å­—ç¬¦ä¸²è¿‡é•¿
 	if (strlen(lpszTongName) >= defTONG_NAME_LENGTH_32 /*||
 		strlen(lpszPlayerName) >= defTONG_NAME_LENGTH_32*/)
 		return enumTONG_CREATE_ERROR_ID14;
@@ -74,17 +74,17 @@ int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszT
 	dwTongNameID = g_String2Id(lpszTongName);
 	dwPlayerNameID = g_String2Id(lpszPlayerName);
 
-	// Ãû³Æ¼ì²â£¬ÊÇ·ñÓĞÍ¬ÃûµÄ°ïÖ÷»òÕßÍ¬ÃûµÄ°ï»á
+	// åç§°æ£€æµ‹ï¼Œæ˜¯å¦æœ‰åŒåçš„å¸®ä¸»æˆ–è€…åŒåçš„å¸®ä¼š
 	for (i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && (m_pcTong[i]->m_dwNameID == dwTongNameID || m_pcTong[i]->m_dwMasterID == dwPlayerNameID))
 			break;
 	}
-	// °ï»áÍ¬Ãû´íÎó
+	// å¸®ä¼šåŒåé”™è¯¯
 	if (i < m_nTongPointSize)
 		return enumTONG_CREATE_ERROR_ID15;
 
-	// ²éÕÒ¿ÕÎ»
+	// æŸ¥æ‰¾ç©ºä½
 	nPos = -1;
 	for (i = 0; i < m_nTongPointSize; i++)
 	{
@@ -94,16 +94,16 @@ int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszT
 			break;
 		}
 	}
-	// ÏÖÓĞÖ¸Õë¿Õ¼äÒÑÂú£¬·ÖÅäĞÂµÄ¸ü´óµÄÖ¸Õë¿Õ¼ä
+	// ç°æœ‰æŒ‡é’ˆç©ºé—´å·²æ»¡ï¼Œåˆ†é…æ–°çš„æ›´å¤§çš„æŒ‡é’ˆç©ºé—´
 	if (nPos < 0)
 	{
-		// ÁÙÊ±´æ´¢¾ÉµÄÖ¸Õë
+		// ä¸´æ—¶å­˜å‚¨æ—§çš„æŒ‡é’ˆ
 		CTongControl**	pTemp;
 		pTemp = (CTongControl**)new LPVOID[m_nTongPointSize];
 		for (i = 0; i < m_nTongPointSize; i++)
 			pTemp[i] = m_pcTong[i];
 
-		// ·ÖÅäĞÂµÄ¸ü´óµÄÖ¸Õë¿Õ¼ä£¬´óĞ¡ÊÇÔ­À´µÄÁ½±¶
+		// åˆ†é…æ–°çš„æ›´å¤§çš„æŒ‡é’ˆç©ºé—´ï¼Œå¤§å°æ˜¯åŸæ¥çš„ä¸¤å€
 		delete []m_pcTong;
 		m_pcTong = NULL;
 		m_pcTong = (CTongControl**)new LPVOID[m_nTongPointSize * 2];
@@ -116,16 +116,16 @@ int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszT
 		nPos = m_nTongPointSize / 2;
 	}
 
-	// ²úÉúÒ»¸öĞÂµÄ°ï»á
+	// äº§ç”Ÿä¸€ä¸ªæ–°çš„å¸®ä¼š
 	m_pcTong[nPos] = new CTongControl(nCamp, btLevel, lpszPlayerName, lpszTongName, nSex, nJoinTm, nSaveEff, nTongJiyuParam, szTongJiyuNotify);
-	// ²úÉúÊ§°Ü
+	// äº§ç”Ÿå¤±è´¥
 	if (m_pcTong[nPos]->m_dwNameID == 0)
 	{
 		delete m_pcTong[nPos];
 		m_pcTong[nPos] = NULL;
 		return enumTONG_CREATE_ERROR_ID13;
 	}
-	// ´æÅÌ£¬Êı¾İ±£´æÖÁÊı¾İ¿â
+	// å­˜ç›˜ï¼Œæ•°æ®ä¿å­˜è‡³æ•°æ®åº“
 	TMemberStruct	sMember;
 	sMember.MemberClass = enumTONG_FIGURE_MASTER;
 	sMember.nTitleIndex = 0;
@@ -149,7 +149,7 @@ int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszT
 		DWORD channid = g_ChannelMgr.GetChannelID(szMsg, 0);
 		if (channid != -1)
 		{
-			sprintf(szMsg, "%s ®· t¹o bang héi thµnh c«ng", m_pcTong[nPos]->m_szName);
+			sprintf(szMsg, "%s ï¿½ï¿½ tï¿½o bang hï¿½i thï¿½nh cï¿½ng", m_pcTong[nPos]->m_szName);
 			g_ChannelMgr.SayOnChannel(channid, TRUE, std::string(), std::string(MESSAGE_TONG_ANNOUCE_HEAD), std::string(szMsg));
 		}
 	}
@@ -158,7 +158,7 @@ int		CTongSet::Create(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszT
 }
 
 //----------------------------------------------------------------------
-//	¹¦ÄÜ£ºÌí¼ÓÒ»¸ö°ï»á³ÉÔ±£¬if return == 0 ³É¹¦ else return error id
+//	åŠŸèƒ½ï¼šæ·»åŠ ä¸€ä¸ªå¸®ä¼šæˆå‘˜ï¼Œif return == 0 æˆåŠŸ else return error id
 //----------------------------------------------------------------------
 int		CTongSet::AddMember(char *lpszPlayerName, char *lpszTongName, int nSex, int nJoinTm, int nSaveEff)
 {
@@ -175,17 +175,17 @@ int		CTongSet::AddMember(char *lpszPlayerName, char *lpszTongName, int nSex, int
 
 	dwTongNameID = g_String2Id(lpszTongName);
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (i = 0; i < m_nTongPointSize; i++)
 	{
-		// ÕÒµ½ÁË
+		// æ‰¾åˆ°äº†
 		if (m_pcTong[i] && (m_pcTong[i]->m_dwNameID == dwTongNameID))
 		{
 			if (!m_pcTong[i]->AddMember(lpszPlayerName, nSex, nJoinTm, nSaveEff))
 				return -1;
 			else
 			{
-				// ´æÅÌ£¬Êı¾İ±£´æÖÁÊı¾İ¿â
+				// å­˜ç›˜ï¼Œæ•°æ®ä¿å­˜è‡³æ•°æ®åº“
 				TMemberStruct	sMember;
 				sMember.MemberClass = enumTONG_FIGURE_MEMBER;
 				sMember.nTitleIndex = 0;
@@ -196,14 +196,14 @@ int		CTongSet::AddMember(char *lpszPlayerName, char *lpszTongName, int nSex, int
 				sMember.nSaveEff = nSaveEff;
 				g_cTongDB.ChangeMember(sMember);
 
-				// ¸ø°ï»áÆµµÀ·¢ÏûÏ¢
+				// ç»™å¸®ä¼šé¢‘é“å‘æ¶ˆæ¯
 				char	szMsg[96];
 				sprintf(szMsg, "\\O%u", m_pcTong[i]->m_dwNameID);
 
 				DWORD channid = g_ChannelMgr.GetChannelID(szMsg, 0);
 				if (channid != -1)
 				{
-					sprintf(szMsg, "%s ®· gia nhËp bæn bang ", lpszPlayerName);
+					sprintf(szMsg, "%s ï¿½ï¿½ gia nhï¿½p bï¿½n bang ", lpszPlayerName);
 					g_ChannelMgr.SayOnChannel(channid, TRUE, std::string(), std::string(MESSAGE_TONG_ANNOUCE_HEAD), std::string(szMsg));
 				}
 
@@ -216,7 +216,7 @@ int		CTongSet::AddMember(char *lpszPlayerName, char *lpszTongName, int nSex, int
 }
 
 //----------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃ°ï»áÕóÓª
+//	åŠŸèƒ½ï¼šè·å¾—å¸®ä¼šé˜µè¥
 //----------------------------------------------------------------------
 int		CTongSet::GetTongCamp(int nTongIdx)
 {
@@ -365,7 +365,7 @@ BOOL	CTongSet::GetTongHeadInfo(DWORD dwTongNameID, STONG_HEAD_INFO_SYNC *pInfo)
 	if (!m_pcTong || m_nTongPointSize <= 0 || dwTongNameID == 0)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == dwTongNameID)
@@ -384,7 +384,7 @@ BOOL	CTongSet::GetTongManagerInfo(STONG_GET_MANAGER_INFO_COMMAND *pApply, STONG_
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == (DWORD)pApply->m_nParam1)
@@ -403,7 +403,7 @@ BOOL	CTongSet::GetTongMemberInfo(STONG_GET_MEMBER_INFO_COMMAND *pApply, STONG_ME
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == (DWORD)pApply->m_nParam1)
@@ -422,7 +422,7 @@ BOOL	CTongSet::Instate(STONG_INSTATE_COMMAND *pInstate, STONG_INSTATE_SYNC *pSyn
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pInstate->m_dwTongNameID)
@@ -441,7 +441,7 @@ BOOL	CTongSet::Kick(STONG_KICK_COMMAND *pKick, STONG_KICK_SYNC *pSync)
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pKick->m_dwTongNameID)
@@ -460,7 +460,7 @@ BOOL	CTongSet::Leave(STONG_LEAVE_COMMAND *pLeave, STONG_LEAVE_SYNC *pSync)
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pLeave->m_dwTongNameID)
@@ -479,7 +479,7 @@ BOOL	CTongSet::AcceptMaster(STONG_ACCEPT_MASTER_COMMAND *pAccept)
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pAccept->m_dwTongNameID)
@@ -592,7 +592,7 @@ BOOL	CTongSet::GetLoginData(STONG_GET_LOGIN_DATA_COMMAND *pLogin, STONG_LOGIN_DA
 	if (!m_pcTong)
 		return FALSE;
 
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pLogin->m_dwTongNameID)
@@ -629,7 +629,7 @@ BOOL CTongSet::ChangeMoney( STONG_MONEY_COMMAND *pMoney,STONG_MONEY_SYNC *Sync)
 	if (!m_pcTong)
 		return FALSE;
 	
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pMoney->m_dwTongNameID)
@@ -651,7 +651,7 @@ BOOL	CTongSet::AcceptAgname(STONG_ACCEPT_AGNAME_COMMAND *pAccept)
 	if (!m_pcTong)
 		return FALSE;
 	
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pAccept->m_dwTongNameID)
@@ -676,7 +676,7 @@ BOOL	CTongSet::AcceptSexAgname(STONG_ACCEPT_SEX_AGNAME_COMMAND *pAccept)
 	if (!m_pcTong)
 		return FALSE;
 	
-	// Ñ°ÕÒ°ï»á
+	// å¯»æ‰¾å¸®ä¼š
 	for (int i = 0; i < m_nTongPointSize; i++)
 	{
 		if (m_pcTong[i] && m_pcTong[i]->m_dwNameID == pAccept->m_dwTongNameID)

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÏûÏ¢´°¿Ú
+//	ç•Œé¢--æ¶ˆæ¯çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-14
@@ -14,7 +14,7 @@
 #include "../UiSoundSetting.h"
 #include "Text.h"
 #define	SCHEME_INI					"UiInformation1.ini"
-#define	DEFAULT_MSGIMAGE			"\\Spr\\Ui\\ÏµÍ³ÏûÏ¢Í¼±ê\\ÏµÍ³.spr"
+#define	DEFAULT_MSGIMAGE			"\\Spr\\Ui\\ç³»ç»Ÿæ¶ˆæ¯å›¾æ ‡\\ç³»ç»Ÿ.spr"
 #include "../../../Represent/iRepresent/iRepresentShell.h"
 extern iCoreShell *g_pCoreShell;
 extern iRepresentShell*	g_pRepresentShell;
@@ -22,7 +22,7 @@ KUiInformation1	g_UiInformation1;
 
 void UIMessageBox1(const char* pMsg, int nMsgLen /*= -1*/, 
 				  KWndWindow* pCaller /*= 0*/,
-				  const char* pszFirstBtnText /*= "È·¶¨"*/,
+				  const char* pszFirstBtnText /*= "ç¡®å®š"*/,
 				  const char* pszSecondBtnText /*= 0*/,				  
 				  unsigned int uParam /*= 0*/,
 				  const char* pszImage /*= 0*/,
@@ -37,7 +37,7 @@ void UiCloseMessageBox1()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KUiInformation1::KUiInformation1()
 {
@@ -46,7 +46,7 @@ KUiInformation1::KUiInformation1()
 	m_nMsgIconFrame=0;
 }
 
-//ÏÔÊ¾¶Ô»°ÄÚÈİ
+//æ˜¾ç¤ºå¯¹è¯å†…å®¹
 void KUiInformation1::SpeakWords(KUiInformationParam* pWordDataList, int nCount, int nLeftTime /*= -1*/)
 {
 	if (pWordDataList == NULL || nCount <= 0)
@@ -68,7 +68,7 @@ void KUiInformation1::SpeakWords(KUiInformationParam* pWordDataList, int nCount,
 	m_pWordDataList = NULL;
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
 //--------------------------------------------------------------------------
 void KUiInformation1::Initialize()
 {
@@ -83,7 +83,7 @@ void KUiInformation1::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	åŠŸèƒ½ï¼šè½½å…¥çª—å£çš„ç•Œé¢æ–¹æ¡ˆ
 //--------------------------------------------------------------------------
 void KUiInformation1::LoadScheme(const char* pScheme)
 {
@@ -101,7 +101,7 @@ void KUiInformation1::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏÔÊ¾´°¿Ú
+//	åŠŸèƒ½ï¼šæ˜¾ç¤ºçª—å£
 //--------------------------------------------------------------------------
 void KUiInformation1::Show(const char* pInformation, int nMsgLen /*= -1*/,
 				const char* pszFirstBtnText,
@@ -154,7 +154,7 @@ void KUiInformation1::Show(const char* pInformation, int nMsgLen /*= -1*/,
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÒş²Ø´°¿Ú
+//	åŠŸèƒ½ï¼šéšè—çª—å£
 //--------------------------------------------------------------------------
 void KUiInformation1::Hide(int nBtnIndex)
 {
@@ -170,7 +170,7 @@ void KUiInformation1::Hide(int nBtnIndex)
 	KWndShowAnimate::Hide();
 }
 
-//¹Ø±Õ´°¿Ú£¬²»Í¨µ÷ÓÃ´°¿Ú
+//å…³é—­çª—å£ï¼Œä¸é€šè°ƒç”¨çª—å£
 void KUiInformation1::Close()
 {
 	KWndShowAnimate::Hide();
@@ -196,7 +196,7 @@ void KUiInformation1::PaintWindow()
 	}
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿Úº¯Êı
+//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
 //--------------------------------------------------------------------------
 int KUiInformation1::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

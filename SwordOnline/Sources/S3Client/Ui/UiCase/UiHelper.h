@@ -1,6 +1,6 @@
 /* 
  * File:     KUiHelper.h
- * Desc:     ¼òµ¥°ïÖú½çÃæ
+ * Desc:     ç®€å•å¸®åŠ©ç•Œé¢
  * Author:   flying
  * Creation: 2003/7/16
  */
@@ -15,17 +15,17 @@
 class KUiHelper : protected KWndImage
 {
 public:
-	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static KUiHelper* OpenWindow(bool bShow);
-	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
 	static void				CloseWindow(bool bDestroy);
 	static KUiHelper*		GetIfVisible();
-	//ÔØÈë½çÃæ·½°¸
+	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	void					LoadScheme(const char* pScheme);
 
-	static void SelectInterfacePic(); //Ñ¡ÔñÒªÏÔÊ¾½çÃæ°´Å¥µÄ°ïÖúÍ¼
-	static void SelectKeyboardPic();  //Ñ¡ÔñÒªÏÔÊ¾¿ì½İ¼ü°ïÖúÍ¼£¬
-	static void SelectWuxingPic();    //Ñ¡ÔñÒªÏÔÊ¾ÎåĞĞ¼¤»îÍ¼µÄÍ¼Æ¬
+	static void SelectInterfacePic(); //é€‰æ‹©è¦æ˜¾ç¤ºç•Œé¢æŒ‰é’®çš„å¸®åŠ©å›¾
+	static void SelectKeyboardPic();  //é€‰æ‹©è¦æ˜¾ç¤ºå¿«æ·é”®å¸®åŠ©å›¾ï¼Œ
+	static void SelectWuxingPic();    //é€‰æ‹©è¦æ˜¾ç¤ºäº”è¡Œæ¿€æ´»å›¾çš„å›¾ç‰‡
 
 private:
 	KUiHelper();
@@ -37,7 +37,7 @@ private:
 
 	void Initialize();
 	void	Breathe() {NextFrame();}
-	virtual void	Show();									//ÏÔÊ¾´°¿Ú
+	virtual void	Show();									//æ˜¾ç¤ºçª—å£
 };
 
 

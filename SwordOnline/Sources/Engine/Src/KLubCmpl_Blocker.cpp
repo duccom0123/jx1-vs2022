@@ -31,15 +31,15 @@ void KLubCmpl_Blocker::ScanIf(KLineNode * pFirstNode)
 			
 			if ((pIf = strstr(pLine, "if") )== pLine + i)
 			{
-				//Ϊif����ͷ
+				//为if语句的头
 				if (*(pIf + 2) == '(' || *(pIf + 2) == ' ' || *(pIf+2) == '\t')
 				{ 
 				  char * pIfEnd;
 				
-				  //�Ƿ�Ϊ��һ����һ�е�if ���
+				  //是否为单一连续一行的if 语句
 				  if (pIfEnd = strstr(pLine, "end"))
 				  {
-					//�ǵĻ�����������ɨ��
+					//是的话，结束该行扫描
 					  if (*(pIfEnd - 1) == ')' ||  *(pIfEnd - 1) == ' '||*(pIfEnd - 1) == '\t') 
 						break;
 				  }
@@ -58,7 +58,7 @@ void KLubCmpl_Blocker::ScanIf(KLineNode * pFirstNode)
 			else if((pElseIf = strstr(pLine,"elseif")) == pLine + i)
 			{
 
-				//Ϊelseif����ͷ
+				//为elseif语句的头
 				if (*(pElseIf + 6) == '(' || *(pElseIf + 6) == ' ' || *(pElseIf + 6) == '\t')
 				{ 
 				  
@@ -74,7 +74,7 @@ void KLubCmpl_Blocker::ScanIf(KLineNode * pFirstNode)
 			}
 			else if ((pElse = strstr(pLine, "else") )== pLine + i )
 			{
-				//Ϊelseif����ͷ
+				//为elseif语句的头
 				if (*(pElse + 4) == '(' || *(pElse + 4) == ' ' || *(pElse + 4) == '\n'|| *(pElse + 4) == '\t')
 				{ 
 				  
@@ -105,7 +105,7 @@ void KLubCmpl_Blocker::ScanIf(KLineNode * pFirstNode)
 					while(pStackNode->nKey != KEYIF);
 				}
 
-				//��Ϊ����if��䣬����ת����
+				//该为最先if语句，首先转换！
 				if (m_StackList.GetNodeCount() == 0)
 				{
 					KLineNode * pReturnNode = ((KStackNode*)UnitsList.GetHead())->m_pLine;
@@ -154,7 +154,7 @@ BOOL KLubCmpl_Blocker::ExchangeCurLines()
 	KStackNode * pIfEndNode = (KStackNode *)UnitsList.GetTail();
 	int nEndLabelNum = nCount + nLabelNum ;
 	
-	//��ǰ�����ӦΪif end;
+	//当前的组合应为if end;
 	if (nCount == 2)
 	{
 			KStackNode * pNode = (KStackNode*)UnitsList.RemoveHead();

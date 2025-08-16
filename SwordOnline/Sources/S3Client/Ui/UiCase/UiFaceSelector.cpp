@@ -1,9 +1,9 @@
 /* 
  * File:     UiFaceSelector.cpp
- * Desc:     ±íÇéÑ¡Ôñ´°¿Ú
+ * Desc:     è¡¨æƒ…é€‰æ‹©çª—å£
  * Author:   flying
  * Creation: 2003/7/8
- * ½ñÌìÊÇÅ¼ÀÏÆÅµÄÉúÈÕÅ¶£¬ºÇºÇ
+ * ä»Šå¤©æ˜¯å¶è€å©†çš„ç”Ÿæ—¥å“¦ï¼Œå‘µå‘µ
  */
 //-----------------------------------------------------------------------------
 #include "KWin32.h"
@@ -101,7 +101,7 @@ int	KUiFaceSelector::ConvertFaceText(char* pDest, const char* pSrc, int nCount)
 			pDest[nConvertCount++] = cCharacter;
 			nReadPos++;
 		}
-		else if (cCharacter == 0x0d)	//»»ĞĞ
+		else if (cCharacter == 0x0d)	//æ¢è¡Œ
 		{
 			if (nReadPos + 1 < nCount && pSrc[nReadPos + 1] == 0x0a)
 				nReadPos += 2;
@@ -124,7 +124,7 @@ int	KUiFaceSelector::ConvertFaceText(char* pDest, const char* pSrc, int nCount)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º×ª»»±íÇé·û
+//	åŠŸèƒ½ï¼šè½¬æ¢è¡¨æƒ…ç¬¦
 //--------------------------------------------------------------------------
 int KUiFaceSelector::ConvertFace(char* pDest, int& nConvertCount, const char* pSrc, int nCount, int& nReadPos)
 {
@@ -144,7 +144,7 @@ int KUiFaceSelector::ConvertFace(char* pDest, int& nConvertCount, const char* pS
 	return false;
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void KUiFaceSelector::Initialize()
 {
 	AddChild(&m_PrevBtn);
@@ -304,7 +304,7 @@ void KUiFaceSelector::LoadScheme(const char* pScheme)
 		Ini.GetString("Main", "BorderColor", "0,0,0", Buff, 128);
 		m_nBorderColor = GetColor(Buff);// & 0x00ffffff);	// alpha
 		Ini.GetInteger("Main", "BgAlpha", 0, (int*)&m_nBgAlpha);
-		m_nBgColor |= (m_nBgAlpha << 24);	// ´¦Àíalpha
+		m_nBgColor |= (m_nBgAlpha << 24);	// å¤„ç†alpha
 		
 		SetSize(m_nBtnWidth * m_nNormColuCount, m_Height);
 		m_nFacesPageCount = m_nRowCount * m_nNormColuCount - 2;
@@ -341,7 +341,7 @@ void KUiFaceSelector::PaintWindow()
 {
 	KWndImage::PaintWindow();
 
-	//==»æÖÆµ×Ãæ==
+	//==ç»˜åˆ¶åº•é¢==
 	KRUShadow	bg;
 	bg.Color.Color_dw = m_nBgColor;
 	bg.oPosition.nX = m_nAbsoluteLeft;
@@ -352,7 +352,7 @@ void KUiFaceSelector::PaintWindow()
 	g_pRepresentShell->DrawPrimitives(1, &bg, RU_T_SHADOW, true);	
 	int		h, v, nCount;
 
-	//==»æÖÆ·Ö¸ô±ß¿ò==
+	//==ç»˜åˆ¶åˆ†éš”è¾¹æ¡†==
 	KRULine line;
 	line.Color.Color_dw = m_nBorderColor;
 	line.oPosition.nX = m_nAbsoluteLeft;
@@ -392,7 +392,7 @@ void KUiFaceSelector::PaintWindow()
 	param.nZ = TEXT_IN_SINGLE_PLANE_COORD;
 
 
-	//====»æÖÆ×ó²à±íÇéÍ¼±êµÄ³õÊ¼»¯====
+	//====ç»˜åˆ¶å·¦ä¾§è¡¨æƒ…å›¾æ ‡çš„åˆå§‹åŒ–====
 	nIndex = 0;
 
 	if (m_nFacesPageCount > ms_nNumFaces)
@@ -409,17 +409,17 @@ void KUiFaceSelector::PaintWindow()
 		{
 			if ((nIndex + (m_nFacesPageCount * m_nCurrPage)) >= ms_nNumFaces)
 			{
-				v = m_nRowCount;	//ÒªÍâ²ãÑ­»·Ò²ÍË³ö
+				v = m_nRowCount;	//è¦å¤–å±‚å¾ªç¯ä¹Ÿé€€å‡º
 				break;
 			}
 			if (nIndex >= m_nFacesPageCount)
 			{
-				v = m_nRowCount;	//ÒªÍâ²ãÑ­»·Ò²ÍË³ö
+				v = m_nRowCount;	//è¦å¤–å±‚å¾ªç¯ä¹Ÿé€€å‡º
 				break;
 			}
 
 			if ((nIndex + (m_nFacesPageCount * m_nCurrPage)) == m_nCurrIndex)
-			{	//===»æÖÆÑ¡ÖĞ±íÇéÍ¼±êµÄµ×É«===
+			{	//===ç»˜åˆ¶é€‰ä¸­è¡¨æƒ…å›¾æ ‡çš„åº•è‰²===
 				bg.Color.Color_dw = m_nBgOver;
 				bg.oPosition.nX = param.nX - 2;
 				bg.oPosition.nY = param.nY - 2;

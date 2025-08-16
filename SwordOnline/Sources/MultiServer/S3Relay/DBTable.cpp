@@ -20,14 +20,14 @@ ZDBTable::ZDBTable(const char *path, const char *name) {
 #else
         int ret = mkdir(env_path, 0);
 #endif
-	dbcp = NULL;//³õÊ¼»¯ÓÎ±ê£¨by Fellow£©
+	dbcp = NULL;//åˆå§‹åŒ–æ¸¸æ ‡ï¼ˆby Fellowï¼‰
 	
 	if(!db_env_create(&dbenv, 0)) {
 			dbenv->set_errpfx(dbenv, "index_db");
 			if(!dbenv->open(dbenv, env_path, DB_CREATE | DB_INIT_LOG | DB_INIT_LOCK | DB_INIT_MPOOL | DB_INIT_TXN | DB_RECOVER, 0)) {
 				index_number = 0;
 				strcpy(table_name, name);
-				return;				//³É¹¦ÁË
+				return;				//æˆåŠŸäº†
 			}
 		dbenv->close(dbenv, 0);
 	}
@@ -52,7 +52,7 @@ bool ZDBTable::open() {
     int index;
 	int ret;
 	if(!db_create(&primary_db, dbenv, 0)) {
-		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_CREATE|DB_AUTO_COMMIT, 0664)) {	//´ò¿ªÖ÷Êı¾İ¿â
+		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_CREATE|DB_AUTO_COMMIT, 0664)) {	//æ‰“å¼€ä¸»æ•°æ®åº“
 			for(index = 0; index < index_number; index++) {
 				sprintf(index_table_name, "%s.%d", table_name, index);
 				if(!db_create(&index_db[index], dbenv, 0)) {
@@ -67,8 +67,8 @@ bool ZDBTable::open() {
 				}
 				else break;
 			}
-			if(index == index_number) return true;										//³É¹¦ÁË
-			else while(--index) (index_db[index])->close(index_db[index], 0);				//³ö´í£¬¹Ø±ÕÇ°ÃæµÄË÷Òı±í
+			if(index == index_number) return true;										//æˆåŠŸäº†
+			else while(--index) (index_db[index])->close(index_db[index], 0);				//å‡ºé”™ï¼Œå…³é—­å‰é¢çš„ç´¢å¼•è¡¨
 			primary_db->close(primary_db, 0);
 		}
 	}
@@ -133,10 +133,10 @@ char *ZDBTable::_search(bool bKey, const char *key_ptr, int key_size, int &size,
 	memset(&pkey, 0, sizeof(pkey));
 	key.data = (void *)key_ptr;
 	key.size = key_size;
-	if(index == -1) {									//Ö÷¼üËÑË÷
+	if(index == -1) {									//ä¸»é”®æœç´¢
 		if(primary_db->get(primary_db, NULL, &key, &data, 0)) return NULL;
 	}
-	else if(is_index_unique[index]) {					//Ã»ÓĞÖØ¸´Ë÷Òı
+	else if(is_index_unique[index]) {					//æ²¡æœ‰é‡å¤ç´¢å¼•
 		if(bKey) {
 			if(index_db[index]->pget(index_db[index], NULL, &key, &pkey, &data, 0)) return NULL;
 		}
@@ -144,7 +144,7 @@ char *ZDBTable::_search(bool bKey, const char *key_ptr, int key_size, int &size,
 			if(index_db[index]->get(index_db[index], NULL, &key, &data, 0)) return NULL;
 		}
 	}
-	else {												//´ò¿ªÓÎ±ê
+	else {												//æ‰“å¼€æ¸¸æ ‡
 		if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0)) {
 			dbcp = NULL;
 			return NULL;
@@ -214,11 +214,11 @@ char *ZDBTable::_next(bool bKey, int &size) {
 }
 
 char *ZDBTable::GetRecord(int &size, CursorPointer cpMode, int index )
-{//È¡µÃ°´ÓÎ±êÄ³Ò»¸öÊı¾İ
+{//å–å¾—æŒ‰æ¸¸æ ‡æŸä¸€ä¸ªæ•°æ®
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return NULL;
 		}
@@ -246,9 +246,9 @@ char *ZDBTable::GetRecord(int &size, CursorPointer cpMode, int index )
 char *ZDBTable::GetRecord_key(int &size, CursorPointer cpMode, int index )
 {
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return NULL;
 		}
@@ -275,11 +275,11 @@ char *ZDBTable::GetRecord_key(int &size, CursorPointer cpMode, int index )
 bool ZDBTable::GetRecordEx(char* aBuffer, int &size,
 						   char* aKeyBuffer, int &keysize,
 						   CursorPointer cpMode, int index)
-{//È¡µÃ°´ÓÎ±êÄ³Ò»¸öÊı¾İ(ĞÂ°æº¯Êı)
+{//å–å¾—æŒ‰æ¸¸æ ‡æŸä¸€ä¸ªæ•°æ®(æ–°ç‰ˆå‡½æ•°)
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return false;
 		}
@@ -316,13 +316,13 @@ CDBTableReadOnly::CDBTableReadOnly(const char *path, const char *name) {
 #else
         int ret = mkdir(env_path, 0);
 #endif
-	dbcp = NULL;//³õÊ¼»¯ÓÎ±ê£¨by Fellow£©
+	dbcp = NULL;//åˆå§‹åŒ–æ¸¸æ ‡ï¼ˆby Fellowï¼‰
 
 	if(!db_env_create(&dbenv, 0)) {
 			dbenv->set_errpfx(dbenv, "index_db");
 			if(!dbenv->open(dbenv, env_path, DB_USE_ENVIRON | DB_INIT_MPOOL, 0)) {
 				strcpy(table_name, name);
-				return;				//³É¹¦ÁË
+				return;				//æˆåŠŸäº†
 			}
 		dbenv->close(dbenv, 0);
 	}
@@ -336,7 +336,7 @@ CDBTableReadOnly::~CDBTableReadOnly() {
 bool CDBTableReadOnly::open() {
 	if(!dbenv) return false;
 	if(!db_create(&primary_db, dbenv, 0)) {
-		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_RDONLY, 0664)) {	//´ò¿ªÖ÷Êı¾İ¿â
+		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_RDONLY, 0664)) {	//æ‰“å¼€ä¸»æ•°æ®åº“
 			return true;
 		}
 	}
@@ -409,9 +409,9 @@ char *CDBTableReadOnly::_next(bool bKey, int &size) {
 char *CDBTableReadOnly::GetRecord(int &size, CursorPointer cpMode)
 {
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(primary_db->cursor(primary_db, NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return NULL;
 		}
@@ -438,9 +438,9 @@ char *CDBTableReadOnly::GetRecord(int &size, CursorPointer cpMode)
 char *CDBTableReadOnly::GetRecord_key(int &size, CursorPointer cpMode)
 {
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(primary_db->cursor(primary_db, NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return NULL;
 		}
@@ -467,11 +467,11 @@ char *CDBTableReadOnly::GetRecord_key(int &size, CursorPointer cpMode)
 bool CDBTableReadOnly::GetRecordEx(char* aBuffer, int &size,
 						   char* aKeyBuffer, int &keysize,
 						   CursorPointer cpMode)
-{//È¡µÃ°´ÓÎ±êÄ³Ò»¸öÊı¾İ(ĞÂ°æº¯Êı)
+{//å–å¾—æŒ‰æ¸¸æ ‡æŸä¸€ä¸ªæ•°æ®(æ–°ç‰ˆå‡½æ•°)
 	if(!dbcp)
-	{//Èç¹ûÊı¾İ¿âÖ¸ÕëÃ»ÓĞ³õÊ¼»¯£¬ÏÈ³õÊ¼»¯dbcp
+	{//å¦‚æœæ•°æ®åº“æŒ‡é’ˆæ²¡æœ‰åˆå§‹åŒ–ï¼Œå…ˆåˆå§‹åŒ–dbcp
 		if(primary_db->cursor(primary_db, NULL, &dbcp, 0))
-		{//³õÊ¼»¯dbcpÊ§°Ü
+		{//åˆå§‹åŒ–dbcpå¤±è´¥
 			dbcp = NULL;
 			return false;
 		}

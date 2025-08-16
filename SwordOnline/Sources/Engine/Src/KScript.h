@@ -4,7 +4,7 @@
 // File:	KScript.h
 // Date:	2001-9-11 10:33:35
 // Code:	Romandou,Daphnis
-// Desc:	脚本引擎接口
+// Desc:	鑴氭湰寮曟搸鎺ュ彛
 //---------------------------------------------------------------------------
 #ifndef KScript_H
 #define KScript_H

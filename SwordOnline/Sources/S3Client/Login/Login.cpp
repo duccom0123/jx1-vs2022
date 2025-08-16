@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42**********************
-//	½çÃæ--login´°¿Ú
+//	ç•Œé¢--loginçª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-13
@@ -62,7 +62,7 @@ void RandMemSet(int nSize, unsigned char *pbyBuffer)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KLogin::KLogin()
 {
@@ -85,7 +85,7 @@ void KLogin::ClearAccountPassword(bool bAccount, bool bPassword)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎö¹¹º¯Êı
+//	åŠŸèƒ½ï¼šææ„å‡½æ•°
 //--------------------------------------------------------------------------
 KLogin::~KLogin()
 {
@@ -93,9 +93,9 @@ KLogin::~KLogin()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÓë£¨ÕËºÅ£©·şÎñÆ÷½¨Á¢Á¬½Ó
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_IDLE -> LL_S_WAIT_INPUT_ACCOUNT
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šä¸ï¼ˆè´¦å·ï¼‰æœåŠ¡å™¨å»ºç«‹è¿æ¥
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_IDLE -> LL_S_WAIT_INPUT_ACCOUNT
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 int KLogin::CreateConnection(const unsigned char* pAddress)
 {
@@ -129,9 +129,9 @@ int KLogin::CreateConnection(const unsigned char* pAddress)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´«ÈëÕÊºÅÃÜÂë£¬ÕËºÅµÇÂ½
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_WAIT_INPUT_ACCOUNT -> LL_S_ACCOUNT_CONFIRMING
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šä¼ å…¥å¸å·å¯†ç ï¼Œè´¦å·ç™»é™†
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_WAIT_INPUT_ACCOUNT -> LL_S_ACCOUNT_CONFIRMING
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 int	KLogin::AccountLogin(const char* pszAccount, const KSG_PASSWORD& crPassword, bool bOrignPassword)
 {
@@ -159,9 +159,9 @@ int	KLogin::AccountLogin(const char* pszAccount, const KSG_PASSWORD& crPassword,
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ¡ÖĞÓÎÏ·½ÇÉ«
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_ROLE_LIST_READY -> LL_S_WAIT_TO_LOGIN_GAMESERVER
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šé€‰ä¸­æ¸¸æˆè§’è‰²
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_ROLE_LIST_READY -> LL_S_WAIT_TO_LOGIN_GAMESERVER
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 int	KLogin::SelectRole(int nIndex)
 {
@@ -189,9 +189,9 @@ int	KLogin::SelectRole(int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇëÇóĞÂ½¨ÓÎÏ·½ÇÉ«
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_ROLE_LIST_READY -> LL_S_CREATING_ROLE
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šè¯·æ±‚æ–°å»ºæ¸¸æˆè§’è‰²
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_ROLE_LIST_READY -> LL_S_CREATING_ROLE
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 int	KLogin::CreateRole(KRoleChiefInfo* pCreateInfo)
 {
@@ -232,9 +232,9 @@ int	KLogin::CreateRole(KRoleChiefInfo* pCreateInfo)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇëÇóÉ¾³ıÓÎÏ·½ÇÉ«
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_ROLE_LIST_READY -> LL_S_DELETING_ROLE
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šè¯·æ±‚åˆ é™¤æ¸¸æˆè§’è‰²
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_ROLE_LIST_READY -> LL_S_DELETING_ROLE
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 int	KLogin::DeleteRole(int nIndex, const KSG_PASSWORD &crSupperPassword)
 {
@@ -271,8 +271,8 @@ int	KLogin::DeleteRole(int nIndex, const KSG_PASSWORD &crSupperPassword)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÍ¨ÖªµÈ´ı·µ»Ø½á¹û³¬Ê±ÁË
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_??? -> LL_S_IDLE
+//	åŠŸèƒ½ï¼šé€šçŸ¥ç­‰å¾…è¿”å›ç»“æœè¶…æ—¶äº†
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_??? -> LL_S_IDLE
 //--------------------------------------------------------------------------
 void KLogin::NotifyTimeout()
 {
@@ -283,7 +283,7 @@ void KLogin::NotifyTimeout()
 	}
 }
 
-//Í¨ÖªÍøÂçÁ¬½Ó£¨ÒâÍâ£©¶Ï¿ªÁË
+//é€šçŸ¥ç½‘ç»œè¿æ¥ï¼ˆæ„å¤–ï¼‰æ–­å¼€äº†
 void KLogin::NotifyDisconnect()
 {
 	if (m_Status != LL_S_IDLE)
@@ -294,8 +294,8 @@ void KLogin::NotifyDisconnect()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÍ¨ÖªÒª¿ªÊ¼ÓÎÏ·ÁË
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_ENTERING_GAME -> LL_S_IN_GAME
+//	åŠŸèƒ½ï¼šé€šçŸ¥è¦å¼€å§‹æ¸¸æˆäº†
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_ENTERING_GAME -> LL_S_IN_GAME
 //--------------------------------------------------------------------------
 void KLogin::NotifyToStartGame()
 {
@@ -316,8 +316,8 @@ void KLogin::NotifyToStartGame()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»Øµ½¿ÕÏĞ×´Ì¬
-//	×´Ì¬ÇĞ»»£ºLL_S_??? -> LL_S_IN_GAME
+//	åŠŸèƒ½ï¼šå›åˆ°ç©ºé—²çŠ¶æ€
+//	çŠ¶æ€åˆ‡æ¢ï¼šLL_S_??? -> LL_S_IN_GAME
 //--------------------------------------------------------------------------
 void KLogin::ReturnToIdle()
 {
@@ -334,7 +334,7 @@ void KLogin::ReturnToIdle()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈ«³Ì×Ô¶¯Á¬½Ó
+//	åŠŸèƒ½ï¼šå…¨ç¨‹è‡ªåŠ¨è¿æ¥
 //--------------------------------------------------------------------------
 void KLogin::AutoLogin()
 {
@@ -360,7 +360,7 @@ void KLogin::AutoLogin()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÅĞ¶ÏÊÇ·ñ¿ÉÒÔÖ´ĞĞÈ«³Ì×Ô¶¯Á¬½Ó
+//	åŠŸèƒ½ï¼šåˆ¤æ–­æ˜¯å¦å¯ä»¥æ‰§è¡Œå…¨ç¨‹è‡ªåŠ¨è¿æ¥
 //--------------------------------------------------------------------------
 int	KLogin::IsAutoLoginEnable()
 {
@@ -375,7 +375,7 @@ void KLogin::SetLastInvisibleFlag(int nEnable)
 	m_Choices.nLastInvisible = nEnable;	
 }
 
-//ÉèÖÃ¼ÍÂ¼±ê¼Ç
+//è®¾ç½®çºªå½•æ ‡è®°
 void KLogin::SetRememberAccountFlag(bool bEnable)
 {
 	m_Choices.bRememberAccount = bEnable;
@@ -383,7 +383,7 @@ void KLogin::SetRememberAccountFlag(bool bEnable)
 		m_Choices.bRememberAll = false;		
 }
 
-//ÉèÖÃ¼ÍÂ¼±ê¼Ç
+//è®¾ç½®çºªå½•æ ‡è®°
 void KLogin::SetRememberAllFlag(bool bEnable)
 {
 	m_Choices.bRememberAll = bEnable;
@@ -396,7 +396,7 @@ void KLogin::SetVirtualKeyboardFlag(bool bEnable)
 	m_Choices.bVirtualKeyboard = bEnable;
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡Ä³¸ö½ÇÉ«µÄĞÅÏ¢
+//	åŠŸèƒ½ï¼šè·å–æŸä¸ªè§’è‰²çš„ä¿¡æ¯
 //--------------------------------------------------------------------------
 int	KLogin::GetRoleInfo(int nIndex, KRoleChiefInfo* pInfo)
 {
@@ -411,15 +411,15 @@ int	KLogin::GetRoleInfo(int nIndex, KRoleChiefInfo* pInfo)
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´¦ÀíÕËºÅµÇÂ½µÄÏìÓ¦
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_ACCOUNT_CONFIRMING -> LL_S_WAIT_ROLE_LIST
-//			  Ê§°Ü LL_S_ACCOUNT_CONFIRMING -> LL_S_IDLE
+//	åŠŸèƒ½ï¼šå¤„ç†è´¦å·ç™»é™†çš„å“åº”
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_ACCOUNT_CONFIRMING -> LL_S_WAIT_ROLE_LIST
+//			  å¤±è´¥ LL_S_ACCOUNT_CONFIRMING -> LL_S_IDLE
 //--------------------------------------------------------------------------
 void KLogin::ProcessAccountLoginResponse(KLoginStructHead* pResponse)
 {
 	//_ASSERT(m_Status == LL_S_ACCOUNT_CONFIRMING && pResponse != NULL);
-	if (((pResponse->Param & LOGIN_ACTION_FILTER) == LOGIN_A_LOGIN) &&	//²Ù×÷ĞÔÎªÒªÆ¥Åä
-		pResponse->Size >= sizeof(KLoginAccountInfo))				//Êı¾İÄÚÈİµÄ´óĞ¡Ò²ÒªÆ¥Åä
+	if (((pResponse->Param & LOGIN_ACTION_FILTER) == LOGIN_A_LOGIN) &&	//æ“ä½œæ€§ä¸ºè¦åŒ¹é…
+		pResponse->Size >= sizeof(KLoginAccountInfo))				//æ•°æ®å†…å®¹çš„å¤§å°ä¹Ÿè¦åŒ¹é…
 	{
 		int nResult = ((pResponse->Param) & ~LOGIN_ACTION_FILTER);
 		if (nResult == LOGIN_R_INVALID_PROTOCOLVERSION)
@@ -491,9 +491,9 @@ void KLogin::ProcessAccountLoginResponse(KLoginStructHead* pResponse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º½ÇÉ«ÁĞ±í·µ»Ø
-//	×´Ì¬ÇĞ»»£º³É¹¦ LL_S_WAIT_ROLE_LIST -> LL_S_ROLE_LIST_READY
-//			  Ê§°Ü ×´Ì¬±£³Ö
+//	åŠŸèƒ½ï¼šè§’è‰²åˆ—è¡¨è¿”å›
+//	çŠ¶æ€åˆ‡æ¢ï¼šæˆåŠŸ LL_S_WAIT_ROLE_LIST -> LL_S_ROLE_LIST_READY
+//			  å¤±è´¥ çŠ¶æ€ä¿æŒ
 //--------------------------------------------------------------------------
 void KLogin::ProcessRoleListResponse(TProcessData* pResponse)
 {
@@ -539,15 +539,15 @@ void KLogin::ProcessRoleListResponse(TProcessData* pResponse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºĞÂ½¨½ÇÉ«ÁĞ±íµÄÏìÓ¦
-//	×´Ì¬ÇĞ»»£ºLL_S_CREATING_ROLE -> LL_S_ROLE_LIST_READY
+//	åŠŸèƒ½ï¼šæ–°å»ºè§’è‰²åˆ—è¡¨çš„å“åº”
+//	çŠ¶æ€åˆ‡æ¢ï¼šLL_S_CREATING_ROLE -> LL_S_ROLE_LIST_READY
 //--------------------------------------------------------------------------
 void KLogin::ProcessCreateRoleResponse(tagNewDelRoleResponse* pResponse)
 {
 	//_ASSERT(m_Status == LL_S_DELETING_ROLE && pResponse != NULL);
 	if (pResponse->cProtocol == s2c_rolenewdelresponse)
 	{
-	//	if (strcmp(pResponse->szRoleName, m_Choices.szProcessingRoleName) == 0)	//to be check/* ÁõÅôµ÷ÊÔ°æ */
+	//	if (strcmp(pResponse->szRoleName, m_Choices.szProcessingRoleName) == 0)	//to be check/* åˆ˜é¹è°ƒè¯•ç‰ˆ */
 		{
 			if (pResponse->bSucceeded)
 			{
@@ -567,15 +567,15 @@ void KLogin::ProcessCreateRoleResponse(tagNewDelRoleResponse* pResponse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉ¾³ı½ÇÉ«ÁĞ±íµÄÏìÓ¦
-//	×´Ì¬ÇĞ»»£ºLL_S_DELETING_ROLE -> LL_S_ROLE_LIST_READY
+//	åŠŸèƒ½ï¼šåˆ é™¤è§’è‰²åˆ—è¡¨çš„å“åº”
+//	çŠ¶æ€åˆ‡æ¢ï¼šLL_S_DELETING_ROLE -> LL_S_ROLE_LIST_READY
 //--------------------------------------------------------------------------
 void KLogin::ProcessDeleteRoleResponse(tagNewDelRoleResponse* pResponse)
 {
 	//_ASSERT(m_Status == LL_S_DELETING_ROLE && pResponse != NULL);
 	if (pResponse->cProtocol == s2c_rolenewdelresponse)
 	{
-//		if (strcmp(pResponse->szRoleName, m_Choices.szProcessingRoleName) == 0)	//to be check/* ÁõÅôµ÷ÊÔ°æ */
+//		if (strcmp(pResponse->szRoleName, m_Choices.szProcessingRoleName) == 0)	//to be check/* åˆ˜é¹è°ƒè¯•ç‰ˆ */
 		{
 			g_NetConnectAgent.UpdateClientRequestTime(true);
 			m_Status = LL_S_ROLE_LIST_READY;
@@ -607,8 +607,8 @@ void KLogin::ProcessDeleteRoleResponse(tagNewDelRoleResponse* pResponse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º×¼±¸µÇÂ½ÓÎÏ··şÎñÆ÷µÄÏìÓ¦
-//	×´Ì¬ÇĞ»»£ºLL_S_WAIT_TO_LOGIN_GAMESERVER -> LL_S_ENTERING_GAME
+//	åŠŸèƒ½ï¼šå‡†å¤‡ç™»é™†æ¸¸æˆæœåŠ¡å™¨çš„å“åº”
+//	çŠ¶æ€åˆ‡æ¢ï¼šLL_S_WAIT_TO_LOGIN_GAMESERVER -> LL_S_ENTERING_GAME
 //--------------------------------------------------------------------------
 void KLogin::ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse)
 {
@@ -620,7 +620,7 @@ void KLogin::ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse)
 		{
 			g_NetConnectAgent.UpdateClientRequestTime(true);
 
-			// ¿ªÊ¼ÓëGameSvr½øĞĞÁ¬½Ó
+			// å¼€å§‹ä¸GameSvrè¿›è¡Œè¿æ¥
 			if (g_NetConnectAgent.ConnectToGameSvr(
 				(const unsigned char*)&pResponse->nIPAddr,
 				pResponse->nPort, &pResponse->guid))
@@ -634,7 +634,7 @@ void KLogin::ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse)
 				m_Result = LL_R_CONNECT_FAILED;
 			}
 
-			// ¶Ï¿ªÓëÍø¹ØµÄÁ¬½Ó
+			// æ–­å¼€ä¸ç½‘å…³çš„è¿æ¥
 			g_NetConnectAgent.DisconnectClient();
 		}
 		else
@@ -646,7 +646,7 @@ void KLogin::ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º½ÓÊÜÍøÂçÏûÏ¢
+//	åŠŸèƒ½ï¼šæ¥å—ç½‘ç»œæ¶ˆæ¯
 //--------------------------------------------------------------------------
 void KLogin::AcceptNetMsg(void* pMsgData)
 {
@@ -673,7 +673,7 @@ void KLogin::AcceptNetMsg(void* pMsgData)
 	}
 }
 
-//»ñÈ¡²Ù×÷µÄ½á¹ûĞÅÏ¢
+//è·å–æ“ä½œçš„ç»“æœä¿¡æ¯
 LOGIN_LOGIC_RESULT_INFO KLogin::GetResult()
 {
 	LOGIN_LOGIC_RESULT_INFO eReturn = m_Result;
@@ -682,7 +682,7 @@ LOGIN_LOGIC_RESULT_INFO KLogin::GetResult()
 }
 
 
-//»ñÈ¡½ÇÉ«µÄÊıÄ¿
+//è·å–è§’è‰²çš„æ•°ç›®
 int KLogin::GetRoleCount(int& nAdviceChoice)
 {
 	nAdviceChoice = 0;
@@ -701,7 +701,7 @@ int KLogin::GetRoleCount(int& nAdviceChoice)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡½¨Òé£¨¾ÉµÄ£©µÇÂ½ÕËºÅ
+//	åŠŸèƒ½ï¼šè·å–å»ºè®®ï¼ˆæ—§çš„ï¼‰ç™»é™†è´¦å·
 //--------------------------------------------------------------------------
 bool KLogin::GetLoginAccount(char* pszAccount)
 {
@@ -721,7 +721,7 @@ bool KLogin::GetLoginVirtualKeyboard()
 #define	$LAST_PASSWORD			"LastPassword"
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ÁÈ¡ÒÔÇ°µÄµÄµÇÂ½Ñ¡Ôñ
+//	åŠŸèƒ½ï¼šè¯»å–ä»¥å‰çš„çš„ç™»é™†é€‰æ‹©
 //--------------------------------------------------------------------------
 void KLogin::LoadLoginChoice()
 {
@@ -782,7 +782,7 @@ void KLogin::LoadLoginChoice()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º±£´æµÇÂ½Ñ¡ÔñÉèÖÃ
+//	åŠŸèƒ½ï¼šä¿å­˜ç™»é™†é€‰æ‹©è®¾ç½®
 //--------------------------------------------------------------------------
 void KLogin::SaveLoginChoice()
 {
@@ -803,7 +803,7 @@ void KLogin::SaveLoginChoice()
 		pSetting->GetInteger($LOGIN, "LastInvisible", 0, &m_Choices.nLastInvisible);
 
 		char	szBuffer[32];
-		//----¼ÍÂ¼×îºóÒ»´ÎµÇÂ½ÕËºÅ----
+		//----çºªå½•æœ€åä¸€æ¬¡ç™»é™†è´¦å·----
 		pSetting->EraseKey($LOGIN, $LAST_ACCOUNT);
 
 		if (m_Choices.bRememberAccount)
@@ -886,7 +886,7 @@ void KLogin::GetRegionServer(char *pszRegion, char *pszServer)
 	strcpy(pszServer, m_Choices.AccountServer.Title);
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡·şÎñÆ÷ÇøÓòµÄÁĞ±í
+//	åŠŸèƒ½ï¼šè·å–æœåŠ¡å™¨åŒºåŸŸçš„åˆ—è¡¨
 //--------------------------------------------------------------------------
 KLoginServer*	KLogin::GetServerRegionList(int& nCount, int& nAdviceChoice)
 {
@@ -940,7 +940,7 @@ KLoginServer*	KLogin::GetServerRegionList(int& nCount, int& nAdviceChoice)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºµÇÂ½·şÎñÆ÷ÁĞ±í»ñÈ¡
+//	åŠŸèƒ½ï¼šç™»é™†æœåŠ¡å™¨åˆ—è¡¨è·å–
 //--------------------------------------------------------------------------
 KLoginServer* KLogin::GetServerList(int nRegion, int& nCount, int& nAdviceChoice)
 {
@@ -955,7 +955,7 @@ KLoginServer* KLogin::GetServerList(int nRegion, int& nCount, int& nAdviceChoice
 		int		nReadCount = 0;
 		char	szSection[32], szKey[32], szBuffer[32];
 
-		File.GetInteger("List", "RegionCount", 0, &nReadCount);	//ÇøÓòµÄÊıÄ¿
+		File.GetInteger("List", "RegionCount", 0, &nReadCount);	//åŒºåŸŸçš„æ•°ç›®
 
 		if (nRegion < 0 || nRegion >= nReadCount)
 		{
@@ -963,7 +963,7 @@ KLoginServer* KLogin::GetServerList(int nRegion, int& nCount, int& nAdviceChoice
 		}
 		sprintf(szSection, "Region_%d", nRegion);
 		File.GetString("List", szSection, "", m_Choices.RegionName, sizeof(m_Choices.RegionName));
-		File.GetInteger(szSection, "Count", 0, &nReadCount);	//¸ÃÇøÓò·şÎñÆ÷µÄÊıÄ¿
+		File.GetInteger(szSection, "Count", 0, &nReadCount);	//è¯¥åŒºåŸŸæœåŠ¡å™¨çš„æ•°ç›®
 		if (nReadCount > 0)
 		{
 			pServers = (KLoginServer*)malloc(sizeof(KLoginServer) * nReadCount);
@@ -1022,7 +1022,7 @@ int KLogin::SetAccountServer(const KLoginServer &rcSelectServer)
 
 extern void RandMemSet(int nSize, unsigned char *pbyBuffer);
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉêÇëÕËºÅ
+//	åŠŸèƒ½ï¼šç”³è¯·è´¦å·
 //--------------------------------------------------------------------------
 int KLogin::Request(const char* pszAccount, const KSG_PASSWORD* pcPassword, int nAction)
 {
@@ -1042,7 +1042,7 @@ int KLogin::Request(const char* pszAccount, const KSG_PASSWORD* pcPassword, int 
 
         #ifdef USE_KPROTOCOL_VERSION
         // Add by Freeway Chen in 2003.7.1
-        pInfo->ProtocolVersion = KPROTOCOL_VERSION;    //  ´«ÊäĞ­Òé°æ±¾£¬ÒÔ±ãĞ£ÑéÊÇ·ñ¼æÈİ
+        pInfo->ProtocolVersion = KPROTOCOL_VERSION;    //  ä¼ è¾“åè®®ç‰ˆæœ¬ï¼Œä»¥ä¾¿æ ¡éªŒæ˜¯å¦å…¼å®¹
         #endif
 
 		if (g_NetConnectAgent.SendMsg(Buff, sizeof(KLoginAccountInfo) + PROTOCOL_MSG_SIZE))
@@ -1055,7 +1055,7 @@ int KLogin::Request(const char* pszAccount, const KSG_PASSWORD* pcPassword, int 
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÁ¬½ÓÓÎÏ··şÎñ
+//	åŠŸèƒ½ï¼šè¿æ¥æ¸¸æˆæœåŠ¡
 //--------------------------------------------------------------------------
 int KLogin::ConnectAccountServer(const unsigned char* pIpAddress)
 {

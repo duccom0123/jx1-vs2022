@@ -4,8 +4,8 @@
 #include <omniORB3/CORBA.h>
 #include "KDataManage.h"
 #include "KCorbaServer.h"
-//ĞèÒªÍê³ÉµÄ£¬°üÀ¨Ö¸¶¨Orb¡¢
-//Ö¸¶¨m_DataManageµÄÔ¶³Ì»ò½ü³Ì¶ÔÏóµÄµØÖ·
+//éœ€è¦å®Œæˆçš„ï¼ŒåŒ…æ‹¬æŒ‡å®šOrbã€
+//æŒ‡å®šm_DataManageçš„è¿œç¨‹æˆ–è¿‘ç¨‹å¯¹è±¡çš„åœ°å€
 
 class KCorbaClient
 {

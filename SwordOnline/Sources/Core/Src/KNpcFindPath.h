@@ -3,7 +3,7 @@
 //
 // File:	KNpcFindPath.h
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 
@@ -13,28 +13,28 @@
 class KNpcFindPath
 {
 public:
-	int				m_NpcIdx;			// Õâ¸öÑ°Â·ÊÇÊôÓÚÄÄ¸ö npc µÄ
-	int				m_nDestX;			// Ä¿±êµã×ø±ê x
-	int				m_nDestY;			// Ä¿±êµã×ø±ê y
-	int				m_nFindTimer;		// ÕÒÂ·£¬Ò»¶ÎÊ±¼äÒÔºóÃ»ÕÒµ½¾Í²»ÕÒÁË
-	int				m_nMaxTimeLong;		// ÕÒ¶à³¤Ê±¼äµÄÂ·
-	int				m_nFindState;		// µ±Ç°ÊÇ·ñ´¦ÓÚÕÒÂ·×´Ì¬
-	int				m_nPathSide;		// ÍùÄÄ¸ö·½ÏòÕÒ
-	int				m_nFindTimes;		// ³¯Ò»¸öÄ¿±êµãÕÒÂ·µÄ´ÎÊı
+	int				m_NpcIdx;			// è¿™ä¸ªå¯»è·¯æ˜¯å±äºå“ªä¸ª npc çš„
+	int				m_nDestX;			// ç›®æ ‡ç‚¹åæ ‡ x
+	int				m_nDestY;			// ç›®æ ‡ç‚¹åæ ‡ y
+	int				m_nFindTimer;		// æ‰¾è·¯ï¼Œä¸€æ®µæ—¶é—´ä»¥åæ²¡æ‰¾åˆ°å°±ä¸æ‰¾äº†
+	int				m_nMaxTimeLong;		// æ‰¾å¤šé•¿æ—¶é—´çš„è·¯
+	int				m_nFindState;		// å½“å‰æ˜¯å¦å¤„äºæ‰¾è·¯çŠ¶æ€
+	int				m_nPathSide;		// å¾€å“ªä¸ªæ–¹å‘æ‰¾
+	int				m_nFindTimes;		// æœä¸€ä¸ªç›®æ ‡ç‚¹æ‰¾è·¯çš„æ¬¡æ•°
 public:
 	KNpcFindPath();
-	//	¹¦ÄÜ£º³õÊ¼»¯	nNpc :Õâ¸öÑ°Â·ÊÇÊôÓÚÄÄ¸ö npc µÄ
+	//	åŠŸèƒ½ï¼šåˆå§‹åŒ–	nNpc :è¿™ä¸ªå¯»è·¯æ˜¯å±äºå“ªä¸ª npc çš„
 	void			Init(int nNpc);
-	//	¹¦ÄÜ£º´«Èëµ±Ç°×ø±ê¡¢·½Ïò¡¢Ä¿±êµã×ø±ê¡¢ËÙ¶È£¬Ñ°Â·ÕÒµ½ÏÂÒ»²½Ó¦¸Ã×ßµÄ·½Ïò
-	//	·µ»ØÖµ£»Èç¹û·µ»Øfalse£º²»ÄÜ×ßÁË;true £¬ÕÒµ½Ò»¸ö·½Ïò£¬·½ÏòÖµ·ÅÔÚpnGetDir (°´64·½Ïò)
+	//	åŠŸèƒ½ï¼šä¼ å…¥å½“å‰åæ ‡ã€æ–¹å‘ã€ç›®æ ‡ç‚¹åæ ‡ã€é€Ÿåº¦ï¼Œå¯»è·¯æ‰¾åˆ°ä¸‹ä¸€æ­¥åº”è¯¥èµ°çš„æ–¹å‘
+	//	è¿”å›å€¼ï¼›å¦‚æœè¿”å›falseï¼šä¸èƒ½èµ°äº†;true ï¼Œæ‰¾åˆ°ä¸€ä¸ªæ–¹å‘ï¼Œæ–¹å‘å€¼æ”¾åœ¨pnGetDir (æŒ‰64æ–¹å‘)
 	int				GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, int nMoveSpeed, int *pnGetDir);
-	// 64 ·½Ïò×ª»»Îª 8 ·½Ïò
+	// 64 æ–¹å‘è½¬æ¢ä¸º 8 æ–¹å‘
 	int				Dir64To8(int nDir);
-	// 8 ·½Ïò×ª»»Îª 64 ·½Ïò
+	// 8 æ–¹å‘è½¬æ¢ä¸º 64 æ–¹å‘
 	int				Dir8To64(int nDir);
-	// ÅĞ¶ÏÁ½µã¼äµÄÖ±Ïß¾àÀëÊÇ·ñ´óÓÚ»òµÈÓÚ¸ø¶¨¾àÀë
+	// åˆ¤æ–­ä¸¤ç‚¹é—´çš„ç›´çº¿è·ç¦»æ˜¯å¦å¤§äºæˆ–ç­‰äºç»™å®šè·ç¦»
 	BOOL			CheckDistance(int x1, int y1, int x2, int y2, int nDistance);
-	// ÅĞ¶ÏÄ³¸öµãÊÇ·ñÊÇÕÏ°­
+	// åˆ¤æ–­æŸä¸ªç‚¹æ˜¯å¦æ˜¯éšœç¢
 	int				CheckBarrier(int nChangeX, int nChangeY);
 };
 #endif

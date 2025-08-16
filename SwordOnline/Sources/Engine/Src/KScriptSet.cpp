@@ -4,15 +4,15 @@
 // File:	KScriptEngine.cpp
 // Date:	2001-9-11 10:33:35
 // Code:	Romandou
-// Desc:	½Å±¾¼¯ºÏ¿ØÖÆ»ùÀà
+// Desc:	è„šæœ¬é›†åˆæ§åˆ¶åŸºç±»
 //---------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KDebug.h"
 #include "KScriptSet.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::KScriptSet
-// ¹¦ÄÜ:	
-// ·µ»Ø:	
+// å‡½æ•°:	KScriptSet::KScriptSet
+// åŠŸèƒ½:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KScriptSet::KScriptSet()
 {
@@ -38,9 +38,9 @@ KScriptSet::KScriptSet(int Key_Style)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::~KScriptSet
-// ¹¦ÄÜ:	
-// ·µ»Ø:	
+// å‡½æ•°:	KScriptSet::~KScriptSet
+// åŠŸèƒ½:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KScriptSet::~KScriptSet()
 {
@@ -58,12 +58,12 @@ KScriptSet::~KScriptSet()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::GetScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey     //¸Ã½Å±¾µÄ¹Ø¼ü×Ö
-// ²ÎÊı:	BOOL nNeedCreate //µ±Î´ÔÚÁ´±íÖĞÕÒµ½Ê±ÊÇ·ñĞèÒªÖ±½ÓĞÂ½¨
-// ²ÎÊı:	BOOL nNeedUpdateRecent //ÊÇ·ñĞèÒª¸üĞÂRecent±í£¬ÖØĞÂÅÅĞò
-// ·µ»Ø:	KScript * 
+// å‡½æ•°:	KScriptSet::GetScript
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey     //è¯¥è„šæœ¬çš„å…³é”®å­—
+// å‚æ•°:	BOOL nNeedCreate //å½“æœªåœ¨é“¾è¡¨ä¸­æ‰¾åˆ°æ—¶æ˜¯å¦éœ€è¦ç›´æ¥æ–°å»º
+// å‚æ•°:	BOOL nNeedUpdateRecent //æ˜¯å¦éœ€è¦æ›´æ–°Recentè¡¨ï¼Œé‡æ–°æ’åº
+// è¿”å›:	KScript * 
 //---------------------------------------------------------------------------
 KScript * KScriptSet::GetScript(char * szKey, BOOL nNeedCreate = 1, BOOL nNeedUpdateRecent = 1)
 {
@@ -92,7 +92,7 @@ KScript * KScriptSet::GetScript(char * szKey, BOOL nNeedCreate = 1, BOOL nNeedUp
 		if (pGetTScript == NULL) 
 			return NULL;
 		
-		//		³õÊ¼»¯Recent±í
+		//		åˆå§‹åŒ–Recentè¡¨
 		pGetTScript->pLessRecent = NULL;
 		pGetTScript->pMoreRecent = NULL;
 		pGetTScript->pLeftChild = NULL;
@@ -113,7 +113,7 @@ KScript * KScriptSet::GetScript(char * szKey, BOOL nNeedCreate = 1, BOOL nNeedUp
 	
 	if (nResult == 0)
 	{
-		if (nNeedCreate)//µ±²éÕÒ²»µ½Ê±£¬ÊÇ·ñĞèÒª½¨Á¢Ò»¸ö
+		if (nNeedCreate)//å½“æŸ¥æ‰¾ä¸åˆ°æ—¶ï¼Œæ˜¯å¦éœ€è¦å»ºç«‹ä¸€ä¸ª
 		{
 			KScript * pNewScript;
 			if ( (pNewScript = CreateScript(szKey, GetInitStackSize(szKey)) ) == NULL )
@@ -127,14 +127,14 @@ KScript * KScriptSet::GetScript(char * szKey, BOOL nNeedCreate = 1, BOOL nNeedUp
 			pGetTScript->pScript = pNewScript;
 		}
 		else 
-			return NULL;//²»ĞèÒª½¨Á¢µÄ»°£¬¾Í·µ»Ø¿ÕÖµ
+			return NULL;//ä¸éœ€è¦å»ºç«‹çš„è¯ï¼Œå°±è¿”å›ç©ºå€¼
 		
 		
 	}
 	else
 		pGetTScript = pTScript;
 	
-	if (nNeedUpdateRecent)	//Èç¹ûĞèÒª¸üĞÂRecent±í£¬Ôò¸üĞÂ
+	if (nNeedUpdateRecent)	//å¦‚æœéœ€è¦æ›´æ–°Recentè¡¨ï¼Œåˆ™æ›´æ–°
 		UpdateRecent(nResult, pGetTScript);	
 	
 	return pGetTScript->pScript;
@@ -164,7 +164,7 @@ KScript * KScriptSet::GetScript(DWORD nKey, BOOL nNeedCreate = 1, BOOL nNeedUpda
 		if (pGetTScript == NULL) 
 			return NULL;
 		
-		//		³õÊ¼»¯Recent±í
+		//		åˆå§‹åŒ–Recentè¡¨
 		pGetTScript->pLessRecent = NULL;
 		pGetTScript->pMoreRecent = NULL;
 		pGetTScript->pLeftChild = NULL;
@@ -187,7 +187,7 @@ KScript * KScriptSet::GetScript(DWORD nKey, BOOL nNeedCreate = 1, BOOL nNeedUpda
 	
 	if (nResult == 0)
 	{
-		if (nNeedCreate)//µ±²éÕÒ²»µ½Ê±£¬ÊÇ·ñĞèÒª½¨Á¢Ò»¸ö
+		if (nNeedCreate)//å½“æŸ¥æ‰¾ä¸åˆ°æ—¶ï¼Œæ˜¯å¦éœ€è¦å»ºç«‹ä¸€ä¸ª
 		{
 			KScript * pNewScript;
 			if ( (pNewScript = CreateScript(nKey, GetInitStackSize(nKey)) ) == NULL )
@@ -201,33 +201,33 @@ KScript * KScriptSet::GetScript(DWORD nKey, BOOL nNeedCreate = 1, BOOL nNeedUpda
 			pGetTScript->pScript = pNewScript;
 		}
 		else 
-			return NULL;//²»ĞèÒª½¨Á¢µÄ»°£¬¾Í·µ»Ø¿ÕÖµ
+			return NULL;//ä¸éœ€è¦å»ºç«‹çš„è¯ï¼Œå°±è¿”å›ç©ºå€¼
 		
 		
 	}
 	else
 		pGetTScript = pTScript;
 	
-	if (nNeedUpdateRecent)	//Èç¹ûĞèÒª¸üĞÂRecent±í£¬Ôò¸üĞÂ
+	if (nNeedUpdateRecent)	//å¦‚æœéœ€è¦æ›´æ–°Recentè¡¨ï¼Œåˆ™æ›´æ–°
 		UpdateRecent(nResult, pGetTScript);	
 	
 	return pGetTScript->pScript;
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::UpdateRecent
-// ¹¦ÄÜ:	¸üĞÂRecent±í
-// ²ÎÊı:	BOOL bExistedScirpt  ÊÇ·ñpGetTScriptÊÇ¸öÔçÒÑ´æÔÚµÄ½Å±¾¶ÔÏó
-// ²ÎÊı:	TScript pGetTScript  ×îĞÂÊ¹ÓÃµÄ½Å±¾¶ÔÏó
-// ·µ»Ø:	void 
+// å‡½æ•°:	KScriptSet::UpdateRecent
+// åŠŸèƒ½:	æ›´æ–°Recentè¡¨
+// å‚æ•°:	BOOL bExistedScirpt  æ˜¯å¦pGetTScriptæ˜¯ä¸ªæ—©å·²å­˜åœ¨çš„è„šæœ¬å¯¹è±¡
+// å‚æ•°:	TScript pGetTScript  æœ€æ–°ä½¿ç”¨çš„è„šæœ¬å¯¹è±¡
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KScriptSet::UpdateRecent(BOOL bExistedScript, TScript *pGetTScript)
 {
 	BOOL nResult  = bExistedScript;
 	
-	if (nResult == 0)//ĞÂÉú³ÉµÄ½Å±¾
+	if (nResult == 0)//æ–°ç”Ÿæˆçš„è„šæœ¬
 	{
-		if (m_pRootList == NULL)//µÚÒ»¸ö½áµã
+		if (m_pRootList == NULL)//ç¬¬ä¸€ä¸ªç»“ç‚¹
 		{
 			pGetTScript->pLessRecent = NULL;
 			pGetTScript->pMoreRecent = NULL;
@@ -243,7 +243,7 @@ void KScriptSet::UpdateRecent(BOOL bExistedScript, TScript *pGetTScript)
 		}
 		
 	}
-	else //Ê¹ÓÃµÄÊÇÒÑ´æÔÚµÄ½Å±¾
+	else //ä½¿ç”¨çš„æ˜¯å·²å­˜åœ¨çš„è„šæœ¬
 	{
 		
 		if (pGetTScript->pLessRecent == NULL && pGetTScript->pMoreRecent == NULL)
@@ -251,12 +251,12 @@ void KScriptSet::UpdateRecent(BOOL bExistedScript, TScript *pGetTScript)
 			return ;
 		}
 		
-		if (pGetTScript == m_pLestRecent)//¸Ã½áµãÔÚÁ´±íµÄÄ©Î²
+		if (pGetTScript == m_pLestRecent)//è¯¥ç»“ç‚¹åœ¨é“¾è¡¨çš„æœ«å°¾
 		{
-			if (pGetTScript->pMoreRecent)//ÊÇ·ñ²»Ö»Ò»¸ö½áµã
+			if (pGetTScript->pMoreRecent)//æ˜¯å¦ä¸åªä¸€ä¸ªç»“ç‚¹
 			{
 				
-				m_pLestRecent = pGetTScript->pMoreRecent;//ÉèÖÃm_pLestRecent
+				m_pLestRecent = pGetTScript->pMoreRecent;//è®¾ç½®m_pLestRecent
 				m_pLestRecent->pLessRecent = NULL;
 				
 				
@@ -268,7 +268,7 @@ void KScriptSet::UpdateRecent(BOOL bExistedScript, TScript *pGetTScript)
 			
 			
 		}
-		else if (pGetTScript == m_pMostRecent)//ÔÚÍ·½áµãÉÏ
+		else if (pGetTScript == m_pMostRecent)//åœ¨å¤´ç»“ç‚¹ä¸Š
 		{
 			
 		}
@@ -286,17 +286,17 @@ void KScriptSet::UpdateRecent(BOOL bExistedScript, TScript *pGetTScript)
 	}
 	
 	
-	m_pMostRecent = pGetTScript;//ÉèÖÃm_pMostRecent
+	m_pMostRecent = pGetTScript;//è®¾ç½®m_pMostRecent
 }
 
 
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::SearchScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KScriptSet::SearchScript
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 TScript *  KScriptSet::SearchScript(char * szKey, BOOL * pnResult)
 {
@@ -309,11 +309,11 @@ TScript *  KScriptSet::SearchScript(char * szKey, BOOL * pnResult)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	 KScriptSet::SearchScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nKey
-// ²ÎÊı:	BOOL * pnResult
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	 KScriptSet::SearchScript
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nKey
+// å‚æ•°:	BOOL * pnResult
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript *  KScriptSet::SearchScript(DWORD nKey, BOOL * pnResult)
 {
@@ -327,11 +327,11 @@ TScript *  KScriptSet::SearchScript(DWORD nKey, BOOL * pnResult)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	 KScriptSet::CreateScript
-// ¹¦ÄÜ:	ĞÂ½¨½Å±¾ÊµÀı£¬ÎªĞéº¯Êı£¬ÓÉÅÉÉúÀà¸ºÔğ½¨Á¢
-// ²ÎÊı:	char * szKey
-// ²ÎÊı:	int StackSize
-// ·µ»Ø:	KScript * 
+// å‡½æ•°:	 KScriptSet::CreateScript
+// åŠŸèƒ½:	æ–°å»ºè„šæœ¬å®ä¾‹ï¼Œä¸ºè™šå‡½æ•°ï¼Œç”±æ´¾ç”Ÿç±»è´Ÿè´£å»ºç«‹
+// å‚æ•°:	char * szKey
+// å‚æ•°:	int StackSize
+// è¿”å›:	KScript * 
 //---------------------------------------------------------------------------
 KScript *  KScriptSet::CreateScript(char * szKey , int StackSize)
 {
@@ -339,11 +339,11 @@ KScript *  KScriptSet::CreateScript(char * szKey , int StackSize)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	 KScriptSet::CreateScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nKey
-// ²ÎÊı:	int StackSize
-// ·µ»Ø:	KScript * 
+// å‡½æ•°:	 KScriptSet::CreateScript
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nKey
+// å‚æ•°:	int StackSize
+// è¿”å›:	KScript * 
 //---------------------------------------------------------------------------
 KScript *  KScriptSet::CreateScript(DWORD nKey , int StackSize)
 {
@@ -351,23 +351,23 @@ KScript *  KScriptSet::CreateScript(DWORD nKey , int StackSize)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::DeleteScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KScriptSet::DeleteScript
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KScriptSet::DeleteScript(char * szKey)
 {
-	BOOL nResult = FALSE;//²éÕÒµÄ½á¹û
-	TScript * pTScript;//²éÕÒ·µ»ØµÄÖ¸Õë
+	BOOL nResult = FALSE;//æŸ¥æ‰¾çš„ç»“æœ
+	TScript * pTScript;//æŸ¥æ‰¾è¿”å›çš„æŒ‡é’ˆ
 	pTScript = SearchScript(szKey, &nResult);
 	
-	if (nResult && pTScript) //ÔÚÁ´±íÖĞÕÒµ½ÁË¸Ã¹Ø¼ü×Ö
+	if (nResult && pTScript) //åœ¨é“¾è¡¨ä¸­æ‰¾åˆ°äº†è¯¥å…³é”®å­—
 	{
 		if (pTScript->pScript)
 			pTScript->pScript->Exit();
 		
-		if (pTScript->pLessRecent == NULL  && pTScript->pMoreRecent == NULL)//È«²¿Îª¿Õ£¬¼´Ö»ÓĞÒ»¸ö½áµã
+		if (pTScript->pLessRecent == NULL  && pTScript->pMoreRecent == NULL)//å…¨éƒ¨ä¸ºç©ºï¼Œå³åªæœ‰ä¸€ä¸ªç»“ç‚¹
 		{
 			m_pMostRecent = NULL;
 			m_pLestRecent = NULL;
@@ -376,7 +376,7 @@ BOOL KScriptSet::DeleteScript(char * szKey)
 			return DeleteScript(pTScript);
 		}
 		
-		else if (!(pTScript->pLessRecent && pTScript->pMoreRecent))//ÓĞÒ»¸öÎª¿Õ
+		else if (!(pTScript->pLessRecent && pTScript->pMoreRecent))//æœ‰ä¸€ä¸ªä¸ºç©º
 		{
 			
 			if (pTScript->pLessRecent)
@@ -401,7 +401,7 @@ BOOL KScriptSet::DeleteScript(char * szKey)
 			
 			return DeleteScript(pTScript);
 		}
-		else//È«Êµ
+		else//å…¨å®
 		{
 			pTScript->pLessRecent->pMoreRecent = pTScript->pMoreRecent;
 			pTScript->pMoreRecent->pLessRecent = pTScript->pLessRecent;
@@ -422,23 +422,23 @@ BOOL KScriptSet::DeleteScript(char * szKey)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::DeleteScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nKey
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KScriptSet::DeleteScript
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nKey
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KScriptSet::DeleteScript(DWORD nKey)
 {
-	BOOL nResult = FALSE;//²éÕÒµÄ½á¹û
-	TScript * pTScript;//²éÕÒ·µ»ØµÄÖ¸Õë
+	BOOL nResult = FALSE;//æŸ¥æ‰¾çš„ç»“æœ
+	TScript * pTScript;//æŸ¥æ‰¾è¿”å›çš„æŒ‡é’ˆ
 	pTScript = SearchScript(nKey, &nResult);
 	
-	if (nResult && pTScript) //ÔÚÁ´±íÖĞÕÒµ½ÁË¸Ã¹Ø¼ü×Ö
+	if (nResult && pTScript) //åœ¨é“¾è¡¨ä¸­æ‰¾åˆ°äº†è¯¥å…³é”®å­—
 	{
 		if (pTScript->pScript)
 			pTScript->pScript->Exit();
 		
-		if (pTScript->pLessRecent == NULL  && pTScript->pMoreRecent == NULL)//È«²¿Îª¿Õ£¬¼´Ö»ÓĞÒ»¸ö½áµã
+		if (pTScript->pLessRecent == NULL  && pTScript->pMoreRecent == NULL)//å…¨éƒ¨ä¸ºç©ºï¼Œå³åªæœ‰ä¸€ä¸ªç»“ç‚¹
 		{
 			m_pMostRecent = NULL;
 			m_pLestRecent = NULL;
@@ -446,7 +446,7 @@ BOOL KScriptSet::DeleteScript(DWORD nKey)
 			return DeleteScript(pTScript);
 		}
 		
-		else if (!(pTScript->pLessRecent && pTScript->pMoreRecent))//ÓĞÒ»¸öÎª¿Õ
+		else if (!(pTScript->pLessRecent && pTScript->pMoreRecent))//æœ‰ä¸€ä¸ªä¸ºç©º
 		{
 			
 			if (pTScript->pLessRecent)
@@ -471,7 +471,7 @@ BOOL KScriptSet::DeleteScript(DWORD nKey)
 			
 			return DeleteScript(pTScript);
 		}
-		else//È«Êµ
+		else//å…¨å®
 		{
 			pTScript->pLessRecent->pMoreRecent = pTScript->pMoreRecent;
 			pTScript->pMoreRecent->pLessRecent = pTScript->pLessRecent;
@@ -494,10 +494,10 @@ BOOL KScriptSet::DeleteScript(DWORD nKey)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::DeleteScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TScript * pTScript
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KScriptSet::DeleteScript
+// åŠŸèƒ½:	
+// å‚æ•°:	TScript * pTScript
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KScriptSet::DeleteScript(TScript * pTScript)
 {
@@ -510,11 +510,11 @@ BOOL KScriptSet::DeleteScript(TScript * pTScript)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::InsertScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey
-// ²ÎÊı:	KScript * pScript
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KScriptSet::InsertScript
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey
+// å‚æ•°:	KScript * pScript
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 TScript*  KScriptSet::InsertScript(char * szKey)
 {
@@ -535,10 +535,10 @@ TScript*  KScriptSet::InsertScript(char * szKey)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::InsertScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nKey
-// ·µ»Ø:	TScript*  
+// å‡½æ•°:	KScriptSet::InsertScript
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nKey
+// è¿”å›:	TScript*  
 //---------------------------------------------------------------------------
 TScript*  KScriptSet::InsertScript(DWORD nKey)
 {
@@ -561,10 +561,10 @@ TScript*  KScriptSet::InsertScript(DWORD nKey)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::GetScriptStackSize
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey
-// ·µ»Ø:	int 
+// å‡½æ•°:	KScriptSet::GetScriptStackSize
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int KScriptSet::GetInitStackSize(char * szKey)
 {
@@ -572,10 +572,10 @@ int KScriptSet::GetInitStackSize(char * szKey)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::GetScriptStackSize
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nKey
-// ·µ»Ø:	int 
+// å‡½æ•°:	KScriptSet::GetScriptStackSize
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nKey
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int KScriptSet::GetInitStackSize(DWORD nKey)
 {
@@ -584,9 +584,9 @@ int KScriptSet::GetInitStackSize(DWORD nKey)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KScriptSet::ListScriptsKey
-// ¹¦ÄÜ:	
-// ·µ»Ø:	void 
+// å‡½æ•°:	KScriptSet::ListScriptsKey
+// åŠŸèƒ½:	
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 DWORD  KScriptSet::ListScriptsKey()
 {
@@ -652,14 +652,14 @@ BOOL KScriptSet::RunFunction(DWORD nKey, char * szFuncName, char * szFormat, ...
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTSearch
-// ¹¦ÄÜ:	²éÕÒÊÇ·ñ´æÔÚÖ¸¶¨µÄ¹Ø¼ü×ÖµÄ¶ş²æÊ÷½áµã£¬Èç¹û´æÔÚÔò*pResult = 1,·µ»ØÏàÓ¦Ö¸Õë£»
-//			·ñÔòµÄ»°*pResult = 0,·µ»Ø×î½Ó½üµÄÖ¸Õë£¨¸ÃÖ¸Õë¶Ô½ñºó²åÈëÓĞÓÃ£©
-// ²ÎÊı:	TScript * pParentTScript Îªµİ¹éµ÷ÓÃ´«Èë¸¸½áµã
-// ²ÎÊı:	TScript * pTScript
-// ²ÎÊı:	char * szKey	¹Ø¼üµã
-// ²ÎÊı:	BOOL * pResult Ö¸ÏòÊÇ·ñÕÒµ½¸Ã½áµãµÄ±êÖ¾
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	BTSearch
+// åŠŸèƒ½:	æŸ¥æ‰¾æ˜¯å¦å­˜åœ¨æŒ‡å®šçš„å…³é”®å­—çš„äºŒå‰æ ‘ç»“ç‚¹ï¼Œå¦‚æœå­˜åœ¨åˆ™*pResult = 1,è¿”å›ç›¸åº”æŒ‡é’ˆï¼›
+//			å¦åˆ™çš„è¯*pResult = 0,è¿”å›æœ€æ¥è¿‘çš„æŒ‡é’ˆï¼ˆè¯¥æŒ‡é’ˆå¯¹ä»Šåæ’å…¥æœ‰ç”¨ï¼‰
+// å‚æ•°:	TScript * pParentTScript ä¸ºé€’å½’è°ƒç”¨ä¼ å…¥çˆ¶ç»“ç‚¹
+// å‚æ•°:	TScript * pTScript
+// å‚æ•°:	char * szKey	å…³é”®ç‚¹
+// å‚æ•°:	BOOL * pResult æŒ‡å‘æ˜¯å¦æ‰¾åˆ°è¯¥ç»“ç‚¹çš„æ ‡å¿—
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, char * szKey, BOOL * pResult)
 {
@@ -686,13 +686,13 @@ TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, char * szKey, B
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTSearch
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TScript * pParentTScript
-// ²ÎÊı:	TScript * pTScript
-// ²ÎÊı:	DWORD nKey
-// ²ÎÊı:	BOOL * pResult
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	BTSearch
+// åŠŸèƒ½:	
+// å‚æ•°:	TScript * pParentTScript
+// å‚æ•°:	TScript * pTScript
+// å‚æ•°:	DWORD nKey
+// å‚æ•°:	BOOL * pResult
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, DWORD nKey, BOOL * pResult)
 {
@@ -719,11 +719,11 @@ TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, DWORD nKey, BOO
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTInsert
-// ¹¦ÄÜ:	ÒÔpTScrptÎª¸¸£¬²åÈëÒÔszKeyÎª¹Ø¼üµãµÄ½áµã
-// ²ÎÊı:	TScript *pTScript 
-// ²ÎÊı:	char * szKey
-// ·µ»Ø:	TScript * ·µ»Ø²åÈëµÄ½áµã
+// å‡½æ•°:	BTInsert
+// åŠŸèƒ½:	ä»¥pTScrptä¸ºçˆ¶ï¼Œæ’å…¥ä»¥szKeyä¸ºå…³é”®ç‚¹çš„ç»“ç‚¹
+// å‚æ•°:	TScript *pTScript 
+// å‚æ•°:	char * szKey
+// è¿”å›:	TScript * è¿”å›æ’å…¥çš„ç»“ç‚¹
 //---------------------------------------------------------------------------
 TScript * BTInsert(TScript *pTScript, char * szKey)
 {
@@ -741,7 +741,7 @@ TScript * BTInsert(TScript *pTScript, char * szKey)
 	
 	if (nResult == 0)
 		return NULL;
-	//¸ù¾İ´óĞ¡È·¶¨×ó×Ó»¹ÊÇÓÒ×Ó
+	//æ ¹æ®å¤§å°ç¡®å®šå·¦å­è¿˜æ˜¯å³å­
 	if (nResult > 0)
 	{
 		pTScript->pRightChild = pNewTScript;
@@ -757,11 +757,11 @@ TScript * BTInsert(TScript *pTScript, char * szKey)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTInsert
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TScript *pTScript
-// ²ÎÊı:	DWORD nKey
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	BTInsert
+// åŠŸèƒ½:	
+// å‚æ•°:	TScript *pTScript
+// å‚æ•°:	DWORD nKey
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript * BTInsert(TScript *pTScript, DWORD nKey)
 {
@@ -778,7 +778,7 @@ TScript * BTInsert(TScript *pTScript, DWORD nKey)
 		
 	if (nKey == pTScript->nKey)
 		return NULL;
-	//¸ù¾İ´óĞ¡È·¶¨×ó×Ó»¹ÊÇÓÒ×Ó
+	//æ ¹æ®å¤§å°ç¡®å®šå·¦å­è¿˜æ˜¯å³å­
 	if (nKey > pTScript->nKey)
 	{
 		pTScript->pRightChild = pNewTScript;
@@ -797,11 +797,11 @@ TScript * BTInsert(TScript *pTScript, DWORD nKey)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	 BTDelete
-// ¹¦ÄÜ:	É¾³ı½áµã
-// ²ÎÊı:	TScript * pTScript
-// ²ÎÊı:	TScript ** ppRootTScript
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	 BTDelete
+// åŠŸèƒ½:	åˆ é™¤ç»“ç‚¹
+// å‚æ•°:	TScript * pTScript
+// å‚æ•°:	TScript ** ppRootTScript
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 {
@@ -809,7 +809,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 	if (pTScript == NULL)
 		return NULL;
 	
-	if (pTScript->pLeftChild == NULL && pTScript->pRightChild == NULL)//¸Ã½áµãÃ»ÓĞ×óÓÒ×Ó
+	if (pTScript->pLeftChild == NULL && pTScript->pRightChild == NULL)//è¯¥ç»“ç‚¹æ²¡æœ‰å·¦å³å­
 	{
 		if (*ppRootTScript == pTScript)
 		{
@@ -833,7 +833,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 			}
 			
 
-			if (nResult < 0)//Ğ¡ÓÚ
+			if (nResult < 0)//å°äº
 				pTScript->pParent->pLeftChild = NULL;
 			else
 				pTScript->pParent->pRightChild = NULL;
@@ -844,7 +844,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 		return NULL;
 	}
 	
-	else if (!(pTScript->pLeftChild && pTScript->pRightChild))//Ö»ÓĞµ¥×ÓÊ±
+	else if (!(pTScript->pLeftChild && pTScript->pRightChild))//åªæœ‰å•å­æ—¶
 	{
 		if (pTScript == *ppRootTScript)
 		{
@@ -879,10 +879,10 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 		}
 
 		
-		if (nResult < 0)//ÔÚ¸¸µÄ×ó±ß
+		if (nResult < 0)//åœ¨çˆ¶çš„å·¦è¾¹
 		{
 			
-			if (pTScript->pLeftChild)//Ö»ÓĞ×ó×Ó
+			if (pTScript->pLeftChild)//åªæœ‰å·¦å­
 			{
 				pTScript->pParent->pLeftChild = pTScript->pLeftChild;
 				pTScript->pLeftChild->pParent = pTScript->pParent;
@@ -898,7 +898,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 		}
 		else 
 		{
-			if (pTScript->pLeftChild)//Ö»ÓĞ×ó×Ó
+			if (pTScript->pLeftChild)//åªæœ‰å·¦å­
 			{
 				pTScript->pParent->pRightChild = pTScript->pLeftChild;
 				pTScript->pLeftChild->pParent = pTScript->pParent;
@@ -916,10 +916,10 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 		return NULL;
 		
 	}  
-	else//ÓĞÈ«×Ó 
+	else//æœ‰å…¨å­ 
 	{
 		
-		//if (strcmp(pTScript, pTScript->pParent) < 0)//ÔÚ¸¸µÄ×óÃæ
+		//if (strcmp(pTScript, pTScript->pParent) < 0)//åœ¨çˆ¶çš„å·¦é¢
 		{
 			
 			pFindTScript = BTFindLess(pTScript->pLeftChild);
@@ -927,11 +927,11 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 			if (pFindTScript)
 			{
 				
-				//µÚÒ»²¿·Ö£º´¦Àí¸Ã½áµãÓĞ×ó×ÓÊ±£¬¶Ô×ó×Ó½øĞĞÖ¸ÏòµÄ¸Ä±ä
-				//¸Ã½áµãÈÔÓĞ×ó×Ó
+				//ç¬¬ä¸€éƒ¨åˆ†ï¼šå¤„ç†è¯¥ç»“ç‚¹æœ‰å·¦å­æ—¶ï¼Œå¯¹å·¦å­è¿›è¡ŒæŒ‡å‘çš„æ”¹å˜
+				//è¯¥ç»“ç‚¹ä»æœ‰å·¦å­
 				if (pFindTScript->pLeftChild)
 				{
-					//µ±·¢ÏÖËù½«ÒªÌæ´úµÄ½áµãÕıÊÇËüµÄ×ó×ÓÊ±£¬½«Ô­À´µÄ¹ØÏµ²»½«±ä»¯£»·ñÔò°´Õı³£Ë¼Â·¸Ä±ä
+					//å½“å‘ç°æ‰€å°†è¦æ›¿ä»£çš„ç»“ç‚¹æ­£æ˜¯å®ƒçš„å·¦å­æ—¶ï¼Œå°†åŸæ¥çš„å…³ç³»ä¸å°†å˜åŒ–ï¼›å¦åˆ™æŒ‰æ­£å¸¸æ€è·¯æ”¹å˜
 					if (pFindTScript != pTScript->pLeftChild)
 					{
 						pFindTScript->pParent->pRightChild = pFindTScript->pLeftChild;
@@ -947,14 +947,14 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 					
 				}
 				
-				//µÚ¶ş²¿·Ö£º¸Ä±äÌæ»»½áµãÁ´½á£¬ÊµÏÖÓëÔ­½áµãÏàÍ¬¡£
-				//´¦Àíµ±¸ÃÌæ»»µÄ½áµãÎªÉ¾³ı½áµãµÄ×ó×ÓµÄÌØÊâÇé¿ö
+				//ç¬¬äºŒéƒ¨åˆ†ï¼šæ”¹å˜æ›¿æ¢ç»“ç‚¹é“¾ç»“ï¼Œå®ç°ä¸åŸç»“ç‚¹ç›¸åŒã€‚
+				//å¤„ç†å½“è¯¥æ›¿æ¢çš„ç»“ç‚¹ä¸ºåˆ é™¤ç»“ç‚¹çš„å·¦å­çš„ç‰¹æ®Šæƒ…å†µ
 				if (pFindTScript == pTScript->pLeftChild)
 				{
-					//Æä×ó×Ó²»ÓÃ½»´ú£¬±£³ÖÔ­×´
+					//å…¶å·¦å­ä¸ç”¨äº¤ä»£ï¼Œä¿æŒåŸçŠ¶
 					pTScript->pRightChild->pParent = pFindTScript;
 					
-					//Æä×ó×Ó²»ÓÃ½»´ú,±£³ÖÔ­×´	
+					//å…¶å·¦å­ä¸ç”¨äº¤ä»£,ä¿æŒåŸçŠ¶	
 					pFindTScript->pRightChild = pTScript->pRightChild;
 					pFindTScript->pParent = pTScript->pParent;
 					
@@ -973,7 +973,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 				}
 				
 				
-				//µÚÈı²¿·Ö   É¾³ı½áµãÖ®¸¸½áµãÁ´½á
+				//ç¬¬ä¸‰éƒ¨åˆ†   åˆ é™¤ç»“ç‚¹ä¹‹çˆ¶ç»“ç‚¹é“¾ç»“
 				
 				if (*ppRootTScript == pTScript)
 				{
@@ -999,7 +999,7 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 					}
 
 
-					if (nResult < 0)//ÔÚ¸¸µÄ×óÃæ
+					if (nResult < 0)//åœ¨çˆ¶çš„å·¦é¢
 					{
 						pTScript->pParent->pLeftChild = pFindTScript;
 					}
@@ -1023,10 +1023,10 @@ TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTFindLess
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TScript * pTScript
-// ·µ»Ø:	TScript * 
+// å‡½æ•°:	BTFindLess
+// åŠŸèƒ½:	
+// å‚æ•°:	TScript * pTScript
+// è¿”å›:	TScript * 
 //---------------------------------------------------------------------------
 TScript * BTFindLess(TScript * pTScript)
 {
@@ -1042,12 +1042,12 @@ TScript * BTFindLess(TScript * pTScript)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTPreorder
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TScript * pTScript
-// ·µ»Ø:	DWORD  
+// å‡½æ•°:	BTPreorder
+// åŠŸèƒ½:	
+// å‚æ•°:	TScript * pTScript
+// è¿”å›:	DWORD  
 //---------------------------------------------------------------------------
-DWORD  BTPreorder(TScript * pTScript)//ÖĞĞò±éÀú
+DWORD  BTPreorder(TScript * pTScript)//ä¸­åºéå†
 {
 	static DWORD nCount = 0;
 	if (pTScript != NULL)

@@ -3,7 +3,7 @@
 //
 // File:	KPlayerTask.h
 // Date:	2002.10.05
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	PlayerTask Class
 //---------------------------------------------------------------------------
 #include 	"GameDataDef.h"
@@ -36,17 +36,17 @@ class KPlayerTask
 private:
 	int			m_nPlayerIndex;
 public:
-	char		szSave[MAX_TASK][16];					// ÓÃÓÚ¼ÇÂ¼ÈÎÎñÊÇ·ñÍê³É£¬Ğë±£´æµ½Êı¾İ¿â
+	char		szSave[MAX_TASK][16];					// ç”¨äºè®°å½•ä»»åŠ¡æ˜¯å¦å®Œæˆï¼Œé¡»ä¿å­˜åˆ°æ•°æ®åº“
 	char		szClear[MAX_TEMP_TASK][16];
-										// ÓÃÓÚ¼ÇÂ¼ÈÎÎñ¹ı³ÌÖĞµÄÖĞ¼ä²½ÖèµÄÍê³ÉÇé¿ö£¬²»±£´æµ½Êı¾İ¿â£¬Íæ¼ÒÏÂÏßºó´ÎÊı¾İÇå¿Õ
+										// ç”¨äºè®°å½•ä»»åŠ¡è¿‡ç¨‹ä¸­çš„ä¸­é—´æ­¥éª¤çš„å®Œæˆæƒ…å†µï¼Œä¸ä¿å­˜åˆ°æ•°æ®åº“ï¼Œç©å®¶ä¸‹çº¿åæ¬¡æ•°æ®æ¸…ç©º
 public:
-	KPlayerTask();									// ¹¹Ôìº¯Êı
-	void		Release();							// Çå¿Õ
-	void		ClearTempVar();						// Çå³ıÁÙÊ±¹ı³Ì¿ØÖÆ±äÁ¿
-				// µÃµ½ÈÎÎñÍê³ÉÇé¿ö
-	int			GetClearVal(int nNo);				// µÃµ½ÁÙÊ±¹ı³Ì¿ØÖÆ±äÁ¿Öµ
-	const char*		GetClearStr(int nNo);				// µÃµ½ÁÙÊ±¹ı³Ì¿ØÖÆ±äÁ¿Öµ
-	void		SetClearVal(int nNo, char* szVal);		// Éè¶¨ÁÙÊ±¹ı³Ì¿ØÖÆ±äÁ¿Öµ
+	KPlayerTask();									// æ„é€ å‡½æ•°
+	void		Release();							// æ¸…ç©º
+	void		ClearTempVar();						// æ¸…é™¤ä¸´æ—¶è¿‡ç¨‹æ§åˆ¶å˜é‡
+				// å¾—åˆ°ä»»åŠ¡å®Œæˆæƒ…å†µ
+	int			GetClearVal(int nNo);				// å¾—åˆ°ä¸´æ—¶è¿‡ç¨‹æ§åˆ¶å˜é‡å€¼
+	const char*		GetClearStr(int nNo);				// å¾—åˆ°ä¸´æ—¶è¿‡ç¨‹æ§åˆ¶å˜é‡å€¼
+	void		SetClearVal(int nNo, char* szVal);		// è®¾å®šä¸´æ—¶è¿‡ç¨‹æ§åˆ¶å˜é‡å€¼
 	void		SetSaveVal(int nTaskID, char* szTaskVal, BOOL bSync = FALSE);
 	void		SetSaveVal(int nTaskID, int nTaskVal, BOOL bSync = FALSE);
 	int			GetSaveVal(int nNo);

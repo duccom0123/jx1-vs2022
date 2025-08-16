@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//  ±íÏÖÄ£¿éµÄ¶ÔÍâ½Ó¿ÚµÄÈıÎ¬°æ±¾ÊµÏÖ¡£
+//  è¡¨ç°æ¨¡å—çš„å¯¹å¤–æ¥å£çš„ä¸‰ç»´ç‰ˆæœ¬å®ç°ã€‚
 //	Copyright : Kingsoft 2002
 //	Author	:   cp(Chenpeng)
 //	CreateTime:	2003-3-4
@@ -53,13 +53,13 @@ bool Test3D()
 	pDDraw7->GetCaps(&hel_ddcaps, &hal_ddcpas);
 	pDDraw7->Release();
 
-	// Èç¹ûÏÔ´æĞ¡ÓÚ32Õ×Ôò·µ»Ø¼Ù
+	// å¦‚æœæ˜¾å­˜å°äº32å…†åˆ™è¿”å›å‡
 	if(hel_ddcaps.dwVidMemTotal < 33554432)
 		return false;
 
 	MEMORYSTATUS stat;
 	GlobalMemoryStatus (&stat);
-	// Èç¹ûÎïÀíÄÚ´æĞ¡ÓÚ128Õ×Ôò·µ»Ø¼Ù
+	// å¦‚æœç‰©ç†å†…å­˜å°äº128å…†åˆ™è¿”å›å‡
 	if(stat.dwTotalPhys < 134217728)
 		return false;
 
@@ -79,7 +79,7 @@ static inline DWORD ARGBToDWORD(DWORD a, DWORD r, DWORD g, DWORD b)
 	return (a<<24) | (r<<16) | (g<<8) | b;
 }
 
-// ½«color1ÓÃcolor2×öÆ«É«
+// å°†color1ç”¨color2åšåè‰²
 static inline DWORD ScaleColor(DWORD color1, DWORD color2)
 {
 	DWORD a1, r1, g1, b1, a2, r2, g2, b2;
@@ -104,7 +104,7 @@ static inline DWORD ScaleColor(DWORD color1, DWORD r, DWORD g, DWORD b)
 	return ARGBToDWORD(a1, r1, g1, b1);
 }
 
-// inlineº¯Êı·ÅÔÚÎÄ¼şµÄÇ°²¿£¬¿ÉÒÔÊ¹µÃRelease°æ±¾Ğ§ÂÊ¸ü¸ß
+// inlineå‡½æ•°æ”¾åœ¨æ–‡ä»¶çš„å‰éƒ¨ï¼Œå¯ä»¥ä½¿å¾—Releaseç‰ˆæœ¬æ•ˆç‡æ›´é«˜
 inline unsigned int KRepresentShell3::GetPoint3dLighting(D3DXVECTOR3& v)
 {
 	if(!m_bDoLighting)
@@ -119,7 +119,7 @@ inline unsigned int KRepresentShell3::GetPoint3dLighting(D3DXVECTOR3& v)
         return pLightingArray[0];
         
 	return pLightingArray[
-		// ÕâÀï²»ÄÜĞ´³ÉuY * LIGHTING_GRID_WIDTH / LIGHTING_GRID_SIZEY,ÒòÎªuY / LIGHTING_GRID_SIZEYÕâÒ»²½ÉáÈ¥Ğ¡Êı²¿·ÖÊÇ±ØĞëµÄ
+		// è¿™é‡Œä¸èƒ½å†™æˆuY * LIGHTING_GRID_WIDTH / LIGHTING_GRID_SIZEY,å› ä¸ºuY / LIGHTING_GRID_SIZEYè¿™ä¸€æ­¥èˆå»å°æ•°éƒ¨åˆ†æ˜¯å¿…é¡»çš„
         (uY / LIGHTING_GRID_SIZEY * LIGHTING_GRID_WIDTH) +
         (uX / LIGHTING_GRID_SIZEX)
     ];
@@ -170,18 +170,18 @@ static WORD g_A8ToA4[256] =
     0xf000,0xf000,0xf000,0xf000,0xf000,0xf000,0xf000,0xf000
 };
 
-// ½«sprÊı¾İ×ª»»µ½A4R4G4B4»º³åÇø
+// å°†spræ•°æ®è½¬æ¢åˆ°A4R4G4B4ç¼“å†²åŒº
 void RenderToA4R4G4B4(
     WORD* pDest, uint32 nPitch, PBYTE pData,
     RECT &rect, uint32 nWidth, uint32 nHeight, 
     WORD* pPalette
 )
 {
-	uint32 nPixelCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
+	uint32 nPixelCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
 	uint32 nTotlePixel = nWidth * nHeight;
     uint32 nNextWidth = nWidth;
 	uint32 pixelNum;
-	BYTE *pTexLine = (BYTE*)pDest;					// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexLine = (BYTE*)pDest;					// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 	pTexLine += rect.top * nPitch + rect.left * 2;
 	BYTE *pLine = pTexLine;
 	for(;;)
@@ -206,7 +206,7 @@ void RenderToA4R4G4B4(
 			}
 		}
 
-		// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+		// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 		if (nPixelCount >= nNextWidth)
         {
 			pLine = pTexLine = pTexLine + nPitch;
@@ -219,13 +219,13 @@ void RenderToA4R4G4B4(
 	}
 }
 
-// äÖÈ¾´°¿ÚµÄ´°¿Úº¯Êı
+// æ¸²æŸ“çª—å£çš„çª—å£å‡½æ•°
 LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
     return DefWindowProc( hWnd, uMsg, wParam, lParam );
 }
 
-// ½«ÊÀ½ç×ø±ê×ª»»µ½ÆÁÄ»×ø±ê
+// å°†ä¸–ç•Œåæ ‡è½¬æ¢åˆ°å±å¹•åæ ‡
 D3DXVECTOR3* WorldToScreen
     ( D3DXVECTOR3 *pOut, CONST D3DXVECTOR3 *pV, CONST D3DVIEWPORT9 *pViewport,
       CONST D3DXMATRIX *pProjection, CONST D3DXMATRIX *pView, CONST D3DXMATRIX *pWorld)
@@ -237,37 +237,37 @@ D3DXVECTOR3* WorldToScreen
 	return pOut;
 }
 
-// fd2,fd2Ä¿±êÇøÓò£¬fs1,fs2Ô­ÇøÓò£¬µãÔÚÔ­ÇøÓòÖĞµÄÎ»ÖÃ
-// ·µ»ØµãÔÚÄ¿±êÇøÓòµÄÎ»ÖÃ
+// fd2,fd2ç›®æ ‡åŒºåŸŸï¼Œfs1,fs2åŸåŒºåŸŸï¼Œç‚¹åœ¨åŸåŒºåŸŸä¸­çš„ä½ç½®
+// è¿”å›ç‚¹åœ¨ç›®æ ‡åŒºåŸŸçš„ä½ç½®
 inline float ChaZhi(float fd1, float fd2, float fs1, float fs2, float fs)
 {
 	return (fs - fs1) / (fs2 - fs1) * (fd2 - fd1) + fd1;
 }
 
-// °´fsÏà¶ÔÓÚfs1ºÍfs2µÄÎ»ÖÃ¶Ôv1ºÍv2½øĞĞ²îÖµ
+// æŒ‰fsç›¸å¯¹äºfs1å’Œfs2çš„ä½ç½®å¯¹v1å’Œv2è¿›è¡Œå·®å€¼
 inline D3DXVECTOR3 ChaZhi(D3DXVECTOR3 v1, D3DXVECTOR3 v2, float fs1, float fs2, float fs)
 {
 	return (v2 - v1) * (fs - fs1) / (fs2 - fs1) + v1;
 }
 
-//=========²âÊÔÄ£¿éĞÔÄÜ£¬ÅĞ¶ÏÊÇ·ñÍÆ¼öÊ¹ÓÃ===============
+//=========æµ‹è¯•æ¨¡å—æ€§èƒ½ï¼Œåˆ¤æ–­æ˜¯å¦æ¨èä½¿ç”¨===============
 extern "C" __declspec(dllexport)
 bool RepresentIsModuleRecommended()
 {
 	return Test3D();
 }
 
-//=========´´½¨Ò»¸öiRepresentShell½Ó¿ÚµÄÊµÀı===============
+//=========åˆ›å»ºä¸€ä¸ªiRepresentShellæ¥å£çš„å®ä¾‹===============
 extern "C" __declspec(dllexport)
 iRepresentShell* CreateRepresentShell()
 {
 	return (new KRepresentShell3);
 }
 
-IInlinePicEngineSink* g_pIInlinePicSinkRP = NULL;	//Ç¶ÈëÊ½Í¼Æ¬µÄ´¦Àí½Ó¿Ú[wxb 2003-6-20]
+IInlinePicEngineSink* g_pIInlinePicSinkRP = NULL;	//åµŒå…¥å¼å›¾ç‰‡çš„å¤„ç†æ¥å£[wxb 2003-6-20]
 HRESULT KRepresentShell3::AdviseRepresent(IInlinePicEngineSink* pSink)
 {
-	assert(NULL == g_pIInlinePicSinkRP);	//Ò»°ã²»»á¹Ò½ÓÁ½´Î
+	assert(NULL == g_pIInlinePicSinkRP);	//ä¸€èˆ¬ä¸ä¼šæŒ‚æ¥ä¸¤æ¬¡
 	g_pIInlinePicSinkRP = pSink;
 	return S_OK;
 }
@@ -328,7 +328,7 @@ void KRepresentShell3::SetOption(RepresentOption eOption,	bool bOn)
 
 void KRepresentShell3::SetUpProjectionMatrix()
 {
-	// ¸ù¾İg_renderModelÉèÖÃÍ¶Ó°±ä»»¾ØÕó
+	// æ ¹æ®g_renderModelè®¾ç½®æŠ•å½±å˜æ¢çŸ©é˜µ
 	float fAspect = (float)(g_nScreenWidth / g_nScreenHeight * 1.37);
 	if(g_renderModel == RenderModel3DOrtho)
 		D3DXMatrixOrthoLH(&m_matProj, g_nScreenWidth, g_nScreenHeight, 1.0f, 20000.0f );
@@ -345,7 +345,7 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 		return false;
 	g_DebugLog("[D3DRender]g_D3DShell create ok!");
 
-	// È¡µÃ´°¿Ú¾ä±ú
+	// å–å¾—çª—å£å¥æŸ„
 	g_hWnd = g_GetMainHWnd();
 	if(!g_hWnd)
 		return false;
@@ -369,7 +369,7 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 	pDeviceInfo = g_D3DShell.PickDefaultDev(&pAdapterInfo);
 	if (!pDeviceInfo)
 	{
-		// ÎŞ·¨ÕÒµ½ºÏÊÊµÄD3DÉè±¸
+		// æ— æ³•æ‰¾åˆ°åˆé€‚çš„D3Dè®¾å¤‡
 		D3DTerm();
 		g_DebugLog("[D3DRender]Can't find any d3d devices to use!");
 		return false; 
@@ -378,13 +378,13 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 	pModeInfo = g_D3DShell.PickDefaultMode(pDeviceInfo,DEFAULT_BITDEPTH);
 	if (!pModeInfo)
 	{
-		// ÎŞ·¨ÕÒµ½ºÏÊÊµÄÏÔÊ¾Ä£Ê½
+		// æ— æ³•æ‰¾åˆ°åˆé€‚çš„æ˜¾ç¤ºæ¨¡å¼
 		D3DTerm();
 		g_DebugLog("[D3DRender]Can't find an appropriate display mode!");
 		return false;
 	}
 
-	// ´´½¨Éè±¸
+	// åˆ›å»ºè®¾å¤‡
 	if (!g_Device.CreateDevice(pAdapterInfo,pDeviceInfo,pModeInfo))
 	{
 		D3DTerm();
@@ -392,7 +392,7 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 		return false;
 	}
 
-	// ÉèÖÃÏÔÊ¾Ä£Ê½
+	// è®¾ç½®æ˜¾ç¤ºæ¨¡å¼
 	if (!Reset(nWidth, nHeight, bFullScreen))
 		return false;
 	g_DebugLog("[D3DRender]Device reset ok!");
@@ -411,7 +411,7 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 
 	SetGamma(50);
 
-	// ³õÊ¼»¯Gdi+
+	// åˆå§‹åŒ–Gdi+
 	InitGdiplus();
 
 	return true;
@@ -419,7 +419,7 @@ bool KRepresentShell3::Create(int nWidth, int nHeight, bool bFullScreen)
 
 bool KRepresentShell3::InitDeviceObjects()
 {
-	// ´´½¨Ô¤äÖÈ¾Ö÷½ÇµÄÌùÍ¼
+	// åˆ›å»ºé¢„æ¸²æŸ“ä¸»è§’çš„è´´å›¾
 	if (FAILED(PD3DDEVICE->CreateTexture(SPR_PRERENDER_TEXSIZE1, SPR_PRERENDER_TEXSIZE1, 1,
 								0, D3DFMT_A4R4G4B4, D3DPOOL_MANAGED, &m_pPreRenderTexture128, NULL)))
 		return false;
@@ -470,7 +470,7 @@ bool KRepresentShell3::RestoreDeviceObjects()
 	int i;
 	if(!m_pVB2D)
 	{
-		// ´´½¨·ÇÍ¸ÊÓ×´Ì¬Ê¹ÓÃµÄ¶¥µã»º³åÇø
+		// åˆ›å»ºéé€è§†çŠ¶æ€ä½¿ç”¨çš„é¡¶ç‚¹ç¼“å†²åŒº
 		if( FAILED(PD3DDEVICE->CreateVertexBuffer( VERTEX_BUFFER_SIZE*sizeof(VERTEX2D),
 						D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC | D3DUSAGE_SOFTWAREPROCESSING, 
 						D3DFVF_VERTEX2D, D3DPOOL_DEFAULT, &m_pVB2D, NULL)))
@@ -479,7 +479,7 @@ bool KRepresentShell3::RestoreDeviceObjects()
 
 	if((g_renderModel == RenderModel3DOrtho || g_renderModel == RenderModel3DPerspective) && !m_pVB3D)
 	{
-		// ´´½¨Í¸ÊÓ×´Ì¬Ê¹ÓÃµÄ¶¥µã»º³åÇø
+		// åˆ›å»ºé€è§†çŠ¶æ€ä½¿ç”¨çš„é¡¶ç‚¹ç¼“å†²åŒº
 		if( FAILED(PD3DDEVICE->CreateVertexBuffer( VERTEX_BUFFER_SIZE*sizeof(VERTEX3D),
 						D3DUSAGE_WRITEONLY | D3DUSAGE_DYNAMIC | D3DUSAGE_SOFTWAREPROCESSING, 
 						D3DFVF_VERTEX3D, D3DPOOL_DEFAULT, &m_pVB3D, NULL)))
@@ -497,12 +497,12 @@ bool KRepresentShell3::RestoreDeviceObjects()
 	if(!m_TextureResMgr.RestoreDeviceObjects())
 		return false;
 
-	// ÉèÖÃäÖÈ¾×´Ì¬
-	// Ê¹ÓÃAlpha»ìºÏ
+	// è®¾ç½®æ¸²æŸ“çŠ¶æ€
+	// ä½¿ç”¨Alphaæ··åˆ
 	PD3DDEVICE->SetRenderState( D3DRS_ALPHABLENDENABLE, TRUE );
     PD3DDEVICE->SetRenderState( D3DRS_SRCBLEND,   D3DBLEND_SRCALPHA );
     PD3DDEVICE->SetRenderState( D3DRS_DESTBLEND,  D3DBLEND_INVSRCALPHA );
-	// ¹Ø±ÕAlpha²âÊÔ
+	// å…³é—­Alphaæµ‹è¯•
     PD3DDEVICE->SetRenderState( D3DRS_ALPHATESTENABLE,  FALSE );
     PD3DDEVICE->SetRenderState( D3DRS_FILLMODE,   D3DFILL_SOLID );
     PD3DDEVICE->SetRenderState( D3DRS_CULLMODE,   D3DCULL_NONE );
@@ -513,22 +513,22 @@ bool KRepresentShell3::RestoreDeviceObjects()
     PD3DDEVICE->SetRenderState( D3DRS_INDEXEDVERTEXBLENDENABLE, FALSE );
     PD3DDEVICE->SetRenderState( D3DRS_FOGENABLE,        FALSE );
 	PD3DDEVICE->SetRenderState( D3DRS_LIGHTING,FALSE );
-	// ÉèÖÃÌùÍ¼äÖÈ¾½×¶Î0
-	// ÉèÖÃÑÕÉ«»ìºÏÄ£Ê½
+	// è®¾ç½®è´´å›¾æ¸²æŸ“é˜¶æ®µ0
+	// è®¾ç½®é¢œè‰²æ··åˆæ¨¡å¼
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE );
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLORARG1, D3DTA_TEXTURE );
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLORARG2, D3DTA_DIFFUSE );
-	// ÉèÖÃAlpha»ìºÏÄ£Ê½
+	// è®¾ç½®Alphaæ··åˆæ¨¡å¼
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_ALPHAOP,   D3DTOP_SELECTARG1 );
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE );
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE );
-	// ÉèÖÃ¹ıÂËÄ£Ê½
+	// è®¾ç½®è¿‡æ»¤æ¨¡å¼
 	PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MINFILTER, D3DTEXF_POINT );
     PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MAGFILTER, D3DTEXF_POINT );
 
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_TEXCOORDINDEX, 0 );
     PD3DDEVICE->SetTextureStageState( 0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE );
-	// ¹Ø±Õ0ÒÔÉÏµÄÌùÍ¼äÖÈ¾½×¶Î
+	// å…³é—­0ä»¥ä¸Šçš„è´´å›¾æ¸²æŸ“é˜¶æ®µ
     PD3DDEVICE->SetTextureStageState( 1, D3DTSS_COLOROP,   D3DTOP_DISABLE );
     PD3DDEVICE->SetTextureStageState( 1, D3DTSS_ALPHAOP,   D3DTOP_DISABLE );
 
@@ -536,12 +536,12 @@ bool KRepresentShell3::RestoreDeviceObjects()
 
 	if(g_renderModel == RenderModel3DPerspective || g_renderModel == RenderModel3DOrtho)
 	{
-		// ÉèÖÃÊÀ½ç×ø±ê±ä»»¾ØÕó
+		// è®¾ç½®ä¸–ç•Œåæ ‡å˜æ¢çŸ©é˜µ
 		D3DXMATRIX matWorld;
 		D3DXMatrixIdentity( &matWorld );
 		PD3DDEVICE->SetTransform( D3DTS_WORLD, &matWorld );
 
-		// ÉèÖÃÍ¶Ó°±ä»»¾ØÕó
+		// è®¾ç½®æŠ•å½±å˜æ¢çŸ©é˜µ
 		SetUpProjectionMatrix();
 		PD3DDEVICE->SetTransform( D3DTS_PROJECTION, &m_matProj );
 	}
@@ -565,7 +565,7 @@ bool KRepresentShell3::Reset(int nWidth, int nHeight, bool bFullScreen)
 
 	if (!pModeInfo)
 	{
-		// ÎŞ·¨ÕÒµ½ºÏÊÊµÄÏÔÊ¾Ä£Ê½
+		// æ— æ³•æ‰¾åˆ°åˆé€‚çš„æ˜¾ç¤ºæ¨¡å¼
 		D3DTerm();
 		g_DebugLog("[D3DRender]Can't find an appropriate display mode!");
 		return false;
@@ -573,7 +573,7 @@ bool KRepresentShell3::Reset(int nWidth, int nHeight, bool bFullScreen)
 
 	if (!g_Device.SetMode(pModeInfo))
 	{
-		// ÎŞ·¨ÉèÖÃºÏÊÊµÄÏÔÊ¾Ä£Ê½
+		// æ— æ³•è®¾ç½®åˆé€‚çš„æ˜¾ç¤ºæ¨¡å¼
 		D3DTerm();
 		g_DebugLog("[D3DRender]Can't find an appropriate display mode!");
 		return false;
@@ -619,7 +619,7 @@ bool KRepresentShell3::CreateAFont(const char* pszFontFile, CHARACTER_CODE_SET C
 
 	if (pszFontFile[0] == '#')
 	{
-		//¹²ÏíÒÑ¾­´ò¿ªµÄ×Ö¿â
+		//å…±äº«å·²ç»æ‰“å¼€çš„å­—åº“
 		int nShareWithId = atoi(pszFontFile + 1);
 		for (int j = 0; j < RS2_MAX_FONT_ITEM_NUM; j++)
 		{
@@ -836,7 +836,7 @@ void KRepresentShell3::DrawPrimitives(int nPrimitiveCount, KRepresentUnit* pPrim
 
 void KRepresentShell3::DrawImage2D(int nPrimitiveCount, KRepresentUnit* pPrimitives, int bSinglePlaneCoord)
 {
-	// ÅĞ¶ÏÊÇ·ñÖ÷½ÇÀà
+	// åˆ¤æ–­æ˜¯å¦ä¸»è§’ç±»
 	if(nPrimitiveCount >= 4)
 	{
 		DrawPlayer2D(nPrimitiveCount, pPrimitives, bSinglePlaneCoord);
@@ -917,7 +917,7 @@ void KRepresentShell3::DrawImage2DStretch(int nPrimitiveCount, KRepresentUnit* p
 
 	for (i = 0; i < nPrimitiveCount; i++, pTemp++)
 	{	
-		// Ö»´¦ÀíISI_T_BITMAP16Àà×ÊÔ´
+		// åªå¤„ç†ISI_T_BITMAP16ç±»èµ„æº
 		if(pTemp->nType != ISI_T_BITMAP16)
 			break;
 
@@ -937,10 +937,10 @@ void KRepresentShell3::DrawPlayer2D(int nPrimitiveCount, KRepresentUnit* pPrimit
 	RECT rcBound;
 	RECTFLOAT rcBound1;
 
-	// È¡µÃÖ÷½ÇËùÓĞ²¿¼şµÄÍâ°ü¾ØĞÎ
+	// å–å¾—ä¸»è§’æ‰€æœ‰éƒ¨ä»¶çš„å¤–åŒ…çŸ©å½¢
 	GetBoundBox2D(nPrimitiveCount, pPrimitives, bSinglePlaneCoord, rcBound);
 
-	// Èç¹ûÍ¼ËØ³¬³öÆÁÄ»·¶Î§Ôò²»äÖÈ¾
+	// å¦‚æœå›¾ç´ è¶…å‡ºå±å¹•èŒƒå›´åˆ™ä¸æ¸²æŸ“
 	if(rcBound.right < 0 || rcBound.left > g_nScreenWidth || rcBound.bottom < 0 || rcBound.top > g_nScreenHeight)
 		return;
 
@@ -949,7 +949,7 @@ void KRepresentShell3::DrawPlayer2D(int nPrimitiveCount, KRepresentUnit* pPrimit
 	rcBound1.right = (float)(rcBound.right);
 	rcBound1.bottom = (float)(rcBound.bottom);
 
-	// »æÖÆÖ÷½ÇÀà
+	// ç»˜åˆ¶ä¸»è§’ç±»
 	if(rcBound.right - rcBound.left <= SPR_PRERENDER_TEXSIZE1 
 		&& rcBound.bottom - rcBound.top <= SPR_PRERENDER_TEXSIZE1)
 	{
@@ -970,7 +970,7 @@ void KRepresentShell3::GetBoundBox2D(int nPrimitiveCount, KRepresentUnit* pPrimi
 	KRUImage* pTemp = (KRUImage*)pPrimitives;
 
 	bool bFirstOne = true;
-	// ËùÓĞÍ¼ËØµÄ¼ÆËãÍâ°ü¾ØĞÎ
+	// æ‰€æœ‰å›¾ç´ çš„è®¡ç®—å¤–åŒ…çŸ©å½¢
 	for (i = 0; i < nPrimitiveCount; i++, pTemp++)
 	{
 		TextureResSpr* pSprite = (TextureResSpr *)m_TextureResMgr.GetImage(
@@ -1051,7 +1051,7 @@ void KRepresentShell3::DrawSprOnTexture2D(int nPrimitiveCount, KRepresentUnit* p
 	rect.right = nWidth;
 	rect.bottom = nHeight;
 	
-	// ¸ù¾İ»æÖÆÇøÓò²»Í¬´óĞ¡Ëø¶¨²»Í¬µÄÌùÍ¼
+	// æ ¹æ®ç»˜åˆ¶åŒºåŸŸä¸åŒå¤§å°é”å®šä¸åŒçš„è´´å›¾
 	if(nTexSize == SPR_PRERENDER_TEXSIZE1)
 	{
 		if (FAILED(m_pPreRenderTexture128->LockRect(0, &LockedRect, &rect, 0)))
@@ -1063,7 +1063,7 @@ void KRepresentShell3::DrawSprOnTexture2D(int nPrimitiveCount, KRepresentUnit* p
 			return;
 	}
 
-	// Çå¿ÕÌùÍ¼
+	// æ¸…ç©ºè´´å›¾
 	BYTE* p = (BYTE*)LockedRect.pBits;
 	int nLen = (rect.right - rect.left) * 2;
 	for(i = 0; i < rect.bottom - rect.top; i++)
@@ -1094,7 +1094,7 @@ void KRepresentShell3::DrawSprOnTexture2D(int nPrimitiveCount, KRepresentUnit* p
 
 			if(pTemp->bRenderStyle == IMAGE_RENDER_STYLE_ALPHA_COLOR_ADJUST)
 			{
-				// ´¦ÀíÆ«É«
+				// å¤„ç†åè‰²
 				color = ScaleColor(color, pTemp->Color.Color_b.r, pTemp->Color.Color_b.g, pTemp->Color.Color_b.b);
 			}
 		}
@@ -1137,7 +1137,7 @@ void KRepresentShell3::DrawSprOnTexture2D(int nPrimitiveCount, KRepresentUnit* p
 		assert(pSprite->m_pFrameInfo[pTemp->nFrame].pRawData);
 		if(pSprite->m_pFrameInfo[pTemp->nFrame].pRawData)
 		{
-			// ½«sprÔ­Ê¼Êı¾İÖ±½Ó×ª»»µ½A4R4G4B4µÄÌùÍ¼ÉÏ
+			// å°†språŸå§‹æ•°æ®ç›´æ¥è½¬æ¢åˆ°A4R4G4B4çš„è´´å›¾ä¸Š
 			RenderToA4R4G4B4((WORD*)LockedRect.pBits, LockedRect.Pitch,
 				pSprite->m_pFrameInfo[pTemp->nFrame].pRawData, rect, 
 				pSprite->m_pFrameInfo[pTemp->nFrame].nWidth, 
@@ -1226,7 +1226,7 @@ void KRepresentShell3::DrawSprOnTexture2D(int nPrimitiveCount, KRepresentUnit* p
 	PD3DDEVICE->SetTextureStageState( 0, D3DTSS_ALPHAOP,   D3DTOP_SELECTARG1 );
 }
 
-// ÎªºÍ2DÄ£Ê½´óĞ¡Ò»ÖÂ£¬ÌØ¶¨µÄsprËõ·ÅÒ»¸ö±ÈÀı
+// ä¸ºå’Œ2Dæ¨¡å¼å¤§å°ä¸€è‡´ï¼Œç‰¹å®šçš„sprç¼©æ”¾ä¸€ä¸ªæ¯”ä¾‹
 #define SCALE_RATE_SPRITE_WIDTH	 1.05f
 #define SCALE_RATE_SPRITE_HEIGHT 1.12f
 
@@ -1235,7 +1235,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 	if(uGenre != RU_T_IMAGE && uGenre != RU_T_IMAGE_4)
 		return;
 
-	// ÅĞ¶ÏÊÇ·ñÖ÷½ÇÀà
+	// åˆ¤æ–­æ˜¯å¦ä¸»è§’ç±»
 	if(nPrimitiveCount >= 4)
 	{
 		DrawPlayer3D(nPrimitiveCount, pPrimitives, bSinglePlaneCoord);
@@ -1250,7 +1250,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 		return;
 
 	PD3DDEVICE->SetFVF( D3DFVF_VERTEX3D );
-	// ÓÉÓÚÊÇÍ¸ÊÓÄ£Ê½£¬½«¹ıÂË·½Ê½ÉèÎªD3DTEXF_LINEAR·ÀÖ¹ÌùÍ¼¶¶¶¯
+	// ç”±äºæ˜¯é€è§†æ¨¡å¼ï¼Œå°†è¿‡æ»¤æ–¹å¼è®¾ä¸ºD3DTEXF_LINEARé˜²æ­¢è´´å›¾æŠ–åŠ¨
 	if(g_renderModel == RenderModel3DPerspective)
 	{
 		PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
@@ -1283,7 +1283,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 
 				if(uGenre != RU_T_IMAGE_4)
 				{
-					// ¾ØĞÎÍ¼ËØ
+					// çŸ©å½¢å›¾ç´ 
 					if (pTemp->bRenderFlag & RUIMAGE_RENDER_FLAG_REF_SPOT)
 					{
 #define CENTERX		160
@@ -1337,7 +1337,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 					
 					if(fZ1 == fZ3)
 					{
-						// Ë®Æ½Í¼ËØ
+						// æ°´å¹³å›¾ç´ 
 						renderParam.m_pos[0] = D3DXVECTOR3( fX1,fY1, fZ1 );
 						renderParam.m_pos[1] = D3DXVECTOR3( fX3,fY1, fZ1 );
 						renderParam.m_pos[2] = D3DXVECTOR3( fX3,fY3, fZ3 );
@@ -1345,7 +1345,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 					}
 					else
 					{
-						// ´¹Ö±Í¼ËØ
+						// å‚ç›´å›¾ç´ 
 						renderParam.m_pos[0] = D3DXVECTOR3( fX1,fY1, fZ1 );
 						renderParam.m_pos[1] = D3DXVECTOR3( fX3,fY3, fZ1 );
 						renderParam.m_pos[2] = D3DXVECTOR3( fX3,fY3, fZ3 );
@@ -1361,7 +1361,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 				}
 				else
 				{
-					// Æ½ĞĞËÄ±ßĞÎÍ¼ËØ
+					// å¹³è¡Œå››è¾¹å½¢å›¾ç´ 
 					KRUImage4 *pTemp4 = (KRUImage4*)pTemp;
 					fX2 = (float)pTemp4->oSecondPos.nX;
 					fY2 = (float)pTemp4->oSecondPos.nY;
@@ -1399,7 +1399,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 					break;
 				if(fZ1 == fZ3)
 				{
-					// Ë®Æ½Í¼ËØ
+					// æ°´å¹³å›¾ç´ 
 					renderParam.m_pos[0] = D3DXVECTOR3( fX1,fY1, fZ1 );
 					renderParam.m_pos[1] = D3DXVECTOR3( fX3,fY1, fZ1 );
 					renderParam.m_pos[2] = D3DXVECTOR3( fX3,fY3, fZ3 );
@@ -1407,7 +1407,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 				}
 				else
 				{
-					// ´¹Ö±Í¼ËØ
+					// å‚ç›´å›¾ç´ 
 					renderParam.m_pos[0] = D3DXVECTOR3( fX1,fY1, fZ1 );
 					renderParam.m_pos[1] = D3DXVECTOR3( fX3,fY3, fZ1 );
 					renderParam.m_pos[2] = D3DXVECTOR3( fX3,fY3, fZ3 );
@@ -1421,7 +1421,7 @@ void KRepresentShell3::DrawImage3D(unsigned int uGenre, int nPrimitiveCount, KRe
 			break;
 		}
 	}
-	// »Ö¸´È±Ê¡¹ıÂËÄ£Ê½
+	// æ¢å¤ç¼ºçœè¿‡æ»¤æ¨¡å¼
 	if(g_renderModel == RenderModel3DPerspective)
 	{
 		PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MINFILTER, D3DTEXF_POINT );
@@ -1434,18 +1434,18 @@ void KRepresentShell3::DrawPlayer3D(int nPrimitiveCount, KRepresentUnit* pPrimit
 	RECTFLOAT rcBound3D;
 	RECT rcBound2D;
 
-	// ¼ÆËã·ÇÍ¸ÊÓÄ£Ê½ºÍÍ¸ÊÓÄ£Ê½µÄÍâ°ü¾ØĞÎ
+	// è®¡ç®—éé€è§†æ¨¡å¼å’Œé€è§†æ¨¡å¼çš„å¤–åŒ…çŸ©å½¢
 	GetBoundBox2D(nPrimitiveCount, pPrimitives, bSinglePlaneCoord, rcBound2D);
 	GetBoundBox3D(nPrimitiveCount, pPrimitives, rcBound3D);
 
-	// Èç¹ûÍ¼ËØ³¬³öÆÁÄ»·¶Î§Ôò²»äÖÈ¾
+	// å¦‚æœå›¾ç´ è¶…å‡ºå±å¹•èŒƒå›´åˆ™ä¸æ¸²æŸ“
 	if(rcBound3D.right < 0 || rcBound3D.left > g_nScreenWidth || rcBound3D.bottom < 0 || rcBound3D.top > g_nScreenHeight)
 		return;
 
 	if(rcBound3D.left - rcBound3D.right > 260 || rcBound3D.right - rcBound3D.left > 260)
 		return;
 
-	// »æÖÆÖ÷½ÇÀà
+	// ç»˜åˆ¶ä¸»è§’ç±»
 	if(rcBound2D.right - rcBound2D.left <= SPR_PRERENDER_TEXSIZE1 
 		&& rcBound2D.bottom - rcBound2D.top <= SPR_PRERENDER_TEXSIZE1)
 	{
@@ -1466,7 +1466,7 @@ void KRepresentShell3::GetBoundBox3D(int nPrimitiveCount, KRepresentUnit* pPrimi
 	KRUImage* pTemp = (KRUImage*)pPrimitives;
 
 	bool bFirstOne = true;
-	// ËùÓĞÍ¼ËØµÄ¼ÆËãÍâ°ü¾ØĞÎ
+	// æ‰€æœ‰å›¾ç´ çš„è®¡ç®—å¤–åŒ…çŸ©å½¢
 	for (i = 0; i < nPrimitiveCount; i++, pTemp++)
 	{
 		D3DXVECTOR3 v1,v2;
@@ -1486,7 +1486,7 @@ void KRepresentShell3::GetBoundBox3D(int nPrimitiveCount, KRepresentUnit* pPrimi
 		if(!(pTemp->bRenderFlag & RUIMAGE_RENDER_FLAG_REF_SPOT) && (pTemp->oEndPos.nX == 0 || pTemp->oEndPos.nY == 0))
 			continue;
 
-		// ¾ØĞÎÍ¼ËØ
+		// çŸ©å½¢å›¾ç´ 
 		if (pTemp->bRenderFlag & RUIMAGE_RENDER_FLAG_REF_SPOT)
 		{
 #define CENTERX		160
@@ -1529,7 +1529,7 @@ void KRepresentShell3::GetBoundBox3D(int nPrimitiveCount, KRepresentUnit* pPrimi
 			v2.z -= fYOff;
 		}
 
-		// ½«×ø±ê×ª»¯µ½ÆÁÄ»¿Õ¼ä
+		// å°†åæ ‡è½¬åŒ–åˆ°å±å¹•ç©ºé—´
 		D3DXVECTOR3 vPos1, vPos2;
 		D3DVIEWPORT9 viewportData = g_Device.GetViewport();
 		
@@ -1665,7 +1665,7 @@ void KRepresentShell3::DrawPrimitivesOnImage(int nPrimitiveCount, KRepresentUnit
 	pOldSurface->Release();
 }
 
-//## Çå³ıÍ¼ĞÎÊı¾İ
+//## æ¸…é™¤å›¾å½¢æ•°æ®
 void KRepresentShell3::ClearImageData(const char* pszImage, unsigned int uImage, short nImagePosition)
 {
 	if(!pszImage || !pszImage[0])
@@ -1800,7 +1800,7 @@ void KRepresentShell3::LookAt(int nX, int nY, int nZ)
 		float fX = (float)nX;
 		float fY = (float)nY;
 		float fZ = (float)nZ;
-		// ÉãÏñ»úºóÍË£¬Ì§¸ß³É30¶È½Ç
+		// æ‘„åƒæœºåé€€ï¼ŒæŠ¬é«˜æˆ30åº¦è§’
 		m_vCamera1.x = fX;
 		m_vCamera1.y = fY;
 		m_vCamera1.z = fZ;
@@ -1838,7 +1838,7 @@ void KRepresentShell3::OutputText(int nFontId, const char* psText, int nCount, i
 
 	if(nZ != TEXT_IN_SINGLE_PLANE_COORD)
 	{
-		// ½«3D×ø±ê×ª»¯ÎªÆÁÄ»×ø±ê
+		// å°†3Dåæ ‡è½¬åŒ–ä¸ºå±å¹•åæ ‡
 		if(m_dwWindowStyle == RenderModel3DPerspective)
 		{
 			D3DXVECTOR3 vPos((float)(nX), (float)(nY), (float)(nZ));
@@ -1857,7 +1857,7 @@ void KRepresentShell3::OutputText(int nFontId, const char* psText, int nCount, i
 	m_FontTable[i].pFontObj->OutputText(psText, nCount, nX, nY, Color, nLineWidth);
 }
 
-//## Êä³öÎÄ×Ö¡£
+//## è¾“å‡ºæ–‡å­—ã€‚
 int KRepresentShell3::OutputRichText(int nFontId, KOutputTextParam* pParam, 
 		const char* psText, int nCount, int nLineWidth)
 {
@@ -1882,7 +1882,7 @@ int KRepresentShell3::OutputRichText(int nFontId, KOutputTextParam* pParam,
 			y = pParam->nY;
 			z = pParam->nZ;
 
-			// ½«3D×ø±ê×ª»¯ÎªÆÁÄ»×ø±ê
+			// å°†3Dåæ ‡è½¬åŒ–ä¸ºå±å¹•åæ ‡
 			if(m_dwWindowStyle == RenderModel3DPerspective)
 			{
 				D3DXVECTOR3 vPos((float)x, (float)y, (float)z);
@@ -1931,7 +1931,7 @@ int KRepresentShell3::LocateRichText(int nX, int nY,
 			y = pParam->nY;
 			z = pParam->nZ;
 
-			// ½«3D×ø±ê×ª»¯ÎªÆÁÄ»×ø±ê
+			// å°†3Dåæ ‡è½¬åŒ–ä¸ºå±å¹•åæ ‡
 			if(m_dwWindowStyle == RenderModel3DPerspective)
 			{
 				D3DXVECTOR3 vPos((float)x, (float)y, (float)z);
@@ -2025,10 +2025,10 @@ bool KRepresentShell3::RepresentBegin(int bClear, unsigned int Color)
 		return false;
     }
 
-	// Çå³ı±³¾°
+	// æ¸…é™¤èƒŒæ™¯
 	PD3DDEVICE->Clear( 0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,0), 1.0f, 0L );
 
-	// ¿ªÊ¼ĞÔÄÜÍ³¼Æ
+	// å¼€å§‹æ€§èƒ½ç»Ÿè®¡
 	m_TextureResMgr.StartProfile();
 
 /*	float fAngleAdd = 0.03f;
@@ -2091,10 +2091,10 @@ void KRepresentShell3::RepresentEnd()
 
 	char cc[200];
 
-	// ÖÕÖ¹ĞÔÄÜÍ³¼Æ
+	// ç»ˆæ­¢æ€§èƒ½ç»Ÿè®¡
 	m_TextureResMgr.EndProfile();
 
-	// Éú³É²¢ÏÔÊ¾Í³¼ÆĞÅÏ¢
+	// ç”Ÿæˆå¹¶æ˜¾ç¤ºç»Ÿè®¡ä¿¡æ¯
 	m_TextureResMgr.GetProfileString(cc, 200);
 	KOutputTextParam param;
 	param.Color = 0xffff;
@@ -2115,9 +2115,9 @@ void KRepresentShell3::RepresentEnd()
 
 //	OutputText(nFontId, cc, strlen(cc), 600, 20, 0xffffffff, 800);
 
-	// Íê³É3DäÖÈ¾
+	// å®Œæˆ3Dæ¸²æŸ“
 	g_Device.End3D();
-	// ½»»»Ò³Ãæ
+	// äº¤æ¢é¡µé¢
 	PD3DDEVICE->Present(NULL,NULL,NULL,NULL);
 }
 
@@ -2130,12 +2130,12 @@ void KRepresentShell3::ViewPortCoordToSpaceCoord( int& nX, int& nY, int  nZ )
 					(1.0f - 2.0f * (float)nY / viewportData.Height) / m_matProj._22, 1.0f);
 		D3DXVECTOR3 vOut1, vOut2;
 		
-		// Êó±êÈ·¶¨µÄÑ¡ÔñÉäÏßµÄ·½ÏòÏòÁ¿
+		// é¼ æ ‡ç¡®å®šçš„é€‰æ‹©å°„çº¿çš„æ–¹å‘å‘é‡
 		vOut2.x  = vPos.x*m_matViewInverse._11 + vPos.y*m_matViewInverse._21 + vPos.z*m_matViewInverse._31;
         vOut2.y  = vPos.x*m_matViewInverse._12 + vPos.y*m_matViewInverse._22 + vPos.z*m_matViewInverse._32;
         vOut2.z  = vPos.x*m_matViewInverse._13 + vPos.y*m_matViewInverse._23 + vPos.z*m_matViewInverse._33;
 
-		// ÉãÏñ»úÎ»ÖÃ
+		// æ‘„åƒæœºä½ç½®
 		vOut1.x = m_matViewInverse._41;
         vOut1.y = m_matViewInverse._42;
         vOut1.z = m_matViewInverse._43;
@@ -2383,7 +2383,7 @@ void KRepresentShell3::DrawSpriteAlpha(int32 nX, int32 nY, int32 nWidth, int32 n
 	fX2 = fX1 + (float)nWidth;
 	fY2 = fY1 + (float)nHeight;
 
-	// Èç¹ûÍ¼ËØ³¬³öÆÁÄ»·¶Î§Ôò²»äÖÈ¾
+	// å¦‚æœå›¾ç´ è¶…å‡ºå±å¹•èŒƒå›´åˆ™ä¸æ¸²æŸ“
 	if(fX2 < 0 || fX1 > g_nScreenWidth || fY2 < 0 || fY1 > g_nScreenHeight)
 		return;
 
@@ -2393,11 +2393,11 @@ void KRepresentShell3::DrawSpriteAlpha(int32 nX, int32 nY, int32 nWidth, int32 n
 
 	if(nRenderStyle != IMAGE_RENDER_STYLE_ALPHA_COLOR_ADJUST)
 	{
-		// ²»Æ«É«£¬½«ÑÕÉ«¸ÄÎª°×
+		// ä¸åè‰²ï¼Œå°†é¢œè‰²æ”¹ä¸ºç™½
 		color = 0xffffffff;
 	}
 
-	// ¸ù¾İÌùÍ¼ÊıÄ¿°Ñ¾ØĞÎ²ğ·Ö³É¶à¸öĞ¡¾ØĞÎ£¬¼ÆËã×ø±ê¼°ÎÆÀí
+	// æ ¹æ®è´´å›¾æ•°ç›®æŠŠçŸ©å½¢æ‹†åˆ†æˆå¤šä¸ªå°çŸ©å½¢ï¼Œè®¡ç®—åæ ‡åŠçº¹ç†
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		float fU2, fV2;
@@ -2440,7 +2440,7 @@ void KRepresentShell3::DrawSpriteAlpha(int32 nX, int32 nY, int32 nWidth, int32 n
 
 	m_pVB2D->Unlock();
 
-	// »æÖÆ¶à±ßĞÎ
+	// ç»˜åˆ¶å¤šè¾¹å½¢
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		LPDIRECT3DTEXTURE9 pTex = pSprite->GetTexture(nFrame, i);
@@ -2452,7 +2452,7 @@ void KRepresentShell3::DrawSpriteAlpha(int32 nX, int32 nY, int32 nWidth, int32 n
 		if( nRenderStyle == IMAGE_RENDER_STYLE_BORDER || 
 			nRenderStyle == IMAGE_RENDER_STYLE_BORDER_RECT)
 		{
-			// Ñ¡ÖĞ¼ÓÁÁĞ§¹û
+			// é€‰ä¸­åŠ äº®æ•ˆæœ
 			PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE2X );
 			PD3DDEVICE->DrawPrimitive( D3DPT_TRIANGLESTRIP, i*4, 2 );
 			PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE );
@@ -2480,7 +2480,7 @@ void KRepresentShell3::DrawSpritePartAlpha(int32 nX, int32 nY, int32 nWidth, int
 	fX2 = fX1 + (float)nWidth;
 	fY2 = fY1 + (float)nHeight;
 
-	// Èç¹ûÍ¼ËØ³¬³öÆÁÄ»·¶Î§Ôò²»äÖÈ¾
+	// å¦‚æœå›¾ç´ è¶…å‡ºå±å¹•èŒƒå›´åˆ™ä¸æ¸²æŸ“
 	if(fX2 < 0 || fX1 > g_nScreenWidth || fY2 < 0 || fY1 > g_nScreenHeight)
 		return;
 
@@ -2490,7 +2490,7 @@ void KRepresentShell3::DrawSpritePartAlpha(int32 nX, int32 nY, int32 nWidth, int
 
 	bool bDraw[4];
 
-	// ¸ù¾İÌùÍ¼ÊıÄ¿°Ñ¾ØĞÎ²ğ·Ö³É¶à¸öĞ¡¾ØĞÎ£¬¼ÆËã×ø±ê¼°ÎÆÀí
+	// æ ¹æ®è´´å›¾æ•°ç›®æŠŠçŸ©å½¢æ‹†åˆ†æˆå¤šä¸ªå°çŸ©å½¢ï¼Œè®¡ç®—åæ ‡åŠçº¹ç†
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		float fU1, fV1, fU2, fV2, u2, v2;
@@ -2511,7 +2511,7 @@ void KRepresentShell3::DrawSpritePartAlpha(int32 nX, int32 nY, int32 nWidth, int
 		fRcX2 = (float)rect.right, fRcY2 = (float)rect.bottom;
 		if(fRcX1 > x2 || fRcX2 < x1 || fRcY1 > y2 || fRcY2 < y1)
 		{
-			// Èç¹ûÕâ¸öÃæÆ¬µÄ¼ô²Ê¾ØĞÎÔÚÍ¼ËØ¾ØĞÎÖ®ÍâÔò²»»­
+			// å¦‚æœè¿™ä¸ªé¢ç‰‡çš„å‰ªå½©çŸ©å½¢åœ¨å›¾ç´ çŸ©å½¢ä¹‹å¤–åˆ™ä¸ç”»
 			bDraw[i] = false;
 			continue;
 		}
@@ -2554,7 +2554,7 @@ void KRepresentShell3::DrawSpritePartAlpha(int32 nX, int32 nY, int32 nWidth, int
 
 	m_pVB2D->Unlock();
 
-	// »æÖÆ¶à±ßĞÎ
+	// ç»˜åˆ¶å¤šè¾¹å½¢
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		LPDIRECT3DTEXTURE9 pTex = pSprite->GetTexture(nFrame, i);
@@ -2711,7 +2711,7 @@ void KRepresentShell3::DrawBitmap163DLighting(RenderParam3D &param, TextureResBm
 	if(FAILED(m_pVB3D->Lock( 0, VERTEX_BUFFER_SIZE*sizeof(VERTEX3D), (void**)&pvb, 0 )))
 		return;
 
-	// Éú³ÉÍø¸ñ£¬¼ÆËãÁÁ¶È
+	// ç”Ÿæˆç½‘æ ¼ï¼Œè®¡ç®—äº®åº¦
 	uint32 nCount  = BuildMesh3D(vbSrc, pvb, VERTEX_BUFFER_SIZE, 0xffffffff);
 
 	m_pVB3D->Unlock();
@@ -2742,8 +2742,8 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 	if(nFrame >= pSprite->m_nFrameNum)
 		return;
 
-	// ÔÚÆÁÄ»¿Õ¼ä¼ì²âÍ¼ËØÊÇ·ñ¿É¼û£¬Èç²»¿É¼ûÔò·µ»Ø
-	// ÕâÀï»¹¿ÉÒÔÓÅ»¯
+	// åœ¨å±å¹•ç©ºé—´æ£€æµ‹å›¾ç´ æ˜¯å¦å¯è§ï¼Œå¦‚ä¸å¯è§åˆ™è¿”å›
+	// è¿™é‡Œè¿˜å¯ä»¥ä¼˜åŒ–
 	D3DXVECTOR3 vPos1, vPos2, vPos3, vPos4;
 	D3DVIEWPORT9 viewportData = g_Device.GetViewport();
 	D3DXVec3Project(&vPos1, &param.m_pos[0], &viewportData, &m_matProj, &m_matView, NULL);
@@ -2766,11 +2766,11 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 
 	if(nRenderStyle != IMAGE_RENDER_STYLE_ALPHA_COLOR_ADJUST)
 	{
-		// ²»Æ«É«£¬½«ÑÕÉ«¸ÄÎª°×
+		// ä¸åè‰²ï¼Œå°†é¢œè‰²æ”¹ä¸ºç™½
 		color = 0xffffffff;
 	}
 
-	// ¸ù¾İÌùÍ¼ÊıÄ¿°Ñ¾ØĞÎ²ğ·Ö³É¶à¸öĞ¡¾ØĞÎ£¬¼ÆËã×ø±ê¼°ÎÆÀí
+	// æ ¹æ®è´´å›¾æ•°ç›®æŠŠçŸ©å½¢æ‹†åˆ†æˆå¤šä¸ªå°çŸ©å½¢ï¼Œè®¡ç®—åæ ‡åŠçº¹ç†
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		bDraw[i] = true;
@@ -2780,7 +2780,7 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 		fV2 = (float)pSprite->m_pFrameInfo[nFrame].texInfo[i].nFrameHeight /
 				(float)pSprite->m_pFrameInfo[nFrame].texInfo[i].nHeight;
 
-		// Èç¹ûÖ»»­Í¼ËØµÄÒ»²¿·Ö£¬ÔòĞèÒªµ÷ÕûÎÆÀí×ø±ê
+		// å¦‚æœåªç”»å›¾ç´ çš„ä¸€éƒ¨åˆ†ï¼Œåˆ™éœ€è¦è°ƒæ•´çº¹ç†åæ ‡
 		if(rect)
 		{
 			float fRcX1, fRcY1, fRcX2, fRcY2;
@@ -2792,7 +2792,7 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 			fRcX2 = (float)rect->right, fRcY2 = (float)rect->bottom;
 			if(fRcX1 > fFrameX2	|| fRcX2 < fFrameX1	|| fRcY1 > fFrameY2	|| fRcY2 < fFrameY1)
 			{
-				// Èç¹ûÕâ¸öÃæÆ¬µÄ¼ô²Ê¾ØĞÎÔÚÍ¼ËØ¾ØĞÎÖ®ÍâÔò²»»­
+				// å¦‚æœè¿™ä¸ªé¢ç‰‡çš„å‰ªå½©çŸ©å½¢åœ¨å›¾ç´ çŸ©å½¢ä¹‹å¤–åˆ™ä¸ç”»
 				bDraw[i] = false;
 				continue;
 			}
@@ -2857,7 +2857,7 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 
 	m_pVB3D->Unlock();
 
-	// »æÖÆ¶à±ßĞÎ
+	// ç»˜åˆ¶å¤šè¾¹å½¢
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		LPDIRECT3DTEXTURE9 pTex = pSprite->GetTexture(nFrame, i);
@@ -2869,7 +2869,7 @@ void KRepresentShell3::DrawSpriteAlpha3D(RenderParam3D &param, int32 nFrame,
 		if( nRenderStyle == IMAGE_RENDER_STYLE_BORDER || 
 			nRenderStyle == IMAGE_RENDER_STYLE_BORDER_RECT)
 		{
-			// Ñ¡ÖĞ¼ÓÁÁĞ§¹û
+			// é€‰ä¸­åŠ äº®æ•ˆæœ
 			PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE2X );
 			PD3DDEVICE->DrawPrimitive( D3DPT_TRIANGLESTRIP, i*4, 2 );
 			PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE );
@@ -2888,8 +2888,8 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 	if(nFrame >= pSprite->m_nFrameNum)
 		return;
 
-	// ÔÚÆÁÄ»¿Õ¼ä¼ì²âÍ¼ËØÊÇ·ñ¿É¼û£¬Èç²»¿É¼ûÔò·µ»Ø
-	// ÕâÀï»¹¿ÉÒÔÓÅ»¯
+	// åœ¨å±å¹•ç©ºé—´æ£€æµ‹å›¾ç´ æ˜¯å¦å¯è§ï¼Œå¦‚ä¸å¯è§åˆ™è¿”å›
+	// è¿™é‡Œè¿˜å¯ä»¥ä¼˜åŒ–
 	D3DXVECTOR3 vPos1, vPos2, vPos3, vPos4;
 	D3DVIEWPORT9 viewportData = g_Device.GetViewport();
 	D3DXVec3Project(&vPos1, &param.m_pos[0], &viewportData, &m_matProj, &m_matView, NULL);
@@ -2913,11 +2913,11 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 	bool bDraw[4];
 	if(nRenderStyle != IMAGE_RENDER_STYLE_ALPHA_COLOR_ADJUST)
 	{
-		// ²»Æ«É«£¬½«ÑÕÉ«¸ÄÎª°×
+		// ä¸åè‰²ï¼Œå°†é¢œè‰²æ”¹ä¸ºç™½
 		color = 0xffffffff;
 	}
 
-	// ¸ù¾İÌùÍ¼ÊıÄ¿°Ñ¾ØĞÎ²ğ·Ö³É¶à¸öĞ¡¾ØĞÎ£¬¼ÆËã×ø±ê¼°ÎÆÀí
+	// æ ¹æ®è´´å›¾æ•°ç›®æŠŠçŸ©å½¢æ‹†åˆ†æˆå¤šä¸ªå°çŸ©å½¢ï¼Œè®¡ç®—åæ ‡åŠçº¹ç†
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		bDraw[i] = true;
@@ -2927,7 +2927,7 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 		fV2 = (float)pSprite->m_pFrameInfo[nFrame].texInfo[i].nFrameHeight /
 				(float)pSprite->m_pFrameInfo[nFrame].texInfo[i].nHeight;
 
-		// Èç¹ûÖ»»­Í¼ËØµÄÒ»²¿·Ö£¬ÔòĞèÒªµ÷ÕûÎÆÀí×ø±ê
+		// å¦‚æœåªç”»å›¾ç´ çš„ä¸€éƒ¨åˆ†ï¼Œåˆ™éœ€è¦è°ƒæ•´çº¹ç†åæ ‡
 		if(rect)
 		{
 			float fRcX1, fRcY1, fRcX2, fRcY2;
@@ -2939,7 +2939,7 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 			fRcX2 = (float)rect->right, fRcY2 = (float)rect->bottom;
 			if(fRcX1 > fFrameX2	|| fRcX2 < fFrameX1	|| fRcY1 > fFrameY2	|| fRcY2 < fFrameY1)
 			{
-				// Èç¹ûÕâ¸öÃæÆ¬µÄ¼ô²Ê¾ØĞÎÔÚÍ¼ËØ¾ØĞÎÖ®ÍâÔò²»»­
+				// å¦‚æœè¿™ä¸ªé¢ç‰‡çš„å‰ªå½©çŸ©å½¢åœ¨å›¾ç´ çŸ©å½¢ä¹‹å¤–åˆ™ä¸ç”»
 				bDraw[i] = false;
 				continue;
 			}
@@ -3000,14 +3000,14 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 		vbSrc[3].tu       = fU1+ft1;
 		vbSrc[3].tv       = fV2-ft2;
 
-		// Éú³ÉÍø¸ñ£¬¼ÆËãÁÁ¶È
+		// ç”Ÿæˆç½‘æ ¼ï¼Œè®¡ç®—äº®åº¦
 		nStripLen[i] = BuildMesh3D(vbSrc, pvb, VERTEX_BUFFER_SIZE, color);
 		pvb += nStripLen[i];
 	}
 
 	m_pVB3D->Unlock();
 
-	// »æÖÆ¶à±ßĞÎ
+	// ç»˜åˆ¶å¤šè¾¹å½¢
 	int nBase = 0;
 	PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR );
 	PD3DDEVICE->SetSamplerState( 0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR );
@@ -3022,7 +3022,7 @@ void KRepresentShell3::DrawSpriteAlpha3DLighting(RenderParam3D &param, int32 nFr
 		if( nRenderStyle == IMAGE_RENDER_STYLE_BORDER || 
 			nRenderStyle == IMAGE_RENDER_STYLE_BORDER_RECT)
 		{
-			// Ñ¡ÖĞ¼ÓÁÁĞ§¹û
+			// é€‰ä¸­åŠ äº®æ•ˆæœ
 			PD3DDEVICE->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_ADD );
 			PD3DDEVICE->DrawPrimitive( D3DPT_TRIANGLESTRIP, nBase, nStripLen[i] - 2 );
 		}
@@ -3043,8 +3043,8 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 
 	if(pvbSrc[0].position.z == pvbSrc[2].position.z)
 	{
-		VERTEX3D vt1 = pvbSrc[0];						// É¨ÃèµÄÇ°Ò»ĞĞ¶¥µã
-		VERTEX3D vt2 = pvbSrc[0];						// É¨ÃèµÄºóÒ»ĞĞ¶¥µã
+		VERTEX3D vt1 = pvbSrc[0];						// æ‰«æçš„å‰ä¸€è¡Œé¡¶ç‚¹
+		VERTEX3D vt2 = pvbSrc[0];						// æ‰«æçš„åä¸€è¡Œé¡¶ç‚¹
 		float ftuAdd, ftvAdd;
 		bool bAllDone = false;
 		
@@ -3054,7 +3054,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 		while(1)
 		{
 			vt1 = vt2;
-			// ¼ÆËãºóÒ»ĞĞÆğµã
+			// è®¡ç®—åä¸€è¡Œèµ·ç‚¹
 			vt2.position.y += MESH_GRID_SIZE;
 			vt2.tv += ftvAdd;
 			if(vt2.position.y >= pvbSrc[2].position.y)
@@ -3063,7 +3063,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 				vt2.tv = pvbSrc[2].tv;
 				bAllDone = true;
 			}
-			// ´Ó×óµ½ÓÒ´´½¨Ò»ĞĞÈı½ÇĞÎÌõ´ø
+			// ä»å·¦åˆ°å³åˆ›å»ºä¸€è¡Œä¸‰è§’å½¢æ¡å¸¦
 			while(1)
 			{
 				SetPoint3dLighting(pvbDes[nCount++], vt2, color);
@@ -3087,7 +3087,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 				break;
 			
 			vt1 = vt2;
-			// ¼ÆËãºóÒ»ĞĞÆğµã
+			// è®¡ç®—åä¸€è¡Œèµ·ç‚¹
 			vt2.position.y += MESH_GRID_SIZE;
 			vt2.tv += ftvAdd;
 			if(vt2.position.y >= pvbSrc[2].position.y)
@@ -3096,7 +3096,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 				vt2.tv = pvbSrc[2].tv;
 				bAllDone = true;
 			}
-			// ´ÓÓÒµ½×ó´´½¨Ò»ĞĞÈı½ÇĞÎÌõ´ø
+			// ä»å³åˆ°å·¦åˆ›å»ºä¸€è¡Œä¸‰è§’å½¢æ¡å¸¦
 			while(1)
 			{
 				SetPoint3dLighting(pvbDes[nCount++], vt1, color);
@@ -3122,8 +3122,8 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 	}
 	else
 	{
-		VERTEX3D vt1 = pvbSrc[0];						// É¨ÃèµÄÇ°Ò»ĞĞ¶¥µã
-		VERTEX3D vt2 = pvbSrc[0];						// É¨ÃèµÄºóÒ»ĞĞ¶¥µã
+		VERTEX3D vt1 = pvbSrc[0];						// æ‰«æçš„å‰ä¸€è¡Œé¡¶ç‚¹
+		VERTEX3D vt2 = pvbSrc[0];						// æ‰«æçš„åä¸€è¡Œé¡¶ç‚¹
 		float ftuAdd, ftvAdd;
 		D3DXVECTOR3 fvAdd;
 		float fEndZ1, fEndZ2;
@@ -3136,7 +3136,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 		while(1)
 		{
 			vt1 = vt2;
-			// ¼ÆËãºóÒ»ĞĞÆğµã
+			// è®¡ç®—åä¸€è¡Œèµ·ç‚¹
 			vt2.position += fvAdd;
 			vt2.tu += ftuAdd;
 			if(abs((int)(vt2.position.x - pvbSrc[0].position.x)) >=
@@ -3147,7 +3147,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 			}
 			fEndZ1 = vt1.position.z - (pvbSrc[0].position.z - pvbSrc[3].position.z);
 			fEndZ2 = vt2.position.z - (pvbSrc[0].position.z - pvbSrc[3].position.z);
-			// ´ÓÉÏµ½ÏÂ´´½¨Ò»ĞĞÈı½ÇĞÎÌõ´ø
+			// ä»ä¸Šåˆ°ä¸‹åˆ›å»ºä¸€è¡Œä¸‰è§’å½¢æ¡å¸¦
 			while(1)
 			{
 				SetPoint3dLighting(pvbDes[nCount++], vt1, color);
@@ -3171,7 +3171,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 				break;
 			
 			vt1 = vt2;
-			// ¼ÆËãºóÒ»ĞĞÆğµã
+			// è®¡ç®—åä¸€è¡Œèµ·ç‚¹
 			vt2.position += fvAdd;
 			vt2.tu += ftuAdd;
 			if(abs((int)(vt2.position.x - pvbSrc[3].position.x)) >=
@@ -3182,7 +3182,7 @@ uint32 KRepresentShell3::BuildMesh3D(VERTEX3D *pvbSrc, VERTEX3D* pvbDes, uint32 
 			}
 			fEndZ1 = vt1.position.z + (pvbSrc[0].position.z - pvbSrc[3].position.z);
 			fEndZ2 = vt2.position.z + (pvbSrc[0].position.z - pvbSrc[3].position.z);
-			// ´ÓÓÒµ½×ó´´½¨Ò»ĞĞÈı½ÇĞÎÌõ´ø
+			// ä»å³åˆ°å·¦åˆ›å»ºä¸€è¡Œä¸‰è§’å½¢æ¡å¸¦
 			while(1)
 			{
 				SetPoint3dLighting(pvbDes[nCount++], vt2, color);
@@ -3419,7 +3419,7 @@ void KRepresentShell3::RIO_CopySprToBufferAlpha(TextureResSpr* pSprite, int32 nF
 
 	m_pVB2D->Unlock();
 
-	// »æÖÆ¶à±ßĞÎ
+	// ç»˜åˆ¶å¤šè¾¹å½¢
 	for(i=0; i<pSprite->m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		LPDIRECT3DTEXTURE9 pTex = pSprite->GetTexture(nFrame, i);
@@ -3467,7 +3467,7 @@ bool KRepresentShell3::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 		nDesktopWidth = mode.Width;
 		nDesktopHeight = mode.Height;
 
-		// Èç¹û´°¿Ú¿Í»§Çø³¬³öÆÁÄ»Ôò·µ»Ø
+		// å¦‚æœçª—å£å®¢æˆ·åŒºè¶…å‡ºå±å¹•åˆ™è¿”å›
 		if(ptLT.x >= nDesktopWidth || ptLT.y >= nDesktopHeight || ptRB.x <= 0 || ptRB.y <= 0)
 			return false;
 		if(ptLT.x < 0)
@@ -3493,13 +3493,13 @@ bool KRepresentShell3::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	}
 
 	BYTE *pData;
-	// ´´½¨ÓÃÓÚ´æ·Å½ØÍ¼µÄSurface
+	// åˆ›å»ºç”¨äºå­˜æ”¾æˆªå›¾çš„Surface
 	IDirect3DSurface9* pSurface = NULL;
 	if(FAILED(PD3DDEVICE->CreateOffscreenPlainSurface(nDesktopWidth, nDesktopHeight, 
 												D3DFMT_A8R8G8B8, D3DPOOL_SYSTEMMEM , &pSurface, NULL)))
 		goto error;
 
-	// »ñÈ¡ÆÁÄ»½ØÍ¼
+	// è·å–å±å¹•æˆªå›¾
 	if(FAILED(PD3DDEVICE->GetFrontBufferData(0, pSurface)))
     	goto error;
 
@@ -3513,10 +3513,10 @@ bool KRepresentShell3::SaveScreenToFile(const char* pszName, ScreenFileType eTyp
 	pData = ((BYTE*)lockedRect.pBits) + nPicOffY * nDesktopWidth * 4 + nPicOffX * 4;
 	BOOL bRet;
 	if(eType == SCRFILETYPE_BMP)
-		// ±£´æ24Î»bmpÎÄ¼ş
+		// ä¿å­˜24ä½bmpæ–‡ä»¶
 		bRet = KBmpFile24::SaveBuffer32((char*)pszName, pData, nDesktopWidth*4, nPicWidth, nPicHeight);
 	else
-		// ±£´æ24Î»jpgÎÄ¼ş
+		// ä¿å­˜24ä½jpgæ–‡ä»¶
 		bRet = SaveBufferToJpgFile32((char*)pszName, pData, nDesktopWidth*4, nPicWidth, nPicHeight, nQuality);
 	if(!bRet)
 	{
@@ -3538,7 +3538,7 @@ void KRepresentShell3::SetGamma(int nGamma)
 	if(nGamma < 0 || nGamma > 100)
 		return;
 
-	// °ÑnGamma±äÎª-100µ½100
+	// æŠŠnGammaå˜ä¸º-100åˆ°100
 	nGamma = nGamma * 2 - 100;
 
 	D3DGAMMARAMP ramp;

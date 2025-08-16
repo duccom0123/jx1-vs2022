@@ -1,11 +1,11 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	ÍøÂçÁ¬½Ó£¬»ã¼¯Óû·¢ËÍÏûÏ¢°üÓëÅÉËÍµÖ´ïÏûÏ¢°üµÄ´úÀíÖĞĞÄ
+//	ç½‘ç»œè¿æ¥ï¼Œæ±‡é›†æ¬²å‘é€æ¶ˆæ¯åŒ…ä¸æ´¾é€æŠµè¾¾æ¶ˆæ¯åŒ…çš„ä»£ç†ä¸­å¿ƒ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-10-6
 ------------------------------------------------------------------------------------------
-	EngineÀïµÄKNetClientÄ£¿é°ü×°ÊµÏÖÁËÍøÂçÁª½ÓÓë´«ËÍ°ü£¬´ËÄ£¿éÎªKNetClient¾ßÌåÓ¦ÓÃÊ±µÄ´úÀí£¬
-Ö÷ÒªÓÃÓÚ»ã¼¯¾ßÌåÓ¦ÓÃÖĞĞèÒª·¢ËÍµÄÍøÂç°ü£¬ÒÔ¼°°ÑµÖ´ïµÄÍøÂç°üÅÉËÍµ½¸÷Ïà¹Ø´¦Àí½ÓÊÜÄ£¿é¡£
+	Engineé‡Œçš„KNetClientæ¨¡å—åŒ…è£…å®ç°äº†ç½‘ç»œè”æ¥ä¸ä¼ é€åŒ…ï¼Œæ­¤æ¨¡å—ä¸ºKNetClientå…·ä½“åº”ç”¨æ—¶çš„ä»£ç†ï¼Œ
+ä¸»è¦ç”¨äºæ±‡é›†å…·ä½“åº”ç”¨ä¸­éœ€è¦å‘é€çš„ç½‘ç»œåŒ…ï¼Œä»¥åŠæŠŠæŠµè¾¾çš„ç½‘ç»œåŒ…æ´¾é€åˆ°å„ç›¸å…³å¤„ç†æ¥å—æ¨¡å—ã€‚
 *****************************************************************************************/
 #pragma once
 //#include "KNetClient.h"
@@ -21,7 +21,7 @@ typedef HRESULT ( __stdcall * pfnCreateClientInterface )(
 		);
 
 
-//====Ä¬ÈÏµÄ³¬Ê±Ê±ÏŞ====
+//====é»˜è®¤çš„è¶…æ—¶æ—¶é™====
 #define	DEF_TIMEOUT_LIMIT	10000	//15sec
 
 class KNetConnectAgent
@@ -29,27 +29,27 @@ class KNetConnectAgent
 public:
 	KNetConnectAgent();
 	~KNetConnectAgent();
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	int		Initialize();
-	//ÍË³ö
+	//é€€å‡º
 	void	Exit();
 
-	//½¨Á¢Á¬½Ó
+	//å»ºç«‹è¿æ¥
 	int		ClientConnectByNumericIp(const unsigned char* pIpAddress, unsigned short pszPort);
-	//¹Ø±ÕÁ¬½Ó
+	//å…³é—­è¿æ¥
 	void	DisconnectClient();
 
 	int		ConnectToGameSvr(const unsigned char* pIpAddress, unsigned short uPort, GUID* pGuid);
 	void	DisconnectGameSvr();
 
-	//·¢ËÍÏûÏ¢
+	//å‘é€æ¶ˆæ¯
 	int		SendMsg(const void *pBuffer, int nSize);
-	//³ÖĞøĞÔĞĞÎª
+	//æŒç»­æ€§è¡Œä¸º
 	void	Breathe();
 
 	void	UpdateClientRequestTime(bool bCancel, unsigned int uTimeLimit = DEF_TIMEOUT_LIMIT);
 
-	//×¢²áµÖ´ïÏûÏ¢ÏìÓ¦º¯Êı
+	//æ³¨å†ŒæŠµè¾¾æ¶ˆæ¯å“åº”å‡½æ•°
 	void	RegisterMsgTargetObject(PROTOCOL_MSG_TYPE Msg, iKNetMsgTargetObject* pObject);
 
 	int		IsConnecting(int bGameServ);
@@ -57,7 +57,7 @@ public:
 	void	TobeDisconnect();
 
 private:
-	bool	ProcessSwitchGameSvrMsg(void* pMsgData);			//´¦ÀíÓÎÏ·ÊÀ½ç·şÎñÆ÷µÄÍøÂçÏûÏ¢
+	bool	ProcessSwitchGameSvrMsg(void* pMsgData);			//å¤„ç†æ¸¸æˆä¸–ç•ŒæœåŠ¡å™¨çš„ç½‘ç»œæ¶ˆæ¯
 
 private:
 	IClient*				m_pClient;
@@ -76,7 +76,7 @@ private:
 	bool					m_bIsClientConnecting;
 	bool					m_bIsGameServConnecting;
 	bool					m_bTobeDisconnect;
-	unsigned int			m_uClientRequestTime;		//·¢³öÇéÇóµÄÊ±¼ä
+	unsigned int			m_uClientRequestTime;		//å‘å‡ºæƒ…æ±‚çš„æ—¶é—´
 	unsigned int			m_uClientTimeoutLimit;
 };
 

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÏûÏ¢´°¿Ú
+//	ç•Œé¢--æ¶ˆæ¯çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-14
@@ -16,20 +16,20 @@ struct KUiInformationParam;
 class KUiInformation2 : protected KWndShowAnimate
 {
 public:
-	void	Initialize();							//³õÊ¼»¯
-	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
-	void	Show(const char* pInformation, int nInforLen, BOOL bNeedConfirmNotify = TRUE);//ÏÔÊ¾´°¿Ú
+	void	Initialize();							//åˆå§‹åŒ–
+	void	LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void	Show(const char* pInformation, int nInforLen, BOOL bNeedConfirmNotify = TRUE);//æ˜¾ç¤ºçª—å£
 
-	void	SpeakWords(KUiInformationParam* pWordDataList, int nCount);	//ÏÔÊ¾¶Ô»°ÄÚÈİ
+	void	SpeakWords(KUiInformationParam* pWordDataList, int nCount);	//æ˜¾ç¤ºå¯¹è¯å†…å®¹
 	KWndWindow* TopChildFromPoint(int x, int y) {
 		return this;
 	}
-	void	Hide();									//Òş²Ø´°¿Ú
+	void	Hide();									//éšè—çª—å£
 	void	Close();
 	KUiInformation2();
 	~KUiInformation2();
 private:
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 private:
 	KWndText512			m_Information;
 

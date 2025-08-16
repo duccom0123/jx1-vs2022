@@ -22,7 +22,7 @@ KImageStore::KImageStore()
 	m_nReleaseCount = 0;
 	m_fCacheMemUsed = 0.0f;
 	
-	// ¸ù¾İÎïÀíÄÚ´æ´óĞ¡¾ö¶¨×ÊÔ´»º³åÇøµÄ´óĞ¡
+	// æ ¹æ®ç‰©ç†å†…å­˜å¤§å°å†³å®šèµ„æºç¼“å†²åŒºçš„å¤§å°
 	MEMORYSTATUS stat;
 	GlobalMemoryStatus (&stat);
 	if(stat.dwTotalPhys <= 134217728)
@@ -63,7 +63,7 @@ void KImageStore::CheckBalance()
 	unsigned int nUnUseTime, nMaxUnUseTime = 1000;
 	int nNodeSelected = -1;
 
-	// Ñ¡Ôñ×î³¤Ê±¼äÃ»ÓĞÊ¹ÓÃµÄ×ÊÔ´£¬²¢ÊÍ·Å
+	// é€‰æ‹©æœ€é•¿æ—¶é—´æ²¡æœ‰ä½¿ç”¨çš„èµ„æºï¼Œå¹¶é‡Šæ”¾
 	m_tmLastCheckBalance = timeGetTime();
 	for (i = m_TextureResList.size() -1; i >= 0; i--)
 	{
@@ -102,14 +102,14 @@ unsigned int KImageStore::CreateImage(const char* pszName, int nWidth, int nHeig
 	if (nType != ISI_T_BITMAP16)
 		return 0;
 	
-	// ½«Ãû×ÖÓ³ÉäÎªID
+	// å°†åå­—æ˜ å°„ä¸ºID
 	unsigned int uImage = hash((LPSTR)pszName);
-	// Èç¹û×ÊÔ´ÒÑ¾­´æÔÚÔò·µ»Ø
+	// å¦‚æœèµ„æºå·²ç»å­˜åœ¨åˆ™è¿”å›
 	int nIdx = FindImage(uImage, 0);
 	if (nIdx >= 0)
 		return 0;
 	
-	// ´´½¨Î»Í¼×ÊÔ´
+	// åˆ›å»ºä½å›¾èµ„æº
 	ImageResBmp *pTexRes = new ImageResBmp;
 	if (pTexRes == NULL)
 		return 0;
@@ -125,7 +125,7 @@ unsigned int KImageStore::CreateImage(const char* pszName, int nWidth, int nHeig
 	node.m_nType = nType;
 	node.m_nID = uImage;
 	node.m_pTextureRes = pTexRes;
-	// ½«ÌùÍ¼×ÊÔ´¼ÓÈëÊı×é
+	// å°†è´´å›¾èµ„æºåŠ å…¥æ•°ç»„
 	nIdx = - nIdx - 1;
 	m_TextureResList.insert(m_TextureResList.begin() + nIdx, node);
 	
@@ -341,14 +341,14 @@ KImageRes* KImageStore::GetImage( const char* pszImage, unsigned int& uImage, in
 		node.m_nType = nType;
 		node.m_nID = uImage;
 		node.m_pTextureRes = pObject;
-		nImagePosition = - nImagePosition - 1;	// FindImageÊ±ÒÑ¾­ÕÒºÃÎ»ÖÃÁË
+		nImagePosition = - nImagePosition - 1;	// FindImageæ—¶å·²ç»æ‰¾å¥½ä½ç½®äº†
 		m_TextureResList.insert(m_TextureResList.begin() + nImagePosition, node);
 
 		pObject->m_bLastFrameUsed = true;
 	}
 
 	DWORD tmCur = timeGetTime();
-	//ÎªÁËÖ´ĞĞĞ§ÂÊËùÒÔÎ´°ÑÏÂÃæµÄÅĞ¶Ï·ÅÔÚCheckBalanceº¯ÊıÌåÀïÃæ¡£ÏÂÍ¬¡£
+	//ä¸ºäº†æ‰§è¡Œæ•ˆç‡æ‰€ä»¥æœªæŠŠä¸‹é¢çš„åˆ¤æ–­æ”¾åœ¨CheckBalanceå‡½æ•°ä½“é‡Œé¢ã€‚ä¸‹åŒã€‚
 	if (m_fCacheMemUsed > m_nBalanceNum && 
 		(tmCur <= m_tmLastCheckBalance || (tmCur - m_tmLastCheckBalance) > ISBP_CHECK_POINT_DEF))
 	{
@@ -382,7 +382,7 @@ int KImageStore::GetImagePixelAlpha( const char* pszImage, int nFrame, int nX, i
 		pTemp = GetImage(pszImage, uImage, nPos, nFrame, ISI_T_SPR);
 		if (!pTemp)
 			break;
-		nRet = ((ImageResSpr *)pTemp)->GetPixelAlpha(nFrame, nX, nY);	// ÔÚSprµÄ·½·¨ÀïÒÑ¾­´¦ÀíÁË·¶Î§
+		nRet = ((ImageResSpr *)pTemp)->GetPixelAlpha(nFrame, nX, nY);	// åœ¨Sprçš„æ–¹æ³•é‡Œå·²ç»å¤„ç†äº†èŒƒå›´
 		break;
 	case ISI_T_BITMAP16:
 		pTemp = GetImage(pszImage, uImage, nPos, nFrame, ISI_T_BITMAP16);

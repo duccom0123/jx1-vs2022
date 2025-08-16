@@ -12,10 +12,10 @@
 #include "KPakFile.h"
 #include "KGifFile.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KGifFile
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KGifFile
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KGifFile::KGifFile()
 {
@@ -25,10 +25,10 @@ KGifFile::KGifFile()
 	m_pBitmap	= NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_byte
-// ¹¦ÄÜ:	Read a byte from file buffer
-// ²ÎÊı:	void
-// ·µ»Ø:	BYTE
+// å‡½æ•°:	read_byte
+// åŠŸèƒ½:	Read a byte from file buffer
+// å‚æ•°:	void
+// è¿”å›:	BYTE
 //---------------------------------------------------------------------------
 BYTE KGifFile::read_byte()
 {
@@ -38,10 +38,10 @@ BYTE KGifFile::read_byte()
 	return *pByte;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_word
-// ¹¦ÄÜ:	Read a word from file buffer
-// ²ÎÊı:	void
-// ·µ»Ø:	WORD
+// å‡½æ•°:	read_word
+// åŠŸèƒ½:	Read a word from file buffer
+// å‚æ•°:	void
+// è¿”å›:	WORD
 //---------------------------------------------------------------------------
 WORD KGifFile::read_word()
 {
@@ -52,10 +52,10 @@ WORD KGifFile::read_word()
 	return *((PWORD)pByte);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_header
-// ¹¦ÄÜ:	Read gif header from file buffer
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	read_header
+// åŠŸèƒ½:	Read gif header from file buffer
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::read_header()
 {
@@ -102,10 +102,10 @@ BOOL KGifFile::read_header()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_color_table
-// ¹¦ÄÜ:	Read a GIF color table from file buffer
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	read_color_table
+// åŠŸèƒ½:	Read a GIF color table from file buffer
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::read_color_table()
 {
@@ -122,10 +122,10 @@ BOOL KGifFile::read_color_table()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_image_desc
-// ¹¦ÄÜ:	Read image descriptor
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	read_image_desc
+// åŠŸèƒ½:	Read image descriptor
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::read_image_desc()
 {
@@ -156,10 +156,10 @@ BOOL KGifFile::read_image_desc()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	read_extension
-// ¹¦ÄÜ:	Read extension block
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	read_extension
+// åŠŸèƒ½:	Read extension block
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::read_extension()
 {
@@ -193,11 +193,11 @@ BOOL KGifFile::read_extension()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Open
-// ¹¦ÄÜ:	´ò¿ªGIFÎÄ¿Æ
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-//			lpBitmap	8bitÎ»Í¼
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	Open
+// åŠŸèƒ½:	æ‰“å¼€GIFæ–‡ç§‘
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+//			lpBitmap	8bitä½å›¾
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KGifFile::Open(LPSTR FileName, KBitmap* lpBitmap)
 {
@@ -228,10 +228,10 @@ BOOL KGifFile::Open(LPSTR FileName, KBitmap* lpBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FirstImage
-// ¹¦ÄÜ:	Get first image of gif file
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	FirstImage
+// åŠŸèƒ½:	Get first image of gif file
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::FirstImage()
 {
@@ -239,10 +239,10 @@ BOOL KGifFile::FirstImage()
 	return NextImage();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NextImage
-// ¹¦ÄÜ:	Get next image of gif file
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	NextImage
+// åŠŸèƒ½:	Get next image of gif file
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KGifFile::NextImage()
 {
@@ -285,10 +285,10 @@ BOOL KGifFile::NextImage()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	lzw_decode
-// ¹¦ÄÜ:	LZW Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	lzw_decode
+// åŠŸèƒ½:	LZW Decoder
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KGifFile::lzw_decode()
 {
@@ -390,10 +390,10 @@ void KGifFile::lzw_decode()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	clear_table
-// ¹¦ÄÜ:	LZW Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	clear_table
+// åŠŸèƒ½:	LZW Decoder
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KGifFile::clear_table()
 {
@@ -402,10 +402,10 @@ void KGifFile::clear_table()
 	bit_overflow = 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	get_code
-// ¹¦ÄÜ:	LZW Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	get_code
+// åŠŸèƒ½:	LZW Decoder
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KGifFile::get_code()
 {
@@ -447,10 +447,10 @@ void KGifFile::get_code()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	get_string
-// ¹¦ÄÜ:	LZW Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	get_string
+// åŠŸèƒ½:	LZW Decoder
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KGifFile::get_string(int num)
 {
@@ -475,10 +475,10 @@ void KGifFile::get_string(int num)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	output_string
-// ¹¦ÄÜ:	LZW Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	output_string
+// åŠŸèƒ½:	LZW Decoder
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KGifFile::output_string(void)
 {

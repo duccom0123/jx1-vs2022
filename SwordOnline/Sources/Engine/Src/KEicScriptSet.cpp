@@ -10,17 +10,17 @@
 #include "KDebug.h"
 #include "KEicScriptSet.h"
 //---------------------------------------------------------------------------
-// 函数:	KEicScriptSet::KEicScriptSet
-// 功能:	
-// 返回:	
+// 鍑芥暟:	KEicScriptSet::KEicScriptSet
+// 鍔熻兘:	
+// 杩斿洖:	
 //---------------------------------------------------------------------------
 KEicScriptSet::KEicScriptSet()
 {
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScriptSet::~KEicScriptSet
-// 功能:	
-// 返回:	
+// 鍑芥暟:	KEicScriptSet::~KEicScriptSet
+// 鍔熻兘:	
+// 杩斿洖:	
 //---------------------------------------------------------------------------
 KEicScriptSet::~KEicScriptSet()
 {

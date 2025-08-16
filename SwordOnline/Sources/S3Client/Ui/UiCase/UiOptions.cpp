@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiOptions.cpp
-//	´´½¨Õß		£º	ÂÀ¹ğ»ª
-//	´´½¨Ê±¼ä	£º	2002-9-11 15:05:15
-//	¹¦ÄÜÃèÊö	£º	
+//	æ–‡ä»¶å		ï¼š	UiOptions.cpp
+//	åˆ›å»ºè€…		ï¼š	å•æ¡‚å
+//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-11 15:05:15
+//	åŠŸèƒ½æè¿°	ï¼š	
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -72,7 +72,7 @@ void KUiOptions::CancelMenu()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
 //--------------------------------------------------------------------------
 KUiOptions* KUiOptions::GetIfVisible()
 {
@@ -82,7 +82,7 @@ KUiOptions* KUiOptions::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 //--------------------------------------------------------------------------
 KUiOptions* KUiOptions::OpenWindow(KWndWindow* pReturn)
 {
@@ -105,7 +105,7 @@ KUiOptions* KUiOptions::OpenWindow(KWndWindow* pReturn)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
+//	åŠŸèƒ½ï¼šå…³é—­çª—å£
 //--------------------------------------------------------------------------
 void KUiOptions::CloseWindow()
 {
@@ -121,7 +121,7 @@ void KUiOptions::CloseWindow()
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ³õÊ¼»¯
+// åŠŸèƒ½	: åˆå§‹åŒ–
 // -------------------------------------------------------------------------
 void KUiOptions::Initialize()
 {
@@ -142,12 +142,12 @@ void KUiOptions::Initialize()
 	g_UiBase.GetCurSchemePath(Scheme, 256);
 	m_pSelf->LoadScheme(Scheme);
 
-	// ×¢²á±¾´°¿Ú
+	// æ³¨å†Œæœ¬çª—å£
 	Wnd_AddWindow(this);
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ÔØÈë½çÃæ·½°¸
+// åŠŸèƒ½	: è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 // -------------------------------------------------------------------------
 void KUiOptions::LoadScheme(const char* pScheme)
 {
@@ -160,12 +160,12 @@ void KUiOptions::LoadScheme(const char* pScheme)
 	}
 }
 
-//ÔØÈë½çÃæ·½°¸
+//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 void KUiOptions::LoadScheme(KIniFile* pIni)
 {
 //	assert(pIni);
 
-	Init(pIni, "Main");	// ´°¿Ú±³¾°Êı¾İ
+	Init(pIni, "Main");	// çª—å£èƒŒæ™¯æ•°æ®
 	m_CloseBtn.Init(pIni, "CloseBtn");
 	m_ShortcutKeyBtn.Init(pIni, "ShortcutKeyBtn");
 //	m_SkinBtn.Init(pIni, "SkinBtn");
@@ -222,7 +222,7 @@ void KUiOptions::LoadScheme(KIniFile* pIni)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ´°¿Úº¯Êı
+// åŠŸèƒ½	: çª—å£å‡½æ•°
 // -------------------------------------------------------------------------
 int	 KUiOptions::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -295,7 +295,7 @@ int	 KUiOptions::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 
 void KUiOptions::UpdateSettingSet(int eSet, bool bOnlyUpdateUi)
 {
-//Õâ²¿·ÖÊÇ¸ù¾İCheckBoxÀ´×öµÄ
+//è¿™éƒ¨åˆ†æ˜¯æ ¹æ®CheckBoxæ¥åšçš„
 /*	if (eSet < SETTING_DEFAULT || eSet > SETTING_LEGEND)
 		return;
 	m_eSettingSet = eSet;
@@ -315,7 +315,7 @@ void KUiOptions::UpdateSettingSet(int eSet, bool bOnlyUpdateUi)
 		KShortcutKeyCentre::LoadScript((char*)pszFileName);
 	}*/
 
-	//Õâ²¿·ÖÊÇ°´ÕÕ°´Å¥ºÍµ¯³öÊ½²Ëµ¥À´×öµÄ£¬¸üĞÂ°´Å¥ºÍÔØÈëĞÂÅäÖÃ
+	//è¿™éƒ¨åˆ†æ˜¯æŒ‰ç…§æŒ‰é’®å’Œå¼¹å‡ºå¼èœå•æ¥åšçš„ï¼Œæ›´æ–°æŒ‰é’®å’Œè½½å…¥æ–°é…ç½®
 	KIniFile*	pSetting = g_UiBase.GetCommConfigFile();
 	if (pSetting)
 	{
@@ -346,7 +346,7 @@ void KUiOptions::UpdateSettingSet(int eSet, bool bOnlyUpdateUi)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: µ¯³öÑ¡ÔñÅäÖÃ·½°¸µÄ²Ëµ¥
+// åŠŸèƒ½	: å¼¹å‡ºé€‰æ‹©é…ç½®æ–¹æ¡ˆçš„èœå•
 // -------------------------------------------------------------------------
 void KUiOptions::PopupSeleteSetMenu(int nX, int nY)
 {
@@ -404,7 +404,7 @@ void KUiOptions::PopupSeleteSetMenu(int nX, int nY)
 }*/
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ÏìÓ¦¹ö¶¯Ìõ±»ÍÏ¶¯
+// åŠŸèƒ½	: å“åº”æ»šåŠ¨æ¡è¢«æ‹–åŠ¨
 // -------------------------------------------------------------------------
 void KUiOptions::OnScrollBarPosChanged(KWndWindow* pWnd, int nPos)
 {
@@ -479,7 +479,7 @@ void KUiOptions::UpdateAllStatusImg()
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ¸üĞÂÊı¾İ
+// åŠŸèƒ½	: æ›´æ–°æ•°æ®
 // -------------------------------------------------------------------------
 int KUiOptions::LoadSetting(bool bReload, bool bUpdateOption)
 {		
@@ -596,7 +596,7 @@ void KUiOptions::StoreSetting()
 	g_UiBase.CloseCommSettingFile(true);
 }
 
-//ÇĞ»»¿ª¹ØĞÍÑ¡Ïî
+//åˆ‡æ¢å¼€å…³å‹é€‰é¡¹
 void KUiOptions::ToggleOption(int nIndex)
 {
 	if (nIndex < OPTION_I_START || nIndex >= OPTION_INDEX_COUNT)
@@ -606,15 +606,15 @@ void KUiOptions::ToggleOption(int nIndex)
 	bool bEnable = m_ToggleItemList[nIndex].bEnable = !m_ToggleItemList[nIndex].bEnable;
 	switch(nIndex)
 	{
-	case OPTION_I_DYNALIGHT:	//¶¯Ì¬¹âÓ°
+	case OPTION_I_DYNALIGHT:	//åŠ¨æ€å…‰å½±
 		if (g_pCoreShell)
 			g_pCoreShell->OperationRequest(GOI_OPTION_SETTING, OPTION_DYNALIGHT, bEnable);
 		break;
-	case OPTION_I_WEATHER:		//ÌìÆø¿ª¹Ø
+	case OPTION_I_WEATHER:		//å¤©æ°”å¼€å…³
 		if (g_pCoreShell)
 			g_pCoreShell->OperationRequest(GOI_OPTION_SETTING, OPTION_WEATHER, bEnable);
 		break;
-	case OPTION_I_PERSPECTIVE:	//Í¸ÊÓÄ£Ê½
+	case OPTION_I_PERSPECTIVE:	//é€è§†æ¨¡å¼
 		if (g_pCoreShell)
 			g_pCoreShell->OperationRequest(GOI_OPTION_SETTING, OPTION_PERSPECTIVE, bEnable);
 		break;

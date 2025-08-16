@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ÌØ±ğ¹¦ÄÜµÄÒ»Ğ©»ù´¡º¯Êı
+//	ç‰¹åˆ«åŠŸèƒ½çš„ä¸€äº›åŸºç¡€å‡½æ•°
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-7-26
@@ -10,12 +10,12 @@
 #include "../../../Represent/iRepresent/iRepresentShell.h"
 
 struct KOutputTextParam;
-//Êä³ö°üº¬tab·Ö¸ñµÄ×Ö·û´®£¬¿ÉÒÔÊÇ¶àĞĞ£¬·µ»ØÖµ±íÊ¾Êä³öÄÚÈİ¹²¼¸ĞĞ
-//nLineWidth µÄµ¥Î»ÊÇÆÁÄ»ÏñËØµã
-//KOutputTextParam::nSkipLine²»Ö§³Ö
+//è¾“å‡ºåŒ…å«tabåˆ†æ ¼çš„å­—ç¬¦ä¸²ï¼Œå¯ä»¥æ˜¯å¤šè¡Œï¼Œè¿”å›å€¼è¡¨ç¤ºè¾“å‡ºå†…å®¹å…±å‡ è¡Œ
+//nLineWidth çš„å•ä½æ˜¯å±å¹•åƒç´ ç‚¹
+//KOutputTextParam::nSkipLineä¸æ”¯æŒ
 int OutputTabSplitText(const char* pBuffer, int nCount, int nLineWidth,
 					   int nFontId, KOutputTextParam* pParam);
-//eType:ÎÄ¼şÀàĞÍ£¨bmp,jpg£©
-//nQuality:Í¼ÏóÖÊÁ¿(0-100)£¬Ö»¶ÔjpgÓĞÒâÒå
+//eType:æ–‡ä»¶ç±»å‹ï¼ˆbmp,jpgï¼‰
+//nQuality:å›¾è±¡è´¨é‡(0-100)ï¼Œåªå¯¹jpgæœ‰æ„ä¹‰
 void SaveScreenToFile(ScreenFileType eType = SCRFILETYPE_JPG, unsigned int nQuality = 100);
 bool SetScrPicPath(const char* szPath);

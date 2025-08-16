@@ -1,6 +1,6 @@
 /* 
  * File:     UiTaskDataFile.h
- * Desc:     ÈÎÎñ¼ÇÊÂÎÄ¼ş²Ù×÷
+ * Desc:     ä»»åŠ¡è®°äº‹æ–‡ä»¶æ“ä½œ
  * Author:   flying
  * Creation: 2003/7/19
  */
@@ -32,14 +32,14 @@ void KTaskDataFile::LoadData()
 	bool	bOk = false;
 	while(File.Open(szFileName))
 	{
-		//==¶ÁÎÄ¼şÍ·==
+		//==è¯»æ–‡ä»¶å¤´==
 		TASK_FILE_HEADER	Header;
 		if (File.Read(&Header, sizeof(Header)) != sizeof(Header))
 			break;
 		if (*(int*)(&(Header.cFlag[0])) != TASK_FILE_FLAG)
 			break;
 
-		//==¶Á¸öÈË¼ÍÂ¼==
+		//==è¯»ä¸ªäººçºªå½•==
 		if (Header.nPersonalRecordBytes)
 		{
 			ms_pPersonalRecord = (KPersonalRecord*)malloc(Header.nPersonalRecordBytes);
@@ -54,7 +54,7 @@ void KTaskDataFile::LoadData()
 			}
 		}
 
-		//==¶ÁÏµÍ³¼ÍÂ¼==
+		//==è¯»ç³»ç»Ÿçºªå½•==
 		TASK_SYSTEM_RECORD	record;
 		int	nPreSize = sizeof(TASK_SYSTEM_RECORD) - sizeof(record.cBuffer);
 		for (int i = 0; i < Header.nSystemRecordCount; i++)
@@ -101,7 +101,7 @@ bool KTaskDataFile::SaveData()
 	{
 		if (!File.Create(szFileName))
 			break;
-		//==Ğ´ÎÄ¼şÍ·==
+		//==å†™æ–‡ä»¶å¤´==
 		TASK_FILE_HEADER	Header = { 0 };
 		*(int*)(&(Header.cFlag[0])) = TASK_FILE_FLAG;
 		if (ms_pPersonalRecord && ms_pPersonalRecord->nLen > 0)
@@ -113,14 +113,14 @@ bool KTaskDataFile::SaveData()
 		if (File.Write(&Header, sizeof(Header)) != sizeof(Header))
 			break;
 
-		//==Ğ´¸öÈË¼ÍÂ¼==
+		//==å†™ä¸ªäººçºªå½•==
 		if (ms_pPersonalRecord)
 		{
 			if (File.Write(ms_pPersonalRecord, Header.nPersonalRecordBytes) != Header.nPersonalRecordBytes)
 				break;
 		}
 
-		//==Ğ´ÏµÍ³¼ÍÂ¼==
+		//==å†™ç³»ç»Ÿçºªå½•==
 		KTaskSystemRecordNode* pCurrent = ms_pSystemRecordList;
 		int	i;
 		for (i = 0; i < ms_nSystemRecordCount; i++)

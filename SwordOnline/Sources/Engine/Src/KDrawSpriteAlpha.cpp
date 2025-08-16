@@ -12,22 +12,22 @@
 #include "DrawSpriteMP.inc"
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw Sprite nAlpha
-// ¹¦ÄÜ:	»æÖÆ256É«SpriteÎ»Í¼(²»´øÔ¤äÖÈ¾)
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw Sprite nAlpha
+// åŠŸèƒ½:	ç»˜åˆ¶256è‰²Spriteä½å›¾(ä¸å¸¦é¢„æ¸²æŸ“)
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawSpriteAlpha(void* node, void* canvas)
 {
 	KDrawNode* pNode = (KDrawNode *)node;
 	KCanvas* pCanvas = (KCanvas *)canvas;
 	
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (pCanvas->MakeClip(pNode->m_nX, pNode->m_nY, pNode->m_nWidth, pNode->m_nHeight, &Clipper) == 0)
 		return;
 
-	// pBufferÖ¸ÏòÆÁÄ»»æÖÆĞĞµÄÍ·Ò»¸öÏñµã´¦ 
+	// pBufferæŒ‡å‘å±å¹•ç»˜åˆ¶è¡Œçš„å¤´ä¸€ä¸ªåƒç‚¹å¤„ 
 	int nPitch;
 	void* pBuffer = pCanvas->LockCanvas(nPitch);
 	if (pBuffer == NULL)
@@ -61,14 +61,14 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
         // mm5: push eax, pop eax
 
 
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµã,	(ÒÔ×Ö½Ú¼Æ)	
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹,	(ä»¥å­—èŠ‚è®¡)	
 		mov		edi, pBuffer
 		mov		eax, Clipper.x
 		add		edi, eax
 		add		edi, eax
         
 
-		//Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		esi, pSprite
 
 		//_SkipSpriteAheadContent_:
@@ -106,7 +106,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä			
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹			
 			_DrawFullLineSection_Line_:
 			{
 				movd	edx, mm1    // mm1: Clipper.width
@@ -230,7 +230,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			_DrawPartLineSection_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -260,7 +260,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			_DrawPartLineSection_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				cmp		ebx, 255
@@ -327,7 +327,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 					movd    edx, mm6
 					neg		edx
 					mov		ebx, nAlpha
-					shl		ebx, 3			//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					shl		ebx, 3			//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					add		ebx, 1
 					dec		Clipper.height
 					jg		_DrawPartLineSection_LineSkip_
@@ -360,7 +360,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			_DrawPartLineSection_SkipLeft_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		edx, nSprSkipPerLine
 				_DrawPartLineSection_SkipLeft_LineSkipLocal_:
 				{
@@ -384,7 +384,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			}
 			_DrawPartLineSection_SkipLeft_LineLocal_Alpha_:
 			{
-				sub		edx, eax		;ÏÈ°Ñeax¼õÁË£¬ÕâÑùááÃæ¾Í¿ÉÒÔ²»ĞèÒª±£ÁôeaxÁË
+				sub		edx, eax		;å…ˆæŠŠeaxå‡äº†ï¼Œè¿™æ ·å¾Œé¢å°±å¯ä»¥ä¸éœ€è¦ä¿ç•™eaxäº†
 				mov		ecx, eax
 				cmp		ebx, 255
 				jl		_DrawPartLineSection_SkipLeft_LineLocal_nAlpha_
@@ -448,7 +448,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			_DrawPartLineSection_SkipRight_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -475,7 +475,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 			_DrawPartLineSection_SkipRight_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				cmp		ebx, 255
@@ -522,7 +522,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 						loop	_DrawPartLineSection_SkipRight_CopyPixel_Part_
 					}
 					neg		edx
-					mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					dec		Clipper.height
 					jg		_DrawPartLineSection_SkipRight_LineSkip_
 					jmp		_EXIT_WAY_
@@ -542,7 +542,7 @@ void g_DrawSpriteAlpha(void* node, void* canvas)
 					neg		edx
 					mov		ebx, 128
 					dec		Clipper.height
-					jg		_DrawPartLineSection_SkipRight_LineSkip_//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					jg		_DrawPartLineSection_SkipRight_LineSkip_//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					jmp		_EXIT_WAY_
 				}
 			}
@@ -574,11 +574,11 @@ void g_DrawSpriteAlpha(void* node, void* canvas, int nExAlpha)
 	void* lpSprite = pNode->m_pBitmap;// sprite pointer
 	void* lpPalette	= pNode->m_pPalette;// palette pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 
@@ -591,11 +591,11 @@ void g_DrawSpriteAlpha(void* node, void* canvas, int nExAlpha)
 	long nMask32 = pCanvas->m_nMask32;// rgb mask32
 	WORD wAlpha = (WORD)nExAlpha;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = lpBuffer + nPitch * Clipper.y + nX * 2;
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -607,8 +607,8 @@ void g_DrawSpriteAlpha(void* node, void* canvas, int nExAlpha)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã 
-// (Ìø¹ıClipper.topĞĞÑ¹ËõÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ 
+// (è·³è¿‡Clipper.topè¡Œå‹ç¼©å›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpSprite
 		mov		ecx, Clipper.top
@@ -649,7 +649,7 @@ loc_DrawSpriteAlpha_0010:
 		dec     ecx
 		jnz		loc_DrawSpriteAlpha_0008
 //---------------------------------------------------------------------------
-// ¸ù¾İ Clipper.left, Clipper.right ·Ö 4 ÖÖÇé¿ö
+// æ ¹æ® Clipper.left, Clipper.right åˆ† 4 ç§æƒ…å†µ
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0011:
 
@@ -676,8 +676,8 @@ loc_DrawSpriteAlpha_0014:
 
 		jmp		loc_DrawSpriteAlpha_0400
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0100:
 
@@ -795,8 +795,8 @@ loc_DrawSpriteAlpha_0111:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0200:
 
@@ -811,7 +811,7 @@ loc_DrawSpriteAlpha_0201:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0202
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha == 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç†nAlpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -828,7 +828,7 @@ loc_DrawSpriteAlpha_0201:
 		jg		loc_DrawSpriteAlpha_0200
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha != 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç†nAlpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0202:
 
@@ -839,7 +839,7 @@ loc_DrawSpriteAlpha_0202:
 		jg		loc_DrawSpriteAlpha_0201
 		jz		loc_DrawSpriteAlpha_0203
 //---------------------------------------------------------------------------
-// °Ñ¶à¼õµÄ¿í¶È²¹»ØÀ´
+// æŠŠå¤šå‡çš„å®½åº¦è¡¥å›æ¥
 //---------------------------------------------------------------------------
 		neg		edx
 		sub		esi, edx
@@ -933,7 +933,7 @@ loc_DrawSpriteAlpha_0211:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ÒÑ´¦ÀíÍê¼ô²ÃÇø ÏÂÃæµÄ´¦ÀíÏà¶Ô¼òµ¥
+// å·²å¤„ç†å®Œå‰ªè£åŒº ä¸‹é¢çš„å¤„ç†ç›¸å¯¹ç®€å•
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0203:
 
@@ -948,7 +948,7 @@ loc_DrawSpriteAlpha_0204:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0206
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha == 0µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç†nAlpha == 0çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -959,7 +959,7 @@ loc_DrawSpriteAlpha_0204:
 		jg		loc_DrawSpriteAlpha_0200
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha != 0µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç†nAlpha != 0çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0206:
 
@@ -1046,8 +1046,8 @@ loc_DrawSpriteAlpha_0221:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0300:
 
@@ -1062,7 +1062,7 @@ loc_DrawSpriteAlpha_0301:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0303
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha == 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† nAlpha == 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1071,7 +1071,7 @@ loc_DrawSpriteAlpha_0301:
 		neg		edx
 		jmp		loc_DrawSpriteAlpha_0305
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha != 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† nAlpha != 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0303:
 
@@ -1157,7 +1157,7 @@ loc_DrawSpriteAlpha_0311:
 		jmp		loc_DrawSpriteAlpha_0305
 
 //---------------------------------------------------------------------------
-// Á¬ĞøµãµÄ¸öÊı (eax) > ²Ã¼õºóµÄ¿í¶È (edx)
+// è¿ç»­ç‚¹çš„ä¸ªæ•° (eax) > è£å‡åçš„å®½åº¦ (edx)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0304:
 
@@ -1244,7 +1244,7 @@ loc_DrawSpriteAlpha_0321:
 		jmp		loc_DrawSpriteAlpha_0305
 
 //---------------------------------------------------------------------------
-// ´¦Àí³¬¹ıÁËÓÒ±ß½çµÄ²¿·Ö, edx = ³¬¹ıÓÒ±ß½ç²¿·ÖµÄ³¤¶È
+// å¤„ç†è¶…è¿‡äº†å³è¾¹ç•Œçš„éƒ¨åˆ†, edx = è¶…è¿‡å³è¾¹ç•Œéƒ¨åˆ†çš„é•¿åº¦
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0305:
 
@@ -1262,7 +1262,7 @@ loc_DrawSpriteAlpha_0306:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0307
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha == 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† nAlpha == 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1270,7 +1270,7 @@ loc_DrawSpriteAlpha_0306:
 		jg		loc_DrawSpriteAlpha_0306
 		jmp		loc_DrawSpriteAlpha_0308
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha != 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† nAlpha != 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0307:
 
@@ -1288,36 +1288,36 @@ loc_DrawSpriteAlpha_0308:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0400:		// Line Begin
 
 		mov		edx, Clipper.left
 
-loc_Draw_GetLength:						// edx ¼ÇÂ¼¸ÃĞĞÑ¹ËõÊı¾İµ½²Ã¼ô×ó¶ËµÄ³¤¶È£¬¿ÉÄÜÊÇ¸ºÖµ
+loc_Draw_GetLength:						// edx è®°å½•è¯¥è¡Œå‹ç¼©æ•°æ®åˆ°è£å‰ªå·¦ç«¯çš„é•¿åº¦ï¼Œå¯èƒ½æ˜¯è´Ÿå€¼
 
-		movzx	eax, byte ptr[esi]		// È¡³öÑ¹ËõÊı¾İµÄ³¤¶È
+		movzx	eax, byte ptr[esi]		// å–å‡ºå‹ç¼©æ•°æ®çš„é•¿åº¦
 		inc		esi
-		movzx	ebx, byte ptr[esi]		// È¡³öAlphaÖµ
+		movzx	ebx, byte ptr[esi]		// å–å‡ºAlphaå€¼
 		inc		esi
 		cmp		edx, eax
-		jge		loc_Draw_AllLeft		// edx >= eax, ËùÓĞÊı¾İ¶¼ÔÚ×ó±ß½çÍâ
-		mov		ecx, Clipper.width		// ecx µÃµ½Clipper¿í¶È
-		add		ecx, edx				// ecx = Clipper¿í¶È + Ñ¹ËõÊı¾İ×ó¶Ë±»¼ô³¤¶È
+		jge		loc_Draw_AllLeft		// edx >= eax, æ‰€æœ‰æ•°æ®éƒ½åœ¨å·¦è¾¹ç•Œå¤–
+		mov		ecx, Clipper.width		// ecx å¾—åˆ°Clipperå®½åº¦
+		add		ecx, edx				// ecx = Clipperå®½åº¦ + å‹ç¼©æ•°æ®å·¦ç«¯è¢«å‰ªé•¿åº¦
 		cmp		ecx, 0
-		jle		loc_Draw_AllRight		// ecx <= 0£¬ËùÓĞÊı¾İ¶¼ÔÚÓÒ±ß½çÍâ
-		sub		ecx, eax				// ±È½ÏÑ¹ËõÊı¾İ³¤¶ÈºÍ ecx £¬ecxĞ¡ÓÚ0µÄ»°£¬ecxÖµÎª¸Ã¶ÎÓÒ¶Ë²Ã¼ô³¤¶È
-		jge		loc_Draw_GetLength_0	// ecx >= eax ËµÃ÷ÓÒ¶ËÎŞ²Ã¼ô
+		jle		loc_Draw_AllRight		// ecx <= 0ï¼Œæ‰€æœ‰æ•°æ®éƒ½åœ¨å³è¾¹ç•Œå¤–
+		sub		ecx, eax				// æ¯”è¾ƒå‹ç¼©æ•°æ®é•¿åº¦å’Œ ecx ï¼Œecxå°äº0çš„è¯ï¼Œecxå€¼ä¸ºè¯¥æ®µå³ç«¯è£å‰ªé•¿åº¦
+		jge		loc_Draw_GetLength_0	// ecx >= eax è¯´æ˜å³ç«¯æ— è£å‰ª
 		cmp		edx, 0
-		jl		loc_Draw_RightClip		// ×ó¶ËÓĞ²Ã¼ô£¬ÓÒ¶ËÒ²ÓĞ
+		jl		loc_Draw_RightClip		// å·¦ç«¯æœ‰è£å‰ªï¼Œå³ç«¯ä¹Ÿæœ‰
 		jmp		loc_Draw_AllClip
 loc_Draw_GetLength_0:
 		cmp		edx, 0
-		jl		loc_Draw_NoClip			// ×óÓÒ¶¼Ã»²Ã¼ô
+		jl		loc_Draw_NoClip			// å·¦å³éƒ½æ²¡è£å‰ª
 		jmp		loc_Draw_LeftClip
 //---------------------------------------------------------------------------
-// È«ÔÚ×ó¶ËÍâ
+// å…¨åœ¨å·¦ç«¯å¤–
 //---------------------------------------------------------------------------
 loc_Draw_AllLeft:
 		or		ebx, ebx
@@ -1334,7 +1334,7 @@ loc_Draw_AllLeft_1: // alpha != 0
 		sub		edx, eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// È«ÔÚÓÒ¶ËÍâ
+// å…¨åœ¨å³ç«¯å¤–
 //---------------------------------------------------------------------------
 loc_Draw_AllRight:
 		or		ebx, ebx
@@ -1350,7 +1350,7 @@ loc_Draw_AllRight:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit		
 loc_Draw_AllRight_1:
 		add		edi, eax
@@ -1364,10 +1364,10 @@ loc_Draw_AllRight_1:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦Àí×óÓÒ¶Ë¶¼²»ÓÃ²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†å·¦å³ç«¯éƒ½ä¸ç”¨è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_NoClip:
 		or		ebx, ebx
@@ -1449,21 +1449,21 @@ loc_Draw_NoClip_Alpha_LOOP:
 		sub		edx, eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// ´¦Àí×óÓÒ¶ËÍ¬Ê±Òª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†å·¦å³ç«¯åŒæ—¶è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_AllClip:
-		or		ebx, ebx				// ÉèÖÃ±êÖ¾Î»
-		jnz		loc_Draw_AllClip_1		// AlphaÖµ²»ÎªÁãµÄ´¦Àí
+		or		ebx, ebx				// è®¾ç½®æ ‡å¿—ä½
+		jnz		loc_Draw_AllClip_1		// Alphaå€¼ä¸ä¸ºé›¶çš„å¤„ç†
 //loc_Draw_AllClip_0:
 		add		edi, eax
 		add		edi, eax
 		sub		edx, eax
 		neg		ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 loc_Draw_AllClip_1:
 		add		edi, eax
@@ -1471,16 +1471,16 @@ loc_Draw_AllClip_1:
 		add		esi, eax
 		sub		edx, eax				// edx - eax < 0
 
-		add		edi, edx				// ²¹»ØÇ°Ãæ¶à¼õµÄ²¿·Ö
-		add		edi, edx				// ediºÍesiÖ¸ÏòÊµ¼ÊÒª
-		add		esi, edx				// »æÖÆµÄ²¿·Ö
+		add		edi, edx				// è¡¥å›å‰é¢å¤šå‡çš„éƒ¨åˆ†
+		add		edi, edx				// ediå’ŒesiæŒ‡å‘å®é™…è¦
+		add		esi, edx				// ç»˜åˆ¶çš„éƒ¨åˆ†
 		
 		cmp		ebx, 255
 		jl		loc_Draw_AllClip_Alpha
 		push	eax
 		push	edx
 		push	ecx
-		mov		ecx, Clipper.width		// Ç°ºó¶¼±»²Ã¼ô£¬ËùÒÔ»æÖÆ³¤¶ÈÎªClipper.width
+		mov		ecx, Clipper.width		// å‰åéƒ½è¢«è£å‰ªï¼Œæ‰€ä»¥ç»˜åˆ¶é•¿åº¦ä¸ºClipper.width
 		mov		ebx, lpPalette
 		
 loc_Draw_AllClip_Copy:
@@ -1548,17 +1548,17 @@ loc_Draw_AllClip_Alpha_LOOP:
 		pop		eax
 loc_Draw_AllClip_End:
 		neg		ecx
-		add		edi, ecx				// °Ñedi¡¢esiÖ¸ÕëÖ¸ÏòÏÂÒ»¶Î
+		add		edi, ecx				// æŠŠediã€esiæŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€æ®µ
 		add		edi, ecx
 		add		esi, ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀíÖ»ÓĞ×ó¶ËÒª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†åªæœ‰å·¦ç«¯è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_LeftClip:
 		or		ebx, ebx
@@ -1650,7 +1650,7 @@ loc_Draw_LeftClip_Alpha_LOOP:
 		pop		eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// ´¦ÀíÖ»ÓĞÓÒ¶ËÒª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†åªæœ‰å³ç«¯è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_RightClip:
 		or		ebx, ebx
@@ -1665,7 +1665,7 @@ loc_Draw_RightClip:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 
 loc_Draw_RightClip_1:
@@ -1675,7 +1675,7 @@ loc_Draw_RightClip_1:
 		push	eax
 		push	edx
 		push	ecx
-		add		ecx, eax					// µÃµ½Êµ¼Ê»æÖÆµÄ³¤¶È
+		add		ecx, eax					// å¾—åˆ°å®é™…ç»˜åˆ¶çš„é•¿åº¦
 		mov		ebx, lpPalette
 		
 loc_Draw_RightClip_Copy:
@@ -1748,14 +1748,14 @@ loc_Draw_RightClip_Alpha_LOOP:
 		
 loc_Draw_RightClip_End:
 		neg		ecx
-		add		edi, ecx				// °Ñedi¡¢esiÖ¸ÕëÖ¸ÏòÏÂÒ»¶Î
+		add		edi, ecx				// æŠŠediã€esiæŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€æ®µ
 		add		edi, ecx
 		add		esi, ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 			
 loc_DrawSpriteAlpha_exit:
@@ -1764,7 +1764,7 @@ loc_DrawSpriteAlpha_exit:
 }
 
 
-//Èı¼¶alpha»æÖÆ
+//ä¸‰çº§alphaç»˜åˆ¶
 void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 {
 	KDrawNode* pNode = (KDrawNode *)node;
@@ -1773,7 +1773,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 	void* pSprite = pNode->m_pBitmap;	// sprite pointer
 	void* pPalette	= pNode->m_pPalette;// palette pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(pNode->m_nX, pNode->m_nY, pNode->m_nWidth, pNode->m_nHeight, &Clipper))
 		return;
@@ -1785,7 +1785,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 
 	long nMask32 = pCanvas->m_nMask32;	// rgb mask32
 
-	// pBufferÖ¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÎ»ÖÃ (ÒÔ×Ö½Ú¼Æ)
+	// pBufferæŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»ä½ç½® (ä»¥å­—èŠ‚è®¡)
 	pBuffer = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
 	long nBuffNextLine = nPitch - Clipper.width * 2;// next line add
 	long nSprSkip = pNode->m_nWidth * Clipper.top + Clipper.left;
@@ -1809,7 +1809,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
         // mm6: push edx, pop edx
         // mm5: push eax, pop eax
 
-		//Ê¹ediÖ¸Ïòcanvas»æÖÆÆğµã,Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿ediæŒ‡å‘canvasç»˜åˆ¶èµ·ç‚¹,ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		edi, pBuffer
 		mov		esi, pSprite
 
@@ -1848,7 +1848,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä			
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹			
 			_DrawFullLineSection_Line_:
 			{
 				movd	edx, mm1    // mm1: Clipper.width
@@ -1950,7 +1950,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 				_DrawPartLineSection_LineSkip_:
 				{
 					add		edi, nBuffNextLine
-					//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+					//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 					mov		eax, edx
 					mov		edx, nSprSkipPerLine
 					or		eax, eax
@@ -1983,7 +1983,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 				_DrawPartLineSection_LineLocal_Alpha_:
 				{
 					cmp		eax, edx
-					jnl		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+					jnl		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 					movd	mm5, eax
 					mov		ecx, eax
@@ -2040,7 +2040,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 
 						sub		eax, edx
 						mov		edx, eax
-						mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+						mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 						jmp		_DrawPartLineSection_LineSkip_
 					}
 					
@@ -2058,7 +2058,7 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 						jz		_EXIT_WAY_
 						sub		eax, edx
 						mov		edx, eax
-						mov		ebx, 128	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+						mov		ebx, 128	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 						jmp		_DrawPartLineSection_LineSkip_
 					}
 				}
@@ -2087,19 +2087,19 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 	long nAlpha = pNode->m_nAlpha;// alpha value
 	long nMask32 = pCanvas->m_nMask32;// rgb mask32
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 	
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = lpBuffer + nPitch * Clipper.y + nX * 2;
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -2111,8 +2111,8 @@ void g_DrawSprite3LevelAlpha(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã 
-// (Ìø¹ıClipper.topĞĞÑ¹ËõÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ 
+// (è·³è¿‡Clipper.topè¡Œå‹ç¼©å›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpSprite
 		mov		ecx, Clipper.top
@@ -2153,7 +2153,7 @@ loc_DrawSpriteAlpha_0010:
 		dec     ecx
 		jnz		loc_DrawSpriteAlpha_0008
 //---------------------------------------------------------------------------
-// ¸ù¾İ Clipper.left, Clipper.right ·Ö 4 ÖÖÇé¿ö
+// æ ¹æ® Clipper.left, Clipper.right åˆ† 4 ç§æƒ…å†µ
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0011:
 
@@ -2180,8 +2180,8 @@ loc_DrawSpriteAlpha_0014:
 
 		jmp		loc_DrawSpriteAlpha_0400
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0100:
 
@@ -2288,8 +2288,8 @@ loc_DrawSpriteAlpha_0111:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0200:
 
@@ -2304,7 +2304,7 @@ loc_DrawSpriteAlpha_0201:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0202
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha == 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç†nAlpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -2321,7 +2321,7 @@ loc_DrawSpriteAlpha_0201:
 		jg		loc_DrawSpriteAlpha_0200
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha != 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç†nAlpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0202:
 
@@ -2332,7 +2332,7 @@ loc_DrawSpriteAlpha_0202:
 		jg		loc_DrawSpriteAlpha_0201
 		jz		loc_DrawSpriteAlpha_0203
 //---------------------------------------------------------------------------
-// °Ñ¶à¼õµÄ¿í¶È²¹»ØÀ´
+// æŠŠå¤šå‡çš„å®½åº¦è¡¥å›æ¥
 //---------------------------------------------------------------------------
 		neg		edx
 		sub		esi, edx
@@ -2426,7 +2426,7 @@ loc_DrawSpriteAlpha_0211:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ÒÑ´¦ÀíÍê¼ô²ÃÇø ÏÂÃæµÄ´¦ÀíÏà¶Ô¼òµ¥
+// å·²å¤„ç†å®Œå‰ªè£åŒº ä¸‹é¢çš„å¤„ç†ç›¸å¯¹ç®€å•
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0203:
 
@@ -2441,7 +2441,7 @@ loc_DrawSpriteAlpha_0204:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0206
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha == 0µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç†nAlpha == 0çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -2452,7 +2452,7 @@ loc_DrawSpriteAlpha_0204:
 		jg		loc_DrawSpriteAlpha_0200
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀínAlpha != 0µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç†nAlpha != 0çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0206:
 
@@ -2539,8 +2539,8 @@ loc_DrawSpriteAlpha_0221:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0300:
 
@@ -2555,7 +2555,7 @@ loc_DrawSpriteAlpha_0301:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0303
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha == 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† nAlpha == 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -2564,7 +2564,7 @@ loc_DrawSpriteAlpha_0301:
 		neg		edx
 		jmp		loc_DrawSpriteAlpha_0305
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha != 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† nAlpha != 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0303:
 
@@ -2650,7 +2650,7 @@ loc_DrawSpriteAlpha_0311:
 		jmp		loc_DrawSpriteAlpha_0305
 
 //---------------------------------------------------------------------------
-// Á¬ĞøµãµÄ¸öÊı (eax) > ²Ã¼õºóµÄ¿í¶È (edx)
+// è¿ç»­ç‚¹çš„ä¸ªæ•° (eax) > è£å‡åçš„å®½åº¦ (edx)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0304:
 
@@ -2737,7 +2737,7 @@ loc_DrawSpriteAlpha_0321:
 		jmp		loc_DrawSpriteAlpha_0305
 
 //---------------------------------------------------------------------------
-// ´¦Àí³¬¹ıÁËÓÒ±ß½çµÄ²¿·Ö, edx = ³¬¹ıÓÒ±ß½ç²¿·ÖµÄ³¤¶È
+// å¤„ç†è¶…è¿‡äº†å³è¾¹ç•Œçš„éƒ¨åˆ†, edx = è¶…è¿‡å³è¾¹ç•Œéƒ¨åˆ†çš„é•¿åº¦
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0305:
 
@@ -2755,7 +2755,7 @@ loc_DrawSpriteAlpha_0306:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteAlpha_0307
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha == 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† nAlpha == 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -2763,7 +2763,7 @@ loc_DrawSpriteAlpha_0306:
 		jg		loc_DrawSpriteAlpha_0306
 		jmp		loc_DrawSpriteAlpha_0308
 //---------------------------------------------------------------------------
-// ´¦Àí nAlpha != 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† nAlpha != 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0307:
 
@@ -2781,36 +2781,36 @@ loc_DrawSpriteAlpha_0308:
 		jmp		loc_DrawSpriteAlpha_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteAlpha_0400:		// Line Begin
 
 		mov		edx, Clipper.left
 
-loc_Draw_GetLength:						// edx ¼ÇÂ¼¸ÃĞĞÑ¹ËõÊı¾İµ½²Ã¼ô×ó¶ËµÄ³¤¶È£¬¿ÉÄÜÊÇ¸ºÖµ
+loc_Draw_GetLength:						// edx è®°å½•è¯¥è¡Œå‹ç¼©æ•°æ®åˆ°è£å‰ªå·¦ç«¯çš„é•¿åº¦ï¼Œå¯èƒ½æ˜¯è´Ÿå€¼
 
-		movzx	eax, byte ptr[esi]		// È¡³öÑ¹ËõÊı¾İµÄ³¤¶È
+		movzx	eax, byte ptr[esi]		// å–å‡ºå‹ç¼©æ•°æ®çš„é•¿åº¦
 		inc		esi
-		movzx	ebx, byte ptr[esi]		// È¡³öAlphaÖµ
+		movzx	ebx, byte ptr[esi]		// å–å‡ºAlphaå€¼
 		inc		esi
 		cmp		edx, eax
-		jge		loc_Draw_AllLeft		// edx >= eax, ËùÓĞÊı¾İ¶¼ÔÚ×ó±ß½çÍâ
-		mov		ecx, Clipper.width		// ecx µÃµ½Clipper¿í¶È
-		add		ecx, edx				// ecx = Clipper¿í¶È + Ñ¹ËõÊı¾İ×ó¶Ë±»¼ô³¤¶È
+		jge		loc_Draw_AllLeft		// edx >= eax, æ‰€æœ‰æ•°æ®éƒ½åœ¨å·¦è¾¹ç•Œå¤–
+		mov		ecx, Clipper.width		// ecx å¾—åˆ°Clipperå®½åº¦
+		add		ecx, edx				// ecx = Clipperå®½åº¦ + å‹ç¼©æ•°æ®å·¦ç«¯è¢«å‰ªé•¿åº¦
 		cmp		ecx, 0
-		jle		loc_Draw_AllRight		// ecx <= 0£¬ËùÓĞÊı¾İ¶¼ÔÚÓÒ±ß½çÍâ
-		sub		ecx, eax				// ±È½ÏÑ¹ËõÊı¾İ³¤¶ÈºÍ ecx £¬ecxĞ¡ÓÚ0µÄ»°£¬ecxÖµÎª¸Ã¶ÎÓÒ¶Ë²Ã¼ô³¤¶È
-		jge		loc_Draw_GetLength_0	// ecx >= eax ËµÃ÷ÓÒ¶ËÎŞ²Ã¼ô
+		jle		loc_Draw_AllRight		// ecx <= 0ï¼Œæ‰€æœ‰æ•°æ®éƒ½åœ¨å³è¾¹ç•Œå¤–
+		sub		ecx, eax				// æ¯”è¾ƒå‹ç¼©æ•°æ®é•¿åº¦å’Œ ecx ï¼Œecxå°äº0çš„è¯ï¼Œecxå€¼ä¸ºè¯¥æ®µå³ç«¯è£å‰ªé•¿åº¦
+		jge		loc_Draw_GetLength_0	// ecx >= eax è¯´æ˜å³ç«¯æ— è£å‰ª
 		cmp		edx, 0
-		jl		loc_Draw_RightClip		// ×ó¶ËÓĞ²Ã¼ô£¬ÓÒ¶ËÒ²ÓĞ
+		jl		loc_Draw_RightClip		// å·¦ç«¯æœ‰è£å‰ªï¼Œå³ç«¯ä¹Ÿæœ‰
 		jmp		loc_Draw_AllClip
 loc_Draw_GetLength_0:
 		cmp		edx, 0
-		jl		loc_Draw_NoClip			// ×óÓÒ¶¼Ã»²Ã¼ô
+		jl		loc_Draw_NoClip			// å·¦å³éƒ½æ²¡è£å‰ª
 		jmp		loc_Draw_LeftClip
 //---------------------------------------------------------------------------
-// È«ÔÚ×ó¶ËÍâ
+// å…¨åœ¨å·¦ç«¯å¤–
 //---------------------------------------------------------------------------
 loc_Draw_AllLeft:
 		or		ebx, ebx
@@ -2827,7 +2827,7 @@ loc_Draw_AllLeft_1: // alpha != 0
 		sub		edx, eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// È«ÔÚÓÒ¶ËÍâ
+// å…¨åœ¨å³ç«¯å¤–
 //---------------------------------------------------------------------------
 loc_Draw_AllRight:
 		or		ebx, ebx
@@ -2843,7 +2843,7 @@ loc_Draw_AllRight:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit		
 loc_Draw_AllRight_1:
 		add		edi, eax
@@ -2857,10 +2857,10 @@ loc_Draw_AllRight_1:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦Àí×óÓÒ¶Ë¶¼²»ÓÃ²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†å·¦å³ç«¯éƒ½ä¸ç”¨è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_NoClip:
 		or		ebx, ebx
@@ -2942,21 +2942,21 @@ loc_Draw_NoClip_Alpha_LOOP:
 		sub		edx, eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// ´¦Àí×óÓÒ¶ËÍ¬Ê±Òª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†å·¦å³ç«¯åŒæ—¶è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_AllClip:
-		or		ebx, ebx				// ÉèÖÃ±êÖ¾Î»
-		jnz		loc_Draw_AllClip_1		// AlphaÖµ²»ÎªÁãµÄ´¦Àí
+		or		ebx, ebx				// è®¾ç½®æ ‡å¿—ä½
+		jnz		loc_Draw_AllClip_1		// Alphaå€¼ä¸ä¸ºé›¶çš„å¤„ç†
 //loc_Draw_AllClip_0:
 		add		edi, eax
 		add		edi, eax
 		sub		edx, eax
 		neg		ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 loc_Draw_AllClip_1:
 		add		edi, eax
@@ -2964,16 +2964,16 @@ loc_Draw_AllClip_1:
 		add		esi, eax
 		sub		edx, eax				// edx - eax < 0
 
-		add		edi, edx				// ²¹»ØÇ°Ãæ¶à¼õµÄ²¿·Ö
-		add		edi, edx				// ediºÍesiÖ¸ÏòÊµ¼ÊÒª
-		add		esi, edx				// »æÖÆµÄ²¿·Ö
+		add		edi, edx				// è¡¥å›å‰é¢å¤šå‡çš„éƒ¨åˆ†
+		add		edi, edx				// ediå’ŒesiæŒ‡å‘å®é™…è¦
+		add		esi, edx				// ç»˜åˆ¶çš„éƒ¨åˆ†
 		
 		cmp		ebx, 255
 		jl		loc_Draw_AllClip_Alpha
 		push	eax
 		push	edx
 		push	ecx
-		mov		ecx, Clipper.width		// Ç°ºó¶¼±»²Ã¼ô£¬ËùÒÔ»æÖÆ³¤¶ÈÎªClipper.width
+		mov		ecx, Clipper.width		// å‰åéƒ½è¢«è£å‰ªï¼Œæ‰€ä»¥ç»˜åˆ¶é•¿åº¦ä¸ºClipper.width
 		mov		ebx, lpPalette
 		
 loc_Draw_AllClip_Copy:
@@ -3041,17 +3041,17 @@ loc_Draw_AllClip_Alpha_LOOP:
 		pop		eax
 loc_Draw_AllClip_End:
 		neg		ecx
-		add		edi, ecx				// °Ñedi¡¢esiÖ¸ÕëÖ¸ÏòÏÂÒ»¶Î
+		add		edi, ecx				// æŠŠediã€esiæŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€æ®µ
 		add		edi, ecx
 		add		esi, ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 //---------------------------------------------------------------------------
-// ´¦ÀíÖ»ÓĞ×ó¶ËÒª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†åªæœ‰å·¦ç«¯è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_LeftClip:
 		or		ebx, ebx
@@ -3143,7 +3143,7 @@ loc_Draw_LeftClip_Alpha_LOOP:
 		pop		eax
 		jmp		loc_Draw_GetLength
 //---------------------------------------------------------------------------
-// ´¦ÀíÖ»ÓĞÓÒ¶ËÒª²Ã¼ôµÄÑ¹Ëõ¶Î
+// å¤„ç†åªæœ‰å³ç«¯è¦è£å‰ªçš„å‹ç¼©æ®µ
 //---------------------------------------------------------------------------
 loc_Draw_RightClip:
 		or		ebx, ebx
@@ -3158,7 +3158,7 @@ loc_Draw_RightClip:
 		jl		loc_Draw_GetLength
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400	// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400	// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 
 loc_Draw_RightClip_1:
@@ -3168,7 +3168,7 @@ loc_Draw_RightClip_1:
 		push	eax
 		push	edx
 		push	ecx
-		add		ecx, eax					// µÃµ½Êµ¼Ê»æÖÆµÄ³¤¶È
+		add		ecx, eax					// å¾—åˆ°å®é™…ç»˜åˆ¶çš„é•¿åº¦
 		mov		ebx, lpPalette
 		
 loc_Draw_RightClip_Copy:
@@ -3241,14 +3241,14 @@ loc_Draw_RightClip_Alpha_LOOP:
 		
 loc_Draw_RightClip_End:
 		neg		ecx
-		add		edi, ecx				// °Ñedi¡¢esiÖ¸ÕëÖ¸ÏòÏÂÒ»¶Î
+		add		edi, ecx				// æŠŠediã€esiæŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€æ®µ
 		add		edi, ecx
 		add		esi, ecx
 		cmp		ecx, Clipper.right
-		jl		loc_Draw_GetLength		// Spr¸ÃĞĞÃ»Íê£¬½Ó×Å´¦Àí
+		jl		loc_Draw_GetLength		// Sprè¯¥è¡Œæ²¡å®Œï¼Œæ¥ç€å¤„ç†
 		add		edi, nNextLine
 		dec		Clipper.height
-		jnz		loc_DrawSpriteAlpha_0400// ĞĞ½áÊø£¬ÏÂÒ»ĞĞ¿ªÊ¼
+		jnz		loc_DrawSpriteAlpha_0400// è¡Œç»“æŸï¼Œä¸‹ä¸€è¡Œå¼€å§‹
 		jmp		loc_DrawSpriteAlpha_exit
 			
 loc_DrawSpriteAlpha_exit:

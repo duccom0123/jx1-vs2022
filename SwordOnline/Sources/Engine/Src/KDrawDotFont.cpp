@@ -10,10 +10,10 @@
 #include "KCanvas.h"
 #include "KDrawDotFont.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawDotFont
-// ¹¦ÄÜ:	»æÖÆµãÕóµÄ×ÖÌå
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawDotFont
+// åŠŸèƒ½:	ç»˜åˆ¶ç‚¹é˜µçš„å­—ä½“
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawDotFont(void* node, void* canvas)
 {
@@ -25,26 +25,26 @@ void g_DrawDotFont(void* node, void* canvas)
 	long nWidth = pNode->m_nWidth;// width of font
 	long nHeight = pNode->m_nHeight;// height of font
 	long nColor = pNode->m_nColor;// color of font
-	long nAlpha = 32-(pNode->m_nAlpha&0x001f);// nAlphaÖµ1
-	long nTmpAlpha = 0;// nAlphaÖµ2
+	long nAlpha = 32-(pNode->m_nAlpha&0x001f);// nAlphaå€¼1
+	long nTmpAlpha = 0;// nAlphaå€¼2
 	void* lpFont = pNode->m_pBitmap;// font pointer
 	void* lpBuffer = pCanvas->m_pCanvas;// canvas buffer
 	long nPitch = pCanvas->m_nPitch;// canvas pitch
 	long nMask32 = pCanvas->m_nMask32;// RGB mask 32bit
 
 	
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
 	
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long nNextLine = nPitch - Clipper.width * 2;
 	
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = nPitch * Clipper.y + nX * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -56,7 +56,7 @@ void g_DrawDotFont(void* node, void* canvas)
 		mov 	edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpFont
 		mov		ecx, Clipper.top

@@ -9,10 +9,10 @@ public:
 	KSynLock(){m_nCount = 0; m_bLock = FALSE;m_nCurId = 0;};
 	virtual ~KSynLock() {};
 	BOOL m_bLock;
-	long m_nCount;//·ÃÎÊ¸ÃÊı¾İÒÑ±»Ëø¶¨µÄÁ¿
-	long m_nCurId;//Ä¿Ç°¾ßÓĞ·ÃÎÊÈ¨ÏŞµÄËø¶¨Öµ
-	long Lock();	 //¼ì²éÊÇ·ñÊı¾İÒÑ¾­±»Ëø¶¨£¬Èç¹ûÊÇµÄ»°·µ»Øµ±Ç°µÄÖµ
-	BOOL UnLock(long index);//·´Ëø
+	long m_nCount;//è®¿é—®è¯¥æ•°æ®å·²è¢«é”å®šçš„é‡
+	long m_nCurId;//ç›®å‰å…·æœ‰è®¿é—®æƒé™çš„é”å®šå€¼
+	long Lock();	 //æ£€æŸ¥æ˜¯å¦æ•°æ®å·²ç»è¢«é”å®šï¼Œå¦‚æœæ˜¯çš„è¯è¿”å›å½“å‰çš„å€¼
+	BOOL UnLock(long index);//åé”
 	long GetCurId(){return m_nCurId;};
 	long GetCount(){return m_nCount;};
 	//	virtual void * GetData() = 0;

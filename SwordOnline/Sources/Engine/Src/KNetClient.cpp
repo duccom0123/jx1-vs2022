@@ -19,13 +19,13 @@
 
 //---------------------------------------------------------------------------
 
-enum    //s2cÏµÍ³Ğ­Òé£¬×î´óµ½31
+enum    //s2cç³»ç»Ÿåè®®ï¼Œæœ€å¤§åˆ°31
 {
 	s2c_passwordchange = 1,
 	s2c_replyping,
 	s2c_shakehand,
 };
-enum  //c2sÏµÍ³Ğ­Òé£¬×î´óµ½31
+enum  //c2sç³»ç»Ÿåè®®ï¼Œæœ€å¤§åˆ°31
 {
 	c2s_replyshakehand = 1,
 	c2s_sendping,
@@ -41,10 +41,10 @@ enum  //c2sÏµÍ³Ğ­Òé£¬×î´óµ½31
 KNetClient* g_pNetClient=NULL;
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KNetClient
-// ¹¦ÄÜ:	constructor
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KNetClient
+// åŠŸèƒ½:	constructor
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetClient::KNetClient()
 {
@@ -76,10 +76,10 @@ KNetClient::KNetClient()
 	RecvDataSize=0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KNetClient
-// ¹¦ÄÜ:	destructor
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KNetClient
+// åŠŸèƒ½:	destructor
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetClient::~KNetClient()
 {
@@ -88,10 +88,10 @@ KNetClient::~KNetClient()
 	g_pNetClient=NULL;	
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Open
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	bool
+// å‡½æ•°:	Open
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	bool
 //---------------------------------------------------------------------------
 bool KNetClient::Open()
 {
@@ -103,10 +103,10 @@ bool KNetClient::Open()
 	return (error == 0);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	close
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	close
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetClient::Close()
 {
@@ -119,10 +119,10 @@ void KNetClient::Close()
 	WSACleanup();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FillServerAddr()
-// ¹¦ÄÜ:	set node name
-// ²ÎÊı:	char*
-// ·µ»Ø:	void
+// å‡½æ•°:	FillServerAddr()
+// åŠŸèƒ½:	set node name
+// å‚æ•°:	char*
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 bool KNetClient::FillServerAddr(char *name)
 {
@@ -179,10 +179,10 @@ bool KNetClient::FillServerAddr(char *name)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetPortNumFromName()
-// ¹¦ÄÜ:	set node name
-// ²ÎÊı:	char*
-// ·µ»Ø:	void
+// å‡½æ•°:	GetPortNumFromName()
+// åŠŸèƒ½:	set node name
+// å‚æ•°:	char*
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 short KNetClient::GetPortNumFromName(char *pname)
 {
@@ -190,10 +190,10 @@ short KNetClient::GetPortNumFromName(char *pname)
 	return (short)pnum;
 } 
 //---------------------------------------------------------------------------
-// º¯Êı:	Connect
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char*
-// ·µ»Ø:	bool
+// å‡½æ•°:	Connect
+// åŠŸèƒ½:	
+// å‚æ•°:	char*
+// è¿”å›:	bool
 //---------------------------------------------------------------------------
 bool KNetClient::Connect(char *name)
 {
@@ -268,10 +268,10 @@ bool KNetClient::Connect(char *name)
 }																   
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SendMsg
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void*, long
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	SendMsg
+// åŠŸèƒ½:	
+// å‚æ•°:	void*, long
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KNetClient::SendMsg(void *buf, long size)
 {
@@ -287,7 +287,7 @@ BOOL KNetClient::SendMsg(void *buf, long size)
 	res = send(m_Socket, (char *) SendBuffer, size+2, 0);
 	
 #ifdef NET_DEBUG
-	//²âÊÔÊ¹ÓÃ¸Ã´úÂë	
+	//æµ‹è¯•ä½¿ç”¨è¯¥ä»£ç 	
 	char szMsg[200];
 	g_StrCpy(szMsg, "C2S:");
 	//sprintf(szMsg, "%s[%d]", szMsg, size); 
@@ -312,10 +312,10 @@ BOOL KNetClient::SendMsg(void *buf, long size)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	RecieveData
-// ¹¦ÄÜ:	½«Òª·¢ËÍ¸ø·şÎñÆ÷µÄÊı¾İ·ÅÔÚÏà¹ØµÄ·â°üÄÚ
-// ²ÎÊı:	BYTE *pBuffer,DWORD dwSize
-// ·µ»Ø:	int
+// å‡½æ•°:	RecieveData
+// åŠŸèƒ½:	å°†è¦å‘é€ç»™æœåŠ¡å™¨çš„æ•°æ®æ”¾åœ¨ç›¸å…³çš„å°åŒ…å†…
+// å‚æ•°:	BYTE *pBuffer,DWORD dwSize
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetClient:: RecieveData(BYTE *pBuffer,DWORD dwSize)
 {
@@ -335,10 +335,10 @@ int KNetClient:: RecieveData(BYTE *pBuffer,DWORD dwSize)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SendPackage
-// ¹¦ÄÜ:	·¢ËÍÏÖ´æÊı¾İ°ü
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	SendPackage
+// åŠŸèƒ½:	å‘é€ç°å­˜æ•°æ®åŒ…
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KNetClient::SendPackage(void)
 {
@@ -357,10 +357,10 @@ BOOL KNetClient::SendPackage(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	FindStringInMem
-// ¹¦ÄÜ:	Ñ°ÕÒÄÚ´æÖĞµÄÖ¸¶¨×Ö·û´®²»°üº¬½áÊø·û0
-// ²ÎÊı:	char *,DWORD ,char * 
-// ·µ»Ø:	char *
+// å‡½æ•°:	FindStringInMem
+// åŠŸèƒ½:	å¯»æ‰¾å†…å­˜ä¸­çš„æŒ‡å®šå­—ç¬¦ä¸²ä¸åŒ…å«ç»“æŸç¬¦0
+// å‚æ•°:	char *,DWORD ,char * 
+// è¿”å›:	char *
 //---------------------------------------------------------------------------
 char * KNetClient::FindStringInMem(char *pMem,DWORD dwSize,char *pString)
 {
@@ -384,10 +384,10 @@ char * KNetClient::FindStringInMem(char *pMem,DWORD dwSize,char *pString)
 	return NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SortProtocol
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void 
-// ·µ»Ø:	void
+// å‡½æ•°:	SortProtocol
+// åŠŸèƒ½:	
+// å‚æ•°:	void 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetClient::SortProtocol(void)
 {
@@ -448,17 +448,17 @@ void KNetClient::SortProtocol(void)
 	
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DeCompress
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void 
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	DeCompress
+// åŠŸèƒ½:	
+// å‚æ•°:	void 
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KNetClient::DeCompress(RECV_DATA* pData)
 {
 TCodeInfo tCodeInfo;
 BYTE      SwapBuf[RECV_DATA_SIZE+RECV_DATA_SIZE/10+1024];
         
-        if(pData->isCompressed) //½âÑ¹Ëõ
+        if(pData->isCompressed) //è§£å‹ç¼©
 		{
 			tCodeInfo.lpData=SwapBuf;
 			tCodeInfo.dwDataLen=pData->dwSize;
@@ -477,10 +477,10 @@ BYTE      SwapBuf[RECV_DATA_SIZE+RECV_DATA_SIZE/10+1024];
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DataProcess
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void 
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	DataProcess
+// åŠŸèƒ½:	
+// å‚æ•°:	void 
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KNetClient::DataProcess(void)
 {
@@ -489,7 +489,7 @@ BOOL KNetClient::DataProcess(void)
 	DWORD dwSize,offset=0;
     memset(&RecvData,0,sizeof(RECV_DATA));
 
-//Èç¹û°üÇ°ÃæÓĞ¿Õ°×Çø£¬ÇÒBackRecvData²»¿Õ£¬Ôò²¹µ½ÆäÎ²²¿,·ñÔòÇå³ıBackRecvData   	
+//å¦‚æœåŒ…å‰é¢æœ‰ç©ºç™½åŒºï¼Œä¸”BackRecvDataä¸ç©ºï¼Œåˆ™è¡¥åˆ°å…¶å°¾éƒ¨,å¦åˆ™æ¸…é™¤BackRecvData   	
   pTemp =(RECV_DATA *)FindStringInMem((char *)RecvBuffer.Data,RecvBuffer.dwSize,"PACK");	
   if(pTemp==NULL) return FALSE;
   dwSize=(BYTE *)pTemp-RecvBuffer.Data;
@@ -500,9 +500,9 @@ BOOL KNetClient::DataProcess(void)
 	  if(DeCompress(&BackRecvData)==TRUE)
 	  {
 		infoflag++;
-		//½âÃÜ
+		//è§£å¯†
 		Decipher();
-		//·Ö¼ñ³öÏµÍ³Ğ­ÒéºÍÓÎÏ·ÊÀ½çĞ­Òé
+		//åˆ†æ¡å‡ºç³»ç»Ÿåè®®å’Œæ¸¸æˆä¸–ç•Œåè®®
 		SortProtocol();
 	  }
   }
@@ -521,7 +521,7 @@ BOOL KNetClient::DataProcess(void)
 				return FALSE; 
 		}
 		dwSize=RecvBuffer.dwSize-((BYTE *)pTemp-RecvBuffer.Data);
-		//Èç¹ûÊ£ÏÂµÄ³¤¶È²»µ½Ò»¸ö°üÍ·³¤»ò±ê¶¨³¤¶È£¬·ÅÈëºó±¸°ü
+		//å¦‚æœå‰©ä¸‹çš„é•¿åº¦ä¸åˆ°ä¸€ä¸ªåŒ…å¤´é•¿æˆ–æ ‡å®šé•¿åº¦ï¼Œæ”¾å…¥åå¤‡åŒ…
         if(dwSize<(sizeof(RECV_DATA)-RECV_DATA_SIZE))
 		{
 		 memcpy(&BackRecvData,pTemp, dwSize);
@@ -531,7 +531,7 @@ BOOL KNetClient::DataProcess(void)
 			else
 				return FALSE; 
 		}
-		//Èç¹ûÊ£ÓàÊı¾İ²»×ãÒ»¸ö°üµÄÊµ¼Ê³¤¶È£¬·Åµ½ºó±¸°ü
+		//å¦‚æœå‰©ä½™æ•°æ®ä¸è¶³ä¸€ä¸ªåŒ…çš„å®é™…é•¿åº¦ï¼Œæ”¾åˆ°åå¤‡åŒ…
 		if (dwSize<(pTemp->dwCompSize + sizeof(RECV_DATA)-RECV_DATA_SIZE))
 		{
 		 memcpy(&BackRecvData,pTemp, dwSize);
@@ -545,9 +545,9 @@ BOOL KNetClient::DataProcess(void)
 
         if(DeCompress(pTemp)==FALSE) continue;
 		infoflag++;
-		//½âÃÜ
+		//è§£å¯†
 		Decipher();
-		//·Ö¼ñ³öÏµÍ³Ğ­ÒéºÍÓÎÏ·ÊÀ½çĞ­Òé
+		//åˆ†æ¡å‡ºç³»ç»Ÿåè®®å’Œæ¸¸æˆä¸–ç•Œåè®®
 		SortProtocol();
 		dwSize=pTemp->dwCompSize + sizeof(RECV_DATA)-RECV_DATA_SIZE;
 		offset+=dwSize;
@@ -555,10 +555,10 @@ BOOL KNetClient::DataProcess(void)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RecvMsg
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void*, long
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	RecvMsg
+// åŠŸèƒ½:	
+// å‚æ•°:	void*, long
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KNetClient::RecvMsg(void)
 {
@@ -585,10 +585,10 @@ BOOL KNetClient::RecvMsg(void)
 	return TRUE;  
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	MessagePreProcess
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	int
+// å‡½æ•°:	MessagePreProcess
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetClient::MessagePreProcess(void)
 {
@@ -632,10 +632,10 @@ int KNetClient::MessagePreProcess(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SendPing()
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	int
+// å‡½æ•°:	SendPing()
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetClient::SendPing(void)
 {
@@ -647,10 +647,10 @@ int KNetClient::SendPing(void)
 	return 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Decipher
-// ¹¦ÄÜ:	½âÃÜ·â°ü£¨½âÑ¹ºó£©
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Decipher
+// åŠŸèƒ½:	è§£å¯†å°åŒ…ï¼ˆè§£å‹åï¼‰
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetClient::Decipher(void)
 {
@@ -685,20 +685,20 @@ void KNetClient::Decipher(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	GetHostName()
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	char*
+// å‡½æ•°:	GetHostName()
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	char*
 //---------------------------------------------------------------------------
 char* KNetClient::GetHostName(void)
 {
 	return m_ServerHostName;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetPortName()
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	char*
+// å‡½æ•°:	GetPortName()
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	char*
 //---------------------------------------------------------------------------
 char* KNetClient::GetPortName(void)
 {
@@ -707,10 +707,10 @@ char* KNetClient::GetPortName(void)
 //--------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-// º¯Êı:	ClearRecvFlag
-// ¹¦ÄÜ:	Çå¿Õ½ÓÊÕÇøºÍ½ÓÊÕ±êÖ¾£¬Ã¿Ñ­»·ÏûÏ¢´¦ÀíÍêºóµ÷ÓÃ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	ClearRecvFlag
+// åŠŸèƒ½:	æ¸…ç©ºæ¥æ”¶åŒºå’Œæ¥æ”¶æ ‡å¿—ï¼Œæ¯å¾ªç¯æ¶ˆæ¯å¤„ç†å®Œåè°ƒç”¨
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetClient::ClearRecvFlag(void)
 {
@@ -724,10 +724,10 @@ void KNetClient::ClearRecvFlag(void)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DisConnect
-// ¹¦ÄÜ:	¶Ï¿ªÁ¬½Ó
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	DisConnect
+// åŠŸèƒ½:	æ–­å¼€è¿æ¥
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetClient::DisConnect(void)
 {

@@ -50,8 +50,8 @@ private:
 public:
     KMemManager();
     ~KMemManager();
-    void* Malloc(int size);// 分配的内存（不用初始化）
-    void* Calloc(int size);// 分配的内存（用零初始化）
+    void* Malloc(int size);// 鍒嗛厤鐨勫唴瀛橈紙涓嶇敤鍒濆鍖栵級
+    void* Calloc(int size);// 鍒嗛厤鐨勫唴瀛橈紙鐢ㄩ浂鍒濆鍖栵級
     void Free(void* p);
 };
 extern ENGINE_API KMemManager g_MemManager;

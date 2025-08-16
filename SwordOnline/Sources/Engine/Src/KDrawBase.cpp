@@ -14,12 +14,12 @@
 #define ABS(a)			((a > 0) ? a : -a)
 #define SIGN(a)			((a > 0) ? 1 : -1)
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw Pixel
-// ¹¦ÄÜ:	»æÖÆÒ»¸öµã
-// ²ÎÊı:	x		X×ø±ê
-//			y		Y×ø±ê
-//			color	ÑÕÉ«
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw Pixel
+// åŠŸèƒ½:	ç»˜åˆ¶ä¸€ä¸ªç‚¹
+// å‚æ•°:	x		Xåæ ‡
+//			y		Yåæ ‡
+//			color	é¢œè‰²
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawPixel(void* node, void* canvas)
 {
@@ -65,14 +65,14 @@ void g_DrawPixel(void* node, void* canvas)
 	pCanvas->UnlockCanvas();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	PutPixelAlpha
-// ¹¦ÄÜ:	»æÖÆ´øÍ¸Ã÷¶ÈµÄÏóËØµã
-// ²ÎÊı:	x			X×ø±ê
-//			y			Y×ø±ê
-//			color		ÑÕÉ«Öµ
-//			alpha		AlphaÖµ
-// ·µ»Ø:	void
-// ¹«Ê½:	(r1, g1, b1) ~ (r2, g2, b2) = (r3, g3, b3)
+// å‡½æ•°:	PutPixelAlpha
+// åŠŸèƒ½:	ç»˜åˆ¶å¸¦é€æ˜åº¦çš„è±¡ç´ ç‚¹
+// å‚æ•°:	x			Xåæ ‡
+//			y			Yåæ ‡
+//			color		é¢œè‰²å€¼
+//			alpha		Alphaå€¼
+// è¿”å›:	void
+// å…¬å¼:	(r1, g1, b1) ~ (r2, g2, b2) = (r3, g3, b3)
 //			r3 = (r1 * alpha + r2 * (32 - alpha)) / 32
 //			g3 = (g1 * alpha + g2 * (32 - alpha)) / 32
 //			b3 = (b1 * alpha + b2 * (32 - alpha)) / 32
@@ -148,14 +148,14 @@ void g_DrawPixelAlpha(void* node, void* canvas)
 	pCanvas->UnlockCanvas();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawLine
-// ¹¦ÄÜ:	»æÖÆÖ±Ïß
-// ²ÎÊı:	x1		X1×ø±ê
-//			x2		X2×ø±ê
-//			y1		Y1×ø±ê
-//			y2		Y2×ø±ê
-//			color	ÑÕÉ«Öµ
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawLine
+// åŠŸèƒ½:	ç»˜åˆ¶ç›´çº¿
+// å‚æ•°:	x1		X1åæ ‡
+//			x2		X2åæ ‡
+//			y1		Y1åæ ‡
+//			y2		Y2åæ ‡
+//			color	é¢œè‰²å€¼
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawLine(void* node, void* canvas)
 {
@@ -220,15 +220,15 @@ void g_DrawLine(void* node, void* canvas)
 	g_DrawPixel(&LineNode, pCanvas);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw Line Alpha
-// ¹¦ÄÜ:	»æÖÆÍ¸Ã÷Ö±Ïß
-// ²ÎÊı:	x1		X1×ø±ê
-//			x2		X2×ø±ê
-//			y1		Y1×ø±ê
-//			y2		Y2×ø±ê
-//			color	ÑÕÉ«Öµ 
-//			alpha	Í¸Ã÷Öµ
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw Line Alpha
+// åŠŸèƒ½:	ç»˜åˆ¶é€æ˜ç›´çº¿
+// å‚æ•°:	x1		X1åæ ‡
+//			x2		X2åæ ‡
+//			y1		Y1åæ ‡
+//			y2		Y2åæ ‡
+//			color	é¢œè‰²å€¼ 
+//			alpha	é€æ˜å€¼
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawLineAlpha(void* node, void* canvas)
 {
@@ -295,10 +295,10 @@ void g_DrawLineAlpha(void* node, void* canvas)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear a region on canvas
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColorÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear a region on canvas
+// åŠŸèƒ½:	ç”¨è‰²å½©nColoræ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_Clear(void* node, void* canvas)
 {
@@ -311,7 +311,7 @@ void g_Clear(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	int  nColor  = pNode->m_nColor;//  color
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -321,14 +321,14 @@ void g_Clear(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -373,10 +373,10 @@ void g_Clear(void* node, void* canvas)
 	pCanvas->UnlockCanvas();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear a region on canvas
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColor¸ôµãÇå³ıÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear a region on canvas
+// åŠŸèƒ½:	ç”¨è‰²å½©nColoréš”ç‚¹æ¸…é™¤æ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DotClear(void* node, void* canvas)
 {
@@ -389,7 +389,7 @@ void g_DotClear(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	int  nColor  = pNode->m_nColor;//  color
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -399,15 +399,15 @@ void g_DotClear(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 
 	
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -467,10 +467,10 @@ loc_DotClear_0006:
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear a region on canvas with alpha
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColor´øalphaÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor,nAlpha
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear a region on canvas with alpha
+// åŠŸèƒ½:	ç”¨è‰²å½©nColorå¸¦alphaæ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor,nAlpha
+// è¿”å›:	void
 // Modify By Freeway Chen in 2003.7.6, USE MMX Register
 //---------------------------------------------------------------------------
 void g_ClearAlpha(void* node, void* canvas)
@@ -486,7 +486,7 @@ void g_ClearAlpha(void* node, void* canvas)
 	long nAlpha = pNode->m_nAlpha;
 	long nMask32 = pCanvas->m_nMask32;
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -496,14 +496,14 @@ void g_ClearAlpha(void* node, void* canvas)
 	if (lpBuffer == NULL)
 		return;
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long ScreenOffset = nPitch - Clipper.width * 2;
 	
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-//  ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+//  è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 //  edi = (nPitch*Clipper.y + nX)*2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch

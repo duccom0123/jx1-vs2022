@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	½»Ò×È·ÈÏ¿ò
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2003-5-28
+//	æ–‡ä»¶å		ï¼š	äº¤æ˜“ç¡®è®¤æ¡†
+//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-5-28
 // -------------------------------------------------------------------------
 #ifndef __UiTradeConfirm_H__
 #define __UiTradeConfirm_H__
@@ -22,18 +22,18 @@ enum TRADE_CONFIRM_ACTION
 class KUiTradeConfirm : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
 	static KUiTradeConfirm*	OpenWindow(KUiObjAtContRegion* pObj,
-			KUiItemBuySelInfo* pPriceInfo, TRADE_CONFIRM_ACTION eAction);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiTradeConfirm*	GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
+			KUiItemBuySelInfo* pPriceInfo, TRADE_CONFIRM_ACTION eAction);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiTradeConfirm*	GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
 private:
 	KUiTradeConfirm();
 	~KUiTradeConfirm() {}
-	int		Initialize();								//³õÊ¼»¯
+	int		Initialize();								//åˆå§‹åŒ–
 	void	Show();
 	void	Hide();
-	void	LoadScheme(const char* pScheme);			//ÔØÈë½çÃæ·½°¸
+	void	LoadScheme(const char* pScheme);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	OnCancel();
 	void	OnBuy();

@@ -318,7 +318,7 @@ BOOL CFriendMgr::SomeoneLogout(const std::string& role)
 	}
 
 
-	//不能并发写，因此这里不写DB
+	//涓嶈兘骞跺彂鍐欙紝鍥犳杩欓噷涓嶅啓DB
 	//_StoreSomeone(itPlayer);
 
 

@@ -93,9 +93,9 @@ extern HWND hListOutput;
 CFilterTextLib g_libFilterText;
 CRoleNameFilter g_fltRoleName;
 
-static size_t g_BackupSleepTime = 0;  //±¸·İÏß³Ì×Ô¶¯¹ÒÆğÊ±¼ä
+static size_t g_BackupSleepTime = 0;  //å¤‡ä»½çº¿ç¨‹è‡ªåŠ¨æŒ‚èµ·æ—¶é—´
 static DWORD g_BackupSpaceTime = 0;
-static bool g_IsBackupSuspend = false;  //±¸·İÏß³ÌÊÇ·ñÊÖ¹¤¹ÒÆğ
+static bool g_IsBackupSuspend = false;  //å¤‡ä»½çº¿ç¨‹æ˜¯å¦æ‰‹å·¥æŒ‚èµ·
 static DWORD g_BackupBeginTime = 0;
 
 /*
@@ -109,10 +109,10 @@ void DestroyDatabaseEngine();
 void LoadSetting();
 void SaveSetting();
 
-//==========¼àÊÓµÄÏß³Ì
+//==========ç›‘è§†çš„çº¿ç¨‹
 DWORD WINAPI MonitorProc(LPVOID lpParameter) {
 	while(true) {
-		Sleep(60 * 1000);			//1´Î
+		Sleep(60 * 1000);			//1æ¬¡
 	}
 	return 0;
 }
@@ -684,7 +684,7 @@ bool CreateDatabaseEngine( HWND hwnd )
 		return false;
 	}
 	
-	StartBackupTimer(g_BackupSleepTime, g_BackupBeginTime); //¿ªÊ¼ÔËĞĞ±¸·İÏß³Ì
+	StartBackupTimer(g_BackupSleepTime, g_BackupBeginTime); //å¼€å§‹è¿è¡Œå¤‡ä»½çº¿ç¨‹
 	::SetWindowText(GetDlgItem( hwnd, IDC_LAB_BACKUP_STATUS ),
 								"Backup thread status: Running");
 	/*

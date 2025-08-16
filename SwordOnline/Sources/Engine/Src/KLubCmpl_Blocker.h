@@ -37,10 +37,10 @@ class KLubCmpl_Blocker
 public:
 	KList m_StackList;
 	KList m_Lines;		//
-	KList m_RestLines;	//end;--main()ºóÃæµÄ´úÂë
+	KList m_RestLines;	//end;--main()åé¢çš„ä»£ç 
 	KList  UnitsList;
 
-	int  GetBuffer(KMemClass1 * &pMem); //×ª»»ºó»ñµÃ×îÖÕµÄBuffer
+	int  GetBuffer(KMemClass1 * &pMem); //è½¬æ¢åè·å¾—æœ€ç»ˆçš„Buffer
 	void PushKey(KStackNode * pStackNode);
 	KStackNode * PopKey();
 	void ScanIf(KLineNode * pFirstNode);

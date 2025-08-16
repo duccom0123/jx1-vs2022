@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//	ÎÄ¼şÃû			:	KNewProtocolProcess.h
-//	´´½¨ÈË			:	ÍõÎ÷±´
-//	´´½¨Ê±¼ä		:	2003-7-14 13:17:29
-//	ÎÄ¼şËµÃ÷		:	Õë¶Ôµ¥¸öAccountµÄĞÂĞ­ÒéµÄ´¦Àí
+//	æ–‡ä»¶å			:	KNewProtocolProcess.h
+//	åˆ›å»ºäºº			:	ç‹è¥¿è´
+//	åˆ›å»ºæ—¶é—´		:	2003-7-14 13:17:29
+//	æ–‡ä»¶è¯´æ˜		:	é’ˆå¯¹å•ä¸ªAccountçš„æ–°åè®®çš„å¤„ç†
 //////////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __KNEWPROTOCOLPROCESS_H__
@@ -70,11 +70,11 @@ public:
 	void PushMsgInTransfer(const void * const pData, const size_t datalength);
 	void PushMsgInChat(const void * const pData, const size_t datalength);
 	void PushMsgInTong(const void * const pData, const size_t datalength);
-	//¸øËùÓĞ·şÎñÆ÷µÄÃ¿¸öÈË·¢ËÍÄ³¸öĞ­Òé,ÏòÉÏ·¢µ½RelayµÄ
+	//ç»™æ‰€æœ‰æœåŠ¡å™¨çš„æ¯ä¸ªäººå‘é€æŸä¸ªåè®®,å‘ä¸Šå‘åˆ°Relayçš„
 	void BroadcastGlobal(const void * const pData, const size_t datalength);
-	//¸ø±¾·şÎñÆ÷µÄÃ¿¸öÈË·¢ËÍÄ³¸öĞ­Òé,ÏòÏÂÖ±½Ó·¢µ½¿Í»§µÄ
+	//ç»™æœ¬æœåŠ¡å™¨çš„æ¯ä¸ªäººå‘é€æŸä¸ªåè®®,å‘ä¸‹ç›´æ¥å‘åˆ°å®¢æˆ·çš„
 	void BroadcastLocalServer(const void * const pData, const size_t datalength);
-	//ÔÚ±¾·şÎñÆ÷µÄ·¶Î§Ö´ĞĞÄ³¸öĞ­Òé
+	//åœ¨æœ¬æœåŠ¡å™¨çš„èŒƒå›´æ‰§è¡ŒæŸä¸ªåè®®
 	void ExecuteLocalServer(const void * const pData, const size_t datalength);
 };
 

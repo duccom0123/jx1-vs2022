@@ -22,13 +22,13 @@
 
 #define NET_DEBUG
 
-enum    //s2cÏµÍ³Ğ­Òé£¬×î´óµ½31
+enum    //s2cç³»ç»Ÿåè®®ï¼Œæœ€å¤§åˆ°31
 {
 	s2c_passwordchange = 1,
 	s2c_replyping,
 	s2c_shakehand,
 };
-enum  //c2sÏµÍ³Ğ­Òé£¬×î´óµ½31
+enum  //c2sç³»ç»Ÿåè®®ï¼Œæœ€å¤§åˆ°31
 {
 	c2s_replyshakehand = 1,
 	c2s_sendping,
@@ -49,10 +49,10 @@ short KNetServer::GetPortNumFromName(char *pname)
 } 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KNetServer
-// ¹¦ÄÜ:	¹¹Ôì
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KNetServer
+// åŠŸèƒ½:	æ„é€ 
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetServer::KNetServer(void)
 {
@@ -68,10 +68,10 @@ KNetServer::KNetServer(void)
 
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KNetServer
-// ¹¦ÄÜ:	·Ö¹¹
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KNetServer
+// åŠŸèƒ½:	åˆ†æ„
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetServer::~KNetServer(void)
 {
@@ -80,10 +80,10 @@ KNetServer::~KNetServer(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Create
-// ¹¦ÄÜ:	¹¹Ôì
-// ²ÎÊı:	char* 
-// ·µ»Ø:	void
+// å‡½æ•°:	Create
+// åŠŸèƒ½:	æ„é€ 
+// å‚æ•°:	char* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KNetServer::Create(char* port_name)
 {
@@ -140,10 +140,10 @@ BOOL KNetServer::Create(char* port_name)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	CheckConnect
-// ¹¦ÄÜ:	¼ì²éÓĞÎŞĞÂÔö¼ÓµÄ¿Í»§¶ËÁ¬½Ó
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	CheckConnect
+// åŠŸèƒ½:	æ£€æŸ¥æœ‰æ— æ–°å¢åŠ çš„å®¢æˆ·ç«¯è¿æ¥
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer:: CheckConnect()
 {
@@ -164,7 +164,7 @@ void KNetServer:: CheckConnect()
 			sockaddr_in sockaddr;
 			int		addrlen = sizeof(sockaddr);
 			
-			//Ôö¼Ó¸ÃÁ¬½á
+			//å¢åŠ è¯¥è¿ç»“
 			Client_data_array[i].Socket = accept(m_Socket, (struct sockaddr *)&sockaddr, &addrlen);
 			if (Client_data_array[i].Socket > 0)
 			{
@@ -176,10 +176,10 @@ void KNetServer:: CheckConnect()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Encipher
-// ¹¦ÄÜ:	½«Òª·¢ËÍ¸øÄ³¸ö¿Í»§¶Ë·â°ü¼ÓÃÜ£¨Ñ¹ËõÇ°£©
-// ²ÎÊı:	int nClientIndex
-// ·µ»Ø:	void
+// å‡½æ•°:	Encipher
+// åŠŸèƒ½:	å°†è¦å‘é€ç»™æŸä¸ªå®¢æˆ·ç«¯å°åŒ…åŠ å¯†ï¼ˆå‹ç¼©å‰ï¼‰
+// å‚æ•°:	int nClientIndex
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::Encipher(int nClientIndex)
 {
@@ -200,10 +200,10 @@ void KNetServer::Encipher(int nClientIndex)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	MakeNewCipher
-// ¹¦ÄÜ:	Éú³ÉĞÂµÄÃÜÔ¿±¸ÓÃ
-// ²ÎÊı:	int nClientIndex
-// ·µ»Ø:	void
+// å‡½æ•°:	MakeNewCipher
+// åŠŸèƒ½:	ç”Ÿæˆæ–°çš„å¯†é’¥å¤‡ç”¨
+// å‚æ•°:	int nClientIndex
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::MakeNewCipher(int nClientIndex)
 {
@@ -220,10 +220,10 @@ void KNetServer::MakeNewCipher(int nClientIndex)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RecieveData
-// ¹¦ÄÜ:	½«Òª·¢ËÍ¸øÄ³¸ö¿Í»§¶ËµÄÊı¾İ·ÅÔÚÏà¹ØµÄ·â°üÄÚ
-// ²ÎÊı:	int nClientIndex, BYTE *pBuffer,DWORD dwSize
-// ·µ»Ø:	int
+// å‡½æ•°:	RecieveData
+// åŠŸèƒ½:	å°†è¦å‘é€ç»™æŸä¸ªå®¢æˆ·ç«¯çš„æ•°æ®æ”¾åœ¨ç›¸å…³çš„å°åŒ…å†…
+// å‚æ•°:	int nClientIndex, BYTE *pBuffer,DWORD dwSize
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetServer:: RecieveData(int nClientIndex, BYTE *pBuffer,DWORD dwSize)
 {
@@ -243,7 +243,7 @@ int KNetServer:: RecieveData(int nClientIndex, BYTE *pBuffer,DWORD dwSize)
 		SendMessage(nClientIndex);
 		res=1;
 	}
-	if((*pBuffer)<32&&pTemp->DataNum) //ÏµÍ³Ğ­Òé·ÅÔÚ×îÇ°Ãæ
+	if((*pBuffer)<32&&pTemp->DataNum) //ç³»ç»Ÿåè®®æ”¾åœ¨æœ€å‰é¢
     {
      memcpy(TempBuf,pTemp->Data, pTemp->dwSize); 
 	 memcpy(pTemp->Data,pBuffer, dwSize);
@@ -261,10 +261,10 @@ int KNetServer:: RecieveData(int nClientIndex, BYTE *pBuffer,DWORD dwSize)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SendMessage
-// ¹¦ÄÜ:	ÏòÄ³Ò»¿Í»§¶Ë·¢Êı¾İ°ü
-// ²ÎÊı:	int nClientIndex
-// ·µ»Ø:	int
+// å‡½æ•°:	SendMessage
+// åŠŸèƒ½:	å‘æŸä¸€å®¢æˆ·ç«¯å‘æ•°æ®åŒ…
+// å‚æ•°:	int nClientIndex
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 
 int KNetServer::SendMessage(int nClientIndex)
@@ -314,10 +314,10 @@ int KNetServer::SendMessage(int nClientIndex)
 	}
 
     Mutex[nClientIndex].Lock();
-    //¼ÓÃÜ
+    //åŠ å¯†
 	 Encipher(nClientIndex); 
 
-	//Ñ¹Ëõ·¢ËÍ°ü
+	//å‹ç¼©å‘é€åŒ…
 	 
 
 	if(pTemp->dwSize>MIN_COMPRESS_SIZE)
@@ -366,7 +366,7 @@ int KNetServer::SendMessage(int nClientIndex)
     pTemp->isCompressed=0;
 	Client_data_array[nClientIndex].CurOffset=0;
 
-//¼ÇÂ¼·¢ËÍÇé¿ö
+//è®°å½•å‘é€æƒ…å†µ
 	n_SendSize+= dwRealSize;
 	n_SendRecord[n_RecordIndex]= (WORD)dwRealSize;
     n_RecordIndex=(n_RecordIndex+1)%16;
@@ -386,10 +386,10 @@ int KNetServer::SendMessage(int nClientIndex)
 	return(len);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SendDest
-// ¹¦ÄÜ:	ÏòÄ³Ò»¿Í»§¶Ë·¢Êı¾İ°ü£¨·¢ËÍÏß³ÌÊ¹ÓÃ£©
-// ²ÎÊı:	int nClientIndex
-// ·µ»Ø:	int
+// å‡½æ•°:	SendDest
+// åŠŸèƒ½:	å‘æŸä¸€å®¢æˆ·ç«¯å‘æ•°æ®åŒ…ï¼ˆå‘é€çº¿ç¨‹ä½¿ç”¨ï¼‰
+// å‚æ•°:	int nClientIndex
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetServer::SendDest(int nClientIndex)
 {
@@ -438,10 +438,10 @@ int KNetServer::SendDest(int nClientIndex)
 		return -200;
 	}
 
-    //¼ÓÃÜ
+    //åŠ å¯†
 	 Encipher(nClientIndex); 
 
-	//Ñ¹Ëõ·¢ËÍ°ü
+	//å‹ç¼©å‘é€åŒ…
 	 
 
 	if(pTemp->dwSize>MIN_COMPRESS_SIZE)
@@ -487,7 +487,7 @@ int KNetServer::SendDest(int nClientIndex)
     pTemp->isCompressed=0;
 	Client_data_array[nClientIndex].CurOffset=0;
 
-//¼ÇÂ¼·¢ËÍÇé¿ö
+//è®°å½•å‘é€æƒ…å†µ
 	n_SendSize+= dwRealSize;
 	n_SendRecord[n_RecordIndex]= (WORD)dwRealSize;
     n_RecordIndex=(n_RecordIndex+1)%16;
@@ -509,10 +509,10 @@ int KNetServer::SendDest(int nClientIndex)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	RecieveMessage
-// ¹¦ÄÜ:	½ÓÊÕÄ³Ò»¿Í»§¶ËµÄÊı¾İ°ü
-// ²ÎÊı:	int nClientIndex, DWORD dwSize
-// ·µ»Ø:	int
+// å‡½æ•°:	RecieveMessage
+// åŠŸèƒ½:	æ¥æ”¶æŸä¸€å®¢æˆ·ç«¯çš„æ•°æ®åŒ…
+// å‚æ•°:	int nClientIndex, DWORD dwSize
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetServer:: RecieveMessage(int nClientIndex, DWORD dwSize)
 {
@@ -544,10 +544,10 @@ int KNetServer:: RecieveMessage(int nClientIndex, DWORD dwSize)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	MessagePreProcess
-// ¹¦ÄÜ:	´¦ÀíÄ³Ò»¿Í»§¶ËµÄÊı¾İ°üÖĞÏµÍ³Î¬»¤²¿·Ö
-// ²ÎÊı:	int nClientIndex
-// ·µ»Ø:	int
+// å‡½æ•°:	MessagePreProcess
+// åŠŸèƒ½:	å¤„ç†æŸä¸€å®¢æˆ·ç«¯çš„æ•°æ®åŒ…ä¸­ç³»ç»Ÿç»´æŠ¤éƒ¨åˆ†
+// å‚æ•°:	int nClientIndex
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KNetServer:: MessagePreProcess(int nClientIndex)
 {
@@ -562,17 +562,17 @@ int KNetServer:: MessagePreProcess(int nClientIndex)
 
     int nTime=pTemp->SendBuffer.CountNum-pTemp->m_nEnterLoopRate;
 	
-    if(pTemp->nShakeHandNum > 256) //10Ãë²»Á¬Í¨¾ÍĞû²¼¶ÏÏß
+    if(pTemp->nShakeHandNum > 256) //10ç§’ä¸è¿é€šå°±å®£å¸ƒæ–­çº¿
 	 pTemp->LogStatus= LogStatus_ConnectFail;
 
-    //25¸öÑ­»··¢Ò»´ÎÎÕÊÖĞÅÏ¢
+    //25ä¸ªå¾ªç¯å‘ä¸€æ¬¡æ¡æ‰‹ä¿¡æ¯
     if(!(nTime%25))
 	{
 		Buffer[0]=s2c_shakehand;
 		RecieveData(nClientIndex, Buffer,4);
         pTemp->nShakeHandNum++;
 	}
-	//10·ÖÖÓ¸ü»»Ò»´ÎÃÜÔ¿25*60*10=15000
+	//10åˆ†é’Ÿæ›´æ¢ä¸€æ¬¡å¯†é’¥25*60*10=15000
 	
 
     if(!(nTime%15000))
@@ -619,10 +619,10 @@ int KNetServer:: MessagePreProcess(int nClientIndex)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Close
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Close
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::SetCountNum(int nClientIndex, int nCountNum)
 {
@@ -634,10 +634,10 @@ void KNetServer::SetCountNum(int nClientIndex, int nCountNum)
     Client_data_array[nClientIndex].SendBuffer.CountNum=nCountNum;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ClearRecvInfo
-// ¹¦ÄÜ:	Çå¿ÕÊäÈëĞÅÏ¢
-// ²ÎÊı:	nClientIndex
-// ·µ»Ø:	void
+// å‡½æ•°:	ClearRecvInfo
+// åŠŸèƒ½:	æ¸…ç©ºè¾“å…¥ä¿¡æ¯
+// å‚æ•°:	nClientIndex
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::ClearRecvInfo( int nClientIndex)
 {
@@ -648,10 +648,10 @@ void KNetServer::ClearRecvInfo( int nClientIndex)
 
 //--------------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-// º¯Êı:	DelOneClient
-// ¹¦ÄÜ:	¶Ï¿ªÒ»¸ö¿Í»§¶ËÁ¬½Ó
-// ²ÎÊı:	nClientIndex
-// ·µ»Ø:	void
+// å‡½æ•°:	DelOneClient
+// åŠŸèƒ½:	æ–­å¼€ä¸€ä¸ªå®¢æˆ·ç«¯è¿æ¥
+// å‚æ•°:	nClientIndex
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::DelOneClient(int nClientIndex)
 {
@@ -662,10 +662,10 @@ void KNetServer::DelOneClient(int nClientIndex)
 	n_ClientNum --;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CopyDataToTemp
-// ¹¦ÄÜ:	°Ñ·¢ËÍÊı¾İ´«Êäµ½ÖĞ¼äÇø
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	CopyDataToTemp
+// åŠŸèƒ½:	æŠŠå‘é€æ•°æ®ä¼ è¾“åˆ°ä¸­é—´åŒº
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::CopyDataToTemp()
 {
@@ -689,10 +689,10 @@ void KNetServer::CopyDataToTemp()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	CopyTempToDest
-// ¹¦ÄÜ:	°Ñ·¢ËÍÊı¾İ´«Êäµ½ÖĞ¼äÇø
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	CopyTempToDest
+// åŠŸèƒ½:	æŠŠå‘é€æ•°æ®ä¼ è¾“åˆ°ä¸­é—´åŒº
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::CopyTempToDest()
 {
@@ -711,10 +711,10 @@ void KNetServer::CopyTempToDest()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RecvDataToTemp
-// ¹¦ÄÜ:	°Ñ½ÓÊÜÊı¾İ´«Êäµ½ÖĞ¼äÇø
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	RecvDataToTemp
+// åŠŸèƒ½:	æŠŠæ¥å—æ•°æ®ä¼ è¾“åˆ°ä¸­é—´åŒº
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::RecvDataToTemp()
 {
@@ -752,10 +752,10 @@ void KNetServer::RecvDataToTemp()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RecvTempToDest
-// ¹¦ÄÜ:	°Ñ½ÓÊÜÖĞ¼äÊı¾İ´«Êäµ½´¦Àí
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	RecvTempToDest
+// åŠŸèƒ½:	æŠŠæ¥å—ä¸­é—´æ•°æ®ä¼ è¾“åˆ°å¤„ç†
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::RecvTempToDest()
 {
@@ -778,10 +778,10 @@ void KNetServer::RecvTempToDest()
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Close
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Close
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KNetServer::Close(void)
 {

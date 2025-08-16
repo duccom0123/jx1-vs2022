@@ -53,8 +53,8 @@
 #endif
 
 #ifdef _SERVER
-extern int g_WayPointPriceUnit;	//WayPoint±í¸ñÖÐ¼Û¸ñµÄµ¥Î»Á¿£¬WayPoint¼Û¸ñ = µ¥Î»Á¿ * ±í¸ñÊýÖµ
-extern int g_StationPriceUnit;	//Station±í¸ñÖÐ¼Û¸ñµÄµ¥Î»Á¿£¬Station¼Û¸ñ = µ¥Î»Á¿ * ±í¸ñÊýÖµ
+extern int g_WayPointPriceUnit;	//WayPointè¡¨æ ¼ä¸­ä»·æ ¼çš„å•ä½é‡ï¼ŒWayPointä»·æ ¼ = å•ä½é‡ * è¡¨æ ¼æ•°å€¼
+extern int g_StationPriceUnit;	//Stationè¡¨æ ¼ä¸­ä»·æ ¼çš„å•ä½é‡ï¼ŒStationä»·æ ¼ = å•ä½é‡ * è¡¨æ ¼æ•°å€¼
 extern int g_DockPriceUnit;
 #endif
 
@@ -76,14 +76,14 @@ BOOL	InitTaskSetting();
 #ifndef _SERVER
 #include "KMagicDesc.h"
 #include "Scene/KScenePlaceC.h"
-BOOL g_bUISelIntelActiveWithServer = FALSE;//µ±Ç°Ñ¡Ôñ¿òÊÇ·ñÓë·þÎñÆ÷¶Ë½»»¥
+BOOL g_bUISelIntelActiveWithServer = FALSE;//å½“å‰é€‰æ‹©æ¡†æ˜¯å¦ä¸ŽæœåŠ¡å™¨ç«¯äº¤äº’
 BOOL g_bUISpeakActiveWithServer = FALSE;
 int	g_bUISelLastSelCount = 0;
 extern KTabFile g_StringResourseTabFile;
 KTabFile g_RankTabSetting;
 #endif
 
-//ÊÇ·ñ½«½Å±¾³ö´íÐÅÏ¢Êä³öµ½ÎÄ¼þ¹©µ÷ÊÔ
+//æ˜¯å¦å°†è„šæœ¬å‡ºé”™ä¿¡æ¯è¾“å‡ºåˆ°æ–‡ä»¶ä¾›è°ƒè¯•
 #ifdef _SERVER
 IServer* g_pServer;
 IClient* g_pTongClient;
@@ -103,7 +103,7 @@ KTabFile		g_OrdinSkillsSetting, g_MisslesSetting;
 KTabFile		g_SkillLevelSetting;
 KTabFile		g_NpcSetting;
 #ifndef _SERVER
-KTabFile		g_NpcKindFile; //¼ÇÂ¼NpcÈËÎïÀàÐÍÎÄ¼þ
+KTabFile		g_NpcKindFile; //è®°å½•Npcäººç‰©ç±»åž‹æ–‡ä»¶
 #endif
 int				g_nMeleeWeaponSkill[MAX_MELEEWEAPON_PARTICULARTYPE_NUM];
 int				g_nRangeWeaponSkill[MAX_RANGEWEAPON_PARTICULARTYPE_NUM];	
@@ -196,7 +196,7 @@ CORE_API void g_InitCore()
 	ItemSet.Init();
 	ItemGen.Init();
 #ifndef _SERVER
-	InitAdjustColorTab();//¼ÓÔØÆ«É«±í......
+	InitAdjustColorTab();//åŠ è½½åè‰²è¡¨......
 	g_MagicDesc.Init();
 #endif
 	g_ItemChangeRes.Init();
@@ -217,7 +217,7 @@ CORE_API void g_InitCore()
 
 	InitTaskSetting();
 
-	// Õâ¸öÉæ¼°µ½Óë¼¼ÄÜÏà¹ØµÄ¶«Î÷£¬ËùÒÔ±ØÐë·ÅÔÚ¼¼ÄÜ³õÊ¼»¯Ö®ºó
+	// è¿™ä¸ªæ¶‰åŠåˆ°ä¸ŽæŠ€èƒ½ç›¸å…³çš„ä¸œè¥¿ï¼Œæ‰€ä»¥å¿…é¡»æ”¾åœ¨æŠ€èƒ½åˆå§‹åŒ–ä¹‹åŽ
 
 	if (!PlayerSet.Init())
 		printf("Init PlayerSet Error!!!!\n");
@@ -269,7 +269,7 @@ CORE_API void g_InitCore()
 			Weapon_PhysicsSkillIdFile.GetInteger(i + 2, nParticularCol, -1, &nParticular);
 			Weapon_PhysicsSkillIdFile.GetInteger(i + 2, nPhysicsSkillCol, -1, &nPhysicsSkill);
 			
-			//½ü³ÌÎäÆ÷
+			//è¿‘ç¨‹æ­¦å™¨
 			if (nDetail == 0 )
 			{
 				if (nParticular >= 0 && nParticular < MAX_MELEEWEAPON_PARTICULARTYPE_NUM && nPhysicsSkill > 0 && nPhysicsSkill < MAX_SKILL)
@@ -280,7 +280,7 @@ CORE_API void g_InitCore()
 				if (nParticular >= 0 && nParticular < MAX_RANGEWEAPON_PARTICULARTYPE_NUM && nPhysicsSkill > 0 && nPhysicsSkill < MAX_SKILL)
 					g_nRangeWeaponSkill[nParticular] = nPhysicsSkill;
 			}
-			else if (nDetail == -1) //¿ÕÊÖ
+			else if (nDetail == -1) //ç©ºæ‰‹
 			{
 				if (nPhysicsSkill > 0 && nPhysicsSkill < MAX_SKILL)
 					g_nHandSkill = nPhysicsSkill;

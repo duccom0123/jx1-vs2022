@@ -21,29 +21,29 @@ typedef struct _KFlashTable
 
 static	const KFlashTable	s_FlashTable[] =
 {
-	{"QuyÒn Thñ",				0,		45	},
-	{"YÓm NguyÖt §ao",			6,		62	},
-	{"ThÊt Xİc KiÕm",			3,		63	},
-	{"Thanh Long §ao",			6,		64	},
-	{"Thiªn NhËn KiÕm",			3,		65	},
-	{"Hçn ThiÕt Bæng",			12,		66	},
-	{"Nh¹n Linh Th­¬ng",		9,		67	},
-	{"Kim Qua Chïy",			18,		68	},
-	{"Hå §iÖp Song §ao",		15,		69	},
-	{"¤ Kim TriÒn Thñ",			19,		45	},
-	{"HuyÒn ThiÕt TriÒn Thñ",	19,		45	},
-	{"Lo¹i ¸m Khİ",				19,		46	},
-	{"§¹i Phong §ao",			22,		73	},
-	{"HuyÒn ThiÕt KiÕm",		20,		74	},
-	{"§¹i Phong §ao",			22,		75	},
-	{"HuyÒn ThiÕt KiÕm",		20,		76	},
-	{"Kim C« Bæng",				26,		77	},
-	{"Ph¸ Thiªn Kİch",			24,		78	},
-	{"Ph¸ Thiªn Chïy",			30,		79	},
-	{"Th«n NhËt Tr¶m",			28,		80	},
-	{"MËt V©n TriÒn Thñ",		19,		45	},
-	{"MËt V©n TriÒn Thñ",		19,		45	},
-	{"Lo¹i ¸m Khİ",				19,		46	},
+	{"QuyÌ‰n ThÃ±",				0,		45	},
+	{"YÃ“m NguyÃ–t Â§ao",			6,		62	},
+	{"ThÃŠt XÆ¯c KiÆ m",			3,		63	},
+	{"Thanh Long Â§ao",			6,		64	},
+	{"ThiÂªn NhÃ‹n KiÆ m",			3,		65	},
+	{"HÃ§n ThiÆ t BÃ¦ng",			12,		66	},
+	{"NhÂ¹n Linh ThÂ­Â¬ng",		9,		67	},
+	{"Kim Qua ChÃ¯y",			18,		68	},
+	{"HÃ¥ Â§iÃ–p Song Â§ao",		15,		69	},
+	{"Â¤ Kim TriÌ‰n ThÃ±",			19,		45	},
+	{"HuyÌ‰n ThiÆ t TriÌ‰n ThÃ±",	19,		45	},
+	{"LoÂ¹i Â¸m KhÆ¯",				19,		46	},
+	{"Â§Â¹i Phong Â§ao",			22,		73	},
+	{"HuyÌ‰n ThiÆ t KiÆ m",		20,		74	},
+	{"Â§Â¹i Phong Â§ao",			22,		75	},
+	{"HuyÌ‰n ThiÆ t KiÆ m",		20,		76	},
+	{"Kim CÂ« BÃ¦ng",				26,		77	},
+	{"PhÂ¸ ThiÂªn KÆ¯ch",			24,		78	},
+	{"PhÂ¸ ThiÂªn ChÃ¯y",			30,		79	},
+	{"ThÂ«n NhÃ‹t TrÂ¶m",			28,		80	},
+	{"MÃ‹t VÂ©n TriÌ‰n ThÃ±",		19,		45	},
+	{"MÃ‹t VÂ©n TriÌ‰n ThÃ±",		19,		45	},
+	{"LoÂ¹i Â¸m KhÆ¯",				19,		46	},
 };
 
 static	const int	s_nFlashCount = sizeof(s_FlashTable)/sizeof(KFlashTable);
@@ -86,7 +86,7 @@ int	KItemChangeRes::GetWeaponRes(int nDetail, int nParti, int nLevel, unsigned u
 		m_MeleeWeapon.GetInteger(nRow, 2, 2, &nRet);
 		break;
 	case equip_rangeweapon:
-		m_RangeWeapon.GetInteger(nRow - 1, 2, 2, &nRet);	// Ã»ÓĞÄ¬ÈÏ×´Ì¬
+		m_RangeWeapon.GetInteger(nRow - 1, 2, 2, &nRet);	// Ä‚Â»Ã“ÄÃ„Â¬ÃˆÃÃ—Â´Ì€Â¬
 		break;
 	}
 	nRet -= 2;
@@ -145,7 +145,7 @@ int	KItemChangeRes::GetGoldItemRes(int nDetail, int nRow, unsigned uFlash/* = 0*
 	char szRow[16];
 	char pszInfo[6];
 	itoa(nRow + 1, szRow, 10);
-	m_Gold.GetString(szRow, "²¿¼ş±àºÅ", "19", pszInfo, sizeof(pszInfo));
+	m_Gold.GetString(szRow, "Â²Â¿Â¼â‚«Â±Ã ÂºÃ…", "19", pszInfo, sizeof(pszInfo));
 	nRet = atoi(pszInfo);
 	nRet -= 2;
 

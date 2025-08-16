@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ß[‘ò´°¿ÚµÄ½Ó¿Ú
+//	ï¿½[ï¿½è™¼ç¿±è¯˜æ…•æ¶Œï¿½
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-18
 ------------------------------------------------------------------------------------------
-	²»¿ÉÍüÈ´µÄ9-18¹ú³Ü£¡Íü¼Ç¹ıÈ¥ÒâÎ¶×Å±³ÅÑ£¡
+	ä¸å¯å¿˜å´çš„9-18å›½è€»ï¼å¿˜è®°è¿‡å»æ„å‘³ç€èƒŒå›ï¼
 *****************************************************************************************/
 #pragma once
 
@@ -14,9 +14,9 @@
 class KUiGameSpace : public KWndWindow
 {
 public:
-	//ÊäÈë´¦ÀíÏûÏ¢ÒÔ¼°Ò»Ğ©ÌØ¶¨´°¿ÚÏûÏ¢µÄÏìÓ¦
+	//è¾“å…¥å¤„ç†æ¶ˆæ¯ä»¥åŠä¸€äº›ç‰¹å®šçª—å£æ¶ˆæ¯çš„å“åº”
 	int	WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	//»æÖÆÓÎÏ·ÊÀ½ç
+	//ç»˜åˆ¶æ¸¸æˆä¸–ç•Œ
 	void PaintWindow();
 
 	void OnMouseMoveCursor(int x,int y);
@@ -29,23 +29,23 @@ extern KUiGameSpace	g_WndGameSpace;
 
 enum
 {
-	ACTION_CHAT = 0,					//ÒªÓÃName
-	ACTION_MAKEFRIEND,					//ÒªÓÃName
+	ACTION_CHAT = 0,					//è¦ç”¨Name
+	ACTION_MAKEFRIEND,					//è¦ç”¨Name
 	ACTION_TRADE,						//pDest->nData == PLAYER_MENU_STATE_TRADEOPEN && pDest->nIndex != -1
-//	ACTION_TRADE_FOLKGAME,              //ÒªÓÃName
+//	ACTION_TRADE_FOLKGAME,              //è¦ç”¨Name
 	ACTION_JOINTEAM,					//pDest->nData == PLAYER_MENU_STATE_TEAMOPEN && pDest->nIndex != -1
 	ACTION_INVITETEAM,					//pDest->uId != 0
 	ACTION_FOLLOW,						//pDest->nIndex != -1
 	ACTION_VIEWITEM,					//pDest->uId != 0
-	ACTION_BLACKLIST,					//ÒªÓÃName
-	ACTION_TONG,                        //ÒªÓÃName
-	ACTION_JOINTONG,                    //ÒªÓÃName
-	ACTION_JOINTONG_REPLY,              //ÒªÓÃName
+	ACTION_BLACKLIST,					//è¦ç”¨Name
+	ACTION_TONG,                        //è¦ç”¨Name
+	ACTION_JOINTONG,                    //è¦ç”¨Name
+	ACTION_JOINTONG_REPLY,              //è¦ç”¨Name
 	ACTION_REVENGE,						//pDest->uId != 0
 //	ACTION_SPAR,						//pDest->uId != 0
 };
 
-//pDestµÄName±ØĞëÌî, È»ºóÆäËû¸ù¾İ¾ßÌåÇé¿öÌîĞ´
+//pDestçš„Nameå¿…é¡»å¡«, ç„¶åå…¶ä»–æ ¹æ®å…·ä½“æƒ…å†µå¡«å†™
 void ProcessPeople(KUiPlayerItem* pDest, int nAction);
 void ProcessEmote(char* szDest, char *szDestChannel = "", int nEmoteIndex = 0);
 

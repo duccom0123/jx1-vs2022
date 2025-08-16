@@ -14,16 +14,16 @@
 //---------------------------------------------------------------------------
 typedef struct
 {
-	BYTE	Comment[4];	// ×¢ÊÍÎÄ×Ö(SPR\0)
-	WORD	Width;		// Í¼Æ¬¿í¶È
-	WORD	Height;		// Í¼Æ¬¸ß¶È
-	WORD	CenterX;	// ÖØĞÄµÄË®Æ½Î»ÒÆ
-	WORD	CenterY;	// ÖØĞÄµÄ´¹Ö±Î»ÒÆ
-	WORD	Frames;		// ×ÜÖ¡Êı
-	WORD	Colors;		// ÑÕÉ«Êı
-	WORD	Directions;	// ·½ÏòÊı
-	WORD	Interval;	// Ã¿Ö¡¼ä¸ô£¨ÒÔÓÎÏ·Ö¡Îªµ¥Î»£©
-	WORD	Reserved[6];// ±£Áô×Ö¶Î£¨µ½ÒÔºóÊ¹ÓÃ£©
+	BYTE	Comment[4];	// æ³¨é‡Šæ–‡å­—(SPR\0)
+	WORD	Width;		// å›¾ç‰‡å®½åº¦
+	WORD	Height;		// å›¾ç‰‡é«˜åº¦
+	WORD	CenterX;	// é‡å¿ƒçš„æ°´å¹³ä½ç§»
+	WORD	CenterY;	// é‡å¿ƒçš„å‚ç›´ä½ç§»
+	WORD	Frames;		// æ€»å¸§æ•°
+	WORD	Colors;		// é¢œè‰²æ•°
+	WORD	Directions;	// æ–¹å‘æ•°
+	WORD	Interval;	// æ¯å¸§é—´éš”ï¼ˆä»¥æ¸¸æˆå¸§ä¸ºå•ä½ï¼‰
+	WORD	Reserved[6];// ä¿ç•™å­—æ®µï¼ˆåˆ°ä»¥åä½¿ç”¨ï¼‰
 } SPRHEAD;
 
 #define	SPR_COMMENT_FLAG				0x525053	//'SPR'
@@ -31,17 +31,17 @@ typedef struct
 //---------------------------------------------------------------------------
 typedef struct
 {
-	DWORD	Offset;		// Ã¿Ò»Ö¡µÄÆ«ÒÆ
-	DWORD	Length;		// Ã¿Ò»Ö¡µÄ³¤¶È
+	DWORD	Offset;		// æ¯ä¸€å¸§çš„åç§»
+	DWORD	Length;		// æ¯ä¸€å¸§çš„é•¿åº¦
 } SPROFFS;
 //---------------------------------------------------------------------------
 typedef struct
 {
-	WORD	Width;		// Ö¡×îĞ¡¿í¶È
-	WORD	Height;		// Ö¡×îĞ¡¸ß¶È
-	WORD	OffsetX;	// Ë®Æ½Î»ÒÆ£¨Ïà¶ÔÓÚÔ­Í¼×óÉÏ½Ç£©
-	WORD	OffsetY;	// ´¹Ö±Î»ÒÆ£¨Ïà¶ÔÓÚÔ­Í¼×óÉÏ½Ç£©
-	BYTE	Sprite[1];	// RLEÑ¹ËõÍ¼ĞÎÊı¾İ
+	WORD	Width;		// å¸§æœ€å°å®½åº¦
+	WORD	Height;		// å¸§æœ€å°é«˜åº¦
+	WORD	OffsetX;	// æ°´å¹³ä½ç§»ï¼ˆç›¸å¯¹äºåŸå›¾å·¦ä¸Šè§’ï¼‰
+	WORD	OffsetY;	// å‚ç›´ä½ç§»ï¼ˆç›¸å¯¹äºåŸå›¾å·¦ä¸Šè§’ï¼‰
+	BYTE	Sprite[1];	// RLEå‹ç¼©å›¾å½¢æ•°æ®
 } SPRFRAME;
 //---------------------------------------------------------------------------
 class ENGINE_API KSprite

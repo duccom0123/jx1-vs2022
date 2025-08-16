@@ -12,11 +12,11 @@
 
 S3PCard::S3PCard(int iType,string strIID)
 {
-	if ( iType == 1 )   //Í¨¹ıiid×öË÷Òı
+	if ( iType == 1 )   //é€šè¿‡iidåšç´¢å¼•
 	{
 		findByPrimaryKey(strIID);	
 	}
-	else if ( iType == 2 ) //Í¨¹ıCode×öË÷Òı
+	else if ( iType == 2 ) //é€šè¿‡Codeåšç´¢å¼•
 	{
 		findByCardCode(strIID);
 	}
@@ -63,7 +63,7 @@ std::list<ColumnAndValue> S3PCard::getCardList(int iType)
 	}
 	strSQL = strSQL + "order by ccardcode ";
 
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	if (NULL != pCardCon)
 	{
@@ -87,7 +87,7 @@ std::list<ColumnAndValue> S3PCard::getCardList(int iType)
 
 bool S3PCard::beExist(std::string strSQL)
 {
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	bool bReturn = false;
 	if (NULL != pCardCon)
@@ -112,7 +112,7 @@ bool S3PCard::beExist(std::string strSQL)
 
 ColumnAndValue S3PCard::load(std::string strSQL)
 {
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	ColumnAndValue cav;
 	if (NULL != pCardCon)
@@ -137,7 +137,7 @@ ColumnAndValue S3PCard::load(std::string strSQL)
 
 int S3PCard::store(ColumnAndValue CardProp)
 {
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	int iReturn = 0 ;
 	if ( NULL != pCardCon )
@@ -158,7 +158,7 @@ int S3PCard::store(ColumnAndValue CardProp)
 
 int S3PCard::create(ColumnAndValue NewCard)
 {
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	if (NULL != pCardCon)
 	{
@@ -168,7 +168,7 @@ int S3PCard::create(ColumnAndValue NewCard)
 		if ( card.Add(&row) <= 0 )
 		{
 			pCardCon->Close();
-			return -1;    //Ìí¼ÓÊı¾İ³ö´í
+			return -1;    //æ·»åŠ æ•°æ®å‡ºé”™
 		}
 	}
 	if ( NULL != pCardCon )
@@ -180,7 +180,7 @@ int S3PCard::create(ColumnAndValue NewCard)
 
 int S3PCard::deletes(std::string CardCode)
 {
-	S3PDBConnection* pCardCon =		// Á¬½Óµã¿¨Êı¾İ¿â
+	S3PDBConnection* pCardCon =		// è¿æ¥ç‚¹å¡æ•°æ®åº“
 		S3PDBConnector::Instance()->ApplyDBConnection( def_CARDDB );
 	int iReturn = 0;
 	if ( NULL != pCardCon )

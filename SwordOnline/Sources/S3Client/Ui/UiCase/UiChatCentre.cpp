@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÁÄÌìÖ÷½çÃæ
+//	Â½Ã§ÃƒÃ¦--ÃÃ„ÃŒÃ¬Ã–Ã·Â½Ã§ÃƒÃ¦
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-3-10
@@ -60,11 +60,11 @@ enum INPUT_STRING_PARAM
 
 const char* l_pGrupMenuItemTitle[GROUP_MENU_ITEM_COUNT] = 
 {
-	 "T¹o nhãm míi", "§æi tªn nhãm",	"Xãa nhãm"
+	 "TÂ¹o nhÃ£m mÃ­i", "Â§Ã¦i tÂªn nhÃ£m",	"XÃ£a nhÃ£m"
 };
 const char* l_pFriendMenuItemTitle[FRIEND_MENU_ITEM_COUNT] = 
 {
-	"Göi tin nh¾n",	"L­îc bá", "Di chuyÓn nhãm"
+	"GÃ¶i tin nhÂ¾n",	"LÂ­Ã®c bÃ¡", "Di chuyÃ“n nhÃ£m"
 };
 
 #define ONLINE_NAME	"online"
@@ -140,7 +140,7 @@ void ServerNotify::SendSyncData(const char* Unit)
 {
 	if (m_nRef <= 0)
 		return;
-	static int nSend = 0;	//¹«ÓÃµÄ³õÊ¼»¯Ö»ÄÜ×ö1´Î
+	static int nSend = 0;	//Â¹Â«Ã“ÃƒÂµÃ„Â³ÃµÃŠÂ¼Â»Â¯Ã–Â»Ã„ÃœÃ—Ã¶1Â´Ã
 	
 	if (g_pCoreShell && nSend == 0)
 	{
@@ -293,13 +293,13 @@ KUiChatCentre::KUiChatCentre()
 	m_nCurentFriendUnit = FRIEND_INDEX;
 	ms_SNotify.m_nRef = 0;
 
-	//³õÊ¼»¯ºÃÓÑ
+	//Â³ÃµÃŠÂ¼Â»Â¯ÂºÃƒÃ“Ã‘
 	m_AllFriendUnits[FRIEND_INDEX].m_UnitName = FRIEND_UNITNAME;
 	ClearUnitData(FRIEND_INDEX);
 	m_AllFriendUnits[FRIEND_INDEX].m_pNotify = &ms_SNotify;
 	ms_SNotify.m_nRef++;
 
-	//³õÊ¼»¯³ğÈË
+	//Â³ÃµÃŠÂ¼Â»Â¯Â³Ã°ÃˆÃ‹
 	m_AllFriendUnits[ENEMY_INDEX].m_UnitName = ENEMY_UNITNAME;
 	ClearUnitData(ENEMY_INDEX);
 	m_AllFriendUnits[ENEMY_INDEX].m_pNotify = &ms_SNotify;
@@ -309,7 +309,7 @@ KUiChatCentre::KUiChatCentre()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiChatCentre* KUiChatCentre::GetIfVisible()
 {
@@ -319,7 +319,7 @@ KUiChatCentre* KUiChatCentre::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiChatCentre* KUiChatCentre::OpenWindow(bool bShow)
 {
@@ -341,7 +341,7 @@ KUiChatCentre* KUiChatCentre::OpenWindow(bool bShow)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiChatCentre::Initialize()
 {
@@ -370,7 +370,7 @@ void KUiChatCentre::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiChatCentre::CloseWindow(bool bDestroy)
 {
@@ -390,7 +390,7 @@ void KUiChatCentre::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiChatCentre::LoadScheme(const char* pScheme)
 {
@@ -428,7 +428,7 @@ void KUiChatCentre::LoadScheme(class KIniFile* pIni)
 	m_UnitBtnBlackList.Init(pIni, "UnitBtnBlackList");
 	m_UnitBtnBlackList.SetText(BLACKLIST_UNITNAME);
 	m_UnitBtnOther.Init(pIni, "UnitBtnOther");
-	m_UnitBtnOther.SetText("Kh¸c");
+	m_UnitBtnOther.SetText("KhÂ¸c");
 
 	m_FriendList.Init(pIni, "MemberList");
 	if (pIni->GetString("MemberList", "OfflineColor", "0,0,0", Buff, sizeof(Buff)))
@@ -455,7 +455,7 @@ void KUiChatCentre::LoadScheme(class KIniFile* pIni)
 
 	m_FriendList.SetCustomColorOffset((int)&(((KUiPlayerItem*)0)->nData));
 
-	//ºÃÓÑÁĞ±í±³¾°Í¼
+	//ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­Â±Â³Â¾Â°ÃÂ¼
 	const char* SectionTitle = "ListBgImg";
 	int nValue;
 
@@ -541,7 +541,7 @@ int	KUiChatCentre::SavePrivateSetting(KIniFile* pFile)
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿ÚÏûÏ¢º¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÃÃ»ÃÂ¢ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 int KUiChatCentre::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -643,7 +643,7 @@ void KUiChatCentre::OnSelGroupMenu(int nGroupIndex, int nCmd)
 		{
 			char	Name[32] = "";
 			m_GroupBtn[nGroupIndex].GetLabel(Name, sizeof(Name));
-			KUiGetString::OpenWindow(GSA_NORMAL, "NhËp tªn nhãm míi", Name,
+			KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p tÂªn nhÃ£m mÃ­i", Name,
 				(KWndWindow*)this, ISP_RENAME_GROUP + nGroupIndex, 0,4,16);
 		}
 		break;
@@ -653,7 +653,7 @@ void KUiChatCentre::OnSelGroupMenu(int nGroupIndex, int nCmd)
 		}
 		break;
 	case GROUP_MENU_ITEM_NEW:
-		KUiGetString::OpenWindow(GSA_NORMAL, "NhËp tªn nhãm", "",
+		KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p tÂªn nhÃ£m", "",
 			(KWndWindow*)this, ISP_NEW_GROUP, 0,4,16);
 		break;
 	}
@@ -805,7 +805,7 @@ bool KUiChatCentre::AddFriendInfo(int nUnitIndex, char* Name, char* group)
 			return false;
 
 		if (m_pSelf->m_AllFriendUnits[nUnitIndex].m_FriendMap.find(Name) != m_pSelf->m_AllFriendUnits[nUnitIndex].m_FriendMap.end())
-		{	//ÒÑ´æÔÚÓÚÁĞ±íÖĞ
+		{	//Ã’Ã‘Â´Ã¦Ã”ÃšÃ“ÃšÃÃÂ±Ã­Ã–Ã
 			NewGroup(nUnitIndex, group);
 			MoveFriendToGroup(nUnitIndex, Name, group);
 			return true;
@@ -835,15 +835,15 @@ bool KUiChatCentre::AddFriendInfo(int nUnitIndex, char* Name, char* group)
 
 		if (i < MAX_GROUP_NUM)
 		{
-			if (nCount > 0)	//ÒÑÓĞµÄ×é
+			if (nCount > 0)	//Ã’Ã‘Ã“ÃÂµÃ„Ã—Ã©
 				m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[i].nGroupMemberNum = nCount;
-			else	//Ã»ÓĞµÄ×é,¶øÇÒÓĞ¿Õ×éµÄÎ»ÖÃ
+			else	//ÃƒÂ»Ã“ÃÂµÃ„Ã—Ã©,Â¶Ã¸Ã‡Ã’Ã“ÃÂ¿Ã•Ã—Ã©ÂµÃ„ÃÂ»Ã–Ãƒ
 			{
 				m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[i].strGroupName = strGroup;
 				m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[i].nGroupMemberNum = 1;
 			}
 		}
-		else	//ĞÂ×éÃ»ÓĞ¿ÕÎ»,¹éµ½Ä¬ÈÏ×é
+		else	//ÃÃ‚Ã—Ã©ÃƒÂ»Ã“ÃÂ¿Ã•ÃÂ»,Â¹Ã©ÂµÂ½Ã„Â¬ÃˆÃÃ—Ã©
 		{
 			strGroup = m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[0].strGroupName;
 			m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[0].nGroupMemberNum++;
@@ -923,7 +923,7 @@ void KUiChatCentre::NewGroup(int nUnitIndex, const char* szGroup)
 		{
 			if (m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[i].strGroupName == strGroup)
 			{
-				UIMessageBox("Tªn nhãm míi nhËp ®· tån t¹i, xin nhËp tªn kh¸c");
+				UIMessageBox("TÂªn nhÃ£m mÃ­i nhÃ‹p Â®Â· tÃ¥n tÂ¹i, xin nhÃ‹p tÂªn khÂ¸c");
 				return;
 			}
 			else if (m_pSelf->m_AllFriendUnits[nUnitIndex].m_GroupInfo[i].strGroupName.empty())
@@ -941,7 +941,7 @@ void KUiChatCentre::NewGroup(int nUnitIndex, const char* szGroup)
 				return;
 			}
 		}
-		UIMessageBox("Sè l­îng nhãm ®· ®¹t tèi ®a, tr­íc khi thªm nhãm míi cÇn xãa nhãm cò ");
+		UIMessageBox("SÃ¨ lÂ­Ã®ng nhÃ£m Â®Â· Â®Â¹t tÃ¨i Â®a, trÂ­Ã­c khi thÂªm nhÃ£m mÃ­i cÃ‡n xÃ£a nhÃ£m cÃ² ");
 	}
 }
 
@@ -967,7 +967,7 @@ void KUiChatCentre::ReplaceGroupName(int nUnitIndex, const char* sz, const char*
 			return;
 
 		int i = m_pSelf->m_AllFriendUnits[nUnitIndex].FindGroupIndex(str);
-		if (i <= 0)	//0ÊÇ²»ÄÜ¸ÄÃûµÄ
+		if (i <= 0)	//0ÃŠÃ‡Â²Â»Ã„ÃœÂ¸Ã„ÃƒÃ»ÂµÃ„
 			return;
 
 		STRINGLIST list;
@@ -1076,7 +1076,7 @@ void KUiChatCentre::MoveGroupToGroup(int nUnitIndex, const char* group, const ch
 		}
 		if (bDelgroup)
 		{
-			if (nSrcIndex != 0)	//0ÊÇÃ¿¸öUnitµÄÄ¬ÈÏ×é,²»ÄÜÉ¾³ı
+			if (nSrcIndex != 0)	//0ÃŠÃ‡ÃƒÂ¿Â¸Ã¶UnitÂµÃ„Ã„Â¬ÃˆÃÃ—Ã©,Â²Â»Ã„ÃœÃ‰Â¾Â³Ã½
 			{
 				for (;nSrcIndex < MAX_GROUP_NUM - 1; nSrcIndex++)
 				{
@@ -1240,7 +1240,7 @@ void KUiChatCentre::DeleteFriend(int nUnitIndex, char* Name, bool bNotify)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ		: µã»÷°´Å¥ºóµÄ´¦Àí
+// Â¹Â¦Ã„Ãœ		: ÂµÃ£Â»Ã·Â°Â´Ã…Â¥ÂºÃ³ÂµÃ„Â´Â¦Ã€Ã­
 // -------------------------------------------------------------------------
 void KUiChatCentre::OnClickButton(KWndWindow* pWnd)
 {
@@ -1326,7 +1326,7 @@ void KUiChatCentre::PopupFriendMenu(int nFriendIndex)
 	pMenuData->nItemWidth = MENU_ITEM_DEFAULT_WIDTH;
 	pMenuData->nNumItem = FRIEND_MENU_ITEM_COUNT;
 	if (m_nNumValidGroup <= 1)
-		pMenuData->nNumItem --;		//ÒÆ¶¯ºÃÓÑµ½ÆäËü×éÎŞĞ§
+		pMenuData->nNumItem --;		//Ã’Ã†Â¶Â¯ÂºÃƒÃ“Ã‘ÂµÂ½Ã†Ã¤Ã‹Ã¼Ã—Ã©ÃÃÃÂ§
 
 	KPopupMenu::Popup(pMenuData, (KWndWindow*)this,
 		FRIEND_MENU_SELECT_BASE + nFriendIndex);
@@ -1398,7 +1398,7 @@ void KUiChatCentre::ClearUnitData(int nUnit)
 {
 	if (nUnit >= 0 && nUnit < MAX_UNIT_NUM)
 	{
-		//²»ÇåÀíÃû×ÖºÍm_pNotify
+		//Â²Â»Ã‡Ã¥Ã€Ã­ÃƒÃ»Ã—Ã–ÂºÃm_pNotify
 		m_AllFriendUnits[nUnit].m_FriendMap.clear();
 		m_AllFriendUnits[nUnit].m_FriendOnlineMap.clear();
 		for (int i = 0; i < MAX_GROUP_NUM; i++)
@@ -1568,11 +1568,11 @@ void KUiChatCentre::UpdateInterface()
 	else
 		m_UnitBtnOther.CheckButton(1);
 	
-	//ÏÈÒş²ØÈ«²¿µÄ×é°´Å¥
+	//ÃÃˆÃ’Ã¾Â²Ã˜ÃˆÂ«Â²Â¿ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 	for (i = 0; i < MAX_GROUP_NUM; i++)
 		m_GroupBtn[i].Hide();
 
-	//¼ÆËãºÃÓÑÁĞ±íÖ®Ç°×é°´Å¥µÄÊıÄ¿
+	//Â¼Ã†Ã‹Ã£ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­Ã–Â®Ã‡Â°Ã—Ã©Â°Â´Ã…Â¥ÂµÃ„ÃŠÃ½Ã„Â¿
 	int nNumGroupAhead = 0;
 	for (i = 0; i <= m_AllFriendUnits[m_nCurentFriendUnit].m_nCurExpandGroup; i++)
 	{
@@ -1582,20 +1582,20 @@ void KUiChatCentre::UpdateInterface()
 		}
 	}
 
-	//¼ÆËãºÃÓÑÁĞ±íÏÔÊ¾µÄĞĞÊı£¬ÖÁÉÙÒªÏÔÊ¾Ò»ĞĞ
+	//Â¼Ã†Ã‹Ã£ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­ÃÃ”ÃŠÂ¾ÂµÃ„ÃÃÃŠÃ½Â£Â¬Ã–ÃÃ‰Ã™Ã’ÂªÃÃ”ÃŠÂ¾Ã’Â»ÃÃ
 	int nFriendListLines = (m_nNumFriendInList > 1) ? m_nNumFriendInList : 1;
 
-	//×é°´Å¥µÄ¸ß¶È
+	//Ã—Ã©Â°Â´Ã…Â¥ÂµÃ„Â¸ÃŸÂ¶Ãˆ
 	int nBtnHeight;
 	m_GroupBtn[0].GetSize(NULL, &nBtnHeight);
 
-	//µ÷ÕûÈ·ÈÏ±»ÏÔÊ¾µÄµÚÒ»ĞĞÄÚÈİµÄÎ»ÖÃ
+	//ÂµÃ·Ã•Ã»ÃˆÂ·ÃˆÃÂ±Â»ÃÃ”ÃŠÂ¾ÂµÃ„ÂµÃšÃ’Â»ÃÃÃ„ÃšÃˆÃÂµÃ„ÃÂ»Ã–Ãƒ
 	int nLimitLine = m_nNumValidGroup + nFriendListLines;
 	int nContentWndHeight = m_nNumVisibleLine * m_nLineHeight;
-	int nHeight = nContentWndHeight;	//´Ó´Ë´¦¿ªÊ¼£¬nHeight±íÊ¾´°¿ÚÊ£ÓàµÄ¸ß¶È
+	int nHeight = nContentWndHeight;	//Â´Ã“Â´Ã‹Â´Â¦Â¿ÂªÃŠÂ¼Â£Â¬nHeightÂ±Ã­ÃŠÂ¾Â´Â°Â¿ÃšÃŠÂ£Ã“Ã ÂµÃ„Â¸ÃŸÂ¶Ãˆ
 	while(true)
 	{
-		//ºÃÓÑÁĞ±íºóµÄ×é°´Å¥
+		//ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­ÂºÃ³ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 		if (m_nNumValidGroup - nNumGroupAhead)
 		{
 			i = nHeight / nBtnHeight;
@@ -1607,7 +1607,7 @@ void KUiChatCentre::UpdateInterface()
 			nHeight -= (m_nNumValidGroup - nNumGroupAhead) * nBtnHeight;
 			nLimitLine -= m_nNumValidGroup - nNumGroupAhead;
 		}
-		//ºÃÓÑÁĞ±í
+		//ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­
 		i = nHeight / m_nLineHeight;
 		if (nFriendListLines > i)
 		{
@@ -1616,7 +1616,7 @@ void KUiChatCentre::UpdateInterface()
 		}
 		nHeight -= nFriendListLines * m_nLineHeight;
 		nLimitLine -= nFriendListLines;
-		//ºÃÓÑÁĞ±íÇ°µÄ×é°´Å¥
+		//ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­Ã‡Â°ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 		i = nHeight / nBtnHeight;
 		if (nNumGroupAhead > i)
 			nLimitLine = nNumGroupAhead - i;
@@ -1628,9 +1628,9 @@ void KUiChatCentre::UpdateInterface()
 		m_nFirstVisibleLine = nLimitLine;
 
 	int	nGroupIndex = 0, nLineIndex = 0;
-	int nTop = 0;	//nTopÓÃÓÚ±íÊ¾ÒÑÏÔÊ¾ÄÚÈİµÄ¸ß¶È
+	int nTop = 0;	//nTopÃ“ÃƒÃ“ÃšÂ±Ã­ÃŠÂ¾Ã’Ã‘ÃÃ”ÃŠÂ¾Ã„ÃšÃˆÃÂµÃ„Â¸ÃŸÂ¶Ãˆ
 
-	//Ç°ÃæÌø¹ı²»ÏÔÊ¾µÄ×é°´Å¥
+	//Ã‡Â°ÃƒÃ¦ÃŒÃ¸Â¹Ã½Â²Â»ÃÃ”ÃŠÂ¾ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 	for (; nLineIndex < m_nFirstVisibleLine &&
 			nGroupIndex <= m_AllFriendUnits[m_nCurentFriendUnit].m_nCurExpandGroup && nGroupIndex < MAX_GROUP_NUM;
 			nGroupIndex++)
@@ -1641,7 +1641,7 @@ void KUiChatCentre::UpdateInterface()
 		}
 	}
 
-	//ÏÔÊ¾µ±Ç°Õ¹¿ª×éÇ°(°üÀ¨)µÄ×é°´Å¥
+	//ÃÃ”ÃŠÂ¾ÂµÂ±Ã‡Â°Ã•Â¹Â¿ÂªÃ—Ã©Ã‡Â°(Â°Ã¼Ã€Â¨)ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 	for (; nGroupIndex <= m_AllFriendUnits[m_nCurentFriendUnit].m_nCurExpandGroup && nGroupIndex < MAX_GROUP_NUM; nGroupIndex++)
 	{
 		if (m_bValidGroup[nGroupIndex])
@@ -1658,9 +1658,9 @@ void KUiChatCentre::UpdateInterface()
 	if (nTop >= nContentWndHeight)
 		return;
 
-	//===´¦ÀíºÃÓÑÁĞ±íµÄÏÔÊ¾===
-	int nNumFriendSkip = 0;	//Í·Ç°ÒªÌø¹ıÏÔÊ¾µÄºÃÓÑµÄÊıÄ¿
-	nHeight = 0;	//´Ó´Ë´¦¿ªÊ¼£¬nHeight±íÊ¾ºÃÓÑÁĞ±í´°¿ÚµÄÏÔÊ¾¸ß¶È
+	//===Â´Â¦Ã€Ã­ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­ÂµÃ„ÃÃ”ÃŠÂ¾===
+	int nNumFriendSkip = 0;	//ÃÂ·Ã‡Â°Ã’ÂªÃŒÃ¸Â¹Ã½ÃÃ”ÃŠÂ¾ÂµÃ„ÂºÃƒÃ“Ã‘ÂµÃ„ÃŠÃ½Ã„Â¿
+	nHeight = 0;	//Â´Ã“Â´Ã‹Â´Â¦Â¿ÂªÃŠÂ¼Â£Â¬nHeightÂ±Ã­ÃŠÂ¾ÂºÃƒÃ“Ã‘ÃÃÂ±Ã­Â´Â°Â¿ÃšÂµÃ„ÃÃ”ÃŠÂ¾Â¸ÃŸÂ¶Ãˆ
 	if (nLimitLine == 0)
 	{
 		nHeight = nContentWndHeight - m_nNumValidGroup * nBtnHeight;
@@ -1691,7 +1691,7 @@ void KUiChatCentre::UpdateInterface()
 
 	if (nHeight)
 	{
-		//ÉèÖÃºÃÓÑÁĞ±í´°¿ÚµÄÎ»ÖÃ
+		//Ã‰Ã¨Ã–ÃƒÂºÃƒÃ“Ã‘ÃÃÂ±Ã­Â´Â°Â¿ÃšÂµÃ„ÃÂ»Ã–Ãƒ
 		int x;
 		m_FriendList.GetPosition(&x, NULL);
 		m_FriendList.SetPosition(x, nTop + m_nFirstGroupBtnTop);
@@ -1706,7 +1706,7 @@ void KUiChatCentre::UpdateInterface()
 	if (nTop >= nContentWndHeight)
 		return;
 
-	//µ±Ç°Õ¹¿ª×éºóµÄ×é°´Å¥
+	//ÂµÂ±Ã‡Â°Ã•Â¹Â¿ÂªÃ—Ã©ÂºÃ³ÂµÃ„Ã—Ã©Â°Â´Ã…Â¥
 	for (; nGroupIndex < MAX_GROUP_NUM; nGroupIndex++)
 	{
 		if (m_bValidGroup[nGroupIndex])
@@ -1725,7 +1725,7 @@ void KUiChatCentre::UpdateInterface()
 	}
 }
 
-//»æÖÆ´°¿Ú
+//Â»Ã¦Ã–Ã†Â´Â°Â¿Ãš
 void KUiChatCentre::PaintWindow()
 {
 	m_ListBgImage.oPosition.nX = m_nAbsoluteLeft + m_ListBgImgLeft;
@@ -1774,7 +1774,7 @@ void KUiChatCentre::AdjustSize(int nNumLine)
 	UpdateInterface();
 }
 
-//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
+//Ã…ÃÂ¶ÃÃ’Â»Â¸Ã¶ÂµÃ£ÃŠÃ‡Â·Ã±Ã”ÃšÂ´Â°Â¿ÃšÂ·Â¶ÃÂ§Ã„Ãš,Â´Â«ÃˆÃ«ÂµÃ„ÃŠÃ‡Â¾Ã¸Â¶Ã”Ã—Ã¸Â±Ãª
 int KUiChatCentre::PtInWindow(int x, int y)
 {
 	int nRet = 0;

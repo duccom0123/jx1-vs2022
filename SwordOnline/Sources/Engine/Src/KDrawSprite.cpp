@@ -12,22 +12,22 @@
 #include "DrawSpriteMP.inc"
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawSprite
-// ¹¦ÄÜ:	»æÖÆ256É«SpriteÎ»Í¼
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawSprite
+// åŠŸèƒ½:	ç»˜åˆ¶256è‰²Spriteä½å›¾
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawSprite(void* node, void* canvas)
 {
 	KDrawNode* pNode = (KDrawNode *)node;
 	KCanvas* pCanvas = (KCanvas *)canvas;
 	
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (pCanvas->MakeClip(pNode->m_nX, pNode->m_nY, pNode->m_nWidth, pNode->m_nHeight, &Clipper) == 0)
 		return;
 
-	// pBufferÖ¸ÏòÆÁÄ»»æÖÆĞĞµÄÍ·Ò»¸öÏñµã´¦ 
+	// pBufferæŒ‡å‘å±å¹•ç»˜åˆ¶è¡Œçš„å¤´ä¸€ä¸ªåƒç‚¹å¤„ 
 	int nPitch;
 	void* pBuffer = pCanvas->LockCanvas(nPitch);
 	if (pBuffer == NULL)
@@ -42,13 +42,13 @@ void g_DrawSprite(void* node, void* canvas)
 
 	__asm
 	{
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµã,	(ÒÔ×Ö½Ú¼Æ)	
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹,	(ä»¥å­—èŠ‚è®¡)	
 		mov		edi, pBuffer
 		mov		eax, Clipper.x
 		add		edi, eax
 		add		edi, eax
 
-		//Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		esi, pSprite
 		//_SkipSpriteAheadContent_:
 		{
@@ -85,7 +85,7 @@ void g_DrawSprite(void* node, void* canvas)
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä			
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹			
 			_DrawFullLineSection_Line_:
 			{
 				mov		edx, Clipper.width
@@ -166,7 +166,7 @@ void g_DrawSprite(void* node, void* canvas)
 			_DrawPartLineSection_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -196,7 +196,7 @@ void g_DrawSprite(void* node, void* canvas)
 			_DrawPartLineSection_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				mov     ebx, pPalette
@@ -222,7 +222,7 @@ void g_DrawSprite(void* node, void* canvas)
 				dec		Clipper.height
 				jz		_EXIT_WAY_
 				neg		edx
-				mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+				mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 				jmp		_DrawPartLineSection_LineSkip_
 			}
 		}
@@ -251,7 +251,7 @@ void g_DrawSprite(void* node, void* canvas)
 			_DrawPartLineSection_SkipLeft_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		edx, nSprSkipPerLine
 				_DrawPartLineSection_SkipLeft_LineSkipLocal_:
 				{
@@ -275,7 +275,7 @@ void g_DrawSprite(void* node, void* canvas)
 			}
 			_DrawPartLineSection_SkipLeft_LineLocal_Alpha_:
 			{
-				sub		edx, eax		;ÏÈ°Ñeax¼õÁË£¬ÕâÑùááÃæ¾Í¿ÉÒÔ²»ĞèÒª±£ÁôeaxÁË
+				sub		edx, eax		;å…ˆæŠŠeaxå‡äº†ï¼Œè¿™æ ·å¾Œé¢å°±å¯ä»¥ä¸éœ€è¦ä¿ç•™eaxäº†
 				mov		ecx, eax						
 				mov     ebx, pPalette
 				_DrawPartLineSection_SkipLeft_CopyPixel_:
@@ -315,7 +315,7 @@ void g_DrawSprite(void* node, void* canvas)
 			_DrawPartLineSection_SkipRight_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -342,7 +342,7 @@ void g_DrawSprite(void* node, void* canvas)
 			_DrawPartLineSection_SkipRight_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax				
 				mov     ebx, pPalette
@@ -364,7 +364,7 @@ void g_DrawSprite(void* node, void* canvas)
 					loop	_DrawPartLineSection_SkipRight_CopyPixel_Part_
 				}
 				neg		edx
-				mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+				mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 				dec		Clipper.height
 				jg		_DrawPartLineSection_SkipRight_LineSkip_
 				jmp		_EXIT_WAY_
@@ -376,10 +376,10 @@ void g_DrawSprite(void* node, void* canvas)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawSprite
-// ¹¦ÄÜ:	»æÖÆ256É«SpriteÎ»Í¼
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawSprite
+// åŠŸèƒ½:	ç»˜åˆ¶256è‰²Spriteä½å›¾
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 /*void g_DrawSprite_OLD(void* node, void* canvas)
 {
@@ -393,11 +393,11 @@ void g_DrawSprite(void* node, void* canvas)
 	void* lpSprite = pNode->m_pBitmap;// sprite pointer
 	void* lpPalette	= pNode->m_pPalette;// palette pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 	 	return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 
@@ -408,11 +408,11 @@ void g_DrawSprite(void* node, void* canvas)
 
 	long nNextLine = nPitch - nWidth * 2;// next line add
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = lpBuffer + dwPitch * Clipper.y + nX * 2;
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -424,8 +424,8 @@ void g_DrawSprite(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã 
-// (Ìø¹ıClipper.topĞĞÑ¹ËõÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ 
+// (è·³è¿‡Clipper.topè¡Œå‹ç¼©å›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpSprite
 		mov		ecx, Clipper.top
@@ -458,7 +458,7 @@ loc_DrawSprite_0010:
 		dec     ecx
 		jnz		loc_DrawSprite_0008
 //---------------------------------------------------------------------------
-// ¸ù¾İ Clipper.left, Clipper.right ·Ö 4 ÖÖÇé¿ö
+// æ ¹æ® Clipper.left, Clipper.right åˆ† 4 ç§æƒ…å†µ
 //---------------------------------------------------------------------------
 loc_DrawSprite_0011:
 
@@ -485,8 +485,8 @@ loc_DrawSprite_0014:
 
 		jmp		loc_DrawSprite_exit
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSprite_0100:
 
@@ -538,8 +538,8 @@ loc_DrawSprite_0103:
 		jmp		loc_DrawSprite_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSprite_0200:
 
@@ -554,7 +554,7 @@ loc_DrawSprite_0201:
 		or		ebx, ebx
 		jnz		loc_DrawSprite_0202
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -571,7 +571,7 @@ loc_DrawSprite_0201:
 		jg		loc_DrawSprite_0200
 		jmp		loc_DrawSprite_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSprite_0202:
 
@@ -582,7 +582,7 @@ loc_DrawSprite_0202:
 		jg		loc_DrawSprite_0201
 		jz		loc_DrawSprite_0203
 //---------------------------------------------------------------------------
-// °Ñ¶à¼õµÄ¿í¶È²¹»ØÀ´
+// æŠŠå¤šå‡çš„å®½åº¦è¡¥å›æ¥
 //---------------------------------------------------------------------------
 		neg		edx
 		sub		esi, edx
@@ -616,7 +616,7 @@ loc_DrawSprite_Loop20:
 		jg		loc_DrawSprite_0200
 		jmp		loc_DrawSprite_exit
 //---------------------------------------------------------------------------
-// ÒÑ´¦ÀíÍê¼ô²ÃÇø ÏÂÃæµÄ´¦ÀíÏà¶Ô¼òµ¥
+// å·²å¤„ç†å®Œå‰ªè£åŒº ä¸‹é¢çš„å¤„ç†ç›¸å¯¹ç®€å•
 //---------------------------------------------------------------------------
 loc_DrawSprite_0203:
 
@@ -631,7 +631,7 @@ loc_DrawSprite_0204:
 		or		ebx, ebx
 		jnz		loc_DrawSprite_0206
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -642,7 +642,7 @@ loc_DrawSprite_0204:
 		jg		loc_DrawSprite_0200
 		jmp		loc_DrawSprite_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSprite_0206:
 
@@ -672,8 +672,8 @@ loc_DrawSprite_Loop21:
 		jmp		loc_DrawSprite_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSprite_0300:
 
@@ -688,7 +688,7 @@ loc_DrawSprite_0301:
 		or		ebx, ebx
 		jnz		loc_DrawSprite_0303
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -697,7 +697,7 @@ loc_DrawSprite_0301:
 		neg		edx
 		jmp		loc_DrawSprite_0305
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSprite_0303:
 
@@ -727,7 +727,7 @@ loc_DrawSprite_Loop30:
 		jmp		loc_DrawSprite_0305
 
 //---------------------------------------------------------------------------
-// Á¬ĞøµãµÄ¸öÊı (eax) > ²Ã¼õºóµÄ¿í¶È (edx)
+// è¿ç»­ç‚¹çš„ä¸ªæ•° (eax) > è£å‡åçš„å®½åº¦ (edx)
 //---------------------------------------------------------------------------
 loc_DrawSprite_0304:
 
@@ -750,7 +750,7 @@ loc_DrawSprite_Loop31:
 		pop		edx
 		pop		eax
 //---------------------------------------------------------------------------
-// ¼ÆËã³¬¹ıÁË¼ô²ÃÇø³¤¶È => edx
+// è®¡ç®—è¶…è¿‡äº†å‰ªè£åŒºé•¿åº¦ => edx
 //---------------------------------------------------------------------------
 		sub		eax, edx
 		mov		edx, eax
@@ -758,7 +758,7 @@ loc_DrawSprite_Loop31:
 		add		edi, eax
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ´¦Àí³¬¹ıÁËÓÒ±ß½çµÄ²¿·Ö, edx = ³¬¹ıÓÒ±ß½ç²¿·ÖµÄ³¤¶È
+// å¤„ç†è¶…è¿‡äº†å³è¾¹ç•Œçš„éƒ¨åˆ†, edx = è¶…è¿‡å³è¾¹ç•Œéƒ¨åˆ†çš„é•¿åº¦
 //---------------------------------------------------------------------------
 loc_DrawSprite_0305:
 
@@ -776,7 +776,7 @@ loc_DrawSprite_0306:
 		or		ebx, ebx
 		jnz		loc_DrawSprite_0307
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -784,7 +784,7 @@ loc_DrawSprite_0306:
 		jg		loc_DrawSprite_0306
 		jmp		loc_DrawSprite_0308
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSprite_0307:
 
@@ -807,10 +807,10 @@ loc_DrawSprite_exit:
 }*/
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawSpriteMixColor
-// ¹¦ÄÜ:	»æÖÆÓëÄ³Ò»ÑÕÉ«»ìºÏµÄ256É«SpriteÎ»Í¼
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawSpriteMixColor
+// åŠŸèƒ½:	ç»˜åˆ¶ä¸æŸä¸€é¢œè‰²æ··åˆçš„256è‰²Spriteä½å›¾
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawSpriteMixColor(void* node, void* canvas)
 {
@@ -824,11 +824,11 @@ void g_DrawSpriteMixColor(void* node, void* canvas)
 	void* lpSprite = pNode->m_pBitmap;// sprite pointer
 	void* lpPalette	= pNode->m_pPalette;// palette pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 
@@ -842,11 +842,11 @@ void g_DrawSpriteMixColor(void* node, void* canvas)
     long nAlpha=pNode->m_nAlpha;
 	long nMask32 = pCanvas->m_nMask32;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = lpBuffer + dwPitch * Clipper.y + nX * 2;
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -858,8 +858,8 @@ void g_DrawSpriteMixColor(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã 
-// (Ìø¹ıClipper.topĞĞÑ¹ËõÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ 
+// (è·³è¿‡Clipper.topè¡Œå‹ç¼©å›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpSprite
 		mov		ecx, Clipper.top
@@ -892,7 +892,7 @@ loc_DrawSpriteMixColor_0010:
 		dec     ecx
 		jnz		loc_DrawSpriteMixColor_0008
 //---------------------------------------------------------------------------
-// ¸ù¾İ Clipper.left, Clipper.right ·Ö 4 ÖÖÇé¿ö
+// æ ¹æ® Clipper.left, Clipper.right åˆ† 4 ç§æƒ…å†µ
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0011:
 
@@ -919,8 +919,8 @@ loc_DrawSpriteMixColor_0014:
 
 		jmp		loc_DrawSpriteMixColor_exit
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0100:
 
@@ -1010,8 +1010,8 @@ loc_DrawSpriteMixColor_0103:
 		jmp		loc_DrawSpriteMixColor_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0200:
 
@@ -1026,7 +1026,7 @@ loc_DrawSpriteMixColor_0201:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteMixColor_0202
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1043,7 +1043,7 @@ loc_DrawSpriteMixColor_0201:
 		jg		loc_DrawSpriteMixColor_0200
 		jmp		loc_DrawSpriteMixColor_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0202:
 
@@ -1054,7 +1054,7 @@ loc_DrawSpriteMixColor_0202:
 		jg		loc_DrawSpriteMixColor_0201
 		jz		loc_DrawSpriteMixColor_0203
 //---------------------------------------------------------------------------
-// °Ñ¶à¼õµÄ¿í¶È²¹»ØÀ´
+// æŠŠå¤šå‡çš„å®½åº¦è¡¥å›æ¥
 //---------------------------------------------------------------------------
 		neg		edx
 		sub		esi, edx
@@ -1122,7 +1122,7 @@ loc_DrawSpriteMixColor_Loop20:
 		jg		loc_DrawSpriteMixColor_0200
 		jmp		loc_DrawSpriteMixColor_exit
 //---------------------------------------------------------------------------
-// ÒÑ´¦ÀíÍê¼ô²ÃÇø ÏÂÃæµÄ´¦ÀíÏà¶Ô¼òµ¥
+// å·²å¤„ç†å®Œå‰ªè£åŒº ä¸‹é¢çš„å¤„ç†ç›¸å¯¹ç®€å•
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0203:
 
@@ -1137,7 +1137,7 @@ loc_DrawSpriteMixColor_0204:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteMixColor_0206
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1148,7 +1148,7 @@ loc_DrawSpriteMixColor_0204:
 		jg		loc_DrawSpriteMixColor_0200
 		jmp		loc_DrawSpriteMixColor_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0206:
 
@@ -1211,8 +1211,8 @@ loc_DrawSpriteMixColor_Loop21:
 		jmp		loc_DrawSpriteMixColor_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0300:
 
@@ -1227,7 +1227,7 @@ loc_DrawSpriteMixColor_0301:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteMixColor_0303
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1236,7 +1236,7 @@ loc_DrawSpriteMixColor_0301:
 		neg		edx
 		jmp		loc_DrawSpriteMixColor_0305
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0303:
 
@@ -1300,7 +1300,7 @@ loc_DrawSpriteMixColor_Loop30:
 		jmp		loc_DrawSpriteMixColor_0305
 
 //---------------------------------------------------------------------------
-// Á¬ĞøµãµÄ¸öÊı (eax) > ²Ã¼õºóµÄ¿í¶È (edx)
+// è¿ç»­ç‚¹çš„ä¸ªæ•° (eax) > è£å‡åçš„å®½åº¦ (edx)
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0304:
 
@@ -1355,7 +1355,7 @@ loc_DrawSpriteMixColor_Loop31:
 		pop		edx
 		pop		eax
 //---------------------------------------------------------------------------
-// ¼ÆËã³¬¹ıÁË¼ô²ÃÇø³¤¶È => edx
+// è®¡ç®—è¶…è¿‡äº†å‰ªè£åŒºé•¿åº¦ => edx
 //---------------------------------------------------------------------------
 		sub		eax, edx
 		mov		edx, eax
@@ -1363,7 +1363,7 @@ loc_DrawSpriteMixColor_Loop31:
 		add		edi, eax
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ´¦Àí³¬¹ıÁËÓÒ±ß½çµÄ²¿·Ö, edx = ³¬¹ıÓÒ±ß½ç²¿·ÖµÄ³¤¶È
+// å¤„ç†è¶…è¿‡äº†å³è¾¹ç•Œçš„éƒ¨åˆ†, edx = è¶…è¿‡å³è¾¹ç•Œéƒ¨åˆ†çš„é•¿åº¦
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0305:
 
@@ -1381,7 +1381,7 @@ loc_DrawSpriteMixColor_0306:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteMixColor_0307
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1389,7 +1389,7 @@ loc_DrawSpriteMixColor_0306:
 		jg		loc_DrawSpriteMixColor_0306
 		jmp		loc_DrawSpriteMixColor_0308
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteMixColor_0307:
 
@@ -1414,10 +1414,10 @@ loc_DrawSpriteMixColor_exit:
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawSpriteWithColor
-// ¹¦ÄÜ:	»æÖÆÓëÄ³Ò»ÑÕÉ«»ìºÏµÄ256É«SpriteÎ»Í¼
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawSpriteWithColor
+// åŠŸèƒ½:	ç»˜åˆ¶ä¸æŸä¸€é¢œè‰²æ··åˆçš„256è‰²Spriteä½å›¾
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawSpriteWithColor(void* node, void* canvas)
 {
@@ -1430,11 +1430,11 @@ void g_DrawSpriteWithColor(void* node, void* canvas)
 	long nHeight = pNode->m_nHeight;// height of sprite
 	void* lpSprite = pNode->m_pBitmap;// sprite pointer
 	void* lpPalette	= pNode->m_pPalette;// palette pointer
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 
@@ -1447,11 +1447,11 @@ void g_DrawSpriteWithColor(void* node, void* canvas)
     long nColor=pNode->m_nColor;
     long nAlpha=pNode->m_nAlpha;
 	long nMask32 = pCanvas->m_nMask32;
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = lpBuffer + dwPitch * Clipper.y + nX * 2;
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -1463,8 +1463,8 @@ void g_DrawSpriteWithColor(void* node, void* canvas)
 		mov		edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã 
-// (Ìø¹ıClipper.topĞĞÑ¹ËõÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ 
+// (è·³è¿‡Clipper.topè¡Œå‹ç¼©å›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpSprite
 		mov		ecx, Clipper.top
@@ -1497,7 +1497,7 @@ loc_DrawSpriteWithColor_0010:
 		dec     ecx
 		jnz		loc_DrawSpriteWithColor_0008
 //---------------------------------------------------------------------------
-// ¸ù¾İ Clipper.left, Clipper.right ·Ö 4 ÖÖÇé¿ö
+// æ ¹æ® Clipper.left, Clipper.right åˆ† 4 ç§æƒ…å†µ
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0011:
 
@@ -1524,8 +1524,8 @@ loc_DrawSpriteWithColor_0014:
 
 		jmp		loc_DrawSpriteWithColor_exit
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0100:
 
@@ -1616,8 +1616,8 @@ loc_DrawSpriteWithColor_0103:
 		jmp		loc_DrawSpriteWithColor_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ != 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ == 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ != 0
+// å³è¾¹ç•Œè£å‰ªé‡ == 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0200:
 
@@ -1632,7 +1632,7 @@ loc_DrawSpriteWithColor_0201:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteWithColor_0202
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1649,7 +1649,7 @@ loc_DrawSpriteWithColor_0201:
 		jg		loc_DrawSpriteWithColor_0200
 		jmp		loc_DrawSpriteWithColor_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0202:
 
@@ -1660,7 +1660,7 @@ loc_DrawSpriteWithColor_0202:
 		jg		loc_DrawSpriteWithColor_0201
 		jz		loc_DrawSpriteWithColor_0203
 //---------------------------------------------------------------------------
-// °Ñ¶à¼õµÄ¿í¶È²¹»ØÀ´
+// æŠŠå¤šå‡çš„å®½åº¦è¡¥å›æ¥
 //---------------------------------------------------------------------------
 		neg		edx
 		sub		esi, edx
@@ -1729,7 +1729,7 @@ loc_DrawSpriteWithColor_Loop20:
 		jg		loc_DrawSpriteWithColor_0200
 		jmp		loc_DrawSpriteWithColor_exit
 //---------------------------------------------------------------------------
-// ÒÑ´¦ÀíÍê¼ô²ÃÇø ÏÂÃæµÄ´¦ÀíÏà¶Ô¼òµ¥
+// å·²å¤„ç†å®Œå‰ªè£åŒº ä¸‹é¢çš„å¤„ç†ç›¸å¯¹ç®€å•
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0203:
 
@@ -1744,7 +1744,7 @@ loc_DrawSpriteWithColor_0204:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteWithColor_0206
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1755,7 +1755,7 @@ loc_DrawSpriteWithColor_0204:
 		jg		loc_DrawSpriteWithColor_0200
 		jmp		loc_DrawSpriteWithColor_exit
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (×ó±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å·¦è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0206:
 
@@ -1819,8 +1819,8 @@ loc_DrawSpriteWithColor_Loop21:
 		jmp		loc_DrawSpriteWithColor_exit
 
 //---------------------------------------------------------------------------
-// ×ó±ß½ç²Ã¼ôÁ¿ == 0
-// ÓÒ±ß½ç²Ã¼ôÁ¿ != 0
+// å·¦è¾¹ç•Œè£å‰ªé‡ == 0
+// å³è¾¹ç•Œè£å‰ªé‡ != 0
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0300:
 
@@ -1835,7 +1835,7 @@ loc_DrawSpriteWithColor_0301:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteWithColor_0303
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1844,7 +1844,7 @@ loc_DrawSpriteWithColor_0301:
 		neg		edx
 		jmp		loc_DrawSpriteWithColor_0305
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÄÚ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå†…)
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0303:
 
@@ -1909,7 +1909,7 @@ loc_DrawSpriteWithColor_Loop30:
 		jmp		loc_DrawSpriteWithColor_0305
 
 //---------------------------------------------------------------------------
-// Á¬ĞøµãµÄ¸öÊı (eax) > ²Ã¼õºóµÄ¿í¶È (edx)
+// è¿ç»­ç‚¹çš„ä¸ªæ•° (eax) > è£å‡åçš„å®½åº¦ (edx)
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0304:
 
@@ -1965,7 +1965,7 @@ loc_DrawSpriteWithColor_Loop31:
 		pop		edx
 		pop		eax
 //---------------------------------------------------------------------------
-// ¼ÆËã³¬¹ıÁË¼ô²ÃÇø³¤¶È => edx
+// è®¡ç®—è¶…è¿‡äº†å‰ªè£åŒºé•¿åº¦ => edx
 //---------------------------------------------------------------------------
 		sub		eax, edx
 		mov		edx, eax
@@ -1973,7 +1973,7 @@ loc_DrawSpriteWithColor_Loop31:
 		add		edi, eax
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ´¦Àí³¬¹ıÁËÓÒ±ß½çµÄ²¿·Ö, edx = ³¬¹ıÓÒ±ß½ç²¿·ÖµÄ³¤¶È
+// å¤„ç†è¶…è¿‡äº†å³è¾¹ç•Œçš„éƒ¨åˆ†, edx = è¶…è¿‡å³è¾¹ç•Œéƒ¨åˆ†çš„é•¿åº¦
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0305:
 
@@ -1991,7 +1991,7 @@ loc_DrawSpriteWithColor_0306:
 		or		ebx, ebx
 		jnz		loc_DrawSpriteWithColor_0307
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha == 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha == 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 		add		edi, eax
 		add		edi, eax
@@ -1999,7 +1999,7 @@ loc_DrawSpriteWithColor_0306:
 		jg		loc_DrawSpriteWithColor_0306
 		jmp		loc_DrawSpriteWithColor_0308
 //---------------------------------------------------------------------------
-// ´¦Àí Alpha != 0 µÄÏñËØ (ÓÒ±ß½çÍâ)
+// å¤„ç† Alpha != 0 çš„åƒç´  (å³è¾¹ç•Œå¤–)
 //---------------------------------------------------------------------------
 loc_DrawSpriteWithColor_0307:
 
@@ -2039,11 +2039,11 @@ void g_DrawSpriteBorder(void* node, void* canvas)
     long nColor=pNode->m_nColor;
     long nAlpha=pNode->m_nAlpha;
 	long nMask32 = pCanvas->m_nMask32;
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
-	//µ±Ç°´úÂëÍ¼ĞÎ×óÓÒÍ¬Ê±±»²Ã¼õÊ±ÓĞÎó
+	//å½“å‰ä»£ç å›¾å½¢å·¦å³åŒæ—¶è¢«è£å‡æ—¶æœ‰è¯¯
 	if (Clipper.left && Clipper.right)
 		return;
 

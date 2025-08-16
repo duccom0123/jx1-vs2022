@@ -2,13 +2,13 @@
 // FileName			:	KCharSet.cpp
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-13 10:06:31
-// FileDescription	:	×Ö·û¼¯Àà
-// Revision Count	:	2002-9-4¸ÄĞ´£¬¸ÄÎª»ùÓÚd3d¡£Wooy
+// FileDescription	:	å­—ç¬¦é›†ç±»
+// Revision Count	:	2002-9-4æ”¹å†™ï¼Œæ”¹ä¸ºåŸºäºd3dã€‚Wooy
 *******************************************************************************/
 #include "KCharSet.h"
 
 /*!*****************************************************************************
-// Purpose		:  ¹¹Ôìº¯Êı
+// Purpose		:  æ„é€ å‡½æ•°
 *****************************************************************************/
 KCharSet::KCharSet()
 {
@@ -22,7 +22,7 @@ KCharSet::KCharSet()
 }
 
 /*!*****************************************************************************
-// Purpose		:  Îö¹¹º¯Êı
+// Purpose		:  ææ„å‡½æ•°
 *****************************************************************************/
 KCharSet::~KCharSet()
 {
@@ -31,10 +31,10 @@ KCharSet::~KCharSet()
 
 /*!*****************************************************************************
 // Function		: KCharSet::Init
-// Purpose		: ³õÊ¼»¯
-// Return		: bool ÊÇ·ñ³É¹¦
-// Argumant		: const char *pszFontFile ×Ö¿âÎÄ¼ş
-// Argumant		: LPDIRECT3DDEVICE8 pd3dDevice -> directx 3d device½Ó¿ÚµÄÊµÀıµÄÖ¸Õë
+// Purpose		: åˆå§‹åŒ–
+// Return		: bool æ˜¯å¦æˆåŠŸ
+// Argumant		: const char *pszFontFile å­—åº“æ–‡ä»¶
+// Argumant		: LPDIRECT3DDEVICE8 pd3dDevice -> directx 3d deviceæ¥å£çš„å®ä¾‹çš„æŒ‡é’ˆ
 *****************************************************************************/
 bool KCharSet::Init(const char *pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 {
@@ -51,9 +51,9 @@ bool KCharSet::Init(const char *pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 
 /*!*****************************************************************************
 // Function		: KCharSet::GetInfo
-// Purpose		: »ñÈ¡×ÖÌåĞÅÏ¢
-// Argumant		: int& nFontW ×ÖÌå¿í
-// Argumant		: int& nFontH ×ÖÌå¸ß
+// Purpose		: è·å–å­—ä½“ä¿¡æ¯
+// Argumant		: int& nFontW å­—ä½“å®½
+// Argumant		: int& nFontH å­—ä½“é«˜
 *****************************************************************************/
 void KCharSet::GetInfo(int& nFontW, int& nFontH)
 {
@@ -63,7 +63,7 @@ void KCharSet::GetInfo(int& nFontW, int& nFontH)
 
 /*!*****************************************************************************
 // Function		: KCharSet::Terminate
-// Purpose		: ½áÊø£¬Çå³ı²Ù×÷
+// Purpose		: ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 *****************************************************************************/
 void KCharSet::Terminate()
 {
@@ -76,10 +76,10 @@ void KCharSet::Terminate()
 
 /*!***************************************************************************
 // Function		: KCharSet::CommitText
-// Purpose		: Ìá½»×Ö·û´®£¬¼ÆËã´®ÖĞ¸÷×Ö·ûÒıÓÃµÄ×ÖÌåÌùÍ¼×ø±ê£¬ÌîÈë¶à±ßĞÎÄÚ¡£
-// Argumant		: unsigned short *pszString	Ìá½»µÄ×Ö·û´®£¨¶¼ÊÇÒªÏÔÊ¾µÄ×Ö·û£¬Ã»ÓĞ¿ØÖÆÂëÀ²£©
-// Argumant		: int nNumChars		        Ìá½»ÁË¼¸¸ö×Ö·û
-// Argumant		: KFontVertex* pCharPolys   ×Ö·û´®¶ÔÓ¦µÄÓÃÓÚ»æÖÆ×Ö·ûµÄËÄ±ßĞÎ´®
+// Purpose		: æäº¤å­—ç¬¦ä¸²ï¼Œè®¡ç®—ä¸²ä¸­å„å­—ç¬¦å¼•ç”¨çš„å­—ä½“è´´å›¾åæ ‡ï¼Œå¡«å…¥å¤šè¾¹å½¢å†…ã€‚
+// Argumant		: unsigned short *pszString	æäº¤çš„å­—ç¬¦ä¸²ï¼ˆéƒ½æ˜¯è¦æ˜¾ç¤ºçš„å­—ç¬¦ï¼Œæ²¡æœ‰æ§åˆ¶ç å•¦ï¼‰
+// Argumant		: int nNumChars		        æäº¤äº†å‡ ä¸ªå­—ç¬¦
+// Argumant		: KFontVertex* pCharPolys   å­—ç¬¦ä¸²å¯¹åº”çš„ç”¨äºç»˜åˆ¶å­—ç¬¦çš„å››è¾¹å½¢ä¸²
 *****************************************************************************/
 void KCharSet::CommitText(unsigned short *pString, int nNumChars,  KFontVertex* pCharPolys)
 {
@@ -116,7 +116,7 @@ void KCharSet::CommitText(unsigned short *pString, int nNumChars,  KFontVertex* 
 	m_Resource.Update(nNewCharIntoTable, nCount);
 }
 
-//µÃµ½ÌùÍ¼¾ä±ú
+//å¾—åˆ°è´´å›¾å¥æŸ„
 LPDIRECT3DTEXTURE9 KCharSet::GetTexture() const
 {
 	return m_Resource.GetTexture();

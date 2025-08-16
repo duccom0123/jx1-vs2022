@@ -179,10 +179,10 @@ static unsigned long str2ushort(char *str)
 	return (str[0] | (str[1] << 8));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	KAviFile
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KAviFile
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KAviFile::KAviFile()
 {
@@ -194,20 +194,20 @@ KAviFile::KAviFile()
 	m_audio_index = NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KAviFile
-// ¹¦ÄÜ:	Îö¹¹º¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KAviFile
+// åŠŸèƒ½:	ææ„å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KAviFile::~KAviFile()
 {
 	Close();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Open
-// ¹¦ÄÜ:	Try to open an AVI file
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	Open
+// åŠŸèƒ½:	Try to open an AVI file
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KAviFile::Open(char* Filename)
 {
@@ -234,11 +234,11 @@ BOOL KAviFile::Open(char* Filename)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FillHeader
-// ¹¦ÄÜ:	Fill the class with info from headers
+// å‡½æ•°:	FillHeader
+// åŠŸèƒ½:	Fill the class with info from headers
 //			and reconstruct an index if wanted.
-// ²ÎÊı:	
-// ·µ»Ø:	BOOL
+// å‚æ•°:	
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KAviFile::FillHeader()
 {
@@ -493,10 +493,10 @@ BOOL KAviFile::FillHeader()
 	return TRUE;
 }	
 //---------------------------------------------------------------------------
-// º¯Êı:	GetAudioIndex
-// ¹¦ÄÜ:	Generate the audio index arrays
-// ²ÎÊı:	
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	GetAudioIndex
+// åŠŸèƒ½:	Generate the audio index arrays
+// å‚æ•°:	
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KAviFile::GetAudioIndex()
 {
@@ -549,10 +549,10 @@ BOOL KAviFile::GetAudioIndex()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetVideoIndex
-// ¹¦ÄÜ:	generate the video index arrays 
-// ²ÎÊı:	
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	GetVideoIndex
+// åŠŸèƒ½:	generate the video index arrays 
+// å‚æ•°:	
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KAviFile::GetVideoIndex()
 {
@@ -603,60 +603,60 @@ BOOL KAviFile::GetVideoIndex()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	VideoStreams
-// ¹¦ÄÜ:	Returns the total number of video streams
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	VideoStreams
+// åŠŸèƒ½:	Returns the total number of video streams
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::VideoStreams()
 {
 	return m_video_strn;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	AudioStreams
-// ¹¦ÄÜ:	Returns the total number of audio streams
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	AudioStreams
+// åŠŸèƒ½:	Returns the total number of audio streams
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::AudioStreams()
 {
 	return m_audio_strn;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetBitmapInfoHeader
-// ¹¦ÄÜ:	Returns the bitmapinfoheader associated with the first video stream
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	GetBitmapInfoHeader
+// åŠŸèƒ½:	Returns the bitmapinfoheader associated with the first video stream
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 void KAviFile::GetBitmapInfoHeader(PBITMAPINFOHEADER pBmpInfoHead)
 {
 	*pBmpInfoHead = m_BitmapInfoHeader;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetWaveFormat
-// ¹¦ÄÜ:	Returns the wavefromatex associated with the first audio stream.
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	GetWaveFormat
+// åŠŸèƒ½:	Returns the wavefromatex associated with the first audio stream.
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 void KAviFile::GetWaveFormat(PWAVEFORMATEX pWavFmt)
 {
 	*pWavFmt = m_WaveFormatEx;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetCompressMethod
-// ¹¦ÄÜ:	È¡µÃÑ¹Ëõ·½·¨
-// ²ÎÊı:	method		at least 5 char buffer
-// ·µ»Ø:	void
+// å‡½æ•°:	GetCompressMethod
+// åŠŸèƒ½:	å–å¾—å‹ç¼©æ–¹æ³•
+// å‚æ•°:	method		at least 5 char buffer
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KAviFile::GetCompressMethod(char* method)
 {
 	memcpy(method, m_compressor, 5);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NextFrame
-// ¹¦ÄÜ:	Reads the next video Frame into buffer¶ÁÈëÏÂÒ»Ö¡ÊÓÆµÊı¾İ
-// ²ÎÊı:	
-// ·µ»Ø:	return the actual size of the frame
+// å‡½æ•°:	NextFrame
+// åŠŸèƒ½:	Reads the next video Frame into bufferè¯»å…¥ä¸‹ä¸€å¸§è§†é¢‘æ•°æ®
+// å‚æ•°:	
+// è¿”å›:	return the actual size of the frame
 //---------------------------------------------------------------------------
 int KAviFile::NextFrame(unsigned char* buffer)
 {
@@ -680,10 +680,10 @@ int KAviFile::NextFrame(unsigned char* buffer)
 	return nReadBytes;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ReadAudio
-// ¹¦ÄÜ:	Reads any amount of audio data
-// ²ÎÊı:	
-// ·µ»Ø:	FIXME : should return the actual number read.
+// å‡½æ•°:	ReadAudio
+// åŠŸèƒ½:	Reads any amount of audio data
+// å‚æ•°:	
+// è¿”å›:	FIXME : should return the actual number read.
 //---------------------------------------------------------------------------
 int KAviFile::ReadAudio(unsigned char* audbuf, int bytes)
 {
@@ -730,10 +730,10 @@ int KAviFile::ReadAudio(unsigned char* audbuf, int bytes)
 	return nr;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FrameRate
-// ¹¦ÄÜ:	Return the actual framerate£¨frame per second£©
-// ²ÎÊı:	
-// ·µ»Ø:	FIXME : should be a double...
+// å‡½æ•°:	FrameRate
+// åŠŸèƒ½:	Return the actual framerateï¼ˆframe per secondï¼‰
+// å‚æ•°:	
+// è¿”å›:	FIXME : should be a double...
 //---------------------------------------------------------------------------
 int KAviFile::FrameRate()
 {
@@ -747,30 +747,30 @@ int KAviFile::FrameRate()
 	return m_fps;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CurrentFrame
-// ¹¦ÄÜ:	
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	CurrentFrame
+// åŠŸèƒ½:	
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::CurrentFrame()
 {
 	return m_video_pos;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	TotalFrames
-// ¹¦ÄÜ:	Return the total frames
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	TotalFrames
+// åŠŸèƒ½:	Return the total frames
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::TotalFrames()
 {
 	return m_video_frames;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	VideoSeek
-// ¹¦ÄÜ:	Seek to a particular video frame£¬´ËÖ¡Îª¹Ø¼üÖ¡
-// ²ÎÊı:	percent(0--100)
-// ·µ»Ø:	frame number
+// å‡½æ•°:	VideoSeek
+// åŠŸèƒ½:	Seek to a particular video frameï¼Œæ­¤å¸§ä¸ºå…³é”®å¸§
+// å‚æ•°:	percent(0--100)
+// è¿”å›:	frame number
 //---------------------------------------------------------------------------
 int KAviFile::VideoSeek(int percent)
 {
@@ -799,10 +799,10 @@ int KAviFile::VideoSeek(int percent)
 	return frame;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	AudioSeek
-// ¹¦ÄÜ:	Seek to a particular audio frame.
-// ²ÎÊı:	percet£¨0--100£©
-// ·µ»Ø:	
+// å‡½æ•°:	AudioSeek
+// åŠŸèƒ½:	Seek to a particular audio frame.
+// å‚æ•°:	percetï¼ˆ0--100ï¼‰
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::AudioSeek(int percent)
 {
@@ -855,10 +855,10 @@ int KAviFile::AudioSeek(int percent)
 	return frame;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	IsKeyFrame
-// ¹¦ÄÜ:	µ±Ç°Ö¡ÊÇ·ñ¹Ø¼üÖ¡
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	IsKeyFrame
+// åŠŸèƒ½:	å½“å‰å¸§æ˜¯å¦å…³é”®å¸§
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 BOOL KAviFile::IsKeyframe(int frame)
 {
@@ -872,10 +872,10 @@ BOOL KAviFile::IsKeyframe(int frame)
 	return m_video_index[frame].flags & AVIIF_KEYFRAME;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NextKeyFrame
-// ¹¦ÄÜ:	µ½ÏÂÒ»¸ö¹Ø¼üÖ¡
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	NextKeyFrame
+// åŠŸèƒ½:	åˆ°ä¸‹ä¸€ä¸ªå…³é”®å¸§
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::NextKeyFrame()
 {
@@ -888,10 +888,10 @@ int KAviFile::NextKeyFrame()
 	return 1;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	PreviousKeyFrame
-// ¹¦ÄÜ:	»Øµ½ÉÏÒ»¸ö¹Ø¼üÖ¡
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	PreviousKeyFrame
+// åŠŸèƒ½:	å›åˆ°ä¸Šä¸€ä¸ªå…³é”®å¸§
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::PreviousKeyFrame()
 {
@@ -905,10 +905,10 @@ int KAviFile::PreviousKeyFrame()
 	return 1;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Rewind
-// ¹¦ÄÜ:	·´¾í»ØÆğÊ¼
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	Rewind
+// åŠŸèƒ½:	åå·å›èµ·å§‹
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 int KAviFile::Rewind()
 {
@@ -919,10 +919,10 @@ int KAviFile::Rewind()
 	return 1;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Close
-// ¹¦ÄÜ:	¹Ø±ÕÊÍ·Å
-// ²ÎÊı:	
-// ·µ»Ø:	
+// å‡½æ•°:	Close
+// åŠŸèƒ½:	å…³é—­é‡Šæ”¾
+// å‚æ•°:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 void KAviFile::Close()
 {

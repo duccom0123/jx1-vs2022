@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ĞÂÊÖ½øÈëµÄÌáÊ¾½çÃæ
+//	ç•Œé¢--æ–°æ‰‹è¿›å…¥çš„æç¤ºç•Œé¢
 //	Copyright : Kingsoft 2003
 //	Author	:   Freeway Chen
 //	CreateTime:	2003-7-8
@@ -14,16 +14,16 @@
 class KUiNewPlayerStartMsg : protected KWndShowAnimate
 {
 public:
-	static KUiNewPlayerStartMsg* OpenWindow();		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static void	CloseWindow(bool bDestroy);         //¹Ø±Õ´°¿Ú
+	static KUiNewPlayerStartMsg* OpenWindow();		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static void	CloseWindow(bool bDestroy);         //å…³é—­çª—å£
 
 private:
 	KUiNewPlayerStartMsg();
 	~KUiNewPlayerStartMsg();
 
-	void	Initialize();						//³õÊ¼»¯
-	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
+	void	Initialize();						//åˆå§‹åŒ–
+	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
 	void	OnOk();
 	int		OnKeyDown(unsigned int uKey);
 	void	OnClickButton(KWndButton* pBtn);

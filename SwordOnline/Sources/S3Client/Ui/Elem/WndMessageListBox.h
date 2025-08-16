@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	ShowChatText.h
-//	´´½¨Õß		£º	Åí½¨²¨
-//	´´½¨Ê±¼ä	£º	2002-9-16 16:22:52
-//	¹¦ÄÜÃèÊö	£º	ÏÔÊ¾ÁÄÌìÄÚÈİ
+//	æ–‡ä»¶å		ï¼š	ShowChatText.h
+//	åˆ›å»ºè€…		ï¼š	å½­å»ºæ³¢
+//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-16 16:22:52
+//	åŠŸèƒ½æè¿°	ï¼š	æ˜¾ç¤ºèŠå¤©å†…å®¹
 // -------------------------------------------------------------------------
 #pragma once
 
@@ -26,14 +26,14 @@ struct KItemBtn
 
 struct KOneMsgInfo
 {
-	int			 nLines;				//ÕâÌõĞÅÏ¢Õ¼ÁË¶àÉÙĞĞ
-	int			 nCharWidth;			//ÕâÌõĞÅÏ¢Õ¼ÁË×Ö·û¿í
-	unsigned int uTextBKColor;			//ÕâÌõĞÅÏ¢×ÖÏÔÊ¾Ê±µÄÎÄ×Ö³Äµ×µÄÑÕÉ«,0ÎªÎŞ
+	int			 nLines;				//è¿™æ¡ä¿¡æ¯å äº†å¤šå°‘è¡Œ
+	int			 nCharWidth;			//è¿™æ¡ä¿¡æ¯å äº†å­—ç¬¦å®½
+	unsigned int uTextBKColor;			//è¿™æ¡ä¿¡æ¯å­—æ˜¾ç¤ºæ—¶çš„æ–‡å­—è¡¬åº•çš„é¢œè‰²,0ä¸ºæ— 
 	int			 nData;
-	int			 nMaxSize;				//Msg¿ÉÒÔÈİÄÉµÄ×î´óĞÅÏ¢³¤¶È
-	int			 nLen;					//ĞÅÏ¢³¤¶È
+	int			 nMaxSize;				//Msgå¯ä»¥å®¹çº³çš„æœ€å¤§ä¿¡æ¯é•¿åº¦
+	int			 nLen;					//ä¿¡æ¯é•¿åº¦
 	KItemBtn	 Item;
-	char		 Msg[1];				//ĞÅÏ¢µÄÄÚÈİ
+	char		 Msg[1];				//ä¿¡æ¯çš„å†…å®¹
 };
 
 class KWndScrollBar;
@@ -43,10 +43,10 @@ class KWndMessageListBox : public KWndWindow
 public:
 	KWndMessageListBox();
 	virtual ~KWndMessageListBox();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
 
-	void	SetFirstShowLine(int nLine);	//ÉèÖÃµÚÒ»Ìõ±»ÏÔÊ¾µÄÎÄ×ÖÊÇÈ«²¿ÎÄ×ÖµÄµÚ¼¸ĞĞ
-	int		GetFirstShowLine();				//»ñÈ¡µÚÒ»Ìõ±»ÏÔÊ¾µÄÎÄ×ÖÊÇÈ«²¿ÎÄ×ÖµÄµÚ¼¸ĞĞ
+	void	SetFirstShowLine(int nLine);	//è®¾ç½®ç¬¬ä¸€æ¡è¢«æ˜¾ç¤ºçš„æ–‡å­—æ˜¯å…¨éƒ¨æ–‡å­—çš„ç¬¬å‡ è¡Œ
+	int		GetFirstShowLine();				//è·å–ç¬¬ä¸€æ¡è¢«æ˜¾ç¤ºçš„æ–‡å­—æ˜¯å…¨éƒ¨æ–‡å­—çš„ç¬¬å‡ è¡Œ
 	void	SetScrollbar(KWndScrollBar* pScroll);
 
 	int		SetCapability(int nNumMessage);
@@ -61,18 +61,18 @@ public:
 	int		GetMsgCount() { return m_nNumMessage; }
 	int		HitTextAtPoint(int x, int y);
 
-	void	SetSize(int nWidth, int nHeight);//ÉèÖÃ´°¿Ú´óĞ¡
+	void	SetSize(int nWidth, int nHeight);//è®¾ç½®çª—å£å¤§å°
 	void	Clear();
 	void	Clone(KWndMessageListBox* pCopy);
 	int		GetMaxShowLine() {return m_nNumMaxShowLine;}
 	int		GetHideNumLine() {return m_nHideNumLine;}
 	int		GetItemLineCount(int nIndex);
 
-	//´Ó´°¿Ú·ÖÀë³öÊı¾İ
+	//ä»çª—å£åˆ†ç¦»å‡ºæ•°æ®
 	unsigned int	SplitData();
-	//¸ø´°¿ÚÀ¦°óÊı¾İ
+	//ç»™çª—å£æ†ç»‘æ•°æ®
 	unsigned int	BindData(unsigned int	hData);
-	//ÊÍ·Å´°¿ÚÊı¾İ¾ä±ú
+	//é‡Šæ”¾çª—å£æ•°æ®å¥æŸ„
 	static void		FreeData(unsigned int	hData);
 
 	virtual int		PtInWindow(int x, int y);
@@ -95,8 +95,8 @@ public:
 
 private:
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	UpdateData();					//¸ù¾İÄÚÈİÔöÉ¾»òÕß´°¿Ú³ß´ç±ä»¯ÖØĞÂ×÷Ğ©²ÎÊı¼ÆËãÒÔ¼°¹ö¶¯ÌõÈİÁ¿µ÷Õû
-	virtual void	PaintWindow();			//»æÖÆ´°¿Ú
+	void	UpdateData();					//æ ¹æ®å†…å®¹å¢åˆ æˆ–è€…çª—å£å°ºå¯¸å˜åŒ–é‡æ–°ä½œäº›å‚æ•°è®¡ç®—ä»¥åŠæ»šåŠ¨æ¡å®¹é‡è°ƒæ•´
+	virtual void	PaintWindow();			//ç»˜åˆ¶çª—å£
 	void	OnMouseMove(int x, int y);
 	void	OnLButtonDown(int x, int y);
 	void	OnLButtonDClick(int x, int y);
@@ -105,42 +105,42 @@ private:
 private:
 	struct KMessageListData
 	{
-		KOneMsgInfo**	pMessages;			//ĞÅÏ¢Êı¾İ
-		int				nNumMessage;		//ĞÅÏ¢ÌõÊıÄ¿
-		int				nCapability;		//ĞÅÏ¢Ìõ×î¶àÔÊĞíÊıÄ¿
-		int				nStartShowMsg;		//Ê×ÌõÏÔÊ¾µÄĞÅÏ¢
-		int				nStartMsgSkipLine;	//Ê×ÌõÏÔÊ¾µÄĞÅÏ¢ÉÏ·½ºöÂÔµÄĞĞÊıÄ¿
-		int				nSelMsgIndex;		//µ±Ç°Ñ¡ÔñµÄÏûÏ¢
+		KOneMsgInfo**	pMessages;			//ä¿¡æ¯æ•°æ®
+		int				nNumMessage;		//ä¿¡æ¯æ¡æ•°ç›®
+		int				nCapability;		//ä¿¡æ¯æ¡æœ€å¤šå…è®¸æ•°ç›®
+		int				nStartShowMsg;		//é¦–æ¡æ˜¾ç¤ºçš„ä¿¡æ¯
+		int				nStartMsgSkipLine;	//é¦–æ¡æ˜¾ç¤ºçš„ä¿¡æ¯ä¸Šæ–¹å¿½ç•¥çš„è¡Œæ•°ç›®
+		int				nSelMsgIndex;		//å½“å‰é€‰æ‹©çš„æ¶ˆæ¯
 	};
 	
 private:
-	KWndScrollBar*	m_pScrollbar;			//¹ö¶¯Ìõ
-	KOneMsgInfo**	m_pMessages;			//ĞÅÏ¢Êı¾İ
+	KWndScrollBar*	m_pScrollbar;			//æ»šåŠ¨æ¡
+	KOneMsgInfo**	m_pMessages;			//ä¿¡æ¯æ•°æ®
 
-	int				m_nNumMessage;			//ĞÅÏ¢ÌõÊıÄ¿
-	int				m_nCapability;			//ĞÅÏ¢Ìõ×î¶àÔÊĞíÊıÄ¿
+	int				m_nNumMessage;			//ä¿¡æ¯æ¡æ•°ç›®
+	int				m_nCapability;			//ä¿¡æ¯æ¡æœ€å¤šå…è®¸æ•°ç›®
 
-	int				m_nNumMaxShowLine;		//×î¶à¿ÉÏÔÊ¾µÄĞĞÊıÄ¿
-	int				m_nNumBytesPerLine;		//Ã¿Ò»ĞĞ×Ö·ûµÄÊıÄ¿
-	int				m_nNumVisibleTextLine;	//¿ÉÒÔ¿´¼ûµÄÓĞÎÄ×ÖµÄĞĞµÄÊıÄ¿
+	int				m_nNumMaxShowLine;		//æœ€å¤šå¯æ˜¾ç¤ºçš„è¡Œæ•°ç›®
+	int				m_nNumBytesPerLine;		//æ¯ä¸€è¡Œå­—ç¬¦çš„æ•°ç›®
+	int				m_nNumVisibleTextLine;	//å¯ä»¥çœ‹è§çš„æœ‰æ–‡å­—çš„è¡Œçš„æ•°ç›®
 	
-	int				m_nHideNumLine;		//±»Ç¿ÆÈÒş²ØµÄĞĞÊı,×·¼Ó/É¾³ı/Ñ¡ÖĞ/¹ö¶¯ĞĞ/¸Ä³ß´çÊ±»áÎŞĞ§
+	int				m_nHideNumLine;		//è¢«å¼ºè¿«éšè—çš„è¡Œæ•°,è¿½åŠ /åˆ é™¤/é€‰ä¸­/æ»šåŠ¨è¡Œ/æ”¹å°ºå¯¸æ—¶ä¼šæ— æ•ˆ
 
-	int				m_nFontSize;			//×ÖÌå´óĞ¡
-	int				m_nStartShowMsg;		//Ê×ÌõÏÔÊ¾µÄĞÅÏ¢
-	int				m_nStartMsgSkipLine;	//Ê×ÌõÏÔÊ¾µÄĞÅÏ¢ÉÏ·½ºöÂÔµÄĞĞÊıÄ¿
+	int				m_nFontSize;			//å­—ä½“å¤§å°
+	int				m_nStartShowMsg;		//é¦–æ¡æ˜¾ç¤ºçš„ä¿¡æ¯
+	int				m_nStartMsgSkipLine;	//é¦–æ¡æ˜¾ç¤ºçš„ä¿¡æ¯ä¸Šæ–¹å¿½ç•¥çš„è¡Œæ•°ç›®
 
-	int				m_nSelMsgIndex;			//µ±Ç°Ñ¡ÔñµÄÏûÏ¢
-	int				m_nHLMsgIndex;			//Êó±êËùÖ¸ÏûÏ¢µÄË÷Òı
-	unsigned int	m_MsgColor;				//Ä¬ÈÏµÄÎÄ×ÖÑÕÉ«
-	unsigned int	m_MsgBorderColor;		//Ä¬ÈÏµÄÎÄ×Ö±ßÔµÑÕÉ«
-	unsigned int	m_SelMsgColor;			//±»Ñ¡ÖĞÎÄ×ÖµÄÑÕÉ«
-	unsigned int	m_SelMsgBorderColor;	//±»Ñ¡ÖĞÎÄ×ÖµÄ±ßÔµÑÕÉ«
+	int				m_nSelMsgIndex;			//å½“å‰é€‰æ‹©çš„æ¶ˆæ¯
+	int				m_nHLMsgIndex;			//é¼ æ ‡æ‰€æŒ‡æ¶ˆæ¯çš„ç´¢å¼•
+	unsigned int	m_MsgColor;				//é»˜è®¤çš„æ–‡å­—é¢œè‰²
+	unsigned int	m_MsgBorderColor;		//é»˜è®¤çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_SelMsgColor;			//è¢«é€‰ä¸­æ–‡å­—çš„é¢œè‰²
+	unsigned int	m_SelMsgBorderColor;	//è¢«é€‰ä¸­æ–‡å­—çš„è¾¹ç¼˜é¢œè‰²
 		
-	unsigned int	m_SelMsgBgColor;		//±»Ñ¡ÖĞÏûÏ¢µÄ±³¾°ÑÕÉ«
-	unsigned int	m_HLMsgColor;			//Êó±êËùÖ¸ÏûÏ¢µÄÑÕÉ«
-	unsigned int	m_HLMsgBorderColor;		//Êó±êËùÖ¸ÏûÏ¢µÄ±ßÔµÑÕÉ«
-	unsigned int	m_uTextLineShadowColor;	//ÓĞÎÄ×ÖµÄĞĞÓµÓĞµÄ±³¾°ÑÕÉ«£¬Èç¹ûÎª0£¬±íÊ¾ÎŞ´Ë±³¾°É«
+	unsigned int	m_SelMsgBgColor;		//è¢«é€‰ä¸­æ¶ˆæ¯çš„èƒŒæ™¯é¢œè‰²
+	unsigned int	m_HLMsgColor;			//é¼ æ ‡æ‰€æŒ‡æ¶ˆæ¯çš„é¢œè‰²
+	unsigned int	m_HLMsgBorderColor;		//é¼ æ ‡æ‰€æŒ‡æ¶ˆæ¯çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_uTextLineShadowColor;	//æœ‰æ–‡å­—çš„è¡Œæ‹¥æœ‰çš„èƒŒæ™¯é¢œè‰²ï¼Œå¦‚æœä¸º0ï¼Œè¡¨ç¤ºæ— æ­¤èƒŒæ™¯è‰²
 	int				m_nRowDis;
 
 	BOOL			m_bHitText;
@@ -153,7 +153,7 @@ class KScrollMessageListBox : public KWndWindow
 public:
 	KScrollMessageListBox();
 
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	
 	KWndMessageListBox* GetMessageListBox()
@@ -177,7 +177,7 @@ protected:
 	int m_nCurrentLineCount;
 
 	void	SetMsgLineCount(int nCount);
-	void	InitMinMaxLineCount(int nMin, int nMax);//³õÊ¼»¯
+	void	InitMinMaxLineCount(int nMin, int nMax);//åˆå§‹åŒ–
 };
 
 bool	MsgListBox_LoadContent(KWndMessageListBox* pBox, KIniFile* pFile, const char* pszSection);

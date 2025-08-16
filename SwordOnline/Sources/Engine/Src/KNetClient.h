@@ -24,21 +24,21 @@ typedef struct {
 
 typedef struct {
 	DWORD			dwNum;
-	DWORD			dwCurrentOffset;//µ±Ç°¶ÁÈ¡Êı¾İÎ»ÖÃ
+	DWORD			dwCurrentOffset;//å½“å‰è¯»å–æ•°æ®ä½ç½®
 	BYTE			Data[64*1024];
 } COMMAND;
 
 
 typedef struct {
 	char			id[4];//"PACK"
-	int				CountNum;//·şÎñÆ÷Ñ­»·Êı
-	WORD			isCompressed;//0 ²»Ñ¹Ëõ 1£ºÑ¹Ëõ
-	WORD			DataNum;//Êı¾İ¿éÊıÄ¿
-	WORD			dwSize;//Õû¸ö¿ÉÓÃÊı¾İ°ü´óĞ¡£¨²»°üº¬DataÒÔÇ°µÄÊı¾İÍ·£©
-	WORD			dwCompSize;//Ñ¹Ëõºó¿ÉÓÃÊı¾İ°ü´óĞ¡£¬²»Ñ¹ËõÊ±´ËÖµÓëdwSizeÏàÍ¬ 
-	WORD			CipherVerify;//ÃÜÔ¿Ğ£ÑéºÍ	
+	int				CountNum;//æœåŠ¡å™¨å¾ªç¯æ•°
+	WORD			isCompressed;//0 ä¸å‹ç¼© 1ï¼šå‹ç¼©
+	WORD			DataNum;//æ•°æ®å—æ•°ç›®
+	WORD			dwSize;//æ•´ä¸ªå¯ç”¨æ•°æ®åŒ…å¤§å°ï¼ˆä¸åŒ…å«Dataä»¥å‰çš„æ•°æ®å¤´ï¼‰
+	WORD			dwCompSize;//å‹ç¼©åå¯ç”¨æ•°æ®åŒ…å¤§å°ï¼Œä¸å‹ç¼©æ—¶æ­¤å€¼ä¸dwSizeç›¸åŒ 
+	WORD			CipherVerify;//å¯†é’¥æ ¡éªŒå’Œ	
 	WORD            wResered;
-	BYTE			Data[RECV_DATA_SIZE];//Êı¾İÇø
+	BYTE			Data[RECV_DATA_SIZE];//æ•°æ®åŒº
 } RECV_DATA;
 
 
@@ -54,8 +54,8 @@ private:
     void*		pCodec;
 	DWORD       Ping;
 
-	WORD        DataNum;//Êı¾İ¿éÊıÄ¿
-	WORD        dwDataSize; //Êı¾İ°ü´óĞ¡
+	WORD        DataNum;//æ•°æ®å—æ•°ç›®
+	WORD        dwDataSize; //æ•°æ®åŒ…å¤§å°
     BYTE        SendBuffer[SEND_DATA_SIZE];
 
     RECV_BUFFER RecvBuffer;
@@ -63,12 +63,12 @@ private:
 	COMMAND     SysCommand;
 	
     RECV_DATA   RecvData;
-    RECV_DATA   BackRecvData;//ºó±¸ÏûÏ¢°ü
-    DWORD       BackOffset;//ºó±¸ÏûÏ¢°üµ±Ç°Î»ÖÃ 
+    RECV_DATA   BackRecvData;//åå¤‡æ¶ˆæ¯åŒ…
+    DWORD       BackOffset;//åå¤‡æ¶ˆæ¯åŒ…å½“å‰ä½ç½® 
 	
-	BYTE        Cipher[16];//ÃÜÔ¿
+	BYTE        Cipher[16];//å¯†é’¥
 	BYTE        LastCipher[16];
-	WORD        CipherVerify;//ÃÜÔ¿Ğ£ÑéºÍ
+	WORD        CipherVerify;//å¯†é’¥æ ¡éªŒå’Œ
 	
 	
 private:

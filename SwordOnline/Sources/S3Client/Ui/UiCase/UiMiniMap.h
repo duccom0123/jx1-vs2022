@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--Ğ¡µØÍ¼
+//	ç•Œé¢--å°åœ°å›¾
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-21
@@ -15,18 +15,18 @@
 #include "../../Core/Src/GameDataDef.h"
 #include "../Elem/WndPureTextBtn.h"
 
-//Ğ¡µØÍ¼µÄÏÔÊ¾ÄÚÈİÄ£Ê½
+//å°åœ°å›¾çš„æ˜¾ç¤ºå†…å®¹æ¨¡å¼
 enum MINIMAP_MODE
 {
-	MINIMAP_M_BRIEF_NOT_PIC = -1,			//ËõÂÔÍ¼
-	MINIMAP_M_BRIEF_PIC,			//ËõÂÔÍ¼
-	MINIMAP_M_BRIEF_PIC_BROWSE,			//ËõÂÔÍ¼ä¯ÀÀ/·Å´óÄ£Ê½
+	MINIMAP_M_BRIEF_NOT_PIC = -1,			//ç¼©ç•¥å›¾
+	MINIMAP_M_BRIEF_PIC,			//ç¼©ç•¥å›¾
+	MINIMAP_M_BRIEF_PIC_BROWSE,			//ç¼©ç•¥å›¾æµè§ˆ/æ”¾å¤§æ¨¡å¼
 	MINIMAP_M_BRIEF_PIC_BROWSEEX,
-	MINIMAP_M_WORLD_MAP,				//ÊÀ½çµØÍ¼
+	MINIMAP_M_WORLD_MAP,				//ä¸–ç•Œåœ°å›¾
 	MINIMAP_M_CAVELIST_MAP,
 	
-	//MINIMAP_M_OBSTACLE,				//ÕÏ°­Í¼Ä£Ê½
-	MINIMAP_M_NONE,					//Ã»ÓĞÏÔÊ¾µØÍ¼
+	//MINIMAP_M_OBSTACLE,				//éšœç¢å›¾æ¨¡å¼
+	MINIMAP_M_NONE,					//æ²¡æœ‰æ˜¾ç¤ºåœ°å›¾
 
 	MINIMAP_M_COUNT,
 };
@@ -36,18 +36,18 @@ struct KUiSceneTimeInfo;
 class KUiMiniMap : public KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiMiniMap*	OpenWindow();					//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiMiniMap*	GetIfVisible();					//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow(bool bDestroy = true);					//¹Ø±Õ´°¿Ú
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiMiniMap*	OpenWindow();					//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiMiniMap*	GetIfVisible();					//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow(bool bDestroy = true);					//å…³é—­çª—å£
 
-	static void			SetMode(MINIMAP_MODE eMode);	//ÉèÖÃÏÔÊ¾ÄÚÈİÄ£Ê½
-	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	static void			SetMode(MINIMAP_MODE eMode);	//è®¾ç½®æ˜¾ç¤ºå†…å®¹æ¨¡å¼
+	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	static void			UpdateSceneTimeInfo(KUiSceneTimeInfo* pInfo);
 	static KUiMiniMap*	GetSelf() {return ms_pSelf;}
 
-	void	Show();										//ÏÔÊ¾´°¿Ú
-	void	Hide();										//Òş²Ø´°¿Ú
+	void	Show();										//æ˜¾ç¤ºçª—å£
+	void	Hide();										//éšè—çª—å£
 
 private:
 	KUiMiniMap();
@@ -55,11 +55,11 @@ private:
 	void	Initialize();
 	void	PaintWindow();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	LoadScheme(KIniFile* pIni);		//ÔØÈë½çÃæ·½°¸
-	void	SetStatus(bool bSmall);			//ÇĞ»»×´Ì¬
-	void    MapScroll(int nbScrollScene);	//µØÍ¼¾í¶¯
-	void	StopScrollMap();				//Í£Ö¹ÍÏ¶¯µØÍ¼
-	void	MapMoveBack();					//µØÍ¼»¹Ô­Ô­Ê¼Æ«ÒÆ
+	void	LoadScheme(KIniFile* pIni);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void	SetStatus(bool bSmall);			//åˆ‡æ¢çŠ¶æ€
+	void    MapScroll(int nbScrollScene);	//åœ°å›¾å·åŠ¨
+	void	StopScrollMap();				//åœæ­¢æ‹–åŠ¨åœ°å›¾
+	void	MapMoveBack();					//åœ°å›¾è¿˜åŸåŸå§‹åç§»
 	virtual void	Breathe();
 
 private:
@@ -76,9 +76,9 @@ private:
 	KWndButton		m_BtnFlag;
 	KWndButton		m_CaveMapBtn;
 	POINT           m_OldPos;
-	unsigned int	m_uLastScrollTime;             // Àë×îºóÒ»´Î¹ö¶¯µÄÊ±¼ä(Ãë)
-	int             m_nOffsetX;                    // Ã¿´ÎLoop£¬¼ì²âµ½¸úÉÏ´ÎÊó±êÎ»ÖÃµÄÆ«ÒÆX
-	int             m_nOffsetY;                    // Ã¿´ÎLoop£¬¼ì²âµ½¸úÉÏ´ÎÊó±êÎ»ÖÃµÄÆ«ÒÆY
+	unsigned int	m_uLastScrollTime;             // ç¦»æœ€åä¸€æ¬¡æ»šåŠ¨çš„æ—¶é—´(ç§’)
+	int             m_nOffsetX;                    // æ¯æ¬¡Loopï¼Œæ£€æµ‹åˆ°è·Ÿä¸Šæ¬¡é¼ æ ‡ä½ç½®çš„åç§»X
+	int             m_nOffsetY;                    // æ¯æ¬¡Loopï¼Œæ£€æµ‹åˆ°è·Ÿä¸Šæ¬¡é¼ æ ‡ä½ç½®çš„åç§»Y
 	int				m_MpsX;
 	int				m_MpsY;
 	DWORD			m_MpsID;
@@ -86,5 +86,5 @@ private:
 };
 
 void	MapToggleStatus();
-void	MapSetMode(MINIMAP_MODE eMode);	//ÉèÖÃÏÔÊ¾ÄÚÈİÄ£Ê½
+void	MapSetMode(MINIMAP_MODE eMode);	//è®¾ç½®æ˜¾ç¤ºå†…å®¹æ¨¡å¼
 MINIMAP_MODE MapGetMode();

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--Ñ¡Ôñ¸½½üµÄÄ³¸öÍæ¼Ò
+//	ç•Œé¢--é€‰æ‹©é™„è¿‘çš„æŸä¸ªç©å®¶
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-2-26
@@ -16,8 +16,8 @@
 
 struct KPlayerInterAction
 {
-	char	szActionName[32];	//ĞĞÎªÃû³Æ
-	int		nId;				//ĞĞÎªid
+	char	szActionName[32];	//è¡Œä¸ºåç§°
+	int		nId;				//è¡Œä¸ºid
 };
 
 struct KUiPlayerItem;
@@ -25,16 +25,16 @@ struct KUiPlayerItem;
 class KUiSelPlayerNearby : protected KWndShowAnimate
 {
 public:
-	static KUiSelPlayerNearby*	OpenWindow();				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiSelPlayerNearby*	OpenWindow();				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static BOOL					DoesHaveVisibleWnd();
-	static void					CloseWindow(bool bDestroy);				//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void					LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
+	static void					CloseWindow(bool bDestroy);				//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void					LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 private:
 	KUiSelPlayerNearby();
 	~KUiSelPlayerNearby() {}
-	void	Initialize();					//³õÊ¼»¯
-	void	LoadScheme(class KIniFile* pIni);//ÔØÈë½çÃæ·½°¸
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Initialize();					//åˆå§‹åŒ–
+	void	LoadScheme(class KIniFile* pIni);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	void	OnClickButton(int nAction);
 	void	UpdateData();
 	void	Clear();

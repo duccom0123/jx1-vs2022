@@ -18,7 +18,7 @@ struct MAPLIST_INFO
 class CORE_API KSubWorldSet
 {
 public:
-	int		m_nLoopRate;		// Ñ­»·Ö¡Êı
+	int		m_nLoopRate;		// å¾ªç¯å¸§æ•°
 	int		m_MapListCount;
 	MAPLIST_INFO*	m_sMapListInfo;
 	
@@ -26,7 +26,7 @@ public:
 	KMapMusic	m_cMusic;
 #endif
 private:
-	KTimer	m_Timer;			// ¼ÆÊ±Æ÷
+	KTimer	m_Timer;			// è®¡æ—¶å™¨
 	int		m_nGameVersion;
 #ifndef _SERVER
 	DWORD	m_dwPing;
@@ -43,11 +43,11 @@ public:
 	int		GetGameVersion() { return m_nGameVersion; }
 	void	Close();
 	BOOL	Load(LPSTR szFileName);
-// ServerÉÏ²ÅÓĞµÄ¼¸¸ö·½·¨
+// Serverä¸Šæ‰æœ‰çš„å‡ ä¸ªæ–¹æ³•
 #ifdef _SERVER
 	void	GetRevivalPosFromId(DWORD dwSubWorldId, int nRevivalId, POINT* pPos);
 #endif
-// ClientÉÏ²ÅÓĞµÄ¼¸¸ö·½·¨
+// Clientä¸Šæ‰æœ‰çš„å‡ ä¸ªæ–¹æ³•
 #ifndef _SERVER
 	void	SetPing(DWORD dwTimer) { m_dwPing = dwTimer; }
 	DWORD	GetPing() { return m_dwPing; }

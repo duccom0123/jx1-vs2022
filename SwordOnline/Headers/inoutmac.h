@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼þÃû		£º	inoutmac.h
-//	´´½¨Õß		£º	Ð»Ã¯Åà (Hsie)
-//	´´½¨Ê±¼ä	£º	2003-07-20 14:47:18
-//	¹¦ÄÜÃèÊö	£º	
+//	æ–‡ä»¶å		ï¼š	inoutmac.h
+//	åˆ›å»ºè€…		ï¼š	è°¢èŒ‚åŸ¹ (Hsie)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-07-20 14:47:18
+//	åŠŸèƒ½æè¿°	ï¼š	
 //
 // -------------------------------------------------------------------------
 #ifndef __INOUTMAC_H__
@@ -50,13 +50,13 @@ typedef struct _K_IP_ADAPTER_INFO {
 
 
 
-//´Ëº¯Êý»áÈ·±£Á½¸öµØÖ·¾ùÓÐ
-//·µ»ØÖµÎªÍø¿¨ÊýÁ¿
+//æ­¤å‡½æ•°ä¼šç¡®ä¿ä¸¤ä¸ªåœ°å€å‡æœ‰
+//è¿”å›žå€¼ä¸ºç½‘å¡æ•°é‡
 inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* pMacAddressOut, DWORD* pIPAddressOut, DWORD nMask = 0x0000a8c0, DWORD nMacLength = 6)
 {
 	typedef DWORD(CALLBACK * PGAINFO)(K_PIP_ADAPTER_INFO, PULONG);//GetAdaptersInfo
 
-    //¼ÓÔØIP Helper API ËùÐèµÄ¿âÎÄ¼þ
+    //åŠ è½½IP Helper API æ‰€éœ€çš„åº“æ–‡ä»¶
     HINSTANCE hInst = LoadLibrary("iphlpapi.dll");
     if(!hInst)
 		return -1;
@@ -67,7 +67,7 @@ inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* p
 
 	ULONG ulSize = 0;
 
-	pGAInfo(pInfo, &ulSize);//µÚÒ»´Îµ÷ÓÃ£¬»ñÈ¡»º³åÇø´óÐ¡
+	pGAInfo(pInfo, &ulSize);//ç¬¬ä¸€æ¬¡è°ƒç”¨ï¼ŒèŽ·å–ç¼“å†²åŒºå¤§å°
 
 	pInfo = (K_PIP_ADAPTER_INFO)alloca(ulSize);
 
@@ -81,13 +81,13 @@ inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* p
 	DWORD nIPAddressOutX = 0;
 
 	DWORD nMAcNum = 0;
-    //±éÀúÃ¿Ò»ÕÅÍø¿¨
+    //éåŽ†æ¯ä¸€å¼ ç½‘å¡
 
     while (pInfo && (!bIn || !bOut))
     {
 		K_PIP_ADDR_STRING pAddTemp = &(pInfo->IpAddressList);       
 		
-		while (pAddTemp)/*±éÀúIPÁÐ±íÖÐµÄÃ¿Ò»¸öÔªËØ*/
+		while (pAddTemp)/*éåŽ†IPåˆ—è¡¨ä¸­çš„æ¯ä¸€ä¸ªå…ƒç´ */
 		{
 			DWORD nAddress = inet_addr(pAddTemp->IpAddress.String);
 			if (!bIn &&
@@ -96,7 +96,7 @@ inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* p
 			{
 				bIn = true;
 				nIPAddressInX = nAddress;
-				//ÎïÀíµØÖ·µÄ³¤¶È
+				//ç‰©ç†åœ°å€çš„é•¿åº¦
 				if (pInfo->AddressLength == nMacLength)
 					memcpy(pMacAddressInX, pInfo->Address, nMacLength);
 				else
@@ -109,7 +109,7 @@ inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* p
 			{
 				bOut = true;
 				nIPAddressOutX = nAddress;
-				//ÎïÀíµØÖ·µÄ³¤¶È
+				//ç‰©ç†åœ°å€çš„é•¿åº¦
 				if (pInfo->AddressLength == nMacLength)
 					memcpy(pMacAddressOutX, pInfo->Address, nMacLength);
 				else
@@ -117,7 +117,7 @@ inline int gGetMacAndIPAddress(BYTE* pMacAddressIn, DWORD* pIPAddressIn, BYTE* p
 			}
 			pAddTemp = pAddTemp->Next;
 		}
-		//½«µ±Ç°Ö¸ÕëÒÆÏòÏÂÒ»¸ö
+		//å°†å½“å‰æŒ‡é’ˆç§»å‘ä¸‹ä¸€ä¸ª
 		pInfo = pInfo->Next;
 
 		nMAcNum++;

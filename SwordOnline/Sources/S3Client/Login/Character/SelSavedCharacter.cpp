@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	´æµµ½ÇÉ«Ñ¡Ôñ
+//	å­˜æ¡£è§’è‰²é€‰æ‹©
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-12
@@ -37,7 +37,7 @@ void RandMemSet(int nSize, unsigned char *pbyBuffer)
     }
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KSelSavedCharacter::KSelSavedCharacter()
 {
@@ -55,7 +55,7 @@ KSelSavedCharacter::~KSelSavedCharacter()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¿ªÊ¼ÔØÈë½ÇÉ«Êı¾İ
+//	åŠŸèƒ½ï¼šå¼€å§‹è½½å…¥è§’è‰²æ•°æ®
 //--------------------------------------------------------------------------
 int KSelSavedCharacter::LoadData()
 {
@@ -67,7 +67,7 @@ int KSelSavedCharacter::LoadData()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º·µ»ØÖµÎªÃ·¾ÙSSC_STATUSµÄÈ¡ÖµÖ®Ò»£¬·µ»ØÖµº¬ÒåÇë¿´Ïà¹ØµÄÖµÉùÃ÷
+//	åŠŸèƒ½ï¼šè¿”å›å€¼ä¸ºæ¢…ä¸¾SSC_STATUSçš„å–å€¼ä¹‹ä¸€ï¼Œè¿”å›å€¼å«ä¹‰è¯·çœ‹ç›¸å…³çš„å€¼å£°æ˜
 //--------------------------------------------------------------------------
 int	KSelSavedCharacter::GetStatus()
 {
@@ -75,7 +75,7 @@ int	KSelSavedCharacter::GetStatus()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃ×îºóÒ»´Î²Ù×÷µÄ·µ»Ø½á¹û
+//	åŠŸèƒ½ï¼šè®¾ç½®æœ€åä¸€æ¬¡æ“ä½œçš„è¿”å›ç»“æœ
 //--------------------------------------------------------------------------
 void KSelSavedCharacter::SetLastActionResult(int nResult)
 {
@@ -83,7 +83,7 @@ void KSelSavedCharacter::SetLastActionResult(int nResult)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºµÃµ½×îºóÒ»´Î²Ù×÷µÄ·µ»Ø½á¹û
+//	åŠŸèƒ½ï¼šå¾—åˆ°æœ€åä¸€æ¬¡æ“ä½œçš„è¿”å›ç»“æœ
 //--------------------------------------------------------------------------
 int	KSelSavedCharacter::GetLastActionResult()
 {
@@ -93,7 +93,7 @@ int	KSelSavedCharacter::GetLastActionResult()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡½ÇÉ«µÄÊıÄ¿
+//	åŠŸèƒ½ï¼šè·å–è§’è‰²çš„æ•°ç›®
 //--------------------------------------------------------------------------
 int KSelSavedCharacter::GetCharacterNum()
 {
@@ -101,7 +101,7 @@ int KSelSavedCharacter::GetCharacterNum()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡Ä³¸ö½ÇÉ«µÄĞÅÏ¢
+//	åŠŸèƒ½ï¼šè·å–æŸä¸ªè§’è‰²çš„ä¿¡æ¯
 //--------------------------------------------------------------------------
 int	KSelSavedCharacter::GetCharacterInfo(int nIndex, KNewCharacterInfo* pInfo)
 {
@@ -120,7 +120,7 @@ int	KSelSavedCharacter::GetCharacterInfo(int nIndex, KNewCharacterInfo* pInfo)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇëÇóĞÂ½¨Ò»¸ö½ÇÉ«
+//	åŠŸèƒ½ï¼šè¯·æ±‚æ–°å»ºä¸€ä¸ªè§’è‰²
 //--------------------------------------------------------------------------
 int KSelSavedCharacter::NewCharacter(KNewCharacterInfo* pData)
 {
@@ -156,7 +156,7 @@ int KSelSavedCharacter::NewCharacter(KNewCharacterInfo* pData)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇëÇóÉ¾³ıÒ»¸ö½ÇÉ«
+//	åŠŸèƒ½ï¼šè¯·æ±‚åˆ é™¤ä¸€ä¸ªè§’è‰²
 //--------------------------------------------------------------------------
 int KSelSavedCharacter::DeleteCharacter(int nIndex, const char* pszPassword)
 {
@@ -182,7 +182,7 @@ int KSelSavedCharacter::DeleteCharacter(int nIndex, const char* pszPassword)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ¡ÔñÄ³¸ö½ÇÉ«
+//	åŠŸèƒ½ï¼šé€‰æ‹©æŸä¸ªè§’è‰²
 //--------------------------------------------------------------------------
 int	KSelSavedCharacter::SelCharacter(int nIndex)
 {
@@ -201,7 +201,7 @@ int	KSelSavedCharacter::SelCharacter(int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÊÍ·Å½ÇÉ«Êı¾İ
+//	åŠŸèƒ½ï¼šé‡Šæ”¾è§’è‰²æ•°æ®
 //--------------------------------------------------------------------------
 void KSelSavedCharacter::FreeData()
 {
@@ -232,8 +232,8 @@ void KSelSavedCharacter::SetCharacterBaseInfo(int nNum, const RoleBaseInfo *pInf
 }
 
 // -------------------------------------------------------------------------
-// º¯Êı		: KUiSelPlayer::AcceptNetMsg
-// ¹¦ÄÜ		: ´¦ÀíÍøÂçÏûÏ¢
+// å‡½æ•°		: KUiSelPlayer::AcceptNetMsg
+// åŠŸèƒ½		: å¤„ç†ç½‘ç»œæ¶ˆæ¯
 // -------------------------------------------------------------------------
 void KSelSavedCharacter::AcceptNetMsg(void* pMsgData)
 {
@@ -256,7 +256,7 @@ void KSelSavedCharacter::AcceptNetMsg(void* pMsgData)
 				tagNotifyPlayerLogin* pNPL = (tagNotifyPlayerLogin*)pMsgData;
 				if (strcmp((const char*)pNPL->szRoleName, m_szProcessingRoleName) == 0 && pNPL->bPermit)
 				{
-					// ¿ªÊ¼ÓëGameSvr½øĞĞÁ¬½Ó
+					// å¼€å§‹ä¸GameSvrè¿›è¡Œè¿æ¥
 					if (g_NetConnectAgent.ConnectToGameSvr((const unsigned char*)&pNPL->nIPAddr, pNPL->nPort, &pNPL->guid))
 					{
 						g_NetConnectAgent.UpdateClientRequestTime(false);
@@ -268,7 +268,7 @@ void KSelSavedCharacter::AcceptNetMsg(void* pMsgData)
 						m_Status = SSC_S_STANDBY;
 					}
 
-					// ¶Ï¿ªÓëÍø¹ØµÄÁ¬½Ó
+					// æ–­å¼€ä¸ç½‘å…³çš„è¿æ¥
 					g_NetConnectAgent.DisconnectClient();
 					g_NetConnectAgent.UpdateClientRequestTime(true);
 
@@ -282,7 +282,7 @@ void KSelSavedCharacter::AcceptNetMsg(void* pMsgData)
 			break;
 		case s2c_rolenewdelresponse:
 			tagNewDelRoleResponse* pResponse = (tagNewDelRoleResponse*)pMsgData;
-//			if (strcmp(pResponse->szRoleName, m_szProcessingRoleName) == 0)	/* ÁõÅôµ÷ÊÔ°æ */
+//			if (strcmp(pResponse->szRoleName, m_szProcessingRoleName) == 0)	/* åˆ˜é¹è°ƒè¯•ç‰ˆ */
 			{
 				if (m_Status == SSC_S_CREATING_CHARACTER)
 				{

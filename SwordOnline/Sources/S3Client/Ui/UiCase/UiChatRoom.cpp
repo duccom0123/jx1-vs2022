@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÁÄÌìÖ÷½çÃæ
+//	Â½Ã§ÃƒÃ¦--ÃÃ„ÃŒÃ¬Ã–Ã·Â½Ã§ÃƒÃ¦
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-3-10
@@ -57,7 +57,7 @@ KUiChatRoom::~KUiChatRoom()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕý±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀýÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiChatRoom* KUiChatRoom::GetIfVisible()
 {
@@ -67,7 +67,7 @@ KUiChatRoom* KUiChatRoom::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀý
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃŽÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiChatRoom* KUiChatRoom::OpenWindow()
 {
@@ -92,7 +92,7 @@ KUiChatRoom* KUiChatRoom::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiChatRoom::Initialize()
 {
@@ -124,7 +124,7 @@ void KUiChatRoom::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ý¶ÔÏóÊµÀý
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiChatRoom::CloseWindow(bool bDestroy)
 {
@@ -143,7 +143,7 @@ void KUiChatRoom::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiChatRoom::LoadScheme(const char* pScheme)
 {
@@ -173,7 +173,7 @@ void KUiChatRoom::LoadScheme(const char* pScheme)
 			Ini.GetInteger("Main", "TimeLen", 0, &m_pSelf->m_nTimeLen);
 			Ini.GetInteger("Main", "MemNumLen", 0, &m_pSelf->m_nMemNumLen);
 			Ini.GetInteger("MemberList", "MemNameLen", 0, &m_pSelf->m_nMemNameLen);
-			m_pSelf->m_TxtCurRoomTitle.SetText("Ch­a vµo phßng");
+			m_pSelf->m_TxtCurRoomTitle.SetText("ChÂ­a vÂµo phÃŸng");
 			Ini.GetString("RoomList", "Key", "", Buff, MAX_PATH);
 			g_pIInlinePicSink->AddCustomInlinePic((WORD&)m_pSelf->m_uKeyPicIndex, Buff);
 			Ini.GetString("RoomList", "Dice", "", Buff, MAX_PATH);
@@ -184,7 +184,7 @@ void KUiChatRoom::LoadScheme(const char* pScheme)
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿ÚÏûÏ¢º¯Êý
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÃÃ»ÃÂ¢ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 int KUiChatRoom::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -200,7 +200,7 @@ int KUiChatRoom::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 			if (nParam >= 0 &&m_bIsInRoom==FALSE)
 			{
 				if(KSG_StringGetValue(1, m_RoomList.GetMessageListBox()->GetOneMessageData(nParam), 6) == 1)
-					KUiGetString::OpenWindow(GSA_NORMAL, "NhËp mËt m· phßng", "", this, ISP_CHATROOM_JOIN, 9999);
+					KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p mÃ‹t mÂ· phÃŸng", "", this, ISP_CHATROOM_JOIN, 9999);
 				else
 				{
 					int nValue=0;
@@ -334,29 +334,29 @@ int KUiChatRoom::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return nRet;
 }
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ		: µã»÷°´Å¥ºóµÄ´¦Àí
+// Â¹Â¦Ã„Ãœ		: ÂµÃ£Â»Ã·Â°Â´Ã…Â¥ÂºÃ³ÂµÃ„Â´Â¦Ã€Ã­
 // -------------------------------------------------------------------------
 void KUiChatRoom::OnClickButton(KWndWindow* pWnd)
 {
 	if (pWnd == (KWndWindow*)&m_BtnPassword)
 	{
 		if(m_bIsInRoom && m_nRoomFigure == CHATROOM_HOST)
-			KUiGetString::OpenWindow(GSA_NORMAL, "NhËp mËt m· phßng", "", this, ISP_CHATROOM_PASSWORD, 9999);
+			KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p mÃ‹t mÂ· phÃŸng", "", this, ISP_CHATROOM_PASSWORD, 9999);
 	}
 	else if (pWnd == (KWndWindow*)&m_BtnOpenDice)
 	{
 		if(m_bIsInRoom && m_nRoomFigure == CHATROOM_HOST && m_nRoomDiceTime == 0)
-			KUiGetString::OpenWindow(GSA_NORMAL, "NhËp giíi h¹n mçi thµnh viªn", "", this, ISP_CHATROOM_OPENGAME, 100);
+			KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p giÃ­i hÂ¹n mÃ§i thÂµnh viÂªn", "", this, ISP_CHATROOM_OPENGAME, 100);
 	}
 	else if (pWnd == (KWndWindow*)&m_BtnHightDice)
 	{
 		if(m_bIsInRoom && m_nRoomFigure == CHATROOM_MEMBER && m_nRoomDiceRet ==0 && m_nRoomDiceTime > 0)
-			KUiGetString::OpenWindow(GSA_NORMAL, "NhËp ®iÓm th­ëng", "", this, ISP_CHATROOM_HIGHT, 100);
+			KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p Â®iÃ“m thÂ­Ã«ng", "", this, ISP_CHATROOM_HIGHT, 100);
 	}
 	else if (pWnd == (KWndWindow*)&m_BtnLowDice)
 	{
 		if(m_bIsInRoom && m_nRoomFigure == CHATROOM_MEMBER && m_nRoomDiceRet ==0 && m_nRoomDiceTime > 0)
-			KUiGetString::OpenWindow(GSA_NORMAL, "NhËp ®iÓm th­ëng", "", this, ISP_CHATROOM_LOW, 100);
+			KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p Â®iÃ“m thÂ­Ã«ng", "", this, ISP_CHATROOM_LOW, 100);
 	}
 	else if (pWnd == (KWndWindow*)&m_BtnEnterRoom)
 	{
@@ -364,7 +364,7 @@ void KUiChatRoom::OnClickButton(KWndWindow* pWnd)
 		if (nSel >= 0 &&m_bIsInRoom==FALSE)
 		{
 			if(KSG_StringGetValue(1, m_RoomList.GetMessageListBox()->GetOneMessageData(nSel), 6) == 1)
-				KUiGetString::OpenWindow(GSA_NORMAL, "NhËp mËt m· phßng", "", this, ISP_CHATROOM_JOIN, 9999);
+				KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p mÃ‹t mÂ· phÃŸng", "", this, ISP_CHATROOM_JOIN, 9999);
 			else
 			{
 				int nValue=0;
@@ -421,7 +421,7 @@ void KUiChatRoom::Breathe()
 				szMsg[nMsgLen] = KTC_INLINE_PIC;
 				*((WORD*)(szMsg + nMsgLen+1)) = m_pSelf->m_uDicePicIndex;
 				nMsgLen += 3;
-				nCurLen = sprintf(szBuf, "Tµi");
+				nCurLen = sprintf(szBuf, "TÂµi");
 				memcpy(szMsg + nMsgLen, szBuf, nCurLen);
 				nMsgLen += nCurLen;
 			}
@@ -431,14 +431,14 @@ void KUiChatRoom::Breathe()
 				szMsg[nMsgLen] = KTC_INLINE_PIC;
 				*((WORD*)(szMsg + nMsgLen+1)) = m_pSelf->m_uDicePicIndex;
 				nMsgLen += 3;
-				nCurLen = sprintf(szBuf, "XØu");
+				nCurLen = sprintf(szBuf, "XÃ˜u");
 				memcpy(szMsg + nMsgLen, szBuf, nCurLen);
 				nMsgLen += nCurLen;
 			}
 			m_TxtCurRoomTitle.SetText(szMsg);
 		}
 		else
-			m_TxtCurRoomTitle.SetText("Ch­a vµo phßng");
+			m_TxtCurRoomTitle.SetText("ChÂ­a vÂµo phÃŸng");
 	}
 }
 
@@ -483,7 +483,7 @@ void KUiChatRoom::ServerRequestRoomList(KOneRoom *pRoom)
 		if(nCurLen < m_pSelf->m_nTimeLen)
 			memset(szMsg + nMsgLen + nCurLen, 0x20, m_pSelf->m_nTimeLen - nCurLen);
 		nMsgLen += m_pSelf->m_nTimeLen;
-		nCurLen = sprintf(szBuf, "%dng­êi", pRoom->byRoomMemNum);
+		nCurLen = sprintf(szBuf, "%dngÂ­Ãªi", pRoom->byRoomMemNum);
 		memcpy(szMsg + nMsgLen, szBuf, nCurLen);
 		if(nCurLen < m_pSelf->m_nMemNumLen)
 			memset(szMsg + nMsgLen + nCurLen, 0x20, m_pSelf->m_nMemNumLen - nCurLen);
@@ -534,7 +534,7 @@ void KUiChatRoom::ServerRequestMemberList(KOneMem *pMem)
 			m_pSelf->m_nRoomDiceRet = KSG_StringGetValue(1, pMem->nMemParam, 9);
 			if(KSG_StringGetValue(4, pMem->nMemParam, 2) > 0)
 			{
-				nCurLen = sprintf(szBuf, "%d®ång", KSG_StringGetValue(4, pMem->nMemParam, 2));
+				nCurLen = sprintf(szBuf, "%dÂ®Ã¥ng", KSG_StringGetValue(4, pMem->nMemParam, 2));
 				memcpy(szMsg + nMsgLen, szBuf, nCurLen);
 				nMsgLen += nCurLen;
 			}
@@ -545,13 +545,13 @@ void KUiChatRoom::ServerRequestMemberList(KOneMem *pMem)
 			if (KSG_StringGetValue(4, pMem->nMemParam, 1) > 0)
 			{
 				if(KSG_StringGetValue(4, pMem->nMemParam, 1)==1)
-					nCurLen = sprintf(szBuf, "%dTµi", KSG_StringGetValue(4, pMem->nMemParam, 2));
+					nCurLen = sprintf(szBuf, "%dTÂµi", KSG_StringGetValue(4, pMem->nMemParam, 2));
 				else if(KSG_StringGetValue(4, pMem->nMemParam, 1)==2)
-					nCurLen = sprintf(szBuf, "%dXØu", KSG_StringGetValue(4, pMem->nMemParam, 2));
+					nCurLen = sprintf(szBuf, "%dXÃ˜u", KSG_StringGetValue(4, pMem->nMemParam, 2));
 				else if(KSG_StringGetValue(4, pMem->nMemParam, 1)==3)
-					nCurLen = sprintf(szBuf, "+%d®ång", KSG_StringGetValue(4, pMem->nMemParam, 2));
+					nCurLen = sprintf(szBuf, "+%dÂ®Ã¥ng", KSG_StringGetValue(4, pMem->nMemParam, 2));
 				else if(KSG_StringGetValue(4, pMem->nMemParam, 1)==4)
-					nCurLen = sprintf(szBuf, "-%d®ång", KSG_StringGetValue(4, pMem->nMemParam, 2));
+					nCurLen = sprintf(szBuf, "-%dÂ®Ã¥ng", KSG_StringGetValue(4, pMem->nMemParam, 2));
 				memcpy(szMsg + nMsgLen, szBuf, nCurLen);
 				nMsgLen += nCurLen;
 			}
@@ -574,7 +574,7 @@ void KUiChatRoom::Join(const char* lpszName, int nFigure)
 	{
 		if(m_pSelf->m_bIsInRoom == FALSE)
 		{
-			sprintf(m_pSelf->m_szRoomName, "Phßng hiÖn t¹i: %s", lpszName);
+			sprintf(m_pSelf->m_szRoomName, "PhÃŸng hiÃ–n tÂ¹i: %s", lpszName);
 			m_pSelf->m_nRoomFigure = nFigure;
 			m_pSelf->m_bIsInRoom = TRUE;
 			if(nFigure == CHATROOM_HOST)

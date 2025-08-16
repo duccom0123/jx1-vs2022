@@ -3,7 +3,7 @@
 //
 // File:	KPlayerChat.h
 // Date:	2002.10.05
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	PlayerChat Class
 //---------------------------------------------------------------------------
 
@@ -18,13 +18,13 @@
 #include	<string>
 #ifdef _SERVER
 
-// Ã¿¸öÁÄÌìºÃÓÑµÄÊı¾İ
+// æ¯ä¸ªèŠå¤©å¥½å‹çš„æ•°æ®
 class CChatFriend : public KNode
 {
 public:
-	DWORD			m_dwID;					// ºÃÓÑID
-	int				m_nPlayerIdx;			// ºÃÓÑÔÚ player Êı×éÖĞµÄÎ»ÖÃ
-	char			m_szName[32];			// ºÃÓÑÃû×Ö
+	DWORD			m_dwID;					// å¥½å‹ID
+	int				m_nPlayerIdx;			// å¥½å‹åœ¨ player æ•°ç»„ä¸­çš„ä½ç½®
+	char			m_szName[32];			// å¥½å‹åå­—
 
 public:
 	CChatFriend() {Release();};

@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiGetMoney.h
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2003-1-7
-//	¹¦ÄÜÃèÊö	£º	È¡Ç®½çÃæ
+//	æ–‡ä»¶å		ï¼š	UiGetMoney.h
+//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-1-7
+//	åŠŸèƒ½æè¿°	ï¼š	å–é’±ç•Œé¢
 // -------------------------------------------------------------------------
 #ifndef __UiGetMoney_H__
 #define __UiGetMoney_H__
@@ -14,16 +14,16 @@
 class KUiGetMoney : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
 	static KUiGetMoney*	OpenWindow(int nMoney, int nMaxMoney, KWndWindow* pRequester,
-							 unsigned int uParam, KWndWindow* pMoneyWnd);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+							 unsigned int uParam, KWndWindow* pMoneyWnd);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static KUiGetMoney*	GetIfVisible();
-	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
+	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
 private:
 	KUiGetMoney();
 	~KUiGetMoney() {}
-	int		Initialize();								//³õÊ¼»¯
+	int		Initialize();								//åˆå§‹åŒ–
 	void	Show(KWndWindow* pMoneyWnd);
 	void	Hide();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);

@@ -94,10 +94,10 @@ ISkill*	KSkillManager::InstanceSkill( unsigned long ulSkillID, unsigned long ulS
 	
 	switch (nStyle) // eSkillStyle
 	{
-	case SKILL_SS_Missles:			        //	×Óµ¯Àà		±¾¼¼ÄÜÓÃÓÚ·¢ËÍ×Óµ¯Àà
+	case SKILL_SS_Missles:			        //	å­å¼¹ç±»		æœ¬æŠ€èƒ½ç”¨äºå‘é€å­å¼¹ç±»
 	case SKILL_SS_Melee:
-	case SKILL_SS_InitiativeNpcState:	    //	Ö÷¶¯Àà		±¾¼¼ÄÜÓÃÓÚ¸Ä±äµ±Ç°NpcµÄÖ÷¶¯×´Ì¬
-	case SKILL_SS_PassivityNpcState:		//	±»¶¯Àà		±¾¼¼ÄÜÓÃÓÚ¸Ä±äNpcµÄ±»¶¯×´Ì¬
+	case SKILL_SS_InitiativeNpcState:	    //	ä¸»åŠ¨ç±»		æœ¬æŠ€èƒ½ç”¨äºæ”¹å˜å½“å‰Npcçš„ä¸»åŠ¨çŠ¶æ€
+	case SKILL_SS_PassivityNpcState:		//	è¢«åŠ¨ç±»		æœ¬æŠ€èƒ½ç”¨äºæ”¹å˜Npcçš„è¢«åŠ¨çŠ¶æ€
 		{
             KSkill * pNewOrdinSkill = NULL;
 			unsigned long ulFirstLoadLevel = 0;

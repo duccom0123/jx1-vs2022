@@ -23,7 +23,7 @@
 #include "KTaskFuns.h"
 
 
-// ÊÇ·ñ½«Êý¾Ý¿â´æÈ¡µµµÄÊý¾Ý±£´æÏÂÀ´ÒÔ¹©µ÷ÊÔ
+// æ˜¯å¦å°†æ•°æ®åº“å­˜å–æ¡£çš„æ•°æ®ä¿å­˜ä¸‹æ¥ä»¥ä¾›è°ƒè¯•
 //#define DEBUGOPT_DB_ROLEDATA_OUT 
 
 
@@ -45,7 +45,7 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 	switch(nStep)
 	{
 	case STEP_BASE_INFO:
-		//Êý¾Ý¿âÖÐÍæ¼Ò»ù±¾ÐÅÏ¢±í
+		//æ•°æ®åº“ä¸­çŽ©å®¶åŸºæœ¬ä¿¡æ¯è¡¨
 		m_pCurStatusOffset = pPlayerInfo;
 
 		if ((nRet = LoadPlayerBaseInfo(pPlayerInfo, m_pCurStatusOffset, nParam)) == 1)
@@ -70,7 +70,7 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 		break;
 	case STEP_FIGHT_SKILL_LIST:
 		//************************************************
-		// Íæ¼ÒµÄÕ½¶·¼¼ÄÜÁÐ±í
+		// çŽ©å®¶çš„æˆ˜æ–—æŠ€èƒ½åˆ—è¡¨
 		if ((nRet = LoadPlayerFightSkillList(pPlayerInfo, m_pCurStatusOffset, nParam)) == 1)
 		{
 			nRetValue = SendSyncData(nStep, nParam);
@@ -93,7 +93,7 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 		break;
 	case STEP_STATE_SKILL_LIST:
 		//*************************************************
-		// Íæ¼ÒµÄÉú»î¼¼ÄÜÁÐ±í
+		// çŽ©å®¶çš„ç”Ÿæ´»æŠ€èƒ½åˆ—è¡¨
 		if ((nRet = LoadPlayerStateSkillList(pPlayerInfo, m_pCurStatusOffset, nParam)) == 1)
 		{
 			nRetValue = SendSyncData(nStep, nParam);
@@ -117,7 +117,7 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 		break;
 	case STEP_TASK_LIST:
 		//*************************************************		
-		// Íæ¼ÒµÄÈÎÎñÁÐ±í
+		// çŽ©å®¶çš„ä»»åŠ¡åˆ—è¡¨
 		if ((nRet = LoadPlayerTaskList(pPlayerInfo, m_pCurStatusOffset, nParam)) == 1)
 		{
 			
@@ -177,7 +177,7 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 		break;
 	case STEP_ITEM_LIST:
 		//*************************************************
-		// Íæ¼ÒµÄ×°±¸ÁÐ±í
+		// çŽ©å®¶çš„è£…å¤‡åˆ—è¡¨
 		if ((nRet = LoadPlayerItemList(pPlayerInfo, m_pCurStatusOffset, nParam)) == 1)
 		{
 			nRetValue = SendSyncData(nStep, nParam);
@@ -211,21 +211,21 @@ int KPlayer::LoadDBPlayerInfo(BYTE *pPlayerInfo, int &nStep, unsigned int &nPara
 
 int KPlayer::UpdateDBPlayerInfo(BYTE* pPlayerInfo)
 {
-	//×¢Òâ£¬´æµµÈ¡µµ¶¼±ØÐë°´ÕÕPË³Ðò
+	//æ³¨æ„ï¼Œå­˜æ¡£å–æ¡£éƒ½å¿…é¡»æŒ‰ç…§Pé¡ºåº
 	if (!pPlayerInfo)
 		return -1;
 
-	//Êý¾Ý¿âÖÐÍæ¼Ò»ù±¾ÐÅÏ¢±í
+	//æ•°æ®åº“ä¸­çŽ©å®¶åŸºæœ¬ä¿¡æ¯è¡¨
 	SavePlayerBaseInfo(pPlayerInfo);
 
-	// Íæ¼ÒµÄÕ½¶·¼¼ÄÜÁÐ±í
+	// çŽ©å®¶çš„æˆ˜æ–—æŠ€èƒ½åˆ—è¡¨
 	SavePlayerFightSkillList(pPlayerInfo);
 
 	SavePlayerStateSkillList(pPlayerInfo);
-	// Íæ¼ÒµÄÈÎÎñÁÐ±í
+	// çŽ©å®¶çš„ä»»åŠ¡åˆ—è¡¨
 	SavePlayerTaskList(pPlayerInfo);
 
-	// Íæ¼ÒµÄÎïÆ·ÁÐ±í
+	// çŽ©å®¶çš„ç‰©å“åˆ—è¡¨
 	SavePlayerItemList(pPlayerInfo);
 	return 1;	
 }
@@ -254,7 +254,7 @@ int	KPlayer::LoadPlayerBaseInfo(BYTE  * pRoleBuffer, BYTE * &pCurData, unsigned 
 	else
 		nSex = MAKELONG(nLevel, PLAYER_MALE_NPCTEMPLATEID);
 
-	//µÇÈëµã
+	//ç™»å…¥ç‚¹
 	m_sLoginRevivalPos.m_nSubWorldID = pRoleData->BaseInfo.irevivalid;
 	m_sLoginRevivalPos.m_ReviveID = pRoleData->BaseInfo.irevivalx;
 	//---------------------------------------------------------------------------------------------
@@ -319,7 +319,7 @@ label_retry:
 	pNpc->SetPlayerIdx(m_nPlayerIndex);
 	pNpc->m_Level = nLevel;
 
-	//Íæ¼ÒÐÅÏ¢
+	//çŽ©å®¶ä¿¡æ¯
 	strcpy(pNpc->Name, pRoleData->BaseInfo.szName);
 	m_nForbiddenTm = pRoleData->BaseInfo.nForbiddenTm;
 	
@@ -342,14 +342,14 @@ label_retry:
 	this->SetBaseAttackRating();
 	this->SetBaseDefence();
 
-	//Íæ¼ÒµÈ¼¶ÐÅÏ¢
+	//çŽ©å®¶ç­‰çº§ä¿¡æ¯
 	m_nExp			= pRoleData->BaseInfo.ifightexp;
 	pNpc->m_byTranslife = pRoleData->BaseInfo.ifighttranslife;
 	m_nNextLevelExp = PlayerSet.m_cLevelAdd.GetLevelExp(pNpc->m_Level, pNpc->m_byTranslife);
 	m_nLeadLevel	= pRoleData->BaseInfo.ileadlevel;
 	m_nLeadExp		= pRoleData->BaseInfo.ileadexp;
 
-	//ÃÅÅÉÐÅÏ¢
+	//é—¨æ´¾ä¿¡æ¯
 	m_cFaction.m_nCurFaction		= (char)pRoleData->BaseInfo.nSect;
 	m_cFaction.m_nFirstAddFaction	= (char)pRoleData->BaseInfo.nFirstSect;
 	m_cFaction.m_nAddTimes			= pRoleData->BaseInfo.ijoincount;
@@ -366,7 +366,7 @@ label_retry:
 	m_ImagePlayer   = pRoleData->BaseInfo.ihelmres;
 	//m_nExtPoint			= pRoleData->BaseInfo.iextpoint;
 	SetExtPoint(m_nExtPoint, 0);
-	//ÏÖ½ðºÍÖüÎïÏäÖÐµÄÇ®
+	//çŽ°é‡‘å’Œè´®ç‰©ç®±ä¸­çš„é’±
 	int nCashMoney = 0;
 	int nSaveMoney = 0;
 //	this->m_ItemList.Init(GetPlayerIndex());
@@ -396,14 +396,14 @@ label_retry:
 	pNpc->m_CurrentMana = pRoleData->BaseInfo.icurinner;
 	pNpc->m_CurrentStamina = pRoleData->BaseInfo.icurstamina;
 
-	// PKÐÅÏ¢
+	// PKä¿¡æ¯
 	m_cPK.SetLockPKState(pRoleData->BaseInfo.cPkStatus, pRoleData->BaseInfo.ilockpkstate);
 	m_cPK.SetPKValue(pRoleData->BaseInfo.ipkvalue);
 	for (int i = 0; i < MAX_STATTASK; i ++)
 		m_cTask.SetSaveVal(i, pRoleData->BaseInfo.istattask[i]);
 	
 
-	// ³õÊ¼»¯²¿·ÖÊý¾Ý£¨ÕâÐ©Êý¾ÝÊý¾Ý¿â²»´æ´¢£©
+	// åˆå§‹åŒ–éƒ¨åˆ†æ•°æ®ï¼ˆè¿™äº›æ•°æ®æ•°æ®åº“ä¸å­˜å‚¨ï¼‰
 	m_BuyInfo.Clear();
 	m_cMenuState.Release();
 	m_cChat.Release();
@@ -427,9 +427,9 @@ label_retry:
 
 	nParam = 1;
 	pCurData = (BYTE *)&pRoleData->pBuffer;
-	// µÇÈëÓÎÏ·Ê±Õ½¶·Ä£Ê½
+	// ç™»å…¥æ¸¸æˆæ—¶æˆ˜æ–—æ¨¡å¼
 	pNpc->m_FightMode = pRoleData->BaseInfo.cFightMode;
-	// ÊÇ·ñÊÇ´¦ÓÚ¿ç·þÎñÆ÷×´Ì¬
+	// æ˜¯å¦æ˜¯å¤„äºŽè·¨æœåŠ¡å™¨çŠ¶æ€
 	if (pRoleData->BaseInfo.cIsExchange)
 	{
 	}
@@ -447,7 +447,7 @@ int	KPlayer::LoadPlayerItemList(BYTE * pRoleBuffer , BYTE* &pItemBuffer, unsigne
 //		m_ItemList.Init(m_nPlayerIndex);
 //	else 
 	{
-		//Èç¹ûÒªÇó»ñµÃµÄÎïÆ·ºÅ´óÓÚÊµ¼ÊµÄÎïÆ·ÊýÁ¿£¬ÔòÍË³ö
+		//å¦‚æžœè¦æ±‚èŽ·å¾—çš„ç‰©å“å·å¤§äºŽå®žé™…çš„ç‰©å“æ•°é‡ï¼Œåˆ™é€€å‡º
 		if (nParam >= nItemCount )
 			return -1;
 	}
@@ -487,7 +487,7 @@ int	KPlayer::LoadPlayerItemList(BYTE * pRoleBuffer , BYTE* &pItemBuffer, unsigne
 		KItem NewItem;	
 		ZeroMemory(&NewItem, sizeof(KItem));
 		
-		//Îï¼þ»ù±¾ÐÅÏ¢**************************************************************
+		//ç‰©ä»¶åŸºæœ¬ä¿¡æ¯**************************************************************
 		time_t rawtime;
 		struct tm * timeinfo;
 		
@@ -519,7 +519,7 @@ int	KPlayer::LoadPlayerItemList(BYTE * pRoleBuffer , BYTE* &pItemBuffer, unsigne
 		BOOL bGetEquiptResult = 0;
 		switch(nItemClass)
 		{
-		case item_equip :			// ×°±¸
+		case item_equip :			// è£…å¤‡
 			bGetEquiptResult = ItemGen.Gen_ExistEquipment(
 					NewItem.m_CommonAttrib.nItemNature,
 					NewItem.m_CommonAttrib.nItemNature>=NATURE_GOLD?NewItem.m_CommonAttrib.nRow:NewItem.m_CommonAttrib.nDetailType,
@@ -531,7 +531,7 @@ int	KPlayer::LoadPlayerItemList(BYTE * pRoleBuffer , BYTE* &pItemBuffer, unsigne
 					NewItem.m_GeneratorParam.nVersion,
 					&NewItem);				
 			break;
-		case item_medicine:			// Ò©Æ·
+		case item_medicine:			// è¯å“
 				bGetEquiptResult = ItemGen.Gen_Medicine(
 					NewItem.m_CommonAttrib.nDetailType,
 					NewItem.m_CommonAttrib.nLevel,
@@ -539,15 +539,15 @@ int	KPlayer::LoadPlayerItemList(BYTE * pRoleBuffer , BYTE* &pItemBuffer, unsigne
 					&NewItem);
 			break;
 
-		case item_event:				// ¿óÊ¯
+		case item_event:				// çŸ¿çŸ³
 			{
 				bGetEquiptResult = ItemGen.Gen_Event(NewItem.m_CommonAttrib.nDetailType, 
 					&NewItem);				
 			}
 			break;
-		case item_materials:			// Ò©²Ä
+		case item_materials:			// è¯æ
 			break;
-		case item_task:				// ÈÎÎñ
+		case item_task:				// ä»»åŠ¡
 			{
 				bGetEquiptResult = ItemGen.Gen_Quest(NewItem.m_CommonAttrib.nDetailType, &NewItem);
 			}
@@ -718,7 +718,7 @@ int	KPlayer::LoadPlayerTaskList(BYTE * pRoleBuffer, BYTE * &pTaskBuffer, unsigne
 		if (nTaskId >= MAX_TASK) 
 		{
 			KASSERT(0);
-			continue;//ÈÎÎñID³¬¹ýÉÏÏÞÁË£¡
+			continue;//ä»»åŠ¡IDè¶…è¿‡ä¸Šé™äº†ï¼
 		}
 		if (pTaskData->m_szTaskValue[0])
 		{
@@ -741,7 +741,7 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 
 	KNpc * pNpc = &Npc[m_nIndex];
 	TRoleData * pRoleData = (TRoleData*)pRoleBuffer;
-	//Íæ¼ÒÐÅÏ¢
+	//çŽ©å®¶ä¿¡æ¯
 	DWORD dwRoleTm = pRoleData->BaseInfo.iroletm;
 	if (dwRoleTm <=0)
 		dwRoleTm = KSG_GetCurSec();
@@ -767,7 +767,7 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 	pRoleData->BaseInfo.itongmemnum = m_cTong.m_dwMemberNum+m_cTong.m_btManagerNum+m_cTong.m_btDirectorNum;
 	pRoleData->BaseInfo.itongeff = m_cTong.m_dwTotalEff;
 
-	//Íæ¼ÒµÈ¼¶ÐÅÏ¢
+	//çŽ©å®¶ç­‰çº§ä¿¡æ¯
 	pRoleData->BaseInfo.ifightexp = m_nExp;
 	pRoleData->BaseInfo.ifightlevel = pNpc->m_Level;
 	pRoleData->BaseInfo.ifighttranslife = pNpc->m_byTranslife;
@@ -775,7 +775,7 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 	pRoleData->BaseInfo.ileadlevel = m_nLeadLevel;
 	pRoleData->BaseInfo.ileadexp =	m_nLeadExp;
 
-	//ÃÅÅÉÐÅÏ¢
+	//é—¨æ´¾ä¿¡æ¯
 	pRoleData->BaseInfo.nSect =		m_cFaction.m_nCurFaction;
 	pRoleData->BaseInfo.nFirstSect = 	m_cFaction.m_nFirstAddFaction;
 	pRoleData->BaseInfo.ijoincount = m_cFaction.m_nAddTimes;
@@ -792,7 +792,7 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 	
 	pRoleData->BaseInfo.iextpoint = m_nExtPoint;
 	
-	//ÏÖ½ðºÍÖüÎïÏäÖÐµÄÇ®
+	//çŽ°é‡‘å’Œè´®ç‰©ç®±ä¸­çš„é’±
 	int nCashMoney = 0;
 	int nSaveMoney = 0;
 	
@@ -810,12 +810,12 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 	pRoleData->BaseInfo.icurinner		= pNpc->m_CurrentMana;
 	pRoleData->BaseInfo.icurstamina		= pNpc->m_CurrentStamina;
 
-	//µÇÈëµã
+	//ç™»å…¥ç‚¹
 	pRoleData->BaseInfo.irevivalid = 	m_sLoginRevivalPos.m_nSubWorldID;
 	pRoleData->BaseInfo.irevivalx = 	m_sLoginRevivalPos.m_ReviveID;
 	pRoleData->BaseInfo.irevivaly = 	0;
 
-	if (m_bExchangeServer)	// ×¼±¸¿ç·þÎñÆ÷£º°Ñ´æÅÌµãÉèÎªÄ¿±êµã
+	if (m_bExchangeServer)	// å‡†å¤‡è·¨æœåŠ¡å™¨ï¼šæŠŠå­˜ç›˜ç‚¹è®¾ä¸ºç›®æ ‡ç‚¹
 	{
 		pRoleData->BaseInfo.cUseRevive = 0;
 		pRoleData->BaseInfo.ientergameid = m_sExchangePos.m_dwMapID;
@@ -842,7 +842,7 @@ int	KPlayer::SavePlayerBaseInfo(BYTE * pRoleBuffer)
 		}
 	}
 
-	//PKÏà¹Ø
+	//PKç›¸å…³
 	pRoleData->BaseInfo.cPkStatus = (BYTE)m_cPK.GetNormalPKState();
 	pRoleData->BaseInfo.ipkvalue = m_cPK.GetPKValue();
 	pRoleData->dwFSkillOffset = (BYTE * )pRoleData->pBuffer - (BYTE *)pRoleBuffer;
@@ -876,7 +876,7 @@ int	KPlayer::SavePlayerItemList(BYTE * pRoleBuffer)
 			continue;
 
 		sprintf(szSection, "%s%d", SECTION_ITEM, nItemCount + 1);
-		//Íæ¼Ò»ù±¾ÐÅÏ¢*****************************************************************	
+		//çŽ©å®¶åŸºæœ¬ä¿¡æ¯*****************************************************************	
 		pItemData->iequipnaturecode =  Item[nItemIndex].m_CommonAttrib.nItemNature;
 		pItemData->iequipclasscode =  Item[nItemIndex].m_CommonAttrib.nItemGenre;
 		pItemData->iequipcode =  Item[nItemIndex].GetID();

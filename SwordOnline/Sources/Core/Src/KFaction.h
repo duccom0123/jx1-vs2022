@@ -3,7 +3,7 @@
 //
 // File:	KFaction.h
 // Date:	2002.09.26
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Faction Class
 //---------------------------------------------------------------------------
 
@@ -15,21 +15,21 @@
 class KFaction
 {
 public:
-	struct	SFactionAttirbute							// Ã¿¸öÃÅÅÉµÄÊôĞÔ
+	struct	SFactionAttirbute							// æ¯ä¸ªé—¨æ´¾çš„å±æ€§
 	{
-		int		m_nIndex;								// ±àºÅ
-		int		m_nSeries;								// ÎåĞĞÊôĞÔ
-		int		m_nCamp;								// ÕóÓª
-		char	m_szName[64];							// ÃÅÅÉÃû
-		char	m_szShowName[64];							// ÃÅÅÉÃû
-	}				m_sAttribute[MAX_FACTION];			// ËùÓĞÃÅÅÉ
+		int		m_nIndex;								// ç¼–å·
+		int		m_nSeries;								// äº”è¡Œå±æ€§
+		int		m_nCamp;								// é˜µè¥
+		char	m_szName[64];							// é—¨æ´¾å
+		char	m_szShowName[64];							// é—¨æ´¾å
+	}				m_sAttribute[MAX_FACTION];			// æ‰€æœ‰é—¨æ´¾
 
 public:
-	BOOL			Init();								// ³õÊ¼»¯£¬ÔØÈëÃÅÅÉËµÃ÷ÎÄ¼ş
-	int				GetID(int nSeries, int nNo);		// ¸ù¾İÎåĞĞÊôĞÔºÍ±¾ÊôĞÔµÚ¼¸¸öÃÅÅÉµÃµ½ÃÅÅÉ±àºÅ
-	int				GetID(int nSeries, char *lpszName);	// ¸ù¾İÎåĞĞÊôĞÔºÍÃÅÅÉÃûµÃµ½ÃÅÅÉ±àºÅ
-	int				GetID(char *lpszName);	// ¸ù¾İÎåĞĞÊôĞÔºÍÃÅÅÉÃûµÃµ½ÃÅÅÉ±àºÅ
-	int				GetCamp(int nFactionID);			// »ñµÃÄ³¸öÃÅÅÉµÄÕóÓª
+	BOOL			Init();								// åˆå§‹åŒ–ï¼Œè½½å…¥é—¨æ´¾è¯´æ˜æ–‡ä»¶
+	int				GetID(int nSeries, int nNo);		// æ ¹æ®äº”è¡Œå±æ€§å’Œæœ¬å±æ€§ç¬¬å‡ ä¸ªé—¨æ´¾å¾—åˆ°é—¨æ´¾ç¼–å·
+	int				GetID(int nSeries, char *lpszName);	// æ ¹æ®äº”è¡Œå±æ€§å’Œé—¨æ´¾åå¾—åˆ°é—¨æ´¾ç¼–å·
+	int				GetID(char *lpszName);	// æ ¹æ®äº”è¡Œå±æ€§å’Œé—¨æ´¾åå¾—åˆ°é—¨æ´¾ç¼–å·
+	int				GetCamp(int nFactionID);			// è·å¾—æŸä¸ªé—¨æ´¾çš„é˜µè¥
 };
 
 extern	KFaction	g_Faction;

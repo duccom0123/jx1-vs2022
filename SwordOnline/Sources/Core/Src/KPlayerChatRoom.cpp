@@ -3,7 +3,7 @@
 //
 // File:	KPlayerChatRoom.cpp
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	Â±ÃŸÂ³Ã‡Ã€Ã‹Ã—Ã“
 // Desc:	Team Class
 //---------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ void	KPlayerChatRoom::Release()
 
 #ifndef _SERVER
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂ½çÃæÏÔÊ¾
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â½Ã§ÃƒÃ¦ÃÃ”ÃŠÂ¾
 //---------------------------------------------------------------------------
 void	KPlayerChatRoom::JoinRoom(const char* szRoomName, int nId, CHATROOM_FIGURE eFigure)
 {
@@ -91,7 +91,7 @@ void	KPlayerChatRoom::Active()
 	}
 }
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇå¿Õ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‡Ã¥Â¿Ã•
 //---------------------------------------------------------------------------
 void	KPlayerChatRoom::Init(int nPlayerIdx)
 {
@@ -127,9 +127,9 @@ BOOL	KPlayerChatRoom::CreateChatRoom(char* szRoomName, int nRoomPw, int nLefttim
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sCreateFalse, sizeof(PLAYER_SEND_CREATE_CHATROOM_FALSE));
 		return FALSE;
 	}
-	// ´´½¨¶ÓÎé
+	// Â´Â´Â½Â¨Â¶Ã“ÃÃ©
 	int nRet = g_ChatRoomSet.CreateChatRoom(m_nPlayerIndex, szRoomName, nRoomPw,nLefttime,bIsGmRoom);
-	if (nRet >= 0)	// ¶ÓÎé´´½¨³É¹¦
+	if (nRet >= 0)	// Â¶Ã“ÃÃ©Â´Â´Â½Â¨Â³Ã‰Â¹Â¦
 	{
 		PLAYER_SEND_CHATROOM_STATE	sCreateSuccess;
 		sCreateSuccess.ProtocolType = s2c_chatroomstate;
@@ -138,7 +138,7 @@ BOOL	KPlayerChatRoom::CreateChatRoom(char* szRoomName, int nRoomPw, int nLefttim
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sCreateSuccess, sizeof(PLAYER_SEND_CHATROOM_STATE));
 		return TRUE;
 	}
-	else if (nRet == -1)					// ¶ÓÎé´´½¨Ê§°Ü£ºÍ¬Ãû
+	else if (nRet == -1)					// Â¶Ã“ÃÃ©Â´Â´Â½Â¨ÃŠÂ§Â°ÃœÂ£ÂºÃÂ¬ÃƒÃ»
 	{
 		PLAYER_SEND_CREATE_CHATROOM_FALSE	sCreateFalse;
 		sCreateFalse.ProtocolType = s2c_chatroomcreatefalse;
@@ -162,7 +162,7 @@ BOOL	KPlayerChatRoom::CreateChatRoom(char* szRoomName, int nRoomPw, int nLefttim
 		g_pServer->PackDataToClient(Player[m_nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sCreateFalse, sizeof(PLAYER_SEND_CREATE_CHATROOM_FALSE));
 		return FALSE;
 	}
-	else	// ÆäËû´íÎó
+	else	// Ã†Ã¤Ã‹Ã»Â´Ã­ÃÃ³
 	{
 		return FALSE;
 	}
@@ -305,7 +305,7 @@ BOOL KPlayerChatRoom::Roomcommand(int n)
 
 #ifdef _SERVER
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //---------------------------------------------------------------------------
 KChatRoom::KChatRoom()
 {
@@ -313,7 +313,7 @@ KChatRoom::KChatRoom()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇå¿Õ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‡Ã¥Â¿Ã•
 //---------------------------------------------------------------------------
 void	KChatRoom::Release()
 {
@@ -382,7 +382,7 @@ void	KChatRoom::DeleteRoom()
 	memset(m_szBlackName, 0, sizeof(m_szBlackName));
 }
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨ Team ÔÚ g_ChatRoom ÖĞµÄÎ»ÖÃ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã¨Â¶Â¨ Team Ã”Ãš g_ChatRoom Ã–ÃÂµÃ„ÃÂ»Ã–Ãƒ
 //---------------------------------------------------------------------------
 void	KChatRoom::SetIndex(int nIndex)
 {
@@ -390,7 +390,7 @@ void	KChatRoom::SetIndex(int nIndex)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ°ÕÒ¶ÓÔ±¿ÕÎ»
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‘Â°Ã•Ã’Â¶Ã“Ã”Â±Â¿Ã•ÃÂ»
 //---------------------------------------------------------------------------
 int		KChatRoom::FindFree()
 {
@@ -423,8 +423,8 @@ BOOL		KChatRoom::CheckBlackList(const char *lpszName)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ°ÕÒ¾ßÓĞÖ¸¶¨npc idµÄ¶ÓÔ±£¨²»°üÀ¨¶Ó³¤£©
-//	·µ»ØÖµ£º¶ÓÔ±ÔÚ m_nMember Êı×éÖĞµÄÎ»ÖÃ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‘Â°Ã•Ã’Â¾ÃŸÃ“ÃÃ–Â¸Â¶Â¨npc idÂµÃ„Â¶Ã“Ã”Â±Â£Â¨Â²Â»Â°Ã¼Ã€Â¨Â¶Ã“Â³Â¤Â£Â©
+//	Â·ÂµÂ»Ã˜Ã–ÂµÂ£ÂºÂ¶Ã“Ã”Â±Ã”Ãš m_nMember ÃŠÃ½Ã—Ã©Ã–ÃÂµÃ„ÃÂ»Ã–Ãƒ
 //---------------------------------------------------------------------------
 BOOL		KChatRoom::CheckMemberName(const char *lpszName)
 {
@@ -468,7 +468,7 @@ BOOL		KChatRoom::AddParam(const char *lpszName, int ntype, int n)
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º´´½¨Ò»Ö§¶ÓÎé
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â´Â½Â¨Ã’Â»Ã–Â§Â¶Ã“ÃÃ©
 //---------------------------------------------------------------------------
 BOOL	KChatRoom::CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom)
 {
@@ -546,7 +546,7 @@ void	KChatRoom::Dice(int nIsHight)
 	}
 }
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //---------------------------------------------------------------------------
 void	KChatRoomSet::Init()
 {
@@ -557,7 +557,7 @@ void	KChatRoomSet::Init()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º²îÕÒ g_ChatRoom ÖĞµÄ¿ÕÎ»
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ²Ã®Ã•Ã’ g_ChatRoom Ã–ÃÂµÃ„Â¿Ã•ÃÂ»
 //---------------------------------------------------------------------------
 int		KChatRoomSet::FindFree()
 {
@@ -577,7 +577,7 @@ int		KChatRoomSet::FindFree()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º´´½¨Ò»Ö§¶ÓÎé
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â´Â½Â¨Ã’Â»Ã–Â§Â¶Ã“ÃÃ©
 //---------------------------------------------------------------------------
 int		KChatRoomSet::CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom)
 {
@@ -1026,10 +1026,10 @@ BOOL	KChatRoomSet::OpenGame(int nPlayerIndex, int nRoomID, int n)
 				g_ChatRoom[nRoomID].m_nRoomDiceMax = n;
 				Player[nPlayerIndex].PayExtPoint(n* MAX_CHATROOM_MEMBER + (n* MAX_CHATROOM_MEMBER *TAX_RATE / MAX_PERCENT));
 				g_ChatRoom[nRoomID].OpenGame(0,n* MAX_CHATROOM_MEMBER);
-				sprintf(szMsg, "B¾t ®Çu l­ît ch¬i míi thµnh c«ng, khÊu trõ %d ®ång vµ %d(5%%) ®ång phİ tæn", n* MAX_CHATROOM_MEMBER, (n* MAX_CHATROOM_MEMBER *TAX_RATE / MAX_PERCENT));
+				sprintf(szMsg, "BÂ¾t Â®Ã‡u lÂ­Ã®t chÂ¬i mÃ­i thÂµnh cÂ«ng, khÃŠu trÃµ %d Â®Ã¥ng vÂµ %d(5%%) Â®Ã¥ng phÃ tÃ¦n", n* MAX_CHATROOM_MEMBER, (n* MAX_CHATROOM_MEMBER *TAX_RATE / MAX_PERCENT));
 			}
 			else
-				sprintf(szMsg, "Kh©u trõ thÊt b¹i, kh«ng thÓ më trß ch¬i");
+				sprintf(szMsg, "KhÂ©u trÃµ thÃŠt bÂ¹i, khÂ«ng thÃ“ mÃ« trÃŸ chÂ¬i");
 			Player[nPlayerIndex].SendSystemMessage(MESSAGE_SYSTEM_ANNOUCE_HEAD, szMsg);
 		}
 	}
@@ -1059,16 +1059,16 @@ BOOL	KChatRoomSet::Hight(int nPlayerIndex, int nRoomID, int n)
 							strcpy(sRequest.lpszName, g_ChatRoom[nRoomID].m_szRoomName);
 							g_pServer->PackDataToClient(Player[nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sRequest, sizeof(PLAYER_SEND_CHATROOM_STATE));
 
-							sprintf(szMsg, "B¹n ®Æt %d ®iÓm cho Tµi", n);
+							sprintf(szMsg, "BÂ¹n Â®Ã†t %d Â®iÃ“m cho TÂµi", n);
 						}
 						else
-							sprintf(szMsg, "Tr­íc ®ã b¹n ®· ®Æt c­îc råi! nÕu ch­a cã thÓ lµ mét lçi, h·y rêi phßng vµ thö l¹i");
+							sprintf(szMsg, "TrÂ­Ã­c Â®Ã£ bÂ¹n Â®Â· Â®Ã†t cÂ­Ã®c rÃ¥i! nÃ•u chÂ­a cÃ£ thÃ“ lÂµ mÃ©t lÃ§i, hÂ·y rÃªi phÃŸng vÂµ thÃ¶ lÂ¹i");
 					}
 					else
-						sprintf(szMsg, "Sè ®iÓm b¹n nhËp vµo v­ît qu¸ %d ®iÓm", g_ChatRoom[nRoomID].m_nRoomDiceMax);
+						sprintf(szMsg, "SÃ¨ Â®iÃ“m bÂ¹n nhÃ‹p vÂµo vÂ­Ã®t quÂ¸ %d Â®iÃ“m", g_ChatRoom[nRoomID].m_nRoomDiceMax);
 				}
 				else
-					sprintf(szMsg, "Sè ®iÓm b¹n nhËp vµo v­ît qu¸ sè xu b¹n hiÖn cã");
+					sprintf(szMsg, "SÃ¨ Â®iÃ“m bÂ¹n nhÃ‹p vÂµo vÂ­Ã®t quÂ¸ sÃ¨ xu bÂ¹n hiÃ–n cÃ£");
 
 				Player[nPlayerIndex].SendSystemMessage(MESSAGE_SYSTEM_ANNOUCE_HEAD, szMsg);
 			}
@@ -1100,16 +1100,16 @@ BOOL	KChatRoomSet::Low(int nPlayerIndex, int nRoomID, int n)
 							strcpy(sRequest.lpszName, g_ChatRoom[nRoomID].m_szRoomName);
 							g_pServer->PackDataToClient(Player[nPlayerIndex].m_nNetConnectIdx, (BYTE*)&sRequest, sizeof(PLAYER_SEND_CHATROOM_STATE));
 
-							sprintf(szMsg, "B¹n ®Æt %d ®iÓm cho XØu", n);
+							sprintf(szMsg, "BÂ¹n Â®Ã†t %d Â®iÃ“m cho XÃ˜u", n);
 						}
 						else
-							sprintf(szMsg, "Tr­íc ®ã b¹n ®· ®Æt c­îc råi! nÕu ch­a cã thÓ lµ mét lçi, h·y rêi phßng vµ thö l¹i");
+							sprintf(szMsg, "TrÂ­Ã­c Â®Ã£ bÂ¹n Â®Â· Â®Ã†t cÂ­Ã®c rÃ¥i! nÃ•u chÂ­a cÃ£ thÃ“ lÂµ mÃ©t lÃ§i, hÂ·y rÃªi phÃŸng vÂµ thÃ¶ lÂ¹i");
 					}
 					else
-						sprintf(szMsg, "Sè ®iÓm b¹n nhËp vµo v­ît qu¸ %d ®iÓm", g_ChatRoom[nRoomID].m_nRoomDiceMax);
+						sprintf(szMsg, "SÃ¨ Â®iÃ“m bÂ¹n nhÃ‹p vÂµo vÂ­Ã®t quÂ¸ %d Â®iÃ“m", g_ChatRoom[nRoomID].m_nRoomDiceMax);
 				}
 				else
-					sprintf(szMsg, "Sè ®iÓm b¹n nhËp vµo v­ît qu¸ sè xu b¹n hiÖn cã");
+					sprintf(szMsg, "SÃ¨ Â®iÃ“m bÂ¹n nhÃ‹p vÂµo vÂ­Ã®t quÂ¸ sÃ¨ xu bÂ¹n hiÃ–n cÃ£");
 
 				Player[nPlayerIndex].SendSystemMessage(MESSAGE_SYSTEM_ANNOUCE_HEAD, szMsg);
 			}

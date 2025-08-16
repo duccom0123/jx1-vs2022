@@ -2,7 +2,7 @@
 // FileName			:	KMRU.cpp
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-12 17:43:32
-// FileDescription	:	×î½üÊ¹ÓÃ±íÀà
+// FileDescription	:	æœ€è¿‘ä½¿ç”¨è¡¨ç±»
 // Revision Count	:
 *******************************************************************************/
 #include "KMRU.h"
@@ -10,7 +10,7 @@
 #include "malloc.h"
 
 /*!**************************************************************************
-// Purpose		: ¹¹Ôìº¯Êı
+// Purpose		: æ„é€ å‡½æ•°
 *****************************************************************************/
 KMRU::KMRU()
 {
@@ -21,7 +21,7 @@ KMRU::KMRU()
 }
 
 /*!**************************************************************************
-// Purpose		: Îö¹¹º¯Êı
+// Purpose		: ææ„å‡½æ•°
 *****************************************************************************/
 KMRU::~KMRU()
 {
@@ -30,9 +30,9 @@ KMRU::~KMRU()
 
 /*!**************************************************************************
 // Function		: KMRU::Init
-// Purpose		: ³õÊ¼»¯
-// Return		: bool ³É¹¦·ñ
-// Argumant		: int nMaxItemNum ±íÖĞ×î¶à¿ÉÈİÄÉµÄÏîµÄÊıÄ¿
+// Purpose		: åˆå§‹åŒ–
+// Return		: bool æˆåŠŸå¦
+// Argumant		: int nMaxItemNum è¡¨ä¸­æœ€å¤šå¯å®¹çº³çš„é¡¹çš„æ•°ç›®
 *****************************************************************************/
 bool KMRU::Init(int nMaxItemNum)
 {
@@ -50,7 +50,7 @@ bool KMRU::Init(int nMaxItemNum)
 
 /*!**************************************************************************
 // Function		: KMRU::Terminate
-// Purpose		: ½áÊø£¬Çå³ı²Ù×÷
+// Purpose		: ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 *****************************************************************************/
 void KMRU::Terminate()
 {
@@ -66,9 +66,9 @@ void KMRU::Terminate()
 
 /*!**************************************************************************
 // Function		: KMRU::GetItemData
-// Purpose		: »ñµÃ±íÖĞÖ¸¶¨Ïî¹ØÁªµÄÊı¾İ
-// Return		: unsigned short ±íÖĞÖ¸¶¨Ïî¹ØÁªµÄÊı¾İ£¬Èç¹ûÖ¸¶¨µÄÏî²»´æÔÚ·µ»Ø0
-// Argumant		: int nIndex 	 Ö¸¶¨ÏîµÄË÷Òı
+// Purpose		: è·å¾—è¡¨ä¸­æŒ‡å®šé¡¹å…³è”çš„æ•°æ®
+// Return		: unsigned short è¡¨ä¸­æŒ‡å®šé¡¹å…³è”çš„æ•°æ®ï¼Œå¦‚æœæŒ‡å®šçš„é¡¹ä¸å­˜åœ¨è¿”å›0
+// Argumant		: int nIndex 	 æŒ‡å®šé¡¹çš„ç´¢å¼•
 *****************************************************************************/
 unsigned short KMRU::GetItemData(int nIndex)
 {
@@ -79,7 +79,7 @@ unsigned short KMRU::GetItemData(int nIndex)
 
 /*!***************************************************************************
 // Function		: KMRU::Update
-// Purpose		: Ö´ĞĞÒ»ÂÖ½áÊøÊ±MRU±íµÄĞÅÏ¢¸üĞÂ¡£
+// Purpose		: æ‰§è¡Œä¸€è½®ç»“æŸæ—¶MRUè¡¨çš„ä¿¡æ¯æ›´æ–°ã€‚
 *****************************************************************************/
 void KMRU::Update()
 {
@@ -93,12 +93,12 @@ void KMRU::Update()
 
 /*!***************************************************************************
 // Function		: KMRU::CommitText
-// Purpose		: Ìá½»×Ö·û´®£¬µÃµ½´®ÖĞÈ«²¿×Ö·ûÔÚÌùÍ¼ÖĞµÄÎ»ÖÃ
-// Argumant		: unsigned char  *pszString  Ìá½»µÄ×Ö·û´®
-// Argumant		: int nCount	             Ìá½»×Ö·ûµÄ¸öÊı
-// Argumant		: unsigned short *pPositions Ö¸ÏòÓÃÓÚ´æ´¢¸÷×Ö·ûÔÚÌùÍ¼ÖĞµÄÎ»ÖÃµÄ»º³åÇø
-// Argumant		: unsigned short *pNewItems  Ö¸ÏòÓÃÓÚ´æ´¢ĞÂ½øÈë±íÖĞµÄÏîµÄ»º³åÇø
-// Argumant		: int& nNumNewItem			 ĞÂĞÂ½øÈë±íÖĞµÄÏîµÄÊıÄ¿
+// Purpose		: æäº¤å­—ç¬¦ä¸²ï¼Œå¾—åˆ°ä¸²ä¸­å…¨éƒ¨å­—ç¬¦åœ¨è´´å›¾ä¸­çš„ä½ç½®
+// Argumant		: unsigned char  *pszString  æäº¤çš„å­—ç¬¦ä¸²
+// Argumant		: int nCount	             æäº¤å­—ç¬¦çš„ä¸ªæ•°
+// Argumant		: unsigned short *pPositions æŒ‡å‘ç”¨äºå­˜å‚¨å„å­—ç¬¦åœ¨è´´å›¾ä¸­çš„ä½ç½®çš„ç¼“å†²åŒº
+// Argumant		: unsigned short *pNewItems  æŒ‡å‘ç”¨äºå­˜å‚¨æ–°è¿›å…¥è¡¨ä¸­çš„é¡¹çš„ç¼“å†²åŒº
+// Argumant		: int& nNumNewItem			 æ–°æ–°è¿›å…¥è¡¨ä¸­çš„é¡¹çš„æ•°ç›®
 *****************************************************************************/
 void KMRU::Commit(unsigned short *pString, int nCount, unsigned short *pPositions,
 					  unsigned short *pNewItems, int& nNumNewItem)
@@ -111,7 +111,7 @@ void KMRU::Commit(unsigned short *pString, int nCount, unsigned short *pPosition
 
 	nNumNewItem = 0;
 
-	//¼ì²éÊÇ·ñ¿ªÊ¼ĞÂµÄÒ»ÂÖ£¿
+	//æ£€æŸ¥æ˜¯å¦å¼€å§‹æ–°çš„ä¸€è½®ï¼Ÿ
 	if (m_nCountInTurn + nCount > m_nMaxItemNum)
 	{
 		m_nCountInTurn = 0;
@@ -121,14 +121,14 @@ void KMRU::Commit(unsigned short *pString, int nCount, unsigned short *pPosition
 	}
 	m_nCountInTurn += nCount;
 
-	//Öğ¸ö´¦Àí´®ÖĞµÄ×Ö·û
+	//é€ä¸ªå¤„ç†ä¸²ä¸­çš„å­—ç¬¦
 	for (i = 0; i < nCount; i++)
 	{
-		//È¡µÃ×Ö·ûµÄ±àÂë
+		//å–å¾—å­—ç¬¦çš„ç¼–ç 
 		nCode = *pString++;
 		if (!GetCharPos(nCode, 0, m_nItemCount, nDueSpace))
-		{	//×Ö·ûÃ»ÓĞÔÚ±íÖĞ
-			if (m_nItemCount < m_nMaxItemNum)	//¿´±íÖĞÊÇ·ñ»¹ÓĞ¿ÕµÄÏî
+		{	//å­—ç¬¦æ²¡æœ‰åœ¨è¡¨ä¸­
+			if (m_nItemCount < m_nMaxItemNum)	//çœ‹è¡¨ä¸­æ˜¯å¦è¿˜æœ‰ç©ºçš„é¡¹
 				nInsertSpace = m_nItemCount++;
 			else
 				nInsertSpace = GetMostLongestUnusedItem();
@@ -137,7 +137,7 @@ void KMRU::Commit(unsigned short *pString, int nCount, unsigned short *pPosition
 			pNewItems[nNumNewItem * 2 + 1] = m_pItemTable[nInsertSpace].Id = nCode;
 			m_pItemTable[nInsertSpace].MRURecord = 0;
 
-			//µ÷ÕûĞÂ¼ÓÈëÏîÔÚ±íÖĞµÄÎ»ÖÃ
+			//è°ƒæ•´æ–°åŠ å…¥é¡¹åœ¨è¡¨ä¸­çš„ä½ç½®
 			if (nInsertSpace != nDueSpace)
 				AdjustCharPos(nInsertSpace, nDueSpace);
 			
@@ -154,9 +154,9 @@ void KMRU::Commit(unsigned short *pString, int nCount, unsigned short *pPosition
 
 /*!**************************************************************************
 // Function		: KMRU::AdjustCharPos
-// Purpose		: µ÷ÕûĞÂ¼ÓÈëÏîÔÚ±íÖĞµÄÎ»ÖÃ£¬Ê¹±íÖĞµÄÏî±£³ÖÒÔIdÅÅĞò¡£
-// Argumant		: unsigned int nIndex    Òªµ÷ÕûµÄÏîµÄµ±Ç°Î»ÖÃ
-// Argumant		: unsigned int nDueIndex Òªµ÷ÕûµÄÏîµÄÄ¿µÄÎ»ÖÃ
+// Purpose		: è°ƒæ•´æ–°åŠ å…¥é¡¹åœ¨è¡¨ä¸­çš„ä½ç½®ï¼Œä½¿è¡¨ä¸­çš„é¡¹ä¿æŒä»¥Idæ’åºã€‚
+// Argumant		: unsigned int nIndex    è¦è°ƒæ•´çš„é¡¹çš„å½“å‰ä½ç½®
+// Argumant		: unsigned int nDueIndex è¦è°ƒæ•´çš„é¡¹çš„ç›®çš„ä½ç½®
 *****************************************************************************/
 void KMRU::AdjustCharPos(unsigned int nIndex, unsigned int nDueIndex)
 {
@@ -164,7 +164,7 @@ void KMRU::AdjustCharPos(unsigned int nIndex, unsigned int nDueIndex)
 
 	Temp = m_pItemTable[nIndex];
 	if (nDueIndex < nIndex)
-	{	//Ó¦¸Ã°ÑÏîÍùÇ°ÒÆ
+	{	//åº”è¯¥æŠŠé¡¹å¾€å‰ç§»
 		while(nIndex > nDueIndex)
 		{
 			m_pItemTable[nIndex] = m_pItemTable[nIndex - 1];
@@ -173,7 +173,7 @@ void KMRU::AdjustCharPos(unsigned int nIndex, unsigned int nDueIndex)
 		m_pItemTable[nDueIndex] = Temp;
 	}
 	else if (nDueIndex > nIndex + 1)
-	{	//Ó¦¸Ã°ÑÏîÍùºóÒÆ
+	{	//åº”è¯¥æŠŠé¡¹å¾€åç§»
 		nDueIndex --;
 		while (nIndex  < nDueIndex)
 		{
@@ -186,26 +186,26 @@ void KMRU::AdjustCharPos(unsigned int nIndex, unsigned int nDueIndex)
 
 /*!**************************************************************************
 // Function		: KMRU::GetCharPos
-// Purpose		: ÔÚ¸ø·¶Î§ÄÚ¶¨Î»Ò»¸ö×Ö·û£¨Ã»ÕÒµ½£¬Ôò¸ø³öÈçĞè²åÈëÓ¦·ÅÖÃµÄÎ»ÖÃ£©
-// Return		: bool ÊÇ·ñÕÒµ½
-// Argumant		: unsigned short Id	       Òª²éÕÒµÄÏîµÄId(×Ö·ûµÄ±àÂë)
-// Argumant		: int nFrom	               ·¶Î§ÉÏÏŞ
-// Argumant		: int nTo		           Èë·¶Î§ÏÂÏŞ
-// Argumant		: unsigned int& nPosition  Î»ÖÃ
+// Purpose		: åœ¨ç»™èŒƒå›´å†…å®šä½ä¸€ä¸ªå­—ç¬¦ï¼ˆæ²¡æ‰¾åˆ°ï¼Œåˆ™ç»™å‡ºå¦‚éœ€æ’å…¥åº”æ”¾ç½®çš„ä½ç½®ï¼‰
+// Return		: bool æ˜¯å¦æ‰¾åˆ°
+// Argumant		: unsigned short Id	       è¦æŸ¥æ‰¾çš„é¡¹çš„Id(å­—ç¬¦çš„ç¼–ç )
+// Argumant		: int nFrom	               èŒƒå›´ä¸Šé™
+// Argumant		: int nTo		           å…¥èŒƒå›´ä¸‹é™
+// Argumant		: unsigned int& nPosition  ä½ç½®
 *****************************************************************************/
 bool KMRU::GetCharPos(unsigned short Id, int nFrom, int nCount, unsigned int& nPosition)
 {
 	unsigned int	nMiddle;
 	int		nTo = nFrom + nCount - 1;
-	//ÒªÇónFromÒ»¶¨ÒªĞ¡ÓÚµÈÓÚnTo£¬ÇÒ¶¼±ØĞëĞ¡ÓÚm_nItemCount
-	//ÒòÎª´Ëº¯ÊıÊÇ½Ó¿ÚµÄÄÚ²¿º¯Êı£¬Ê¡È¥¶Ô·Ç·¨²ÎÊıµÄÅĞ¶Ï
+	//è¦æ±‚nFromä¸€å®šè¦å°äºç­‰äºnToï¼Œä¸”éƒ½å¿…é¡»å°äºm_nItemCount
+	//å› ä¸ºæ­¤å‡½æ•°æ˜¯æ¥å£çš„å†…éƒ¨å‡½æ•°ï¼Œçœå»å¯¹éæ³•å‚æ•°çš„åˆ¤æ–­
 	
 	if (!nCount)
 	{
 		nPosition = nFrom;
 		return false;
 	}
-	//ÒÔ¶ş·Ö·¨²éÕÒ
+	//ä»¥äºŒåˆ†æ³•æŸ¥æ‰¾
 	while(nFrom < nTo)
 	{
 		nMiddle = (nFrom + nTo) >> 1;   // div 2
@@ -236,8 +236,8 @@ bool KMRU::GetCharPos(unsigned short Id, int nFrom, int nCount, unsigned int& nP
 
 /*!*****************************************************************************
 // Function		: KMRU::GetMostEarlyUsedItem
-// Purpose		: ÔÚ±íÖĞÕÒ×î¾ÃÃ»ÓĞ±»Ê¹ÓÃÏî
-// Return		: unsigned int ÕÒµ½µÄÏîµÄË÷Òı
+// Purpose		: åœ¨è¡¨ä¸­æ‰¾æœ€ä¹…æ²¡æœ‰è¢«ä½¿ç”¨é¡¹
+// Return		: unsigned int æ‰¾åˆ°çš„é¡¹çš„ç´¢å¼•
 *****************************************************************************/
 unsigned int KMRU::GetMostLongestUnusedItem()
 {

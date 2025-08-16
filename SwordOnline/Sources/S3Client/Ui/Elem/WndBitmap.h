@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--Î»Í¼´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--ä½å›¾çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
 ------------------------------------------------------------------------------------------
-	ÏÔÊ¾(Jpg)Î»Í¼µÄ´°¿Ú¡£
+	æ˜¾ç¤º(Jpg)ä½å›¾çš„çª—å£ã€‚
 *****************************************************************************************/
 #pragma once
 #include "WndWindow.h"
@@ -13,11 +13,11 @@
 class KWndBitmap : public KWndWindow
 {
 private:
-	KBitmap16		m_Bitmap;			//Î»Í¼×ÊÔ´
-	BOOL			m_bBitmapLoaded;	//ÊÇ·ñÓĞÎ»Í¼±»ÔØÈë
+	KBitmap16		m_Bitmap;			//ä½å›¾èµ„æº
+	BOOL			m_bBitmapLoaded;	//æ˜¯å¦æœ‰ä½å›¾è¢«è½½å…¥
 public:
 	KWndBitmap();
 	virtual			~KWndBitmap();
-	virtual BOOL	Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual void	PaintWindow();							//»æÖÆ´°¿Ú	
+	virtual BOOL	Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual void	PaintWindow();							//ç»˜åˆ¶çª—å£	
 };

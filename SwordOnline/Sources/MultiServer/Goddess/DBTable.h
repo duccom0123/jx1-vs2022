@@ -1,48 +1,48 @@
 #ifndef DBTABLE_H
 #define DBTABLE_H
-//¶¨ÒåÖ§³Ö¸´ÖÆ¡¢ÊÂÎñ´¦ÀíµÄ£¬¶àË÷Òý¼ÇÂ¼µÄÊý¾Ý±íÀà
+//å®šä¹‰æ”¯æŒå¤åˆ¶ã€äº‹åŠ¡å¤„ç†çš„ï¼Œå¤šç´¢å¼•è®°å½•çš„æ•°æ®è¡¨ç±»
 
 #include "db.h"
 #include "malloc.h"
 
-#define MAX_INDEX			16					//Ò»¸öÊý¾Ý±í×î¶àµÄË÷ÒýÊýÄ¿
-#define MAX_TABLE_NAME		256					//×î³¤µÄ±íÃû×Ö
+#define MAX_INDEX			16					//ä¸€ä¸ªæ•°æ®è¡¨æœ€å¤šçš„ç´¢å¼•æ•°ç›®
+#define MAX_TABLE_NAME		256					//æœ€é•¿çš„è¡¨åå­—
 
 typedef int (*GetIndexFunc)(DB *, const DBT *, const DBT *, DBT *);
 
 typedef struct ZCursor {
-	bool bTravel;								//ÊÇ·ñ±éÀú
-	DBC *dbcp;									//µ±Ç°±éÀúÊ¹ÓÃµÄÓÎ±ê
-	int index;									//µ±Ç°µÄË÷Òý
+	bool bTravel;								//æ˜¯å¦éåŽ†
+	DBC *dbcp;									//å½“å‰éåŽ†ä½¿ç”¨çš„æ¸¸æ ‡
+	int index;									//å½“å‰çš„ç´¢å¼•
 	char *key;
 	int key_size;
-	char *data;									//·µ»ØµÄÊý¾Ý
-	int size;									//Êý¾ÝµÄ´óÐ¡
+	char *data;									//è¿”å›žçš„æ•°æ®
+	int size;									//æ•°æ®çš„å¤§å°
 }tagZCursor;
 
 class ZDBTable {
-	DB *primary_db;												//´æ·ÅÖ÷¼ü-Êý¾ÝµÄÊý¾Ý¿â
-	DB *index_db[MAX_INDEX];									//´æ·ÅË÷Òý-Ö÷¼üµÄÊý¾Ý¿â
-	GetIndexFunc get_index_funcs[MAX_INDEX];					//´ÓÊý¾ÝÖÐ»ñµÃ¶þ¼¶keyµÄµÄº¯ÊýÁÐ±í
-	bool is_index_unique[MAX_INDEX];							//Ë÷ÒýÊÇ·ñÎ¨Ò»
-	int index_number;											//¶þ¼¶Ë÷ÒýÊýÄ¿
+	DB *primary_db;												//å­˜æ”¾ä¸»é”®-æ•°æ®çš„æ•°æ®åº“
+	DB *index_db[MAX_INDEX];									//å­˜æ”¾ç´¢å¼•-ä¸»é”®çš„æ•°æ®åº“
+	GetIndexFunc get_index_funcs[MAX_INDEX];					//ä»Žæ•°æ®ä¸­èŽ·å¾—äºŒçº§keyçš„çš„å‡½æ•°åˆ—è¡¨
+	bool is_index_unique[MAX_INDEX];							//ç´¢å¼•æ˜¯å¦å”¯ä¸€
+	int index_number;											//äºŒçº§ç´¢å¼•æ•°ç›®
 	char table_name[MAX_TABLE_NAME];
 protected:
 	char env_path[MAX_TABLE_NAME];
-	DB_ENV *dbenv;												//Êý¾Ý¿â»·¾³
-	ZCursor *_search(bool bKey, const char *key_ptr, int key_size, int index);		//ËÑË÷Ö¸¶¨¼ÇÂ¼
-	bool _next(bool bKey, ZCursor *cursor);															//ÏÂÒ»¸ö¼ÇÂ¼
+	DB_ENV *dbenv;												//æ•°æ®åº“çŽ¯å¢ƒ
+	ZCursor *_search(bool bKey, const char *key_ptr, int key_size, int index);		//æœç´¢æŒ‡å®šè®°å½•
+	bool _next(bool bKey, ZCursor *cursor);															//ä¸‹ä¸€ä¸ªè®°å½•
 public:
 	bool bStop;
-	ZDBTable(const char *path, const char *name);			//»·¾³Ä¿Â¼ºÍÊý¾Ý±íµÄÃû×Ö
+	ZDBTable(const char *path, const char *name);			//çŽ¯å¢ƒç›®å½•å’Œæ•°æ®è¡¨çš„åå­—
 	virtual ~ZDBTable();
 	
-	int addIndex(GetIndexFunc func, bool isUnique = false);		//Ôö¼ÓË÷ÒýÏî
-	bool open();												//´ò¿ªÊý¾Ý±í
-	void close();												//¹Ø±ÕÊý¾Ý±í
-	bool commit();												//»ùÓÚÊÂÎñµÄÌá½»£¬Ä¿Ç°Ê¹ÓÃ×Ô¶¯Ìá½»£¬²»Ê¹ÓÃ
+	int addIndex(GetIndexFunc func, bool isUnique = false);		//å¢žåŠ ç´¢å¼•é¡¹
+	bool open();												//æ‰“å¼€æ•°æ®è¡¨
+	void close();												//å…³é—­æ•°æ®è¡¨
+	bool commit();												//åŸºäºŽäº‹åŠ¡çš„æäº¤ï¼Œç›®å‰ä½¿ç”¨è‡ªåŠ¨æäº¤ï¼Œä¸ä½¿ç”¨
 
-//»ù±¾¼ÇÂ¼²Ù×÷
+//åŸºæœ¬è®°å½•æ“ä½œ
 	bool add(const char *key_ptr, int key_size, const char *data_ptr, int data_size);
 	bool remove(const char *key_ptr, int key_size, int index = -1);
 
@@ -55,26 +55,26 @@ public:
 
 		delete cursor;
 	}
-	ZCursor *first() {											//±éÀúÊý¾Ý¿â£¬µÃµ½µÚÒ»Ìõ¼ÇÂ¼	
+	ZCursor *first() {											//éåŽ†æ•°æ®åº“ï¼Œå¾—åˆ°ç¬¬ä¸€æ¡è®°å½•	
 		return _search(false, NULL, 0, -1);
 	}
 	ZCursor *search(const char *key_ptr, int key_size, int index = -1){
-		return _search(false, key_ptr, key_size, index);		//ËÑË÷Ö¸¶¨¼ÇÂ¼
+		return _search(false, key_ptr, key_size, index);		//æœç´¢æŒ‡å®šè®°å½•
 	}
-	bool next(ZCursor *cursor) {											//ÏÂÒ»¸ö¼ÇÂ¼
+	bool next(ZCursor *cursor) {											//ä¸‹ä¸€ä¸ªè®°å½•
 		return _next(false, cursor);
 	}
-	ZCursor *search_key(const char *key_ptr, int key_size, int index = -1) {	//ËÑË÷Ö¸¶¨¼ÇÂ¼£¬·µ»ØÖ÷¼üÖµ
+	ZCursor *search_key(const char *key_ptr, int key_size, int index = -1) {	//æœç´¢æŒ‡å®šè®°å½•ï¼Œè¿”å›žä¸»é”®å€¼
 		return _search(true, key_ptr, key_size, index);
 	}
-	bool next_key(ZCursor *cursor) {															//ÏÂÒ»¸ö¼ÇÂ¼£¬·µ»ØÖ÷¼üÖµ
+	bool next_key(ZCursor *cursor) {															//ä¸‹ä¸€ä¸ªè®°å½•ï¼Œè¿”å›žä¸»é”®å€¼
 		return _next(true, cursor);
 	}
-//ÏÂÃæÊÇÒ»Ð©Î¬»¤ÐÔµÄ²Ù×÷
-	void deadlock() {						//½â³ýËÀËø
+//ä¸‹é¢æ˜¯ä¸€äº›ç»´æŠ¤æ€§çš„æ“ä½œ
+	void deadlock() {						//è§£é™¤æ­»é”
 		dbenv->lock_detect(dbenv, 0, DB_LOCK_DEFAULT, NULL);
 	}
-	void removeLog();						//Çå³ýÈÕÖ¾ÎÄ¼þ
+	void removeLog();						//æ¸…é™¤æ—¥å¿—æ–‡ä»¶
 };
 
 #define MAX_RETRY	16

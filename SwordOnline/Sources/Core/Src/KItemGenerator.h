@@ -4,7 +4,7 @@
 // File:	KItemGenerator.h
 // Date:	2002.08.26
 // Code:	DongBo
-// Desc:    header file. ±¾ÎÄ¼ş¶¨ÒåµÄÀàÓÃÓÚÉú³ÉµÀ¾ß
+// Desc:    header file. æœ¬æ–‡ä»¶å®šä¹‰çš„ç±»ç”¨äºç”Ÿæˆé“å…·
 //---------------------------------------------------------------------------
 
 #ifndef	KItemGeneratorH
@@ -16,7 +16,7 @@
 #define		IN
 #define		OUT
 
-#define	NUMOFCMA	150		// ¾­ÑéÖµ. ¹©Ã¿ÖÖ×°±¸Ê¹ÓÃµÄÄ§·¨×ÜÊı²»³¬¹ı´ËÊı
+#define	NUMOFCMA	150		// ç»éªŒå€¼. ä¾›æ¯ç§è£…å¤‡ä½¿ç”¨çš„é­”æ³•æ€»æ•°ä¸è¶…è¿‡æ­¤æ•°
 
 //class KItem;
 
@@ -26,19 +26,19 @@ public:
 	KItemGenerator();
 	~KItemGenerator();
 
-// ÒÔÏÂÊÇºËĞÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 protected:
 	KLibOfBPT	m_BPTLib;
 
-// ÒÔÏÂÊÇ¸¨Öú³ÉÔ±±äÁ¿
-	int			m_GMA_naryMA[2][NUMOFCMA];	// [0][x]: Ç°×º; [1][x]: ºó×º
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æˆå‘˜å˜é‡
+	int			m_GMA_naryMA[2][NUMOFCMA];	// [0][x]: å‰ç¼€; [1][x]: åç¼€
 	int			m_GMA_nCount[2];
 	int			m_GMA_naryLevel[2][NUMOFCMA];
 	int			m_GMA_naryDropRate[2][NUMOFCMA];
 	int			m_GMA_naryCandidateMA[NUMOFCMA];
 	int			m_EquipNumOfEntries[equip_detailnum];
 	int			m_MedNumOfEntries;
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æ¥å£
 public:
 	BOOL Init();
 	BOOL Gen_Quest(IN int, IN OUT KItem*);
@@ -55,7 +55,7 @@ public:
 	BOOL GetEquipmentCommonAttrib(IN int, IN int, IN int, IN int, IN OUT KItem*);
 	BOOL GetMedicineCommonAttrib(IN int, IN int, IN OUT KItem*);
 	
-// ÒÔÏÂÊÇ¸¨Öúº¯Êı
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 private:
 	BOOL Gen_MagicAttrib(int, const int*, int, int, KItemNormalAttrib*, int nVersion);
 	const KMAGICATTRIB_TABFILE* GetMARecord(int) const;
@@ -65,5 +65,5 @@ private:
 	void GMA_ChooseMA(int nPos, int nLevel, int nLucky, KItemNormalAttrib* pINA);
 };
 
-extern KItemGenerator	ItemGen;			//	×°±¸Éú³ÉÆ÷
+extern KItemGenerator	ItemGen;			//	è£…å¤‡ç”Ÿæˆå™¨
 #endif	// #ifndef	KItemGeneratorH

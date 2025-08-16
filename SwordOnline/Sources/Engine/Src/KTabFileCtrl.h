@@ -42,14 +42,14 @@ public:
 	KTabFileCtrl();
 	~KTabFileCtrl();
 	KList		m_RowList;
-	BOOL		Load(LPSTR FileName);//¼ÓÔØÎÄ¼þ
-	BOOL		Save(LPSTR FileName);//±£´æÎÄ¼þ
+	BOOL		Load(LPSTR FileName);//åŠ è½½æ–‡ä»¶
+	BOOL		Save(LPSTR FileName);//ä¿å­˜æ–‡ä»¶
 	BOOL		LoadPack(LPSTR FileName);
-	int			FindRow(LPSTR szRow);//·µ»ØÒÔ1ÎªÆðµãµÄÖµ
-	int			FindColumn(LPSTR szColumn);//·µ»ØÒÔ1ÎªÆðµãµÄÖµ
+	int			FindRow(LPSTR szRow);//è¿”å›žä»¥1ä¸ºèµ·ç‚¹çš„å€¼
+	int			FindColumn(LPSTR szColumn);//è¿”å›žä»¥1ä¸ºèµ·ç‚¹çš„å€¼
 	LPSTR		GetRowName(int nRow);
 	LPSTR		GetColName(int nCol);
-	int			InsertNewCol(LPSTR strNewCol);//·µ»ØÐÂÉú³ÉµÄCol±àºÅ£¬´íÎóÔò·µ»Ø-1
+	int			InsertNewCol(LPSTR strNewCol);//è¿”å›žæ–°ç”Ÿæˆçš„Colç¼–å·ï¼Œé”™è¯¯åˆ™è¿”å›ž-1
 
 
 	BOOL		InsertAfter(int nRow);
@@ -74,19 +74,19 @@ public:
 	
 	
 	
-	int			GetWidth()//»ñµÃµÚÒ»ÐÐµÄ¿í¶È
+	int			GetWidth()//èŽ·å¾—ç¬¬ä¸€è¡Œçš„å®½åº¦
 	{
 		TTabLineNode * pLineNode = (TTabLineNode*)m_RowList.GetHead();
 		if (!pLineNode) return 0;
 		return pLineNode->pList->GetNodeCount();
 	};
-	int			GetHeight() { return m_RowList.GetNodeCount();};//»ñµÃ×Ü³¤¶È
+	int			GetHeight() { return m_RowList.GetNodeCount();};//èŽ·å¾—æ€»é•¿åº¦
 	
 	BOOL		GetString(int nRow, int nColumn, LPSTR lpDefault, LPSTR lpRString, DWORD dwSize);
 	
 	BOOL		GetString(int nRow, LPSTR szColumn, LPSTR lpDefault, LPSTR lpRString, DWORD dwSize, BOOL bColumnLab = TRUE)
 	{	
-		if (!bColumnLab) //¸Ã¶ÎÒÔexlÎÄ¼þµÄa1,b1,c1×Ö·û´®Îª
+		if (!bColumnLab) //è¯¥æ®µä»¥exlæ–‡ä»¶çš„a1,b1,c1å­—ç¬¦ä¸²ä¸º
 			return GetString(nRow, Str2Col(szColumn), lpDefault, lpRString, dwSize);	
 		else
 			return GetString(nRow, FindColumn(szColumn), lpDefault, lpRString, dwSize);	
@@ -130,7 +130,7 @@ public:
 	
 	BOOL		WriteString(int nRow, LPSTR szColumn, LPSTR lpString,  BOOL bColumnLab = TRUE)
 	{	
-		if (!bColumnLab) //¸Ã¶ÎÒÔexlÎÄ¼þµÄa1,b1,c1×Ö·û´®Îª
+		if (!bColumnLab) //è¯¥æ®µä»¥exlæ–‡ä»¶çš„a1,b1,c1å­—ç¬¦ä¸²ä¸º
 			return WriteString(nRow, Str2Col(szColumn), lpString);	
 		else
 			return WriteString(nRow, FindColumn(szColumn), lpString);	

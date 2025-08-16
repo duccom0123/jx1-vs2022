@@ -3,7 +3,7 @@
 //
 // File:	KObj.h
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Header File
 //---------------------------------------------------------------------------
 #ifndef KObj_H
@@ -28,41 +28,41 @@
 #ifndef	_SERVER
 #include "../../Represent/iRepresent/KRepresentUnit.h"
 #endif
-#define		OBJ_BAR_WIDTH		3								// Îï¼şÕÏ°­ ³¤
-#define		OBJ_BAR_HEIGHT		5								// Îï¼şÕÏ°­ ¿í
-#define		OBJ_BAR_SIZE		(OBJ_BAR_WIDTH*OBJ_BAR_HEIGHT)	// Îï¼şÕÏ°­ ³¤x¿í
+#define		OBJ_BAR_WIDTH		3								// ç‰©ä»¶éšœç¢ é•¿
+#define		OBJ_BAR_HEIGHT		5								// ç‰©ä»¶éšœç¢ å®½
+#define		OBJ_BAR_SIZE		(OBJ_BAR_WIDTH*OBJ_BAR_HEIGHT)	// ç‰©ä»¶éšœç¢ é•¿xå®½
 
-#define		OBJ_BOX_STATE_CLOSE		0		// ±¦Ïä×´Ì¬ ¹Ø
-#define		OBJ_BOX_STATE_OPEN		1		// ±¦Ïä×´Ì¬ ¿ª
-#define		OBJ_DOOR_STATE_CLOSE	0		// ÃÅ×´Ì¬ ¹Ø
-#define		OBJ_DOOR_STATE_OPEN		1		// ÃÅ×´Ì¬ ¿ª
-#define		OBJ_PROP_STATE_DISPLAY	0		// µÀ¾ß×´Ì¬ ¹Ø ²»ÏÔÊ¾
-#define		OBJ_PROP_STATE_HIDE		1		// µÀ¾ß×´Ì¬ ¿ª ÏÔÊ¾
+#define		OBJ_BOX_STATE_CLOSE		0		// å®ç®±çŠ¶æ€ å…³
+#define		OBJ_BOX_STATE_OPEN		1		// å®ç®±çŠ¶æ€ å¼€
+#define		OBJ_DOOR_STATE_CLOSE	0		// é—¨çŠ¶æ€ å…³
+#define		OBJ_DOOR_STATE_OPEN		1		// é—¨çŠ¶æ€ å¼€
+#define		OBJ_PROP_STATE_DISPLAY	0		// é“å…·çŠ¶æ€ å…³ ä¸æ˜¾ç¤º
+#define		OBJ_PROP_STATE_HIDE		1		// é“å…·çŠ¶æ€ å¼€ æ˜¾ç¤º
 
 #define		OBJ_BELONG_TIME		600
 
-enum	Obj_Bar_Type			// Îï¼şµØÃæ¸ñ×ÓÕÏ°­ÀàĞÍ
+enum	Obj_Bar_Type			// ç‰©ä»¶åœ°é¢æ ¼å­éšœç¢ç±»å‹
 {
-	Obj_Bar_Empty = 0,			// ¿Õ£¬ÎŞÕÏ°­
-	Obj_Bar_Full,				// ÍêÕûÕÏ°­
-	Obj_Bar_LT,					// ×óÉÏÇøÓòÎªÕÏ°­
-	Obj_Bar_RT,					// ÓÒÉÏÇøÓòÎªÕÏ°­
-	Obj_Bar_LB,					// ×óÏÂÇøÓòÎªÕÏ°­
-	Obj_Bar_RB,					// ÓÒÏÂÇøÓòÎªÕÏ°­
-	Obj_Bar_Type_Num,			// ÕÏ°­ÀàĞÍÊı
+	Obj_Bar_Empty = 0,			// ç©ºï¼Œæ— éšœç¢
+	Obj_Bar_Full,				// å®Œæ•´éšœç¢
+	Obj_Bar_LT,					// å·¦ä¸ŠåŒºåŸŸä¸ºéšœç¢
+	Obj_Bar_RT,					// å³ä¸ŠåŒºåŸŸä¸ºéšœç¢
+	Obj_Bar_LB,					// å·¦ä¸‹åŒºåŸŸä¸ºéšœç¢
+	Obj_Bar_RB,					// å³ä¸‹åŒºåŸŸä¸ºéšœç¢
+	Obj_Bar_Type_Num,			// éšœç¢ç±»å‹æ•°
 };
 
 typedef struct SOBJ_LIGHT_DATA
 {
-	int			m_nRadius;			// Îï¼şµÄ¹âÁÁ¶È
-	int			m_nRed;				// ºìÆ«É«
-	int			m_nGreen;			// ÂÌÆ«É«
-	int			m_nBlue;			// À¶Æ«É«
-	int			m_nAlpha;			// alpha Öµ
-	int			m_nReflectType;		// ÊÜ¹â·½Ê½£¨²»ÊÜ¹â¡¢ÖØĞÄ¡¢Ë®Æ½¡¢×óĞ±¡¢ÓÒĞ±£©
+	int			m_nRadius;			// ç‰©ä»¶çš„å…‰äº®åº¦
+	int			m_nRed;				// çº¢åè‰²
+	int			m_nGreen;			// ç»¿åè‰²
+	int			m_nBlue;			// è“åè‰²
+	int			m_nAlpha;			// alpha å€¼
+	int			m_nReflectType;		// å—å…‰æ–¹å¼ï¼ˆä¸å—å…‰ã€é‡å¿ƒã€æ°´å¹³ã€å·¦æ–œã€å³æ–œï¼‰
 	SOBJ_LIGHT_DATA() {Release();};
 	void	Release() {	m_nRadius = 0; m_nRed = 0; m_nGreen = 0; m_nBlue = 0; m_nAlpha = 0; m_nReflectType = 0; };
-} OBJ_LIGHT;		// Îï¼ş¹âÏßÏà¹Ø
+} OBJ_LIGHT;		// ç‰©ä»¶å…‰çº¿ç›¸å…³
 
 //---------------------------------------------------------------------------
 
@@ -70,32 +70,32 @@ typedef struct SOBJ_LIGHT_DATA
 class ServerImage
 {
 public:
-	int			m_nTotalFrame;						// ×ÜÖ¡Êı
-	int			m_nCurFrame;						// µ±Ç°Ö¡
-	int			m_nTotalDir;						// ×Ü·½ÏòÊı
-	int			m_nCurDir;							// µ±Ç°·½Ïò
-	DWORD		m_dwTimer;							// Ê±¼ä¼ÆÊıÆ÷
-	DWORD		m_dwInterval;						// Ö¡¼ä¸ô£¨¶¯»­ËÙ¶È£©
+	int			m_nTotalFrame;						// æ€»å¸§æ•°
+	int			m_nCurFrame;						// å½“å‰å¸§
+	int			m_nTotalDir;						// æ€»æ–¹å‘æ•°
+	int			m_nCurDir;							// å½“å‰æ–¹å‘
+	DWORD		m_dwTimer;							// æ—¶é—´è®¡æ•°å™¨
+	DWORD		m_dwInterval;						// å¸§é—´éš”ï¼ˆåŠ¨ç”»é€Ÿåº¦ï¼‰
 
 protected:
-	int			m_nDirFrames;						// Ã¿·½ÏòÖ¡Êı
+	int			m_nDirFrames;						// æ¯æ–¹å‘å¸§æ•°
 
 public:
-	ServerImage();									// ¹¹Ôìº¯Êı
-	void		Release();							// Çå¿Õ
-	void		SetTotalFrame(int nTotalFrame);		// Éè¶¨×ÜÖ¡Êı
-	void		SetCurFrame(int nCurFrame);			// Éè¶¨µ±Ç°Ö¡
-	void		SetTotalDir(int nTotalDir);			// Éè¶¨×Ü·½ÏòÊı
-	BOOL		SetCurDir(int nDir);				// Éè¶¨µ±Ç°·½Ïò
-	void		SetInterVal(DWORD dwInterval);		// Éè¶¨Ö¡¼ä¸ô
-	int			GetOneDirFrames();					// »ñµÃµ¥·½ÏòÖ¡Êı
+	ServerImage();									// æ„é€ å‡½æ•°
+	void		Release();							// æ¸…ç©º
+	void		SetTotalFrame(int nTotalFrame);		// è®¾å®šæ€»å¸§æ•°
+	void		SetCurFrame(int nCurFrame);			// è®¾å®šå½“å‰å¸§
+	void		SetTotalDir(int nTotalDir);			// è®¾å®šæ€»æ–¹å‘æ•°
+	BOOL		SetCurDir(int nDir);				// è®¾å®šå½“å‰æ–¹å‘
+	void		SetInterVal(DWORD dwInterval);		// è®¾å®šå¸§é—´éš”
+	int			GetOneDirFrames();					// è·å¾—å•æ–¹å‘å¸§æ•°
 
-	BOOL		GetNextFrame(BOOL bLoop = TRUE);	// ×Ô¶¯Ïòºó»»Ö¡
-	BOOL		GetPrevFrame(BOOL bLoop = TRUE);	// ×Ô¶¯ÏòÇ°»»Ö¡
-	BOOL		CheckEnd();							// ÅĞ¶Ï¶¯»­ÊÇ·ñ²¥·Åµ½×îºó
-	void		SetDirStart();						// Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡ÎªµÚÒ»Ö¡
-	void		SetDirEnd();						// Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡Îª×îºóÒ»Ö¡
-	BOOL		SetCurDir64(int nDir);				// Éè¶¨µ±Ç°·½Ïò(·½ÏòĞè´Ó64·½Ïò×ª»»µ½ÕæÕıµÄ·½Ïò)
+	BOOL		GetNextFrame(BOOL bLoop = TRUE);	// è‡ªåŠ¨å‘åæ¢å¸§
+	BOOL		GetPrevFrame(BOOL bLoop = TRUE);	// è‡ªåŠ¨å‘å‰æ¢å¸§
+	BOOL		CheckEnd();							// åˆ¤æ–­åŠ¨ç”»æ˜¯å¦æ’­æ”¾åˆ°æœ€å
+	void		SetDirStart();						// è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºç¬¬ä¸€å¸§
+	void		SetDirEnd();						// è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºæœ€åä¸€å¸§
+	BOOL		SetCurDir64(int nDir);				// è®¾å®šå½“å‰æ–¹å‘(æ–¹å‘éœ€ä»64æ–¹å‘è½¬æ¢åˆ°çœŸæ­£çš„æ–¹å‘)
 	int			GetCurDirFrameNo();
 };
 #endif
@@ -107,76 +107,76 @@ class KObj
 {
 	friend class KObjSet;
 public:
-	int			m_nID;					// Îï¼şµÄÊÀ½çÎ¨Ò»ID£¬¿Í»§¶ËÓë·şÎñÆ÷¶ËÒ»Ò»¶ÔÓ¦£¬Èç¹ûÖµÎª 0 £¬´ËÎª¿Í»§¶Ë obj £¬·şÎñÆ÷¶ËÃ»ÓĞ¶ÔÓ¦µÄ obj
-	int			m_nDataID;				// ´ËÎï¼şÔÚÎï¼şÊı¾İ±íÖĞµÄÎ»ÖÃ(¾ÍÊÇÔÚÄ£°åÖĞµÄ±àºÅ)
-	int			m_nKind;				// ÀàĞÍ	¶ÔÓ¦ Obj_Kind_XXXX
-	int			m_nIndex;				// ÔÚ Object Êı×éÖĞµÄÎ»ÖÃ
-	int			m_nBelongRegion;		// ±¾ÎïÌåÊôÓÚÄÄ¸öregion£¬²»ÊÇ×ø±ê£¬×ø±ê¿ÉÒÔ±ä¶¯£¬Õâ¸öÊÇËæ²úÉúÊ±ÄÇ¸öregion£¬¿Í»§¶Ë´æ´¢µÄÊÇ region id
+	int			m_nID;					// ç‰©ä»¶çš„ä¸–ç•Œå”¯ä¸€IDï¼Œå®¢æˆ·ç«¯ä¸æœåŠ¡å™¨ç«¯ä¸€ä¸€å¯¹åº”ï¼Œå¦‚æœå€¼ä¸º 0 ï¼Œæ­¤ä¸ºå®¢æˆ·ç«¯ obj ï¼ŒæœåŠ¡å™¨ç«¯æ²¡æœ‰å¯¹åº”çš„ obj
+	int			m_nDataID;				// æ­¤ç‰©ä»¶åœ¨ç‰©ä»¶æ•°æ®è¡¨ä¸­çš„ä½ç½®(å°±æ˜¯åœ¨æ¨¡æ¿ä¸­çš„ç¼–å·)
+	int			m_nKind;				// ç±»å‹	å¯¹åº” Obj_Kind_XXXX
+	int			m_nIndex;				// åœ¨ Object æ•°ç»„ä¸­çš„ä½ç½®
+	int			m_nBelongRegion;		// æœ¬ç‰©ä½“å±äºå“ªä¸ªregionï¼Œä¸æ˜¯åæ ‡ï¼Œåæ ‡å¯ä»¥å˜åŠ¨ï¼Œè¿™ä¸ªæ˜¯éšäº§ç”Ÿæ—¶é‚£ä¸ªregionï¼Œå®¢æˆ·ç«¯å­˜å‚¨çš„æ˜¯ region id
 
-	int			m_nSubWorldID;			// ×ÓÊÀ½çID
-	int			m_nRegionIdx;			// ÇøÓòidx
-	int			m_nMapX;				// µØÍ¼¸ñ×Ó×ø±ê x
-	int			m_nMapY;				// µØÍ¼¸ñ×Ó×ø±ê y
-	int			m_nOffX;				// µØÍ¼¸ñ×ÓÖĞµÄÆ«ÒÆ x (×¢£ºÆäÖµÎªÏñËØµãÖµ * 1024)
-	int			m_nOffY;				// µØÍ¼¸ñ×ÓÖĞµÄÆ«ÒÆ y (×¢£ºÆäÖµÎªÏñËØµãÖµ * 1024)
-	int			m_nDir;					// ·½Ïò£¬´Ë·½ÏòÎªÎï¼şµÄÂß¼­·½Ïò£¬°´64·½Ïò¼ÆËã£¬²»ÊÇ¾ßÌåµÄÍ¼Ïñ·½Ïò
+	int			m_nSubWorldID;			// å­ä¸–ç•ŒID
+	int			m_nRegionIdx;			// åŒºåŸŸidx
+	int			m_nMapX;				// åœ°å›¾æ ¼å­åæ ‡ x
+	int			m_nMapY;				// åœ°å›¾æ ¼å­åæ ‡ y
+	int			m_nOffX;				// åœ°å›¾æ ¼å­ä¸­çš„åç§» x (æ³¨ï¼šå…¶å€¼ä¸ºåƒç´ ç‚¹å€¼ * 1024)
+	int			m_nOffY;				// åœ°å›¾æ ¼å­ä¸­çš„åç§» y (æ³¨ï¼šå…¶å€¼ä¸ºåƒç´ ç‚¹å€¼ * 1024)
+	int			m_nDir;					// æ–¹å‘ï¼Œæ­¤æ–¹å‘ä¸ºç‰©ä»¶çš„é€»è¾‘æ–¹å‘ï¼ŒæŒ‰64æ–¹å‘è®¡ç®—ï¼Œä¸æ˜¯å…·ä½“çš„å›¾åƒæ–¹å‘
 
-	int			m_nState;				// ×´Ì¬
-	int			m_nLifeTime;			// Îï¼şµÄÏûÊ§Ê±¼ä£¨Ö÷ÒªÓÃÓÚÊ¬ÌåÀà¡¢×°±¸Àà¡¢±¦ÏäÀàµÈ£©
-	int			m_nBornTime;			// ÖØÉúµ¹¼ÆÊ±£¨box´ò¿ª×´Ì¬¾­¹ılifetime×Ô¶¯¹Ø±Õ£¬propÒşÉí×´Ì¬¾­¹ılifetime×Ô¶¯ÏÔÊ¾£©
+	int			m_nState;				// çŠ¶æ€
+	int			m_nLifeTime;			// ç‰©ä»¶çš„æ¶ˆå¤±æ—¶é—´ï¼ˆä¸»è¦ç”¨äºå°¸ä½“ç±»ã€è£…å¤‡ç±»ã€å®ç®±ç±»ç­‰ï¼‰
+	int			m_nBornTime;			// é‡ç”Ÿå€’è®¡æ—¶ï¼ˆboxæ‰“å¼€çŠ¶æ€ç»è¿‡lifetimeè‡ªåŠ¨å…³é—­ï¼Œpropéšèº«çŠ¶æ€ç»è¿‡lifetimeè‡ªåŠ¨æ˜¾ç¤ºï¼‰
 	int			m_nObjValue;
 
-	char		m_szName[80];			// Îï¼şÃû³Æ
-//	char		m_szScriptName[80];		// Ëù´ø½Å±¾ÎÄ¼şÃû
-	DWORD		m_dwScriptID;			// Ëù´ø½Å±¾ÎÄ¼şID
-	int			m_nColorID;				// Îï¼şÃû×ÖÏÔÊ¾Ê±µÄÑÕÉ«id£¬¿Í»§¶ËÍ¨¹ı²é±íÕÒµ½ÏàÓ¦ÑÕÉ«
+	char		m_szName[80];			// ç‰©ä»¶åç§°
+//	char		m_szScriptName[80];		// æ‰€å¸¦è„šæœ¬æ–‡ä»¶å
+	DWORD		m_dwScriptID;			// æ‰€å¸¦è„šæœ¬æ–‡ä»¶ID
+	int			m_nColorID;				// ç‰©ä»¶åå­—æ˜¾ç¤ºæ—¶çš„é¢œè‰²idï¼Œå®¢æˆ·ç«¯é€šè¿‡æŸ¥è¡¨æ‰¾åˆ°ç›¸åº”é¢œè‰²
 
-	int			m_nItemDataID;			// ÓÃÓÚÎïÆ·£¬Ö¸Ã÷ÎïÆ·µÄ¾ßÌåÊı¾İ
-	int			m_nItemWidth;			// ÎïÆ·³¤£¨·ÅÖÃÔÚÈİÆ÷ÖĞµÄÊ±ºò£©
-	int			m_nItemHeight;			// ÎïÆ·¿í£¨·ÅÖÃÔÚÈİÆ÷ÖĞµÄÊ±ºò£©
-	int			m_nMoneyNum;			// Èç¹ûÊÇµôÔÚµØÉÏµÄÇ®£¬Ç®µÄÊıÁ¿
+	int			m_nItemDataID;			// ç”¨äºç‰©å“ï¼ŒæŒ‡æ˜ç‰©å“çš„å…·ä½“æ•°æ®
+	int			m_nItemWidth;			// ç‰©å“é•¿ï¼ˆæ”¾ç½®åœ¨å®¹å™¨ä¸­çš„æ—¶å€™ï¼‰
+	int			m_nItemHeight;			// ç‰©å“å®½ï¼ˆæ”¾ç½®åœ¨å®¹å™¨ä¸­çš„æ—¶å€™ï¼‰
+	int			m_nMoneyNum;			// å¦‚æœæ˜¯æ‰åœ¨åœ°ä¸Šçš„é’±ï¼Œé’±çš„æ•°é‡
 	int 		m_nGenre;
 	int 		m_nDetailType;
 	BOOL		m_bOverLook;
 
 #ifdef _SERVER
 	BOOL		m_bPickExecute;
-	// Èç¹ûÊÇ´ò¹ÖÎïµô³öÀ´µÄ×°±¸»òÇ®£ºË­´ò³öÀ´µÄ(¼ÇÂ¼µÄÊÇplayer index) if == -1 ²»´ÓÊôÓÚÈÎºÎÈË£¬ÈÎºÎÈË¶¼ÄÜ¼ñ
+	// å¦‚æœæ˜¯æ‰“æ€ªç‰©æ‰å‡ºæ¥çš„è£…å¤‡æˆ–é’±ï¼šè°æ‰“å‡ºæ¥çš„(è®°å½•çš„æ˜¯player index) if == -1 ä¸ä»å±äºä»»ä½•äººï¼Œä»»ä½•äººéƒ½èƒ½æ¡
 	int			m_nBelong;
-	// m_nBelong Æğ×÷ÓÃµÄÊ±¼ä(ÊÇ¸öµ¹¼ÆÊ±)
+	// m_nBelong èµ·ä½œç”¨çš„æ—¶é—´(æ˜¯ä¸ªå€’è®¡æ—¶)
 	int			m_nBelongTime;
 
-	ServerImage m_cImage;				// ·şÎñÆ÷¶ËÍ¼Ïñ¿ØÖÆ
+	ServerImage m_cImage;				// æœåŠ¡å™¨ç«¯å›¾åƒæ§åˆ¶
 #endif
 
 #ifndef _SERVER
-	char		m_szImageName[80];		// Í¼ÏñÎÄ¼şÃû
-	char		m_szSoundName[80];		// ÉùÒôÎÄ¼şÃû
-	KSprControl	m_cImage;				// Îï¼şÍ¼Ïñ
+	char		m_szImageName[80];		// å›¾åƒæ–‡ä»¶å
+	char		m_szSoundName[80];		// å£°éŸ³æ–‡ä»¶å
+	KSprControl	m_cImage;				// ç‰©ä»¶å›¾åƒ
 
-	char		m_szImageDropName[80];	// Èç¹ûÊÇitemÀàĞÍ£¬µô³öÀ´µÄÊ±ºò²¥·ÅµÄ¶¯»­ÎÄ¼şÃû
-	KSprControl	m_cImageDrop;			// Èç¹ûÊÇitemÀàĞÍ£¬µô³öÀ´µÄÊ±ºò²¥·ÅµÄ¶¯»­µÄÍ¼Ïñ¿ØÖÆ
-	int			m_nDropState;			// Èç¹ûÊÇitemÀàĞÍ£¬µ±Ç°ÊÇµô³ö¶¯»­×´Ì¬(1)»¹ÊÇ·ÅÖÃÔÚµØ°åÉÏ×´Ì¬(0)
+	char		m_szImageDropName[80];	// å¦‚æœæ˜¯itemç±»å‹ï¼Œæ‰å‡ºæ¥çš„æ—¶å€™æ’­æ”¾çš„åŠ¨ç”»æ–‡ä»¶å
+	KSprControl	m_cImageDrop;			// å¦‚æœæ˜¯itemç±»å‹ï¼Œæ‰å‡ºæ¥çš„æ—¶å€™æ’­æ”¾çš„åŠ¨ç”»çš„å›¾åƒæ§åˆ¶
+	int			m_nDropState;			// å¦‚æœæ˜¯itemç±»å‹ï¼Œå½“å‰æ˜¯æ‰å‡ºåŠ¨ç”»çŠ¶æ€(1)è¿˜æ˜¯æ”¾ç½®åœ¨åœ°æ¿ä¸ŠçŠ¶æ€(0)
 	KRUImage	m_Image;
 	unsigned int	m_SceneID;
 
-	int			m_nLayer;				// Îï¼şÎ»ÓÚµÚ¼¸²ã
-	int			m_nHeight;				// Îï¼şµÄÂß¼­¸ß¶È
-	OBJ_LIGHT	m_sObjLight;			// Îï¼şÓëÁÁ¶È¡¢·¢¹âÏà¹ØµÄÊı¾İ
-	DWORD		m_dwNameColor;			// Îï¼şÃû×ÖµÄÑÕÉ«
+	int			m_nLayer;				// ç‰©ä»¶ä½äºç¬¬å‡ å±‚
+	int			m_nHeight;				// ç‰©ä»¶çš„é€»è¾‘é«˜åº¦
+	OBJ_LIGHT	m_sObjLight;			// ç‰©ä»¶ä¸äº®åº¦ã€å‘å…‰ç›¸å…³çš„æ•°æ®
+	DWORD		m_dwNameColor;			// ç‰©ä»¶åå­—çš„é¢œè‰²
 #endif
 
-	KPolygon	Polygon;				// µ×Ãæ¶à±ßĞÎ
-	BYTE		m_btBar[OBJ_BAR_SIZE];	// Îï¼şµ×ÃæÕÏ°­ĞÅÏ¢
+	KPolygon	Polygon;				// åº•é¢å¤šè¾¹å½¢
+	BYTE		m_btBar[OBJ_BAR_SIZE];	// ç‰©ä»¶åº•é¢éšœç¢ä¿¡æ¯
 
 private:
-	DWORD		m_dwTimer;				// Ê±¼ä¼ÆÊıÆ÷(ÓÃÓÚÉùÒô²¥·Å)
+	DWORD		m_dwTimer;				// æ—¶é—´è®¡æ•°å™¨(ç”¨äºå£°éŸ³æ’­æ”¾)
 
 #ifndef _SERVER
-	KCacheNode*	m_pSoundNode;			// ÉùĞ§Ö¸Õë
-	KWavSound*	m_pWave;				// ÉùĞ§wavÖ¸Õë
+	KCacheNode*	m_pSoundNode;			// å£°æ•ˆæŒ‡é’ˆ
+	KWavSound*	m_pWave;				// å£°æ•ˆwavæŒ‡é’ˆ
 
-	BOOL		m_bDrawFlag;			// »æÖÆÊÇ·ñÌØÊâ´¦Àí£¨FALSE »æÖÆ   TRUE ²»»æÖÆ£©
+	BOOL		m_bDrawFlag;			// ç»˜åˆ¶æ˜¯å¦ç‰¹æ®Šå¤„ç†ï¼ˆFALSE ç»˜åˆ¶   TRUE ä¸ç»˜åˆ¶ï¼‰
 #endif
 
 public:
@@ -186,7 +186,7 @@ public:
 	void		Activate();
 	void		ExecScript(int nPlayerIdx);
 	void		SetIndex(int nIndex);
-	void		SetWorldID(int nID);			// Îï¼şµÄÊÀ½çÎ¨Ò» ID
+	void		SetWorldID(int nID);			// ç‰©ä»¶çš„ä¸–ç•Œå”¯ä¸€ ID
 	void		SetLifeTime(int nLifeTime);
 	void		SetObjValue(int nValue) {m_nObjValue = nValue;};
 	int			GetObjValue() {return m_nObjValue;};
@@ -216,14 +216,14 @@ public:
 	void		DrawBorder();
 #endif
 
-	// Í¹¶à±ßĞÎ×ª»»ÎªÕÏ°­ĞÅÏ¢
+	// å‡¸å¤šè¾¹å½¢è½¬æ¢ä¸ºéšœç¢ä¿¡æ¯
 	void		PolygonChangeToBar(
-					KPolygon Polygon,		// Í¹¶à±ßĞÎ
-					int nGridWidth,			// ¸ñ×Ó³¤
-					int nGridHeight,		// ¸ñ×Ó¿í
-					int nTableWidth,		// ±í¸ñ³¤
-					int nTableHeight,		// ±í¸ñ¿í
-					BYTE *lpbBarTable);		// ±í¸ñÄÚÈİ
+					KPolygon Polygon,		// å‡¸å¤šè¾¹å½¢
+					int nGridWidth,			// æ ¼å­é•¿
+					int nGridHeight,		// æ ¼å­å®½
+					int nTableWidth,		// è¡¨æ ¼é•¿
+					int nTableHeight,		// è¡¨æ ¼å®½
+					BYTE *lpbBarTable);		// è¡¨æ ¼å†…å®¹
 	int			GetDistanceSquare(int nNpcIndex);
 private:
 	void		BoxOpen();

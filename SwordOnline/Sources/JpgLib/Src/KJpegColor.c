@@ -4,7 +4,7 @@
 // File:	KJpegColor.cpp
 // Date:	2000.08.08
 // Code:	Daniel Wang
-// Desc:	Jpeg ½âÂë Color µÄ×ª»»
+// Desc:	Jpeg è§£ç  Color çš„è½¬æ¢
 // From:	Cloud Wu's JPEG Decoder
 //---------------------------------------------------------------------------
 #include <windows.h>
@@ -32,10 +32,10 @@ static WORD (* RGB16)(signed char Y,signed char r,signed char g,signed char b);
 static WORD RGB16_555(signed char Y,signed char r,signed char g,signed char b);
 static WORD RGB16_565(signed char Y,signed char r,signed char g,signed char b);
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_decode_init
-// ¹¦ÄÜ:	Init Jpeg Decoder
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	jpeg_decode_init
+// åŠŸèƒ½:	Init Jpeg Decoder
+// å‚æ•°:	void
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL jpeg_decode_init(BOOL bRGB555, BOOL bMMXCPU)
 {
@@ -86,11 +86,11 @@ BOOL jpeg_decode_init(BOOL bRGB555, BOOL bMMXCPU)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Y2RGB
-// ¹¦ÄÜ:	ÁÁ¶ÈÖµ×ª»¯Îª16Î»RGBÖµ
-// ²ÎÊı:	bmppixel
+// å‡½æ•°:	Y2RGB
+// åŠŸèƒ½:	äº®åº¦å€¼è½¬åŒ–ä¸º16ä½RGBå€¼
+// å‚æ•°:	bmppixel
 //			pitch
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void Y2RGB(WORD *bmppixel, int pitch)
 {
@@ -120,11 +120,11 @@ _loop:
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	YCbCr411_565
-// ¹¦ÄÜ:	YCbCr411¸ñÊ½×ª»¯Î»RGB(565)¸ñÊ½
-// ²ÎÊı:	bmppixel
+// å‡½æ•°:	YCbCr411_565
+// åŠŸèƒ½:	YCbCr411æ ¼å¼è½¬åŒ–ä½RGB(565)æ ¼å¼
+// å‚æ•°:	bmppixel
 //			pitch
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 /*********************************************
 R = Y + 1.402  *(Cr-128)
@@ -218,7 +218,7 @@ _loop_cr_0:
 		dec ecx;
 		jnz _loop_cr_0;
 		movd mm5,eax;
-// eax ÀïÊÇ 4 ¸ö Cr*1.402
+// eax é‡Œæ˜¯ 4 ä¸ª Cr*1.402
 
 		lea ebx,Cr0_71414;
 		punpcklbw mm5,mm5;
@@ -232,7 +232,7 @@ _loop_cr_1:
 		dec ecx;
 		jnz _loop_cr_1;
 		movd mm7,eax;
-// eax ÀïÊÇ 4 ¸ö Cr* (- 0.71414)
+// eax é‡Œæ˜¯ 4 ä¸ª Cr* (- 0.71414)
 
 		mov esi,CbBuf;
 		punpcklbw mm7,mm7;
@@ -247,13 +247,13 @@ _loop_cb_0:
 		dec ecx;
 		jnz _loop_cb_0;
 		movd mm6,eax;
-// eax ÀïÊÇ 4 ¸ö Cb* (- 0.34414)
+// eax é‡Œæ˜¯ 4 ä¸ª Cb* (- 0.34414)
 
 		lea ebx,Cb1_772;
 		punpcklbw mm6,mm6;
 		mov eax,[esi];
 		paddsb mm6,mm7;
-// mm6 ÀïÊÇ 8 ¸ö - 0.34414* Cb - 0.71414*Cr
+// mm6 é‡Œæ˜¯ 8 ä¸ª - 0.34414* Cb - 0.71414*Cr
 		mov ecx,4;
 		ALIGN 4
 _loop_cb_1:
@@ -262,7 +262,7 @@ _loop_cb_1:
 		dec ecx;
 		jnz _loop_cb_1;
 		movd mm7,eax;
-// eax ÀïÊÇ 4 ¸ö Cb* 1.772
+// eax é‡Œæ˜¯ 4 ä¸ª Cb* 1.772
 		mov esi,YBuf;
 		punpcklbw mm7,mm7;
 
@@ -274,13 +274,13 @@ _loop_cb_1:
 		movq mm1,mm6;
 		psrlq mm0,1;
 		movq mm2,mm7;
-		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ²»Ö§³Ö byte ÒÆÎ»
+		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ä¸æ”¯æŒ byte ç§»ä½
 		pxor mm4,mm4;
 		paddsb mm1,mm0;	// G
 		paddsb mm2,mm0; // B
 		paddsb mm0,mm5; // R
 
-// ½«ËùÓĞµÄ¸ºÊı¶¼ÉèÖÃÎª 0
+// å°†æ‰€æœ‰çš„è´Ÿæ•°éƒ½è®¾ç½®ä¸º 0
 		pcmpgtb mm4,mm1;
 		pcmpgtb mm3,mm2;
 		psubusb mm1,mm4;
@@ -290,24 +290,24 @@ _loop_cb_1:
 		pxor mm3,mm3;
 		psubusb mm0,mm4;
 
-// ÏÂÃæ 555
+// ä¸‹é¢ 555
 
 		punpckhbw mm3,mm2;
 		punpckhbw mm4,mm1;
-		psrlw mm3,10;	// B Èë mm3
-		psrlw mm4,4;	// G Èë mm4
-		punpcklbw mm2,mm2; // B µÄÇ° 4 ¸ö
+		psrlw mm3,10;	// B å…¥ mm3
+		psrlw mm4,4;	// G å…¥ mm4
+		punpcklbw mm2,mm2; // B çš„å‰ 4 ä¸ª
 		pand mm4,mmx_mask_green;
-		punpcklbw mm1,mm1; // G µÄÇ° 4 ¸ö
+		punpcklbw mm1,mm1; // G çš„å‰ 4 ä¸ª
 
 		por mm3,mm4;
 
 		punpckhbw mm4,mm0;
 		psllw mm4,1;
 		pand mm4,mmx_mask_red;
-		punpcklbw mm0,mm0; // R µÄÇ° 4 ¸ö
+		punpcklbw mm0,mm0; // R çš„å‰ 4 ä¸ª
 
-		por mm3,mm4;	// ºÏ³É hRGB
+		por mm3,mm4;	// åˆæˆ hRGB
 
 		psllw mm0,1;
 
@@ -317,10 +317,10 @@ _loop_cb_1:
 		pand mm1,mmx_mask_green;
 
 		por mm0,mm2;
-		por mm0,mm1;	// ºÏ³É lRGB
+		por mm0,mm1;	// åˆæˆ lRGB
 		movq [edi+8],mm3;
 		movq [edi],mm0;
-// ------------- ÏÂ 8 ¸ö ------------
+// ------------- ä¸‹ 8 ä¸ª ------------
 		movq mm0,[esi+8];
 
 		pxor mm3,mm3;
@@ -329,13 +329,13 @@ _loop_cb_1:
 		movq mm1,mm6;
 		psrlq mm0,1;
 		movq mm2,mm7;
-		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ²»Ö§³Ö byte ÒÆÎ»
+		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ä¸æ”¯æŒ byte ç§»ä½
 		pxor mm4,mm4;
 		paddsb mm1,mm0;	// G
 		paddsb mm2,mm0; // B
 		paddsb mm0,mm5; // R
 
-// ½«ËùÓĞµÄ¸ºÊı¶¼ÉèÖÃÎª 0
+// å°†æ‰€æœ‰çš„è´Ÿæ•°éƒ½è®¾ç½®ä¸º 0
 		pcmpgtb mm4,mm1;
 		pcmpgtb mm3,mm2;
 		psubusb mm1,mm4;
@@ -345,24 +345,24 @@ _loop_cb_1:
 		pxor mm3,mm3;
 		psubusb mm0,mm4;
 
-// ÏÂÃæ 555
+// ä¸‹é¢ 555
 
 		punpckhbw mm3,mm2;
 		punpckhbw mm4,mm1;
-		psrlw mm3,10;	// B Èë mm3
-		psrlw mm4,4;	// G Èë mm4
-		punpcklbw mm2,mm2; // B µÄÇ° 4 ¸ö
+		psrlw mm3,10;	// B å…¥ mm3
+		psrlw mm4,4;	// G å…¥ mm4
+		punpcklbw mm2,mm2; // B çš„å‰ 4 ä¸ª
 		pand mm4,mmx_mask_green;
-		punpcklbw mm1,mm1; // G µÄÇ° 4 ¸ö
+		punpcklbw mm1,mm1; // G çš„å‰ 4 ä¸ª
 
 		por mm3,mm4;
 
 		punpckhbw mm4,mm0;
 		psllw mm4,1;
 		pand mm4,mmx_mask_red;
-		punpcklbw mm0,mm0; // R µÄÇ° 4 ¸ö
+		punpcklbw mm0,mm0; // R çš„å‰ 4 ä¸ª
 
-		por mm3,mm4;	// ºÏ³É hRGB
+		por mm3,mm4;	// åˆæˆ hRGB
 		psllw mm0,1;
 
 		pand mm0,mmx_mask_red;
@@ -371,7 +371,7 @@ _loop_cb_1:
 		pand mm1,mmx_mask_green;
 
 		por mm0,mm2;
-		por mm0,mm1;	// ºÏ³É lRGB
+		por mm0,mm1;	// åˆæˆ lRGB
 
 		movq [edi+edx+8],mm3;
 		movq [edi+edx],mm0;
@@ -383,11 +383,11 @@ _end:
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	YCbCr411_555
-// ¹¦ÄÜ:	YCbCr411¸ñÊ½×ª»¯Î»RGB(555)¸ñÊ½
-// ²ÎÊı:	bmppixel
+// å‡½æ•°:	YCbCr411_555
+// åŠŸèƒ½:	YCbCr411æ ¼å¼è½¬åŒ–ä½RGB(555)æ ¼å¼
+// å‚æ•°:	bmppixel
 //			pitch
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void YCbCr411_555(WORD *bmppixel,int pitch)
 {
@@ -476,7 +476,7 @@ _loop_cr_0:
 		dec ecx;
 		jnz _loop_cr_0;
 		movd mm5,eax;
-// eax ÀïÊÇ 4 ¸ö Cr*1.402
+// eax é‡Œæ˜¯ 4 ä¸ª Cr*1.402
 
 		lea ebx,Cr0_71414;
 		punpcklbw mm5,mm5;
@@ -490,7 +490,7 @@ _loop_cr_1:
 		dec ecx;
 		jnz _loop_cr_1;
 		movd mm7,eax;
-// eax ÀïÊÇ 4 ¸ö Cr* (- 0.71414)
+// eax é‡Œæ˜¯ 4 ä¸ª Cr* (- 0.71414)
 
 		mov esi,CbBuf;
 		punpcklbw mm7,mm7;
@@ -505,13 +505,13 @@ _loop_cb_0:
 		dec ecx;
 		jnz _loop_cb_0;
 		movd mm6,eax;
-// eax ÀïÊÇ 4 ¸ö Cb* (- 0.34414)
+// eax é‡Œæ˜¯ 4 ä¸ª Cb* (- 0.34414)
 
 		lea ebx,Cb1_772;
 		punpcklbw mm6,mm6;
 		mov eax,[esi];
 		paddsb mm6,mm7;
-// mm6 ÀïÊÇ 8 ¸ö - 0.34414* Cb - 0.71414*Cr
+// mm6 é‡Œæ˜¯ 8 ä¸ª - 0.34414* Cb - 0.71414*Cr
 		mov ecx,4;
 		ALIGN 4
 _loop_cb_1:
@@ -520,7 +520,7 @@ _loop_cb_1:
 		dec ecx;
 		jnz _loop_cb_1;
 		movd mm7,eax;
-// eax ÀïÊÇ 4 ¸ö Cb* 1.772
+// eax é‡Œæ˜¯ 4 ä¸ª Cb* 1.772
 		mov esi,YBuf;
 		punpcklbw mm7,mm7;
 
@@ -532,13 +532,13 @@ _loop_cb_1:
 		movq mm1,mm6;
 		psrlq mm0,1;
 		movq mm2,mm7;
-		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ²»Ö§³Ö byte ÒÆÎ»
+		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ä¸æ”¯æŒ byte ç§»ä½
 		pxor mm4,mm4;
 		paddsb mm1,mm0;	// G
 		paddsb mm2,mm0; // B
 		paddsb mm0,mm5; // R
 
-// ½«ËùÓĞµÄ¸ºÊı¶¼ÉèÖÃÎª 0
+// å°†æ‰€æœ‰çš„è´Ÿæ•°éƒ½è®¾ç½®ä¸º 0
 		pcmpgtb mm4,mm1;
 		pcmpgtb mm3,mm2;
 		psubusb mm1,mm4;
@@ -548,23 +548,23 @@ _loop_cb_1:
 		pxor mm3,mm3;
 		psubusb mm0,mm4;
 
-// ÏÂÃæ 555
+// ä¸‹é¢ 555
 
 		punpckhbw mm3,mm2;
 		punpckhbw mm4,mm1;
-		psrlw mm3,10;	// B Èë mm3
-		psrlw mm4,5;	// G Èë mm4
-		punpcklbw mm2,mm2; // B µÄÇ° 4 ¸ö
+		psrlw mm3,10;	// B å…¥ mm3
+		psrlw mm4,5;	// G å…¥ mm4
+		punpcklbw mm2,mm2; // B çš„å‰ 4 ä¸ª
 		pand mm4,mmx_mask_green;
-		punpcklbw mm1,mm1; // G µÄÇ° 4 ¸ö
+		punpcklbw mm1,mm1; // G çš„å‰ 4 ä¸ª
 
 		por mm3,mm4;
 
 		punpckhbw mm4,mm0;
 		pand mm4,mmx_mask_red;
-		punpcklbw mm0,mm0; // R µÄÇ° 4 ¸ö
+		punpcklbw mm0,mm0; // R çš„å‰ 4 ä¸ª
 
-		por mm3,mm4;	// ºÏ³É hRGB
+		por mm3,mm4;	// åˆæˆ hRGB
 
 		pand mm0,mmx_mask_red;
 		psrlw mm1,5;
@@ -572,10 +572,10 @@ _loop_cb_1:
 		pand mm1,mmx_mask_green;
 
 		por mm0,mm2;
-		por mm0,mm1;	// ºÏ³É lRGB
+		por mm0,mm1;	// åˆæˆ lRGB
 		movq [edi+8],mm3;
 		movq [edi],mm0;
-// ------------- ÏÂ 8 ¸ö ------------
+// ------------- ä¸‹ 8 ä¸ª ------------
 		movq mm0,[esi+8];
 
 		pxor mm3,mm3;
@@ -584,13 +584,13 @@ _loop_cb_1:
 		movq mm1,mm6;
 		psrlq mm0,1;
 		movq mm2,mm7;
-		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ²»Ö§³Ö byte ÒÆÎ»
+		pand mm0,x7f7f7f7f7f7f7f7f;  // mmx ä¸æ”¯æŒ byte ç§»ä½
 		pxor mm4,mm4;
 		paddsb mm1,mm0;	// G
 		paddsb mm2,mm0; // B
 		paddsb mm0,mm5; // R
 
-// ½«ËùÓĞµÄ¸ºÊı¶¼ÉèÖÃÎª 0
+// å°†æ‰€æœ‰çš„è´Ÿæ•°éƒ½è®¾ç½®ä¸º 0
 		pcmpgtb mm4,mm1;
 		pcmpgtb mm3,mm2;
 		psubusb mm1,mm4;
@@ -600,23 +600,23 @@ _loop_cb_1:
 		pxor mm3,mm3;
 		psubusb mm0,mm4;
 
-// ÏÂÃæ 555
+// ä¸‹é¢ 555
 
 		punpckhbw mm3,mm2;
 		punpckhbw mm4,mm1;
-		psrlw mm3,10;	// B Èë mm3
-		psrlw mm4,5;	// G Èë mm4
-		punpcklbw mm2,mm2; // B µÄÇ° 4 ¸ö
+		psrlw mm3,10;	// B å…¥ mm3
+		psrlw mm4,5;	// G å…¥ mm4
+		punpcklbw mm2,mm2; // B çš„å‰ 4 ä¸ª
 		pand mm4,mmx_mask_green;
-		punpcklbw mm1,mm1; // G µÄÇ° 4 ¸ö
+		punpcklbw mm1,mm1; // G çš„å‰ 4 ä¸ª
 
 		por mm3,mm4;
 
 		punpckhbw mm4,mm0;
 		pand mm4,mmx_mask_red;
-		punpcklbw mm0,mm0; // R µÄÇ° 4 ¸ö
+		punpcklbw mm0,mm0; // R çš„å‰ 4 ä¸ª
 
-		por mm3,mm4;	// ºÏ³É hRGB
+		por mm3,mm4;	// åˆæˆ hRGB
 
 		pand mm0,mmx_mask_red;
 		psrlw mm1,5;
@@ -624,7 +624,7 @@ _loop_cb_1:
 		pand mm1,mmx_mask_green;
 
 		por mm0,mm2;
-		por mm0,mm1;	// ºÏ³É lRGB
+		por mm0,mm1;	// åˆæˆ lRGB
 
 		movq [edi+edx+8],mm3;
 		movq [edi+edx],mm0;
@@ -636,10 +636,10 @@ _end:
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RGB16_555
-// ¹¦ÄÜ:	RGB16¸ñÊ½×ª»¯Î»RGB(555)¸ñÊ½
-// ²ÎÊı:	Y,r,g,b
-// ·µ»Ø:	void
+// å‡½æ•°:	RGB16_555
+// åŠŸèƒ½:	RGB16æ ¼å¼è½¬åŒ–ä½RGB(555)æ ¼å¼
+// å‚æ•°:	Y,r,g,b
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 WORD RGB16_555(signed char Y,signed char r,signed char g,signed char b)
 {
@@ -688,10 +688,10 @@ _cx_7f:
 	return result;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RGB16_565
-// ¹¦ÄÜ:	RGB16¸ñÊ½×ª»¯Î»RGB(565)¸ñÊ½
-// ²ÎÊı:	Y,r,g,b
-// ·µ»Ø:	void
+// å‡½æ•°:	RGB16_565
+// åŠŸèƒ½:	RGB16æ ¼å¼è½¬åŒ–ä½RGB(565)æ ¼å¼
+// å‚æ•°:	Y,r,g,b
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 WORD RGB16_565(signed char Y,signed char r,signed char g,signed char b)
 {
@@ -739,11 +739,11 @@ _cx_7f:
 	return result;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	YCbCr411_nommx
-// ¹¦ÄÜ:	YCbCr411
-// ²ÎÊı:	bmppixel
+// å‡½æ•°:	YCbCr411_nommx
+// åŠŸèƒ½:	YCbCr411
+// å‚æ•°:	bmppixel
 //			pitch
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void YCbCr411_nommx(WORD *bmppixel, int pitch)
 {
@@ -774,11 +774,11 @@ void YCbCr411_nommx(WORD *bmppixel, int pitch)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	YCbCr111
-// ¹¦ÄÜ:	YCbCr111
-// ²ÎÊı:	bmppixel
+// å‡½æ•°:	YCbCr111
+// åŠŸèƒ½:	YCbCr111
+// å‚æ•°:	bmppixel
 //			pitch
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void YCbCr111(WORD *bmppixel,int pitch)
 {

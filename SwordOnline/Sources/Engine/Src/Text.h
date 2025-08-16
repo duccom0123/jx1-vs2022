@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	ÎÄ×Ö´®´¦Àí
+//	æ–‡å­—ä¸²å¤„ç†
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-31
@@ -8,29 +8,29 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-//×Ö·û´®¿ØÖÆÂëµÄÄÚ²¿±àÂë
+//å­—ç¬¦ä¸²æ§åˆ¶ç çš„å†…éƒ¨ç¼–ç 
 enum KTEXT_CTRL_CODE
 {
 	KTC_INVALID			=	0,
 	KTC_ENTER			=	0x0a,
-	KTC_COLOR			=	0x02,	//ºóÃæ¸úËæÈı¸öBYTEÊı¾İ·Ö±ğÎªRGBÈıÉ«·ÖÁ¿
-	KTC_COLOR_RESTORE	=	0x03,	//»Ø¸´µ½Ô­À´ÉèÖÃµÄÑÕÉ«
-	KTC_BORDER_COLOR	=	0x04,	//ÉèÖÃ±ßÔµÉ«£¬ºóÃæ¸úËæÈı¸öBYTEÊı¾İ·Ö±ğÎªRGBÈıÉ«·ÖÁ¿
-	KTC_BORDER_RESTORE	=	0x05,	//ÉèÖÃ±ßÔµÉ«»¹Ô­
-	KTC_INLINE_PIC		=	0x06,	//Ç¶ÈëÊ½Í¼Æ¬[wxb 2003-6-19]
+	KTC_COLOR			=	0x02,	//åé¢è·Ÿéšä¸‰ä¸ªBYTEæ•°æ®åˆ†åˆ«ä¸ºRGBä¸‰è‰²åˆ†é‡
+	KTC_COLOR_RESTORE	=	0x03,	//å›å¤åˆ°åŸæ¥è®¾ç½®çš„é¢œè‰²
+	KTC_BORDER_COLOR	=	0x04,	//è®¾ç½®è¾¹ç¼˜è‰²ï¼Œåé¢è·Ÿéšä¸‰ä¸ªBYTEæ•°æ®åˆ†åˆ«ä¸ºRGBä¸‰è‰²åˆ†é‡
+	KTC_BORDER_RESTORE	=	0x05,	//è®¾ç½®è¾¹ç¼˜è‰²è¿˜åŸ
+	KTC_INLINE_PIC		=	0x06,	//åµŒå…¥å¼å›¾ç‰‡[wxb 2003-6-19]
 	KTC_TAB				=	0x09,	//tab
-	KTC_SPACE			=	0x20,	//¿Õ¸ñ
-	KTC_TAIL			=	0xFF,	//×Ö·û´®½áÊø
+	KTC_SPACE			=	0x20,	//ç©ºæ ¼
+	KTC_TAIL			=	0xFF,	//å­—ç¬¦ä¸²ç»“æŸ
 };
 
 struct KTP_CTRL
 {
-	unsigned char	cCtrl;	//´Ë³ÉÔ±È¡ÖµÎªText.hÖĞÃ·¾ÙKTEXT_CTRL_CODEÖĞµÄÒ»¸öÖµ
+	unsigned char	cCtrl;	//æ­¤æˆå‘˜å–å€¼ä¸ºText.hä¸­æ¢…ä¸¾KTEXT_CTRL_CODEä¸­çš„ä¸€ä¸ªå€¼
 	union
 	{
 	    struct
 	    {
-   			unsigned char cParam0;	//´Ë¼°ÒÔÏÂÁ½¸ö³ÉÔ±µÄÈ¡ÖµÓëº¬ÒåÒÀ¾İcCtrlµÄÈ¡Öµ¶ø¶¨
+   			unsigned char cParam0;	//æ­¤åŠä»¥ä¸‹ä¸¤ä¸ªæˆå‘˜çš„å–å€¼ä¸å«ä¹‰ä¾æ®cCtrlçš„å–å€¼è€Œå®š
 		    unsigned char cParam1;
 		    unsigned char cParam2;
 	    };
@@ -38,61 +38,61 @@ struct KTP_CTRL
    };
 };
 
-#define MAX_SYSTEM_INLINE_PICTURES	512	//ÏµÍ³Ô¤ÁôµÄÇ¶ÈëÊ½Í¼Æ¬¸öÊı
+#define MAX_SYSTEM_INLINE_PICTURES	512	//ç³»ç»Ÿé¢„ç•™çš„åµŒå…¥å¼å›¾ç‰‡ä¸ªæ•°
 struct IInlinePicEngineSink
 {
-	//»ñÈ¡Ö¸¶¨Ç¶ÈëÍ¼Æ¬µÄ´óĞ¡
+	//è·å–æŒ‡å®šåµŒå…¥å›¾ç‰‡çš„å¤§å°
 	virtual long GetPicSize(unsigned short wIndex, int& cx, int& cy) = 0;
-	//»æÖÆÖ¸¶¨Í¼Æ¬
+	//ç»˜åˆ¶æŒ‡å®šå›¾ç‰‡
 	virtual long DrawPic(unsigned short wIndex, int x, int y) = 0;
-	//¶¯Ì¬¼ÓÔØÍ¼Æ¬,»ñÈ¡Ò»¸öWORD,¼´Í¼Æ¬µÄË÷Òı
+	//åŠ¨æ€åŠ è½½å›¾ç‰‡,è·å–ä¸€ä¸ªWORD,å³å›¾ç‰‡çš„ç´¢å¼•
 	virtual long AddCustomInlinePic(unsigned short& wIndex, const char* szSprPathName) = 0;
-	//¶¯Ì¬Ğ¶ÔØÍ¼Æ¬
+	//åŠ¨æ€å¸è½½å›¾ç‰‡
 	virtual long RemoveCustomInlinePic(unsigned short wIndex) = 0;
 };
 
 #ifndef ENGINE_EXPORTS
 
-//½Ó¿Ú IInlinePicEngineSink ÓÉÓ¦ÓÃ²ãÊµÏÖ²¢¹Ò½Ó½ø Engine Ä£¿é [wxb 2003-6-19]
-//Ïà¹Ø¹Ò½Óº¯Êı:
+//æ¥å£ IInlinePicEngineSink ç”±åº”ç”¨å±‚å®ç°å¹¶æŒ‚æ¥è¿› Engine æ¨¡å— [wxb 2003-6-19]
+//ç›¸å…³æŒ‚æ¥å‡½æ•°:
 // AdviseEngine(IInlinePicEngineSink*);
 // UnAdviseEngine(IInlinePicEngineSink*);
 extern "C"
 {
 	unsigned int TGetColor(const char* pColor);
 	void TReplaceText(char* pBuffer, const char* pszKey, const char* pszText);
-	//»ñÈ¡±¾ĞĞµÄÏÂ¸öÏÔÊ¾×Ö·û
+	//è·å–æœ¬è¡Œçš„ä¸‹ä¸ªæ˜¾ç¤ºå­—ç¬¦
 	const char* TGetSecondVisibleCharacterThisLine(const char* pCharacter, int nPos, int nLen);
-	//¼ì²âÄ³¸ö×Ö·ûÊÇ·ñÎª²»Ğí·ÅÖÃĞĞÊ×µÄ×Ö·û£¬²»ÊÇÏŞÖÆ×Ö·ûÔò·µ»Ø0£¬·ñÔò·µ»Ø×Ö·ûÕ¼µÄ×Ó½ÚÊı
+	//æ£€æµ‹æŸä¸ªå­—ç¬¦æ˜¯å¦ä¸ºä¸è®¸æ”¾ç½®è¡Œé¦–çš„å­—ç¬¦ï¼Œä¸æ˜¯é™åˆ¶å­—ç¬¦åˆ™è¿”å›0ï¼Œå¦åˆ™è¿”å›å­—ç¬¦å çš„å­èŠ‚æ•°
 	int TIsCharacterNotAlowAtLineHead(const char* pCharacter);
-	//Èç¹ûÔ­×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
+	//å¦‚æœåŸå­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
 	const char* TGetLimitLenString(const char* pOrigString, int nOrigLen, char* pLimitLenString, int nLimitLen);
-	//Èç¹ûÔ­(°üº¬¿ØÖÆ·û)×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
+	//å¦‚æœåŸ(åŒ…å«æ§åˆ¶ç¬¦)å­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
 	const char* TGetLimitLenEncodedString(const char* pOrigString, int nOrigLen, int nFontSize,
 		int nWrapCharaNum, char* pLimitLenString, int& nShortLen, int nLineLimit, int bPicPackInSingleLine = false);
-	//Ñ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
+	//å¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
 	int	TSplitString(const char* pString, int nDesirePos, int bLess);
-	//ÔÚ±àÂë×Ö´®Ñ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
+	//åœ¨ç¼–ç å­—ä¸²å¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
 	int	TSplitEncodedString(const char* pString, int nCount, int nDesirePos, int bLess);
-	//»ñµÃÖ¸¶¨ĞĞµÄ¿ªÊ¼Î»ÖÃ
+	//è·å¾—æŒ‡å®šè¡Œçš„å¼€å§‹ä½ç½®
 	int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int nWrapCharaNum, int nFontSize, int bPicPackInSingleLine = false);
-	//¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+	//å¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 	int	TEncodeText(char* pBuffer, int nCount, int* nCurLen = 0);
-	//¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+	//å¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 	int TFilterEncodedText(char* pBuffer, int nCount);
-	//È¥³ı±àÂëÎÄ±¾ÖĞµÄ¿ØÖÆ·ûºÅ
+	//å»é™¤ç¼–ç æ–‡æœ¬ä¸­çš„æ§åˆ¶ç¬¦å·
 	int	TRemoveCtrlInEncodedText(char* pBuffer, int nCount);
-	//»ñÈ¡±àÂëÎÄ±¾µÄĞĞÊıÓë×î´óĞĞ¿í
+	//è·å–ç¼–ç æ–‡æœ¬çš„è¡Œæ•°ä¸æœ€å¤§è¡Œå®½
 	int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum, int& nMaxLineLen, int nFontSize, int nSkipLine = 0, int nLineLimit = 0, int bPicSingleLine = false);
 	int	TGetEncodedItemChatLineCount(const char* pBuffer, int nCount, int nWrapCharaNum, int& nMaxLineLen, int nFontSize,
 	int& nFace, int& nLastPos, int& nTotalLen, int nSkipLine, int nNumLineLimit, bool bPicSingleLine/* = false*/ );
-	//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬´ÓÖ¸¶¨Î»ÖÃ¿ªÊ¼²éÕÒÖ¸¶¨µÄ¿ØÖÆ·ûºÅµÄÎ»ÖÃ£¬·µ»Ø-1±íÊ¾Î´ÕÒµ½
+	//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œä»æŒ‡å®šä½ç½®å¼€å§‹æŸ¥æ‰¾æŒ‡å®šçš„æ§åˆ¶ç¬¦å·çš„ä½ç½®ï¼Œè¿”å›-1è¡¨ç¤ºæœªæ‰¾åˆ°
 	int	TFindSpecialCtrlInEncodedText(const char* pBuffer, int nCount, int nStartPos, char cControl, char cRetControl = 0);
-	//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬È¥³ıÖ¸¶¨ÀàĞÍµÄ¿ØÖÆ·û
+	//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œå»é™¤æŒ‡å®šç±»å‹çš„æ§åˆ¶ç¬¦
 	int	TClearSpecialCtrlInEncodedText(char* pBuffer, int nCount, char cControl);
-	//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨Êä³ö³¤¶ÈµÄÔÚ»º³åÇøÖĞÎ»ÖÃ
+	//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šè¾“å‡ºé•¿åº¦çš„åœ¨ç¼“å†²åŒºä¸­ä½ç½®
 	int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool bLess, int nFontSize);
-	//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨µÄÇ°¶Î»º³åÇøÖĞ¿ØÖÆ·û£¬¶ÔºóÃæµÄÊä³ö²úÉúĞ§¹ûÓ°Ïì
+	//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šçš„å‰æ®µç¼“å†²åŒºä¸­æ§åˆ¶ç¬¦ï¼Œå¯¹åé¢çš„è¾“å‡ºäº§ç”Ÿæ•ˆæœå½±å“
 	int TGetEncodedTextEffectCtrls(const char* pBuffer, int nSkipCount, KTP_CTRL& Ctrl0, KTP_CTRL& Ctrl1);
 
 	long AdviseEngine(IInlinePicEngineSink*);

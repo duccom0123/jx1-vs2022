@@ -1,6 +1,6 @@
 /* 
  * File:     UiCaveList.cpp
- * Desc:     ÊÀ½çµØÍ¼
+ * Desc:     ä¸–ç•Œåœ°å›¾
  * Author:   flying
  * Creation: 2003/7/22
  */
@@ -67,7 +67,7 @@ KUiCaveList* KUiCaveList::GetIfVisible()
 		return NULL;
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void KUiCaveList::Initialize()
 {
 	AddChild(&m_Sign);
@@ -112,7 +112,7 @@ void KUiCaveList::UpdateData()
 		KIniFile	Ini;
 		if (Ini.Load("\\settings\\CaveList.ini"))
 		{
-			//È¡µÃÊÀ½çµØÍ¼µÄÍ¼ĞÎÎÄ¼şÃ÷
+			//å–å¾—ä¸–ç•Œåœ°å›¾çš„å›¾å½¢æ–‡ä»¶æ˜
 			char	szBuffer[128];
 			if (Ini.GetString("List", "CaveMapImage", "", szBuffer, sizeof(szBuffer)))
 			{
@@ -135,7 +135,7 @@ void KUiCaveList::UpdateData()
 	}
 }
 
-//»î¶¯º¯Êı
+//æ´»åŠ¨å‡½æ•°
 void KUiCaveList::Breathe()
 {
 	if (m_Sign.IsVisible())

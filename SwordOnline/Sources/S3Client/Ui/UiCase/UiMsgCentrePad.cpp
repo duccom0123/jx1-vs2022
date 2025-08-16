@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÏûÏ¢ÖĞĞÄÃæ°å
+//	Â½Ã§ÃƒÃ¦--ÃÃ»ÃÂ¢Ã–ÃÃÃ„ÃƒÃ¦Â°Ã¥
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-13
@@ -51,7 +51,7 @@ int VerticalSplitTwoWindow(KWndWindow* pLeft, KWndWindow* pRight, int nAt)
 		return 0;
 	if ((nAt - nL_x < 0) || (nR_w - (nAt - nL_x - nL_w) < 0))
 		return 0;
-	if (nAt - nL_x - nL_w == 0)	//²»ÓÃµ÷ÕûÁË£¬Æ«ÒÆÁ¿Îª0
+	if (nAt - nL_x - nL_w == 0)	//Â²Â»Ã“ÃƒÂµÃ·Ã•Ã»ÃÃ‹Â£Â¬Ã†Â«Ã’Ã†ÃÂ¿ÃÂª0
 		return 0;
 
 	pLeft->SetSize(nAt - nL_x, nL_h);
@@ -131,7 +131,7 @@ void KSysMsgCentrePad::ScrollBottom()
 KUiMsgCentrePad* KUiMsgCentrePad::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiMsgCentrePad* KUiMsgCentrePad::OpenWindow()
 {
@@ -149,7 +149,7 @@ KUiMsgCentrePad* KUiMsgCentrePad::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiMsgCentrePad::CloseWindow(bool bDestroy)
 {
@@ -858,7 +858,7 @@ bool KUiMsgCentrePad::ReplaceSpecialField(char* szDest, char* szSrc)
 			{
 				for (int i = 0; i < nKeySize; i++)
 				{
-					if (strcmpi(s_keys[i], key) == 0)	//Ö§³ÖµÄ¹Ø¼ü×Ö
+					if (strcmpi(s_keys[i], key) == 0)	//Ã–Â§Â³Ã–ÂµÃ„Â¹Ã˜Â¼Ã¼Ã—Ã–
 					{
 						if (s_keyDests[i][0] == 0)
 							return false;
@@ -869,7 +869,7 @@ bool KUiMsgCentrePad::ReplaceSpecialField(char* szDest, char* szSrc)
 					}
 				}
 
-				if (nKey >= 0)	//²»Ö§³ÖµÄ¹Ø¼ü×Ö
+				if (nKey >= 0)	//Â²Â»Ã–Â§Â³Ã–ÂµÃ„Â¹Ã˜Â¼Ã¼Ã—Ã–
 				{
 					strcpy(szDest + m, key);
 					m += nKey;
@@ -1042,7 +1042,7 @@ int	KUiMsgCentrePad::IsNeverCloseActivateChannel(int nChannelIndex)
 	if (nChannelIndex < 0 || nChannelIndex >= m_nActivateChannels)
 		return 0;
 	int n = m_pActivateChannel[nChannelIndex].ResourceIndex;
-	if (n >= 0 && m_ChannelsResource[n].nNeverClose)	//²»ÄÜ¹Ø±ÕµÄÆµµÀ
+	if (n >= 0 && m_ChannelsResource[n].nNeverClose)	//Â²Â»Ã„ÃœÂ¹Ã˜Â±Ã•ÂµÃ„Ã†ÂµÂµÃ€
 		return 1;
 	return 0;
 }
@@ -1094,7 +1094,7 @@ bool KUiMsgCentrePad::GetChannelMenuinfo(int nChannelIndex, WORD* pnPicIndex, WO
 					{
 						char szName[10];
 						g_pCoreShell->GetGameData(GDI_CHATROOM_NAME, (unsigned int)szName, 0);
-						sprintf(pszMenuText, "Phßng %s", szName);
+						sprintf(pszMenuText, "PhÃŸng %s", szName);
 					}
 				}
 				else
@@ -1249,7 +1249,7 @@ void KUiMsgCentrePad::SetReply(const char* Buff, int nLen)
 		Msg.byPriority = 0;
 		Msg.eType = SMT_NORMAL;
 		Msg.uReservedForUi = 0;
-		sprintf(Msg.szMessage, "BËt chÕ ®é tù ®éng håi ©m");
+		sprintf(Msg.szMessage, "BÃ‹t chÃ• Â®Ã© tÃ¹ Â®Ã©ng hÃ¥i Â©m");
 		KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 	}
 }
@@ -1266,7 +1266,7 @@ void KUiMsgCentrePad::ClearReply()
 		Msg.byPriority = 0;
 		Msg.eType = SMT_NORMAL;
 		Msg.uReservedForUi = 0;
-		sprintf(Msg.szMessage, "Hñy chÕ ®é tù ®éng håi ©m");
+		sprintf(Msg.szMessage, "HÃ±y chÃ• Â®Ã© tÃ¹ Â®Ã©ng hÃ¥i Â©m");
 		KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 	}
 }
@@ -1309,7 +1309,7 @@ void KUiMsgCentrePad::SendQueryChannelID(int nChannelResourceIndex)
 	if (nChannelResourceIndex < 0 || nChannelResourceIndex >= m_nChannelsResource)
 		return;
 
-	if (FindActivateChannelResourceIndex(m_ChannelsResource[nChannelResourceIndex].cTitle) >= 0)	//ÒÑÉêÇë¹ıÁË
+	if (FindActivateChannelResourceIndex(m_ChannelsResource[nChannelResourceIndex].cTitle) >= 0)	//Ã’Ã‘Ã‰ÃªÃ‡Ã«Â¹Ã½ÃÃ‹
 		return;
 
 	char ChannelName[__X_NAME_LEN_];
@@ -1368,7 +1368,7 @@ int	KUiMsgCentrePad::AddActivateChannel(const KChannelActivateInfo& Item)
 	int n = FindActivateChannelIndex(Item.nChannelID);
 	if (n >= 0)
 		return n;
-	//ĞÂÔöÆµµÀ
+	//ÃÃ‚Ã”Ã¶Ã†ÂµÂµÃ€
 	KChannelActivateInfo* pChannels = new KChannelActivateInfo[m_nActivateChannels + 1];
 	if (m_nActivateChannels > 0 && m_pActivateChannel)
 	{
@@ -1378,7 +1378,7 @@ int	KUiMsgCentrePad::AddActivateChannel(const KChannelActivateInfo& Item)
 	m_pActivateChannel = pChannels;
 	pChannels = m_pActivateChannel + m_nActivateChannels;
 	*pChannels = Item;
-	pChannels->uLastSendMsgTime = IR_GetCurrentTime() - m_ChannelsResource[Item.ResourceIndex].uSendMsgInterval;	//È·±£µÚÒ»Ìõ¿Ï¶¨ÄÜ·¢
+	pChannels->uLastSendMsgTime = IR_GetCurrentTime() - m_ChannelsResource[Item.ResourceIndex].uSendMsgInterval;	//ÃˆÂ·Â±Â£ÂµÃšÃ’Â»ÃŒÃµÂ¿ÃÂ¶Â¨Ã„ÃœÂ·Â¢
 	pChannels->uLeftSendMsgNum = 0;
 	pChannels->uBufferOffset = 0;
 	memset(pChannels->Buffer, 0, sizeof(pChannels->Buffer));
@@ -1416,7 +1416,7 @@ int	KUiMsgCentrePad::ReleaseActivateChannelAll()
 	return 0;
 }
 
-//³õÊ¼»¯
+//Â³ÃµÃŠÂ¼Â»Â¯
 void KUiMsgCentrePad::Initialize()
 {
 	AddChild(&m_MoveImg);
@@ -1437,7 +1437,7 @@ void KUiMsgCentrePad::Initialize()
 
 	Wnd_AddWindow(this, WL_LOWEST);
 
-	Wnd_AddWindow(&m_Sys, WL_LOWEST);	//ÔÚKUiMsgCentrePadÖ®ºó¼ÓÈë,ÒªµÈ±³¾°ÏÈ»­
+	Wnd_AddWindow(&m_Sys, WL_LOWEST);	//Ã”ÃšKUiMsgCentrePadÃ–Â®ÂºÃ³Â¼Ã“ÃˆÃ«,Ã’ÂªÂµÃˆÂ±Â³Â¾Â°ÃÃˆÂ»Â­
 	m_Sys.AddChild(&m_Sys.m_SysRoom);
 	m_Sys.AddChild(&m_Sys.m_UpButton);
 	m_Sys.AddChild(&m_Sys.m_OpenSysButton);
@@ -1479,7 +1479,7 @@ void KUiMsgCentrePad::ShowChatTab(KIniFile* pSetting)
 	}
 }
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: »î¶¯º¯Êı
+// Â¹Â¦Ã„Ãœ	: Â»Ã®Â¶Â¯ÂºÂ¯ÃŠÃ½
 // -------------------------------------------------------------------------
 void KUiMsgCentrePad::Breathe()
 {
@@ -1493,7 +1493,7 @@ void KUiMsgCentrePad::Breathe()
 	}
 }
 
-//ÔØÈë½çÃæ·½°¸
+//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 void KUiMsgCentrePad::LoadScheme(const char* pScheme)
 {
 	char		Buff[128];
@@ -1507,7 +1507,7 @@ void KUiMsgCentrePad::LoadScheme(const char* pScheme)
 	}
 }
 
-//ÖØĞÂ³õÊ¼»¯½çÃæ
+//Ã–Ã˜ÃÃ‚Â³ÃµÃŠÂ¼Â»Â¯Â½Ã§ÃƒÃ¦
 void KUiMsgCentrePad::DefaultScheme(const char* pScheme)
 {
 	char		Buff[128];
@@ -1526,7 +1526,7 @@ void KUiMsgCentrePad::DefaultScheme(const char* pScheme)
 	}
 }
 
-//Òş²ØËùÓĞÊä³ö
+//Ã’Ã¾Â²Ã˜Ã‹Ã¹Ã“ÃÃŠÃ¤Â³Ã¶
 void KUiMsgCentrePad::HideAllMessage()
 {
 	if (m_pSelf)
@@ -1537,7 +1537,7 @@ void KUiMsgCentrePad::HideAllMessage()
 	}
 }
 
-//ÏÔÊ¾ËùÓĞÊä³ö
+//ÃÃ”ÃŠÂ¾Ã‹Ã¹Ã“ÃÃŠÃ¤Â³Ã¶
 void KUiMsgCentrePad::ShowAllMessage()
 {
 	if (m_pSelf)
@@ -1860,7 +1860,7 @@ void KUiMsgCentrePad::LoadScheme(KIniFile* pIni)
 		m_nDefaultChannelResource = FindChannelResourceIndex(ChName);
 	}
 
-	pIni->GetString("Channels", "DefaultChannelSendName", "HÖ thèng", m_DefaultChannelSendName, 32);
+	pIni->GetString("Channels", "DefaultChannelSendName", "HÃ– thÃ¨ng", m_DefaultChannelSendName, 32);
 
 	pIni->GetString("Main", "NameTextColor", "0,0,0", ChName, sizeof(ChName));
 	m_NameColor.Color_dw = GetColor(ChName);
@@ -1907,7 +1907,7 @@ int	KUiMsgCentrePad::PtInWindow(int x, int y)
 	return nRet;
 }
 
-//´°¿Úº¯Êı
+//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 int KUiMsgCentrePad::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch(uMsg)
@@ -2079,7 +2079,7 @@ int	KUiMsgCentrePad::GetMessageSendName(KWndWindow* pWnd, int x, int y, char* sz
 	return GetMessageSendName(pWnd, nIndex, szCurText);
 }
 
-//»æÖÆ´°¿Ú
+//Â»Ã¦Ã–Ã†Â´Â°Â¿Ãš
 void KUiMsgCentrePad::PaintWindow()
 {
 	KWndWindow::PaintWindow();
@@ -2118,7 +2118,7 @@ void KUiMsgCentrePad::DragWndPos(int nMoveOffset)
 		m_MoveImg.GetPosition(&x, &y);
 		x -= nMoveOffsetX;
 		y -= nMoveOffsetY;
-		m_MoveImg.SetPosition(x, y);	//°´Å¥¸ú×Å´°¿Ú±ä»¯£¬ËùÒÔÒªÏÈ±ä»ØÔ­Ñù
+		m_MoveImg.SetPosition(x, y);	//Â°Â´Ã…Â¥Â¸ÃºÃ—Ã…Â´Â°Â¿ÃšÂ±Ã¤Â»Â¯Â£Â¬Ã‹Ã¹Ã’Ã”Ã’ÂªÃÃˆÂ±Ã¤Â»Ã˜Ã”Â­Ã‘Ã¹
 		
 		y = m_Top + nMoveOffsetY;
 
@@ -2154,11 +2154,11 @@ void KUiMsgCentrePad::DragWndSize(int nMoveOffset)
 		m_SizeBtn.GetPosition(&x, &y);
 		x -= nMoveOffsetX;
 		y -= nMoveOffsetY;
-		m_SizeBtn.SetPosition(x, y);	//°´Å¥¸ú×Å´°¿Ú±ä»¯£¬ËùÒÔÒªÏÈ±ä»ØÔ­Ñù
+		m_SizeBtn.SetPosition(x, y);	//Â°Â´Ã…Â¥Â¸ÃºÃ—Ã…Â´Â°Â¿ÃšÂ±Ã¤Â»Â¯Â£Â¬Ã‹Ã¹Ã’Ã”Ã’ÂªÃÃˆÂ±Ã¤Â»Ã˜Ã”Â­Ã‘Ã¹
 
 		m_nSizeBtnDragOffsetY += nMoveOffsetY;
 
-		if (ChanageHeight(m_nSizeBtnDragOffsetY, m_bSizeUp))	//¸Ä±äHeight³É¹¦ºó£¬¾Í²»ÓÃ»ıÀÛÁË
+		if (ChanageHeight(m_nSizeBtnDragOffsetY, m_bSizeUp))	//Â¸Ã„Â±Ã¤HeightÂ³Ã‰Â¹Â¦ÂºÃ³Â£Â¬Â¾ÃÂ²Â»Ã“ÃƒÂ»Ã½Ã€Ã›ÃÃ‹
 			m_nSizeBtnDragOffsetY = 0;
 	}
 }
@@ -2300,7 +2300,7 @@ int KUiMsgCentrePad::CheckChannel(int nChannelIndex, bool b)
 
 	if (nChannelIndex < 0 || nChannelIndex >= m_pSelf->m_nActivateChannels)
 		return 0;
-	if (m_pSelf->IsNeverCloseActivateChannel(nChannelIndex))	//²»ÄÜ¹Ø±ÕµÄÆµµÀ²»ÄÜ¸Ä±ä×´Ì¬
+	if (m_pSelf->IsNeverCloseActivateChannel(nChannelIndex))	//Â²Â»Ã„ÃœÂ¹Ã˜Â±Ã•ÂµÃ„Ã†ÂµÂµÃ€Â²Â»Ã„ÃœÂ¸Ã„Â±Ã¤Ã—Â´ÃŒÂ¬
 		return 0;
 
 	if (m_pSelf->m_pActivateChannel[nChannelIndex].bSubscribe == b)
@@ -2312,7 +2312,7 @@ int KUiMsgCentrePad::CheckChannel(int nChannelIndex, bool b)
 	{
 		char Buffer[32];
 		strncpy(Buffer, b ? m_pSelf->m_ChannelsResource[n].cMenuText : m_pSelf->m_ChannelsResource[n].cMenuDeactivateText, 32);
-		strcat(Buffer, b ? " ®· ®­îc më l¹i" : " ®· bŞ ®ãng l¹i");
+		strcat(Buffer, b ? " Â®Â· Â®Â­Ã®c mÃ« lÂ¹i" : " Â®Â· bÃ Â®Ã£ng lÂ¹i");
 		KUiMsgCentrePad::SystemMessageArrival(Buffer, strlen(Buffer));
 	}
 	return 1;

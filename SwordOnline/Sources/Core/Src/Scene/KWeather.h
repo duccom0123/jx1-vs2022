@@ -20,9 +20,9 @@ using namespace std;
 
 struct KParticle
 {
-	KPosition3 m_vPos;				// Á£×ÓÎ»ÖÃ
-	KPosition3 m_vSpeed;			// Á£×ÓËÙ¶È
-	KRColor	m_color;				// Á£×ÓÑÕÉ«
+	KPosition3 m_vPos;				// ç²’å­ä½ç½®
+	KPosition3 m_vSpeed;			// ç²’å­é€Ÿåº¦
+	KRColor	m_color;				// ç²’å­é¢œè‰²
 };
 
 class KWeather
@@ -77,20 +77,20 @@ public:
 	virtual void Render(iRepresentShell *pRepresent) = 0;
 
 protected:
-	bool	m_bIsShutingDown;			// ÊÇ·ñÕıÔÚ¹Ø±Õ
-	int		m_nStartTime;				// ÌìÆø¿ªÊ¼Ê±¼ä,ÓÎÏ·Ö¡¼ÆÊı
-	int		m_nLifeTime;				// ÌìÆø³ÖĞøµÄÊ±¼ä£¬Ãë
-	int		m_nParticleNum;				// Ã¿Ãë²úÉúµÄÁ£×ÓÊıÄ¿
-	float	m_nDownSpeed;				// ÏÂÂäËÙ¶È£¬Ã¿ÃëÓÎÏ·µ¥Î»Êı
-	float	m_nWindSpeed;				// ºáÏò·çË×£¬Ã¿ÃëÓÎÏ·µ¥Î»Êı
+	bool	m_bIsShutingDown;			// æ˜¯å¦æ­£åœ¨å…³é—­
+	int		m_nStartTime;				// å¤©æ°”å¼€å§‹æ—¶é—´,æ¸¸æˆå¸§è®¡æ•°
+	int		m_nLifeTime;				// å¤©æ°”æŒç»­çš„æ—¶é—´ï¼Œç§’
+	int		m_nParticleNum;				// æ¯ç§’äº§ç”Ÿçš„ç²’å­æ•°ç›®
+	float	m_nDownSpeed;				// ä¸‹è½é€Ÿåº¦ï¼Œæ¯ç§’æ¸¸æˆå•ä½æ•°
+	float	m_nWindSpeed;				// æ¨ªå‘é£ä¿—ï¼Œæ¯ç§’æ¸¸æˆå•ä½æ•°
 
-	int		m_nLeftTopX;				// ¾Å¸ö½¹µãÇøÓò×óÉÏ½ÇX×ø±ê
-	int		m_nLeftTopY;				// ¾Å¸ö½¹µãÇøÓò×óÉÏ½ÇY×ø±ê
+	int		m_nLeftTopX;				// ä¹ä¸ªç„¦ç‚¹åŒºåŸŸå·¦ä¸Šè§’Xåæ ‡
+	int		m_nLeftTopY;				// ä¹ä¸ªç„¦ç‚¹åŒºåŸŸå·¦ä¸Šè§’Yåæ ‡
 
-	int		m_nFocusPosX;				// ½¹µã×ø±êX
-	int		m_nFocusPosY;				// ½¹µã×ø±êY
+	int		m_nFocusPosX;				// ç„¦ç‚¹åæ ‡X
+	int		m_nFocusPosY;				// ç„¦ç‚¹åæ ‡Y
 
-	list<KParticle> m_ParticleList;		// Á£×ÓÁ´±í
+	list<KParticle> m_ParticleList;		// ç²’å­é“¾è¡¨
 private:
 
 };
@@ -115,21 +115,21 @@ public:
 	virtual void Breath();
 	virtual void Render(iRepresentShell *pRepresent);
 private:
-	int		m_nLenRate;					// Óêµã³¤¶ÈÎª×î´ó³¤¶ÈµÄ°Ù·Ö±È
-	bool	m_bIsShutDown;				// ÊÇ·ñÒÑ¾­¹Ø±Õ
-	int		m_nFlareTime;				// Æ½¾ù¶àÉÙÊ±¼äÒ»´ÎÉÁµç£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	int		m_nLastFlareTime;			// ÉÏ´ÎÉÁµçÊ±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	int		m_nFlareDelay;				// ÏÂÒ»´ÎÉÁµç¾àÉÏÒ»´ÎÉÁµçµÄÊ±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	int		m_nFlareState;				// ÉÁµç½×¶Î£¬Îª£­1Ê±Îª²»ÉÁµç
-	int		m_nFlareStateStart;			// ÉÁµç½×¶ÎÆğÊ¼Ê±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	int		m_nFlareStateDelay;			// ÉÁµç½×¶ÎÑÓĞøÊ±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	KLColor m_flareColorAdd;			// ÉÁµç¸÷½×¶Îµş¼ÓÔÚ»·¾³¹âÉÏµÄÁÁ¶È
-	float	m_fAmbientFactor;			// »·¾³¹â±ÈÀıÒò×Ó
+	int		m_nLenRate;					// é›¨ç‚¹é•¿åº¦ä¸ºæœ€å¤§é•¿åº¦çš„ç™¾åˆ†æ¯”
+	bool	m_bIsShutDown;				// æ˜¯å¦å·²ç»å…³é—­
+	int		m_nFlareTime;				// å¹³å‡å¤šå°‘æ—¶é—´ä¸€æ¬¡é—ªç”µï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	int		m_nLastFlareTime;			// ä¸Šæ¬¡é—ªç”µæ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	int		m_nFlareDelay;				// ä¸‹ä¸€æ¬¡é—ªç”µè·ä¸Šä¸€æ¬¡é—ªç”µçš„æ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	int		m_nFlareState;				// é—ªç”µé˜¶æ®µï¼Œä¸ºï¼1æ—¶ä¸ºä¸é—ªç”µ
+	int		m_nFlareStateStart;			// é—ªç”µé˜¶æ®µèµ·å§‹æ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	int		m_nFlareStateDelay;			// é—ªç”µé˜¶æ®µå»¶ç»­æ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	KLColor m_flareColorAdd;			// é—ªç”µå„é˜¶æ®µå åŠ åœ¨ç¯å¢ƒå…‰ä¸Šçš„äº®åº¦
+	float	m_fAmbientFactor;			// ç¯å¢ƒå…‰æ¯”ä¾‹å› å­
 
-	char	m_szRainSound[80];			// ÏÂÓêÉù
-	char	m_szFlareSounds[3][80];		// ´òÀ×Éù
+	char	m_szRainSound[80];			// ä¸‹é›¨å£°
+	char	m_szFlareSounds[3][80];		// æ‰“é›·å£°
 	KWavSound *m_pSound;
-	int		m_nSoundVolume;				// ÏÂÓêÉùÒôÁ¿
+	int		m_nSoundVolume;				// ä¸‹é›¨å£°éŸ³é‡
 
 private:
 };
@@ -151,7 +151,7 @@ public:
 	virtual void Breath();
 	virtual void Render(iRepresentShell *pRepresent);
 private:
-	bool	m_bIsShutDown;				// ÊÇ·ñÒÑ¾­¹Ø±Õ
+	bool	m_bIsShutDown;				// æ˜¯å¦å·²ç»å…³é—­
 
 private:
 };

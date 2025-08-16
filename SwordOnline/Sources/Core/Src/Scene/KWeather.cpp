@@ -23,14 +23,14 @@ KWeather::~KWeather()
 
 void KWeather::Breath()
 {
-	// Èç¹û³¬³öÉùÃ÷ÆÚÔò¹Ø±ÕÌìÆøĞ§¹û
+	// å¦‚æœè¶…å‡ºå£°æ˜æœŸåˆ™å…³é—­å¤©æ°”æ•ˆæœ
 	int nCurTime = g_SubWorldSet.GetGameTime();
 	if(nCurTime - m_nStartTime > m_nLifeTime)
 		ShutDown();
 }
 
 //*********************************************************************************************
-//KWeatherRainµÄÊµÏÖ
+//KWeatherRainçš„å®ç°
 //*********************************************************************************************
 KWeatherRain::KWeatherRain()
 {
@@ -111,7 +111,7 @@ void KWeatherRain::Breath()
 
 	if(m_bIsShutingDown)
 	{
-		// ÓêÊÆ¼õĞ¡£¬ÂıÂıÍ£Ö¹
+		// é›¨åŠ¿å‡å°ï¼Œæ…¢æ…¢åœæ­¢
 		m_flareColorAdd.SetColor(0, 0, 0);
 		if(m_fAmbientFactor < 1.0f)
 		{
@@ -144,9 +144,9 @@ void KWeatherRain::Breath()
 	if(m_pSound)
 		m_pSound->SetVolume(m_nSoundVolume);
 
-	// ÒªÉú³ÉµÄÁ£×ÓÊıÄ¿
+	// è¦ç”Ÿæˆçš„ç²’å­æ•°ç›®
 	int nCreateNum = m_nParticleNum / 20;
-	// Éú³ÉÁ£×Ó
+	// ç”Ÿæˆç²’å­
 	int nZOff = m_nDownSpeed / 20;
 	KParticle particle;
 	for(int j=0; j<nCreateNum; j++)
@@ -161,7 +161,7 @@ void KWeatherRain::Breath()
 		m_ParticleList.push_back(particle);
 	}
 
-	//¸üĞÂËùÓĞÁ£×Ó£¬ÒÑÂäµØµÄÔòÉ¾³ı
+	//æ›´æ–°æ‰€æœ‰ç²’å­ï¼Œå·²è½åœ°çš„åˆ™åˆ é™¤
 	list<KParticle>::iterator i;
 	for (i = m_ParticleList.begin(); i != m_ParticleList.end(); )
 	{
@@ -179,14 +179,14 @@ void KWeatherRain::Breath()
 
 	if(m_nFlareTime > 0 && !m_bIsShutingDown)
 	{
-		// ´¦ÀíÉÁµç
+		// å¤„ç†é—ªç”µ
 		int tmCur = g_SubWorldSet.GetGameTime();
 		switch (m_nFlareState)
 		{
 		case -1:
 			if(tmCur - m_nLastFlareTime > m_nFlareDelay)
 			{
-				// Ê±¼äµ½£¬´¦ÀíÉÁµç
+				// æ—¶é—´åˆ°ï¼Œå¤„ç†é—ªç”µ
 				m_nFlareStateStart = tmCur;
 				m_nFlareStateDelay = 2 + g_Random(3);
 				m_nFlareState = 0;
@@ -199,7 +199,7 @@ void KWeatherRain::Breath()
 		case 0:
 			if(tmCur - m_nFlareStateStart > m_nFlareStateDelay)
 			{
-				// ½×¶Î0½áÊø
+				// é˜¶æ®µ0ç»“æŸ
 				m_nFlareStateStart = tmCur;
 				m_nFlareStateDelay = 2 + g_Random(2);
 				m_nFlareState = 1;
@@ -210,7 +210,7 @@ void KWeatherRain::Breath()
 		case 1:
 			if(tmCur - m_nFlareStateStart > m_nFlareStateDelay)
 			{
-				// ½×¶Î1½áÊø
+				// é˜¶æ®µ1ç»“æŸ
 				m_nFlareStateStart = tmCur;
 				m_nFlareStateDelay = 2 + g_Random(2);
 				m_nFlareState = 2;
@@ -221,7 +221,7 @@ void KWeatherRain::Breath()
 		case 2:
 			if(tmCur - m_nFlareStateStart > m_nFlareStateDelay)
 			{
-				// ½×¶Î2½áÊø
+				// é˜¶æ®µ2ç»“æŸ
 				m_nFlareStateStart = tmCur;
 				m_nFlareStateDelay = 8 + g_Random(10);
 				m_nFlareState = 3;
@@ -231,7 +231,7 @@ void KWeatherRain::Breath()
 		case 3:
 			if(tmCur - m_nFlareStateStart > m_nFlareStateDelay)
 			{
-				// ½×¶Î3½áÊø
+				// é˜¶æ®µ3ç»“æŸ
 				KWavSound * pSound = NULL;
 				KCacheNode *pSndNode = NULL;
 				g_SetFilePath("\\");
@@ -249,7 +249,7 @@ void KWeatherRain::Breath()
 		}
 	}
 
-	// Õâ¸öÒªÔÚº¯Êı×îºóµ÷ÓÃ£¬ÒòÎªÄÚ²¿ĞŞ¸ÄÁËm_nLastBreathTime
+	// è¿™ä¸ªè¦åœ¨å‡½æ•°æœ€åè°ƒç”¨ï¼Œå› ä¸ºå†…éƒ¨ä¿®æ”¹äº†m_nLastBreathTime
 	KWeather::Breath();
 }
 
@@ -267,7 +267,7 @@ void KWeatherRain::Render(iRepresentShell *pRepresent)
 	list<KParticle>::iterator i;
 	for (i = m_ParticleList.begin(); i != m_ParticleList.end(); i++)
 	{
-		// ¼ÆËãÓêµãµÄ³¤¶È
+		// è®¡ç®—é›¨ç‚¹çš„é•¿åº¦
 		int nLen = 35 + (i->m_vPos.nY - m_nFocusPosY) / 60;
 		nLen = nLen * m_nLenRate / 100;
 		if(nLen < 0)
@@ -306,7 +306,7 @@ void KWeatherRain::FilterAmbient(DWORD &dwLight)
 }
 
 //*********************************************************************************************
-//KWeatherSnowµÄÊµÏÖ
+//KWeatherSnowçš„å®ç°
 //*********************************************************************************************
 bool KWeatherSnow::ReadInfoFromIniFile(int nWeatherID)
 {
@@ -345,9 +345,9 @@ void KWeatherSnow::Breath()
 	{
 	}
 
-	// ÒªÉú³ÉµÄÁ£×ÓÊıÄ¿
+	// è¦ç”Ÿæˆçš„ç²’å­æ•°ç›®
 	int nCreateNum = m_nParticleNum / 20;
-	// Éú³ÉÁ£×Ó
+	// ç”Ÿæˆç²’å­
 	int nZOff = m_nDownSpeed / 20;
 	KParticle particle;
 	for(int j=0; j<nCreateNum; j++)
@@ -363,7 +363,7 @@ void KWeatherSnow::Breath()
 		m_ParticleList.push_back(particle);
 	}
 
-	//¸üĞÂËùÓĞÁ£×Ó£¬ÒÑÂäµØµÄÔòÉ¾³ı
+	//æ›´æ–°æ‰€æœ‰ç²’å­ï¼Œå·²è½åœ°çš„åˆ™åˆ é™¤
 	list<KParticle>::iterator i;
 	for (i = m_ParticleList.begin(); i != m_ParticleList.end(); )
 	{
@@ -388,7 +388,7 @@ void KWeatherSnow::Breath()
 		++i;
 	}
 
-	// Õâ¸öÒªÔÚº¯Êı×îºóµ÷ÓÃ£¬ÒòÎªÄÚ²¿ĞŞ¸ÄÁËm_nLastBreathTime
+	// è¿™ä¸ªè¦åœ¨å‡½æ•°æœ€åè°ƒç”¨ï¼Œå› ä¸ºå†…éƒ¨ä¿®æ”¹äº†m_nLastBreathTime
 	KWeather::Breath();
 }
 

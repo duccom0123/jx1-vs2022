@@ -3,7 +3,7 @@
 //
 // File:	KMapMusic.cpp
 // Date:	2003-5-18 17:22
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 //---------------------------------------------------------------------------
 #include "KCore.h"
 
@@ -15,7 +15,7 @@
 	(-10000 + (m_nGameVolume * m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_nVolume * m_nWeatherVolume) / 100)
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 KMapMusic::KMapMusic()
 {
@@ -45,7 +45,7 @@ KMapMusic::KMapMusic()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎö¹¹º¯Êı
+//	åŠŸèƒ½ï¼šææ„å‡½æ•°
 //---------------------------------------------------------------------------
 KMapMusic::~KMapMusic()
 {
@@ -53,7 +53,7 @@ KMapMusic::~KMapMusic()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇå¿Õ
+//	åŠŸèƒ½ï¼šæ¸…ç©º
 //---------------------------------------------------------------------------
 void	KMapMusic::Release()
 {
@@ -77,7 +77,7 @@ void	KMapMusic::Release()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈëµØÍ¼ÒôÀÖĞÅÏ¢
+//	åŠŸèƒ½ï¼šè½½å…¥åœ°å›¾éŸ³ä¹ä¿¡æ¯
 //---------------------------------------------------------------------------
 void	KMapMusic::LoadSetFile()
 {
@@ -148,7 +148,7 @@ void	KMapMusic::LoadSetFile()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯£¬ÔØÈëµØÍ¼ÒôÀÖĞÅÏ¢
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–ï¼Œè½½å…¥åœ°å›¾éŸ³ä¹ä¿¡æ¯
 //---------------------------------------------------------------------------
 void	KMapMusic::Init()
 {
@@ -159,8 +159,8 @@ void	KMapMusic::Init()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÓÎÏ·ÊÀ½çÒôÀÖ²¥·Å
-//	²ÎÊı£ºnMapID µØÍ¼id    nGameTime ÓÎÏ·Ê±¼ä(0 -- 1440)
+//	åŠŸèƒ½ï¼šæ¸¸æˆä¸–ç•ŒéŸ³ä¹æ’­æ”¾
+//	å‚æ•°ï¼šnMapID åœ°å›¾id    nGameTime æ¸¸æˆæ—¶é—´(0 -- 1440)
 //---------------------------------------------------------------------------
 void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 {
@@ -193,16 +193,16 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 
 	// 	if (m_nState == enumMUSIC_STATE_AUTO)
 
-	// ·ÇÕ½¶·Ä£Ê½
+	// éæˆ˜æ–—æ¨¡å¼
 	if (!bFightMode)
 	{
 		nGameTime %= defGAME_TIME_ONE_DAY;
-		// Èç¹û»»ÁËµØÍ¼£¬»òÕß´ÓÕ½¶·Ä£Ê½±ä³É·ÇÕ½¶·Ä£Ê½
+		// å¦‚æœæ¢äº†åœ°å›¾ï¼Œæˆ–è€…ä»æˆ˜æ–—æ¨¡å¼å˜æˆéæˆ˜æ–—æ¨¡å¼
 		if (nMapID != m_nCurMapID || m_bFightMode)
 		{
 			m_nCurMapID = nMapID;
 			m_bFightMode = bFightMode;
-			// ²éÕÒµ±Ç°Ó¦¸Ã²¥·ÅÄÄÒ»Ê×ÒôÀÖ
+			// æŸ¥æ‰¾å½“å‰åº”è¯¥æ’­æ”¾å“ªä¸€é¦–éŸ³ä¹
 			for (i = 0; i < m_nInfoSize; i++)
 			{
 				if (this->m_pMusicInfo[i].m_nMapID == nMapID)
@@ -222,15 +222,15 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 				}
 			}
 
-			// ÕÒµ½ÁËµ±Ç°Ó¦¸Ã²¥·ÅÄÄÒ»Ê×ÒôÀÖ£¬´¦ÀíÖ®
-			// Èç¹ûµ±Ç°ÕıÔÚ²¥·ÅÓ¦¸Ã²¥·ÅµÄÒôÀÖ£¬¼ÌĞø
+			// æ‰¾åˆ°äº†å½“å‰åº”è¯¥æ’­æ”¾å“ªä¸€é¦–éŸ³ä¹ï¼Œå¤„ç†ä¹‹
+			// å¦‚æœå½“å‰æ­£åœ¨æ’­æ”¾åº”è¯¥æ’­æ”¾çš„éŸ³ä¹ï¼Œç»§ç»­
 			if (g_pMusic->IsPlaying() && 
 				strcmp(m_szCurName, m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_szFileName) == 0)
 			{
 				g_pMusic->SetVolume(GAMEVALUE_TO_HUNDREDTHS_OF_DECIBELS);
 				return;
 			}
-			// ²¥·ÅÓ¦¸Ã²¥·ÅµÄÒôÀÖ
+			// æ’­æ”¾åº”è¯¥æ’­æ”¾çš„éŸ³ä¹
 			strcpy(m_szCurName, m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_szFileName);
 			if (!m_szCurName[0])
 				return;
@@ -245,7 +245,7 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 			return;
 		}
 
-		// Õı³£²¥·Å£¬Ñ­»·Ö®
+		// æ­£å¸¸æ’­æ”¾ï¼Œå¾ªç¯ä¹‹
 		if (m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_nStartTime <= nGameTime &&
 			nGameTime <= m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_nEndTime)
 		{
@@ -265,7 +265,7 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 			return;
 		}
 
-		// Ê±¼äÇøÓò±äÁË£¬»»ÒôÀÖ
+		// æ—¶é—´åŒºåŸŸå˜äº†ï¼Œæ¢éŸ³ä¹
 		m_nCurMusicNo = 0;
 		for (i = 0; i < defONE_MAP_MAX_MUSIC; i++)
 		{
@@ -277,14 +277,14 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 			}
 		}
 
-		// Èç¹ûÍ¬Ãû£¬¼ÌĞø²¥·Å
+		// å¦‚æœåŒåï¼Œç»§ç»­æ’­æ”¾
 		if (strcmp(m_szCurName, m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_szFileName) == 0)
 		{
 			g_pMusic->SetVolume(GAMEVALUE_TO_HUNDREDTHS_OF_DECIBELS);
 			return;
 		}
 
-		// ²»Í¬Ãû£¬»»ÒôÀÖ
+		// ä¸åŒåï¼Œæ¢éŸ³ä¹
 		strcpy(m_szCurName, m_pMusicInfo[m_nCurInfoNo].m_sMusic[m_nCurMusicNo].m_szFileName);
 		g_pMusic->Stop();
 //		g_SetFilePath("\\");
@@ -294,16 +294,16 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 			g_pMusic->Play(FALSE);
 		}
 	}
-	// Õ½¶·Ä£Ê½
+	// æˆ˜æ–—æ¨¡å¼
 	else
 	{
 		int		nFind;
-		// Èç¹û»»ÁËµØÍ¼£¬»òÕß´Ó·ÇÕ½¶·Ä£Ê½±ä³ÉÕ½¶·Ä£Ê½
+		// å¦‚æœæ¢äº†åœ°å›¾ï¼Œæˆ–è€…ä»éæˆ˜æ–—æ¨¡å¼å˜æˆæˆ˜æ–—æ¨¡å¼
 		if (nMapID != m_nCurMapID || !m_bFightMode)
 		{
 			m_bFightMode = bFightMode;
 			m_nCurMapID = nMapID;
-			// ²éÕÒµ±Ç°µØÍ¼ÔÚÄÄ¸öÇøÓò
+			// æŸ¥æ‰¾å½“å‰åœ°å›¾åœ¨å“ªä¸ªåŒºåŸŸ
 			nFind = 0;
 			for (i = 0; i < defMUSIC_MAX_STAGE; i++)
 			{
@@ -322,11 +322,11 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 				if (nFind)
 					break;
 			}
-			// ÕÒµ½ÁËµ±Ç°µØÍ¼ÔÚÄÄ¸öÇøÓò£¬´¦ÀíÖ®
+			// æ‰¾åˆ°äº†å½“å‰åœ°å›¾åœ¨å“ªä¸ªåŒºåŸŸï¼Œå¤„ç†ä¹‹
 			if (nFind)
 			{
 				m_nCurStage = i;
-				// ÅĞ¶Ïµ±Ç°²¥·ÅµÄÒôÀÖÊÇ·ñÊÇ±¾ÇøÓòµÄ£¬Èç¹ûÊÇ£¬²»ÖĞ¶Ï£¬·ñÔòÖØĞÂÕÒÒ»Ê×ÒôÀÖ
+				// åˆ¤æ–­å½“å‰æ’­æ”¾çš„éŸ³ä¹æ˜¯å¦æ˜¯æœ¬åŒºåŸŸçš„ï¼Œå¦‚æœæ˜¯ï¼Œä¸ä¸­æ–­ï¼Œå¦åˆ™é‡æ–°æ‰¾ä¸€é¦–éŸ³ä¹
 				nFind = 0;
 				for (i = 0; i < defMUSIC_STATE_MAX_MUSIC; i++)
 				{
@@ -338,10 +338,10 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 						break;
 					}
 				}
-				// µ±Ç°²¥·ÅµÄÒôÀÖÕıÊÇ±¾ÇøÓòµÄ£¬²»´¦ÀíÁË
+				// å½“å‰æ’­æ”¾çš„éŸ³ä¹æ­£æ˜¯æœ¬åŒºåŸŸçš„ï¼Œä¸å¤„ç†äº†
 				if (nFind)
 					return;
-				// µ±Ç°²¥·ÅµÄÒôÀÖ²»ÊÇ±¾ÇøÓòµÄ£¬ÖĞ¶Ï£¬ÖØĞÂÕÒÒ»Ê×ÒôÀÖ
+				// å½“å‰æ’­æ”¾çš„éŸ³ä¹ä¸æ˜¯æœ¬åŒºåŸŸçš„ï¼Œä¸­æ–­ï¼Œé‡æ–°æ‰¾ä¸€é¦–éŸ³ä¹
 				g_pMusic->Stop();
 				m_nCurMusicNo = g_Random(m_sFightMusic[m_nCurStage].m_nMusicNum);
 				strcpy(m_szCurName, m_sFightMusic[m_nCurStage].m_szMusicName[m_nCurMusicNo]);
@@ -355,13 +355,13 @@ void	KMapMusic::Play(int nMapID, int nGameTime, BOOL bFightMode)
 			return;
 		}
 
-		// Èç¹ûÒôÀÖÕıÔÚ²¥·Å£¬Ö»ĞèÒªÉè¶¨ÒôÁ¿´óĞ¡
+		// å¦‚æœéŸ³ä¹æ­£åœ¨æ’­æ”¾ï¼Œåªéœ€è¦è®¾å®šéŸ³é‡å¤§å°
 		if (g_pMusic->IsPlaying())
 		{
 			g_pMusic->SetVolume(GAMEVALUE_TO_HUNDREDTHS_OF_DECIBELS);
 			return;
 		}
-		// Èç¹ûÒôÀÖ²¥·Å½áÊø£¬ÖØĞÂÕÒÒ»Ê×ÒôÀÖ£¬²¥·ÅÖ®
+		// å¦‚æœéŸ³ä¹æ’­æ”¾ç»“æŸï¼Œé‡æ–°æ‰¾ä¸€é¦–éŸ³ä¹ï¼Œæ’­æ”¾ä¹‹
 		else
 		{
 			if (m_nCurStage < 0 || m_sFightMusic[m_nCurStage].m_nMusicNum <= 0)
@@ -390,7 +390,7 @@ void	KMapMusic::Stop()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨ÓÎÏ·ÒôÀÖ×ÜÌåÒôÁ¿´óĞ¡(0(ÎŞÉù) -- 100(Õı³£))
+//	åŠŸèƒ½ï¼šè®¾å®šæ¸¸æˆéŸ³ä¹æ€»ä½“éŸ³é‡å¤§å°(0(æ— å£°) -- 100(æ­£å¸¸))
 //---------------------------------------------------------------------------
 void	KMapMusic::SetGameVolume(int nVolume)
 {
@@ -407,7 +407,7 @@ void	KMapMusic::SetGameVolume(int nVolume)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉè¶¨ÌìÆø¶ÔÒôÀÖÒôÁ¿´óĞ¡µÄÓ°Ïì(0(ÎŞÉù) -- 100(Õı³£))
+//	åŠŸèƒ½ï¼šè®¾å®šå¤©æ°”å¯¹éŸ³ä¹éŸ³é‡å¤§å°çš„å½±å“(0(æ— å£°) -- 100(æ­£å¸¸))
 //---------------------------------------------------------------------------
 void	KMapMusic::SetWeatherVolume(int nVolume)
 {
@@ -421,7 +421,7 @@ void	KMapMusic::SetWeatherVolume(int nVolume)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º½øÈëÓÎÏ·»òÕßÒôÀÖÉè¶¨´ò¿ªµÄÊ±ºò£¬²¥·ÅÒôÀÖ
+//	åŠŸèƒ½ï¼šè¿›å…¥æ¸¸æˆæˆ–è€…éŸ³ä¹è®¾å®šæ‰“å¼€çš„æ—¶å€™ï¼Œæ’­æ”¾éŸ³ä¹
 //---------------------------------------------------------------------------
 void	KMapMusic::Start(int nMapID, int nGameTime, BOOL bFightMode)
 {

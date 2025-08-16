@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiGetString.h
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2003-3-18
-//	¹¦ÄÜÃèÊö	£º	»ñµÃ×Ö´®½çÃæ
+//	æ–‡ä»¶å		ï¼š	UiGetString.h
+//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-3-18
+//	åŠŸèƒ½æè¿°	ï¼š	è·å¾—å­—ä¸²ç•Œé¢
 // -------------------------------------------------------------------------
 #ifndef __UiGetString_H__
 #define __UiGetString_H__
@@ -23,18 +23,18 @@ enum GET_STRING_ACTION
 class KUiGetString : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
 	static KUiGetString*	OpenWindow(GET_STRING_ACTION eAction, const char* pszTitle,
 				const char* pszInitString,				
 				KWndWindow* pRequester, unsigned int uParam, int nMaxNum = 0,
-				int nMinLen = 0, int nMaxLen = 16);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+				int nMinLen = 0, int nMaxLen = 16);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static KUiGetString*	GetIfVisible();
-	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
+	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
 private:
 	KUiGetString();
 	~KUiGetString() {}
-	void	Initialize();								//³õÊ¼»¯
+	void	Initialize();								//åˆå§‹åŒ–
 	void	Show();
 	void	Hide();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);

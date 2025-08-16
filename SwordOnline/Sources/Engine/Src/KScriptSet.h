@@ -10,36 +10,36 @@
 #define _KSCRIPTSET_H
 #include "KScript.h"
 #include "KLuaScript.h"
-#define MAXSCRIPTNUM 100 // ×î´ó½Å±¾Á¿
+#define MAXSCRIPTNUM 100 // æœ€å¤§è„šæœ¬é‡
 #define KEY_NUMBER  0
 #define KEY_STRING  1
 
 struct TScript  
 {
-	char szKey[32];	//¹Ø¼ü×Ö¿ÉÒÔÊÇ½Å±¾¶ÔÓ¦µÄÎÄ¼şÃû»òÆäËü
-	DWORD nKey;//¹Ø¼ü×ÖÎªÊı×Ö
-	KScript * pScript;	//¶ÔÓ¦µÄ½Å±¾ÊµÀıµÄµØÖ·
-	TScript * pParent;		//¸¸
-	TScript * pLeftChild;	//×ó×Ó
-	TScript * pRightChild;	//ÓÒ×Ó
-	TScript * pMoreRecent;	//±ÈÖ®×î½üµÄ
-	TScript * pLessRecent;	//±ÈÖ®×î³ÙµÄ
-};//°´ÕÕÎÄ¼şÃû»òÆäËüÊôĞÔ×÷Îª½Å±¾±êÊ¶µÄÅÅĞò¶ş²æÊ÷
+	char szKey[32];	//å…³é”®å­—å¯ä»¥æ˜¯è„šæœ¬å¯¹åº”çš„æ–‡ä»¶åæˆ–å…¶å®ƒ
+	DWORD nKey;//å…³é”®å­—ä¸ºæ•°å­—
+	KScript * pScript;	//å¯¹åº”çš„è„šæœ¬å®ä¾‹çš„åœ°å€
+	TScript * pParent;		//çˆ¶
+	TScript * pLeftChild;	//å·¦å­
+	TScript * pRightChild;	//å³å­
+	TScript * pMoreRecent;	//æ¯”ä¹‹æœ€è¿‘çš„
+	TScript * pLessRecent;	//æ¯”ä¹‹æœ€è¿Ÿçš„
+};//æŒ‰ç…§æ–‡ä»¶åæˆ–å…¶å®ƒå±æ€§ä½œä¸ºè„šæœ¬æ ‡è¯†çš„æ’åºäºŒå‰æ ‘
 
 
-//¶ş²æÊ÷½á¹¹±ê×¼º¯Êı
+//äºŒå‰æ ‘ç»“æ„æ ‡å‡†å‡½æ•°
 extern TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, char * szKey, BOOL * pResult);
-extern DWORD BTPreorder(TScript * pTScript);//ÖĞĞò±éÀúÅÅĞò¶ş²æÊ÷
+extern DWORD BTPreorder(TScript * pTScript);//ä¸­åºéå†æ’åºäºŒå‰æ ‘
 extern TScript * BTInsert(TScript *pTScript, char * szKey);
 extern TScript * BTFindLess(TScript * pTScript);
 extern TScript * BTSearch(TScript * pParentTScript, TScript * pTScript, DWORD nKey, BOOL * pResult);
-extern DWORD BTPreorder(TScript * pTScript);//ÖĞĞò±éÀúÅÅĞò¶ş²æÊ÷
+extern DWORD BTPreorder(TScript * pTScript);//ä¸­åºéå†æ’åºäºŒå‰æ ‘
 extern TScript * BTInsert(TScript *pTScript, DWORD nKey);
 extern TScript *  BTDelete(TScript * pTScript, TScript ** ppRootTScript, int nKeyStyle);
 
 
 //---------------------------------------------------------------------------
-class ENGINE_API KScriptSet //½Å±¾¼¯ºÏ¿ØÖÆÀà
+class ENGINE_API KScriptSet //è„šæœ¬é›†åˆæ§åˆ¶ç±»
 {		
 public:		
 	KScriptSet();
@@ -48,17 +48,17 @@ public:
 	KScriptSet(int Key_Style);
 
 	
-	KScript * GetScript(char * szKey, BOOL nNeedCreate, BOOL nNeedUpdateRecent);	//¸ù¾İ¹Ø¼ü×Ö»ñµÃ½Å±¾	
+	KScript * GetScript(char * szKey, BOOL nNeedCreate, BOOL nNeedUpdateRecent);	//æ ¹æ®å…³é”®å­—è·å¾—è„šæœ¬	
 	KScript * GetScript(DWORD nKey, BOOL nNeedCreate, BOOL nNeedUpdateRecent);
 	DWORD  ListScriptsKey();
 	DWORD  ListRecent(int order);
 	
-	TScript *  SearchScript(char * szKey, BOOL *pnResult);//²éÕÒ¹Ø¼ü×ÖµÄ½áµã£¬Èô´æÔÚÔò*pnResult = 1£¬·µ»Ø¸Ã½áµã£»·ñÔò*pnResult = 0,·µ»Ø½Ó½üµã¡£
-	TScript *  SearchScript(DWORD nKey, BOOL *pnResult);//²éÕÒ¹Ø¼ü×ÖµÄ½áµã£¬Èô´æÔÚÔò*pnResult = 1£¬·µ»Ø¸Ã½áµã£»·ñÔò*pnResult = 0,·µ»Ø½Ó½üµã¡£
-	BOOL DeleteScript(char * szKey);//É¾³ı¹Ø¼ü×ÖµÄ½áµã
-	BOOL DeleteScript(DWORD szKey);//É¾³ı¹Ø¼ü×ÖµÄ½áµã
+	TScript *  SearchScript(char * szKey, BOOL *pnResult);//æŸ¥æ‰¾å…³é”®å­—çš„ç»“ç‚¹ï¼Œè‹¥å­˜åœ¨åˆ™*pnResult = 1ï¼Œè¿”å›è¯¥ç»“ç‚¹ï¼›å¦åˆ™*pnResult = 0,è¿”å›æ¥è¿‘ç‚¹ã€‚
+	TScript *  SearchScript(DWORD nKey, BOOL *pnResult);//æŸ¥æ‰¾å…³é”®å­—çš„ç»“ç‚¹ï¼Œè‹¥å­˜åœ¨åˆ™*pnResult = 1ï¼Œè¿”å›è¯¥ç»“ç‚¹ï¼›å¦åˆ™*pnResult = 0,è¿”å›æ¥è¿‘ç‚¹ã€‚
+	BOOL DeleteScript(char * szKey);//åˆ é™¤å…³é”®å­—çš„ç»“ç‚¹
+	BOOL DeleteScript(DWORD szKey);//åˆ é™¤å…³é”®å­—çš„ç»“ç‚¹
 	
-	DWORD GetCount(){return ListRecent(0);};	//»ñµÃµ±Ç°½áµãÊıÁ¿
+	DWORD GetCount(){return ListRecent(0);};	//è·å¾—å½“å‰ç»“ç‚¹æ•°é‡
 	int	  GetKeyStyle(){return m_nKeyStyle;	};
 	
 	virtual BOOL	Run(char * szKey);
@@ -68,24 +68,24 @@ public:
 	virtual BOOL	RunFunction(char * szKey, char * szFuncName, char * szFormat, ...);
 		 
 //protected:
-	TScript * m_pRootList;		//¶ş²æÊ÷¸ùÖ§µã
-	TScript * m_pMostRecent;	//×îĞÂÊ¹ÓÃ½Å±¾
-	TScript * m_pLestRecent;	//×îÀÏÊ¹ÓÃ½Å±¾
+	TScript * m_pRootList;		//äºŒå‰æ ‘æ ¹æ”¯ç‚¹
+	TScript * m_pMostRecent;	//æœ€æ–°ä½¿ç”¨è„šæœ¬
+	TScript * m_pLestRecent;	//æœ€è€ä½¿ç”¨è„šæœ¬
 	
 	virtual KScript *  CreateScript(char * szKey , int StackSize); 
 	virtual KScript *  CreateScript(DWORD nKey , int StackSize); 
 	virtual	char * GetScriptFileNameFromKey(char * szKey){ return szKey;};
 	virtual char * GetScriptFileNameFromKey(DWORD nKey){return NULL;}
 	
-	virtual int  GetInitStackSize(char * szKey);//ÔÚ½øĞĞ³õÊ¼»¯Ê±£¬»ñµÃ½Å±¾¶ÑµÄ´óĞ¡
-	virtual int  GetInitStackSize(DWORD nKey);//ÔÚ½øĞĞ³õÊ¼»¯Ê±£¬»ñµÃ½Å±¾¶ÑµÄ´óĞ¡
+	virtual int  GetInitStackSize(char * szKey);//åœ¨è¿›è¡Œåˆå§‹åŒ–æ—¶ï¼Œè·å¾—è„šæœ¬å †çš„å¤§å°
+	virtual int  GetInitStackSize(DWORD nKey);//åœ¨è¿›è¡Œåˆå§‹åŒ–æ—¶ï¼Œè·å¾—è„šæœ¬å †çš„å¤§å°
 	
-	TScript * InsertScript(char * szKey);//²åÈëÒÔ¸Ã¹Ø¼ü×ÖµÄ½áµã
-	TScript * InsertScript(DWORD nKey);//²åÈëÒÔ¸Ã¹Ø¼ü×ÖµÄ½áµã
-	BOOL DeleteScript(TScript * pTScript);//É¾³ı½áµã
+	TScript * InsertScript(char * szKey);//æ’å…¥ä»¥è¯¥å…³é”®å­—çš„ç»“ç‚¹
+	TScript * InsertScript(DWORD nKey);//æ’å…¥ä»¥è¯¥å…³é”®å­—çš„ç»“ç‚¹
+	BOOL DeleteScript(TScript * pTScript);//åˆ é™¤ç»“ç‚¹
 	
 	void UpdateRecent(BOOL bExistedScript, TScript * pTScript);
-	int m_nKeyStyle ;//¹Ø¼ü×ÖµÄÀàĞÍ ÓĞÁ½ÖÖ Êı×ÖÓë×Ö·û´®£¬Öµ·Ö±ğÎª KEY_NUMER KEY_STRING
+	int m_nKeyStyle ;//å…³é”®å­—çš„ç±»å‹ æœ‰ä¸¤ç§ æ•°å­—ä¸å­—ç¬¦ä¸²ï¼Œå€¼åˆ†åˆ«ä¸º KEY_NUMER KEY_STRING
 	
 	
 

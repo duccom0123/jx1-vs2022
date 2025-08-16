@@ -32,23 +32,23 @@ typedef struct
 	BOOL	bTemp;
 	int		nItemNature;
 	int		nTradePrice;
-	int		nItemGenre;				// µÀ¾ßÖÖÀà (ÎäÆ÷? Ò©Æ·? ¿óÊ¯?)
-	int		nDetailType;			// ÔÚ¸ÃÖÖÀàÖĞµÄ¾ßÌåÀà±ğ
-	int		nParticularType;		// ÏêÏ¸Àà±ğ
-	int		nObjIdx;				// µØÍ¼ÉÏ°Ú·ÅÊ±¶ÔÓ¦µÄÎï¼şÊı¾İ±àºÅ
-	int		nWidth;					// µÀ¾ßÀ¸ÖĞËùÕ¼¿í¶È
-	int		nHeight;				// µÀ¾ßÀ¸ÖĞËùÕ¼¸ß¶È
-	int		nPrice;					// ¼Û¸ñ
+	int		nItemGenre;				// é“å…·ç§ç±» (æ­¦å™¨? è¯å“? çŸ¿çŸ³?)
+	int		nDetailType;			// åœ¨è¯¥ç§ç±»ä¸­çš„å…·ä½“ç±»åˆ«
+	int		nParticularType;		// è¯¦ç»†ç±»åˆ«
+	int		nObjIdx;				// åœ°å›¾ä¸Šæ‘†æ”¾æ—¶å¯¹åº”çš„ç‰©ä»¶æ•°æ®ç¼–å·
+	int		nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int		nHeight;				// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	int		nPrice;					// ä»·æ ¼
 	int		nNewPrice;
 	BOOL	bNewArrival;
-	int		nLevel;					// µÈ¼¶
-	int		nSeries;				// ÎåĞĞÊôĞÔ
-	char	szItemName[80];			// Ãû³Æ
+	int		nLevel;					// ç­‰çº§
+	int		nSeries;				// äº”è¡Œå±æ€§
+	char	szItemName[80];			// åç§°
 #ifndef _SERVER
-	char	szImageName[80];		// ½çÃæÖĞµÄ¶¯»­ÎÄ¼şÃû
-	char	szIntro[SZBUFLEN_1];			// ËµÃ÷ÎÄ×Ö
+	char	szImageName[80];		// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	char	szIntro[SZBUFLEN_1];			// è¯´æ˜æ–‡å­—
 #endif
-	char	szScript[128];		// ½çÃæÖĞµÄ¶¯»­ÎÄ¼şÃû
+	char	szScript[128];		// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
 	int		nExpirePoint;
 	BOOL	bShortKey;
 	int		nStackNum;
@@ -61,10 +61,10 @@ typedef struct
 	int		nParam;
 	int		nMantle;
 	int		nRow;
-	int		nGroup;					// Ì××°
-	int		nSetID;					// Ì××°Id
-	int		nNeedToActive1;				// Ì××°À©Õ¹
-	int		nNeedToActive2;				// Ì××°À©Õ¹
+	int		nGroup;					// å¥—è£…
+	int		nSetID;					// å¥—è£…Id
+	int		nNeedToActive1;				// å¥—è£…æ‰©å±•
+	int		nNeedToActive2;				// å¥—è£…æ‰©å±•
 	PlayerItem	BackLocal;
 	int		nFortune;
 	int		nUpgradeLvl;
@@ -89,27 +89,27 @@ public:
 	KItem();
 	~KItem();
 
-// ÒÔÏÂÊÇºËĞÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 private:
 	
-	KItemNormalAttrib	m_aryBaseAttrib[7];		// µÀ¾ßµÄ»ù´¡ÊôĞÔ
-	KItemNormalAttrib	m_aryRequireAttrib[6];	// µÀ¾ßµÄĞèÇóÊôĞÔ
+	KItemNormalAttrib	m_aryBaseAttrib[7];		// é“å…·çš„åŸºç¡€å±æ€§
+	KItemNormalAttrib	m_aryRequireAttrib[6];	// é“å…·çš„éœ€æ±‚å±æ€§
 	
 
-// ÒÔÏÂÊÇ¸¨ÖúĞÔµÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æ€§çš„æˆå‘˜å˜é‡
 public:
-	KItemGeneratorParam	m_GeneratorParam;		// µÀ¾ßµÄÉú³É²ÎÊı
-	KItemCommonAttrib	m_CommonAttrib;			// ¸÷ÖÖµÀ¾ßµÄ¹²Í¬ÊôĞÔ
-	KItemNormalAttrib	m_aryMagicAttrib[MAX_ITEM_MAGICATTRIB];	// µÀ¾ßµÄÄ§·¨ÊôĞÔ
+	KItemGeneratorParam	m_GeneratorParam;		// é“å…·çš„ç”Ÿæˆå‚æ•°
+	KItemCommonAttrib	m_CommonAttrib;			// å„ç§é“å…·çš„å…±åŒå±æ€§
+	KItemNormalAttrib	m_aryMagicAttrib[MAX_ITEM_MAGICATTRIB];	// é“å…·çš„é­”æ³•å±æ€§
 private:
-	int		m_nIndex;							// ×ÔÉíÔÚµÀ¾ßÊı×éÖĞµÄË÷Òı
+	int		m_nIndex;							// è‡ªèº«åœ¨é“å…·æ•°ç»„ä¸­çš„ç´¢å¼•
 	DWORD	m_dwOwner;
-	DWORD	m_dwID;								// ¶ÀÁ¢µÄID£¬ÓÃÓÚ¿Í»§¶ËÓë·şÎñÆ÷¶ËµÄ½»Á÷
-	int		m_nCurrentDur;						// µ±Ç°ÄÍ¾Ã¶È
+	DWORD	m_dwID;								// ç‹¬ç«‹çš„IDï¼Œç”¨äºå®¢æˆ·ç«¯ä¸æœåŠ¡å™¨ç«¯çš„äº¤æµ
+	int		m_nCurrentDur;						// å½“å‰è€ä¹…åº¦
 #ifndef _SERVER
 	KRUImage	m_Image;
 #endif
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æ¥å£
 public:
 	void	ApplyMagicAttribToNPC(IN KNpc*, IN int = 0, IN int = 0) const;
 	void	RemoveMagicAttribFromNPC(IN KNpc*, IN int = 0, IN int = 0) const;
@@ -317,7 +317,7 @@ public:
 	char*	GetImageName() {return (char *)m_CommonAttrib.szImageName; };
 #endif
 
-// ÒÔÏÂÊÇ¸¨Öú½Ó¿Ú
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æ¥å£
 friend class	KItemGenerator;
 friend class	KPlayer;
 friend class	KItemList;

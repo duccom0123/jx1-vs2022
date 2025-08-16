@@ -78,7 +78,7 @@ private:
 	void _DelRole( const void *pData, size_t dataLength );
 	void _GetRoleInfo( const void *pData, size_t dataLength );
 	void _RelayExtend( const void *pData, size_t dataLength );
-	void _GetGameStat( const void *pData, size_t dataLength );//·¢ËÍÓÎÏ·Í³¼ÆÊı¾İ(By Fellow,2003.7.22)
+	void _GetGameStat( const void *pData, size_t dataLength );//å‘é€æ¸¸æˆç»Ÿè®¡æ•°æ®(By Fellow,2003.7.22)
 	void _LockOrUnlockRole( const void *pData, size_t dataLength );
 
 	/*

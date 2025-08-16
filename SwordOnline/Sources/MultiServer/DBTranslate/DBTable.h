@@ -1,6 +1,6 @@
 #ifndef DBTABLE_H
 #define DBTABLE_H
-//¶¨ÒåÖ§³Ö¸´ÖÆ¡¢ÊÂÎñ´¦ÀíµÄ£¬¶àË÷Òı¼ÇÂ¼µÄÊı¾İ±íÀà
+//å®šä¹‰æ”¯æŒå¤åˆ¶ã€äº‹åŠ¡å¤„ç†çš„ï¼Œå¤šç´¢å¼•è®°å½•çš„æ•°æ®è¡¨ç±»
 
 #include "db.h"
 
@@ -14,43 +14,43 @@
 typedef int (*GetIndexFunc)(DB *, const DBT *, const DBT *, DBT *);
 
 class ZDBTable {
-	DB *primary_db;												//´æ·ÅÖ÷¼ü-Êı¾İµÄÊı¾İ¿â
-	DB *index_db[MAX_INDEX];									//´æ·ÅË÷Òı-Ö÷¼üµÄÊı¾İ¿â
-	GetIndexFunc get_index_funcs[MAX_INDEX];					//´ÓÊı¾İÖĞ»ñµÃ¶ş¼¶keyµÄµÄº¯ÊıÁĞ±í
-	bool is_index_unique[MAX_INDEX];							//Ë÷ÒıÊÇ·ñÎ¨Ò»
-	int index_number;											//¶ş¼¶Ë÷ÒıÊıÄ¿
+	DB *primary_db;												//å­˜æ”¾ä¸»é”®-æ•°æ®çš„æ•°æ®åº“
+	DB *index_db[MAX_INDEX];									//å­˜æ”¾ç´¢å¼•-ä¸»é”®çš„æ•°æ®åº“
+	GetIndexFunc get_index_funcs[MAX_INDEX];					//ä»æ•°æ®ä¸­è·å¾—äºŒçº§keyçš„çš„å‡½æ•°åˆ—è¡¨
+	bool is_index_unique[MAX_INDEX];							//ç´¢å¼•æ˜¯å¦å”¯ä¸€
+	int index_number;											//äºŒçº§ç´¢å¼•æ•°ç›®
 	char table_name[MAX_TABLE_NAME];
-	DBC *dbcp;													//Ä¿Ç°¿¼ÂÇµ¥Ïß³Ì£¬Ê¹ÓÃÒ»¸öCURSOR
+	DBC *dbcp;													//ç›®å‰è€ƒè™‘å•çº¿ç¨‹ï¼Œä½¿ç”¨ä¸€ä¸ªCURSOR
 protected:
 	char env_path[MAX_TABLE_NAME];
-	DB_ENV *dbenv;												//Êı¾İ¿â»·¾³
-	char *_search(bool bKey, const char *key_ptr, int key_size, int &size, int index);		//ËÑË÷Ö¸¶¨¼ÇÂ¼
-	char *_next(bool bKey, int &size);							//ÏÂÒ»¸ö¼ÇÂ¼
+	DB_ENV *dbenv;												//æ•°æ®åº“ç¯å¢ƒ
+	char *_search(bool bKey, const char *key_ptr, int key_size, int &size, int index);		//æœç´¢æŒ‡å®šè®°å½•
+	char *_next(bool bKey, int &size);							//ä¸‹ä¸€ä¸ªè®°å½•
 public:
-	ZDBTable(const char *path, const char *name);			//»·¾³Ä¿Â¼ºÍÊı¾İ±íµÄÃû×Ö
+	ZDBTable(const char *path, const char *name);			//ç¯å¢ƒç›®å½•å’Œæ•°æ®è¡¨çš„åå­—
 	virtual ~ZDBTable();
 	
-	int addIndex(GetIndexFunc func, bool isUnique = false);		//Ôö¼Ó¶ş¼¶Ë÷Òı
-	bool open();												//´ò¿ªÊı¾İ±í
-	void close();												//¹Ø±ÕÊı¾İ±í
-	bool commit();												//»ùÓÚÊÂÎñµÄÌá½»
-//»ù±¾¼ÇÂ¼²Ù×÷
+	int addIndex(GetIndexFunc func, bool isUnique = false);		//å¢åŠ äºŒçº§ç´¢å¼•
+	bool open();												//æ‰“å¼€æ•°æ®è¡¨
+	void close();												//å…³é—­æ•°æ®è¡¨
+	bool commit();												//åŸºäºäº‹åŠ¡çš„æäº¤
+//åŸºæœ¬è®°å½•æ“ä½œ
 	bool add(const char *key_ptr, int key_size, const char *data_ptr, int data_size);
 	char *search(const char *key_ptr, int key_size, int &size, int index = -1){
-		return _search(false, key_ptr, key_size, size, index);		//ËÑË÷Ö¸¶¨¼ÇÂ¼
+		return _search(false, key_ptr, key_size, size, index);		//æœç´¢æŒ‡å®šè®°å½•
 	}
-	char *next(int &size) {											//ÏÂÒ»¸ö¼ÇÂ¼
+	char *next(int &size) {											//ä¸‹ä¸€ä¸ªè®°å½•
 		return _next(false, size);
 	}
 
-	//±éÀú¼ÍÂ¼¼ÇÂ¼(by Fellow)
+	//éå†çºªå½•è®°å½•(by Fellow)
 	enum CursorPointer{cpFirst=10, cpCurrent=8, cpNext=19, cpLast=18};
-	char *GetRecord(int &size, CursorPointer cpMode, int index = -1);		//È¡µÃ°´ÓÎ±êÄ³Ò»¸öÊı¾İ
-	char *GetRecord_key(int &size, CursorPointer cpMode, int index = -1);	//È¡µÃ°´ÓÎ±êÄ³Ò»¸öÊı¾İµÄKeyÖµ
-	char *search_key(const char *key_ptr, int key_size, int &size, int index = -1) {		//ËÑË÷Ö¸¶¨¼ÇÂ¼£¬·µ»ØÖ÷¼üÖµ
-		return _search(true, key_ptr, key_size, size, index);		//ËÑË÷Ö¸¶¨¼ÇÂ¼
+	char *GetRecord(int &size, CursorPointer cpMode, int index = -1);		//å–å¾—æŒ‰æ¸¸æ ‡æŸä¸€ä¸ªæ•°æ®
+	char *GetRecord_key(int &size, CursorPointer cpMode, int index = -1);	//å–å¾—æŒ‰æ¸¸æ ‡æŸä¸€ä¸ªæ•°æ®çš„Keyå€¼
+	char *search_key(const char *key_ptr, int key_size, int &size, int index = -1) {		//æœç´¢æŒ‡å®šè®°å½•ï¼Œè¿”å›ä¸»é”®å€¼
+		return _search(true, key_ptr, key_size, size, index);		//æœç´¢æŒ‡å®šè®°å½•
 	}
-	char *next_key(int &size) {															//ÏÂÒ»¸ö¼ÇÂ¼£¬·µ»ØÖ÷¼üÖµ
+	char *next_key(int &size) {															//ä¸‹ä¸€ä¸ªè®°å½•ï¼Œè¿”å›ä¸»é”®å€¼
 		return _next(true, size);
 	}
 	bool remove(const char *key_ptr, int key_size, int index = -1);

@@ -18,7 +18,7 @@ typedef struct {
 	DWORD		dwSize;		// Size of data to follow
 	DWORD		WaveId;		// "WAVE"
 	DWORD		fmt_Id;		// "fmt "
-	DWORD		wfSize;		// ÊÇºóÃæ WaveFormat µÄ³¤¶È(=16)
+	DWORD		wfSize;		// æ˜¯åé¢ WaveFormat çš„é•¿åº¦(=16)
 } WAVEHEADER;
 //---------------------------------------------------------------------------
 #ifndef _INC_MMSYSTEM		// <mmsystem.h>

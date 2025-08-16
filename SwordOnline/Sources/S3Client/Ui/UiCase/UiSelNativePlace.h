@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--Ñ¡Ôñ³öÉúµØ´°¿Ú
+//	ç•Œé¢--é€‰æ‹©å‡ºç”Ÿåœ°çª—å£
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-6-7
@@ -24,14 +24,14 @@ struct KNativePlace
 class KUiSelNativePlace : protected KWndShowAnimate
 {
 public:
-	static KUiSelNativePlace* OpenWindow(int nPlaceId = -1);//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static void				 CloseWindow(bool bDestroy);	//¹Ø±Õ´°¿Ú
+	static KUiSelNativePlace* OpenWindow(int nPlaceId = -1);//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static void				 CloseWindow(bool bDestroy);	//å…³é—­çª—å£
 private:
 	KUiSelNativePlace();
 	~KUiSelNativePlace();
-	void	Initialize();						//³õÊ¼»¯
-	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
+	void	Initialize();						//åˆå§‹åŒ–
+	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
 	void	OnOk();
 	void	OnCancel();
 private:

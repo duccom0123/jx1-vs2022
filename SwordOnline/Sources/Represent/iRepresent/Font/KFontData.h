@@ -2,7 +2,7 @@
 // FileName			:	KFontData.h
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2002-9-4
-// FileDescription	:	×ÖÌåÍ¼ĞÎÊı¾İÀàÍ·ÎÄ¼ş
+// FileDescription	:	å­—ä½“å›¾å½¢æ•°æ®ç±»å¤´æ–‡ä»¶
 // Revision Count	:	
 *******************************************************************************/
 #pragma once
@@ -15,38 +15,38 @@
 	#define KFR_MAX_NUM_CHAR	94 * 190	// for BIG5 = 70 KB
 #endif*/
 
-//×Ö¿âÎÄ¼şÎÄ¼şÍ·½á¹¹
+//å­—åº“æ–‡ä»¶æ–‡ä»¶å¤´ç»“æ„
 typedef struct _KFontHead
 {
-	char			Id[4];		// ±êÊ¶
-	unsigned int	Size;		// ´óĞ¡
-	unsigned int	Count;		// ÊıÁ¿
-	unsigned short	Width;		// ¿í¶È
-	unsigned short	Height;		// ¸ß¶È
+	char			Id[4];		// æ ‡è¯†
+	unsigned int	Size;		// å¤§å°
+	unsigned int	Count;		// æ•°é‡
+	unsigned short	Width;		// å®½åº¦
+	unsigned short	Height;		// é«˜åº¦
 }KFontHead;
 
-//×ÖÌåÍ¼ĞÎ×ÊÔ´Àà
+//å­—ä½“å›¾å½¢èµ„æºç±»
 class KFontData
 {
 public:
-	//ÔØÈë×Ö¿âÎÄ¼ş
+	//è½½å…¥å­—åº“æ–‡ä»¶
 	bool			Load(const char* pszFontFile);
-	//½áÊø£¬Çå³ı²Ù×÷
+	//ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 	void			Terminate();
-	//µÃµ½×ÖÌåµÄ¿í¶È¸ß¶È
+	//å¾—åˆ°å­—ä½“çš„å®½åº¦é«˜åº¦
 	void			GetInfo(int& nWidth, int& nHeight) const;
-	//È¡µÃµ¥¸ö×Ö·ûµÄÊı¾İÇø
+	//å–å¾—å•ä¸ªå­—ç¬¦çš„æ•°æ®åŒº
 	unsigned char*	GetCharacterData(unsigned char cFirst, unsigned char cNext) const;
 	
 	KFontData();
 	~KFontData();
 
 protected:
-	unsigned int*	m_pdwOffs;					//Æ«ÒÆ±í
-	unsigned char*	m_pFontData;				//×Ö·ûµãÕóĞÅÏ¢Êı¾İ
-	unsigned int	m_dwDataSize;				//×Ö·ûµãÕóĞÅÏ¢Êı¾İ´æ´¢µÄ´óĞ¡
-	unsigned int	m_uCharCount;				//ÏÖÓĞ×Ö·û¸öÊı
-	int				m_nFontW;					//×Ö·û¿í
-	int				m_nFontH;					//×Ö·û¸ß
+	unsigned int*	m_pdwOffs;					//åç§»è¡¨
+	unsigned char*	m_pFontData;				//å­—ç¬¦ç‚¹é˜µä¿¡æ¯æ•°æ®
+	unsigned int	m_dwDataSize;				//å­—ç¬¦ç‚¹é˜µä¿¡æ¯æ•°æ®å­˜å‚¨çš„å¤§å°
+	unsigned int	m_uCharCount;				//ç°æœ‰å­—ç¬¦ä¸ªæ•°
+	int				m_nFontW;					//å­—ç¬¦å®½
+	int				m_nFontH;					//å­—ç¬¦é«˜
 };
 

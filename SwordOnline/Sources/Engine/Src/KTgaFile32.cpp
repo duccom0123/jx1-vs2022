@@ -13,11 +13,11 @@
 #include "KPakFile.h"
 #include "KTgaFile32.h"
 //---------------------------------------------------------------------------
-// ����:	Load
-// ����:	��TGA�Ŀ�
-// ����:	lpFileName	�ļ���
-// ����:	TRUE		�ɹ�
-//			FALSE		ʧ��
+// 函数:	Load
+// 功能:	打开TGA文科
+// 参数:	lpFileName	文件名
+// 返回:	TRUE		成功
+//			FALSE		失败
 //---------------------------------------------------------------------------
 BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 {
@@ -38,13 +38,13 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 		if((FileHeader.ImageType != 2 && FileHeader.ImageType != 10) 
 			|| FileHeader.ColorMapSpec[4] != 32)
 		{
-			return FALSE;	// ��32λɫ��TGA����TGA
+			return FALSE;	// 非32位色的TGA或不是TGA
 		}
 	}
 
 	if (FileHeader.PixelDep != 32)
 	{
-		return FALSE;	// ��32λTGA
+		return FALSE;	// 非32位TGA
 	}
 
 	if(FileHeader.IDLength)
@@ -64,7 +64,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 	{
 		int nReadSize = File.Read(Buffer.GetMemPtr(), i);
 		if (nReadSize != i)
-			return FALSE;	// �����ļ��д�
+			return FALSE;	// 读的文件有错
 	}
 	else
 	{
@@ -77,7 +77,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 			j = File.Read( TempData, (TempState==0)?1:4 );
 			if( j != ((TempState==0)?1:4) )
 			{
-				return FALSE;// �ļ��д�
+				return FALSE;// 文件有错
 			}
 			
 			if( !TempState )
@@ -87,7 +87,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 			}
 			else
 			{
-				if( TempState == 1 )	// RLE ѹ��
+				if( TempState == 1 )	// RLE 压缩
 				{
 					for(; TempCount>=0 ; TempCount -- )
 					{
@@ -97,7 +97,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 						*(ppData++) = TempData[3];
 					}
 				}
-				else		// NON-RLE ѹ��
+				else		// NON-RLE 压缩
 				{
 					*(ppData++) = TempData[0];
 					*(ppData++) = TempData[1];
@@ -117,7 +117,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 	m_nWidth	= FileHeader.Width;
 	m_nHeight	= FileHeader.Height;
 
-	// ��TGA��ʽ��BufferתΪ��׼��ʽ����Ϊ��B G R A��
+	// 把TGA格式的Buffer转为标准格式（点为：B G R A）
 	BYTE	*pTemp1, *pTemp2, *pTmp1;
 	m_Buffer.Alloc(m_nWidth * m_nHeight * 4);
 
@@ -127,7 +127,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 	int flag = (FileHeader.Desc&0x30)>>4;
 	switch(flag)
 	{
-	case 0:	// ÿ�б�����˳���������ǵ���
+	case 0:	// 每行本身是顺序，行与行是倒的
 		pTemp1 += m_nWidth * m_nHeight * 4;
 		for (j = 0; j < m_nHeight; j++)
 		{
@@ -144,7 +144,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 			}
 		}
 		break;
-	case 1:	// ���е㶼�ǵ���
+	case 1:	// 所有点都是倒的
 		pTemp1 += m_nWidth * m_nHeight * 4;
 		for (i = 0; i < m_nWidth * m_nHeight; i++)
 		{
@@ -156,7 +156,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 			pTemp2 += 4;
 		}
 		break;
-	case 2:	// ���е㶼������
+	case 2:	// 所有点都是正的
 		for (i = 0; i < m_nWidth * m_nHeight; i++)
 		{
 			pTemp2[0]	= pTemp1[2];
@@ -167,7 +167,7 @@ BOOL KTgaFile32::Load2Buffer(LPSTR lpFileName)
 			pTemp2	+= 4;
 		}
 		break;
-	case 3:	// �����������ģ�ÿ�б����ĵ��ǵ���
+	case 3:	// 行与行是正的，每行本身的点是倒的
 		for (j = 0; j < m_nHeight; j++)
 		{
 			pTemp1 += m_nWidth * 4;

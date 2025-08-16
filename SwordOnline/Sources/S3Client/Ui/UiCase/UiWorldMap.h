@@ -1,6 +1,6 @@
 /* 
  * File:     UiWorldMap.h
- * Desc:     世界地图
+ * Desc:     涓栫晫鍦板浘
  * Author:   flying
  * Creation: 2003/7/22
  */
@@ -16,17 +16,17 @@
 class KUiWorldmap : protected KWndImage
 {
 public:
-	static KUiWorldmap* OpenWindow();		//打开窗口，返回唯一的一个类对象实例
-	static void			CloseWindow();		//关闭窗口
+	static KUiWorldmap* OpenWindow();		//鎵撳紑绐楀彛锛岃繑鍥炲敮涓�鐨勪竴涓被瀵硅薄瀹炰緥
+	static void			CloseWindow();		//鍏抽棴绐楀彛
 	static KUiWorldmap*	GetIfVisible();
-	void				LoadScheme(const char* pScheme);	//载入界面方案
+	void				LoadScheme(const char* pScheme);	//杞藉叆鐣岄潰鏂规
 
 private:
 	KUiWorldmap() {}
 	~KUiWorldmap() {}
 	void	Initialize();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	PaintWindow();				//活动函数
+	void	PaintWindow();				//娲诲姩鍑芥暟
 	void	UpdateData();
 private:
 	static KUiWorldmap* m_pSelf;

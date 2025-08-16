@@ -168,7 +168,7 @@ void KUiGive::UpdateData(const char* szName, char* szInitString)
 
 	if (pObjs = (KUiObjAtRegion*)malloc(sizeof(KUiObjAtRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(GDI_ITEM_GIVE, (unsigned int)pObjs, nCount);//µ¥Ïß³ÌÖ´ĞĞ£¬nCountÖµ²»±ä
+		g_pCoreShell->GetGameData(GDI_ITEM_GIVE, (unsigned int)pObjs, nCount);//å•çº¿ç¨‹æ‰§è¡Œï¼ŒnCountå€¼ä¸å˜
 		for (int i = 0; i < nCount; i++)
 			UpdateItem(&pObjs[i], true);
 		free(pObjs);

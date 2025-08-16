@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--´øÒÆ¶¯¿ØÖÆµÄÏÔÊ¾Í¼ĞÎµÄ´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--å¸¦ç§»åŠ¨æ§åˆ¶çš„æ˜¾ç¤ºå›¾å½¢çš„çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-10
@@ -11,7 +11,7 @@
 class KWndMovingImage : public KWndImage
 {
 public:
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
 	void			SetMoveValue(int nCurrentValue, int nFullValue);
 	KWndMovingImage();
 protected:

@@ -2,50 +2,50 @@
 // FileName			:	KFontRes.h
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-12 9:51:04
-// FileDescription	:	3D»æÖÆ·½Ê½×ÖÌåÍ¼ĞÎ×ÊÔ´ÀàÍ·ÎÄ¼ş
-// Revision Count	:	2002-9-4¸ÄĞ´£¬¸ÄÎª»ùÓÚd3d¡£Wooy
+// FileDescription	:	3Dç»˜åˆ¶æ–¹å¼å­—ä½“å›¾å½¢èµ„æºç±»å¤´æ–‡ä»¶
+// Revision Count	:	2002-9-4æ”¹å†™ï¼Œæ”¹ä¸ºåŸºäºd3dã€‚Wooy
 *******************************************************************************/
 #pragma once
 #include <D3d9.h>
 #include "KFontData.h"
 
-//3D»æÖÆ·½Ê½×ÖÌåÍ¼ĞÎ×ÊÔ´Àà
+//3Dç»˜åˆ¶æ–¹å¼å­—ä½“å›¾å½¢èµ„æºç±»
 class KFontRes
 {
 public:
-	//ÆôÓÃ/½ûÓÃÎÄ×Ö±ßÔµĞ§¹û
+	//å¯ç”¨/ç¦ç”¨æ–‡å­—è¾¹ç¼˜æ•ˆæœ
 	static void EnableTextBorder(bool bEnable);
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	bool Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice);
-	//½áÊø£¬Çå³ı²Ù×÷
+	//ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 	void Terminate();
-	//µÃµ½×ÖÌåµÄ¿í¶È¸ß¶È£¬ÌùÍ¼¿ÉÒÔ»º´æµÄ×Ö·ûµÄ¸öÊı
+	//å¾—åˆ°å­—ä½“çš„å®½åº¦é«˜åº¦ï¼Œè´´å›¾å¯ä»¥ç¼“å­˜çš„å­—ç¬¦çš„ä¸ªæ•°
 	void GetInfo(int& nWidth, int& nHeight, int& nHCount, int& nCount) const;
-	//µÃµ½×Ö·ûÔÚÌùÍ¼ÀïµÄ¿í¶È¸ß¶È£¬Ë®Æ½¼ä¸ô£¬ÌùÍ¼¿ÉÒÔ»º´æµÄ×Ö·ûµÄ¸öÊı
+	//å¾—åˆ°å­—ç¬¦åœ¨è´´å›¾é‡Œçš„å®½åº¦é«˜åº¦ï¼Œæ°´å¹³é—´éš”ï¼Œè´´å›¾å¯ä»¥ç¼“å­˜çš„å­—ç¬¦çš„ä¸ªæ•°
 	void GetInfo(float& fWidth, float& fHeight, float& fHInterval, float& fVInterval) const;
-	//¸üĞÂ»º´æ×Ö·û
+	//æ›´æ–°ç¼“å­˜å­—ç¬¦
 	void Update(unsigned short* pUpdates, int nCount);
 	
-	//!µÃµ½ÌùÍ¼¾ä±ú
+	//!å¾—åˆ°è´´å›¾å¥æŸ„
 	LPDIRECT3DTEXTURE9 GetTexture()	const {	return m_pCharTexture;	}
 
 	KFontRes();
 	virtual ~KFontRes();
 
 private:
-	//¸üĞÂµ¥¸ö×Ö·ûµÄµãÕóÊı¾İ
+	//æ›´æ–°å•ä¸ªå­—ç¬¦çš„ç‚¹é˜µæ•°æ®
 	void Update(unsigned char* pCharImage, unsigned char* pTexData, int nTexPitch);
 		
 private:
-	KFontData		m_FontData;					//×Ö¿â×ÊÔ´
-	int				m_nFontW;					//×Ö·û¿í
-	int				m_nFontH;					//×Ö·û¸ß
-	int				m_nNumCountH;				//ÌùÍ¼ÀïÒ»ĞĞ´æ´¢×Ö·ûµÄ¸öÊı
-	int				m_nMaxCount;				//ÌùÍ¼Àï×î¶àÄÜÈİÄÉµÄ×Ö·û¸öÊı	
+	KFontData		m_FontData;					//å­—åº“èµ„æº
+	int				m_nFontW;					//å­—ç¬¦å®½
+	int				m_nFontH;					//å­—ç¬¦é«˜
+	int				m_nNumCountH;				//è´´å›¾é‡Œä¸€è¡Œå­˜å‚¨å­—ç¬¦çš„ä¸ªæ•°
+	int				m_nMaxCount;				//è´´å›¾é‡Œæœ€å¤šèƒ½å®¹çº³çš„å­—ç¬¦ä¸ªæ•°	
 
-	unsigned int		m_nTextureSideWidth;	//×ÖÌåÌùÍ¼µÄ±ß³¤
-	LPDIRECT3DDEVICE9	m_pd3dDevice;			//Direct 3d device½Ó¿ÚµÄÊµÀıµÄÖ¸Õë
-	LPDIRECT3DTEXTURE9	m_pCharTexture;			//ÌùÍ¼¾ä±ú	
+	unsigned int		m_nTextureSideWidth;	//å­—ä½“è´´å›¾çš„è¾¹é•¿
+	LPDIRECT3DDEVICE9	m_pd3dDevice;			//Direct 3d deviceæ¥å£çš„å®ä¾‹çš„æŒ‡é’ˆ
+	LPDIRECT3DTEXTURE9	m_pCharTexture;			//è´´å›¾å¥æŸ„	
 
 	static	int		m_bEnableTextBorder;
 };

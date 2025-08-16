@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--Ñ¡Ïî½çÃæ
+//	ç•Œé¢--é€‰é¡¹ç•Œé¢
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -17,28 +17,28 @@ struct KPopupMenuData;
 enum	SWORD_ONLINE_OPTION_INDEX
 {
 	OPTION_I_START = 0,
-	OPTION_I_DYNALIGHT = OPTION_I_START,	//¶¯Ì¬¹âÓ°
-	OPTION_I_WEATHER,						//ÌìÆø¿ª¹Ø
-	OPTION_I_PERSPECTIVE,					//Í¸ÊÓÄ£Ê½
-	OPTION_I_QUALITY,					//Í¸ÊÓÄ£Ê½
+	OPTION_I_DYNALIGHT = OPTION_I_START,	//åŠ¨æ€å…‰å½±
+	OPTION_I_WEATHER,						//å¤©æ°”å¼€å…³
+	OPTION_I_PERSPECTIVE,					//é€è§†æ¨¡å¼
+	OPTION_I_QUALITY,					//é€è§†æ¨¡å¼
 	OPTION_INDEX_COUNT,
 };
 
 struct KToggleOptionItem
 {
-	char	szName[32];	//Ãû³Æ
-	bool	bInvalid;	//²»¿ÉÓÃ£¨ÓĞĞ§£©
-	short	bEnable;	//´ËÑ¡ÏîÊÇ·ñÑ¡ÖĞ
+	char	szName[32];	//åç§°
+	bool	bInvalid;	//ä¸å¯ç”¨ï¼ˆæœ‰æ•ˆï¼‰
+	short	bEnable;	//æ­¤é€‰é¡¹æ˜¯å¦é€‰ä¸­
 };
 
 class KUiOptions : protected KWndImage
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiOptions*	OpenWindow(KWndWindow* pReturn = NULL);//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiOptions*	GetIfVisible();					//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow();					//¹Ø±Õ´°¿Ú
-	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiOptions*	OpenWindow(KWndWindow* pReturn = NULL);//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiOptions*	GetIfVisible();					//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow();					//å…³é—­çª—å£
+	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	
 	static int			LoadSetting(bool bReload, bool bUpdate);
 
@@ -48,20 +48,20 @@ public:
 	void				SetSoundValue(int);
 	void				SetBrightness(int);
 //	void                SwitchWeather();
-	void				ToggleOption(int nIndex);	//ÇĞ»»¿ª¹ØĞÍÑ¡Ïî
+	void				ToggleOption(int nIndex);	//åˆ‡æ¢å¼€å…³å‹é€‰é¡¹
 
 private:
 	KUiOptions();
 	~KUiOptions() {}
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
-	void	OnScrollBarPosChanged(KWndWindow* pWnd, int nPos);	//ÏìÓ¦¹ö¶¯Ìõ±»ÍÏ¶¯
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
+	void	OnScrollBarPosChanged(KWndWindow* pWnd, int nPos);	//å“åº”æ»šåŠ¨æ¡è¢«æ‹–åŠ¨
 //	void	PopupSkinMenu();
 	void	CancelMenu();
 	void	StoreSetting();
 	void	UpdateSettingSet(int eSet, bool bOnlyUpdateUi = false);
-	void	Initialize();					// ³õÊ¼»¯
-	void    PopupSeleteSetMenu(int nX, int nY);	//µ¯³öÑ¡ÔñÅäÖÃ·½°¸µÄ²Ëµ¥
-	void	LoadScheme(KIniFile* pIni);	//ÔØÈë½çÃæ·½°¸
+	void	Initialize();					// åˆå§‹åŒ–
+	void    PopupSeleteSetMenu(int nX, int nY);	//å¼¹å‡ºé€‰æ‹©é…ç½®æ–¹æ¡ˆçš„èœå•
+	void	LoadScheme(KIniFile* pIni);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	void	UpdateAllToggleBtn();
 	void	UpdateAllStatusImg();
 
@@ -70,17 +70,17 @@ private:
 private:
 	KWndWindow* m_pReturn;
 
-	// °´Å¥
-	KWndButton		m_ShortcutKeyBtn;	//´ò¿ª¿ì½İ¼üÉè¶¨½çÃæ
-	KWndButton		m_CloseBtn;			//¹Ø±Õ°´Å¥
-//	KWndLabeledButton	m_SkinBtn;		//½çÃæ·½°¸°´Å¥
+	// æŒ‰é’®
+	KWndButton		m_ShortcutKeyBtn;	//æ‰“å¼€å¿«æ·é”®è®¾å®šç•Œé¢
+	KWndButton		m_CloseBtn;			//å…³é—­æŒ‰é’®
+//	KWndLabeledButton	m_SkinBtn;		//ç•Œé¢æ–¹æ¡ˆæŒ‰é’®
 
-	KWndScrollBar	m_BrightnessScroll;	//ÁÁ¶Èµ÷½Ú»¬¿é
-	KWndScrollBar	m_BGMValue;			//ÒôÀÖÒôÁ¿»¬¿é
-	KWndScrollBar	m_SoundValue;		//ÒôĞ§ÒôÁ¿»¬¿é
+	KWndScrollBar	m_BrightnessScroll;	//äº®åº¦è°ƒèŠ‚æ»‘å—
+	KWndScrollBar	m_BGMValue;			//éŸ³ä¹éŸ³é‡æ»‘å—
+	KWndScrollBar	m_SoundValue;		//éŸ³æ•ˆéŸ³é‡æ»‘å—
 	KPopupMenuData*	m_pSkinMenu;
 
-	KWndLabeledButton m_ShortcutSetView;//e...Õâ¸ö±íÊ¾µ±Ç°ËùÑ¡ÔñµÄ¿ì½İ¼ü·½°¸
+	KWndLabeledButton m_ShortcutSetView;//e...è¿™ä¸ªè¡¨ç¤ºå½“å‰æ‰€é€‰æ‹©çš„å¿«æ·é”®æ–¹æ¡ˆ
 
 	int	m_nBrightness, m_nSoundValue, m_nMusicValue;
 	int m_nShortcutSet;
@@ -89,9 +89,9 @@ private:
 	KWndScrollBar		m_Scroll;
 	KWndLabeledButton	m_ToggleBtn[MAX_TOGGLE_BTN_COUNT];
 	KWndImage		m_StatusImage[MAX_TOGGLE_BTN_COUNT];
-	unsigned int	m_uEnableTextColor;		//m_ToggleBtn±êÌâÎÄ×ÖµÄÑÕÉ«
-	unsigned int	m_uDisableTextColor;	//m_ToggleBtn±êÌâÎÄ×ÖµÄÑÕÉ«
-	unsigned int	m_uInvalidTextColor;	//m_ToggleBtn±êÌâÎÄ×ÖµÄÑÕÉ«
+	unsigned int	m_uEnableTextColor;		//m_ToggleBtnæ ‡é¢˜æ–‡å­—çš„é¢œè‰²
+	unsigned int	m_uDisableTextColor;	//m_ToggleBtnæ ‡é¢˜æ–‡å­—çš„é¢œè‰²
+	unsigned int	m_uInvalidTextColor;	//m_ToggleBtnæ ‡é¢˜æ–‡å­—çš„é¢œè‰²
 	int				m_nStatusEnableFrame;
 	int				m_nStatusDisableFrame;
 	int				m_nStatusInvalidFrame;

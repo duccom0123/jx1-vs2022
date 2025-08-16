@@ -1,9 +1,9 @@
 /* 
  * File:     UiFaceSelector.h
- * Desc:     ±íÇéÑ¡Ôñ´°¿Ú
+ * Desc:     è¡¨æƒ…é€‰æ‹©çª—å£
  * Author:   flying
  * Creation: 2003/7/8
- * ½ñÌìÊÇÅ¼ÀÏÆÅµÄÉúÈÕÅ¶£¬ºÇºÇ
+ * ä»Šå¤©æ˜¯å¶è€å©†çš„ç”Ÿæ—¥å“¦ï¼Œå‘µå‘µ
  */
 //-----------------------------------------------------------------------------
 #pragma once
@@ -16,12 +16,12 @@
 class KUiFaceSelector : public KWndImage
 {
 public:
-	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static KUiFaceSelector* OpenWindow(KWndWindow* pCaller, void* pvParam);
-	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
 	static void				CloseWindow(bool bDestroy);
 	static KUiFaceSelector*	GetIfVisible();
-	void					LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	void					LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 
 	static void				LoadFaceList();
 	static void				Clear();
@@ -62,20 +62,20 @@ private:
 	int					m_nRowCount;
 
 	int                 m_nIndentH, m_nIndentV;
-	int					m_nBtnWidth,  m_nBtnHeight;	//±íÇé·ûºÅ°´Å¥µÄ³¤¿í
+	int					m_nBtnWidth,  m_nBtnHeight;	//è¡¨æƒ…ç¬¦å·æŒ‰é’®çš„é•¿å®½
 
 	unsigned int		m_nBgColor;
 	unsigned int		m_nBgOver;
 	unsigned int		m_nBgAlpha;
 	unsigned int		m_nBorderColor;
 
-	int					m_nCurrIndex;		//µ±Ç°Ñ¡ÖĞ/Ö¸ÏòµÄ±íÇéÍ¼±ê
+	int					m_nCurrIndex;		//å½“å‰é€‰ä¸­/æŒ‡å‘çš„è¡¨æƒ…å›¾æ ‡
 	int					m_nCurrPage;
-	int                	m_nFacesPageCount;	//ÊÇ·ñÔÚÀ©Õ¹×´Ì¬
-	int                	m_nMaxFacesPage;	//ÊÇ·ñÔÚÀ©Õ¹×´Ì¬
+	int                	m_nFacesPageCount;	//æ˜¯å¦åœ¨æ‰©å±•çŠ¶æ€
+	int                	m_nMaxFacesPage;	//æ˜¯å¦åœ¨æ‰©å±•çŠ¶æ€
 
-	KWndWindow*			m_pCallerWnd;		//µ÷ÓÃ´°¿Ú
-	void*				m_pvCallerParam;	//µ÷ÓÃ´°¿Úµ÷ÓÃÊ±µÄ×Ô¶¨Òå²ÎÊı
+	KWndWindow*			m_pCallerWnd;		//è°ƒç”¨çª—å£
+	void*				m_pvCallerParam;	//è°ƒç”¨çª—å£è°ƒç”¨æ—¶çš„è‡ªå®šä¹‰å‚æ•°
 };
 
 #endif

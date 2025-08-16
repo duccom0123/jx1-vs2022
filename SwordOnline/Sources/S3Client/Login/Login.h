@@ -1,11 +1,11 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	ÓÎÏ·µÄµÇÂ½Á¬½Ó¹¦ÄÜÂß¼­Ä£¿é
+//	æ¸¸æˆçš„ç™»é™†è¿æ¥åŠŸèƒ½é€»è¾‘æ¨¡å—
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-13
 ------------------------------------------------------------------------------------------
-	×´Ì¬»ú
-    ²Î¿´KLoginDef.hÎÄ¼ş»ñµÃÏà¹ØÒ»Ğ©µÇÂ½Ïà¹ØĞÅÏ¢¡£
+	çŠ¶æ€æœº
+    å‚çœ‹KLoginDef.hæ–‡ä»¶è·å¾—ç›¸å…³ä¸€äº›ç™»é™†ç›¸å…³ä¿¡æ¯ã€‚
 *****************************************************************************************/
 #pragma once
 #include "LoginDef.h"
@@ -21,38 +21,38 @@ struct tagNotifyPlayerLogin;
 
 enum LOGIN_LOGIC_STATUS
 {
-	LL_S_IDLE = 0,					//¿ÕÏĞ
-	LL_S_WAIT_INPUT_ACCOUNT,		//µÈ´ı´«ÕËºÅÃÜÂë
-	LL_S_ACCOUNT_CONFIRMING,		//µÈ´ıÕËºÅÃÜÂëÑéÖ¤
-	LL_S_WAIT_ROLE_LIST,			//µÈ´ı½ÓÊÕ½ÇÉ«ÁĞ±íÊı¾İ
-	LL_S_ROLE_LIST_READY,			//½ÇÉ«ÁĞ±í¾ÍĞ÷
-	LL_S_CREATING_ROLE,				//ÕıÔÚĞÂ½¨½ÇÉ«
-	LL_S_DELETING_ROLE,				//ÕıÔÚÉ¾³ı½ÇÉ«
-	LL_S_WAIT_TO_LOGIN_GAMESERVER,	//µÈ´ıµÇÂ½ÓÎÏ··şÎñÆ÷
-	LL_S_ENTERING_GAME,				//ÕıÔÚ½øÈëÓÎÏ·
-	LL_S_IN_GAME,					//ÓÎÏ·ÔËĞĞÊ±
+	LL_S_IDLE = 0,					//ç©ºé—²
+	LL_S_WAIT_INPUT_ACCOUNT,		//ç­‰å¾…ä¼ è´¦å·å¯†ç 
+	LL_S_ACCOUNT_CONFIRMING,		//ç­‰å¾…è´¦å·å¯†ç éªŒè¯
+	LL_S_WAIT_ROLE_LIST,			//ç­‰å¾…æ¥æ”¶è§’è‰²åˆ—è¡¨æ•°æ®
+	LL_S_ROLE_LIST_READY,			//è§’è‰²åˆ—è¡¨å°±ç»ª
+	LL_S_CREATING_ROLE,				//æ­£åœ¨æ–°å»ºè§’è‰²
+	LL_S_DELETING_ROLE,				//æ­£åœ¨åˆ é™¤è§’è‰²
+	LL_S_WAIT_TO_LOGIN_GAMESERVER,	//ç­‰å¾…ç™»é™†æ¸¸æˆæœåŠ¡å™¨
+	LL_S_ENTERING_GAME,				//æ­£åœ¨è¿›å…¥æ¸¸æˆ
+	LL_S_IN_GAME,					//æ¸¸æˆè¿è¡Œæ—¶
 	LL_S_INVALID_PROTOCOLVERSION,
 	LL_S_ACCOUNT_LOCKED,
 };
 
 enum LOGIN_LOGIC_RESULT_INFO
 {
-	LL_R_NOTHING,					//ÎŞ½á¹ûĞÅÏ¢
-	LL_R_CONNECT_FAILED,			//Á¬½ÓÊ§°Ü
-	LL_R_CONNECT_SERV_BUSY,			//·şÎñÆ÷Ã¦
-	LL_R_CONNECT_TIMEOUT,			//Á¬½Ó³¬Ê±Î´»ñµÃÏìÓ¦
-	LL_R_ACCOUNT_PWD_ERROR,			//ÕËºÅ/ÃÜÂë´íÎó
-	LL_R_ACCOUNT_FREEZE,			//ÕËºÅ¶³½á
-	LL_R_ACCOUNT_LOCKED,			//ÕËºÅ±»Ëø¶¨
-	LL_R_INVALID_ROLENAME,			//(ĞÂ½¨)½ÇÉ«µÄÃû×Ö²»ºÏ·¨
-	LL_R_SERVER_SHUTDOWN,			//ÓÎÏ··şÎñÆ÷ÒÑÂú»òÕıÔÚÎ¬»¤ÖĞ
-	LL_R_INVALID_PROTOCOLVERSION,	//°æ±¾ºÅ½Ï¾É£¬ĞèÒªÉı¼¶µ½ĞÂµÄ¿Í»§¶Ë	
-	LL_R_INVALID_PASSWORD,			//£¨É¾³ı½ÇÉ«Ê±£©Ìá¹©µÄÃÜÂë´íÎó
+	LL_R_NOTHING,					//æ— ç»“æœä¿¡æ¯
+	LL_R_CONNECT_FAILED,			//è¿æ¥å¤±è´¥
+	LL_R_CONNECT_SERV_BUSY,			//æœåŠ¡å™¨å¿™
+	LL_R_CONNECT_TIMEOUT,			//è¿æ¥è¶…æ—¶æœªè·å¾—å“åº”
+	LL_R_ACCOUNT_PWD_ERROR,			//è´¦å·/å¯†ç é”™è¯¯
+	LL_R_ACCOUNT_FREEZE,			//è´¦å·å†»ç»“
+	LL_R_ACCOUNT_LOCKED,			//è´¦å·è¢«é”å®š
+	LL_R_INVALID_ROLENAME,			//(æ–°å»º)è§’è‰²çš„åå­—ä¸åˆæ³•
+	LL_R_SERVER_SHUTDOWN,			//æ¸¸æˆæœåŠ¡å™¨å·²æ»¡æˆ–æ­£åœ¨ç»´æŠ¤ä¸­
+	LL_R_INVALID_PROTOCOLVERSION,	//ç‰ˆæœ¬å·è¾ƒæ—§ï¼Œéœ€è¦å‡çº§åˆ°æ–°çš„å®¢æˆ·ç«¯	
+	LL_R_INVALID_PASSWORD,			//ï¼ˆåˆ é™¤è§’è‰²æ—¶ï¼‰æä¾›çš„å¯†ç é”™è¯¯
 
-	LL_R_ACCOUNT_CONFIRM_SUCCESS,	//ÕËºÅÑéÖ¤³É¹¦
-	LL_R_CREATE_ROLE_SUCCESS,		//´´½¨½ÇÉ«³É¹¦
-	LL_R_LOGIN_TO_GAMESERVER,		//¿ªÊ¼ÁËÓëÓÎÏ·ÊÀ½ç·şÎñÆ÷µÄÁ¬½Ó
-	LL_R_ACCOUNT_NOT_ENOUGH_POINT,	//ÕËºÅµãÊı²»×ã
+	LL_R_ACCOUNT_CONFIRM_SUCCESS,	//è´¦å·éªŒè¯æˆåŠŸ
+	LL_R_CREATE_ROLE_SUCCESS,		//åˆ›å»ºè§’è‰²æˆåŠŸ
+	LL_R_LOGIN_TO_GAMESERVER,		//å¼€å§‹äº†ä¸æ¸¸æˆä¸–ç•ŒæœåŠ¡å™¨çš„è¿æ¥
+	LL_R_ACCOUNT_NOT_ENOUGH_POINT,	//è´¦å·ç‚¹æ•°ä¸è¶³
 
 };
 
@@ -61,63 +61,63 @@ enum LOGIN_LOGIC_RESULT_INFO
 #endif
 
 //=====================================
-//	ĞÂ½¨½ÇÉ«Ê±ĞèÒªµÄ½ÇÉ«Ïà¹ØĞÅÏ¢½á¹¹
+//	æ–°å»ºè§’è‰²æ—¶éœ€è¦çš„è§’è‰²ç›¸å…³ä¿¡æ¯ç»“æ„
 //=====================================
 struct KRoleChiefInfo
 {
-	char				Name[LOGIN_ROLE_NAME_MAX_LEN];		//ĞÕÃû
-	unsigned	char	Gender;			//ĞÔ±ğ	be one of the SSC_CHARACTER_GENDER value
-	unsigned	char	Attribute;		//ÎåĞĞÊôĞÔ
-	unsigned	char	Faction;		//ÎåĞĞÊôĞÔ
+	char				Name[LOGIN_ROLE_NAME_MAX_LEN];		//å§“å
+	unsigned	char	Gender;			//æ€§åˆ«	be one of the SSC_CHARACTER_GENDER value
+	unsigned	char	Attribute;		//äº”è¡Œå±æ€§
+	unsigned	char	Faction;		//äº”è¡Œå±æ€§
 	union
 	{
-		unsigned short	NativePlaceId;	//³öÉúµØID
-		short			nLevel;			//µÈ¼¶
+		unsigned short	NativePlaceId;	//å‡ºç”Ÿåœ°ID
+		short			nLevel;			//ç­‰çº§
 	};
 };
 
 struct KLoginServer
 {
-	char			Title[32];		//·şÎñÆ÷ÎÄ×ÖËµÃ÷
-	unsigned char	Address[4];		//·şÎñÆ÷ipµØÖ·
+	char			Title[32];		//æœåŠ¡å™¨æ–‡å­—è¯´æ˜
+	unsigned char	Address[4];		//æœåŠ¡å™¨ipåœ°å€
 };
 
 class KLogin : public iKNetMsgTargetObject
 {
 public:
-	KLogin();								//¹¹Ôìº¯Êı
-	~KLogin();								//Îö¹¹º¯Êı
+	KLogin();								//æ„é€ å‡½æ•°
+	~KLogin();								//ææ„å‡½æ•°
 
-	//====iKNetMsgTargetObject½Ó¿Úº¯Êı====
-	void	AcceptNetMsg(void* pMsgData);	//½ÓÊÜÍøÂçÏûÏ¢
+	//====iKNetMsgTargetObjectæ¥å£å‡½æ•°====
+	void	AcceptNetMsg(void* pMsgData);	//æ¥å—ç½‘ç»œæ¶ˆæ¯
 
-	//====²Ù×÷º¯Êı£¬ËüÃÇÒ»°ãÒı·¢×´Ì¬Ô¾Ç¨====
-	//Óë£¨ÕËºÅ£©·şÎñÆ÷½¨Á¢Á¬½Ó
+	//====æ“ä½œå‡½æ•°ï¼Œå®ƒä»¬ä¸€èˆ¬å¼•å‘çŠ¶æ€è·ƒè¿====
+	//ä¸ï¼ˆè´¦å·ï¼‰æœåŠ¡å™¨å»ºç«‹è¿æ¥
 	int	CreateConnection(const unsigned char* pAddress);
-	//´«ÈëÕÊºÅÃÜÂë£¬ÕËºÅµÇÂ½
+	//ä¼ å…¥å¸å·å¯†ç ï¼Œè´¦å·ç™»é™†
 	int	AccountLogin(const char* pAccount, const KSG_PASSWORD& crPassword, bool bOrignPassword = true);
-	//Ñ¡ÖĞÓÎÏ·½ÇÉ«
+	//é€‰ä¸­æ¸¸æˆè§’è‰²
 	int	SelectRole(int nIndex);
-	//ÇëÇóĞÂ½¨ÓÎÏ·½ÇÉ«
+	//è¯·æ±‚æ–°å»ºæ¸¸æˆè§’è‰²
 	int	CreateRole(KRoleChiefInfo* pCreateInfo);
-	//ÇëÇóÉ¾³ıÓÎÏ·½ÇÉ«
+	//è¯·æ±‚åˆ é™¤æ¸¸æˆè§’è‰²
 	int	DeleteRole(int nIndex, const KSG_PASSWORD &crSupperPassword);
-	//Í¨ÖªµÈ´ı·µ»Ø½á¹û³¬Ê±ÁË
+	//é€šçŸ¥ç­‰å¾…è¿”å›ç»“æœè¶…æ—¶äº†
 	void NotifyTimeout();
-	//Í¨ÖªÒª¿ªÊ¼ÓÎÏ·ÁË
+	//é€šçŸ¥è¦å¼€å§‹æ¸¸æˆäº†
 	void NotifyToStartGame();
-	//Í¨ÖªÍøÂçÁ¬½Ó£¨ÒâÍâ£©¶Ï¿ªÁË
+	//é€šçŸ¥ç½‘ç»œè¿æ¥ï¼ˆæ„å¤–ï¼‰æ–­å¼€äº†
 	void NotifyDisconnect();
 
-	//»Øµ½¿ÕÏĞ×´Ì¬
+	//å›åˆ°ç©ºé—²çŠ¶æ€
 	void ReturnToIdle();
-	//È«³Ì×Ô¶¯Á¬½Ó
+	//å…¨ç¨‹è‡ªåŠ¨è¿æ¥
 	void AutoLogin();
-	//ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÖ´ĞĞÈ«³Ì×Ô¶¯Á¬½Ó
+	//åˆ¤æ–­æ˜¯å¦å¯ä»¥æ‰§è¡Œå…¨ç¨‹è‡ªåŠ¨è¿æ¥
 	int	IsAutoLoginEnable();
-	//ÉèÖÃ¼ÍÂ¼±ê¼Ç
+	//è®¾ç½®çºªå½•æ ‡è®°
 	void SetRememberAccountFlag(bool bEnable);
-	//ÉèÖÃ¼ÍÂ¼±ê¼Ç
+	//è®¾ç½®çºªå½•æ ‡è®°
 	void SetRememberAllFlag(bool bEnable);
 
 	void SetVirtualKeyboardFlag(bool bEnable);
@@ -125,50 +125,50 @@ public:
 	void SetLastInvisibleFlag(int nEnable);
 
 
-	//====Êı¾İ»ñÈ¡º¯Êı====
-	//»ñÈ¡µÇÂ½Âß¼­µ±Ç°µÄ×´Ì¬
+	//====æ•°æ®è·å–å‡½æ•°====
+	//è·å–ç™»é™†é€»è¾‘å½“å‰çš„çŠ¶æ€
 	LOGIN_LOGIC_STATUS GetStatus() { return m_Status; }
-	//»ñÈ¡²Ù×÷µÄ½á¹ûĞÅÏ¢
+	//è·å–æ“ä½œçš„ç»“æœä¿¡æ¯
 	LOGIN_LOGIC_RESULT_INFO GetResult();
-	//»ñÈ¡½ÇÉ«µÄÊıÄ¿
+	//è·å–è§’è‰²çš„æ•°ç›®
 	int		GetRoleCount(int& nAdviceChoice);
-	//»ñÈ¡Ä³¸ö½ÇÉ«µÄĞÅÏ¢
+	//è·å–æŸä¸ªè§’è‰²çš„ä¿¡æ¯
 	int		GetRoleInfo(int nIndex, KRoleChiefInfo* pInfo);
-	//±£´æµÇÂ½Ñ¡Ôñ
+	//ä¿å­˜ç™»é™†é€‰æ‹©
 	void	SaveLoginChoice();
-	//¶ÁÈ¡ÒÔÇ°µÄµÄµÇÂ½Ñ¡Ôñ
+	//è¯»å–ä»¥å‰çš„çš„ç™»é™†é€‰æ‹©
 	void	LoadLoginChoice();
 	
 	void	GetRegionServer(char *pszRegion, char *pszServer);
-	//»ñÈ¡·şÎñÆ÷ÇøÓòµÄÁĞ±í
+	//è·å–æœåŠ¡å™¨åŒºåŸŸçš„åˆ—è¡¨
 	KLoginServer*	GetServerRegionList(int& nCount, int& nAdviceChoice);
-	//µÇÂ½·şÎñÆ÷ÁĞ±í»ñÈ¡
+	//ç™»é™†æœåŠ¡å™¨åˆ—è¡¨è·å–
 	KLoginServer*	GetServerList(int nRegion, int& nCount, int& nAdviceChoice);
-	//»ñÈ¡½¨Òé£¨¾ÉµÄ£©µÇÂ½ÕËºÅ
+	//è·å–å»ºè®®ï¼ˆæ—§çš„ï¼‰ç™»é™†è´¦å·
 	bool	GetLoginAccount(char* pszAccount);
 	
 	int		GetLoginLastInvisible();
 
 	bool	GetLoginVirtualKeyboard();
-	//È¡µÃµ±Ç°ÕËºÅµÄÊ£ÓàÊ±¼ä
+	//å–å¾—å½“å‰è´¦å·çš„å‰©ä½™æ—¶é—´
 	DWORD	GetAccountLifeTime() { return m_LeftTime; }
 	int		GetAccountLeftLockTime() { return m_LeftLockTime; }
-	//ÅĞ¶Ïµ±Ç°½ÇÉ«ÊÇ·ñÎªĞÂ½¨µÄ½ÇÉ«
+	//åˆ¤æ–­å½“å‰è§’è‰²æ˜¯å¦ä¸ºæ–°å»ºçš„è§’è‰²
 	int		IsRoleNewCreated() { return m_Choices.bIsRoleNewCreated; }
-    //ÉèÖÃÑ¡ÖĞµÄ·şÎñÆ÷£¬ÓÃÀ´´æÅÌ
+    //è®¾ç½®é€‰ä¸­çš„æœåŠ¡å™¨ï¼Œç”¨æ¥å­˜ç›˜
     int     SetAccountServer(const KLoginServer &rcSelectServer);
 	void	GetAccountPassword(char* pszAccount, KSG_PASSWORD* pPassword);
 private:
-	//====¸÷²Ù×÷µÄÍøÂçÏìÓ¦µÄ·µ»Ø´¦Àí====
-	void	ProcessAccountLoginResponse(KLoginStructHead* pResponse);		//´¦ÀíÕËºÅµÇÂ½µÄÏìÓ¦
-	void	ProcessRoleListResponse(TProcessData* pResponse);				//½ÇÉ«ÁĞ±í·µ»Ø
-	void	ProcessDeleteRoleResponse(tagNewDelRoleResponse* pResponse);	//É¾³ı½ÇÉ«ÁĞ±íµÄÏìÓ¦
-	void	ProcessCreateRoleResponse(tagNewDelRoleResponse* pResponse);	//ĞÂ½¨½ÇÉ«ÁĞ±íµÄÏìÓ¦
-	void	ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse);//×¼±¸µÇÂ½ÓÎÏ··şÎñÆ÷µÄÏìÓ¦
+	//====å„æ“ä½œçš„ç½‘ç»œå“åº”çš„è¿”å›å¤„ç†====
+	void	ProcessAccountLoginResponse(KLoginStructHead* pResponse);		//å¤„ç†è´¦å·ç™»é™†çš„å“åº”
+	void	ProcessRoleListResponse(TProcessData* pResponse);				//è§’è‰²åˆ—è¡¨è¿”å›
+	void	ProcessDeleteRoleResponse(tagNewDelRoleResponse* pResponse);	//åˆ é™¤è§’è‰²åˆ—è¡¨çš„å“åº”
+	void	ProcessCreateRoleResponse(tagNewDelRoleResponse* pResponse);	//æ–°å»ºè§’è‰²åˆ—è¡¨çš„å“åº”
+	void	ProcessToLoginGameServResponse(tagNotifyPlayerLogin* pResponse);//å‡†å¤‡ç™»é™†æ¸¸æˆæœåŠ¡å™¨çš„å“åº”
 
-	//·¢ËÍÏûÏ¢ÇëÇó
+	//å‘é€æ¶ˆæ¯è¯·æ±‚
 	int		Request(const char* pszAccount, const KSG_PASSWORD* pcPassword, int nAction);
-	//Á¬½ÓÕËºÅ·şÎñÆ÷
+	//è¿æ¥è´¦å·æœåŠ¡å™¨
 	int		ConnectAccountServer(const unsigned char* pIpAddress);
 
 	void	RegistNetAgent();
@@ -180,9 +180,9 @@ private:
 	LOGIN_LOGIC_STATUS			m_Status;
 	LOGIN_LOGIC_RESULT_INFO		m_Result;
 	
-	bool						m_bInAutoProgress;				//ÊÇ·ñÕı´¦ÓÚ×Ô¶¯µÇÂ½¹ı³ÌÖĞ
+	bool						m_bInAutoProgress;				//æ˜¯å¦æ­£å¤„äºè‡ªåŠ¨ç™»é™†è¿‡ç¨‹ä¸­
 	bool						m_bReserved;
-	short						m_nNumRole;						//½ÇÉ«µÄÊıÄ¿
+	short						m_nNumRole;						//è§’è‰²çš„æ•°ç›®
 	KRoleChiefInfo				m_RoleList[MAX_PLAYER_PER_ACCOUNT];
 	DWORD						m_LeftTime;
 	int							m_LeftLockTime;
@@ -190,17 +190,17 @@ private:
 	struct	LOGIN_CHOICE
 	{
 		char					RegionName[32];
-		KLoginServer			AccountServer;				//µ±Ç°Ê¹ÓÃµÄ·şÎñÆ÷
-		char					Account[32];				//µ±Ç°ÕËºÅ
-		KSG_PASSWORD    		Password;					//µ±Ç°ÕËºÅµÄÃÜÂë
-		char					szProcessingRoleName[32];	//µ±Ç°´¦ÀíµÄ½ÇÉ«µÄÃû×Ö
-		bool					bRememberAccount;			//ÊÇ·ñ¼ÍÂ¼µÇÂ½ÕËºÅ
+		KLoginServer			AccountServer;				//å½“å‰ä½¿ç”¨çš„æœåŠ¡å™¨
+		char					Account[32];				//å½“å‰è´¦å·
+		KSG_PASSWORD    		Password;					//å½“å‰è´¦å·çš„å¯†ç 
+		char					szProcessingRoleName[32];	//å½“å‰å¤„ç†çš„è§’è‰²çš„åå­—
+		bool					bRememberAccount;			//æ˜¯å¦çºªå½•ç™»é™†è´¦å·
 		int						nLastInvisible;
-		bool					bRememberAll;				//ÊÇ·ñ¼ÍÂ¼È«²¿µÄµÇÂ½Ñ¡Ôñ
-		bool					bAutoLoginEnable;			//ÊÇ·ñÔÊĞí×Ô¶¯µÇÂ½
-		bool					bIsRoleNewCreated;			//µ±Ç°½ÇÉ«ÊÇ·ñÎªĞÂ½¨µÄ½ÇÉ«
-		bool					bLoaded;					//ÊÇ·ñÒÑ¼ÓÔØÑ¡Ôñ¼ÍÂ¼
-		bool					bVirtualKeyboard;			//ÊÇ·ñ¼ÍÂ¼µÇÂ½ÕËºÅ
+		bool					bRememberAll;				//æ˜¯å¦çºªå½•å…¨éƒ¨çš„ç™»é™†é€‰æ‹©
+		bool					bAutoLoginEnable;			//æ˜¯å¦å…è®¸è‡ªåŠ¨ç™»é™†
+		bool					bIsRoleNewCreated;			//å½“å‰è§’è‰²æ˜¯å¦ä¸ºæ–°å»ºçš„è§’è‰²
+		bool					bLoaded;					//æ˜¯å¦å·²åŠ è½½é€‰æ‹©çºªå½•
+		bool					bVirtualKeyboard;			//æ˜¯å¦çºªå½•ç™»é™†è´¦å·
 	}							m_Choices;
 };
 

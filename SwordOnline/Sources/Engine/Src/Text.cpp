@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	ÎÄ×Ö´®´¦Àí
+//	æ–‡å­—ä¸²å¤„ç†
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-31
@@ -17,14 +17,14 @@
 #endif
 
 #include "Text.h"
-#define		MAX_ENCODED_CTRL_LEN	4	//µ¥¸ö¿ØÖÆ·û£¨¿ØÖÆ±êÊ¶+¿ØÖÆ²ÎÊı£©µÄ×î´ó´æ´¢³¤¶È
+#define		MAX_ENCODED_CTRL_LEN	4	//å•ä¸ªæ§åˆ¶ç¬¦ï¼ˆæ§åˆ¶æ ‡è¯†+æ§åˆ¶å‚æ•°ï¼‰çš„æœ€å¤§å­˜å‚¨é•¿åº¦
 
 
-IInlinePicEngineSink* g_pIInlinePicSink = NULL;	//Ç¶ÈëÊ½Í¼Æ¬µÄ´¦Àí½Ó¿Ú[wxb 2003-6-19]
+IInlinePicEngineSink* g_pIInlinePicSink = NULL;	//åµŒå…¥å¼å›¾ç‰‡çš„å¤„ç†æ¥å£[wxb 2003-6-19]
 extern "C" ENGINE_API HRESULT 
 AdviseEngine(IInlinePicEngineSink* pSink)
 {
-	_ASSERT(NULL == g_pIInlinePicSink);	//Ò»°ã²»»á¹Ò½ÓÁ½´Î
+	_ASSERT(NULL == g_pIInlinePicSink);	//ä¸€èˆ¬ä¸ä¼šæŒ‚æ¥ä¸¤æ¬¡
 	g_pIInlinePicSink = pSink;
 	return S_OK;
 }
@@ -37,17 +37,17 @@ UnAdviseEngine(IInlinePicEngineSink* pSink)
 	return S_OK;
 }
 
-//¼ì²âÄ³¸ö×Ö·ûÊÇ·ñÎª²»Ğí·ÅÖÃĞĞÊ×µÄ×Ö·û
+//æ£€æµ‹æŸä¸ªå­—ç¬¦æ˜¯å¦ä¸ºä¸è®¸æ”¾ç½®è¡Œé¦–çš„å­—ç¬¦
 #define	NUM_CHARACTER_IN_A1	11
 unsigned char	s_NotAllowAtLineHeadA1Characters[NUM_CHARACTER_IN_A1] = 
 {
-	 //¡¢¡£¡¯¡³¡µ¡·¡¹¡»¡½¡¿
+	 //ã€ã€‚â€™ã€•ã€‰ã€‹ã€ã€ã€—ã€‘
 	0xa2, 0xa3, 0xaf, 0xb1, 0xb3, 0xb5, 0xb7, 0xb9, 0xbb, 0xbd, 0xbf
 };
 #define	NUM_CHARACTER_IN_A3	10
 unsigned char	s_NotAllowAtLineHeadA3Characters[NUM_CHARACTER_IN_A3] = 
 {
-	//£¡   £©    £¬   £®     £º    £»   £¾    £¿    £İ    £ı
+	//ï¼   ï¼‰    ï¼Œ   ï¼     ï¼š    ï¼›   ï¼    ï¼Ÿ    ï¼½    ï½
 	0xa1, 0xa9, 0xac, 0xae, 0xba, 0xbb, 0xbe, 0xbf, 0xdd, 0xfd
 };
 #define	NUM_CHARACTER_IN_00	7
@@ -132,7 +132,7 @@ unsigned int TGetColor(const char* pColor)
 	return Color;
 }
 
-//¼ì²âÄ³¸ö×Ö·ûÊÇ·ñÎª²»Ğí·ÅÖÃĞĞÊ×µÄ×Ö·û£¬²»ÊÇÏŞÖÆ×Ö·ûÔò·µ»Ø0£¬·ñÔò·µ»Ø×Ö·ûÕ¼µÄ×Ó½ÚÊı
+//æ£€æµ‹æŸä¸ªå­—ç¬¦æ˜¯å¦ä¸ºä¸è®¸æ”¾ç½®è¡Œé¦–çš„å­—ç¬¦ï¼Œä¸æ˜¯é™åˆ¶å­—ç¬¦åˆ™è¿”å›0ï¼Œå¦åˆ™è¿”å›å­—ç¬¦å çš„å­èŠ‚æ•°
 extern "C" ENGINE_API
 int TIsCharacterNotAlowAtLineHead(const char* pCharacter)
 {
@@ -168,7 +168,7 @@ int TIsCharacterNotAlowAtLineHead(const char* pCharacter)
 	return false;
 }
 
-//»ñÈ¡±¾ĞĞµÄÏÂ¸öÏÔÊ¾×Ö·û
+//è·å–æœ¬è¡Œçš„ä¸‹ä¸ªæ˜¾ç¤ºå­—ç¬¦
 extern "C" ENGINE_API
 const char* TGetSecondVisibleCharacterThisLine(const char* pCharacter, int nPos, int nLen)
 {
@@ -203,12 +203,12 @@ const char* TGetSecondVisibleCharacterThisLine(const char* pCharacter, int nPos,
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
-//	²ÎÊı£ºpString    --> ÏëÒª·Ö¸îµÄ×Ö·û´®
-//		¡¡nDesirePos --> ÆÚÍû·Ö¸îµÄÎ»ÖÃ£¨ÒÔ×Ö½ÚÎªµ¥Î»£©
-//		  bLess      --> Èç¹ûÆÚÍû·Ö¸îµÄÎ»ÖÃ´¦ÓÚÒ»¸ö×Ö·û±àÂëµÄÖĞ¼äÊ±£¬½á¹ûÎ»ÖÃ
-//					ÎªÇ°¿¿»¹ÊÇºó¿¿£¬0: Ïòºó¿¿; ·Ç0: ÏòÇ°¿¿¡£
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ×Ö·ûÈ«²¿ÊÓÎªÏÔÊ¾×Ö·û£¬²»°üº¬¿ØÖÆ×Ö·û
+//	åŠŸèƒ½ï¼šå¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
+//	å‚æ•°ï¼špString    --> æƒ³è¦åˆ†å‰²çš„å­—ç¬¦ä¸²
+//		ã€€nDesirePos --> æœŸæœ›åˆ†å‰²çš„ä½ç½®ï¼ˆä»¥å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		  bLess      --> å¦‚æœæœŸæœ›åˆ†å‰²çš„ä½ç½®å¤„äºä¸€ä¸ªå­—ç¬¦ç¼–ç çš„ä¸­é—´æ—¶ï¼Œç»“æœä½ç½®
+//					ä¸ºå‰é è¿˜æ˜¯åé ï¼Œ0: å‘åé ; é0: å‘å‰é ã€‚
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å­—ç¬¦å…¨éƒ¨è§†ä¸ºæ˜¾ç¤ºå­—ç¬¦ï¼Œä¸åŒ…å«æ§åˆ¶å­—ç¬¦
 //--------------------------------------------------------------------------
 extern "C" ENGINE_API
 int TSplitString(const char* pString, int nDesirePos, int bLess)
@@ -241,13 +241,13 @@ int TSplitString(const char* pString, int nDesirePos, int bLess)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔÚ±àÂë×Ö´®Ñ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
-//	²ÎÊı£ºpString    --> ÏëÒª·Ö¸îµÄ×Ö·û´®
-//		  nCount	 -->×Ö·û´®ÄÚÈİµÄ³¤¶È£¨ÒÔ×Ö½ÚÎªµ¥Î»£©
-//		¡¡nDesirePos --> ÆÚÍû·Ö¸îµÄÎ»ÖÃ£¨ÒÔ»º³åÇı´æ´¢×Ö½ÚÎªµ¥Î»£©
-//		  bLess      --> Èç¹ûÆÚÍû·Ö¸îµÄÎ»ÖÃ´¦ÓÚÒ»¸öÖĞÎÄ×Ö·û±àÂëµÄÖĞ¼äÊ±£¬
-//						½á¹ûÎ»ÖÃÎªÇ°¿¿»¹ÊÇºó¿¿£¬0: Ïòºó¿¿; ·Ç0: ÏòÇ°¿¿¡£
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ¿É°üº¬ÒÑ¾­±àÂëµÄ¿ØÖÆ·û
+//	åŠŸèƒ½ï¼šåœ¨ç¼–ç å­—ä¸²å¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
+//	å‚æ•°ï¼špString    --> æƒ³è¦åˆ†å‰²çš„å­—ç¬¦ä¸²
+//		  nCount	 -->å­—ç¬¦ä¸²å†…å®¹çš„é•¿åº¦ï¼ˆä»¥å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		ã€€nDesirePos --> æœŸæœ›åˆ†å‰²çš„ä½ç½®ï¼ˆä»¥ç¼“å†²é©±å­˜å‚¨å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		  bLess      --> å¦‚æœæœŸæœ›åˆ†å‰²çš„ä½ç½®å¤„äºä¸€ä¸ªä¸­æ–‡å­—ç¬¦ç¼–ç çš„ä¸­é—´æ—¶ï¼Œ
+//						ç»“æœä½ç½®ä¸ºå‰é è¿˜æ˜¯åé ï¼Œ0: å‘åé ; é0: å‘å‰é ã€‚
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å¯åŒ…å«å·²ç»ç¼–ç çš„æ§åˆ¶ç¬¦
 //--------------------------------------------------------------------------
 extern "C" ENGINE_API
 int	TSplitEncodedString(const char* pString, int nCount, int nDesirePos, int bLess)
@@ -314,25 +314,25 @@ int	TSplitEncodedString(const char* pString, int nCount, int nDesirePos, int bLe
 }
 
 
-//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±ê¼Ç±íÊ¾ÓëÄÚ²¿±àÂëµÄ¶ÔÓ¦½á¹¹
+//å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦æ ‡è®°è¡¨ç¤ºä¸å†…éƒ¨ç¼–ç çš„å¯¹åº”ç»“æ„
 #define	KTC_CTRL_CODE_MAX_LEN	7
 typedef struct _KCtrlTable
 {
-	char    szCtrl[KTC_CTRL_CODE_MAX_LEN + 1];	//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±íÊ¾
-	short	nCtrlLen;							//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±íÊ¾µÄ³¤¶È
-	short   nCtrl;								//×Ö·û»»¿ØÖÆÂëµÄÄÚ²¿±àÂë
+	char    szCtrl[KTC_CTRL_CODE_MAX_LEN + 1];	//å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦è¡¨ç¤º
+	short	nCtrlLen;							//å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦è¡¨ç¤ºçš„é•¿åº¦
+	short   nCtrl;								//å­—ç¬¦æ¢æ§åˆ¶ç çš„å†…éƒ¨ç¼–ç 
 }KCtrlTable;
 
-//ÑÕÉ«½á¹¹
+//é¢œè‰²ç»“æ„
 typedef struct _KColorTable
 {
-	char			Token[8];		//ÑÕÉ«µÄ×Ö·û±íÊ¾
-	unsigned char	Red;			//ÑÕÉ«µÄR·ÖÁ¿
-	unsigned char	Green;			//ÑÕÉ«µÄG·ÖÁ¿
-	unsigned char	Blue;			//ÑÕÉ«µÄB·ÖÁ¿
+	char			Token[8];		//é¢œè‰²çš„å­—ç¬¦è¡¨ç¤º
+	unsigned char	Red;			//é¢œè‰²çš„Råˆ†é‡
+	unsigned char	Green;			//é¢œè‰²çš„Gåˆ†é‡
+	unsigned char	Blue;			//é¢œè‰²çš„Båˆ†é‡
 }KColorTable;
 
-//¿ØÖÆÂëÁĞ±í
+//æ§åˆ¶ç åˆ—è¡¨
 static	const KCtrlTable	s_CtrlTable[] =
 {	
 	{ "enter",	5, KTC_ENTER		},
@@ -341,10 +341,10 @@ static	const KCtrlTable	s_CtrlTable[] =
 	{ "pic",	3, KTC_INLINE_PIC	},
 };
 
-//¿ØÖÆÂëµÄÊıÄ¿
+//æ§åˆ¶ç çš„æ•°ç›®
 static	const int	s_nCtrlCount = sizeof(s_CtrlTable)/sizeof(KCtrlTable);
 
-//ÑÕÉ«ÁĞ±í
+//é¢œè‰²åˆ—è¡¨
 static	const KColorTable	s_ColorTable[] =
 {
 	{ "Black",	0,		0,		0	},
@@ -368,10 +368,10 @@ static	const KColorTable	s_ColorTable[] =
 	{ "Gray",	189,	190, 	189},
 };
 
-//ÑÕÉ«µÄÊıÄ¿
+//é¢œè‰²çš„æ•°ç›®
 static	const int	s_nColorCount = sizeof(s_ColorTable)/sizeof(KColorTable);
 
-//Ç¶ÈëÍ¼Æ¬[wxb 2003-6-19]
+//åµŒå…¥å›¾ç‰‡[wxb 2003-6-19]
 #define MAXPICTOKENLEN	16
 
 
@@ -379,7 +379,7 @@ static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCou
 static int  TEncodeCtrl(int nCtrl, char* pParamBuffer, int nParamLen, char* pEncodedBuffer);
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+//	åŠŸèƒ½ï¼šå¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 //--------------------------------------------------------------------------
 extern "C" ENGINE_API
 int	TEncodeText(char* pBuffer, int nCount, int* nCurLen/* = 0*/)
@@ -398,7 +398,7 @@ int	TEncodeText(char* pBuffer, int nCount, int* nCurLen/* = 0*/)
 				pBuffer[nShortCount++] = cCharacter;
 				nReadPos ++;
 			}
-			else if (cCharacter == 0x0d)	//»»ĞĞ
+			else if (cCharacter == 0x0d)	//æ¢è¡Œ
 			{
 				if (nReadPos + 1 < nCount && pBuffer[nReadPos + 1] == 0x0a)
 					nReadPos += 2;
@@ -443,7 +443,7 @@ int	TEncodeText(char* pBuffer, int nCount, int* nCurLen/* = 0*/)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+//	åŠŸèƒ½ï¼šå¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 //--------------------------------------------------------------------------
 extern "C" ENGINE_API
 int TFilterEncodedText(char* pBuffer, int nCount)
@@ -506,7 +506,7 @@ int TFilterEncodedText(char* pBuffer, int nCount)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º·ÖÎö×ª»»¿ØÖÆ·û
+//	åŠŸèƒ½ï¼šåˆ†æè½¬æ¢æ§åˆ¶ç¬¦
 //--------------------------------------------------------------------------
 static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCount)
 {
@@ -515,16 +515,16 @@ static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCou
 	
 	int nCtrlCodeSize, nEndPos, nCtrl;
 
-	//Ñ°ÕÒ½áÊø·ûºÅ'='µÄÎ»ÖÃ»ò'>'µÄÎ»ÖÃ
+	//å¯»æ‰¾ç»“æŸç¬¦å·'='çš„ä½ç½®æˆ–'>'çš„ä½ç½®
 	int nEqualPos = nReadPos + 1;
 	for (; nEqualPos < nCount && nEqualPos <= nReadPos + KTC_CTRL_CODE_MAX_LEN; nEqualPos++)
 		if (pBuffer[nEqualPos] == '>' || pBuffer[nEqualPos] == '=')
 			break;	
 
 	if(nEqualPos >= nCount || nEqualPos > nReadPos + KTC_CTRL_CODE_MAX_LEN)
-		goto NO_MATCHING_CTRL;	//Î´ÕÒµ½'='»òÕß'>'½áÊø·ûºÅ
+		goto NO_MATCHING_CTRL;	//æœªæ‰¾åˆ°'='æˆ–è€…'>'ç»“æŸç¬¦å·
 
-	nCtrlCodeSize = nEqualPos - nReadPos - 1;	//¿ØÖÆÃüÁî·ûºÅµÄ³¤¶È
+	nCtrlCodeSize = nEqualPos - nReadPos - 1;	//æ§åˆ¶å‘½ä»¤ç¬¦å·çš„é•¿åº¦
 
 	for (nCtrl = 0; nCtrl < s_nCtrlCount; nCtrl++)
 	{
@@ -532,7 +532,7 @@ static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCou
 			memcmp(pBuffer + nReadPos + 1, s_CtrlTable[nCtrl].szCtrl, nCtrlCodeSize) == 0)
 			break;
 	}
-	if (nCtrl >= s_nCtrlCount)		//Î´ÕÒµ½Æ¥ÅäÒ»ÖÂµÄ¿ØÖÆÃüÁî
+	if (nCtrl >= s_nCtrlCount)		//æœªæ‰¾åˆ°åŒ¹é…ä¸€è‡´çš„æ§åˆ¶å‘½ä»¤
 		goto NO_MATCHING_CTRL;
 	nCtrl = s_CtrlTable[nCtrl].nCtrl;
 
@@ -559,7 +559,7 @@ NO_MATCHING_CTRL:
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º×ª»»²¢´æ´¢¿ØÖÆÃüÁî¼°¸÷¿ØÖÆ²ÎÊı
+//	åŠŸèƒ½ï¼šè½¬æ¢å¹¶å­˜å‚¨æ§åˆ¶å‘½ä»¤åŠå„æ§åˆ¶å‚æ•°
 //--------------------------------------------------------------------------
 static int TEncodeCtrl(int nCtrl, char* pParamBuffer, int nParamLen, char* pEncodedBuffer)
 {
@@ -691,20 +691,20 @@ int	TRemoveCtrlInEncodedText(char* pBuffer, int nCount)
 	return nLen;
 }
 
-//»ñÈ¡±àÂëÎÄ±¾µÄĞĞÊıÓë×î´óĞĞ¿í
-//²ÎÊı£ºpBuffer			ÎÄ±¾»º³åÇø
-//		nCount			ÎÄ±¾Êı¾İµÄ³¤¶È
-//		nWrapCharaNum	ÏŞÖÆÃ¿ĞĞ²»Ğí³¬¹ıµÄ×Ö·ûÊıÄ¿
-//		nMaxLineLen		ÓÃÓÚ»ñÈ¡ÎÄ±¾µÄÊµ¼Ê×î´óĞĞ¿í£¨×Ö·ûÊıÄ¿£©
-//		nFontSize		²ÉÓÃ×ÖÌåµÄ´óĞ¡ [wxb 2003-6-19]
-//		nSkipLine		Ìø¹ıÇ°Ãæ¶àÉÙĞĞµÄÊı¾İ
-//		nNumLineLimit	¼ì²âµÄÎÄ±¾µÄĞĞÊı£¬³¬¹ıÏŞÖÆĞĞÊıÄ¿Ö®ºóµÄÄÚÈİ±»ºöÂÔ¡£Èç¹û´ËÖµĞ¡ÓÚµÈÓÚ0Ôò±íÊ¾ÎŞ´ËÏŞÖÆ¡£
-//·µ»Ø£ºÎÄ±¾µÄĞĞÊı
+//è·å–ç¼–ç æ–‡æœ¬çš„è¡Œæ•°ä¸æœ€å¤§è¡Œå®½
+//å‚æ•°ï¼špBuffer			æ–‡æœ¬ç¼“å†²åŒº
+//		nCount			æ–‡æœ¬æ•°æ®çš„é•¿åº¦
+//		nWrapCharaNum	é™åˆ¶æ¯è¡Œä¸è®¸è¶…è¿‡çš„å­—ç¬¦æ•°ç›®
+//		nMaxLineLen		ç”¨äºè·å–æ–‡æœ¬çš„å®é™…æœ€å¤§è¡Œå®½ï¼ˆå­—ç¬¦æ•°ç›®ï¼‰
+//		nFontSize		é‡‡ç”¨å­—ä½“çš„å¤§å° [wxb 2003-6-19]
+//		nSkipLine		è·³è¿‡å‰é¢å¤šå°‘è¡Œçš„æ•°æ®
+//		nNumLineLimit	æ£€æµ‹çš„æ–‡æœ¬çš„è¡Œæ•°ï¼Œè¶…è¿‡é™åˆ¶è¡Œæ•°ç›®ä¹‹åçš„å†…å®¹è¢«å¿½ç•¥ã€‚å¦‚æœæ­¤å€¼å°äºç­‰äº0åˆ™è¡¨ç¤ºæ— æ­¤é™åˆ¶ã€‚
+//è¿”å›ï¼šæ–‡æœ¬çš„è¡Œæ•°
 extern "C" ENGINE_API
 int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum, int& nMaxLineLen, int nFontSize, int nSkipLine, int nNumLineLimit,
 							 BOOL bPicSingleLine/* = FALSE*/)
 {
-	//ÉèÒ»¸ö¼«ÖµÃâµÃ³ö´í [wxb 2003-6-20]
+	//è®¾ä¸€ä¸ªæå€¼å…å¾—å‡ºé”™ [wxb 2003-6-20]
 	_ASSERT(nFontSize >= 4 && nFontSize < 64);
 	nFontSize = max(4, nFontSize);
 	nFontSize = min(64, nFontSize);
@@ -735,7 +735,7 @@ int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum,
 	while(nPos < nCount)
 	{
 		cCode = pBuffer[nPos];
-		if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
+		if (cCode > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
 		{
 			nPos ++;
 			fNumChars += 1;
@@ -744,11 +744,11 @@ int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum,
 				bNextLine = true;
 			}
 		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
+		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//é¢œè‰²æ§åˆ¶
 			nPos += 4;
 		else if (cCode == KTC_INLINE_PIC)
 		{
-			//Ç¶ÈëÊ½Í¼Æ¬´¦Àí [wxb 2003-6-19]
+			//åµŒå…¥å¼å›¾ç‰‡å¤„ç† [wxb 2003-6-19]
 			WORD wPicIndex = *((WORD*)(pBuffer + nPos + 1));
 			nPos += 1 + sizeof(WORD);
 			if (g_pIInlinePicSink)
@@ -809,7 +809,7 @@ int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum,
 			{
 				nSkipLine -= 1 + nExtraLineForInlinePic;
 
-				//´¦ÀíÍ¼Æ¬Õ¼¶àĞĞµÄÇé¿ö [wxb 2003-6-19]
+				//å¤„ç†å›¾ç‰‡å å¤šè¡Œçš„æƒ…å†µ [wxb 2003-6-19]
 				if (nSkipLine < 0)
 				{
 					if (fMaxLineLen < fNumChars)
@@ -840,7 +840,7 @@ int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum,
 		nNumLine += 1 + nExtraLineForInlinePic;
 	}
 
-	nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);	//½ø1
+	nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);	//è¿›1
 	return nNumLine;
 }
 
@@ -1004,10 +1004,10 @@ int	TGetEncodedItemChatLineCount(const char* pBuffer, int nCount, int nWrapChara
 	return nNumLine;
 }
 
-//»ñµÃÖ¸¶¨ĞĞµÄ¿ªÊ¼Î»ÖÃ
+//è·å¾—æŒ‡å®šè¡Œçš„å¼€å§‹ä½ç½®
 int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int nWrapCharaNum, int nFontSize, BOOL bPicSingleLine)
 {
-	//ÉèÒ»¸ö¼«ÖµÃâµÃ³ö´í [wxb 2003-6-20]
+	//è®¾ä¸€ä¸ªæå€¼å…å¾—å‡ºé”™ [wxb 2003-6-20]
 	_ASSERT(nFontSize > 1 && nFontSize < 64);
 	nFontSize = max(1, nFontSize);
 	nFontSize = min(64, nFontSize);
@@ -1032,7 +1032,7 @@ int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int 
 	while(nPos < nCount)
 	{
 		cCode = pBuffer[nPos];
-		if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
+		if (cCode > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
 		{
 			nPos ++;
 			fNumChars += 1;
@@ -1041,11 +1041,11 @@ int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int 
 				bNextLine = true;
 			}
 		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
+		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//é¢œè‰²æ§åˆ¶
 			nPos += 4;
 		else if (cCode == KTC_INLINE_PIC)
 		{
-			//Ç¶ÈëÊ½Í¼Æ¬´¦Àí [wxb 2003-6-19]
+			//åµŒå…¥å¼å›¾ç‰‡å¤„ç† [wxb 2003-6-19]
 			WORD wPicIndex = *((WORD*)(pBuffer + nPos + 1));
 			nPos += 1 + sizeof(WORD);
 			if (g_pIInlinePicSink)
@@ -1106,7 +1106,7 @@ int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int 
 //			{
 //				nSkipLine -= 1 + nExtraLineForInlinePic;
 //
-//				//´¦ÀíÍ¼Æ¬Õ¼¶àĞĞµÄÇé¿ö [wxb 2003-6-19]
+//				//å¤„ç†å›¾ç‰‡å å¤šè¡Œçš„æƒ…å†µ [wxb 2003-6-19]
 //				if (nSkipLine < 0)
 //				{
 //					if (fMaxLineLen < fNumChars)
@@ -1128,7 +1128,7 @@ int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int 
 }
 
 extern "C" ENGINE_API
-//Èç¹ûÔ­(°üº¬¿ØÖÆ·û)×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
+//å¦‚æœåŸ(åŒ…å«æ§åˆ¶ç¬¦)å­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
 const char* TGetLimitLenEncodedString(const char* pOrigString, int nOrigLen, int nFontSize,
 	int nWrapCharaNum, char* pLimitLenString, int& nShortLen, int nLineLimit, int bPicPackInSingleLine/*=false*/)
 {
@@ -1140,7 +1140,7 @@ const char* TGetLimitLenEncodedString(const char* pOrigString, int nOrigLen, int
 	}
 
 	int nPreLineEndPos = 0, nFinalLineEndPos;
-	if (nLineLimit > 1)	//Ìø¹ıÇ°Ãæ¼¸ĞĞ
+	if (nLineLimit > 1)	//è·³è¿‡å‰é¢å‡ è¡Œ
 	{
 		nPreLineEndPos = TGetEncodeStringLineHeadPos(pOrigString, nOrigLen, nLineLimit - 1, nWrapCharaNum, nFontSize, bPicPackInSingleLine);
 		if (nPreLineEndPos > nShortLen)
@@ -1193,13 +1193,13 @@ const char* TGetLimitLenEncodedString(const char* pOrigString, int nOrigLen, int
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹ûÔ­×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
-//	²ÎÊı£ºpOrigString     --> Ô­×Ö·û´®£¬ÒªÇó²»Îª¿ÕÖ¸Õë
-//		¡¡nOrigLen		  --> Ô­×Ö·û´®³¤¶È£¨²»°üÀ¨½áÎ²·û£©
-//		  pLimitLenString --> Èç¹ûÔ­×Ö·û´®³¬³öÏŞ³¤£¬ÓÃÀ´´æ´¢½Ø¶ÌºóµÄ×Ö·û´®µÄ»º³åÇø£¬ÒªÇó²»Îª¿ÕÖ¸Õë
-//		  nLimitLen		  --> ÏŞ¶¨³¤¶È£¬´ËÖµÒªÇó´óÓÚµÈÓÚ3
-//	·µ»Ø£ºÈçÔ­×Ö·û´®²»³¬¹ıÏŞ³¤£¬Ôò·µ»ØÔ­»º³åÇøÖ¸Õë£¬·ñÔò·µ»ØÓÃÀ´´æ´¢½Ø¶ÌºóµÄ×Ö·û´®µÄ»º³åÇøµÄÖ¸Õë
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ×Ö·ûÈ«²¿ÊÓÎªÏÔÊ¾×Ö·û£¬²»°üº¬¿ØÖÆ×Ö·û
+//	åŠŸèƒ½ï¼šå¦‚æœåŸå­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
+//	å‚æ•°ï¼špOrigString     --> åŸå­—ç¬¦ä¸²ï¼Œè¦æ±‚ä¸ä¸ºç©ºæŒ‡é’ˆ
+//		ã€€nOrigLen		  --> åŸå­—ç¬¦ä¸²é•¿åº¦ï¼ˆä¸åŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰
+//		  pLimitLenString --> å¦‚æœåŸå­—ç¬¦ä¸²è¶…å‡ºé™é•¿ï¼Œç”¨æ¥å­˜å‚¨æˆªçŸ­åçš„å­—ç¬¦ä¸²çš„ç¼“å†²åŒºï¼Œè¦æ±‚ä¸ä¸ºç©ºæŒ‡é’ˆ
+//		  nLimitLen		  --> é™å®šé•¿åº¦ï¼Œæ­¤å€¼è¦æ±‚å¤§äºç­‰äº3
+//	è¿”å›ï¼šå¦‚åŸå­—ç¬¦ä¸²ä¸è¶…è¿‡é™é•¿ï¼Œåˆ™è¿”å›åŸç¼“å†²åŒºæŒ‡é’ˆï¼Œå¦åˆ™è¿”å›ç”¨æ¥å­˜å‚¨æˆªçŸ­åçš„å­—ç¬¦ä¸²çš„ç¼“å†²åŒºçš„æŒ‡é’ˆ
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å­—ç¬¦å…¨éƒ¨è§†ä¸ºæ˜¾ç¤ºå­—ç¬¦ï¼Œä¸åŒ…å«æ§åˆ¶å­—ç¬¦
 //--------------------------------------------------------------------------
 extern "C" ENGINE_API
 const char* TGetLimitLenString(const char* pOrigString, int nOrigLen, char* pLimitLenString, int nLimitLen)
@@ -1229,7 +1229,7 @@ const char* TGetLimitLenString(const char* pOrigString, int nOrigLen, char* pLim
 }
 
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬´ÓÖ¸¶¨Î»ÖÃ¿ªÊ¼²éÕÒÖ¸¶¨µÄ¿ØÖÆ·ûºÅµÄÎ»ÖÃ£¬·µ»Ø-1±íÊ¾Î´ÕÒµ½
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œä»æŒ‡å®šä½ç½®å¼€å§‹æŸ¥æ‰¾æŒ‡å®šçš„æ§åˆ¶ç¬¦å·çš„ä½ç½®ï¼Œè¿”å›-1è¡¨ç¤ºæœªæ‰¾åˆ°
 extern "C" ENGINE_API
 int	TFindSpecialCtrlInEncodedText(const char* pBuffer, int nCount, int nStartPos, char cControl, char cRetControl/* = 0*/)
 {
@@ -1248,7 +1248,7 @@ int	TFindSpecialCtrlInEncodedText(const char* pBuffer, int nCount, int nStartPos
 				nFindPos = nStartPos;
 				break;
 			}
-			if (cCharacter > 0x80)	//¿ÉÄÜÊÇÖĞÎÄÎÄ×Ö
+			if (cCharacter > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡æ–‡å­—
 				nStartPos ++;
 			else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
 				nStartPos += 4;
@@ -1261,7 +1261,7 @@ int	TFindSpecialCtrlInEncodedText(const char* pBuffer, int nCount, int nStartPos
 	return nFindPos;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬È¥³ıÖ¸¶¨ÀàĞÍµÄ¿ØÖÆ·û
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œå»é™¤æŒ‡å®šç±»å‹çš„æ§åˆ¶ç¬¦
 extern "C" ENGINE_API
 int	TClearSpecialCtrlInEncodedText(char* pBuffer, int nCount, char cControl)
 {
@@ -1310,7 +1310,7 @@ int	TClearSpecialCtrlInEncodedText(char* pBuffer, int nCount, char cControl)
 	return nFinalLen;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨Êä³ö³¤¶ÈµÄÔÚ»º³åÇøÖĞÎ»ÖÃ
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šè¾“å‡ºé•¿åº¦çš„åœ¨ç¼“å†²åŒºä¸­ä½ç½®
 extern "C" ENGINE_API
 int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool bLess, int nFontSize)
 {
@@ -1328,8 +1328,8 @@ int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool
 		while(nLenTemp < nLen)
 		{
 			cCharacter = pBuffer[nIndex];
-			//¼ÆËã³öµ±Ç°ÔªËØµÄËùÕ¼×Ö½ÚÊınByteCountºÍÔÚÏÔÊ¾»­ÃæÉÏËùÕ¼¿í¶ÈnCurCharLen
-			if (cCharacter > 0x80)	//¿ÉÄÜÊÇÖĞÎÄÎÄ×Ö
+			//è®¡ç®—å‡ºå½“å‰å…ƒç´ çš„æ‰€å å­—èŠ‚æ•°nByteCountå’Œåœ¨æ˜¾ç¤ºç”»é¢ä¸Šæ‰€å å®½åº¦nCurCharLen
+			if (cCharacter > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡æ–‡å­—
 			{
                 nByteCount  = 1;
 				nCurCharLen = 1;
@@ -1361,23 +1361,23 @@ int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool
 				nCurCharLen = 1;
 			}
 
-			//Èç¹û³¬³ö»º³åÇø£¬¾ÍÍ£Ö¹°É
+			//å¦‚æœè¶…å‡ºç¼“å†²åŒºï¼Œå°±åœæ­¢å§
 			if(nIndex + nByteCount > nCount)
 				break;
-			//Èç¹û¿í¶È»¹Ã»³¬¹ıÒªÇó¿í¶È
+			//å¦‚æœå®½åº¦è¿˜æ²¡è¶…è¿‡è¦æ±‚å®½åº¦
 			if(nLenTemp + nCurCharLen < nLen)
 			{
 				nLenTemp += nCurCharLen;
 		        nIndex   += nByteCount;
 			}
-			//Èç¹û¿í¶ÈµÈÓÚÒªÇó¿í¶ÈÁË
+			//å¦‚æœå®½åº¦ç­‰äºè¦æ±‚å®½åº¦äº†
 			else if(nLenTemp + nCurCharLen == nLen)
 			{
 				nLenTemp += nCurCharLen;
 				nIndex   += nByteCount;
 				break;
 			}
-			//ÕâÀï¾ÍÊÇ³¬¹ıÁË
+			//è¿™é‡Œå°±æ˜¯è¶…è¿‡äº†
 			else
 			{
 				nLenTemp = bLess ? nLenTemp : (nLenTemp + nCurCharLen);
@@ -1390,7 +1390,7 @@ int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool
 	return nIndex;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨µÄÇ°¶Î»º³åÇøÖĞ¿ØÖÆ·û£¬¶ÔºóÃæµÄÊä³ö²úÉúĞ§¹ûÓ°Ïì
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šçš„å‰æ®µç¼“å†²åŒºä¸­æ§åˆ¶ç¬¦ï¼Œå¯¹åé¢çš„è¾“å‡ºäº§ç”Ÿæ•ˆæœå½±å“
 extern "C" ENGINE_API
 int TGetEncodedTextEffectCtrls(const char* pBuffer, int nSkipCount, KTP_CTRL& Ctrl0, KTP_CTRL& Ctrl1)
 {

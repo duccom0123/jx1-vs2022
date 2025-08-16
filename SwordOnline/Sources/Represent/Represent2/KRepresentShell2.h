@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//  ����ģ��Ķ���ӿڵĶ�ά�汾ʵ�֡�
+//  表现模块的对外接口的二维版本实现。
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-11-11
@@ -18,402 +18,402 @@ struct iFont;
 
 //##ModelId=3DB6678F0243
 //##Documentation
-//## ����ģ��Ķ���ӿڵĶ�ά�汾ʵ�֡�
+//## 表现模块的对外接口的二维版本实现。
 class KRepresentShell2 : public iRepresentShell
 {
 public:
 	//##ModelId=3DD20C90004D
 	KRepresentShell2();
 //=======================================
-//=====iRepresentShell����Ľӿں���=====
+//=====iRepresentShell定义的接口函数=====
 //=======================================
 
     //##ModelId=3DCA72E102FE
-    //## �ͷ����ٽӿڶ���
+    //## 释放销毁接口对象
     //##Documentation
-    //## �ͷ����ٽӿڶ���
+    //## 释放销毁接口对象
     void Release();
 
-//---------��ͼ�豸���---------------
+//---------绘图设备相关---------------
 
     //##ModelId=3DB6692300B3
-    //## ������ͼ�豸�������ͼ������
-    //## ֱ�ӵ���Reset������
+    //## 创建绘图设备，构造绘图环境。
+    //## 直接调用Reset方法。
     bool Create(
         //##Documentation
-        //## �豸�����ڣ��������λ�����ص㣩
+        //## 设备（窗口）横宽（单位：像素点）
         int nWidth, 
         //##Documentation
-        //## �豸�����ڣ��ݿ�����λ�����ص㣩
+        //## 设备（窗口）纵宽（单位：像素点）
         int nHeight, 
         //##Documentation
-        //## �Ƿ��ռȫ��Ļ
+        //## 是否独占全屏幕
         bool bFullScreen);
 
     //##ModelId=3DB69EC0023A
     //##Documentation
-    //## ���û�ͼ�豸
+    //## 重置绘图设备
     bool Reset(
         //##Documentation
-        //## �豸�����ڣ��������λ�����ص㣩
+        //## 设备（窗口）横宽（单位：像素点）
         int nWidth, 
         //##Documentation
-        //## �豸�����ڣ��ݿ�����λ�����ص㣩
+        //## 设备（窗口）纵宽（单位：像素点）
         int nHeight, 
         //##Documentation
-        //## �Ƿ��ռȫ��Ļ
+        //## 是否独占全屏幕
         bool bFullScreen);
 
-//---------�������������---------------
+//---------字体与文字输出---------------
 
     //##ModelId=3DCA0B230317
     //##Documentation
-    //## ����һ���������
+    //## 创建一个字体对象。
 	bool CreateAFont(
         //##Documentation
-        //## �ֿ��ļ�����
+        //## 字库文件名。
         const char* pszFontFile, 
         //##Documentation
-        //## �ֿ�ʹ�õ��ַ����뼯��
+        //## 字库使用的字符编码集。
         CHARACTER_CODE_SET CharaSet, 
         //##Documentation
-        //## �������id.
+        //## 字体对象id.
         int nId);
 
     //##ModelId=3DCA0BAE00E4
     //##Documentation
-    //## ������֡�
+    //## 输出文字。
     void OutputText(
         //##Documentation
-        //## ʹ�õ��������id��
+        //## 使用的字体对象id。
         int nFontId, 
         //##Documentation
-        //## Ҫ������ַ�����
+        //## 要输出的字符串。
         const char* psText, 
         //##Documentation
-        //## Ҫ������ַ����ĳ���(BYTE)��
-        //## ��nCount���ڵ���0ʱ���ַ������Բ���������Ľ�����������ʾ����ַ��Ľ�����
-        //## ��nCountС��0ʱ����ʾ���ַ�������'\0'��β�������ݽ����ַ���ȷ������ַ����ĳ��ȡ�
-        //## Ĭ��ֵΪ-1��
+        //## 要输出的字符串的长度(BYTE)。
+        //## 当nCount大于等于0时，字符串可以不包括特殊的结束符号来表示输出字符的结束。
+        //## 当nCount小于0时，表示此字符串是以'\0'结尾，将根据结束字符来确定输出字符串的长度。
+        //## 默认值为-1。
         int nCount, 
         //##Documentation
-        //## �ַ�����ʾ�������X���������ֵΪKF_FOLLOW��
-        //## ����ַ����������ϴ��ַ��������λ��֮��
-        //## Ĭ��ֵΪKF_FOLLOW��
+        //## 字符串显示起点坐标X，如果传入值为KF_FOLLOW，
+        //## 则此字符串紧接在上次字符串的输出位置之后。
+        //## 默认值为KF_FOLLOW。
         int nX, 
         //##Documentation
-        //## �ַ�����ʾ�������Y, �������ֵΪKF_FOLLOW��
-        //## ���ַ�����ǰһ������ַ�����ͬһ�е�λ�á�
-        //## Ĭ��ֵΪKF_FOLLOW��
+        //## 字符串显示起点坐标Y, 如果传入值为KF_FOLLOW，
+        //## 此字符串与前一次输出字符串在同一行的位置。
+        //## 默认值为KF_FOLLOW。
         int nY, 
         //##Documentation
-        //## �ַ�����ʾ��ɫ��Ĭ��Ϊ��ɫ����32bit����ARGB�ĸ�
-        //## ʽ��ʾ��ɫ��ÿ������8bit��
+        //## 字符串显示颜色，默认为黑色，用32bit数以ARGB的格
+        //## 式表示颜色，每个分量8bit。
         unsigned int Color, 
         //##Documentation
-        //## �Զ����е��п����ƣ������ֵС��һ��ȫ���ַ����������Զ����д�����Ĭ��ֵΪ0���Ȳ����Զ����д�����
+        //## 自动换行的行宽限制，如果其值小于一个全角字符宽度则不做自动换行处理。默认值为0，既不做自动换行处理。
         int nLineWidth = 0,
 		int nZ = TEXT_IN_SINGLE_PLANE_COORD,
-		//�ֵı�Ե��ɫ
+		//字的边缘颜色
 		unsigned int BorderColor = 0);
 
 	//##ModelId=3DB655B2000E
     //##Documentation
-    //## ������֡�
+    //## 输出文字。
     int OutputRichText(
 		//##Documentation
-        //## ʹ�õ��������id��
+        //## 使用的字体对象id。
         int nFontId, 
 		KOutputTextParam* pParam,
 		//##Documentation
-        //## Ҫ������ַ�����
+        //## 要输出的字符串。
         const char* psText, 
         //##Documentation
-        //## Ҫ������ַ����ĳ���(BYTE)��
-        //## ��nCount���ڵ���0ʱ���ַ������Բ���������Ľ�����������ʾ����ַ��Ľ�����
-        //## ��nCountС��0ʱ����ʾ���ַ�������'\0'��β�����м䲻����'\0'���ַ���
-        //## Ĭ��ֵΪ-1
+        //## 要输出的字符串的长度(BYTE)。
+        //## 当nCount大于等于0时，字符串可以不包括特殊的结束符号来表示输出字符的结束。
+        //## 当nCount小于0时，表示此字符串是以'\0'结尾，且中间不存在'\0'的字符。
+        //## 默认值为-1
         int nCount = KRF_ZERO_END, 
         //##Documentation
-        //## �Զ����е��п����ƣ������ֵС��һ��ȫ���ַ����������Զ����д�����Ĭ��ֵΪ0���Ȳ����Զ����д�����
+        //## 自动换行的行宽限制，如果其值小于一个全角字符宽度则不做自动换行处理。默认值为0，既不做自动换行处理。
         int nLineWidth = 0);
 
-    //## ����ָ���������ַ�����������ַ�ƫ��
+    //## 返回指定坐标在字符串中最近的字符偏移
     int LocateRichText(
-		//## ָ��������
+		//## 指定的坐标
 		int nX, int nY,
 
-        //## ʹ�õ��������id��
+        //## 使用的字体对象id。
         int nFontId, 
 		KOutputTextParam* pParam,
-        //## Ҫ������ַ�����
+        //## 要输出的字符串。
         const char* psText, 
-        //## Ҫ������ַ����ĳ���(BYTE)��
-        //## ��nCount���ڵ���0ʱ���ַ������Բ���������Ľ�����������ʾ����ַ��Ľ�����
-        //## ��nCountС��0ʱ����ʾ���ַ�������'\0'��β�����м䲻����'\0'���ַ���
-        //## Ĭ��ֵΪ-1��		
+        //## 要输出的字符串的长度(BYTE)。
+        //## 当nCount大于等于0时，字符串可以不包括特殊的结束符号来表示输出字符的结束。
+        //## 当nCount小于0时，表示此字符串是以'\0'结尾，且中间不存在'\0'的字符。
+        //## 默认值为-1。		
         int nCount = KRF_ZERO_END, 
         //##Documentation
-        //## �Զ����е��п����ƣ������ֵС��һ��ȫ���ַ����������Զ����д�����Ĭ��ֵΪ0���Ȳ����Զ����д�����
+        //## 自动换行的行宽限制，如果其值小于一个全角字符宽度则不做自动换行处理。默认值为0，既不做自动换行处理。
         int nLineWidth = 0);
 
     //##ModelId=3DCA0B8102F3
     //##Documentation
-    //## �ͷ�һ���������
+    //## 释放一个字体对象
     void ReleaseAFont(
         //##Documentation
-        //## ��������id
+        //## 字体对象的id
         int nId);
 
-//---------ͼ��Դ���---------------
+//---------图资源相关---------------
 
     //##ModelId=3DCD8DEA01BB
     //##Documentation
-    //## ����ڴ�ͼ�ζ���ʧ�ܣ��򷵻�0�����򷵻ظ���ͼ������ת�����ɵ���ֵid��
+    //## 如果内存图形对象失败，则返回0，否则返回根据图形名字转换而成的数值id。
     unsigned int CreateImage(
         //##Documentation
-        //## ͼ�ε����֡�
+        //## 图形的名字。
         const char* pszName, 
         //##Documentation
-        //## ͼ�κ��
+        //## 图形横宽
         int nWidth, 
         //##Documentation
-        //## ͼ���ݿ�
+        //## 图形纵宽
         int nHeight,
 		//##Documentation
-        //## ͼ������
+        //## 图形类型
         int nType);
 
     //##ModelId=3DCD8EF60316
     //##Documentation
-    //## ָ���ͷ�ĳ��ͼ��Դ��
+    //## 指定释放某个图资源。
     void FreeImage(
 		//##Documentation
-        //## ͼ���ļ���/ͼ������
+        //## 图形文件名/图形名。
         const char* pszImage);
 
     //##ModelId=3DCD8E9200E8
     //##Documentation
-    //## �ͷ�ȫ����ͼ�ζ���
+    //## 释放全部的图形对象。
     void FreeAllImage();
 
     //##ModelId=3DCD8FA900EE
     //##Documentation
-    //## ��ȡͼ��������ݻ�����
+    //## 获取图形像点数据缓冲区
     void* GetBitmapDataBuffer(
         //##Documentation
-        //## ͼ����
+        //## 图形名
         const char* pszImage,
-		//���ڻ�ȡͼ�����ݻ������������Ϣ���ݣ���������ָ�룬�������Щ��Ϣ��
+		//用于获取图形数据缓冲区的相关信息数据，如果传入空指针，则忽略这些信息。
 		KBitmapDataBuffInfo* pInfo);
 
-	//##�ͷŶ�(ͨ��GetBitmapDataBuffer���û�ȡ�õ�)ͼ��������ݻ������Ŀ���
+	//##释放对(通过GetBitmapDataBuffer调用获取得的)图形像点数据缓冲区的控制
 	void ReleaseBitmapDataBuffer(
-		//## ͼ����
+		//## 图形名
 		const char* pszImage,
-		//ͨ��GetBitmapDataBuffer���û�ȡ�õ�ͼ��������ݻ�����ָ��
+		//通过GetBitmapDataBuffer调用获取得的图形像点数据缓冲区指针
 		void* pBuffer);
 
     //##ModelId=3DCA6EBC000F
     //##Documentation
-    //## ��ȡĳ��ͼ����Ϣ��
+    //## 获取某个图形信息。
     bool GetImageParam(
         //##Documentation
-        //## ͼ�ε���Դ�ļ���/ͼ����
+        //## 图形的资源文件名/图形名
         const char* pszImage,
         //##Documentation
-        //## ͼ����Ϣ�洢�ṹ��ָ��
+        //## 图形信息存储结构的指针
         KImageParam* pImageData,
 		//##Documentation
-		//## ͼ������
+		//## 图形类型
 		int nType);
 
     //##Documentation
-    //## ��ȡĳ��ͼ��ĳ֡����Ϣ
+    //## 获取某个图形某帧的信息
 	bool GetImageFrameParam(
         //##Documentation
-        //## ָ�򱣴�ͼ����Դ�ļ���/ͼ�����Ļ�����
+        //## 指向保存图形资源文件名/图形名的缓冲区
         const char* pszImage,
 		//##Documentation
-		//ͼ��֡����
+		//图形帧索引
 		int		nFrame,
         //##Documentation
-        //## ֡ͼ�����������ͼ�ε�ƫ��
+        //## 帧图形相对于整个图形的偏移
 		KRPosition2* pOffset,
-		//## ֡ͼ�δ�С
+		//## 帧图形大小
 		KRPosition2* pSize,
         //##Documentation
-        //## ͼ��Դ����
+        //## 图资源类型
 		int nType);
 
     //##ModelId=3DCA72620157
     //##Documentation
-    //## ��ȡĳ��ͼ��ĳ֡��ָ������alphaֵ��������β����ڣ������������ͼ�η�Χ֮���򷵻�0��
+    //## 获取某个图形某帧上指定像点的alpha值，如果不形不存在，或者象点落在图形范围之外则返回0。
     int GetImagePixelAlpha(
         //##Documentation
-        //## ͼ����Դ�ļ���/ͼ����
+        //## 图形资源文件名/图形名
         const char* pszImage, 
         //##Documentation
-        //## ͼ�ε�֡������
+        //## 图形的帧索引。
         int nFrame, 
         //##Documentation
-        //## �����ͼ�к�����
+        //## 像点在图中横坐标
         int nX, 
         //##Documentation
-        //## �����ͼ��������
+        //## 像点在图中纵坐标
         int nY,
 		//##Documentation
-        //## ͼ������
+        //## 图形类型
         int nType);
 
     //##ModelId=3DCD90F30011
     //##Documentation
-    //## ����ͼ�ζ�̬����ƽ�������
+    //## 设置图形动态加载平衡参数。
     void SetImageStoreBalanceParam(
         //##Documentation
-        //## ����ͼ�ε���Ŀ��ƽ��ֵ��
+        //## 加载图形的数目的平衡值。
         int nNumImage, 
         //##Documentation
-        //## ÿ���ٴ�����ͼ�ζ������һ��ƽ���顣
+        //## 每多少次引用图形对象后作一次平衡检查。
         unsigned int uCheckPoint = 10000);
 
     //##ModelId=3DCD90910361
     //##Documentation
-    //## ����ͼ�ε��ļ��������ļ�ֻ��ISI_T_BITMAP16��ʽ��ͼ����Ч������ָ����ͼ���Ƿ�ɹ����浽�ļ���
+    //## 保存图形到文件。保存文件只对ISI_T_BITMAP16格式的图形有效。返回指表明图形是否成功保存到文件。
     bool SaveImage(
         //##Documentation
-        //## �����ļ������֡�
+        //## 保存文件的名字。
         const char* pszFile, 
         //##Documentation
-        //## ͼ����
+        //## 图形名
         const char* pszImage, 
         //##Documentation
-        //## Ŀ��ͼ���ļ�������
+        //## 目标图形文件的类型
         int nFileType);
     
 	
-//---------���Ʋ���---------------
+//---------绘制操作---------------
 	
 	//##ModelId=3DB69FE401DA
     //##Documentation
-    //## ����ͼԪ
+    //## 绘制图元
     void DrawPrimitives(
         //##Documentation
-        //## ���Ƶ�ͼԪ����Ŀ
+        //## 绘制的图元的数目
         int nPrimitiveCount,
         //##Documentation
-        //## ����ͼԪ�Ľṹ������
+        //## 描述图元的结构的数组
         KRepresentUnit* pPrimitives, 
         //##Documentation
-        //## Primitive���ͣ�ȡֵ����ö��ֵREPRESENT_UNIT_TYPE
+        //## Primitive类型，取值来自枚举值REPRESENT_UNIT_TYPE
         unsigned int uGenre,
         //##Documentation
-        //## ͼԪ���Ʋ����ṩ�������Ƿ�Ϊ��ֱ�����ߵĵ�ƽ�����ꡣ������ǣ���ͼԪ���Ʋ����ṩ����������ά�ռ����ꡣ
+        //## 图元绘制操作提供的坐标是否为垂直与视线的单平面坐标。如果不是，则图元绘制操作提供的坐标是三维空间坐标。
         int bSinglePlaneCoord);
 
 	void DrawPrimitivesOnImage(
 		//##Documentation
-        //## ���Ƶ�ͼԪ����Ŀ
+        //## 绘制的图元的数目
         int nPrimitiveCount,
         //##Documentation
-        //## ����ͼԪ�Ľṹ������
+        //## 描述图元的结构的数组
         KRepresentUnit* pPrimitives, 
         //##Documentation
-        //## Primitive���ͣ�ȡֵ����ö��ֵREPRESENT_UNIT_TYPE
+        //## Primitive类型，取值来自枚举值REPRESENT_UNIT_TYPE
         unsigned int uGenre, 
 		//##Documentation
-        //## ͼ����
+        //## 图形名
         const char* pszImage, 
         //##Documentation
-        //## Ŀ��ͼ�ε�id
+        //## 目标图形的id
         unsigned int uImage,
 		short&	nImagePosition);
 
 	//##Documentation
-	//## ���ͼ������
+	//## 清除图形数据
 	void ClearImageData(
 		//##Documentation
-        //## ͼ����
+        //## 图形名
         const char* pszImage, 
         //##Documentation
-        //## Ŀ��ͼ�ε�id
+        //## 目标图形的id
         unsigned int uImage,
 		short nImagePosition);
 
     //##ModelId=3DC0A08D0085
     //##Documentation
-    //## �����Ӿ��۲��Ŀ�Ľ��㡣
-    //## (�����������������ʹ����z=0ƽ����)��
-    //## �ѵ������������Ϊ��ͼ�豸���ĵ��Ӧ�����꣬��������������ͼ�豸���Ͻǵ��Ӧ�����꣺
-    //## m_nLeft = nX - Width(��ͼ�豸) / 2
-    //## m_nTop = nY - Height(��ͼ�豸) / 2 - nZ
+    //## 设置视觉观察的目的焦点。
+    //## (把输入的坐标作调整使它在z=0平面上)，
+    //## 把调整后的坐标作为绘图设备中心点对应的坐标，根据坐标计算出绘图设备左上角点对应的坐标：
+    //## m_nLeft = nX - Width(绘图设备) / 2
+    //## m_nTop = nY - Height(绘图设备) / 2 - nZ
     void LookAt(int nX, int nY, int nZ);
 
     //##ModelId=3DD00EEE0149
     //##Documentation
-    //## ���ƻ�ͼ�豸�ϵ�ͼ��ͼ�ζ���
-    //## Ŀ��ͼ����Դ���������Ŀǰֻ����ISI_T_BITMAP16�����Ŀ��ͼ�ζ��󲻴��ڻ��߸���ʧ���򷵻�false��
+    //## 复制绘图设备上的图到图形对象。
+    //## 目标图形资源对象的类型目前只能是ISI_T_BITMAP16。如果目标图形对象不存在或者复制失败则返回false。
     bool CopyDeviceImageToImage(
         //##Documentation
-        //## ͼ�ε����֡�
+        //## 图形的名字。
         const char* pszName, 
         //##Documentation
-        //## ��ͼ�豸ͼ�θ��Ʒ�Χ�����Ͻǵ������
+        //## 绘图设备图形复制范围的左上角点横坐标
         int nDeviceX, 
         //##Documentation
-        //## ��ͼ�豸ͼ�θ��Ʒ�Χ�����Ͻǵ�������
+        //## 绘图设备图形复制范围的左上角点纵坐标
         int nDeviceY, 
         //##Documentation
-        //## Ŀ��ͼ�θ��Ƶ���Χ�����Ͻǵ������
+        //## 目的图形复制到范围的左上角点横坐标
         int nImageX, 
         //##Documentation
-        //## Ŀ��ͼ�θ��Ƶ���Χ�����Ͻǵ�������
+        //## 目的图形复制到范围的左上角点纵坐标
         int nImageY, 
         //##Documentation
-        //## ���Ʒ�Χ�ĺ��
+        //## 复制范围的横宽
         int nWidth, 
         //##Documentation
-        //## ���Ʒ�Χ�ĺ��
+        //## 复制范围的横宽
         int nHeight);
 
 	//##ModelId=3DD20C45002A
 	//##Documentation
-	//## ��ʼһ�ֻ��Ʋ���
+	//## 开始一轮绘制操作
 	bool RepresentBegin(
 		//##Documentation
-		//## �Ƿ�����豸�ϵ�ǰ��ͼ�Ρ�
+		//## 是否清除设备上当前的图形。
 		int bClear, 
 		//##Documentation
-		//## ���bClearΪ��0ֵ����Colorָ����ʲô��ɫֵ������豸ԭ����ͼ�Ρ�
+		//## 如果bClear为非0值，则Color指出用什么颜色值来清除设备原来的图形。
 		unsigned int Color);
 
 	//##ModelId=3DD20C450066
 	//##Documentation
-	//## ����һ�ֻ��Ʋ���
+	//## 结束一轮绘制操作
 	void RepresentEnd();
 
-	//��ͼ/��ͼ�豸���� ת��Ϊ�ռ�����
+	//视图/绘图设备坐标 转化为空间坐标
 	void ViewPortCoordToSpaceCoord(
-		int& nX,	//���룺��ͼ/��ͼ�豸�����x�����������ռ������x��
-		int& nY,	//���룺��ͼ/��ͼ�豸�����y�����������ռ������y��
-		int  nZ		//���������õ��Ŀռ������z��
+		int& nX,	//传入：视图/绘图设备坐标的x量，传出：空间坐标的x量
+		int& nY,	//传入：视图/绘图设备坐标的y量，传出：空间坐标的y量
+		int  nZ		//（期望）得到的空间坐标的z量
 		);
 	
-		//## ���ù�����Ϣ
+		//## 设置光照信息
 	virtual void SetLightInfo(
-		//## ��ǰ9���������Ͻǵ�x����
+		//## 当前9个区域左上角的x坐标
 		int nX,
-		//## ��ǰ9���������Ͻǵ�y����
+		//## 当前9个区域左上角的y坐标
 		int nY,
-		//## ��ǰ9������Ĺ�����Ϣ��DWORD���飬��ʾ������ڵ��Ϲ�������ֵ
-		//## ���pLightingΪNULL����ʾ�������մ���
+		//## 当前9个区域的光照信息，DWORD数组，表示各网格节点上光照亮度值
+		//## 如果pLighting为NULL，表示不做光照处理
 		unsigned int *pLighting){}
 	
-	//## ���ñ���ģ��ѡ��
+	//## 设置表现模块选项
 	virtual void SetOption(
-		//## ѡ������
+		//## 选项类型
 		RepresentOption eOption,
-		//## ѡ���Ƿ��
+		//## 选项是否打开
 		bool bOn){}
 	virtual HRESULT AdviseRepresent(IInlinePicEngineSink*);
 	virtual HRESULT UnAdviseRepresent(IInlinePicEngineSink*);
@@ -421,11 +421,11 @@ public:
 	virtual bool SaveScreenToFile(const char* pszName, ScreenFileType eType, unsigned int nQuality);
 	virtual void SetGamma(int nGamma){}
 
-	//����ƫɫ�б�
+	//设置偏色列表
 	virtual unsigned int SetAdjustColorList(
-			unsigned int* puColorList,	//ƫɫ����ɫ�б���ÿ����ɫΪһ��unsigned int����
-										//��32bit����0RGB�ĸ�ʽ��ʾ��ɫ��ÿ������8bit��
-			unsigned int uCount			//��ɫ�б�����ɫ������Ŀ
+			unsigned int* puColorList,	//偏色的颜色列表，每个颜色为一个unsigned int数，
+										//用32bit数以0RGB的格式表示颜色，每个分量8bit。
+			unsigned int uCount			//颜色列表中颜色数的数目
 			);
 private:
 
@@ -435,12 +435,12 @@ private:
       public:
         //##ModelId=3DB68D04025D
         //##Documentation
-        //## ��������id��һ��Ӧ��ʱ����id����������ִ�С��ֵ�����������Ӧ�����⡣
+        //## 字体对象的id，一般应用时就让id与字体的文字大小数值相关联，便于应用理解。
         int nId;
 
         //##ModelId=3DB68D1D0323
         //##Documentation
-        //## ��������ָ�롣
+        //## 字体对象的指针。
         iFont* pFontObj;
 
     };
@@ -448,7 +448,7 @@ private:
     //##ModelId=3DCFECA1036D
     enum RS2_FONT_ITEM_PARAM { 
         //##Documentation
-        //## �ӿ�������ά��������������Ŀ���ٹ�����Ŀʱ�������������ʧ�ܡ�
+        //## 接口最多可以维护的字体对象的数目，操过此数目时，创建字体对象将失败。
         RS2_MAX_FONT_ITEM_NUM = 5 };
 
 private:
@@ -461,7 +461,7 @@ private:
 
     //##ModelId=3DB6A25A0137
     //##Documentation
-    //## ͼ����Դά��ģ�����
+    //## 图形资源维护模块对象。
     KImageStore2 m_ImageStore;
 
     //##ModelId=3DCA0E4902B3
@@ -472,7 +472,7 @@ private:
 
 	//##ModelId=3DB68D8701FE
     //##Documentation
-    //## �������ļ��ϡ�
+    //## 字体对象的集合。
     KRSFontItem m_FontTable[RS2_MAX_FONT_ITEM_NUM];
 
 	KTextProcess	m_TextProcess;
@@ -483,16 +483,16 @@ private:
 	~KRepresentShell2();
     //##ModelId=3DCFED410049
     //##Documentation
-    //## �ռ����굽��ά(��ʾ��)ƽ������ı任
+    //## 空间坐标到二维(显示面)平面坐标的变换
     void CoordinateTransform(
         //##Documentation
-        //## ������ά����x������������ά����x(ˮƽ)����
+        //## 传入三维坐标x分量，传出二维坐标x(水平)分量
         int& nX, 
         //##Documentation
-        //## ������ά����y������������ά����y(��ֱ)����
+        //## 传入三维坐标y分量，传出二维坐标y(垂直)分量
         int& nY, 
         //##Documentation
-        //## ������ά����z����
+        //## 传入三维坐标z分量
         int nZ);
 };
 

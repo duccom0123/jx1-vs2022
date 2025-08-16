@@ -13,10 +13,10 @@
 #include "LuaLib.h"
 #include "KMemClass.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::KLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	
+// å‡½æ•°:	KLuaScript::KLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KLuaScript::KLuaScript(void)
 {
@@ -34,10 +34,10 @@ KLuaScript::KLuaScript(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::KLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int StackSize
-// ·µ»Ø:	
+// å‡½æ•°:	KLuaScript::KLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	int StackSize
+// è¿”å›:	
 //---------------------------------------------------------------------------
 //KLuaScript::KLuaScript(int StackSize = 0)
 //{
@@ -55,10 +55,10 @@ KLuaScript::KLuaScript(void)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::~KLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	
+// å‡½æ•°:	KLuaScript::~KLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KLuaScript::~KLuaScript(void)
 {
@@ -66,11 +66,11 @@ KLuaScript::~KLuaScript(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::LoadBuffer()
-// ¹¦ÄÜ:	
-// ²ÎÊı:	PBYTE pBuffer
-// ²ÎÊı:	DWORD dwLen
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::LoadBuffer()
+// åŠŸèƒ½:	
+// å‚æ•°:	PBYTE pBuffer
+// å‚æ•°:	DWORD dwLen
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::LoadBuffer(PBYTE pBuffer, DWORD dwLen )
 {
@@ -88,10 +88,10 @@ BOOL KLuaScript::LoadBuffer(PBYTE pBuffer, DWORD dwLen )
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::Load
-// ¹¦ÄÜ:	
-// ²ÎÊı:	LPSTR Filename
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::Load
+// åŠŸèƒ½:	
+// å‚æ•°:	LPSTR Filename
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Load(char * Filename)
 {
@@ -152,9 +152,9 @@ BOOL KLuaScript::Load(char * Filename)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::Execute
-// ¹¦ÄÜ:	
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::Execute
+// åŠŸèƒ½:	
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Execute()
 {
@@ -166,16 +166,16 @@ BOOL KLuaScript::Execute()
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ExecuteCode
-// ¹¦ÄÜ:	
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::ExecuteCode
+// åŠŸèƒ½:	
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::ExecuteCode()
 {
 	if (!(m_IsRuning && m_LuaState))
 	{
 		ScriptError(LUA_SCRIPT_EXECUTE_ERROR);
-		//if (!ExecuteCode()) return FALSE; ZHANGPENG ·¢ÏÖÕâÀï¿ÉÄÜÓĞ´í
+		//if (!ExecuteCode()) return FALSE; ZHANGPENG å‘ç°è¿™é‡Œå¯èƒ½æœ‰é”™
 		return FALSE;
 	}
 	
@@ -192,20 +192,20 @@ BOOL KLuaScript::ExecuteCode()
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::CallFunction
-// ¹¦ÄÜ:	µ÷ÓÃLua½Å±¾ÄÚµÄº¯Êı
-// ²ÎÊı:	LPSTR cFuncName
-// ²ÎÊı:	int nResults
-// ²ÎÊı:	LPSTR cFormat  µ÷ÓÃÊ±Ëù´«²ÎÊıµÄÀàĞÍ 
-//			n:Êı×ÖĞÍ(double) d:ÕûĞÎ(int) s:×Ö·û´®ĞÍ f:Cº¯ÊıĞÍ  n:Nil v:Value p:Point
-//        vĞÎÎªLuaÖ§³ÖµÄ£¬²ÎÊıÎªÕûĞÎµÄÊıindex£¬Ö¸Ã÷½«indexËùÖ¸¶ÑÕ»µÄ±äÁ¿×÷Îª
-//			 ¸Ãº¯ÊıµÄµ÷ÓÃ²ÎÊı¡£
-//	×¢Òâ£ºÓÉÓÚ¸Ãº¯ÊıÓĞ²»¶¨²ÎÊı¡­,¶ÔÓÚÊı×Ö£¬ÏµÍ³²¢²»È·¶¨ÊıÊÇÒÔdouble»¹ÊÇÒÔint
-//  ´æÔÚ£¬Á½ÖÖ±£´æĞÎÊ½ÊÇ²»Í¬µÄ¡£Òò´ËĞèÒª×¢Òâµ±´«ÈëµÄÊıÊÇÕûĞÎÊ±£¬¸ñÊ½·ûÓ¦ÓÃd
-//  ¶ø²»ÄÜÓÃn,»òÕßÇ¿ĞĞ¸Ä±äÎªdoubleĞÎ¡£·ñÔò»á³öÏÖ¼ÆËãµÄ´íÎó¡£
+// å‡½æ•°:	KLuaScript::CallFunction
+// åŠŸèƒ½:	è°ƒç”¨Luaè„šæœ¬å†…çš„å‡½æ•°
+// å‚æ•°:	LPSTR cFuncName
+// å‚æ•°:	int nResults
+// å‚æ•°:	LPSTR cFormat  è°ƒç”¨æ—¶æ‰€ä¼ å‚æ•°çš„ç±»å‹ 
+//			n:æ•°å­—å‹(double) d:æ•´å½¢(int) s:å­—ç¬¦ä¸²å‹ f:Cå‡½æ•°å‹  n:Nil v:Value p:Point
+//        vå½¢ä¸ºLuaæ”¯æŒçš„ï¼Œå‚æ•°ä¸ºæ•´å½¢çš„æ•°indexï¼ŒæŒ‡æ˜å°†indexæ‰€æŒ‡å †æ ˆçš„å˜é‡ä½œä¸º
+//			 è¯¥å‡½æ•°çš„è°ƒç”¨å‚æ•°ã€‚
+//	æ³¨æ„ï¼šç”±äºè¯¥å‡½æ•°æœ‰ä¸å®šå‚æ•°â€¦,å¯¹äºæ•°å­—ï¼Œç³»ç»Ÿå¹¶ä¸ç¡®å®šæ•°æ˜¯ä»¥doubleè¿˜æ˜¯ä»¥int
+//  å­˜åœ¨ï¼Œä¸¤ç§ä¿å­˜å½¢å¼æ˜¯ä¸åŒçš„ã€‚å› æ­¤éœ€è¦æ³¨æ„å½“ä¼ å…¥çš„æ•°æ˜¯æ•´å½¢æ—¶ï¼Œæ ¼å¼ç¬¦åº”ç”¨d
+//  è€Œä¸èƒ½ç”¨n,æˆ–è€…å¼ºè¡Œæ”¹å˜ä¸ºdoubleå½¢ã€‚å¦åˆ™ä¼šå‡ºç°è®¡ç®—çš„é”™è¯¯ã€‚
 //   
-// ²ÎÊı:	...
-// ·µ»Ø:	BOOL 
+// å‚æ•°:	...
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_list vlist)
 {
@@ -217,7 +217,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 	int i=0;
 	int nArgnum = 0;
 	int nIndex = 0;
-	int nRetcode;		//µ÷ÓÃ½Å±¾º¯ÊıºóµÄ·µ»ØÂë
+	int nRetcode;		//è°ƒç”¨è„šæœ¬å‡½æ•°åçš„è¿”å›ç 
 
 
 	if (! (m_IsRuning && m_LuaState))
@@ -227,13 +227,13 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 	}
 	
 	{
-		Lua_GetGlobal(m_LuaState, cFuncName); //ÔÚ¶ÑÕ»ÖĞ¼ÓÈëĞèÒªµ÷ÓÃµÄº¯ÊıÃû
+		Lua_GetGlobal(m_LuaState, cFuncName); //åœ¨å †æ ˆä¸­åŠ å…¥éœ€è¦è°ƒç”¨çš„å‡½æ•°å
 
 		while (cFormat[i] != '\0')
 		{
 			switch(cFormat[i])
 			{
-			case 'n'://ÊäÈëµÄÊı¾İÊÇdoubleĞÎ NUMBER£¬LuaÀ´ËµÊÇDoubleĞÍ
+			case 'n'://è¾“å…¥çš„æ•°æ®æ˜¯doubleå½¢ NUMBERï¼ŒLuaæ¥è¯´æ˜¯Doubleå‹
 				{ 
 					nNumber = va_arg(vlist, double );
 					Lua_PushNumber(m_LuaState, nNumber);
@@ -242,7 +242,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 				}
 				break;
 			
-			case 'd'://ÊäÈëµÄÊı¾İÎªÕûĞÎ
+			case 'd'://è¾“å…¥çš„æ•°æ®ä¸ºæ•´å½¢
 				{
 					nNumber = (double)(va_arg(vlist, int));
 					Lua_PushNumber(m_LuaState, (double) nNumber);
@@ -250,7 +250,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 				}
 				break;
 				
-			case 's'://×Ö·û´®ĞÍ
+			case 's'://å­—ç¬¦ä¸²å‹
 				{
 					cString = va_arg(vlist, char *);
 					Lua_PushString(m_LuaState, cString);
@@ -264,7 +264,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 				}
 				break;
 			
-			case 'f'://ÊäÈëµÄÊÇCFunĞÎ£¬¼´ÄÚ²¿º¯ÊıĞÎ
+			case 'f'://è¾“å…¥çš„æ˜¯CFunå½¢ï¼Œå³å†…éƒ¨å‡½æ•°å½¢
 				{
 					CFunc = va_arg(vlist, Lua_CFunction);
 					Lua_PushCFunction(m_LuaState, CFunc) ;
@@ -272,7 +272,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 				}
 				break;
 			
-			case 'v'://ÊäÈëµÄÊÇ¶ÑÕ»ÖĞIndexÎªnIndexµÄÊı¾İÀàĞÍ
+			case 'v'://è¾“å…¥çš„æ˜¯å †æ ˆä¸­Indexä¸ºnIndexçš„æ•°æ®ç±»å‹
 				{
 					nNumber = va_arg(vlist, int);
 					int nIndex1 = (int) nNumber;
@@ -280,7 +280,7 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 					nArgnum ++;
 				}
 				break;
-			case 't'://ÊäÈëÎªÒ»TableÀàĞÍ
+			case 't'://è¾“å…¥ä¸ºä¸€Tableç±»å‹
 				{
 					
 					
@@ -317,13 +317,13 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, va_l
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::CallFunction
-// ¹¦ÄÜ:	
-// ²ÎÊı:	LPSTR cFuncName
-// ²ÎÊı:	int nResults
-// ²ÎÊı:	LPSTR cFormat
-// ²ÎÊı:	...
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::CallFunction
+// åŠŸèƒ½:	
+// å‚æ•°:	LPSTR cFuncName
+// å‚æ•°:	int nResults
+// å‚æ•°:	LPSTR cFormat
+// å‚æ•°:	...
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, ...)
 {
@@ -337,11 +337,11 @@ BOOL KLuaScript::CallFunction(LPSTR cFuncName, int nResults, LPSTR cFormat, ...)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::GetValuesFromStack
-// ¹¦ÄÜ:	´Ó¶ÑÕ»ÖĞ»ñµÃ±äÁ¿
-// ²ÎÊı:	char * cFormat
-// ²ÎÊı:	...
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::GetValuesFromStack
+// åŠŸèƒ½:	ä»å †æ ˆä¸­è·å¾—å˜é‡
+// å‚æ•°:	char * cFormat
+// å‚æ•°:	...
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)	
 {
@@ -352,7 +352,7 @@ BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)
 	int i = 0;
 	int nTopIndex = 0;
 	int nIndex = 0;
-	int nValueNum = 0;//cFormatµÄ×Ö·û³¤¶È£¬±íÊ¾ĞèÒªÈ¡µÄ²ÎÊıÊıÁ¿
+	int nValueNum = 0;//cFormatçš„å­—ç¬¦é•¿åº¦ï¼Œè¡¨ç¤ºéœ€è¦å–çš„å‚æ•°æ•°é‡
 
 	if (! m_LuaState)
 		return FALSE;
@@ -360,7 +360,7 @@ BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)
 	nTopIndex = Lua_GetTopIndex(m_LuaState);	
 	nValueNum = strlen(cFormat);
 	
-	if (nTopIndex == 0 || nValueNum == 0)//µ±¶ÑÕ»ÖĞÎŞÊı¾İ»ò²»È¡²ÎÊıÊÇ·µ»ØFALSE
+	if (nTopIndex == 0 || nValueNum == 0)//å½“å †æ ˆä¸­æ— æ•°æ®æˆ–ä¸å–å‚æ•°æ˜¯è¿”å›FALSE
 		return FALSE;
 
 	if (nTopIndex < nValueNum)
@@ -376,7 +376,7 @@ BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)
 			
 			switch(cFormat[i])
 			{
-			case 'n'://·µ»ØÖµÎªÊıÖµĞÎ,Number,´ËÊ±LuaÖ»´«µİdoubleĞÎµÄÖµ
+			case 'n'://è¿”å›å€¼ä¸ºæ•°å€¼å½¢,Number,æ­¤æ—¶Luaåªä¼ é€’doubleå½¢çš„å€¼
 				{
 					pNumber = va_arg(vlist, double *);
 					
@@ -414,7 +414,7 @@ BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)
 
 				}
 				break;
-			case 's'://×Ö·û´®ĞÎ
+			case 's'://å­—ç¬¦ä¸²å½¢
 				{
 					pString = va_arg(vlist, const char **);
 					
@@ -446,9 +446,9 @@ BOOL KLuaScript::GetValuesFromStack(char * cFormat, ...)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::Init
-// ¹¦ÄÜ:	³õÊ¼»¯½Å±¾¶ÔÏó£¬×¢²áÏµÍ³±ê×¼º¯Êı¿â
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::Init
+// åŠŸèƒ½:	åˆå§‹åŒ–è„šæœ¬å¯¹è±¡ï¼Œæ³¨å†Œç³»ç»Ÿæ ‡å‡†å‡½æ•°åº“
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Init()
 {
@@ -473,13 +473,13 @@ BOOL KLuaScript::Init()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::RegisterFunction
-// ¹¦ÄÜ:	×¢²áÄ³ÄÚ²¿Cº¯ÊıÖÁ½Å±¾ÖĞ
-// ²ÎÊı:	LPSTR FuncName  ÔÚ½Å±¾ÖĞÊ¹ÓÃµÄº¯ÊıÃû
-// ²ÎÊı:	void* Func    Êµ¼ÊÏàÓ¦µÄCº¯ÊıÖ¸Õë
-// ²ÎÊı:	int Args = 0 //ÓëKScript½Ó¿ÚÏàÈİ£¬ÎŞÓÃ
-// ²ÎÊı:	int Flag = 0 //ÓëKScript½Ó¿ÚÏàÈİ, ÎŞÓÃ
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::RegisterFunction
+// åŠŸèƒ½:	æ³¨å†ŒæŸå†…éƒ¨Cå‡½æ•°è‡³è„šæœ¬ä¸­
+// å‚æ•°:	LPSTR FuncName  åœ¨è„šæœ¬ä¸­ä½¿ç”¨çš„å‡½æ•°å
+// å‚æ•°:	void* Func    å®é™…ç›¸åº”çš„Cå‡½æ•°æŒ‡é’ˆ
+// å‚æ•°:	int Args = 0 //ä¸KScriptæ¥å£ç›¸å®¹ï¼Œæ— ç”¨
+// å‚æ•°:	int Flag = 0 //ä¸KScriptæ¥å£ç›¸å®¹, æ— ç”¨
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::RegisterFunction(LPSTR FuncName , void* Func)
 {
@@ -490,10 +490,10 @@ BOOL KLuaScript::RegisterFunction(LPSTR FuncName , void* Func)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::Compile
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char *
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::Compile
+// åŠŸèƒ½:	
+// å‚æ•°:	char *
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Compile(char *)
 {
@@ -501,11 +501,11 @@ BOOL KLuaScript::Compile(char *)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::RegisterFunctions
-// ¹¦ÄÜ:	ÅúÁ¿×¢²áLuaµÄÄÚ²¿Cº¯Êı£¬¸÷¸öº¯ÊıµÄĞÅÏ¢±£´æÔÚTLua_FuncsµÄÊı¾İÖĞ
-// ²ÎÊı:	TLua_Funcs *Funcs Êı×éµÄÖ¸Õë
-// ²ÎÊı:	int n º¯ÊıÊıÁ¿¡£¿ÉÒÔÎªÁã£¬ÓÉÏµÍ³¼ÆËãµÃµ½¡£
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::RegisterFunctions
+// åŠŸèƒ½:	æ‰¹é‡æ³¨å†ŒLuaçš„å†…éƒ¨Cå‡½æ•°ï¼Œå„ä¸ªå‡½æ•°çš„ä¿¡æ¯ä¿å­˜åœ¨TLua_Funcsçš„æ•°æ®ä¸­
+// å‚æ•°:	TLua_Funcs *Funcs æ•°ç»„çš„æŒ‡é’ˆ
+// å‚æ•°:	int n å‡½æ•°æ•°é‡ã€‚å¯ä»¥ä¸ºé›¶ï¼Œç”±ç³»ç»Ÿè®¡ç®—å¾—åˆ°ã€‚
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::RegisterFunctions(TLua_Funcs Funcs[], int n)
 {
@@ -516,26 +516,26 @@ BOOL KLuaScript::RegisterFunctions(TLua_Funcs Funcs[], int n)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::RegisterStandardFunctions
-// ¹¦ÄÜ:	×¢²áLuaÏµÍ³±ê×¼µÄº¯Êı¿â
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::RegisterStandardFunctions
+// åŠŸèƒ½:	æ³¨å†ŒLuaç³»ç»Ÿæ ‡å‡†çš„å‡½æ•°åº“
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KLuaScript::RegisterStandardFunctions()
 {
 	if (! m_LuaState)		return ;
-	Lua_OpenBaseLib(m_LuaState);//Lua»ù±¾¿â
-	Lua_OpenIOLib(m_LuaState);//ÊäÈëÊä³ö¿â
-	Lua_OpenStrLib(m_LuaState);//×Ö·û´®´¦Àí¿â
-	Lua_OpenMathLib(m_LuaState);//ÊıÖµÔËËã¿â
-	//Lua_OpenDBLib(m_LuaState);//µ÷ÊÔ¿â
+	Lua_OpenBaseLib(m_LuaState);//LuaåŸºæœ¬åº“
+	Lua_OpenIOLib(m_LuaState);//è¾“å…¥è¾“å‡ºåº“
+	Lua_OpenStrLib(m_LuaState);//å­—ç¬¦ä¸²å¤„ç†åº“
+	Lua_OpenMathLib(m_LuaState);//æ•°å€¼è¿ç®—åº“
+	//Lua_OpenDBLib(m_LuaState);//è°ƒè¯•åº“
 	return;	
 }
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ReleaseScript
-// ¹¦ÄÜ:	ÊÍ·Å¸Ã½Å±¾×ÊÔ´¡£
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::ReleaseScript
+// åŠŸèƒ½:	é‡Šæ”¾è¯¥è„šæœ¬èµ„æºã€‚
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 void KLuaScript::Exit()
 {
@@ -548,10 +548,10 @@ void KLuaScript::Exit()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ScriptError
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int Error
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::ScriptError
+// åŠŸèƒ½:	
+// å‚æ•°:	int Error
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KLuaScript::ScriptError(int Error)
 {
@@ -562,11 +562,11 @@ void KLuaScript::ScriptError(int Error)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ScriptError
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int Error1
-// ²ÎÊı:	int Error2
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::ScriptError
+// åŠŸèƒ½:	
+// å‚æ•°:	int Error1
+// å‚æ•°:	int Error2
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KLuaScript::ScriptError(int Error1 ,int Error2)
 {
@@ -577,15 +577,15 @@ void KLuaScript::ScriptError(int Error1 ,int Error2)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::SafeCallBegin
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int * pIndex
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::SafeCallBegin
+// åŠŸèƒ½:	
+// å‚æ•°:	int * pIndex
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-// SafeCallBeginÓëSafeCallEndÁ½º¯ÊıÓ¦´îÅäÊ¹ÓÃ£¬ÒÔ·ÀÖ¹ÔÚµ÷ÓÃLuaµÄÍâ²¿º¯ÊıÖ®ºó£¬
-//ÓĞ¶àÓàÊı¾İÔÚ¶ÑÕ»ÖĞÎ´±»Çå³ı¡£´ïµ½µ÷ÓÃÇ°Óëµ÷ÓÃºó¶ÑÕ»µÄÕ¼ÓÃ´óĞ¡²»±ä¡£
-//ÉÏÊöÇé¿öÖ»ĞèÓÃÔÚµ÷ÓÃÍâ²¿º¯ÊıÊ±£¬ÄÚ²¿º¯Êı²»ĞèÈç´Ë´¦Àí¡£
+// SafeCallBeginä¸SafeCallEndä¸¤å‡½æ•°åº”æ­é…ä½¿ç”¨ï¼Œä»¥é˜²æ­¢åœ¨è°ƒç”¨Luaçš„å¤–éƒ¨å‡½æ•°ä¹‹åï¼Œ
+//æœ‰å¤šä½™æ•°æ®åœ¨å †æ ˆä¸­æœªè¢«æ¸…é™¤ã€‚è¾¾åˆ°è°ƒç”¨å‰ä¸è°ƒç”¨åå †æ ˆçš„å ç”¨å¤§å°ä¸å˜ã€‚
+//ä¸Šè¿°æƒ…å†µåªéœ€ç”¨åœ¨è°ƒç”¨å¤–éƒ¨å‡½æ•°æ—¶ï¼Œå†…éƒ¨å‡½æ•°ä¸éœ€å¦‚æ­¤å¤„ç†ã€‚
 //																	Romandou
 //---------------------------------------------------------------------------
 void KLuaScript::SafeCallBegin(int * pIndex)
@@ -595,10 +595,10 @@ void KLuaScript::SafeCallBegin(int * pIndex)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::SafeCallEnd
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int nIndex
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::SafeCallEnd
+// åŠŸèƒ½:	
+// å‚æ•°:	int nIndex
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KLuaScript::SafeCallEnd(int nIndex)
 {
@@ -607,10 +607,10 @@ void KLuaScript::SafeCallEnd(int nIndex)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::StopScript
-// ¹¦ÄÜ:	ÖĞÖ¹½Å±¾
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::StopScript
+// åŠŸèƒ½:	ä¸­æ­¢è„šæœ¬
+// å‚æ•°:	void
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Stop(void)
 {
@@ -621,10 +621,10 @@ BOOL KLuaScript::Stop(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ResumeScript
-// ¹¦ÄÜ:	»Ö¸´ÒÑÖĞÖ¹µÄ½Å±¾
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScript::ResumeScript
+// åŠŸèƒ½:	æ¢å¤å·²ä¸­æ­¢çš„è„šæœ¬
+// å‚æ•°:	void
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScript::Resume(void)
 {
@@ -638,10 +638,10 @@ BOOL KLuaScript::Resume(void)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::CreateTable
-// ¹¦ÄÜ:	½¨Á¢Ò»¸öLuaµÄTable£¬ÔÚµ÷ÓÃ¸Ãº¯Êı²¢ÉèÖÃTable¸÷¸ö³ÉÔ±Ö®ºó£¬±ØĞëµ÷ÓÃ
-//			SetGlobalName()À´¸øÕâ¸öTableÖ¸¶¨Ò»¸öÃû×Ö¡£
-// ·µ»Ø:	DWORD 
+// å‡½æ•°:	KLuaScript::CreateTable
+// åŠŸèƒ½:	å»ºç«‹ä¸€ä¸ªLuaçš„Tableï¼Œåœ¨è°ƒç”¨è¯¥å‡½æ•°å¹¶è®¾ç½®Tableå„ä¸ªæˆå‘˜ä¹‹åï¼Œå¿…é¡»è°ƒç”¨
+//			SetGlobalName()æ¥ç»™è¿™ä¸ªTableæŒ‡å®šä¸€ä¸ªåå­—ã€‚
+// è¿”å›:	DWORD 
 //---------------------------------------------------------------------------
 DWORD KLuaScript::CreateTable()
 {
@@ -656,10 +656,10 @@ DWORD KLuaScript::CreateTable()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::SetGlobalName
-// ¹¦ÄÜ:	ÉèÖÃLua¶ÑÕ»¶¥²¿µÄÊı¾İÒ»¸öÃû×Ö
-// ²ÎÊı:	LPSTR szName
-// ·µ»Ø:	void 
+// å‡½æ•°:	KLuaScript::SetGlobalName
+// åŠŸèƒ½:	è®¾ç½®Luaå †æ ˆé¡¶éƒ¨çš„æ•°æ®ä¸€ä¸ªåå­—
+// å‚æ•°:	LPSTR szName
+// è¿”å›:	void 
 //---------------------------------------------------------------------------
 void KLuaScript::SetGlobalName(LPSTR szName)
 {
@@ -668,10 +668,10 @@ void KLuaScript::SetGlobalName(LPSTR szName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScript::ModifyTable
-// ¹¦ÄÜ:	½«Ö¸¶¨Ãû³ÆµÄLuaTableÖÃ¶ÑÕ»¶¥¶Ë£¬²¢·µ»Ø¶¥¶ËIndex
-// ²ÎÊı:	LPSTR szTableName
-// ·µ»Ø:	DWORD ÈôLuaÖĞ²»´æÔÚ¸ÃTableÔò·µ»Ø-1
+// å‡½æ•°:	KLuaScript::ModifyTable
+// åŠŸèƒ½:	å°†æŒ‡å®šåç§°çš„LuaTableç½®å †æ ˆé¡¶ç«¯ï¼Œå¹¶è¿”å›é¡¶ç«¯Index
+// å‚æ•°:	LPSTR szTableName
+// è¿”å›:	DWORD è‹¥Luaä¸­ä¸å­˜åœ¨è¯¥Tableåˆ™è¿”å›-1
 //---------------------------------------------------------------------------
 DWORD KLuaScript::ModifyTable(LPSTR szTableName) 
 {

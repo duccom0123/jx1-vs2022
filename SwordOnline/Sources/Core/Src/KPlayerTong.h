@@ -3,7 +3,7 @@
 //
 // File:	KPlayerTong.h
 // Date:	2003.08.12
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	KPlayerTong Class
 //---------------------------------------------------------------------------
 
@@ -15,22 +15,22 @@ class KPlayerTong
 {
 	friend class KPlayer;
 private:
-	int			m_nPlayerIndex;		// Ö¸Ïò¶ÔÓ¦µÄplayerÊı×éµÄÎ»ÖÃ
-	int			m_nApplyTo;			// Èç¹ûÒÑ¾­ÏòÄ³¸ö°ï»áÉêÇë¼ÓÈë£¬°ïÖ÷µÄ playerindex
+	int			m_nPlayerIndex;		// æŒ‡å‘å¯¹åº”çš„playeræ•°ç»„çš„ä½ç½®
+	int			m_nApplyTo;			// å¦‚æœå·²ç»å‘æŸä¸ªå¸®ä¼šç”³è¯·åŠ å…¥ï¼Œå¸®ä¸»çš„ playerindex
 
 public:
-	DWORD		m_dwTongNameID;		// °ï»áÃû×Ö·û´®×ª»»³ÉµÄ dword
-	int			m_nFlag;			// ÊÇ·ñ¼ÓÈë°ï»á
-	int			m_nFigure;			// °ï»áÖĞµÄÉí·İ
-	int			m_nCamp;			// °ï»áÕóÓª
+	DWORD		m_dwTongNameID;		// å¸®ä¼šåå­—ç¬¦ä¸²è½¬æ¢æˆçš„ dword
+	int			m_nFlag;			// æ˜¯å¦åŠ å…¥å¸®ä¼š
+	int			m_nFigure;			// å¸®ä¼šä¸­çš„èº«ä»½
+	int			m_nCamp;			// å¸®ä¼šé˜µè¥
 	BYTE		m_btDirectorNum;
 	BYTE		m_btManagerNum;
 	DWORD		m_dwMemberNum;
 	DWORD		m_dwLeaveTime;
 	BYTE		m_btLevel;
-	char		m_szName[defTONG_NAME_LENGTH_32];		// °ï»áÃû³Æ
-	char		m_szMasterName[defTONG_NAME_LENGTH_32];	// °ïÖ÷Ãû×Ö
-	char		m_szAgname[defTONG_NAME_LENGTH_32];		// µ±Ç°³ÆºÅ
+	char		m_szName[defTONG_NAME_LENGTH_32];		// å¸®ä¼šåç§°
+	char		m_szMasterName[defTONG_NAME_LENGTH_32];	// å¸®ä¸»åå­—
+	char		m_szAgname[defTONG_NAME_LENGTH_32];		// å½“å‰ç§°å·
 	int			m_nTongJiyuParam;
 	char 		m_szTongJiyuNotify[defTONG_NOTIFY_LENGTH];
 	DWORD		m_dwMoney;
@@ -43,10 +43,10 @@ public:
 	int			m_nTongNationalEmblem;
 #endif
 private:
-	BOOL		CheckAcceptAddApplyCondition();	// ÅĞ¶ÏÊÇ·ñ¿ÉÒÔ×ª·¢±ğÈËµÄ¼ÓÈë°ï»áÉêÇë
+	BOOL		CheckAcceptAddApplyCondition();	// åˆ¤æ–­æ˜¯å¦å¯ä»¥è½¬å‘åˆ«äººçš„åŠ å…¥å¸®ä¼šç”³è¯·
 
 public:
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	void		Init(int nPlayerIdx);
 	void		Clear();
 
@@ -55,20 +55,20 @@ public:
 	DWORD		GetTongNameID();
 	void		SetTongNameID(DWORD dwID) { m_dwTongNameID = dwID; };
 	int			CheckIn() {return m_nFlag;};
-	// ÊÇ·ñÓĞÈ¨Á¦²éÑ¯¶Ó³¤ĞÅÏ¢
+	// æ˜¯å¦æœ‰æƒåŠ›æŸ¥è¯¢é˜Ÿé•¿ä¿¡æ¯
 	BOOL		CanGetManagerInfo(DWORD dwTongNameID);
-	// ÊÇ·ñÓĞÈ¨Á¦²éÑ¯°ïÖÚĞÅÏ¢
+	// æ˜¯å¦æœ‰æƒåŠ›æŸ¥è¯¢å¸®ä¼—ä¿¡æ¯
 	BOOL		CanGetMemberInfo(DWORD dwTongNameID);
 
 #ifndef _SERVER
-	// ÉêÇë´´½¨°ï»á
+	// ç”³è¯·åˆ›å»ºå¸®ä¼š
 	int			ApplyCreateTong(int nCamp, char *lpszTongName);
 	void		ForceCreateTong(BYTE* pMsg);
-	// µÃµ½·şÎñÆ÷Í¨Öª´´½¨°ï»á
+	// å¾—åˆ°æœåŠ¡å™¨é€šçŸ¥åˆ›å»ºå¸®ä¼š
 	void		Create(TONG_CREATE_SYNC *psCreate);
-	// ÉêÇë¼ÓÈë°ï»á
+	// ç”³è¯·åŠ å…¥å¸®ä¼š
 	BOOL		ApplyAddTong(DWORD dwNpcID);
-	// ÊÇ·ñ½ÓÊÜ³ÉÔ± bFlag == TRUE ½ÓÊÜ == FALSE ²»½ÓÊÜ
+	// æ˜¯å¦æ¥å—æˆå‘˜ bFlag == TRUE æ¥å— == FALSE ä¸æ¥å—
 	void		JoinTongReply(int nNpcIdx);
 
 	void		s2cJoinTong(BYTE* pMsg);
@@ -76,15 +76,15 @@ public:
 
 	void		AcceptMember(int nPlayerIdx, DWORD dwNameID, BOOL bFlag);
 	void		ReplyMember(int nPlayerIdx, DWORD dwNameID, BOOL bFlag);
-	// ¼ÓÈë°ï»á£¬³ÉÎªÆÕÍ¨°ïÖÚ
+	// åŠ å…¥å¸®ä¼šï¼Œæˆä¸ºæ™®é€šå¸®ä¼—
 	BOOL		AddTong(int nCamp, char *lpszTongName, char *lpszAgname, char *lpszMaster);
-	// ÉêÇëÈÎÃü
+	// ç”³è¯·ä»»å‘½
 	BOOL		ApplyInstate(int nCurFigure, int nCurPos, int nNewFigure, int nNewPos, char *lpszName);
-	// ÉêÇëÌßÈË
+	// ç”³è¯·è¸¢äºº
 	BOOL		ApplyKick(int nCurFigure, int nCurPos, char *lpszName);
-	// ÉêÇë´«Î»
+	// ç”³è¯·ä¼ ä½
 	BOOL		ApplyChangeMaster(int nCurFigure, int nPos, char *lpszName);
-	// ÉêÇëÀë¿ª°ï»á
+	// ç”³è¯·ç¦»å¼€å¸®ä¼š
 	BOOL		ApplyLeave();
 
 	BOOL		ApplySaveMoney(DWORD nMoney);
@@ -94,17 +94,17 @@ public:
 	BOOL		ApplyChangeJiyu(char* szMasterName, int nParam, char* szNotify);
 	BOOL		ApplyRecruit(BOOL bRecruit);
 	
-	/* ÉêÇë»ñµÃ°ï»áĞÅÏ¢
-	if nInfoID == enumTONG_APPLY_INFO_ID_SELF ²»ÓÃ²ÎÊı
-	if nInfoID == enumTONG_APPLY_INFO_ID_MASTER nParam1 °ï»áÃûid
-	if nInfoID == enumTONG_APPLY_INFO_ID_DIRECTOR nParam1 °ï»áÃûid
-	if nInfoID == enumTONG_APPLY_INFO_ID_MANAGER nParam1 °ï»áÃûid nParam2 ´Ó¿ªÊ¼ÓĞĞ§µÚ¼¸¸ö nParam3 Á¬Ğø¼¸¸ö
-	if nInfoID == enumTONG_APPLY_INFO_ID_MEMBER nParam1 °ï»áÃûid nParam2 ´Ó¿ªÊ¼ÓĞĞ§µÚ¼¸¸ö nParam3 Á¬Ğø¼¸¸ö
-	if nInfoID == enumTONG_APPLY_INFO_ID_ONE lpszName ÈËÃû
+	/* ç”³è¯·è·å¾—å¸®ä¼šä¿¡æ¯
+	if nInfoID == enumTONG_APPLY_INFO_ID_SELF ä¸ç”¨å‚æ•°
+	if nInfoID == enumTONG_APPLY_INFO_ID_MASTER nParam1 å¸®ä¼šåid
+	if nInfoID == enumTONG_APPLY_INFO_ID_DIRECTOR nParam1 å¸®ä¼šåid
+	if nInfoID == enumTONG_APPLY_INFO_ID_MANAGER nParam1 å¸®ä¼šåid nParam2 ä»å¼€å§‹æœ‰æ•ˆç¬¬å‡ ä¸ª nParam3 è¿ç»­å‡ ä¸ª
+	if nInfoID == enumTONG_APPLY_INFO_ID_MEMBER nParam1 å¸®ä¼šåid nParam2 ä»å¼€å§‹æœ‰æ•ˆç¬¬å‡ ä¸ª nParam3 è¿ç»­å‡ ä¸ª
+	if nInfoID == enumTONG_APPLY_INFO_ID_ONE lpszName äººå
 	if nInfoID == enumTONG_APPLY_INFO_ID_TONG_HEAD nParam1 NpcIndex
 	*/
 	BOOL		ApplyInfo(int nInfoID, int nParam1, int nParam2, int nParam3, char *lpszName = NULL);
-	// Éè¶¨×ÔÉí°ï»áĞÅÏ¢
+	// è®¾å®šè‡ªèº«å¸®ä¼šä¿¡æ¯
 	void		SetSelfInfo(TONG_SELF_INFO_SYNC *pInfo);
 	
 	void        OpenCreateInterface();
@@ -128,53 +128,53 @@ public:
 #endif
 
 #ifdef _SERVER
-	// ÅĞ¶Ï´´½¨°ï»áÌõ¼şÊÇ·ñ³ÉÁ¢ if ³É¹¦ return == 0 else return error id
+	// åˆ¤æ–­åˆ›å»ºå¸®ä¼šæ¡ä»¶æ˜¯å¦æˆç«‹ if æˆåŠŸ return == 0 else return error id
 	int			CheckCreateCondition(int nCamp, char *lpszTongName);
-	// µÃµ½relayÍ¨Öª£¬°ï»á´´½¨³É¹¦£¬´¦ÀíÏàÓ¦Êı¾İ
+	// å¾—åˆ°relayé€šçŸ¥ï¼Œå¸®ä¼šåˆ›å»ºæˆåŠŸï¼Œå¤„ç†ç›¸åº”æ•°æ®
 	BOOL		Create(int nCamp, char *lpszTongName);
-	// Í·ÉÏÊÇ·ñĞèÒª¶¥ÕÒÈË±êÖ¾
-	// ×ª·¢¼ÓÈë°ï»áÉêÇë¸ø¶Ô·½¿Í»§¶Ë
+	// å¤´ä¸Šæ˜¯å¦éœ€è¦é¡¶æ‰¾äººæ ‡å¿—
+	// è½¬å‘åŠ å…¥å¸®ä¼šç”³è¯·ç»™å¯¹æ–¹å®¢æˆ·ç«¯
 	BOOL		TransferAddApply(DWORD dwNpcID);
-	// ·¢ÏûÏ¢Í¨Öª¾Ü¾øÄ³ÈËÉêÇë
+	// å‘æ¶ˆæ¯é€šçŸ¥æ‹’ç»æŸäººç”³è¯·
 	void		SendRefuseMessage(int nPlayerIdx, DWORD dwNameID);
 	
 	void		JoinTong(char* cTongName);
 	void		JoinTongReply(BYTE* pProtocol);
-	// ÅĞ¶Ï±ğÈË¼ÓÈë×Ô¼º°ï»áÌõ¼şÊÇ·ñ³ÉÁ¢
+	// åˆ¤æ–­åˆ«äººåŠ å…¥è‡ªå·±å¸®ä¼šæ¡ä»¶æ˜¯å¦æˆç«‹
 	BOOL		CheckJoinTong();
 	BOOL		CheckAddCondition(int nPlayerIdx);
 	BOOL		CheckAddConditionReply(int nPlayerIdx);
-	// ¼ÓÈë°ï»á£¬³ÉÎªÆÕÍ¨°ïÖÚ
+	// åŠ å…¥å¸®ä¼šï¼Œæˆä¸ºæ™®é€šå¸®ä¼—
 	BOOL		AddTong(int nCamp, int nMemberNum, DWORD dwMoney, int nLevel, DWORD dwTotalEff, BOOL bRecruit, int nTongParam, int nTongJiyuParam, char *lpszTongName, char *lpszMasterName, char *lpszAgname);
-	// ¸ø¿Í»§¶Ë·¢ËÍ×Ô¼ºÔÚ°ï»áÖĞµÄĞÅÏ¢
+	// ç»™å®¢æˆ·ç«¯å‘é€è‡ªå·±åœ¨å¸®ä¼šä¸­çš„ä¿¡æ¯
 	void		SendSelfInfo();
-	// ¼ì²âÊÇ·ñÓĞÈÎÃüÈ¨Àû
+	// æ£€æµ‹æ˜¯å¦æœ‰ä»»å‘½æƒåˆ©
 	BOOL		CheckInstatePower(TONG_APPLY_INSTATE_COMMAND *pApply);
-	// ±»ÈÎÃü
+	// è¢«ä»»å‘½
 	void		BeInstated(STONG_SERVER_TO_CORE_BE_INSTATED *pSync);
-	// ¼ì²âÊÇ·ñÓĞÌßÈËÈ¨Àû
+	// æ£€æµ‹æ˜¯å¦æœ‰è¸¢äººæƒåˆ©
 	BOOL		CheckKickPower(TONG_APPLY_KICK_COMMAND *pKick);
-	// ±»Ìß³ö°ï»á
+	// è¢«è¸¢å‡ºå¸®ä¼š
 	void		BeKicked(STONG_SERVER_TO_CORE_BE_KICKED *pSync);
-	// ¼ì²âÊÇ·ñÓĞÀë¿ªÈ¨Àû
+	// æ£€æµ‹æ˜¯å¦æœ‰ç¦»å¼€æƒåˆ©
 	BOOL		CheckLeavePower(TONG_APPLY_LEAVE_COMMAND *pLeave);
 
 	BOOL		CheckMoneyPower(TONG_APPLY_SAVE_COMMAND *pSave);
 
 	BOOL		CheckSaveEffPower(TONG_APPLY_SAVE_EFF_COMMAND *pSave);
-	// Àë¿ª°ï»á
+	// ç¦»å¼€å¸®ä¼š
 	void		Leave(STONG_SERVER_TO_CORE_LEAVE *pLeave);
-	// ¼ì²âÊÇ·ñÓĞÈ¨Àû»»°ïÖ÷
+	// æ£€æµ‹æ˜¯å¦æœ‰æƒåˆ©æ¢å¸®ä¸»
 	BOOL		CheckChangeMasterPower(TONG_APPLY_CHANGE_MASTER_COMMAND *pChange);
-	// ¼ì²âÊÇ·ñÓĞÄÜÁ¦½ÓÊÜ´«Î»
+	// æ£€æµ‹æ˜¯å¦æœ‰èƒ½åŠ›æ¥å—ä¼ ä½
 	BOOL		CheckGetMasterPower();
-	// ´«Î»µ¼ÖÂÉí·İ¸Ä±ä
+	// ä¼ ä½å¯¼è‡´èº«ä»½æ”¹å˜
 	BOOL		CheckGetMasterPower(STONG_SERVER_TO_CORE_CHECK_GET_MASTER_POWER *pCheck);
 
 	void		ChangeAs(STONG_SERVER_TO_CORE_CHANGE_AS *pAs);
-	// »»°ïÖ÷
+	// æ¢å¸®ä¸»
 	void		ChangeMaster(char *lpszMaster);
-	// µÇÂ½Ê±ºò»ñµÃ°ï»áĞÅÏ¢
+	// ç™»é™†æ—¶å€™è·å¾—å¸®ä¼šä¿¡æ¯
 	void		Login(STONG_SERVER_TO_CORE_LOGIN *pLogin);
 
 	void		DBSetTongNameID(DWORD dwID) { m_dwTongNameID = dwID; if (dwID) m_nFlag = 1;};

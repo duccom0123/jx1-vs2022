@@ -1,21 +1,21 @@
 #ifndef KPLAYERDEF_H
 #define KPLAYERDEF_H
 
-//Êı¾İ¿â¼ÓÔØÁĞ±íÊı¾İÊ±Ã¿Ö¡¼ÓÔØÊıÁ¿
+//æ•°æ®åº“åŠ è½½åˆ—è¡¨æ•°æ®æ—¶æ¯å¸§åŠ è½½æ•°é‡
 #define DBLOADPERTIME_ITEM		10
 #define DBLOADPERTIME_FRIEND	100
 #define	DBLOADPERTIME_TASK		500
 
 
 
-#define SCRIPT_PLAYERID				"PlayerId"		//½Å±¾ÖĞµÄÍæ¼ÒIdÈ«¾Ö±äÁ¿Ãû
-#define SCRIPT_PLAYERINDEX			"PlayerIndex"	//½Å±¾ÖĞµÄÍæ¼ÒµÄ±àºÅÈ«¾Ö±äÁ¿Ãû
-#define SCRIPT_OBJINDEX				"ObjIndex"		//´¥·¢½Å±¾µÄÎï¼şµÄINDEX
-#define SCRIPT_SUBWORLDINDEX		"SubWorld"		//½Å±¾ÖĞµ±Ç°ÊÀ½çµÄIndexµÄÈ«¾Ö±äÁ¿Ãû
+#define SCRIPT_PLAYERID				"PlayerId"		//è„šæœ¬ä¸­çš„ç©å®¶Idå…¨å±€å˜é‡å
+#define SCRIPT_PLAYERINDEX			"PlayerIndex"	//è„šæœ¬ä¸­çš„ç©å®¶çš„ç¼–å·å…¨å±€å˜é‡å
+#define SCRIPT_OBJINDEX				"ObjIndex"		//è§¦å‘è„šæœ¬çš„ç‰©ä»¶çš„INDEX
+#define SCRIPT_SUBWORLDINDEX		"SubWorld"		//è„šæœ¬ä¸­å½“å‰ä¸–ç•Œçš„Indexçš„å…¨å±€å˜é‡å
 
 #define	CLIENT_PLAYER_INDEX	1
 
-#define		MAX_TEAM_APPLY_LIST		32		// Ã¿¸ö¶ÓÎéµÄ×î´óµ±Ç°ÉêÇë¼ÓÈëÈËÊı
+#define		MAX_TEAM_APPLY_LIST		32		// æ¯ä¸ªé˜Ÿä¼çš„æœ€å¤§å½“å‰ç”³è¯·åŠ å…¥äººæ•°
 
 //---------------------------------------------------------------------------
 #define	QUEST_BEFORE	0x0000
@@ -32,14 +32,14 @@ enum MOUSE_BUTTON
 
 enum SCRIPTACTION  
 {
-	SCRIPTACTION_UISHOW,			//ÏÔÊ¾Ä³¸öUI½çÃæ
-	SCRIPTACTION_EXESCRIPT,			//Ö´ĞĞ½Å±¾
+	SCRIPTACTION_UISHOW,			//æ˜¾ç¤ºæŸä¸ªUIç•Œé¢
+	SCRIPTACTION_EXESCRIPT,			//æ‰§è¡Œè„šæœ¬
 };
 /*
 enum UISEL_DATATYPE
 {
-	UISEL_nInfo_sOption,		//Ö÷ĞÅÏ¢ÒÔÊı×Ö±êÊ¶£¬Ñ¡ÏîÎª×Ö·û´®
-	UISEL_nInfo_sOption,		//Ö÷ĞÅÏ¢ÒÔÊı×Ö±êÊ¶£¬Ñ¡ÏîÎªÊı×Ö±êÊ¶	
+	UISEL_nInfo_sOption,		//ä¸»ä¿¡æ¯ä»¥æ•°å­—æ ‡è¯†ï¼Œé€‰é¡¹ä¸ºå­—ç¬¦ä¸²
+	UISEL_nInfo_sOption,		//ä¸»ä¿¡æ¯ä»¥æ•°å­—æ ‡è¯†ï¼Œé€‰é¡¹ä¸ºæ•°å­—æ ‡è¯†	
 	
 	UISEL_sInfo_nOption,		
 	UISEL_sInfo_sOption,
@@ -54,37 +54,37 @@ enum
 	ATTRIBUTE_RESET_ALL,
 };
 
-enum	// ¶ÓÎé´´½¨Ê§°ÜÔ­Òò
+enum	// é˜Ÿä¼åˆ›å»ºå¤±è´¥åŸå› 
 {
-	Team_Create_Error_InTeam = 0,	// ÒÑ¾­ÔÚ¶ÓÎéÖĞ
-	Team_Create_Error_SameName,		// Í¬Ãû´íÎó
-	Team_Create_Error_Name,			// ¶ÓÎéÃû×Ö·Ç·¨
-	Team_Create_Error_TeamFull,		// ¶ÓÎéÊıÁ¿Ì«¶à£¬ÈİÄÉ²»ÏÂ
-	Team_Create_Error_CannotCreate,	// µ±Ç°´¦ÓÚ²»ÄÜ×é¶Ó×´Ì¬
-	Team_Create_Error_NormalPK,	// µ±Ç°´¦ÓÚ²»ÄÜ×é¶Ó×´Ì¬
+	Team_Create_Error_InTeam = 0,	// å·²ç»åœ¨é˜Ÿä¼ä¸­
+	Team_Create_Error_SameName,		// åŒåé”™è¯¯
+	Team_Create_Error_Name,			// é˜Ÿä¼åå­—éæ³•
+	Team_Create_Error_TeamFull,		// é˜Ÿä¼æ•°é‡å¤ªå¤šï¼Œå®¹çº³ä¸ä¸‹
+	Team_Create_Error_CannotCreate,	// å½“å‰å¤„äºä¸èƒ½ç»„é˜ŸçŠ¶æ€
+	Team_Create_Error_NormalPK,	// å½“å‰å¤„äºä¸èƒ½ç»„é˜ŸçŠ¶æ€
 };
 
-enum	// ¶ÓÎé´´½¨Ê§°ÜÔ­Òò
+enum	// é˜Ÿä¼åˆ›å»ºå¤±è´¥åŸå› 
 {
 	ChatRoom_Create_Error_Name,
 	ChatRoom_Create_Error_Pass,
-	ChatRoom_Create_Error_SameName,		// Í¬Ãû´íÎó
-	ChatRoom_Create_Error_SameHost,		// ¶ÓÎéÊıÁ¿Ì«¶à£¬ÈİÄÉ²»ÏÂ
-	ChatRoom_Create_Error_RoomFull,		// ¶ÓÎéÊıÁ¿Ì«¶à£¬ÈİÄÉ²»ÏÂ
+	ChatRoom_Create_Error_SameName,		// åŒåé”™è¯¯
+	ChatRoom_Create_Error_SameHost,		// é˜Ÿä¼æ•°é‡å¤ªå¤šï¼Œå®¹çº³ä¸ä¸‹
+	ChatRoom_Create_Error_RoomFull,		// é˜Ÿä¼æ•°é‡å¤ªå¤šï¼Œå®¹çº³ä¸ä¸‹
 };
 
-enum	// ¶ÓÎé´´½¨Ê§°ÜÔ­Òò
+enum	// é˜Ÿä¼åˆ›å»ºå¤±è´¥åŸå› 
 {
 	ChatRoom_Create_Success,
-	ChatRoom_Join_Host,		// Í¬Ãû´íÎó
-	ChatRoom_Join_Member,		// Í¬Ãû´íÎó
+	ChatRoom_Join_Host,		// åŒåé”™è¯¯
+	ChatRoom_Join_Member,		// åŒåé”™è¯¯
 	ChatRoom_Join_Fail1,
 	ChatRoom_Join_Fail2,
 	ChatRoom_Join_Fail3,
-	ChatRoom_Leave,		// Í¬Ãû´íÎó
+	ChatRoom_Leave,		// åŒåé”™è¯¯
 	ChatRoom_Delete,
 	ChatRoom_ForceLeave,
-	ChatRoom_BeKick,		// ¶ÓÎéÊıÁ¿Ì«¶à£¬ÈİÄÉ²»ÏÂ
+	ChatRoom_BeKick,		// é˜Ÿä¼æ•°é‡å¤ªå¤šï¼Œå®¹çº³ä¸ä¸‹
 	ChatRoom_AddBlackList,
 	ChatRoom_AddBlackList_Fail,
 	ChatRoom_RemoveBlackList,

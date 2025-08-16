@@ -12,17 +12,17 @@ struct KUiImage;
 class KUiMsgSel : protected KWndShowAnimate
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiMsgSel*	OpenWindow(KUiQuestionAndAnswer* pQAA, KUiImage *pPic = NULL);		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiMsgSel*	OpenWindow(KUiQuestionAndAnswer* pQAA, KUiImage *pPic = NULL);		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 	static KUiMsgSel*	GetIfVisible();
-	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
-	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
-	static void			OnClickMsg(int nMsg);			//ÏìÓ¦µã»÷ÏûÏ¢
+	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
+	static void			OnClickMsg(int nMsg);			//å“åº”ç‚¹å‡»æ¶ˆæ¯
 private:
 	KUiMsgSel();
 	~KUiMsgSel();
 	void	Show(KUiQuestionAndAnswer* pQAA);
-	int		Initialize(KUiImage *pPic);								//³õÊ¼»¯
+	int		Initialize(KUiImage *pPic);								//åˆå§‹åŒ–
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	ChangeCurSel(bool bNext);
 	virtual void	Breathe();
@@ -31,12 +31,12 @@ private:
 private:
 	static KUiMsgSel*	m_pSelf;
 
-	KScrollMessageListBox	m_MsgScrollList;	//±¸Ñ¡ÎÄ×ÖºÍ¹ö¶¯Ìõ
-	KWndScrollBar			m_MessageScroll;	//±¸Ñ¡ÎÄ×ÖºÍ¹ö¶¯Ìõ
-	KWndMessageListBox		m_MessageList;	//ËµÃ÷ÎÄ×Ö
+	KScrollMessageListBox	m_MsgScrollList;	//å¤‡é€‰æ–‡å­—å’Œæ»šåŠ¨æ¡
+	KWndScrollBar			m_MessageScroll;	//å¤‡é€‰æ–‡å­—å’Œæ»šåŠ¨æ¡
+	KWndMessageListBox		m_MessageList;	//è¯´æ˜æ–‡å­—
 	KWndImage				m_Image;
 
-	//Îª×Ô¶¯¹ö¶¯¼ÓµÄ±äÁ¿
+	//ä¸ºè‡ªåŠ¨æ»šåŠ¨åŠ çš„å˜é‡
 	unsigned int	m_uLeftTime;
 	bool m_bAutoUp;
 	bool m_bAutoDown;

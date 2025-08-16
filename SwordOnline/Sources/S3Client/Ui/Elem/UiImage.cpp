@@ -11,7 +11,7 @@
 #include "../../../Represent/iRepresent/iRepresentShell.h"
 
 unsigned int	l_Time = 0;
-//»æÍ¼Éè±¸
+//ç»˜å›¾è®¾å¤‡
 extern iRepresentShell*	g_pRepresentShell;
 
 unsigned int IR_GetCurrentTime()
@@ -20,7 +20,7 @@ unsigned int IR_GetCurrentTime()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂÍ¼ĞÎ»»Ö¡¼ÆËãÓÃÊ±ÖÓ
+//	åŠŸèƒ½ï¼šæ›´æ–°å›¾å½¢æ¢å¸§è®¡ç®—ç”¨æ—¶é’Ÿ
 //--------------------------------------------------------------------------
 void IR_UpdateTime()
 {
@@ -28,7 +28,7 @@ void IR_UpdateTime()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯½á¹¹Êı¾İ
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–ç»“æ„æ•°æ®
 //--------------------------------------------------------------------------
 void IR_InitUiImageRef(KUiImageRef& Img)
 {
@@ -37,7 +37,7 @@ void IR_InitUiImageRef(KUiImageRef& Img)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯½á¹¹Êı¾İ
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–ç»“æ„æ•°æ®
 //--------------------------------------------------------------------------
 void IR_InitUiImagePartRef(KUiImagePartRef& Img)
 {
@@ -55,7 +55,7 @@ int	IR_IsTimePassed(unsigned int uInterval, unsigned int& uLastTimer)
 	return 0;
 }
 
-//»ñÈ¡Ê£ÓàÊ±¼ä£¬Èç¹ûÊ±¼äÒÑ¾­µ½ÁË/¹ıÁË£¬·µ»ØÖµ¶¼Îª0
+//è·å–å‰©ä½™æ—¶é—´ï¼Œå¦‚æœæ—¶é—´å·²ç»åˆ°äº†/è¿‡äº†ï¼Œè¿”å›å€¼éƒ½ä¸º0
 unsigned int IR_GetRemainTime(unsigned int uInterval, unsigned int uLastTimer)
 {
 	register unsigned int uRemain;
@@ -65,7 +65,7 @@ unsigned int IR_GetRemainTime(unsigned int uInterval, unsigned int uLastTimer)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»»Ö¡¼ÆËã
+//	åŠŸèƒ½ï¼šæ¢å¸§è®¡ç®—
 //--------------------------------------------------------------------------
 int IR_NextFrame(KUiImageRef& Img, bool bReverse)
 {
@@ -114,7 +114,7 @@ int IR_NextFrame(KUiImageRef& Img, bool bReverse)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃ»æÖÆÍ¼µÄ¾Ö²¿
+//	åŠŸèƒ½ï¼šè®¾ç½®ç»˜åˆ¶å›¾çš„å±€éƒ¨
 //--------------------------------------------------------------------------
 void IR_UpdateImagePart(KUiImagePartRef& Img, int nPartValue, int nFullValue)
 {
@@ -185,7 +185,7 @@ void IR_UpdateImagePart(KUiImagePartRef& Img, int nPartValue, int nFullValue)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»æÖÆÍ¼ĞÎ
+//	åŠŸèƒ½ï¼šç»˜åˆ¶å›¾å½¢
 //--------------------------------------------------------------------------
 void IR_DrawImage(KUiImageRef* pImg)
 {
@@ -194,7 +194,7 @@ void IR_DrawImage(KUiImageRef* pImg)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»æÖÆÍ¼ĞÎµÄ¾Ö²¿
+//	åŠŸèƒ½ï¼šç»˜åˆ¶å›¾å½¢çš„å±€éƒ¨
 //--------------------------------------------------------------------------
 void IR_DrawImagePart(KUiImagePartRef* pImg)
 {
@@ -203,7 +203,7 @@ void IR_DrawImagePart(KUiImagePartRef* pImg)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÍ¼ĞÎ×ÊÔ´µÄKSprite¶ÔÏó
+//	åŠŸèƒ½ï¼šè·å¾—å›¾å½¢èµ„æºçš„KSpriteå¯¹è±¡
 //--------------------------------------------------------------------------
 int IR_GetSpritePixcelAlpha(KUiImageRef& Img, int h, int v)
 {
@@ -213,7 +213,7 @@ int IR_GetSpritePixcelAlpha(KUiImageRef& Img, int h, int v)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÍ¼Ïñ²Î¿¼µã£¨Ò»°ãËùËµÎªÖØĞÄ£©
+//	åŠŸèƒ½ï¼šè·å¾—å›¾åƒå‚è€ƒç‚¹ï¼ˆä¸€èˆ¬æ‰€è¯´ä¸ºé‡å¿ƒï¼‰
 //--------------------------------------------------------------------------
 void IR_GetReferenceSpot(KUiImageRef& Img, int& h, int& v)
 {

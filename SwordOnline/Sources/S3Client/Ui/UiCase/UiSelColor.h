@@ -1,9 +1,9 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--Ñ¡ÑÕÉ«
+//	ç•Œé¢--é€‰é¢œè‰²
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-29
-//  ×¢ÊÍ£º´Ë¹¦ÄÜÔ­À´·ÅÔÚ¿ìËÙÁÄÌìÊäÈë´°¿ÚÄÚ£¬ÏÖ¶ÀÁ¢³öÀ´
+//  æ³¨é‡Šï¼šæ­¤åŠŸèƒ½åŸæ¥æ”¾åœ¨å¿«é€ŸèŠå¤©è¾“å…¥çª—å£å†…ï¼Œç°ç‹¬ç«‹å‡ºæ¥
 ------------------------------------------------------------------------------------------
 *****************************************************************************************/
 #pragma once
@@ -15,7 +15,7 @@
 class KUiSelColor
 {
 public:
-	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	static void			PopupMenu(KWndWindow* pCaller, unsigned int uParam, int x, int y, int nWidth);
 	static void			CancelMenu();
 	static unsigned int GetColor(int nIndex);

@@ -3,17 +3,17 @@
 //
 // File:	KMapMusic.h
 // Date:	2003-5-18 17:22
-// Code:	±ß³ÇÀË×Ó
-// ËµÃ÷£ºÓÎÏ·ÊÀ½çµÄÒôÀÖ£¬¾ßÌå²ß»®ĞèÇóÉè¶¨Çë²ÎÔÄ
-//			sourcesafe²ß»®¿â\Setting\GAMESETTING\ÒôÀÖÏµÍ³Éè¶¨.doc
+// Code:	è¾¹åŸæµªå­
+// è¯´æ˜ï¼šæ¸¸æˆä¸–ç•Œçš„éŸ³ä¹ï¼Œå…·ä½“ç­–åˆ’éœ€æ±‚è®¾å®šè¯·å‚é˜…
+//			sourcesafeç­–åˆ’åº“\Setting\GAMESETTING\éŸ³ä¹ç³»ç»Ÿè®¾å®š.doc
 //---------------------------------------------------------------------------
 
 #pragma once
 
 #ifndef _SERVER
 
-#define		defONE_MAP_MAX_MUSIC			4				// Ã¿ÕÅµØÍ¼×î´ó¿ÉÄÜÒôÀÖÊı
-#define		defGAME_TIME_ONE_DAY			(1440 * 120)	// ÓÎÏ·Ã¿ÌìÊ±¼äµÄ³¤¶È
+#define		defONE_MAP_MAX_MUSIC			4				// æ¯å¼ åœ°å›¾æœ€å¤§å¯èƒ½éŸ³ä¹æ•°
+#define		defGAME_TIME_ONE_DAY			(1440 * 120)	// æ¸¸æˆæ¯å¤©æ—¶é—´çš„é•¿åº¦
 #define		defMUSIC_MAX_STAGE				32
 #define		defMUSIC_STATE_MAX_MAP			64
 #define		defMUSIC_STATE_MAX_MUSIC		16
@@ -26,22 +26,22 @@ enum
 	enumMUSIC_STATE_NUM,
 };
 
-// Ã¿Ê×ÒôÀÖµÄ²ÎÊı
+// æ¯é¦–éŸ³ä¹çš„å‚æ•°
 struct	KMapMusicInfo
 {
-	int		m_nVolume;						// ÒôÀÖÉùÒô´óĞ¡
-	int		m_nStartTime;					// ÒôÀÖÔÚÓÎÏ·Ê±¼äµÄÊ²Ã´½×¶Î²¥·Å£ºÆğÊ¼Ê±¼ä
-	int		m_nEndTime;						// ÒôÀÖÔÚÓÎÏ·Ê±¼äµÄÊ²Ã´½×¶Î²¥·Å£º½áÊøÊ±¼ä
-	char	m_szFileName[FILE_NAME_LENGTH];	// ÒôÀÖÎÄ¼şÃû(º¬´ÓÓÎÏ·¸úÄ¿Â¼¿ªÊ¼µÄÍêÕûÓÎÏ·Â·¾¶)
+	int		m_nVolume;						// éŸ³ä¹å£°éŸ³å¤§å°
+	int		m_nStartTime;					// éŸ³ä¹åœ¨æ¸¸æˆæ—¶é—´çš„ä»€ä¹ˆé˜¶æ®µæ’­æ”¾ï¼šèµ·å§‹æ—¶é—´
+	int		m_nEndTime;						// éŸ³ä¹åœ¨æ¸¸æˆæ—¶é—´çš„ä»€ä¹ˆé˜¶æ®µæ’­æ”¾ï¼šç»“æŸæ—¶é—´
+	char	m_szFileName[FILE_NAME_LENGTH];	// éŸ³ä¹æ–‡ä»¶å(å«ä»æ¸¸æˆè·Ÿç›®å½•å¼€å§‹çš„å®Œæ•´æ¸¸æˆè·¯å¾„)
 };
 
-// Ã¿ÕÅµØÍ¼µÄÒôÀÖ²ÎÊı
+// æ¯å¼ åœ°å›¾çš„éŸ³ä¹å‚æ•°
 struct	KMapAllMusic
 {
-	int				m_nMapID;				// µØÍ¼id
-	KMapMusicInfo	m_sMusic[defONE_MAP_MAX_MUSIC];	// ±¾µØÍ¼ËùÓĞÒôÀÖµÄ²ÎÊıÊı¾İ
+	int				m_nMapID;				// åœ°å›¾id
+	KMapMusicInfo	m_sMusic[defONE_MAP_MAX_MUSIC];	// æœ¬åœ°å›¾æ‰€æœ‰éŸ³ä¹çš„å‚æ•°æ•°æ®
 
-	KMapAllMusic() {m_nMapID = 0; ZeroMemory(m_sMusic, sizeof(m_sMusic));};	// ¹¹Ôìº¯Êı£¬³õÊ¼»¯
+	KMapAllMusic() {m_nMapID = 0; ZeroMemory(m_sMusic, sizeof(m_sMusic));};	// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–
 };
 
 struct	KMapFightMusic
@@ -51,22 +51,22 @@ struct	KMapFightMusic
 	char	m_szMusicName[defMUSIC_STATE_MAX_MUSIC][FILE_NAME_LENGTH];
 };
 
-// ÓÎÏ·ÊÀ½çµÄÒôÀÖ
+// æ¸¸æˆä¸–ç•Œçš„éŸ³ä¹
 class	CORE_API KMapMusic
 {
 private:
-	int				m_nState;			// µ±Ç°×´Ì¬
+	int				m_nState;			// å½“å‰çŠ¶æ€
 
-	int				m_nCurMapID;		// µ±Ç°µØÍ¼id
-	int				m_nCurInfoNo;		// µ±Ç°µØÍ¼idÔÚĞÅÏ¢Êı¾İµÄÎ»ÖÃ
-	int				m_nCurMusicNo;		// µ±Ç°ÕıÔÚ²¥·Å±¾µØÍ¼µÚ¼¸Ê×ÒôÀÖ
-	int				m_nGameVolume;		// µ±Ç°ÓÎÏ·Éè¶¨ÒôÀÖÉùÒô´óĞ¡(0(ÎŞÉù) -- 100(Õı³£))
-	int				m_nWeatherVolume;	// µ±Ç°ÌìÆøµ¼ÖÂµÄÒôÀÖÉùÒô´óĞ¡µÄ±ä»¯(0(ÎŞÉù) -- 100(Õı³£))
-	char			m_szCurName[FILE_NAME_LENGTH];	// µ±Ç°ÒôÀÖÎÄ¼şÃû
+	int				m_nCurMapID;		// å½“å‰åœ°å›¾id
+	int				m_nCurInfoNo;		// å½“å‰åœ°å›¾idåœ¨ä¿¡æ¯æ•°æ®çš„ä½ç½®
+	int				m_nCurMusicNo;		// å½“å‰æ­£åœ¨æ’­æ”¾æœ¬åœ°å›¾ç¬¬å‡ é¦–éŸ³ä¹
+	int				m_nGameVolume;		// å½“å‰æ¸¸æˆè®¾å®šéŸ³ä¹å£°éŸ³å¤§å°(0(æ— å£°) -- 100(æ­£å¸¸))
+	int				m_nWeatherVolume;	// å½“å‰å¤©æ°”å¯¼è‡´çš„éŸ³ä¹å£°éŸ³å¤§å°çš„å˜åŒ–(0(æ— å£°) -- 100(æ­£å¸¸))
+	char			m_szCurName[FILE_NAME_LENGTH];	// å½“å‰éŸ³ä¹æ–‡ä»¶å
 
-	KMapAllMusic	*m_pMusicInfo;		// ËùÓĞµØÍ¼µÄÒôÀÖĞÅÏ¢
-	int				m_nInfoSize;		// ËùÓĞµØÍ¼ÒôÀÖĞÅÏ¢Êı¾İµÄ´óĞ¡(µ¥Î»:sizeof(KMapAllMusic))
-	int				m_nLoadFlag;		// ÓÎÏ·ÒôÀÖĞÅÏ¢ÊÇ·ñÒÑ¾­ÔØÈë
+	KMapAllMusic	*m_pMusicInfo;		// æ‰€æœ‰åœ°å›¾çš„éŸ³ä¹ä¿¡æ¯
+	int				m_nInfoSize;		// æ‰€æœ‰åœ°å›¾éŸ³ä¹ä¿¡æ¯æ•°æ®çš„å¤§å°(å•ä½:sizeof(KMapAllMusic))
+	int				m_nLoadFlag;		// æ¸¸æˆéŸ³ä¹ä¿¡æ¯æ˜¯å¦å·²ç»è½½å…¥
 
 	KMapFightMusic	m_sFightMusic[defMUSIC_MAX_STAGE];
 
@@ -76,22 +76,22 @@ private:
 public:
 	KMapMusic();
 	~KMapMusic();
-	void			LoadSetFile();		// ÔØÈëµØÍ¼ÒôÀÖĞÅÏ¢
-	void			Init();				// ³õÊ¼»¯£¬ÔØÈëµØÍ¼ÒôÀÖĞÅÏ¢
+	void			LoadSetFile();		// è½½å…¥åœ°å›¾éŸ³ä¹ä¿¡æ¯
+	void			Init();				// åˆå§‹åŒ–ï¼Œè½½å…¥åœ°å›¾éŸ³ä¹ä¿¡æ¯
 
-	// ÓÎÏ·ÊÀ½çÒôÀÖ²¥·Å
-	// ²ÎÊı£ºnMapID µØÍ¼id
-    //		nGameTime ÓÎÏ·Ê±¼ä(0 -- 1440)
+	// æ¸¸æˆä¸–ç•ŒéŸ³ä¹æ’­æ”¾
+	// å‚æ•°ï¼šnMapID åœ°å›¾id
+    //		nGameTime æ¸¸æˆæ—¶é—´(0 -- 1440)
 	void			Play(int nMapID, int nGameTime, BOOL bFightMode);
 	void			Stop();
 
-	void			Start(int nMapID, int nGameTime, BOOL bFightMode);// ½øÈëÓÎÏ·»òÕßÒôÀÖÉè¶¨´ò¿ªµÄÊ±ºò£¬²¥·ÅÒôÀÖ
-	void			SetGameVolume(int nVolume);	// Éè¶¨ÓÎÏ·ÒôÀÖ×ÜÌåÒôÁ¿´óĞ¡(0 -- 100)
-	void			SetWeatherVolume(int nVolume);	// Éè¶¨ÌìÆø¶ÔÒôÀÖÒôÁ¿´óĞ¡µÄÓ°Ïì(0 -- 100)
-	void			ScriptPlay(char *lpszMusicName);// ÓÃ½Å±¾²¥·ÅÒôÀÖ
+	void			Start(int nMapID, int nGameTime, BOOL bFightMode);// è¿›å…¥æ¸¸æˆæˆ–è€…éŸ³ä¹è®¾å®šæ‰“å¼€çš„æ—¶å€™ï¼Œæ’­æ”¾éŸ³ä¹
+	void			SetGameVolume(int nVolume);	// è®¾å®šæ¸¸æˆéŸ³ä¹æ€»ä½“éŸ³é‡å¤§å°(0 -- 100)
+	void			SetWeatherVolume(int nVolume);	// è®¾å®šå¤©æ°”å¯¹éŸ³ä¹éŸ³é‡å¤§å°çš„å½±å“(0 -- 100)
+	void			ScriptPlay(char *lpszMusicName);// ç”¨è„šæœ¬æ’­æ”¾éŸ³ä¹
 
 private:
-	void			Release();			// Çå¿Õ
+	void			Release();			// æ¸…ç©º
 
 };
 

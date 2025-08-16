@@ -2,19 +2,19 @@
 // FileName			:	KMRU.h
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-12 17:42:49
-// FileDescription	:	×î½üÊ¹ÓÃ±íÀà
+// FileDescription	:	æœ€è¿‘ä½¿ç”¨è¡¨ç±»
 // Revision Count	:
 *******************************************************************************/
 #pragma once
 
-//MRU±íµÄÏî
+//MRUè¡¨çš„é¡¹
 #pragma pack(1)
 typedef struct _KMruItem
 {
-	unsigned short	Id;			//Ïîid
-	unsigned short	Data;		//ÏîÊı¾İ
-	unsigned char	MRURecord;	//Ê¹ÓÃ¼ÍÂ¼
-	unsigned char	Reserved;	//±£Áô£¬Î´ÓÃµ½
+	unsigned short	Id;			//é¡¹id
+	unsigned short	Data;		//é¡¹æ•°æ®
+	unsigned char	MRURecord;	//ä½¿ç”¨çºªå½•
+	unsigned char	Reserved;	//ä¿ç•™ï¼Œæœªç”¨åˆ°
     unsigned short  Reserved1;
 }KMruItem;
 #pragma pack()
@@ -22,25 +22,25 @@ typedef struct _KMruItem
 class KMRU  
 {
 public:
-	//Ìá½»×Ö·û´®£¬µÃµ½´®ÖĞÈ«²¿×Ö·ûÔÚÌùÍ¼ÖĞµÄÎ»ÖÃ
+	//æäº¤å­—ç¬¦ä¸²ï¼Œå¾—åˆ°ä¸²ä¸­å…¨éƒ¨å­—ç¬¦åœ¨è´´å›¾ä¸­çš„ä½ç½®
 	void Commit(unsigned short* pString, int nCount, unsigned short* pPositions, unsigned short* pNewItems, int& nNumNewItem);
-	void Terminate();				//½áÊø£¬Çå³ı²Ù×÷
-	bool Init(int nMaxItemNum);		//³õÊ¼»¯
+	void Terminate();				//ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
+	bool Init(int nMaxItemNum);		//åˆå§‹åŒ–
 	
 	KMRU();
 	virtual ~KMRU();
 
 private:
-	//µ÷ÕûĞÂ¼ÓÈëÏîÔÚ±íÖĞµÄÎ»ÖÃ£¬Ê¹±íÖĞµÄÏî±£³ÖÒÔIdÅÅĞò¡£
+	//è°ƒæ•´æ–°åŠ å…¥é¡¹åœ¨è¡¨ä¸­çš„ä½ç½®ï¼Œä½¿è¡¨ä¸­çš„é¡¹ä¿æŒä»¥Idæ’åºã€‚
 	void AdjustCharPos(unsigned int nIndex,  unsigned int nDueIndex);
-	void Update();								//Ö´ĞĞÒ»ÂÖ½áÊøÊ±MRU±íµÄĞÅÏ¢¸üĞÂ
-	unsigned int GetMostLongestUnusedItem();	//ÔÚ±íÖĞÕÒ×î¾ÃÃ»ÓĞ±»Ê¹ÓÃÏî
-	unsigned short GetItemData(int nIndex);		//»ñµÃ±íÖĞÖ¸¶¨Ïî¹ØÁªµÄÊı¾İ
-	//ÔÚ¸ø·¶Î§ÄÚ¶¨Î»Ò»¸ö×Ö·û£¨Ã»ÕÒµ½£¬Ôò¸ø³öÈçĞè²åÈëÓ¦·ÅÖÃµÄÎ»ÖÃ£©
+	void Update();								//æ‰§è¡Œä¸€è½®ç»“æŸæ—¶MRUè¡¨çš„ä¿¡æ¯æ›´æ–°
+	unsigned int GetMostLongestUnusedItem();	//åœ¨è¡¨ä¸­æ‰¾æœ€ä¹…æ²¡æœ‰è¢«ä½¿ç”¨é¡¹
+	unsigned short GetItemData(int nIndex);		//è·å¾—è¡¨ä¸­æŒ‡å®šé¡¹å…³è”çš„æ•°æ®
+	//åœ¨ç»™èŒƒå›´å†…å®šä½ä¸€ä¸ªå­—ç¬¦ï¼ˆæ²¡æ‰¾åˆ°ï¼Œåˆ™ç»™å‡ºå¦‚éœ€æ’å…¥åº”æ”¾ç½®çš„ä½ç½®ï¼‰
 	bool GetCharPos(unsigned short Id, int nFrom, int nCount, unsigned int& nPosition);
 private:
-	KMruItem*	m_pItemTable;		//Ïî±í
-	int			m_nMaxItemNum;		//±íÖĞ×î¶à¿ÉÈİÄÉµÄÏîµÄÊıÄ¿
-	int			m_nItemCount;		//µ±Ç°±íÖĞ°üº¬µÄÏîµÄÊıÄ¿
-	int			m_nCountInTurn;		//´ËÂÖÒÑÒıÓÃµÄ²»Í¬ÏîµÄÊıÄ¿
+	KMruItem*	m_pItemTable;		//é¡¹è¡¨
+	int			m_nMaxItemNum;		//è¡¨ä¸­æœ€å¤šå¯å®¹çº³çš„é¡¹çš„æ•°ç›®
+	int			m_nItemCount;		//å½“å‰è¡¨ä¸­åŒ…å«çš„é¡¹çš„æ•°ç›®
+	int			m_nCountInTurn;		//æ­¤è½®å·²å¼•ç”¨çš„ä¸åŒé¡¹çš„æ•°ç›®
 };

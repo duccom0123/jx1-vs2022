@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ³¡¾°Ä£¿éµÄÒ»Ğ©ÊıÑ§¼ÆËã
+// åœºæ™¯æ¨¡å—çš„ä¸€äº›æ•°å­¦è®¡ç®—
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-20
@@ -20,7 +20,7 @@ enum RELATION_ENUM
 	RELATION_CROSS
 };
 
-//ÅĞ¶Ï¶ÔÏóÊÇ·ñÔÚ»æÖÆ·¶Î§ÄÚ
+//åˆ¤æ–­å¯¹è±¡æ˜¯å¦åœ¨ç»˜åˆ¶èŒƒå›´å†…
 #ifdef _EXCLUDE_OUTSIDE_OBJECT
 	#define	SM_IsOutsideRepresentArea(_prc, _x, _y, _z, _ex, _ey, _ez)	\
 		(	(_ex) < (_prc)->left || (_x) > (_prc)->right ||				\
@@ -30,18 +30,18 @@ enum RELATION_ENUM
 	#define SM_IsOutsideRepresentArea(_prc, _x, _y, _z, _ex, _ey, _ez) false
 #endif
 
-//ÅĞ¶ÏÊÇ·ñÁ½¸öÏß¶Î¿ÉÒÔÁ¬½Ó³ÉÏß
+//åˆ¤æ–­æ˜¯å¦ä¸¤ä¸ªçº¿æ®µå¯ä»¥è¿æ¥æˆçº¿
 #define	SM_IsLineLinkable(fSlope1, fNodicalY1, fSlope2, fNodicalY2)	\
 	(fabs((fSlope1) - (fSlope2)) < LINE_LINKABLE_SLOPE_RANGE &&		\
 		fabs((fNodicalY1) - (fNodicalY2)) < LINE_LINKABLE_NODICALY_RANGE)
 
 int		SM_IsPointOnLine(POINT& LP1, POINT& LP2, POINT point);
 
-//µãµ½Ö±ÏßµÄ¾àÀë
+//ç‚¹åˆ°ç›´çº¿çš„è·ç¦»
 int				SM_Distance_PointLine(const POINT& Point, const POINT& LP1, const POINT& pLP2);
-//µãºÍÖ±ÏßµÄÎ»ÖÃ¹ØÏµ
+//ç‚¹å’Œç›´çº¿çš„ä½ç½®å…³ç³»
 RELATION_ENUM	SM_Relation_PointLine(const POINT& Point, const POINT& LP1, const POINT& pLP2);
-//ÏßºÍÏßµÄÎ»ÖÃ¹ØÏµ
+//çº¿å’Œçº¿çš„ä½ç½®å…³ç³»
 RELATION_ENUM	SM_Relation_LineLine_CheckCut(const POINT& LP11, const POINT& LP12, const POINT& LP21, const POINT& LP22, POINT& POI);
 
 //void	SM_GetLineEndPointAndNodicalX(float x1, float y1, int nAngleXY, int nWidth, float& x2, float& y2, int& nNodicalX);

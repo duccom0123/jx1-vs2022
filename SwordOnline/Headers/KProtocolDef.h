@@ -3,7 +3,7 @@
 
 // Kinnox sell Phuc tran
 // Add by Freeway chen in 2003.7.1
-// ¶¨ÒåĞ­Òé¼æÈİµÄ°æ±¾£¬Èç¹ûĞŞ¸ÄµÄĞ­Òé£¬µ¼ÖÂÔ­ÓĞ°æ±¾ÎŞ·¨Ê¹ÓÃ£¬ĞèÒªĞŞ¸ÄÏÂÃæµÄÖµ
+// å®šä¹‰åè®®å…¼å®¹çš„ç‰ˆæœ¬ï¼Œå¦‚æœä¿®æ”¹çš„åè®®ï¼Œå¯¼è‡´åŸæœ‰ç‰ˆæœ¬æ— æ³•ä½¿ç”¨ï¼Œéœ€è¦ä¿®æ”¹ä¸‹é¢çš„å€¼
 
 #define USE_KPROTOCOL_VERSION   1
 //#undef USE_KPROTOCOL_VERSION
@@ -35,8 +35,8 @@ enum s2c_PROTOCOL
 	s2c_accountlogin,
 	s2c_gamelogin,
 	s2c_accountlogout,
-	s2c_gatewayverify,		//ÓÃÓÚÁ¬½ÓºóµÚÒ»¸ö°ü
-	s2c_gatewayverifyagain,		//ÓÃÓÚÖØÁ¬ºóµÚÒ»¸ö°ü
+	s2c_gatewayverify,		//ç”¨äºè¿æ¥åç¬¬ä¸€ä¸ªåŒ…
+	s2c_gatewayverifyagain,		//ç”¨äºé‡è¿åç¬¬ä¸€ä¸ªåŒ…
 	s2c_gatewayinfo,
 
 	s2c_multiserverbegin = 48,
@@ -133,7 +133,7 @@ enum s2c_PROTOCOL
 	s2c_createtong,
 	s2c_jointong,
 	s2c_jointongreply,
-	s2c_rolenewdelresponse,	//ĞÂ½¨ÓëÉ¾³ı½ÇÉ«µÄ½á¹û·µ»Ø,Ëù´øÊı¾İÎª½á¹¹tagNewDelRoleResponse
+	s2c_rolenewdelresponse,	//æ–°å»ºä¸åˆ é™¤è§’è‰²çš„ç»“æœè¿”å›,æ‰€å¸¦æ•°æ®ä¸ºç»“æ„tagNewDelRoleResponse
 	s2c_ItemAutoMove,
 	s2c_changeweather,
 	s2c_pksyncnormalflag,
@@ -168,7 +168,7 @@ enum s2c_PROTOCOL
 	s2c_requestchatroomlist,
 	s2c_requestmemberlist,
 	s2c_requestblacklist,
-//	s2c_gmgateway2relaysvr,		//GMµÇÂ½ºóÍø¹ØÍ¨ÖªÖĞ×ª·şÎñÆ÷ÓĞºÏ·¨Á¬½ÓµÄĞ­Òé
+//	s2c_gmgateway2relaysvr,		//GMç™»é™†åç½‘å…³é€šçŸ¥ä¸­è½¬æœåŠ¡å™¨æœ‰åˆæ³•è¿æ¥çš„åè®®
 
 	s2c_extend = 250,
 	s2c_extendchat = 251,
@@ -292,7 +292,7 @@ enum c2s_PROTOCOL
 	c2s_end,
 };
 
-enum c2c_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚserverºÍserverÖ®¼ä
+enum c2c_PROTOCOL		//è¯¥åè®®æ—ä»…ç”¨äºserverå’Œserverä¹‹é—´
 {
 	c2c_transferroleinfo = 14,
 	c2c_micropackbegin = g_nGlobalProtocolType,
@@ -301,19 +301,19 @@ enum c2c_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚserverºÍserverÖ®¼ä
 	c2c_permitplayerexchangein,
 	c2c_notifyexchange,
 
-	s2s_broadcast = 96,		//ÓÃÓÚ´ÓRelayµ½ÓÎÏ·ÊÀ½çµÄ¹ã²¥
-	s2s_execute = 97,		//ÓÃÓÚ´ÓRelayµ½ÓÎÏ·ÊÀ½çµÄÖ´ĞĞ½Å±¾
+	s2s_broadcast = 96,		//ç”¨äºä»Relayåˆ°æ¸¸æˆä¸–ç•Œçš„å¹¿æ’­
+	s2s_execute = 97,		//ç”¨äºä»Relayåˆ°æ¸¸æˆä¸–ç•Œçš„æ‰§è¡Œè„šæœ¬
 
 	c2c_end,
 };
 
-//ÒÔÏÂĞ­ÒéÎªc2s_extendĞ­ÒéµÄÅÉÉúĞ­Òé£¬²Î¼ûKRelayProtocol.h
-//À©Õ¹Ğ­Òé±ØĞëÒÔEXTEND_HEADER´òÍ·
+//ä»¥ä¸‹åè®®ä¸ºc2s_extendåè®®çš„æ´¾ç”Ÿåè®®ï¼Œå‚è§KRelayProtocol.h
+//æ‰©å±•åè®®å¿…é¡»ä»¥EXTEND_HEADERæ‰“å¤´
 
-enum gm_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚgmºÍserverÖ®¼ä
+enum gm_PROTOCOL		//è¯¥åè®®æ—ä»…ç”¨äºgmå’Œserverä¹‹é—´
 {
 	gm_begin = 32,
-	gm_c2s_execute,				//ÒÔÏÂĞ­ÒéÓÉGM¿Í»§¶ËÒÔrelay_c2c_askwaydata×ª·¢¸øÓÎÏ·ÊÀ½ç
+	gm_c2s_execute,				//ä»¥ä¸‹åè®®ç”±GMå®¢æˆ·ç«¯ä»¥relay_c2c_askwaydataè½¬å‘ç»™æ¸¸æˆä¸–ç•Œ
 	gm_c2s_disable,
 	gm_c2s_enable,
 	gm_c2s_tracking,
@@ -324,7 +324,7 @@ enum gm_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚgmºÍserverÖ®¼ä
 	gm_c2s_getrolelist,
 	gm_c2s_broadcast_chat,
 
-	gm_s2c_tracking,			//ÒÔÏÂĞ­ÒéÓÉÓÎÏ·ÊÀ½çÒÔrelay_c2c_data×ª·¢¸øGM¿Í»§¶Ë
+	gm_s2c_tracking,			//ä»¥ä¸‹åè®®ç”±æ¸¸æˆä¸–ç•Œä»¥relay_c2c_dataè½¬å‘ç»™GMå®¢æˆ·ç«¯
 	gm_s2c_getrole,
 	gm_s2c_findplayer,
 	gm_s2c_getrolelist,
@@ -333,7 +333,7 @@ enum gm_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚgmºÍserverÖ®¼ä
 };
 
 
-enum relay_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚserverºÍrelayÖ®¼ä
+enum relay_PROTOCOL		//è¯¥åè®®æ—ä»…ç”¨äºserverå’Œrelayä¹‹é—´
 {
 	relay_begin = 32,
 
@@ -363,7 +363,7 @@ enum chat_PROTOCOL
 	chat_filterplayer,
 };
 
-enum playercomm_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚserverºÍclientÖ®¼ä,µ«ÊÇserver¿ÉÒÔ×ª·¢¸ørelay´¦Àí£¬ÒòÎªrelay³Ğµ£ÁË²¿·ÖserverµÄ¹¦ÄÜ
+enum playercomm_PROTOCOL		//è¯¥åè®®æ—ä»…ç”¨äºserverå’Œclientä¹‹é—´,ä½†æ˜¯serverå¯ä»¥è½¬å‘ç»™relayå¤„ç†ï¼Œå› ä¸ºrelayæ‰¿æ‹…äº†éƒ¨åˆ†serverçš„åŠŸèƒ½
 {
 	playercomm_begin = 32,
 
@@ -387,7 +387,7 @@ enum playercomm_PROTOCOL		//¸ÃĞ­Òé×å½öÓÃÓÚserverºÍclientÖ®¼ä,µ«ÊÇserver¿ÉÒÔ×ª·¢¸
 	playercomm_channelchat,
 };
 
-// game server ·¢¸ø s3client °ï»áÀ©Õ¹Ğ­Òé id
+// game server å‘ç»™ s3client å¸®ä¼šæ‰©å±•åè®® id
 enum
 {
 	enumTONG_SYNC_ID_CREATE_FAIL = 0,
@@ -406,7 +406,7 @@ enum
 	enumTONG_SYNC_ID_NUM,
 };
 
-// s3client ·¢¸ø game server °ï»áÀ©Õ¹Ğ­Òé id
+// s3client å‘ç»™ game server å¸®ä¼šæ‰©å±•åè®® id
 enum
 {
 	enumTONG_COMMAND_ID_START = 0,

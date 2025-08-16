@@ -184,7 +184,7 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 
 	pRoleData->bBaseNeedUpdate = 1;
 	pRoleData->dwVersion = 0;
-	//Íæ¼ÒÐÅÏ¢
+	//çŽ©å®¶ä¿¡æ¯
 	pRoleData->BaseInfo.ileftprop	= cFile.ReadInteger("ROLE", "ileftprop", 0);
 	pRoleData->BaseInfo.ileftfight	= cFile.ReadInteger("ROLE", "ileftfight", 0);
 	pRoleData->BaseInfo.ipower		= cFile.ReadInteger("ROLE", "ipower", 0);
@@ -193,19 +193,19 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 	pRoleData->BaseInfo.iinside		= cFile.ReadInteger("ROLE", "iinside", 0);
 	pRoleData->BaseInfo.iluck		= cFile.ReadInteger("ROLE", "iluck", 0);
 	
-	//Íæ¼ÒµÈ¼¶ÐÅÏ¢
+	//çŽ©å®¶ç­‰çº§ä¿¡æ¯
 	pRoleData->BaseInfo.ifightexp	= cFile.ReadInteger("ROLE", "ifightexp", 0);
 	pRoleData->BaseInfo.ifightlevel	= cFile.ReadInteger("ROLE", "ifightlevel", 0);
 	pRoleData->BaseInfo.ifighttranslife = 0;
 	pRoleData->BaseInfo.ileadlevel	= cFile.ReadInteger("ROLE", "ileadlevel", 0);
 	pRoleData->BaseInfo.ileadexp	= cFile.ReadInteger("ROLE", "ileadexp", 0);
 
-	//ÃÅÅÉÐÅÏ¢
+	//é—¨æ´¾ä¿¡æ¯
 	pRoleData->BaseInfo.nSect		= cFile.ReadInteger("ROLE", "isect", 0);
 	pRoleData->BaseInfo.nFirstSect	= cFile.ReadInteger("ROLE", "ifirstsect", 0);
 	pRoleData->BaseInfo.ijoincount	= cFile.ReadInteger("ROLE", "ijoincount", 0);
 
-	//ÏÖ½ðºÍÖüÎïÏäÖÐµÄÇ®
+	//çŽ°é‡‘å’Œè´®ç‰©ç®±ä¸­çš„é’±
 	pRoleData->BaseInfo.imoney		= cFile.ReadInteger("ROLE", "imoney", 0);
 	pRoleData->BaseInfo.isavemoney	= cFile.ReadInteger("ROLE", "isavemoney", 0);
 	//
@@ -220,7 +220,7 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 	pRoleData->BaseInfo.icurinner	= pRoleData->BaseInfo.imaxinner;
 	pRoleData->BaseInfo.icurstamina	= pRoleData->BaseInfo.imaxstamina;
 
-	//µÇÈëµã
+	//ç™»å…¥ç‚¹
 	pRoleData->BaseInfo.irevivalid	= cFile.ReadInteger("ROLE", "irevivalid", 0);
 	pRoleData->BaseInfo.irevivalx	= cFile.ReadInteger("ROLE", "irevivalx", 0);
 	pRoleData->BaseInfo.irevivaly	= cFile.ReadInteger("ROLE", "irevivaly", 0);
@@ -234,7 +234,7 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 	pRoleData->BaseInfo.ientergamey = 0;
 
 	
-	//PKÏà¹Ø
+	//PKç›¸å…³
 	pRoleData->BaseInfo.cPkStatus = 0;
 	pRoleData->BaseInfo.ipkvalue = 0;
 	memset(pRoleData->BaseInfo.istattask, 0, sizeof(pRoleData->BaseInfo.istattask));
@@ -245,7 +245,7 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 	pRoleData->BaseInfo.iexitemrole = 0;
 	pRoleData->BaseInfo.iexboxrole = 0;
 	pRoleData->BaseInfo.iextpoint = 0;
-	//°ï»áÏà¹Ø
+	//å¸®ä¼šç›¸å…³
 	pRoleData->BaseInfo.ileavetongtime = 0;
 	pRoleData->BaseInfo.dwTongID = 0;
 	memset(pRoleData->BaseInfo.itongname, 0, sizeof(pRoleData->BaseInfo.itongname));
@@ -290,7 +290,7 @@ bool CPlayerCreator::GetRoleDataFromIni(BYTE* pData, const char* szFileName)
 	for ( int i = 0 ; i < nItemCount; i ++)
 	{
 		sprintf(szSection, "%s%d", SECTION_ITEM, i + 1 );
-		//Îï¼þ»ù±¾ÐÅÏ¢**************************************************************
+		//ç‰©ä»¶åŸºæœ¬ä¿¡æ¯**************************************************************
 		pItemData->iequipnaturecode	= cFile.ReadInteger(szSection, "iequipnaturecode", 0);
 		pItemData->iequipclasscode	= cFile.ReadInteger(szSection, "iequipclasscode", 0);
 		pItemData->idetailtype		= cFile.ReadInteger(szSection, "idetailtype", 0);

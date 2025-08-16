@@ -2,7 +2,7 @@
 #define __KITABFILE_H__
 #include "KEngine.h"
 
-class ENGINE_API KITabFile//TabFile½Ó¿ÚÀà
+class ENGINE_API KITabFile//TabFileÂ½Ã“Â¿ÃšÃ€Ã 
 {
 public:
 	KITabFile(){};

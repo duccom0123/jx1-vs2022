@@ -3,7 +3,7 @@
 //
 // File:	KNpcResNode.cpp
 // Date:	2002.01.06
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 #include "KCore.h"
@@ -46,7 +46,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
     const char *pcszTemp = NULL;
 
 	strcpy(m_szNpcName, lpszNpcName);
-	// ÔØÈëÎÄ¼ş ÈËÎïÀàĞÍ.txt
+	// è½½å…¥æ–‡ä»¶ äººç‰©ç±»å‹.txt
 //	g_SetFilePath(RES_INI_FILE_PATH);
 	if ( !KindFile.Load(NPC_RES_KIND_FILE_NAME) )
 		return FALSE;
@@ -55,19 +55,19 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 		return FALSE;
 	KindFile.GetString(nFindNo, KIND_NAME_SECT, "", szBuffer, sizeof(szBuffer));
 
-	// ÅĞ¶ÏnpcÀàĞÍ
+	// åˆ¤æ–­npcç±»å‹
 	if (strcmp(szBuffer, KIND_NAME_SPECIAL) == 0)
 		m_nNpcKind = NPC_RES_SPECIAL;
 	else
 		m_nNpcKind = NPC_RES_NORMAL;
-	// µÃµ½×ÊÔ´ÎÄ¼şÂ·¾¶
+	// å¾—åˆ°èµ„æºæ–‡ä»¶è·¯å¾„
 	KindFile.GetString(nFindNo, KIND_FILE_SECT5, "", m_szResPath, sizeof(m_szResPath));
 
-	// ÌØÊânpc
+	// ç‰¹æ®Šnpc
 	if (m_nNpcKind == NPC_RES_SPECIAL)
 	{
 		KTabFile	PartFile, SoundName, ShadowName;
-		// µÃµ½²¿¼şËµÃ÷ÎÄ¼şÃû
+		// å¾—åˆ°éƒ¨ä»¶è¯´æ˜æ–‡ä»¶å
 		KindFile.GetString(nFindNo, KIND_FILE_SECT1, "", szBuffer, sizeof(szBuffer));
 		if ( !szBuffer[0] )
 			return FALSE;
@@ -75,7 +75,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 		g_UnitePathAndName(RES_INI_FILE_PATH, szBuffer, szBuf);
 		if ( !PartFile.Load(szBuf) )
 			return FALSE;
-		// µÃµ½²¿¼ş×é³ÉĞÅÏ¢
+		// å¾—åˆ°éƒ¨ä»¶ç»„æˆä¿¡æ¯
 		m_nPartNum = 0;
 		for (i = 0; i < MAX_BODY_PART; i++)
 		{
@@ -95,7 +95,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				}
 			}
 		}
-		// µÃµ½Ã¿¸ö²¿¼şµÄ×ÊÔ´ËµÃ÷ÎÄ¼şÃû
+		// å¾—åˆ°æ¯ä¸ªéƒ¨ä»¶çš„èµ„æºè¯´æ˜æ–‡ä»¶å
 		for (i = 0; i < MAX_PART; i++)
 		{
 			if (m_nSectInfo[i].nFlag)
@@ -106,7 +106,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 					"",
 					m_nSectInfo[i].szSectResName,
 					sizeof(m_nSectInfo[i].szSectResName));
-				// ×ÊÔ´ĞÅÏ¢ËµÃ÷ÎÄ¼şÃûÊÇ×ÊÔ´ËµÃ÷ÎÄ¼şÃû¼ÓÉÏSPR_INFO_NAME£¨¡°ĞÅÏ¢¡±£©
+				// èµ„æºä¿¡æ¯è¯´æ˜æ–‡ä»¶åæ˜¯èµ„æºè¯´æ˜æ–‡ä»¶ååŠ ä¸ŠSPR_INFO_NAMEï¼ˆâ€œä¿¡æ¯â€ï¼‰
 				if (m_nSectInfo[i].szSectResName[0])
 				{
 					g_StrCpyLen(
@@ -135,7 +135,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				}
 			}
 		}
-		// µÃµ½Ã¿¸ö²¿¼şµÄ¾ßÌåµÄ×ÊÔ´ÎÄ¼şÃû
+		// å¾—åˆ°æ¯ä¸ªéƒ¨ä»¶çš„å…·ä½“çš„èµ„æºæ–‡ä»¶å
 		KTabFile	SectFile, SectEffectFile, SectInfoFile, SectEffectInfoFile;
 		int			nGetEquipNo, nActionCount;
 		for (i = 0; i < MAX_PART; i++)
@@ -188,7 +188,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				{
 					for (k = 0; k < nActionCount; k++)
 					{
-						// ÓÃ×Ö·û´®±È½ÏÌ«Âı£¬ËùÒÔÖ±½ÓÓÃ±àºÅ£¬µ«ÊÇ±í¸ñ±ØĞë±£Ö¤²»³ö´í
+						// ç”¨å­—ç¬¦ä¸²æ¯”è¾ƒå¤ªæ…¢ï¼Œæ‰€ä»¥ç›´æ¥ç”¨ç¼–å·ï¼Œä½†æ˜¯è¡¨æ ¼å¿…é¡»ä¿è¯ä¸å‡ºé”™
 //						cActionName->GetActionName(k, szBuffer, sizeof(szBuffer));
 //						SectFile.GetString(
 //							j + 2,
@@ -247,13 +247,13 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				}
 			}
 		}
-		// µÃµ½ÎäÆ÷ĞĞÎª¹ØÁª±íÎÄ¼şÃû
+		// å¾—åˆ°æ­¦å™¨è¡Œä¸ºå…³è”è¡¨æ–‡ä»¶å
 		KTabFile	NoHorseFile, OnHorseFile;
 		int			nTableWidth, nTableHeight, nGetNo;
 		char	szNoHorseTableName[80], szOnHorseTableName[80];
 		KindFile.GetString(nFindNo, KIND_FILE_SECT2, "", szNoHorseTableName, sizeof(szNoHorseTableName));
 		KindFile.GetString(nFindNo, KIND_FILE_SECT3, "", szOnHorseTableName, sizeof(szOnHorseTableName));
-		// Î´ÆïÂí¶ÔÓ¦±í
+		// æœªéª‘é©¬å¯¹åº”è¡¨
 		if (szNoHorseTableName[0])
 		{
 //			g_SetFilePath(RES_INI_FILE_PATH);
@@ -274,7 +274,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				}
 			}
 		}
-		// ÆïÂí¶ÔÓ¦±í
+		// éª‘é©¬å¯¹åº”è¡¨
 		if (szOnHorseTableName[0])
 		{
 //			g_SetFilePath(RES_INI_FILE_PATH);
@@ -295,14 +295,14 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 				}
 			}
 		}
-		// µÃµ½ÌùÍ¼Ë³Ğò±íÎÄ¼şÃû
+		// å¾—åˆ°è´´å›¾é¡ºåºè¡¨æ–‡ä»¶å
 		if ( KindFile.GetString(nFindNo, KIND_FILE_SECT4, "", szBuffer, sizeof(szBuffer)) )
 		{
 			strcpy(m_cSortTable.m_sSortTableFileName, szBuffer);
 			m_cSortTable.GetTable(szBuffer, cActionName, m_nPartNum);
 		}
 
-		// »ñµÃ¶¯×÷ÒõÓ°ÎÄ¼şĞÅÏ¢
+		// è·å¾—åŠ¨ä½œé˜´å½±æ–‡ä»¶ä¿¡æ¯
 		int		nFindNo;
 //		g_SetFilePath(RES_INI_FILE_PATH);
 		nActionCount = cActionName->GetActionCount();
@@ -331,7 +331,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 			}
 		}
 
-		// »ñµÃ¶¯×÷ÒôĞ§ÎÄ¼şÃû
+		// è·å¾—åŠ¨ä½œéŸ³æ•ˆæ–‡ä»¶å
 //		g_SetFilePath(RES_INI_FILE_PATH);
 		SoundName.Load(PLAYER_SOUND_FILE);
 		nFindNo = SoundName.FindColumn(lpszNpcName);
@@ -347,7 +347,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 		}
 
 	}
-	// ÆÕÍ¨npc
+	// æ™®é€šnpc
 	else if (m_nNpcKind == NPC_RES_NORMAL)
 	{
 		int			nActionCount;
@@ -369,7 +369,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 //		g_SetFilePath(RES_INI_FILE_PATH);
 		if ( !NormalNpc.Load(NPC_NORMAL_RES_FILE))
 			return FALSE;
-		// ¶¯»­ĞÅÏ¢ÎÄ¼şÃ»ÓĞÃ»ÓĞ±ØÒª³õÊ¼»¯²»³É¹¦£¬ËùÒÔÃ»ÓĞIf(!) return FALSE;
+		// åŠ¨ç”»ä¿¡æ¯æ–‡ä»¶æ²¡æœ‰æ²¡æœ‰å¿…è¦åˆå§‹åŒ–ä¸æˆåŠŸï¼Œæ‰€ä»¥æ²¡æœ‰If(!) return FALSE;
 		NormalNpcSprInfo.Load(NPC_NORMAL_SPRINFO_FILE);
 		SoundName.Load(NPC_SOUND_FILE);
 		nFindNo = NormalNpc.FindRow(lpszNpcName);
@@ -412,7 +412,7 @@ BOOL	KNpcResNode::Init(char *lpszNpcName, CActionName *cActionName, CActionName 
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	°ÑÂ·¾­ºÍÎÄ¼şÃûºÏ³ÉÔÚÒ»Æğ³ÉÎª´øÂ·¾¶µÄÎÄ¼şÃû
+// åŠŸèƒ½:	æŠŠè·¯ç»å’Œæ–‡ä»¶ååˆæˆåœ¨ä¸€èµ·æˆä¸ºå¸¦è·¯å¾„çš„æ–‡ä»¶å
 //---------------------------------------------------------------------------
 void	KNpcResNode::ComposePathAndName(char *lpszGet, char *lpszPath, char *lpszName)
 {
@@ -442,7 +442,7 @@ void	KNpcResNode::ComposePathAndName(char *lpszGet, char *lpszPath, char *lpszNa
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	ÅĞ¶ÏÄ³¸ö²¿¼şÊÇ·ñ´æÔÚ
+// åŠŸèƒ½:	åˆ¤æ–­æŸä¸ªéƒ¨ä»¶æ˜¯å¦å­˜åœ¨
 //---------------------------------------------------------------------------
 BOOL	KNpcResNode::CheckPartExist(int nPartNo)
 {
@@ -454,7 +454,7 @@ BOOL	KNpcResNode::CheckPartExist(int nPartNo)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñµÃÄ³¸ö²¿¼şµÄÄ³¸ö×°±¸ÔÚÄ³¸ö¶¯×÷ÏÂµÄ spr ÎÄ¼şÃû
+// åŠŸèƒ½:	è·å¾—æŸä¸ªéƒ¨ä»¶çš„æŸä¸ªè£…å¤‡åœ¨æŸä¸ªåŠ¨ä½œä¸‹çš„ spr æ–‡ä»¶å
 //---------------------------------------------------------------------------
 BOOL	KNpcResNode::GetFileName(int nPartNo, int nActionNo, int nEquipNo, char *lpszDefault, char *lpszGetName, int nStrLen, bool bEffect/* = false*/)
 {
@@ -466,7 +466,7 @@ BOOL	KNpcResNode::GetFileName(int nPartNo, int nActionNo, int nEquipNo, char *lp
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñµÃÄ³¸ö²¿¼şµÄÄ³¸ö×°±¸ÔÚÄ³¸ö¶¯×÷ÏÂµÄ spr ÎÄ¼şĞÅÏ¢
+// åŠŸèƒ½:	è·å¾—æŸä¸ªéƒ¨ä»¶çš„æŸä¸ªè£…å¤‡åœ¨æŸä¸ªåŠ¨ä½œä¸‹çš„ spr æ–‡ä»¶ä¿¡æ¯
 //---------------------------------------------------------------------------
 int		KNpcResNode::GetInterval(int nPartNo, int nActionNo, int nEquipNo, int nDefault, bool bEffect/* = false*/)
 {
@@ -477,7 +477,7 @@ int		KNpcResNode::GetInterval(int nPartNo, int nActionNo, int nEquipNo, int nDef
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñµÃÄ³¸ö²¿¼şµÄÄ³¸ö×°±¸ÔÚÄ³¸ö¶¯×÷ÏÂµÄ spr ÎÄ¼şĞÅÏ¢
+// åŠŸèƒ½:	è·å¾—æŸä¸ªéƒ¨ä»¶çš„æŸä¸ªè£…å¤‡åœ¨æŸä¸ªåŠ¨ä½œä¸‹çš„ spr æ–‡ä»¶ä¿¡æ¯
 //---------------------------------------------------------------------------
 int		KNpcResNode::GetTotalFrames(int nPartNo, int nActionNo, int nEquipNo, int nDefault, bool bEffect/* = false*/)
 {
@@ -488,7 +488,7 @@ int		KNpcResNode::GetTotalFrames(int nPartNo, int nActionNo, int nEquipNo, int n
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñµÃÄ³¸ö²¿¼şµÄÄ³¸ö×°±¸ÔÚÄ³¸ö¶¯×÷ÏÂµÄ spr ÎÄ¼şĞÅÏ¢
+// åŠŸèƒ½:	è·å¾—æŸä¸ªéƒ¨ä»¶çš„æŸä¸ªè£…å¤‡åœ¨æŸä¸ªåŠ¨ä½œä¸‹çš„ spr æ–‡ä»¶ä¿¡æ¯
 //---------------------------------------------------------------------------
 int		KNpcResNode::GetTotalDirs(int nPartNo, int nActionNo, int nEquipNo, int nDefault, bool bEffect/* = false*/)
 {
@@ -499,15 +499,15 @@ int		KNpcResNode::GetTotalDirs(int nPartNo, int nActionNo, int nEquipNo, int nDe
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñµÃÄ³ÎäÆ÷Ä³×´Ì¬ÏÂµÄ¶¯×÷±àºÅ
+// åŠŸèƒ½:	è·å¾—æŸæ­¦å™¨æŸçŠ¶æ€ä¸‹çš„åŠ¨ä½œç¼–å·
 //---------------------------------------------------------------------------
 int		KNpcResNode::GetActNo(int nDoing, int nEquipNo, BOOL bRideHorse)
 {
-	// ÆÕÍ¨npc Doing Óë Action ÏàÍ¬
+	// æ™®é€šnpc Doing ä¸ Action ç›¸åŒ
 	if (m_nNpcKind == NPC_RES_NORMAL)
 		return nDoing;
 
-	// ÌØÊâ npc£¬ ²é±í
+	// ç‰¹æ®Š npcï¼Œ æŸ¥è¡¨
 	if (bRideHorse == FALSE)
 	{
 		return m_NoHorseTable.GetValue(nEquipNo, nDoing);
@@ -519,11 +519,11 @@ int		KNpcResNode::GetActNo(int nDoing, int nEquipNo, BOOL bRideHorse)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	´Ó±í¸ñÖĞµÃµ½Ò»×éÅÅĞòĞÅÏ¢
+// åŠŸèƒ½:	ä»è¡¨æ ¼ä¸­å¾—åˆ°ä¸€ç»„æ’åºä¿¡æ¯
 //---------------------------------------------------------------------------
 BOOL	KNpcResNode::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int nTableLen)
 {
-	// ÆÕÍ¨npc
+	// æ™®é€šnpc
 	if (m_nNpcKind == NPC_RES_NORMAL)
 	{
 		if (!lpnTable || nTableLen <= 0)
@@ -534,14 +534,14 @@ BOOL	KNpcResNode::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int
 		return TRUE;
 	}
 
-	// ÌØÊânpc
+	// ç‰¹æ®Šnpc
 	if ( m_cSortTable.GetSort(nActNo, nDir, nFrameNo, lpnTable, nTableLen) )
 		return TRUE;
 	return FALSE;
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ£º»ñµÃÄ³¸ö¶¯×÷¶ÔÓ¦µÄÒôĞ§ÎÄ¼şÃû
+// åŠŸèƒ½ï¼šè·å¾—æŸä¸ªåŠ¨ä½œå¯¹åº”çš„éŸ³æ•ˆæ–‡ä»¶å
 //---------------------------------------------------------------------------
 void	KNpcResNode::GetActionSoundName(int nAction, char *lpszSoundName)
 {
@@ -553,7 +553,7 @@ void	KNpcResNode::GetActionSoundName(int nAction, char *lpszSoundName)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ£º°´Ä¬ÈÏ¹æÔò°ÑÒ»¸önpcµÄsprÍ¼ÎÄ¼şÃû×ª»»³ÉÏàÓ¦µÄÒõÓ°ÎÄ¼şÃû
+// åŠŸèƒ½ï¼šæŒ‰é»˜è®¤è§„åˆ™æŠŠä¸€ä¸ªnpcçš„språ›¾æ–‡ä»¶åè½¬æ¢æˆç›¸åº”çš„é˜´å½±æ–‡ä»¶å
 //---------------------------------------------------------------------------
 void	KNpcResNode::GetShadowName(char *lpszShadow, char *lpszSprName)
 {
@@ -576,7 +576,7 @@ void	KNpcResNode::GetShadowName(char *lpszShadow, char *lpszSprName)
 
 //---------------------------- class CActionName ----------------------------
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹¹Ôìº¯Êı
+// åŠŸèƒ½:	æ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CActionName::CActionName()
 {
@@ -587,7 +587,7 @@ CActionName::CActionName()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	»ñÈ¡¶¯×÷ÖÖÀà¡¢Ãû³ÆµÈĞÅÏ¢
+// åŠŸèƒ½:	è·å–åŠ¨ä½œç§ç±»ã€åç§°ç­‰ä¿¡æ¯
 //---------------------------------------------------------------------------
 BOOL	CActionName::Init(char *lpszFileName)
 {
@@ -615,7 +615,7 @@ BOOL	CActionName::Init(char *lpszFileName)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	ÓÉ¶¯×÷Ãû³ÆµÃµ½¶¯×÷±àºÅ
+// åŠŸèƒ½:	ç”±åŠ¨ä½œåç§°å¾—åˆ°åŠ¨ä½œç¼–å·
 //---------------------------------------------------------------------------
 int		CActionName::GetActionNo(char *lpszName)
 {
@@ -630,7 +630,7 @@ int		CActionName::GetActionNo(char *lpszName)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	µÃµ½¶¯×÷ÖÖÀàÊı
+// åŠŸèƒ½:	å¾—åˆ°åŠ¨ä½œç§ç±»æ•°
 //---------------------------------------------------------------------------
 int		CActionName::GetActionCount()
 {
@@ -638,7 +638,7 @@ int		CActionName::GetActionCount()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	ÓÉ¶¯×÷±àºÅµÃµ½¶¯×÷Ãû³Æ
+// åŠŸèƒ½:	ç”±åŠ¨ä½œç¼–å·å¾—åˆ°åŠ¨ä½œåç§°
 //---------------------------------------------------------------------------
 BOOL	CActionName::GetActionName(int nNo, char *lpszName, int nSize)
 {
@@ -658,7 +658,7 @@ BOOL	CActionName::GetActionName(int nNo, char *lpszName, int nSize)
 //-------------------------- class CShadowFileName --------------------------
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ£º¹¹Ôìº¯Êı
+// åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CShadowFileName::CShadowFileName()
 {
@@ -667,7 +667,7 @@ CShadowFileName::CShadowFileName()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ£ºÎö¹¹º¯Êı
+// åŠŸèƒ½ï¼šææ„å‡½æ•°
 //---------------------------------------------------------------------------
 CShadowFileName::~CShadowFileName()
 {
@@ -693,7 +693,7 @@ void	CShadowFileName::Init(int nActionCount)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ£ºµÃµ½Ä³¸ö¶¯×öµÄÒõÓ°ÎÄ¼şÃû¼°ÆäÏà¹ØÎÄ¼şĞÅÏ¢
+// åŠŸèƒ½ï¼šå¾—åˆ°æŸä¸ªåŠ¨åšçš„é˜´å½±æ–‡ä»¶ååŠå…¶ç›¸å…³æ–‡ä»¶ä¿¡æ¯
 //---------------------------------------------------------------------------
 BOOL	CShadowFileName::GetFile(int nActionNo, int *pnFrame, int *pnDir, int *pnInterval, int *pnCgX, int *pnCgY, char *lpszName)
 {
@@ -717,7 +717,7 @@ BOOL	CShadowFileName::GetFile(int nActionNo, int *pnFrame, int *pnDir, int *pnIn
 
 //------------------------- class CStateMagicTable --------------------------
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹¹Ôìº¯Êı
+// åŠŸèƒ½:	æ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CStateMagicTable::CStateMagicTable()
 {
@@ -735,7 +735,7 @@ CStateMagicTable::CStateMagicTable()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	³õÊ¼»¯
+// åŠŸèƒ½:	åˆå§‹åŒ–
 //---------------------------------------------------------------------------
 BOOL	CStateMagicTable::Init()
 {
@@ -776,8 +776,8 @@ BOOL	CStateMagicTable::Init()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	µÃµ½Ä³ÖÖ×´Ì¬µÄ¹âÓ°Ğ§¹ûµÄĞÅÏ¢
-// nNo ´Ó 1 µ½ MAX_RES_STATE
+// åŠŸèƒ½:	å¾—åˆ°æŸç§çŠ¶æ€çš„å…‰å½±æ•ˆæœçš„ä¿¡æ¯
+// nNo ä» 1 åˆ° MAX_RES_STATE
 //---------------------------------------------------------------------------
 void	CStateMagicTable::GetInfo(int nNo, char *lpszGetName, int *pnType, int *pnPlayType, int *pnBackStart, int *pnBackEnd, int *pnTotalFrame, int *pnTotalDir, int *pnInterVal)
 {
@@ -808,7 +808,7 @@ void	CStateMagicTable::GetInfo(int nNo, char *lpszGetName, int *pnType, int *pnP
 
 //----------------------------- class CRESINFO ------------------------------
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹¹Ôìº¯Êı
+// åŠŸèƒ½:	æ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CRESINFO::CRESINFO()
 {
@@ -818,7 +818,7 @@ CRESINFO::CRESINFO()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Îö¹¹º¯Êı
+// åŠŸèƒ½:	ææ„å‡½æ•°
 //---------------------------------------------------------------------------
 CRESINFO::~CRESINFO()
 {
@@ -826,7 +826,7 @@ CRESINFO::~CRESINFO()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Çå³ıÊı¾İ
+// åŠŸèƒ½:	æ¸…é™¤æ•°æ®
 //---------------------------------------------------------------------------
 void	CRESINFO::AutoDelete()
 {
@@ -839,7 +839,7 @@ void	CRESINFO::AutoDelete()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Éè¶¨¶¯×÷ÖÖÀàÊı£¬×°±¸ÖÖÀàÊı£¬·ÖÅä±í¸ñÄÚ´æ»º³åÇø
+// åŠŸèƒ½:	è®¾å®šåŠ¨ä½œç§ç±»æ•°ï¼Œè£…å¤‡ç§ç±»æ•°ï¼Œåˆ†é…è¡¨æ ¼å†…å­˜ç¼“å†²åŒº
 //---------------------------------------------------------------------------
 BOOL	CRESINFO::AutoNew(int nWidth, int nHeight)
 {
@@ -871,7 +871,7 @@ BOOL	CRESINFO::AutoNew(int nWidth, int nHeight)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¸ù¾İ¶¯×÷±àºÅ¡¢×°±¸±àºÅµÃµ½×ÊÔ´ÎÄ¼şÃû
+// åŠŸèƒ½:	æ ¹æ®åŠ¨ä½œç¼–å·ã€è£…å¤‡ç¼–å·å¾—åˆ°èµ„æºæ–‡ä»¶å
 //---------------------------------------------------------------------------
 BOOL	CRESINFO::GetName(int nActionNo, int nEquipNo, char *lpszDefault, char *lpszGetName, int nStrLen,bool bEffect/*=false*/)
 {
@@ -922,7 +922,7 @@ int		CRESINFO::GetTotalDirs(int nActionNo, int nEquipNo, int nDefault,bool bEffe
 
 //------------------------- class CEquipStyleTable --------------------------
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹¹Ôìº¯Êı
+// åŠŸèƒ½:	æ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CEquipStyleTable::CEquipStyleTable()
 {
@@ -932,7 +932,7 @@ CEquipStyleTable::CEquipStyleTable()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Îö¹¹º¯Êı
+// åŠŸèƒ½:	ææ„å‡½æ•°
 //---------------------------------------------------------------------------
 CEquipStyleTable::~CEquipStyleTable()
 {
@@ -940,7 +940,7 @@ CEquipStyleTable::~CEquipStyleTable()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Çå³ıÊı¾İ
+// åŠŸèƒ½:	æ¸…é™¤æ•°æ®
 //---------------------------------------------------------------------------
 void	CEquipStyleTable::AutoDelete()
 {
@@ -952,7 +952,7 @@ void	CEquipStyleTable::AutoDelete()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Éè¶¨±í¸ñ³¤¿í£¬³õÊ¼»¯±í¸ñ»º³åÇø
+// åŠŸèƒ½:	è®¾å®šè¡¨æ ¼é•¿å®½ï¼Œåˆå§‹åŒ–è¡¨æ ¼ç¼“å†²åŒº
 //---------------------------------------------------------------------------
 BOOL	CEquipStyleTable::AutoNew(int nWidth, int nHeight)
 {
@@ -974,7 +974,7 @@ BOOL	CEquipStyleTable::AutoNew(int nWidth, int nHeight)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Éè¶¨±í¸ñÖĞÄ³Ò»ÏîµÄÖµ
+// åŠŸèƒ½:	è®¾å®šè¡¨æ ¼ä¸­æŸä¸€é¡¹çš„å€¼
 //---------------------------------------------------------------------------
 void	CEquipStyleTable::SetValue(int nXpos, int nYpos, int nValue)
 {
@@ -984,9 +984,9 @@ void	CEquipStyleTable::SetValue(int nXpos, int nYpos, int nValue)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	µÃµ½±í¸ñÖĞÄ³Ò»ÏîµÄÖµ
-// ²ÎÊı:	nXpos : ×°±¸±àºÅ  nYpos : ×´Ì¬±àºÅ
-// ·µ»Ø:	¶¯×÷±àºÅ
+// åŠŸèƒ½:	å¾—åˆ°è¡¨æ ¼ä¸­æŸä¸€é¡¹çš„å€¼
+// å‚æ•°:	nXpos : è£…å¤‡ç¼–å·  nYpos : çŠ¶æ€ç¼–å·
+// è¿”å›:	åŠ¨ä½œç¼–å·
 //---------------------------------------------------------------------------
 int		CEquipStyleTable::GetValue(int nXpos, int nYpos)
 {
@@ -1001,7 +1001,7 @@ int		CEquipStyleTable::GetValue(int nXpos, int nYpos)
 
 //---------------------------- class CSortTable -----------------------------
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹¹Ôìº¯Êı
+// åŠŸèƒ½:	æ„é€ å‡½æ•°
 //---------------------------------------------------------------------------
 CSortTable::CSortTable()
 {
@@ -1012,7 +1012,7 @@ CSortTable::CSortTable()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Îö¹¹º¯Êı
+// åŠŸèƒ½:	ææ„å‡½æ•°
 //---------------------------------------------------------------------------
 CSortTable::~CSortTable()
 {
@@ -1020,7 +1020,7 @@ CSortTable::~CSortTable()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	Çå³ıÊı¾İ
+// åŠŸèƒ½:	æ¸…é™¤æ•°æ®
 //---------------------------------------------------------------------------
 void	CSortTable::Release()
 {
@@ -1038,8 +1038,8 @@ void	CSortTable::Release()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	´Ó×Ö·û´®ÖĞ°ÑÒ»ÏµÁĞÊı×ÖÈ¡³öÀ´
-// ²ÎÊı:	lpszStr : ×Ö·û´®  lpnTable : ½ÓÊÜÊı×ÖµÄÊı×é  nTableSize : Êı×éµÄ´óĞ¡
+// åŠŸèƒ½:	ä»å­—ç¬¦ä¸²ä¸­æŠŠä¸€ç³»åˆ—æ•°å­—å–å‡ºæ¥
+// å‚æ•°:	lpszStr : å­—ç¬¦ä¸²  lpnTable : æ¥å—æ•°å­—çš„æ•°ç»„  nTableSize : æ•°ç»„çš„å¤§å°
 //---------------------------------------------------------------------------
 void	CSortTable::SortStrToNum(char *lpszStr, int *lpnTable, int nTableSize)
 {
@@ -1081,12 +1081,12 @@ void	CSortTable::SortStrToNum(char *lpszStr, int *lpnTable, int nTableSize)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	´ÓÅÅĞòÎÄ¼şÖĞ°ÑÅÅĞòĞÅÏ¢¶ÁÈ¡³öÀ´
-// ²ÎÊı:	
-//			lpszFileName: ÅÅĞòÎÄ¼şÃû
-//			*cActionName: ÓÃÓÚ»ñÈ¡¶¯×÷µÄ¸÷ÖÖĞÅÏ¢
-//			nPartNum£º²¿¼şµÄÊıÁ¿
-// ·µ»Ø:	¶ÁÈ¡³É¹¦Óë·ñ
+// åŠŸèƒ½:	ä»æ’åºæ–‡ä»¶ä¸­æŠŠæ’åºä¿¡æ¯è¯»å–å‡ºæ¥
+// å‚æ•°:	
+//			lpszFileName: æ’åºæ–‡ä»¶å
+//			*cActionName: ç”¨äºè·å–åŠ¨ä½œçš„å„ç§ä¿¡æ¯
+//			nPartNumï¼šéƒ¨ä»¶çš„æ•°é‡
+// è¿”å›:	è¯»å–æˆåŠŸä¸å¦
 //---------------------------------------------------------------------------
 BOOL	CSortTable::GetTable(char *lpszFileName, CActionName *cActionName, int nPartNum)
 {
@@ -1118,27 +1118,27 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 //		return FALSE;
 //	KIniFile	*pIni = &SortIni;
 
-// ----------------------- Í¨¹ı±éÀúÎÄ¼ş¼ÆËã Table µÄ´óĞ¡ --------------------------
+// ----------------------- é€šè¿‡éå†æ–‡ä»¶è®¡ç®— Table çš„å¤§å° --------------------------
 	Release();
-	// default ²¿·Ö£¬16 ¸ö·½Ïò
+	// default éƒ¨åˆ†ï¼Œ16 ä¸ªæ–¹å‘
 	for (i = 0; i < MAX_SORT_DIR; i++)
 	{
 		sprintf(szKey, "Dir%d", i + 1);
 		if( pIni->GetString("DEFAULT", szKey, "", szBuffer, sizeof(szBuffer)) )
 			m_nSortTableSize ++;
 	}
-	// °´¶¯×÷Öğ¸ö¼ÆËã
+	// æŒ‰åŠ¨ä½œé€ä¸ªè®¡ç®—
 	nActNo = cActionName->GetActionCount();
 	if (nActNo <= 0)
 		return FALSE;
 	for (i = 0; i < nActNo; i++)
 	{
-		// µÃµ½¶¯×÷Ãû
+		// å¾—åˆ°åŠ¨ä½œå
 		if ( !cActionName->GetActionName(i, szActName, sizeof(szActName)) )
 			continue;
 		if( !pIni->IsSectionExist(szActName) )
 			continue;
-		// ÅĞ¶ÏÊÇ·ñÊ¹ÓÃÄ¬ÈÏ·½ÏòË³Ğò
+		// åˆ¤æ–­æ˜¯å¦ä½¿ç”¨é»˜è®¤æ–¹å‘é¡ºåº
 		for (j = 0; j < MAX_SORT_DIR; j++)
 		{
 			sprintf(szKey, "Dir%d", j + 1);
@@ -1150,7 +1150,7 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 				break;
 			}
 		}
-		// ÅĞ¶ÏÊÇ·ñÓĞĞèÒªÌØÊâÅÅĞòµÄÌØÊâèå
+		// åˆ¤æ–­æ˜¯å¦æœ‰éœ€è¦ç‰¹æ®Šæ’åºçš„ç‰¹æ®Šæ¡¢
 		j = 1;
 		while (1)
 		{
@@ -1178,10 +1178,10 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 	}
 	if (m_nSortTableSize < MAX_SORT_DIR)
 		return FALSE;
-// --------------------- Í¨¹ı±éÀúÎÄ¼ş¼ÆËã Table µÄ´óĞ¡ end ------------------------
+// --------------------- é€šè¿‡éå†æ–‡ä»¶è®¡ç®— Table çš„å¤§å° end ------------------------
 
-// ------------------------------ ¶ÁÈë¾ßÌåµÄ¶ÔÓ¦±íÊı¾İ ----------------------------
-	// ¸ø m_lpnSortTable ·ÖÅäÄÚ´æ
+// ------------------------------ è¯»å…¥å…·ä½“çš„å¯¹åº”è¡¨æ•°æ® ----------------------------
+	// ç»™ m_lpnSortTable åˆ†é…å†…å­˜
 	m_lpnSortTable = (int *)new int[m_nSortTableSize * (m_nPartNum + 1)];
 	if (m_lpnSortTable == NULL)
 	{
@@ -1194,7 +1194,7 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 	}
 
 	int		nTablePos = 0;
-	// default ²¿·Ö£¬16 ¸ö·½Ïò
+	// default éƒ¨åˆ†ï¼Œ16 ä¸ªæ–¹å‘
 	for (i = 0; i < MAX_SORT_DIR; i++)
 	{
 		sprintf(szKey, "Dir%d", i + 1);
@@ -1204,18 +1204,18 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 		}
 		nTablePos++;
 	}
-	// °´¶¯×÷Öğ¸ö¶ÁÈë
+	// æŒ‰åŠ¨ä½œé€ä¸ªè¯»å…¥
 	for (i = 0; i < nActNo; i++)
 	{
-		// Èç¹ûÍêÈ«Ê¹ÓÃÄ¬ÈÏÖµ£¬²»ÓÃÔÙ´¦Àí
+		// å¦‚æœå®Œå…¨ä½¿ç”¨é»˜è®¤å€¼ï¼Œä¸ç”¨å†å¤„ç†
 		if (m_sActTableOff[i].nActOff == 0)
 			continue;
-		// µÃµ½¶¯×÷Ãû
+		// å¾—åˆ°åŠ¨ä½œå
 		if ( !cActionName->GetActionName(i, szActName, sizeof(szActName)) )
 			continue;
 		if( !pIni->IsSectionExist(szActName) )
 			continue;
-		// Èç¹û·½Ïò²»Ê¹ÓÃÄ¬ÈÏÖµ£¬¶ÁÈë·½ÏòË³Ğò
+		// å¦‚æœæ–¹å‘ä¸ä½¿ç”¨é»˜è®¤å€¼ï¼Œè¯»å…¥æ–¹å‘é¡ºåº
 		if (m_sActTableOff[i].bUseDefault == FALSE)
 		{
 			for (j = 0; j < MAX_SORT_DIR; j++)
@@ -1232,7 +1232,7 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 				nTablePos++;
 			}
 		}
-		// ¶ÁÈëÌØÊâĞĞË³Ğò
+		// è¯»å…¥ç‰¹æ®Šè¡Œé¡ºåº
 		if ((m_sActTableOff[i].bUseDefault == FALSE && m_sActTableOff[i].nLineNum > MAX_SORT_DIR) || 
 			(m_sActTableOff[i].bUseDefault == TRUE && m_sActTableOff[i].nLineNum > 0))
 		{
@@ -1248,20 +1248,20 @@ BOOL	CSortTable::GetTable(KIniFile *pIni, CActionName *cActionName, int nPartNum
 			}
 		}
 	}
-// ---------------------------- ¶ÁÈë¾ßÌåµÄ¶ÔÓ¦±íÊı¾İ end --------------------------
+// ---------------------------- è¯»å…¥å…·ä½“çš„å¯¹åº”è¡¨æ•°æ® end --------------------------
 
 	return TRUE;
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	´Ó±í¸ñÖĞµÃµ½Ò»×éÅÅĞòĞÅÏ¢
-// ²ÎÊı:	
-//			nActNo : ¶¯×÷±àºÅ
-//			nDir : µ±Ç°·½Ïò ( 0 -- 16 )
-//			nFrameNo : µ±Ç°µÚ¼¸èå
-//			lpnTable : ½ÓÊÕÅÅĞòĞÅÏ¢µÄÊı×é
-//			nTableLen : lpnTableµÄ³¤¶È
-// ·µ»Ø:	¶ÁÈ¡³É¹¦Óë·ñ
+// åŠŸèƒ½:	ä»è¡¨æ ¼ä¸­å¾—åˆ°ä¸€ç»„æ’åºä¿¡æ¯
+// å‚æ•°:	
+//			nActNo : åŠ¨ä½œç¼–å·
+//			nDir : å½“å‰æ–¹å‘ ( 0 -- 16 )
+//			nFrameNo : å½“å‰ç¬¬å‡ æ¡¢
+//			lpnTable : æ¥æ”¶æ’åºä¿¡æ¯çš„æ•°ç»„
+//			nTableLen : lpnTableçš„é•¿åº¦
+// è¿”å›:	è¯»å–æˆåŠŸä¸å¦
 //---------------------------------------------------------------------------
 BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int nTableLen)
 {
@@ -1276,7 +1276,7 @@ BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int 
 
 	int		i;
 
-	// ÍêÈ«Ê¹ÓÃÄ¬ÈÏ
+	// å®Œå…¨ä½¿ç”¨é»˜è®¤
 	if (m_sActTableOff[nActNo].nActOff == 0)
 	{
 		if (nTableLen <= m_nPartNum)
@@ -1290,13 +1290,13 @@ BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int 
 	}
 	else
 	{
-		// ·½ÏòÊ¹ÓÃÄ¬ÈÏ£¬´øÌØÊâèå
+		// æ–¹å‘ä½¿ç”¨é»˜è®¤ï¼Œå¸¦ç‰¹æ®Šæ¡¢
 		if (m_sActTableOff[nActNo].bUseDefault == TRUE)
 		{
-			// ÅĞ¶ÏÊÇ·ñÊÇÌØÊâèå
+			// åˆ¤æ–­æ˜¯å¦æ˜¯ç‰¹æ®Šæ¡¢
 			for (i = 0; i < m_sActTableOff[nActNo].nLineNum; i++)
 			{
-				// ÕÒµ½ÌØÊâèå
+				// æ‰¾åˆ°ç‰¹æ®Šæ¡¢
 				if (nFrameNo == m_lpnSortTable[(m_sActTableOff[nActNo].nActOff + i) * (m_nPartNum + 1)])
 				{
 					if (nTableLen <= m_nPartNum)
@@ -1310,7 +1310,7 @@ BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int 
 					return TRUE;
 				}
 			}
-			// µ½´Ë£¬Ã»ÓĞÕÒµ½ÌØÊâèå
+			// åˆ°æ­¤ï¼Œæ²¡æœ‰æ‰¾åˆ°ç‰¹æ®Šæ¡¢
 			if (nTableLen <= m_nPartNum)
 				memcpy(lpnTable, &m_lpnSortTable[nDir * (m_nPartNum + 1) + 1], sizeof(int) * nTableLen);
 			else
@@ -1320,13 +1320,13 @@ BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int 
 					lpnTable[i] = -1;
 			}
 		}
-		// ·½Ïò²»Ê¹ÓÃÄ¬ÈÏ
+		// æ–¹å‘ä¸ä½¿ç”¨é»˜è®¤
 		else
 		{
-			// ÅĞ¶ÏÊÇ·ñÊÇÌØÊâèå
+			// åˆ¤æ–­æ˜¯å¦æ˜¯ç‰¹æ®Šæ¡¢
 			for (i = MAX_SORT_DIR; i < m_sActTableOff[nActNo].nLineNum; i++)
 			{
-				// ÕÒµ½ÌØÊâèå
+				// æ‰¾åˆ°ç‰¹æ®Šæ¡¢
 				if (nFrameNo == m_lpnSortTable[(m_sActTableOff[nActNo].nActOff + i) * (m_nPartNum + 1)])
 				{
 					if (nTableLen <= m_nPartNum)
@@ -1340,7 +1340,7 @@ BOOL	CSortTable::GetSort(int nActNo, int nDir, int nFrameNo, int *lpnTable, int 
 					return TRUE;
 				}
 			}
-			// µ½´Ë£¬Ã»ÓĞÕÒµ½ÌØÊâèå
+			// åˆ°æ­¤ï¼Œæ²¡æœ‰æ‰¾åˆ°ç‰¹æ®Šæ¡¢
 			if (nTableLen <= m_nPartNum)
 				memcpy(lpnTable, &m_lpnSortTable[(m_sActTableOff[nActNo].nActOff + nDir) * (m_nPartNum + 1) + 1], sizeof(int) * nTableLen);
 			else

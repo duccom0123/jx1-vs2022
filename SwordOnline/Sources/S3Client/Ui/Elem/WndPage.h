@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--Ò³Ãæ´°¿Ú\¶à¸öÒ³Ãæ¼¯ºÏ´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--é¡µé¢çª—å£\å¤šä¸ªé¡µé¢é›†åˆçª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-8
 ------------------------------------------------------------------------------------------
-    ÀàËÆÓÚM$ Win32ÀïÃæµÄ PropertiePage
+    ç±»ä¼¼äºM$ Win32é‡Œé¢çš„ PropertiePage
 *****************************************************************************************/
 #pragma once
 #include "WndImage.h"
@@ -13,11 +13,11 @@
 class KWndPage : public KWndImage
 {
 public:
-	virtual int	WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	virtual int	WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 };
 
 //------------------------------------------------------------------------------------------
-//	¶à¸öÒ³Ãæ¼¯ºÏ´°¿ÚÀàËÆÓÚM$ Win32ÀïÃæµÄ PropertieSheet
+//	å¤šä¸ªé¡µé¢é›†åˆçª—å£ç±»ä¼¼äºM$ Win32é‡Œé¢çš„ PropertieSheet
 //------------------------------------------------------------------------------------------
 
 class KWndButton;
@@ -25,23 +25,23 @@ class KWndButton;
 class KWndPageSet : public KWndShowAnimate
 {
 public:
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	bool			AddPage(KWndPage* pPage, KWndButton* pPageBtn);	//Ìí¼ÓÒ³Ãæ
-	bool			ActivePage(int nPageIndex);						//¼¤»îÖ¸¶¨µÄÒ³Ãæ
-	int				GetActivePageIndex() { return m_nAcitvePage; }	//È¡µÃµ±Ç°¼¤»îÒ³ÃæµÄË÷Òı
-	KWndPage*		GetActivePage();								//¼¤»îÖ¸¶¨µÄÒ³Ãæ
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	bool			AddPage(KWndPage* pPage, KWndButton* pPageBtn);	//æ·»åŠ é¡µé¢
+	bool			ActivePage(int nPageIndex);						//æ¿€æ´»æŒ‡å®šçš„é¡µé¢
+	int				GetActivePageIndex() { return m_nAcitvePage; }	//å–å¾—å½“å‰æ¿€æ´»é¡µé¢çš„ç´¢å¼•
+	KWndPage*		GetActivePage();								//æ¿€æ´»æŒ‡å®šçš„é¡µé¢
 	KWndPageSet();
 	~KWndPageSet();
 
 private:
-	void			OnPageBtnClick(KWndWindow* pBtn);		//ÏìÓ¦°´ÏÂÇĞ»»Ò³Ãæ°´Å¥µÄ²Ù×÷
+	void			OnPageBtnClick(KWndWindow* pBtn);		//å“åº”æŒ‰ä¸‹åˆ‡æ¢é¡µé¢æŒ‰é’®çš„æ“ä½œ
 
 private:
 	struct KWndPageBtnPair
 	{
-		KWndPage*	pPage;						//Ò³Ãæ´°¿ÚÖ¸Õë
-		KWndButton*	pPageBtn;					//Ò³Ãæ´°¿Ú¹ØÁª°´Å¥Ö¸Õë
-	}*				m_pPageBtnPairList;			//Ö¸Ïò´æ´¢È«²¿Ò³Ãæ¼°Æä¹ØÁª°´Å¥Ö¸ÕëµÄÊı×é
-	int				m_nNumPage;					//Ò³ÃæµÄÊıÄ¿
-	int				m_nAcitvePage;				//µ±Ç°¼¤»îµÄÒ³Ãæ
+		KWndPage*	pPage;						//é¡µé¢çª—å£æŒ‡é’ˆ
+		KWndButton*	pPageBtn;					//é¡µé¢çª—å£å…³è”æŒ‰é’®æŒ‡é’ˆ
+	}*				m_pPageBtnPairList;			//æŒ‡å‘å­˜å‚¨å…¨éƒ¨é¡µé¢åŠå…¶å…³è”æŒ‰é’®æŒ‡é’ˆçš„æ•°ç»„
+	int				m_nNumPage;					//é¡µé¢çš„æ•°ç›®
+	int				m_nAcitvePage;				//å½“å‰æ¿€æ´»çš„é¡µé¢
 };

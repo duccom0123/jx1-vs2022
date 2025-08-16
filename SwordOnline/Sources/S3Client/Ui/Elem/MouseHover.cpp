@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	¸¡¶¯ÌáÊ¾´°¿Ú
+//	æµ®åŠ¨æç¤ºçª—å£
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-23
@@ -23,12 +23,12 @@ extern iRepresentShell*	g_pRepresentShell;
 extern iCoreShell*	g_pCoreShell;
 
 KMouseOver	g_MouseOver;
-#define	SCHEME_INI				"µ¯³öËµÃ÷ÎÄ×Ö.ini"
+#define	SCHEME_INI				"å¼¹å‡ºè¯´æ˜æ–‡å­—.ini"
 #define	INFO_MIN_LEN			26
 #define FOLLOW_CURSOR_OFFSET_X	16
 #define FOLLOW_CURSOR_OFFSET_Y	8
 
-static unsigned int	s_uHoverObjDestTextColor = 0xffffffff;	//¶ÔÏóÌáÊ¾ÎÄ×ÖµÄÑÕÉ«
+static unsigned int	s_uHoverObjDestTextColor = 0xffffffff;	//å¯¹è±¡æç¤ºæ–‡å­—çš„é¢œè‰²
 
 void SetHoverObjDescColor(unsigned int uColor)
 {
@@ -119,9 +119,9 @@ KMouseOver::KMouseOver()
 	m_uPropBgColor = 0;
 	m_uDescBgColor = 0;
 	//////////////////
-	m_uBoderShadowColor = 0;      //ÊôĞÔÎÄ×ÖÑÕÉ«
-	m_uRectBordetShadowColor = 0;    //ÃèÊö²¿·Ö±³¾°ÑÕÉ«
-	m_uRectBordetColor = 0;      //ÃèÊö²¿·ÖÎÄ×ÖÑÕÉ«
+	m_uBoderShadowColor = 0;      //å±æ€§æ–‡å­—é¢œè‰²
+	m_uRectBordetShadowColor = 0;    //æè¿°éƒ¨åˆ†èƒŒæ™¯é¢œè‰²
+	m_uRectBordetColor = 0;      //æè¿°éƒ¨åˆ†æ–‡å­—é¢œè‰²
 	//////////////////
 	memset(&m_Image, 0, sizeof(KRUImage));
 	IR_InitUiImageRef(m_HoverImage);
@@ -153,7 +153,7 @@ void KMouseOver::CancelMouseHoverInfo()
 }
 
 /***********************************************************************
-*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄ»ù±¾ĞÅÏ¢
+*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„åŸºæœ¬ä¿¡æ¯
 ************************************************************************/
 void KMouseOver::SetMouseHoverInfo(void* pWnd, int nObj, int x, int y,
 		                        bool bHeadTailImg, bool bFollowCursor, bool LAlign)
@@ -210,7 +210,7 @@ void KMouseOver::SetMouseHoverImage(bool bAdd)
 }
 
 /***********************************************************************
-*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄ±êÌâ(Îï¼şµÄÃû×Ö)
+*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„æ ‡é¢˜(ç‰©ä»¶çš„åå­—)
 ************************************************************************/
 void KMouseOver::SetMouseHoverTitle(const char *pTitleText, int nTitleTextLen, UINT uColor)
 {
@@ -230,7 +230,7 @@ void KMouseOver::SetMouseHoverTitle(const char *pTitleText, int nTitleTextLen, U
 
 
 /***********************************************************************
-*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄÎï¼şÊôĞÔ
+*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„ç‰©ä»¶å±æ€§
 ************************************************************************/
 void KMouseOver::SetMouseHoverProp(const char *pPropText, int nPropTextLen, UINT uColor)
 {
@@ -250,7 +250,7 @@ void KMouseOver::SetMouseHoverProp(const char *pPropText, int nPropTextLen, UINT
 
 
 /***********************************************************************
-*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄÎï¼şËµÃ÷
+*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„ç‰©ä»¶è¯´æ˜
 ************************************************************************/
 void KMouseOver::SetMouseHoverDesc(const char *pDescText, int nDescTextLen, UINT uColor)
 {
@@ -293,7 +293,7 @@ void KMouseOver::Update(int nX, int nY)
 	{
 		m_nPropLineNum = TGetEncodedTextLineCount(
 			m_ObjProp, m_nPropLen, 0, nMaxPropLen, m_nFontSize);
-		if(m_nMaxLineLen < nMaxPropLen + 3)	//´Ë+3ÓÃÓÚÀ©Õ¹tab×Ö·ûÕ¼µÄ¿Õ¼ä
+		if(m_nMaxLineLen < nMaxPropLen + 3)	//æ­¤+3ç”¨äºæ‰©å±•tabå­—ç¬¦å çš„ç©ºé—´
 			m_nMaxLineLen = nMaxPropLen + 3;
 	}
 	else
@@ -344,12 +344,12 @@ void KMouseOver::Update(int nX, int nY)
 		ALW_GetWndPosition(m_nLeft, m_nTop, m_nWndWidth, m_nWndHeight);
 	}
 
-	//¿ÉÒÔÏÔÊ¾¸¡¶¯´°¿ÚÀ²!
+	//å¯ä»¥æ˜¾ç¤ºæµ®åŠ¨çª—å£å•¦!
 	m_bShow = true;
 }
 
 
-//Êó±êµÄÎ»ÖÃ¸üĞÂÁË
+//é¼ æ ‡çš„ä½ç½®æ›´æ–°äº†
 void KMouseOver::UpdateCursorPos(int nX, int nY)
 {
 	if (m_bFollowCursor && m_bShow)
@@ -366,7 +366,7 @@ void KMouseOver::OnWndClosed(void* pWnd)
 		CancelMouseHoverInfo();
 }
 
-//ÔØÈë½çÃæ·½°¸
+//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 void KMouseOver::LoadScheme(const char* pScheme)
 {
 	if (pScheme == NULL)
@@ -436,14 +436,14 @@ void KMouseOver::PaintMouseHoverInfo()
 	if (m_bShow == false || g_pRepresentShell == NULL)
 		return;
 
-	//»­±³¾°ÒõÓ°ºÍ±ß¿ò
+	//ç”»èƒŒæ™¯é˜´å½±å’Œè¾¹æ¡†
 	KRUShadow Shadow;
-	//Ğ´ÎÄ×Ö³õÊ¼»¯
+	//å†™æ–‡å­—åˆå§‹åŒ–
 	KOutputTextParam	Param;
 	Param.BorderColor = 0;
 	Param.nZ = TEXT_IN_SINGLE_PLANE_COORD;
 
-	//====±êÌâ(Ãû×Ö)²¿·Ö====
+	//====æ ‡é¢˜(åå­—)éƒ¨åˆ†====
 	if (m_nLeft + m_nWndWidth <= RESOLUTION_WIDTH)
 		Shadow.oPosition.nX = m_nLeft;
 	else
@@ -517,7 +517,7 @@ void KMouseOver::PaintMouseHoverInfo()
 		};
 	}
 
-	//====ÊôĞÔ²¿·Ö====
+	//====å±æ€§éƒ¨åˆ†====
 	if (m_nPropLen > 0)
 	{
 		Shadow.Color.Color_dw = m_uPropBgColor;
@@ -533,7 +533,7 @@ void KMouseOver::PaintMouseHoverInfo()
 		OutputTabSplitText(m_ObjProp, m_nPropLen, m_nWndWidth - m_nIndent * 2, m_nFontSize, &Param);
 	}
 
-	//====ÃèÊö²¿·Ö====
+	//====æè¿°éƒ¨åˆ†====
 	if (m_nDescLen > 0)
 	{
 		Shadow.Color.Color_dw = m_uDescBgColor;
@@ -549,7 +549,7 @@ void KMouseOver::PaintMouseHoverInfo()
 		g_pRepresentShell->OutputRichText(m_nFontSize, &Param, m_ObjDesc, m_nDescLen, 0);
 	}
 	
-	//»­µ×Í¼ºÍ±ß¿òÍ¼
+	//ç”»åº•å›¾å’Œè¾¹æ¡†å›¾
 	if (m_bHeadTailImg && m_nImgWidth > 0)
 	{
 		m_Image.oPosition.nX = Shadow.oPosition.nX;
@@ -573,7 +573,7 @@ void KMouseOver::PaintMouseHoverInfo()
 
 
 /***********************************************************************
-*¹¦ÄÜ£º°´¼È¶¨µÄ×î´ó¿í¶È°ÑÊôĞÔ²¿·Ö¸ñÊ½»¯(×óÓÒ¿¿)
+*åŠŸèƒ½ï¼šæŒ‰æ—¢å®šçš„æœ€å¤§å®½åº¦æŠŠå±æ€§éƒ¨åˆ†æ ¼å¼åŒ–(å·¦å³é )
 ************************************************************************/
 /*void KMouseOver::FormatProp()
 {
@@ -581,13 +581,13 @@ void KMouseOver::PaintMouseHoverInfo()
 	{
 		char szBuffer[MAX_OBJ_PROP_LEN], *pPos = NULL, *pHead = NULL, *pTail = NULL;
 	    int nLeftLen = 0, nRightLen = 0, i, j, k;
-        //³õÊ¼×¼±¸
+        //åˆå§‹å‡†å¤‡
 		memset(szBuffer, 0, MAX_OBJ_PROP_LEN);
 		memcpy(szBuffer, m_ObjProp, m_nPropLen);
 		memset(m_ObjProp, 0, MAX_OBJ_PROP_LEN);
 	    szBuffer[MAX_OBJ_PROP_LEN - 1] = 0;
 		pHead = szBuffer;
-		//¿ªÊ¼Ñ­»·´¦Àí
+		//å¼€å§‹å¾ªç¯å¤„ç†
         while(pHead[0])
 	    {
             pPos = strchr(pHead, 0x20);

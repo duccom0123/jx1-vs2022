@@ -50,19 +50,19 @@ int S3PManipulator::Load()
 			}
 			else
 			{
-				//Ã»ÓĞ½á¹û»òÕß½á¹ûÊıÁ¿´óÓÚ1
+				//æ²¡æœ‰ç»“æœæˆ–è€…ç»“æœæ•°é‡å¤§äº1
 				return -4;
 			}
 		}
 		else
 		{
-			//Ö´ĞĞqueryÓï¾ä³ö´í
+			//æ‰§è¡Œqueryè¯­å¥å‡ºé”™
 			return -3;
 		}
 	}
 	else
 	{
-		//µÃ²»µ½where×ÓÓï¾ä
+		//å¾—ä¸åˆ°whereå­è¯­å¥
 		return -2;
 	}
 
@@ -88,7 +88,7 @@ int S3PManipulator::Save()
 	}
 	else
 	{
-		//¸üĞÂÊ§°Ü
+		//æ›´æ–°å¤±è´¥
 		return -3;
 	}
 	return 1;
@@ -120,12 +120,12 @@ int S3PManipulator::Add(ColumnAndValue & cav)
 		}
 		else
 		{
-			//load¸üĞÂÊ§°Ü
+			//loadæ›´æ–°å¤±è´¥
 		}
 	}
 	else
 	{
-		//¸üĞÂÊ§°Ü
+		//æ›´æ–°å¤±è´¥
 		return -2;
 	}
 	return 1;
@@ -179,7 +179,7 @@ int S3PManipulator::Delete()
 	}
 	else
 	{
-		//É¾³ıÊ§°Ü
+		//åˆ é™¤å¤±è´¥
 		return -3;
 	}
 	return 1;
@@ -229,7 +229,7 @@ int S3PManipulator::ValidateData(ColumnAndValue &cav, DataMrgContext dmc)
 			}
 			if (!bFound)
 			{
-				//Ö÷¼ü²»´æÔÚ
+				//ä¸»é”®ä¸å­˜åœ¨
 				return -2;
 			}
 
@@ -243,7 +243,7 @@ int S3PManipulator::ValidateData(ColumnAndValue &cav, DataMrgContext dmc)
 			S3PRow rowW(m_pTableDAO->GetTableName(), &w, m_pConn);
 			if ( m_pTableDAO->HasItem(&rowW) )
 			{
-				//Êı¾İÖØ¸´
+				//æ•°æ®é‡å¤
 				return -4;
 			}
 		}

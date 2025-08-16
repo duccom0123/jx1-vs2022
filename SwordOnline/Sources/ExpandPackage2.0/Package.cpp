@@ -249,7 +249,7 @@ namespace PackageCQ
 			
 	//		Interval2.EndRecord();
 			
-	//		cout <<"部分耗时"<<(Interval2.GetInterval() )<<endl; 
+	//		cout <<"閮ㄥ垎鑰楁椂"<<(Interval2.GetInterval() )<<endl; 
 			
 			
 			
@@ -263,7 +263,7 @@ namespace PackageCQ
 		
 	//	Interval1.EndRecord();
 
-	//	cout <<"总循环耗时"<<(Interval1.GetInterval() )<<endl; 
+	//	cout <<"鎬诲惊鐜�楁椂"<<(Interval1.GetInterval() )<<endl; 
 
 		
 		

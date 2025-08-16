@@ -10,21 +10,21 @@
 #include <windows.h>
 #include "KJpegLib.h"
 /****************************************************************************
-¸½:JPEG ÎÄ¼ş¸ñÊ½
+é™„:JPEG æ–‡ä»¶æ ¼å¼
 ~~~~~~~~~~~~~~~~
-  - ÎÄ¼şÍ· (2 bytes):  $ff, $d8 (SOI) (Start Of Image)
-  - ÈÎÒâÊıÁ¿µÄ¶Î , ¼ûºóÃæ
-  - ÎÄ¼ş½áÊø (2 bytes): $ff, $d9 (EOI) (End Of Image)
+  - æ–‡ä»¶å¤´ (2 bytes):  $ff, $d8 (SOI) (Start Of Image)
+  - ä»»æ„æ•°é‡çš„æ®µ , è§åé¢
+  - æ–‡ä»¶ç»“æŸ (2 bytes): $ff, $d9 (EOI) (End Of Image)
   
-	¶ÎµÄ¸ñÊ½:
+	æ®µçš„æ ¼å¼:
 	~~~~~~~~~
 	  - header (4 bytes):
-	  $ff     ¶Î±êÊ¶
-	  n       ¶ÎµÄÀàĞÍ (1 byte)
-	  sh, sl  ¸Ã¶Î³¤¶È, °üÀ¨ÕâÁ½¸ö×Ö½Ú, µ«ÊÇ²»°üÀ¨Ç°ÃæµÄ $ff ºÍ n.
-	  ×¢Òâ: ³¤¶È²»ÊÇ intel ´ÎĞò, ¶øÊÇ Motorola µÄ, ¸ß×Ö½ÚÔÚÇ°,
-	  µÍ×Ö½ÚÔÚºó!
-	  - ¸Ã¶ÎµÄÄÚÈİ, ×î¶à 65533 ×Ö½Ú
+	  $ff     æ®µæ ‡è¯†
+	  n       æ®µçš„ç±»å‹ (1 byte)
+	  sh, sl  è¯¥æ®µé•¿åº¦, åŒ…æ‹¬è¿™ä¸¤ä¸ªå­—èŠ‚, ä½†æ˜¯ä¸åŒ…æ‹¬å‰é¢çš„ $ff å’Œ n.
+	  æ³¨æ„: é•¿åº¦ä¸æ˜¯ intel æ¬¡åº, è€Œæ˜¯ Motorola çš„, é«˜å­—èŠ‚åœ¨å‰,
+	  ä½å­—èŠ‚åœ¨å!
+	  - è¯¥æ®µçš„å†…å®¹, æœ€å¤š 65533 å­—èŠ‚
 ****************************************************************************/
 PBYTE		jpeg_stream = NULL;
 short		jpeg_ybuf[256];
@@ -40,12 +40,12 @@ void		(*jpeg_Y2RGB)(WORD *bmppixel, int pitch) = NULL;
 void		(*jpeg_YCbCr411)(WORD *bmppixel, int pitch) = NULL;
 void		(*jpeg_YCbCr111)(WORD *bmppixel, int pitch) = NULL;
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_decode_info
-// ¹¦ÄÜ:	
-// ²ÎÊı:	pJpgBuf		ÊäÈëÖ¸Õë
-//			pInfo		¸ñÊ½ĞÅÏ¢
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	jpeg_decode_info
+// åŠŸèƒ½:	
+// å‚æ•°:	pJpgBuf		è¾“å…¥æŒ‡é’ˆ
+//			pInfo		æ ¼å¼ä¿¡æ¯
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL jpeg_decode_info(PBYTE pJpgBuf, JPEG_INFO* pInfo)
 {
@@ -76,7 +76,7 @@ BOOL jpeg_decode_info(PBYTE pJpgBuf, JPEG_INFO* pInfo)
 		
 		switch (sign)
 		{
-		case 0x01: // TEM = ¿ÉÒÔºöÂÔ
+		case 0x01: // TEM = å¯ä»¥å¿½ç•¥
 			break;
 			
 		case 0xc0: // SOF0 = Start Of Frame 0
@@ -110,23 +110,23 @@ BOOL jpeg_decode_info(PBYTE pJpgBuf, JPEG_INFO* pInfo)
 			// Not supported
 			return FALSE;
 			
-		default: // ºöÂÔÆäËûµÄ Segment
+		default: // å¿½ç•¥å…¶ä»–çš„ Segment
 			jpeg_stream = jpeg_skip_SEG(jpeg_stream);
 			break;
 		}
 
-	} while (sign != 0xda); // SOS É¨ÃèĞĞ¿ªÊ¼
+	} while (sign != 0xda); // SOS æ‰«æè¡Œå¼€å§‹
 	
-	// ³õÊ¼»¯
+	// åˆå§‹åŒ–
 	HY = jpeg_head.component[0].h;
 	VY = jpeg_head.component[0].v;
 	if (HY != VY || HY > 2)
 	{
-		// ²»Ö§³ÖµÄ MCU (Ö»Ö§³Ö YDU, YDU*4 CbDU CrDU, YDU CbDU CrDU ÈıÖÖÄ£Ê½)
+		// ä¸æ”¯æŒçš„ MCU (åªæ”¯æŒ YDU, YDU*4 CbDU CrDU, YDU CbDU CrDU ä¸‰ç§æ¨¡å¼)
 		return FALSE;
 	}
 	
-	// È·¶¨JPEGÎÄ¼şµÄÉ«²ÊÄ£Ê½
+	// ç¡®å®šJPEGæ–‡ä»¶çš„è‰²å½©æ¨¡å¼
 	if (jpeg_head.components == 1)
 	{
 		pInfo->mode = 0;
@@ -140,7 +140,7 @@ BOOL jpeg_decode_info(PBYTE pJpgBuf, JPEG_INFO* pInfo)
 		
 		if ((HCb | VCb | HCr | VCr) != 1)
 		{
-			// ²»Ö§³ÖµÄ MCU (Ö»Ö§³Ö YDU, YDU*4 CbDU CrDU, YDU CbDU CrDU ÈıÖÖÄ£Ê½)
+			// ä¸æ”¯æŒçš„ MCU (åªæ”¯æŒ YDU, YDU*4 CbDU CrDU, YDU CbDU CrDU ä¸‰ç§æ¨¡å¼)
 			return FALSE;
 		}
 		
@@ -163,12 +163,12 @@ BOOL jpeg_decode_info(PBYTE pJpgBuf, JPEG_INFO* pInfo)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_decode_data
-// ¹¦ÄÜ:	
-// ²ÎÊı:	pBitmap		Êä³öÖ¸Õë
-//			pInfo		¸ñÊ½ĞÅÏ¢
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	jpeg_decode_data
+// åŠŸèƒ½:	
+// å‚æ•°:	pBitmap		è¾“å‡ºæŒ‡é’ˆ
+//			pInfo		æ ¼å¼ä¿¡æ¯
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL jpeg_decode_data(PWORD pBitmap, JPEG_INFO* pInfo)
 {
@@ -240,13 +240,13 @@ BOOL jpeg_decode_data(PWORD pBitmap, JPEG_INFO* pInfo)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_decode_data
-// ¹¦ÄÜ:	
-// ²ÎÊı:	pBitmap		Êä³öÖ¸Õë
-//			pitch		Êı¾İĞĞ¿ç¶È
-//			pInfo		¸ñÊ½ĞÅÏ¢
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	jpeg_decode_data
+// åŠŸèƒ½:	
+// å‚æ•°:	pBitmap		è¾“å‡ºæŒ‡é’ˆ
+//			pitch		æ•°æ®è¡Œè·¨åº¦
+//			pInfo		æ ¼å¼ä¿¡æ¯
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL jpeg_decode_dataEx(PWORD pBitmap, int nPitch, JPEG_INFO* pInfo)
 {
@@ -318,10 +318,10 @@ BOOL jpeg_decode_dataEx(PWORD pBitmap, int nPitch, JPEG_INFO* pInfo)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_init_table
-// ¹¦ÄÜ:	³õÊ¼»¯±í¸ñ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	jpeg_init_table
+// åŠŸèƒ½:	åˆå§‹åŒ–è¡¨æ ¼
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void jpeg_init_table()
 {
@@ -329,10 +329,10 @@ void jpeg_init_table()
 	memset(jpeg_qtable, 0, 4 * sizeof(short *));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_free_table
-// ¹¦ÄÜ:	ÊÍ·Å±í¸ñ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	jpeg_free_table
+// åŠŸèƒ½:	é‡Šæ”¾è¡¨æ ¼
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void jpeg_free_table()
 {

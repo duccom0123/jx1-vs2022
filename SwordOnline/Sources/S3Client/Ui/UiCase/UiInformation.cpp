@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÏûÏ¢´°¿Ú
+//	ç•Œé¢--æ¶ˆæ¯çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-14
@@ -22,7 +22,7 @@ KUiInformation	g_UiInformation;
 
 void UIMessageBox(const char* pMsg,
 				  KWndWindow* pCaller /*= 0*/,
-				  const char* pszFirstBtnText /*= "È·¶¨"*/,
+				  const char* pszFirstBtnText /*= "ç¡®å®š"*/,
 				  const char* pszSecondBtnText /*= 0*/,				  
 				  unsigned int uParam /*= 0*/,
 				  int nLeftTime /*= -1*/)
@@ -36,7 +36,7 @@ void UiCloseMessageBox()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KUiInformation::KUiInformation()
 {
@@ -48,7 +48,7 @@ KUiInformation::KUiInformation()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
 //--------------------------------------------------------------------------
 void KUiInformation::Initialize()
 {
@@ -61,7 +61,7 @@ void KUiInformation::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	åŠŸèƒ½ï¼šè½½å…¥çª—å£çš„ç•Œé¢æ–¹æ¡ˆ
 //--------------------------------------------------------------------------
 void KUiInformation::LoadScheme(const char* pScheme)
 {
@@ -81,7 +81,7 @@ void KUiInformation::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏÔÊ¾´°¿Ú
+//	åŠŸèƒ½ï¼šæ˜¾ç¤ºçª—å£
 //--------------------------------------------------------------------------
 void KUiInformation::Show(const char* pInformation,
 				const char* pszFirstBtnText,
@@ -138,7 +138,7 @@ void KUiInformation::Show(const char* pInformation,
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÒş²Ø´°¿Ú
+//	åŠŸèƒ½ï¼šéšè—çª—å£
 //--------------------------------------------------------------------------
 void KUiInformation::Hide(int nBtnIndex)
 {
@@ -152,7 +152,7 @@ void KUiInformation::Hide(int nBtnIndex)
 	KWndShowAnimate::Hide();
 }
 
-//¹Ø±Õ´°¿Ú£¬²»Í¨µ÷ÓÃ´°¿Ú
+//å…³é—­çª—å£ï¼Œä¸é€šè°ƒç”¨çª—å£
 void KUiInformation::Close()
 {
 	Wnd_ReleaseExclusive((KWndWindow*)this);
@@ -160,7 +160,7 @@ void KUiInformation::Close()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿Úº¯Êı
+//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
 //--------------------------------------------------------------------------
 int KUiInformation::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

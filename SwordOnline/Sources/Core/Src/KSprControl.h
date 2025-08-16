@@ -9,64 +9,64 @@
 class KSprControl
 {
 public:
-	int			m_bChange;							// ÊÇ·ñ·¢Éú±ä»¯
-	int			m_nTotalFrame;						// ×ÜÖ¡Êı
-	int			m_nCurFrame;						// µ±Ç°Ö¡
-	int			m_nTotalDir;						// ×Ü·½ÏòÊı
-	int			m_nCurDir;							// µ±Ç°·½Ïò
-	DWORD		m_dwTimer;							// Ê±¼ä¼ÆÊıÆ÷
-	DWORD		m_dwInterval;						// Ö¡¼ä¸ô£¨¶¯»­ËÙ¶È£©
-	int			m_nXpos;							// ×ø±ê x
-	int			m_nYpos;							// ×ø±ê y
-	int			m_nCgXpos;							// ÖØĞÄ×ø±ê x
-	int			m_nCgYpos;							// ÖØĞÄ×ø±ê y
-	char		m_szName[80];						// ÎÄ¼şÃû
-	DWORD		m_dwNameID;							// ÎÄ¼şÃûid
+	int			m_bChange;							// æ˜¯å¦å‘ç”Ÿå˜åŒ–
+	int			m_nTotalFrame;						// æ€»å¸§æ•°
+	int			m_nCurFrame;						// å½“å‰å¸§
+	int			m_nTotalDir;						// æ€»æ–¹å‘æ•°
+	int			m_nCurDir;							// å½“å‰æ–¹å‘
+	DWORD		m_dwTimer;							// æ—¶é—´è®¡æ•°å™¨
+	DWORD		m_dwInterval;						// å¸§é—´éš”ï¼ˆåŠ¨ç”»é€Ÿåº¦ï¼‰
+	int			m_nXpos;							// åæ ‡ x
+	int			m_nYpos;							// åæ ‡ y
+	int			m_nCgXpos;							// é‡å¿ƒåæ ‡ x
+	int			m_nCgYpos;							// é‡å¿ƒåæ ‡ y
+	char		m_szName[80];						// æ–‡ä»¶å
+	DWORD		m_dwNameID;							// æ–‡ä»¶åid
 
 public:
-	KSprControl();									// ¹¹Ôìº¯Êı
-	void		Release();							// Çå¿Õ
-	void		SetFileName(char *lpszName);		// Éè¶¨ spr ÎÄ¼şÃû
-	void		SetTotalFrame(int nTotalFrame);		// Éè¶¨×ÜÖ¡Êı
-	void		SetCurFrame(int nCurFrame);			// Éè¶¨µ±Ç°Ö¡
-	void		SetTotalDir(int nTotalDir);			// Éè¶¨×Ü·½ÏòÊı
-	BOOL		SetCurDir(int nDir);				// Éè¶¨µ±Ç°·½Ïò
-	void		SetInterVal(DWORD dwInterval);		// Éè¶¨Ö¡¼ä¸ô
-	void		SetPos(int x, int y);				// Éè¶¨×ø±ê
-	void		SetCenterPos(int x, int y);			// Éè¶¨ÖØĞÄÎ»ÖÃ
-	void		SetDirFrame(int nDir, int nFrame);	// Éè¶¨Ä³·½ÏòÎªµÚ¼¸Ö¡
-	void		Set64DirFrame(int nDir, int nFrame);// Éè¶¨Ä³·½ÏòÎªµÚ¼¸Ö¡(·½ÏòĞè´Ó64·½Ïò×ª»»µ½ÕæÕıµÄ·½Ïò)
-	BOOL		SetCurDir64(int nDir);				// Éè¶¨µ±Ç°·½Ïò(·½ÏòĞè´Ó64·½Ïò×ª»»µ½ÕæÕıµÄ·½Ïò)
-	int			GetOneDirFrames();					// »ñµÃµ¥·½ÏòÖ¡Êı
+	KSprControl();									// æ„é€ å‡½æ•°
+	void		Release();							// æ¸…ç©º
+	void		SetFileName(char *lpszName);		// è®¾å®š spr æ–‡ä»¶å
+	void		SetTotalFrame(int nTotalFrame);		// è®¾å®šæ€»å¸§æ•°
+	void		SetCurFrame(int nCurFrame);			// è®¾å®šå½“å‰å¸§
+	void		SetTotalDir(int nTotalDir);			// è®¾å®šæ€»æ–¹å‘æ•°
+	BOOL		SetCurDir(int nDir);				// è®¾å®šå½“å‰æ–¹å‘
+	void		SetInterVal(DWORD dwInterval);		// è®¾å®šå¸§é—´éš”
+	void		SetPos(int x, int y);				// è®¾å®šåæ ‡
+	void		SetCenterPos(int x, int y);			// è®¾å®šé‡å¿ƒä½ç½®
+	void		SetDirFrame(int nDir, int nFrame);	// è®¾å®šæŸæ–¹å‘ä¸ºç¬¬å‡ å¸§
+	void		Set64DirFrame(int nDir, int nFrame);// è®¾å®šæŸæ–¹å‘ä¸ºç¬¬å‡ å¸§(æ–¹å‘éœ€ä»64æ–¹å‘è½¬æ¢åˆ°çœŸæ­£çš„æ–¹å‘)
+	BOOL		SetCurDir64(int nDir);				// è®¾å®šå½“å‰æ–¹å‘(æ–¹å‘éœ€ä»64æ–¹å‘è½¬æ¢åˆ°çœŸæ­£çš„æ–¹å‘)
+	int			GetOneDirFrames();					// è·å¾—å•æ–¹å‘å¸§æ•°
 
-	void		SetSprFile(							// »ñµÃÒ»¸ö spr ÎÄ¼şµÄ¸÷ÖÖĞÅÏ¢
+	void		SetSprFile(							// è·å¾—ä¸€ä¸ª spr æ–‡ä»¶çš„å„ç§ä¿¡æ¯
 		char *lpszName,
 		int nTotalFrame,
 		int nTotalDir,
 		int nInterVal);
 
-	BOOL		GetNextFrame(BOOL bLoop = TRUE);	// ×Ô¶¯Ïòºó»»Ö¡
-	BOOL		GetPrevFrame(BOOL bLoop = TRUE);	// ×Ô¶¯ÏòÇ°»»Ö¡
-	BOOL		CheckExist();						// ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ
-	BOOL		CheckEnd();							// ÅĞ¶Ï¶¯»­ÊÇ·ñ²¥·Åµ½×îºó
-	void		SetDirStart();						// Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡ÎªµÚÒ»Ö¡
-	void		SetDirEnd();						// Éè¶¨µ±Ç°·½ÏòµÄµ±Ç°Ö¡Îª×îºóÒ»Ö¡
-	int			GetCurDirFrameNo();					// »ñµÃµ±Ç°·½ÏòµÚ¼¸Ö¡
+	BOOL		GetNextFrame(BOOL bLoop = TRUE);	// è‡ªåŠ¨å‘åæ¢å¸§
+	BOOL		GetPrevFrame(BOOL bLoop = TRUE);	// è‡ªåŠ¨å‘å‰æ¢å¸§
+	BOOL		CheckExist();						// åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨
+	BOOL		CheckEnd();							// åˆ¤æ–­åŠ¨ç”»æ˜¯å¦æ’­æ”¾åˆ°æœ€å
+	void		SetDirStart();						// è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºç¬¬ä¸€å¸§
+	void		SetDirEnd();						// è®¾å®šå½“å‰æ–¹å‘çš„å½“å‰å¸§ä¸ºæœ€åä¸€å¸§
+	int			GetCurDirFrameNo();					// è·å¾—å½“å‰æ–¹å‘ç¬¬å‡ å¸§
 
-	// »æÖÆ
+	// ç»˜åˆ¶
 	void		DrawAlpha(
-						int nX,						// ÆÁÄ»×ø±ê x
-						int nY,						// ÆÁÄ»×ø±ê y
-						int nExAlpha = 32);			// alpha ¶È
-	// »æÖÆ±ß¿ò
+						int nX,						// å±å¹•åæ ‡ x
+						int nY,						// å±å¹•åæ ‡ y
+						int nExAlpha = 32);			// alpha åº¦
+	// ç»˜åˆ¶è¾¹æ¡†
 	void		DrawBorder(
-						int nX,						// ÆÁÄ»×ø±ê x
-						int nY,						// ÆÁÄ»×ø±ê y
-						int nColor);				// ÑÕÉ«
+						int nX,						// å±å¹•åæ ‡ x
+						int nY,						// å±å¹•åæ ‡ y
+						int nColor);				// é¢œè‰²
 };
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º	ÅĞ¶Ï¿ØÖÆ¶ÔÏóÊÇ·ñ´æÔÚ
+//	åŠŸèƒ½ï¼š	åˆ¤æ–­æ§åˆ¶å¯¹è±¡æ˜¯å¦å­˜åœ¨
 //---------------------------------------------------------------------------
 inline BOOL KSprControl::CheckExist()
 {

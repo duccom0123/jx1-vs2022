@@ -24,9 +24,9 @@ static EiC_stdCLib		EicStdLib = NULL;
 static BOOL				LoadEicLib();
 static void				FreeEicLib();
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::LoadEicLib
-// 功能:	
-// 返回:	BOOL 
+// 鍑芥暟:	KEicScript::LoadEicLib
+// 鍔熻兘:	
+// 杩斿洖:	BOOL 
 //---------------------------------------------------------------------------
 BOOL LoadEicLib()
 {
@@ -53,9 +53,9 @@ BOOL LoadEicLib()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::FreeEicLib
-// 功能:	
-// 返回:	void
+// 鍑芥暟:	KEicScript::FreeEicLib
+// 鍔熻兘:	
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 void FreeEicLib()
 {
@@ -64,9 +64,9 @@ void FreeEicLib()
 	m_hDll = NULL;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::Init
-// 功能:	
-// 返回:	BOOL 
+// 鍑芥暟:	KEicScript::Init
+// 鍔熻兘:	
+// 杩斿洖:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KEicScript::Init()
 {
@@ -80,18 +80,18 @@ BOOL KEicScript::Init()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::Exit
-// 功能:	
-// 返回:	void
+// 鍑芥暟:	KEicScript::Exit
+// 鍔熻兘:	
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 void KEicScript::Exit()
 {
 	FreeEicLib();
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::Load
-// 功能:	
-// 返回:	BOOL 
+// 鍑芥暟:	KEicScript::Load
+// 鍔熻兘:	
+// 杩斿洖:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KEicScript::Load(char* FileName)
 {
@@ -101,9 +101,9 @@ BOOL KEicScript::Load(char* FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::Compile
-// 功能:	
-// 返回:	BOOL 
+// 鍑芥暟:	KEicScript::Compile
+// 鍔熻兘:	
+// 杩斿洖:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KEicScript::Compile(char* FileName)
 {
@@ -112,9 +112,9 @@ BOOL KEicScript::Compile(char* FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::Execute
-// 功能:	
-// 返回:	BOOL 
+// 鍑芥暟:	KEicScript::Execute
+// 鍔熻兘:	
+// 杩斿洖:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KEicScript::Execute(int argc, char** argv)
 {
@@ -125,10 +125,10 @@ BOOL KEicScript::Execute(int argc, char** argv)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// 函数:	KEicScript::RegisterFunction
-// 功能:	
-// 参数:	
-// 返回:	BOOL
+// 鍑芥暟:	KEicScript::RegisterFunction
+// 鍔熻兘:	
+// 鍙傛暟:	
+// 杩斿洖:	BOOL
 //---------------------------------------------------------------------------
 BOOL KEicScript::RegisterFunction(LPSTR FuncName, void* Func)
 {

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	½çÃæÉùÒô
+//	ç•Œé¢å£°éŸ³
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-5-15
@@ -22,7 +22,7 @@ static char s_SoundFileName[UI_SOUND_COUNT][80] =
 	"",
 };
 
-//ÔØÈëÉè¶¨
+//è½½å…¥è®¾å®š
 bool UiSoundLoadSetting()
 {
 	KIniFile	Setting;
@@ -37,14 +37,14 @@ bool UiSoundLoadSetting()
 	return true;
 }
 
-//²¥·ÅÖ¸¶¨µÄÉùÒô
+//æ’­æ”¾æŒ‡å®šçš„å£°éŸ³
 void UiSoundPlay(UI_SOUND_INDEX eIndex)
 {
 	if (g_pCoreShell)
 		g_pCoreShell->OperationRequest(GOI_PLAY_SOUND, (unsigned int)(&s_SoundFileName[eIndex]), 0);
 }
 
-//²¥·ÅÖ¸¶¨µÄÉùÒô
+//æ’­æ”¾æŒ‡å®šçš„å£°éŸ³
 void UiSoundPlay(char* SoundFileName)
 {
 	if (g_pCoreShell)

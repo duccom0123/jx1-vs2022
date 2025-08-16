@@ -7,30 +7,30 @@
 
 enum 
 {
-	thief_redress, //�ٸ���ƶ
+	thief_redress, //劫富济贫
 	thief_showlife,
 	thief_showmana,
 	thief_showmoney,
-	thief_runscript,	//ʹ���ִ��ĳ���ű�
+	thief_runscript,	//使玩家执行某个脚本
 };
 
 //----------------------------------------------------------------------
 /*
-							�ٸ���ƶ
-  һ������ϵͳ��
-  1��  �������ƣ��ٸ���ƶ��
-  2��  �������ã���һ������͵����������������Ǯ�Ƶ�Y������͵��Ǯ��ϵͳ�Ե���
-  3��  ���ܷ�Χ�������޷�ѧϰ��ʹ�ã����ܲ��������������������֮������໥���ã�����ս����ϵ���ƣ�
-  4��  �������ģ�ʹ�ô˼������Ľ�ɫ������X�㣻
-  5��  �������У��˼������������������뱻�����ȼ�������������ʣ�30��|Lv1��Lv2|��0.3��
-  ��������ϵͳ��
-  1��  ����ؤ�Ի���ѡ���Ƿ����ؤǮ��
-  2��  ��ؤ��N���ĸ��ʽ̽�ɫ�˼��ܣ�NӦ��Ϊһ����С�ı�����
-  ����ϵͳ��Ϣ��
-  1��  ��͵�ɹ�����������������͵�������������Ӿ��ǰ�ߣ�
-  2��  ��͵δ�죺��������ͼ͵���Ǯ��
-  3��  ͵�Գɹ�����ɹ��Ĵӣ���������͵�������������Ӿ��ǰ�ߣ�
-  4��  ͵��δ�죺��͵������ʧ�ܡ�
+							劫富济贫
+  一、技能系统：
+  1、  技能名称：劫富济贫；
+  2、  技能作用：有一定几率偷盗别人身上锁带的钱财的Y％，被偷的钱被系统吃掉；
+  3、  技能范围：新手无法学习和使用，技能不能升级，白名以外的人之间可以相互作用，不受战斗关系限制；
+  4、  技能消耗：使用此技能消耗角色的内力X点；
+  5、  技能命中：此技能命中率由主动方与被动方等级差决定，命中率＝30－|Lv1－Lv2|×0.3。
+  二、任务系统：
+  1、  与乞丐对话，选择是否给乞丐钱；
+  2、  乞丐有N％的概率教角色此技能，N应该为一个很小的比例。
+  三、系统消息：
+  1、  被偷成功：％％％从你身上偷到＃＃＃两银子捐给前线；
+  2、  被偷未遂：％％％试图偷你的钱；
+  3、  偷窃成功：你成功的从％％％那里偷到＃＃＃两银子捐给前线；
+  4、  偷窃未遂：你偷％％％失败。
 */
 //----------------------------------------------------------------------
 class KThiefSkill :public ISkill
@@ -55,7 +55,7 @@ public:
 	BOOL			m_bTargetAlly;
 	BOOL			m_bTargetObj;
 	char			m_szSkillName[50];
-	BOOL			m_bUseCostPercent;//ʹ�øü���ʱ������ֵ���ٷֱȼ���/���߾�����ֵ
+	BOOL			m_bUseCostPercent;//使用该技能时，消耗值按百分比计算/或者绝对数值
 
 	BOOL			IsTargetOnly()const{return TRUE;};
 	BOOL			IsTargetEnemy()const{return TRUE;};
@@ -67,7 +67,7 @@ public:
 #ifndef _SERVER
 	char			m_szSkillIcon[MAX_PATH];
 	KRUImage		m_RUIconImage;
-	char			m_szSkillDesc[256];//���ܵ�����
+	char			m_szSkillDesc[256];//技能的描述
 	char			m_szTargetMovie[MAX_PATH];
 	char			m_szTargetMovieParam[20];
 	char			m_szSkillSound[MAX_PATH];

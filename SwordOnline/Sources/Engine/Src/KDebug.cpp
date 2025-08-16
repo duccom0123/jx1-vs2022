@@ -19,11 +19,11 @@
 static HWND m_hWndDebug = NULL;
 #endif
 //---------------------------------------------------------------------------
-// º¯Êı:	find debug window
-// ¹¦ÄÜ:	find debug window
-// ²ÎÊı:	char*
+// å‡½æ•°:	find debug window
+// åŠŸèƒ½:	find debug window
+// å‚æ•°:	char*
 //			char*
-// ·µ»Ø:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 HWND g_FindDebugWindow(char* lpClassName, char* lpWindowName)
 {
@@ -35,11 +35,11 @@ HWND g_FindDebugWindow(char* lpClassName, char* lpWindowName)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	g_DebugLog
-// ¹¦ÄÜ:	Ïòµ÷ÊÔ´°¿ÚÊä³öµ÷ÊÔĞÅÏ¢
-// ²ÎÊı:	Fmt		¸ñÊ½»¯×Ö·û´®
-//			...		Êä³öµÄ×Ö·û´®
-// ·µ»Ø:	void
+// å‡½æ•°:	g_DebugLog
+// åŠŸèƒ½:	å‘è°ƒè¯•çª—å£è¾“å‡ºè°ƒè¯•ä¿¡æ¯
+// å‚æ•°:	Fmt		æ ¼å¼åŒ–å­—ç¬¦ä¸²
+//			...		è¾“å‡ºçš„å­—ç¬¦ä¸²
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DebugLog(LPSTR Fmt, ...)
 {
@@ -70,10 +70,10 @@ void g_DebugLog(LPSTR Fmt, ...)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	g_MessageBox
-// ¹¦ÄÜ:	Display a System Message Box
-// ²ÎÊı:	char* lpMsg, ...
-// ·µ»Ø:	void
+// å‡½æ•°:	g_MessageBox
+// åŠŸèƒ½:	Display a System Message Box
+// å‚æ•°:	char* lpMsg, ...
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_MessageBox(LPSTR lpMsg, ...)
 {
@@ -89,11 +89,11 @@ void g_MessageBox(LPSTR lpMsg, ...)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	g_AssertFailed
-// ¹¦ÄÜ:	¶ÏÑÔÊ§°Ü
-// ²ÎÊı:	FileName	ÔÚÄÄ¸öÎÄ¼şÖĞÊ§°Ü
-//			LineNum		ÔÚÎÄ¼şÖĞµÄµÚ¼¸ĞĞ
-// ·µ»Ø:	void
+// å‡½æ•°:	g_AssertFailed
+// åŠŸèƒ½:	æ–­è¨€å¤±è´¥
+// å‚æ•°:	FileName	åœ¨å“ªä¸ªæ–‡ä»¶ä¸­å¤±è´¥
+//			LineNum		åœ¨æ–‡ä»¶ä¸­çš„ç¬¬å‡ è¡Œ
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_AssertFailed(LPSTR pFileName, int nLineNum)
 {

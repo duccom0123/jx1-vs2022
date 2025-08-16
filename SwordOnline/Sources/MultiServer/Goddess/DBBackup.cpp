@@ -15,21 +15,21 @@ using namespace std;
 
 #define IS_OUTPUT_LOG true
 
-static char DBPath[32] = {0};						//Êı¾İ¿âÄ¿Â¼
-static char DBName[32] = {0};						//Êı¾İ¿âÃû
+static char DBPath[32] = {0};						//æ•°æ®åº“ç›®å½•
+static char DBName[32] = {0};						//æ•°æ®åº“å
 static ZDBTable* RunTable = NULL;
 
-static bool IsBackupWorking = false;				//ÊÇ·ñÕıÔÚ±¸·İ
-static bool IsThreadWorking = false;				//Ïß³ÌÊÇ·ñÔÚ¹¤×÷
-static bool IsSuspended = false;					//Ïß³ÌÊÇ·ñ¹ÒÆğ
-static WORD BackupTime = 0;				//±¸·İ¼ä¸ôÊ±¼ä
-static DWORD BackupBeginTime = 0;				//±¸·İ¼ä¸ôÊ±¼ä
+static bool IsBackupWorking = false;				//æ˜¯å¦æ­£åœ¨å¤‡ä»½
+static bool IsThreadWorking = false;				//çº¿ç¨‹æ˜¯å¦åœ¨å·¥ä½œ
+static bool IsSuspended = false;					//çº¿ç¨‹æ˜¯å¦æŒ‚èµ·
+static WORD BackupTime = 0;				//å¤‡ä»½é—´éš”æ—¶é—´
+static DWORD BackupBeginTime = 0;				//å¤‡ä»½é—´éš”æ—¶é—´
 static bool IsTimeToBackup = true;
 
-static CDBBackup::TStatData oldGameStatData;//¾ÉµÄÓÎÏ·Í³¼ÆÊı¾İ
-static CDBBackup::TStatData newGameStatData;//ĞÂµÄÓÎÏ·Í³¼ÆÊı¾İ
+static CDBBackup::TStatData oldGameStatData;//æ—§çš„æ¸¸æˆç»Ÿè®¡æ•°æ®
+static CDBBackup::TStatData newGameStatData;//æ–°çš„æ¸¸æˆç»Ÿè®¡æ•°æ®
 
-static TGAME_STAT_DATA SendStatData;				//È¡µÃ·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹
+static TGAME_STAT_DATA SendStatData;				//å–å¾—å‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„
 
 int CDBBackup::GetIndexByName(char* aName, TRoleList* aList, int aListSize)
 {
@@ -48,7 +48,7 @@ CDBBackup::TRoleList* CDBBackup::GetMin(
 					const int n,
 					const StatType aType,
 					const char* TongName)
-{//²éÕÒ³öÁĞ±íÖĞÇ®/¼¶±ğ£¨»òÆäËû£©×îÉÙµÄÒ»¸öÔªËØ
+{//æŸ¥æ‰¾å‡ºåˆ—è¡¨ä¸­é’±/çº§åˆ«ï¼ˆæˆ–å…¶ä»–ï¼‰æœ€å°‘çš„ä¸€ä¸ªå…ƒç´ 
 	TRoleList* tmpData;
 	tmpData = &aRoleList[0];
 	while(true)
@@ -128,7 +128,7 @@ CDBBackup::TRoleList* CDBBackup::GetMax(
 					const int n,
 					const StatType aType,
 					const char* TongName)
-{//²éÕÒ³öÁĞ±íÖĞÇ®/¼¶±ğ£¨»òÆäËû£©×îÉÙµÄÒ»¸öÔªËØ
+{//æŸ¥æ‰¾å‡ºåˆ—è¡¨ä¸­é’±/çº§åˆ«ï¼ˆæˆ–å…¶ä»–ï¼‰æœ€å°‘çš„ä¸€ä¸ªå…ƒç´ 
 	TRoleList* tmpData;
 	tmpData = &aRoleList[0];
 	while(true)
@@ -209,7 +209,7 @@ void CDBBackup::ListSort(
 					const int n,
 					const StatType aType,
 					const bool bSortZA)
-{//¶ÔÁĞ±í×öÌØ¶¨µÄÅÅĞò
+{//å¯¹åˆ—è¡¨åšç‰¹å®šçš„æ’åº
 
 	for(int i=0;i<n;++i)
 	{
@@ -279,7 +279,7 @@ void CDBBackup::ListSort(
 }
 
 void CDBBackup::RoleDataCopy(TRoleList* Desc, TRoleData* Source, bool bTong/*= false*/)
-{//°ÑRoleDataÓĞÓÃµÄ½á¹¹¸´ÖÆµ½RoleList½á¹¹ÖĞ
+{//æŠŠRoleDataæœ‰ç”¨çš„ç»“æ„å¤åˆ¶åˆ°RoleListç»“æ„ä¸­
 	//strcpy(Desc->Account, Source->BaseInfo.caccname);
 	if(bTong)
 		strcpy(Desc->Name, Source->BaseInfo.itongname);
@@ -323,7 +323,7 @@ bool CDBBackup::Open(int aTime, DWORD bTime)
 {
 	aTime = aTime % 24;
 	if((DBPath[0] == '\0')||(DBName[0] == '\0'))
-		return false;//³õÊ¼»¯ÓĞÎÊÌâ¾ÍÍË³ö
+		return false;//åˆå§‹åŒ–æœ‰é—®é¢˜å°±é€€å‡º
 	
 	BackupTime = aTime;
 	BackupBeginTime = bTime;
@@ -339,13 +339,13 @@ bool CDBBackup::Open(int aTime, DWORD bTime)
 	{
 		BackupTime = 0;
 		BackupBeginTime = 0;
-		return false;//´´½¨Ïß³ÌÊ§°Ü
+		return false;//åˆ›å»ºçº¿ç¨‹å¤±è´¥
 	}
 	
 	char aAppPath[MAX_PATH] = {0};
 	getcwd(aAppPath,MAX_PATH);
 	strcat(aAppPath,"\\StatData.dat");
-	//¶ÁÈ¡¾ÉÅÅÃû
+	//è¯»å–æ—§æ’å
 	memset(&newGameStatData,0,sizeof(CDBBackup::TStatData));
 	FILE* aStatFile = fopen(aAppPath,"rb");
 	if(aStatFile)
@@ -369,20 +369,20 @@ bool CDBBackup::Close()
 
 bool CDBBackup::Suspend()
 {
-	if(!m_hThread) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ³õÊ¼»¯ºÃ¾Í²»ÄÜ¹ÒÆğ
-	if(!IsThreadWorking) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ¿ªÊ¼¾Í²»ÄÜ¹ÒÆğ
-	if(IsBackupWorking) return false;	//Èç¹ûÕıÔÚ±¸·İ¾ÍÖĞÖ¹¹ÒÆğ
-	if(IsSuspended) return false;	//Èç¹ûÕıÔÚ±¸·İ¾ÍÖĞÖ¹¹ÒÆğ
+	if(!m_hThread) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰åˆå§‹åŒ–å¥½å°±ä¸èƒ½æŒ‚èµ·
+	if(!IsThreadWorking) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰å¼€å§‹å°±ä¸èƒ½æŒ‚èµ·
+	if(IsBackupWorking) return false;	//å¦‚æœæ­£åœ¨å¤‡ä»½å°±ä¸­æ­¢æŒ‚èµ·
+	if(IsSuspended) return false;	//å¦‚æœæ­£åœ¨å¤‡ä»½å°±ä¸­æ­¢æŒ‚èµ·
 	if(SuspendThread(m_hThread) == -1)return false;
 	IsSuspended = true;
 	return true;
 }
 
 bool CDBBackup::Resume()
-{//¼ÌĞøÖ´ĞĞÏß³Ì
-	if(!m_hThread) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ³õÊ¼»¯ºÃ¾Í²»ÄÜ¹ÒÆğ
-	if(!IsSuspended) return false;	//Èç¹ûÕıÔÚ±¸·İ¾ÍÖĞÖ¹¹ÒÆğ
-	if(!IsThreadWorking) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ¿ªÊ¼¾Í²»ÄÜ¼ÌĞøÖ´ĞĞÏß³Ì
+{//ç»§ç»­æ‰§è¡Œçº¿ç¨‹
+	if(!m_hThread) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰åˆå§‹åŒ–å¥½å°±ä¸èƒ½æŒ‚èµ·
+	if(!IsSuspended) return false;	//å¦‚æœæ­£åœ¨å¤‡ä»½å°±ä¸­æ­¢æŒ‚èµ·
+	if(!IsThreadWorking) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰å¼€å§‹å°±ä¸èƒ½ç»§ç»­æ‰§è¡Œçº¿ç¨‹
 
 	if(ResumeThread(m_hThread) == -1)return false;
 	IsSuspended = false;
@@ -390,24 +390,24 @@ bool CDBBackup::Resume()
 }
 
 TGAME_STAT_DATA CDBBackup::GetSendStatData()
-{//È¡µÃ·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹
+{//å–å¾—å‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„
 	return SendStatData;
 }
 
 bool CDBBackup::IsWorking()
-{//Ïß³ÌÊÇ·ñÔÚ¹¤×÷
+{//çº¿ç¨‹æ˜¯å¦åœ¨å·¥ä½œ
 	return IsThreadWorking;
 }
 
 bool CDBBackup::IsBackuping()
-{//±¸·İÊÇ·ñÔÚ¹¤×÷
+{//å¤‡ä»½æ˜¯å¦åœ¨å·¥ä½œ
 	return IsBackupWorking;
 }
 
 bool CDBBackup::ManualBackup()
-{//ÊÖ¹¤±¸·İ
-	if(!m_hThread) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ³õÊ¼»¯ºÃ¾Í²»ÄÜ¹ÒÆğ
-	if(!IsThreadWorking) return false;	//Èç¹ûÏß³ÌÃ»ÓĞ¿ªÊ¼¾Í²»ÄÜ¼ÌĞøÖ´ĞĞÏß³Ì
+{//æ‰‹å·¥å¤‡ä»½
+	if(!m_hThread) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰åˆå§‹åŒ–å¥½å°±ä¸èƒ½æŒ‚èµ·
+	if(!IsThreadWorking) return false;	//å¦‚æœçº¿ç¨‹æ²¡æœ‰å¼€å§‹å°±ä¸èƒ½ç»§ç»­æ‰§è¡Œçº¿ç¨‹
 
 	DWORD dwThreadId, dwThrdParam = 1;
 	m_hManualThread = CreateThread(
@@ -421,14 +421,14 @@ bool CDBBackup::ManualBackup()
 	{
 		BackupTime = 0;
 		BackupBeginTime = 0;
-		return false;//´´½¨Ïß³ÌÊ§°Ü
+		return false;//åˆ›å»ºçº¿ç¨‹å¤±è´¥
 	}
 
 	return true;
 }
 
 DWORD WINAPI CDBBackup::TimerThreadFunc( LPVOID lpParam )
-{//±¸·İ¼ÆÊ±Ïß³Ì
+{//å¤‡ä»½è®¡æ—¶çº¿ç¨‹
 	IsThreadWorking = true;
 	while(true)
 	{
@@ -460,7 +460,7 @@ DWORD WINAPI CDBBackup::TimerThreadFunc( LPVOID lpParam )
 }
 
 DWORD WINAPI CDBBackup::ManualThreadFunc( LPVOID lpParam )
-{//ÊÖ¹¤±¸·İÏß³Ì
+{//æ‰‹å·¥å¤‡ä»½çº¿ç¨‹
 	Backup();
 	SaveStatInfo();
 	return 0;
@@ -470,7 +470,7 @@ void CDBBackup::Backup()
 {
 	IsBackupWorking = true;
 	
-	//´ò¿ª±¸·İ×´Ì¬logÎÄ¼ş
+	//æ‰“å¼€å¤‡ä»½çŠ¶æ€logæ–‡ä»¶
 	time_t rawtime;
 	struct tm * timeinfo;
 	
@@ -530,7 +530,7 @@ void CDBBackup::Backup()
 	#endif
 	strcat(aSavePath,aBackupDir.c_str());
 	
-	//Êı¾İ¿â¼ÇÂ¼Í³¼Æ£¨Î¬»¤²é¿´ÓÃ£©==========Add by Fellow,2003.08.26
+	//æ•°æ®åº“è®°å½•ç»Ÿè®¡ï¼ˆç»´æŠ¤æŸ¥çœ‹ç”¨ï¼‰==========Add by Fellow,2003.08.26
 	char aDBSFullPath[MAX_PATH] = {0};
 	strcpy(aDBSFullPath, aSavePath);
 	strcat(aDBSFullPath,".txt");
@@ -553,7 +553,7 @@ void CDBBackup::Backup()
 		return;
 	}
 	
-	TStatData aStatData;//ÊµÊ±±¸·İºó²úÉúµÄÓÎÏ·Í³¼ÆÊı¾İ
+	TStatData aStatData;//å®æ—¶å¤‡ä»½åäº§ç”Ÿçš„æ¸¸æˆç»Ÿè®¡æ•°æ®
 	memset(&aStatData, 0, sizeof(TStatData));
 
 	ZCursor *cursor = RunTable->first();
@@ -568,7 +568,7 @@ void CDBBackup::Backup()
 		TRoleList* tmpData;
 		TRoleData* pRoleData = (TRoleData*)cursor->data;
 
-		//Êı¾İ¿â¼ÇÂ¼Í³¼Æ£¨Î¬»¤²é¿´ÓÃ£©==========Add by Fellow,2003.08.26
+		//æ•°æ®åº“è®°å½•ç»Ÿè®¡ï¼ˆç»´æŠ¤æŸ¥çœ‹ç”¨ï¼‰==========Add by Fellow,2003.08.26
 		char aDBSSect[32] = {0};
 		int aDBSSectIndex = (int)pRoleData->BaseInfo.nSect;
 		switch(aDBSSectIndex)
@@ -627,7 +627,7 @@ void CDBBackup::Backup()
 		//=======================================
 		
 		if(pRoleData->BaseInfo.iteam == camp_event)
-		{//¹ıÂËÄ³Ğ©½ÇÉ«
+		{//è¿‡æ»¤æŸäº›è§’è‰²
 			if(!RunTable->next(cursor))break;
 			continue;
 		}
@@ -637,73 +637,73 @@ void CDBBackup::Backup()
 			if(!RunTable->next(cursor))break;
 			continue;
 		}
-		//////////////////////////////Íæ¼ÒÍ³¼Æ////////////////////////////////////
-		//¶Ô½ğÇ®ÅÅĞò
+		//////////////////////////////ç©å®¶ç»Ÿè®¡////////////////////////////////////
+		//å¯¹é‡‘é’±æ’åº
 		tmpData = GetMin(aStatData.MoneyStat, MONEYSTATNUM, stMoney);
 		if( tmpData->Money < pRoleData->BaseInfo.imoney + pRoleData->BaseInfo.isavemoney)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 
-		//¶Ô¼¶±ğÅÅĞò
+		//å¯¹çº§åˆ«æ’åº
 		tmpData = GetMin(aStatData.LevelStat, LEVELSTATNUM, stLevel);
 		if( tmpData->Level < pRoleData->BaseInfo.ifightlevel)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 		
-		//¶ÔÉ±ÈËÊıÅÅĞò
+		//å¯¹æ€äººæ•°æ’åº
 		tmpData = GetMin(aStatData.KillerStat, DEFAULTSTATNUM, stKiller);
 		if( tmpData->KillNum < pRoleData->BaseInfo.nKillPeopleNumber)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 		tmpData = GetMin(aStatData.ReputeStat, DEFAULTSTATNUM, stRepute);
 		if( tmpData->Repute < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_REPUTE-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}		
 		tmpData = GetMin(aStatData.FuYuanStat, DEFAULTSTATNUM, stFuYuan);
 		if( tmpData->Repute < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_FUYUAN-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}		
 		tmpData = GetMin(aStatData.AccumStat1, DEFAULTSTATNUM, stAccumStat1);
 		if( tmpData->AccumStat1 < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_ACCUMSTAT1-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}	
 		tmpData = GetMin(aStatData.AccumStat2, DEFAULTSTATNUM, stAccumStat2);
 		if( tmpData->AccumStat2 < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_ACCUMSTAT2-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}	
 		tmpData = GetMin(aStatData.HonorStat, DEFAULTSTATNUM, stHonorStat);
 		if( tmpData->HonorStat < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_HONORSTAT-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 		tmpData = GetMax(aStatData.TimeStat, DEFAULTSTATNUM, stTimeStat);
 		if( tmpData->TimeStat < pRoleData->BaseInfo.istattask[TASKVALUE_STATTASK_TIMESTAT-TASKVALUE_STATTASK_BEGIN])
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 		tmpData = GetMin(aStatData.TongLvStat, DEFAULTSTATNUM, stTongLv, pRoleData->BaseInfo.itongname);
 		if( tmpData->TongLv < pRoleData->BaseInfo.itonglevel)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData, true);
 		}	
 		tmpData = GetMin(aStatData.TongMnStat, DEFAULTSTATNUM, stTongMn, pRoleData->BaseInfo.itongname);
 		if( tmpData->TongMn < pRoleData->BaseInfo.itongmemnum)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData, true);
 		}	
 		tmpData = GetMin(aStatData.TongEffStat, DEFAULTSTATNUM, stTongEff, pRoleData->BaseInfo.itongname);
 		if( tmpData->TongEff < pRoleData->BaseInfo.itongeff)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData, true);
 		}	
-		//¸÷ÃÅÅÉ¶Ô½ğÇ®ÅÅĞò
+		//å„é—¨æ´¾å¯¹é‡‘é’±æ’åº
 		if( (pRoleData->BaseInfo.nSect <(MAX_FACTION+1)) && (pRoleData->BaseInfo.nSect >= 0) )
 		{
 			tmpData = GetMin(aStatData.MoneyStatBySect[pRoleData->BaseInfo.nSect + 1], SECTMONEYSTATNUM, stMoney);
@@ -713,11 +713,11 @@ void CDBBackup::Backup()
 			tmpData = GetMin(aStatData.MoneyStatBySect[0], SECTMONEYSTATNUM, stMoney);
 		}
 		if( tmpData->Money < pRoleData->BaseInfo.imoney  + pRoleData->BaseInfo.isavemoney)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 
-		//¸÷ÃÅÅÉ¶Ô¼¶±ğÅÅĞò
+		//å„é—¨æ´¾å¯¹çº§åˆ«æ’åº
 		if( (pRoleData->BaseInfo.nSect <(MAX_FACTION+1)) && (pRoleData->BaseInfo.nSect >= 0) )
 		{
 			tmpData = GetMin(aStatData.LevelStatBySect[pRoleData->BaseInfo.nSect + 1], SECTLEVELSTATNUM, stMoney);
@@ -727,12 +727,12 @@ void CDBBackup::Backup()
 			tmpData = GetMin(aStatData.LevelStatBySect[0], SECTLEVELSTATNUM, stMoney);
 		}
 		if( tmpData->Level < pRoleData->BaseInfo.ifightlevel)
-		{//Èç¹ûµ±Ç°Êı¾İ½Ï´ó¾Í°Ñµ±Ç°Êı¾İ´úÌæÁĞ±íÖĞ×îĞ¡µÄ
+		{//å¦‚æœå½“å‰æ•°æ®è¾ƒå¤§å°±æŠŠå½“å‰æ•°æ®ä»£æ›¿åˆ—è¡¨ä¸­æœ€å°çš„
 			RoleDataCopy(tmpData, pRoleData);
 		}
 		
-		//////////////////////////////ÃÅÅÉÍ³¼Æ////////////////////////////////////
-		//¸÷¸öÃÅÅÉµÄÍæ¼ÒÊıÍ³¼Æ
+		//////////////////////////////é—¨æ´¾ç»Ÿè®¡////////////////////////////////////
+		//å„ä¸ªé—¨æ´¾çš„ç©å®¶æ•°ç»Ÿè®¡
 		if( (pRoleData->BaseInfo.nSect <(MAX_FACTION+1)) && (pRoleData->BaseInfo.nSect >= 0) )
 		{
 			++aStatData.SectPlayerNum[pRoleData->BaseInfo.nSect + 1];
@@ -759,11 +759,11 @@ void CDBBackup::Backup()
 		}
 		if(!RunTable->next(cursor))break;
 	}	
-	DBDump.Close();		//¹Ø±Õ±¸·İÊı¾İ¿â
+	DBDump.Close();		//å…³é—­å¤‡ä»½æ•°æ®åº“
 	aLogFile<<"DB Dump Finished."<<endl;
 	aLogFile<<"RunTable cursor closed."<<endl;
 
-	//Êı¾İ¿â¼ÇÂ¼Í³¼Æ£¨Î¬»¤²é¿´ÓÃ£©==========Add by Fellow,2003.08.26
+	//æ•°æ®åº“è®°å½•ç»Ÿè®¡ï¼ˆç»´æŠ¤æŸ¥çœ‹ç”¨ï¼‰==========Add by Fellow,2003.08.26
 	aDBSOutput<<"==Hoan tat ghi chep=="<<endl<<endl;
 	aDBSOutput<<"==Thong ke=="<<endl;
 	aDBSOutput<<"Tong so nguoi choi toan server: "<<aDBSPlayerCount<<endl;
@@ -818,7 +818,7 @@ void CDBBackup::Backup()
 			aDBSOutput<<i<<"cap: "<<aDBSLevelPlayerCount[i]<<endl;
 	aDBSOutput<<"Nhan si loi dang cap: "<<aDBSLevelPlayerCount[0]<<endl;
 
-	//////////////////////////////ÅÅĞò////////////////////////////////////
+	//////////////////////////////æ’åº////////////////////////////////////
 	ListSort(aStatData.MoneyStat, MONEYSTATNUM, stMoney);
 	ListSort(aStatData.LevelStat, LEVELSTATNUM, stLevel);
 	ListSort(aStatData.KillerStat, DEFAULTSTATNUM, stKiller);
@@ -832,19 +832,19 @@ void CDBBackup::Backup()
 	ListSort(aStatData.TongMnStat, DEFAULTSTATNUM, stTongMn);
 	ListSort(aStatData.TongEffStat, DEFAULTSTATNUM, stTongEff);
 	for(i=0;i<(MAX_FACTION+1);++i)
-	{//¸÷ÃÅÅÉ½ğÇ®ÅÅĞò
+	{//å„é—¨æ´¾é‡‘é’±æ’åº
 		ListSort(aStatData.MoneyStatBySect[i], SECTMONEYSTATNUM, stMoney);
 	}
 	for(i=0;i<(MAX_FACTION+1);++i)
-	{//¸÷ÃÅÅÉ¼¶±ğÅÅĞò
+	{//å„é—¨æ´¾çº§åˆ«æ’åº
 		ListSort(aStatData.LevelStatBySect[i], SECTLEVELSTATNUM, stLevel);
 	}
 	
-	///////////////ÒÔÏÂÎª¶ÔÍ³¼ÆÊı¾İµÄ´¦Àí//////////////////////////////////////////////////////
+	///////////////ä»¥ä¸‹ä¸ºå¯¹ç»Ÿè®¡æ•°æ®çš„å¤„ç†//////////////////////////////////////////////////////
 	char aAppPath[MAX_PATH] = {0};
 	getcwd(aAppPath,MAX_PATH);
 	strcat(aAppPath,"\\StatData.dat");
-	//¶ÁÈ¡¾ÉÅÅÃû
+	//è¯»å–æ—§æ’å
 	memset(&oldGameStatData,0,sizeof(CDBBackup::TStatData));
 	FILE* aStatFile = fopen(aAppPath,"rb");
 	if(aStatFile)
@@ -855,11 +855,11 @@ void CDBBackup::Backup()
 	
 	newGameStatData = aStatData;
 	
-	//ÕÒ³öÇ°Ê®ÃûµÄoldGameStatDataÖĞµÄÅÅÃû£¨»òÃû´ÎÉÏÉı»¹ÊÇÏÂ½µ£©
+	//æ‰¾å‡ºå‰ååçš„oldGameStatDataä¸­çš„æ’åï¼ˆæˆ–åæ¬¡ä¸Šå‡è¿˜æ˜¯ä¸‹é™ï¼‰
 	int aIndex;
 	for(i=0;i<10;++i)
 	{
-		//µÈ¼¶
+		//ç­‰çº§
 		aIndex = CDBBackup::GetIndexByName(
 				newGameStatData.LevelStat[i].Name,oldGameStatData.LevelStat, LEVELSTATNUM);
 		if(aIndex != -1)
@@ -874,7 +874,7 @@ void CDBBackup::Backup()
 		else
 			newGameStatData.LevelStat[i].Sort = 1;
 
-		//½ğÇ®
+		//é‡‘é’±
 		aIndex = CDBBackup::GetIndexByName(
 				newGameStatData.MoneyStat[i].Name,oldGameStatData.MoneyStat, MONEYSTATNUM);
 		if(aIndex != -1)
@@ -889,7 +889,7 @@ void CDBBackup::Backup()
 		else
 			newGameStatData.MoneyStat[i].Sort = 1;
 
-		//É±ÈËÊı
+		//æ€äººæ•°
 		aIndex = CDBBackup::GetIndexByName(
 				newGameStatData.KillerStat[i].Name,oldGameStatData.KillerStat, DEFAULTSTATNUM);
 		if(aIndex != -1)
@@ -1032,8 +1032,8 @@ void CDBBackup::Backup()
 			newGameStatData.TongEffStat[i].Sort = 1;
 
 		for(j=0;j<(MAX_FACTION+1);++j)
-		{//¸÷¸öÃÅÅÉ
-			//µÈ¼¶
+		{//å„ä¸ªé—¨æ´¾
+			//ç­‰çº§
 			aIndex = CDBBackup::GetIndexByName(
 					newGameStatData.LevelStatBySect[j][i].Name,oldGameStatData.LevelStatBySect[j], SECTLEVELSTATNUM);
 			if(aIndex != -1)
@@ -1048,7 +1048,7 @@ void CDBBackup::Backup()
 			else
 				newGameStatData.LevelStatBySect[j][i].Sort = 1;
 
-			//½ğÇ®
+			//é‡‘é’±
 			aIndex = CDBBackup::GetIndexByName(
 					newGameStatData.MoneyStatBySect[j][i].Name,oldGameStatData.MoneyStatBySect[j], SECTMONEYSTATNUM);
 			if(aIndex != -1)
@@ -1064,7 +1064,7 @@ void CDBBackup::Backup()
 				newGameStatData.MoneyStatBySect[j][i].Sort = 1;
 		}
 	}
-	//´¢´æĞÂÅÅÃû
+	//å‚¨å­˜æ–°æ’å
 	aStatFile = fopen(aAppPath,"wb");
 	if(aStatFile)
 	{
@@ -1073,9 +1073,9 @@ void CDBBackup::Backup()
 		fclose(aStatFile);
 	}
 
-	MakeSendStatData();//°ÑÍ³¼ÆÊı¾İĞ´µ½·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹ÖĞ
+	MakeSendStatData();//æŠŠç»Ÿè®¡æ•°æ®å†™åˆ°å‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„ä¸­
 
-	if(IS_OUTPUT_LOG){//ÊÇ·ñÊä³öÍ³¼ÆÊı¾İ
+	if(IS_OUTPUT_LOG){//æ˜¯å¦è¾“å‡ºç»Ÿè®¡æ•°æ®
 		aLogFile<<"DB Statistic Log:"<<endl;
 		aLogFile<<"-------------Level-------------"<<endl;
 		for(i=0;i<DEFAULTSTATNUM;++i)
@@ -1202,7 +1202,7 @@ void CDBBackup::Backup()
 }
 
 void CDBBackup::MakeSendStatData()
-{//Éú³É·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹
+{//ç”Ÿæˆå‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„
 	int i,j;
 	memset(&SendStatData,0,sizeof(TGAME_STAT_DATA));
 	for(i=0;i<10;++i)
@@ -1255,7 +1255,7 @@ void CDBBackup::MakeSendStatData()
 		SendStatData.TongEffStat[i].nValue = newGameStatData.TongEffStat[i].TongEff;
 		SendStatData.TongEffStat[i].bySort = newGameStatData.TongEffStat[i].Sort;		
 		for(j=0;j<(MAX_FACTION+1);++j)
-		{//¸÷¸öÃÅÅÉ
+		{//å„ä¸ªé—¨æ´¾
 			strcpy(SendStatData.LevelStatBySect[j][i].Name, newGameStatData.LevelStatBySect[j][i].Name);
 			SendStatData.LevelStatBySect[j][i].nValue = newGameStatData.LevelStatBySect[j][i].Level;
 			SendStatData.LevelStatBySect[j][i].bySort = newGameStatData.LevelStatBySect[j][i].Sort;
@@ -1272,12 +1272,12 @@ void CDBBackup::MakeSendStatData()
 }
 
 void CDBBackup::SaveStatInfo()
-{//°ÑÓÎÏ·ÊÀ½çµÈ¼¶ÅÅÃûĞ´µ½Ö¸¶¨Íæ¼Ò½ÇÉ«ÖĞ
+{//æŠŠæ¸¸æˆä¸–ç•Œç­‰çº§æ’åå†™åˆ°æŒ‡å®šç©å®¶è§’è‰²ä¸­
 	TStatData aStatData;
 	char aAppPath[MAX_PATH] = {0};
 	getcwd(aAppPath,MAX_PATH);
 	strcat(aAppPath,"\\StatData.dat");
-	//¶ÁÈ¡ÅÅÃû
+	//è¯»å–æ’å
 	memset(&aStatData,0,sizeof(TStatData));
 	FILE* aStatFile = fopen(aAppPath,"rb");
 	if(aStatFile)
@@ -1316,7 +1316,7 @@ void CDBBackup::SaveStatInfo()
 	}
 
 
-	//°ÑÃÅÅÉµÈ¼¶ÅÅÃûĞ´µ½Ö¸¶¨Íæ¼Ò½ÇÉ«ÖĞ
+	//æŠŠé—¨æ´¾ç­‰çº§æ’åå†™åˆ°æŒ‡å®šç©å®¶è§’è‰²ä¸­
 	for(i=0;i<(MAX_FACTION+1);++i)
 	{
 		for(j=0;j<SECTLEVELSTATNUM;++j)

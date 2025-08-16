@@ -120,14 +120,14 @@ void CRootClient::AutoTime()
 
 	DWORD tick = GetTickCount();
 
-	if (tick - m_LastRevPingTime >= 600000)	//Ê®·ÖÖÓÃ»ÓÐÊÕµ½Ping
+	if (tick - m_LastRevPingTime >= 600000)	//ååˆ†é’Ÿæ²¡æœ‰æ”¶åˆ°Ping
 	{
 		KGLogPrintf(LOG_INFO,"warning: root client timeout: %s\n", _ip2a(GetSvrIP()));
 
 		InterShutdown();
 		return;
 	}
-	if (tick - m_LastSendPingTime >= 120000)	//Á½·ÖÖÓÃ»ÓÐ·¢³öPing
+	if (tick - m_LastSendPingTime >= 120000)	//ä¸¤åˆ†é’Ÿæ²¡æœ‰å‘å‡ºPing
 	{
 		m_LastSendPingTime = tick;
 
@@ -260,7 +260,7 @@ void CRootClient::Proc2_Relay_Data_Here(const void* pData, size_t size)
 	case (MAKEWORD(pf_gamemaster, gm_c2s_getrolelist)):
 		_ASSERT(pRelayData->routeDateLength == sizeof(GM_GET_ROLE_LIST_CMD));
 		{
-			//ÓÃÀÏÐ­ÒéÏò½ÇÉ«Êý¾Ý¿â²éÑ¯
+			//ç”¨è€åè®®å‘è§’è‰²æ•°æ®åº“æŸ¥è¯¢
 			GM_GET_ROLE_LIST_CMD* pGMData = (GM_GET_ROLE_LIST_CMD*)pHeader;
 			int nNewDataLen = sizeof(TProcessData) + strlen(pGMData->AccountName) + 1;
 			TProcessData* pNewData = (TProcessData*)_alloca(nNewDataLen);

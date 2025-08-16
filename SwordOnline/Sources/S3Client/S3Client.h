@@ -34,10 +34,10 @@ struct KClientCallback : public IClientCallback
 	void MSNMessageArrival(char* szSourceName, char* szSendName, const char* pMsgBuff, unsigned short nMsgLength, const char* pItem = 0, bool bSucc = false);
 	void NotifyChannelID(char* ChannelName, DWORD channelid, BYTE cost);
 	void FriendInvite(char* roleName);
-	void AddFriend(char* roleName, BYTE answer);	//Ìí¼ÓºÃÓÑµ½ºÃÓÑ×é
-	void DeleteFriend(char* roleName);	//Ìí¼ÓºÃÓÑµ½ºÃÓÑ×é
-	void FriendStatus(char* roleName, BYTE state);	//ÓĞ¹ØÏµÈËµÄ×´Ì¬,ÕÒµ½µÚÒ»¸öÎªÖ¹
-	void FriendInfo(char* roleName, char* unitName, char* groupName, BYTE state);	//Í¬²½¹ØÏµÈËÊı¾İ
-	void AddPeople(char* unitName, char* roleName);	//Ìí¼Ó¹ØÏµÈËµ½Ö¸¶¨×é
+	void AddFriend(char* roleName, BYTE answer);	//æ·»åŠ å¥½å‹åˆ°å¥½å‹ç»„
+	void DeleteFriend(char* roleName);	//æ·»åŠ å¥½å‹åˆ°å¥½å‹ç»„
+	void FriendStatus(char* roleName, BYTE state);	//æœ‰å…³ç³»äººçš„çŠ¶æ€,æ‰¾åˆ°ç¬¬ä¸€ä¸ªä¸ºæ­¢
+	void FriendInfo(char* roleName, char* unitName, char* groupName, BYTE state);	//åŒæ­¥å…³ç³»äººæ•°æ®
+	void AddPeople(char* unitName, char* roleName);	//æ·»åŠ å…³ç³»äººåˆ°æŒ‡å®šç»„
 };
 #endif

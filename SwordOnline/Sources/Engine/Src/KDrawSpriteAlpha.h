@@ -11,6 +11,6 @@
 //---------------------------------------------------------------------------
 void g_DrawSpriteAlpha(void* node, void* canvas);
 void g_DrawSpriteAlpha(void* node, void* canvas, int nExAlpha);
-void g_DrawSprite3LevelAlpha(void* node, void* canvas);	//Èý¼¶alpha»æÖÆ
+void g_DrawSprite3LevelAlpha(void* node, void* canvas);	//ÃˆÃ½Â¼Â¶alphaÂ»Ã¦Ã–Ã†
 //---------------------------------------------------------------------------
 #endif

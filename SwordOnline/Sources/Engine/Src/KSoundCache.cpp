@@ -23,10 +23,10 @@ KSoundCache::~KSoundCache()
 }
 
 //---------------------------------------------------------------------------
-// 函数:	LoadNode
-// 功能:	
-// 参数:	
-// 返回:	void
+// 鍑芥暟:	LoadNode
+// 鍔熻兘:	
+// 鍙傛暟:	
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 BOOL KSoundCache::LoadNode(KCacheNode* lpNode)
 {
@@ -49,10 +49,10 @@ BOOL KSoundCache::LoadNode(KCacheNode* lpNode)
 	return (lpNode->m_lpData != NULL);
 }
 //---------------------------------------------------------------------------
-// 函数:	FreeNode
-// 功能:	
-// 参数:	
-// 返回:	void
+// 鍑芥暟:	FreeNode
+// 鍔熻兘:	
+// 鍙傛暟:	
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 void KSoundCache::FreeNode(KCacheNode* lpNode)
 {

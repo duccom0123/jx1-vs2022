@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÁĞ±í´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ—è¡¨çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-11
 ------------------------------------------------------------------------------------------
-    ÁĞ±í´°¿ÚÖ»ÁĞ³öÎÄ×Ö¡£µ«ÊÇÃ¿Ïî¶¼¿ÉÒÔ¹ØÁªÆäËûÊı¾İ¡£
+    åˆ—è¡¨çª—å£åªåˆ—å‡ºæ–‡å­—ã€‚ä½†æ˜¯æ¯é¡¹éƒ½å¯ä»¥å…³è”å…¶ä»–æ•°æ®ã€‚
 *****************************************************************************************/
 #pragma once
 #include "WndWindow.h"
@@ -15,31 +15,31 @@
 class KWndList2 : public KWndWindow
 {
 public:
-	virtual int	Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual void	PaintWindow();							//»æÖÆ´°¿Ú
-	int				AddString(int nIndex, const char* pszString, bool bIsNode = false);//Ìí¼ÓÏî
-	int				GetString(int nIndex, char* pBuffer, unsigned int nSize);//»ñÈ¡ÁĞ±íÏîµÄ×Ö·û´®ÄÚÈİ
-	int				DeleteString(int nIndex);				//É¾³ıÁĞ±íÖĞµÄÒ»Ïî
-	void			ResetContent();							//É¾³ıÁĞ±íÖĞÈ«²¿µÄÄÚÈİ
-	//ÔÚÁĞ±íÖĞ²éÕÒÄ³¸ö×Ö·û´®¡£
+	virtual int	Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual void	PaintWindow();							//ç»˜åˆ¶çª—å£
+	int				AddString(int nIndex, const char* pszString, bool bIsNode = false);//æ·»åŠ é¡¹
+	int				GetString(int nIndex, char* pBuffer, unsigned int nSize);//è·å–åˆ—è¡¨é¡¹çš„å­—ç¬¦ä¸²å†…å®¹
+	int				DeleteString(int nIndex);				//åˆ é™¤åˆ—è¡¨ä¸­çš„ä¸€é¡¹
+	void			ResetContent();							//åˆ é™¤åˆ—è¡¨ä¸­å…¨éƒ¨çš„å†…å®¹
+	//åœ¨åˆ—è¡¨ä¸­æŸ¥æ‰¾æŸä¸ªå­—ç¬¦ä¸²ã€‚
 	int				FindString(const char* pString);
-	int				SetItemData(int nIndex, int nData);		//ÉèÖÃÁĞ±íÏî¹ØÁªÊı¾İµÄÖµ
-	int				GetItemData(int nIndex);				//»ñµÃÁĞ±íÏî¹ØÁªÊı¾İµÄÖµ
+	int				SetItemData(int nIndex, int nData);		//è®¾ç½®åˆ—è¡¨é¡¹å…³è”æ•°æ®çš„å€¼
+	int				GetItemData(int nIndex);				//è·å¾—åˆ—è¡¨é¡¹å…³è”æ•°æ®çš„å€¼
 	int 			SetItemColor(int nIndex, unsigned int Color);
 	unsigned int 	GetItemColor(int nIndex);
-	void			SetTopItemIndex(int nTopItemIndex);		//»ñµÃÁĞ±í´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				GetTopItemIndex() { return m_nTopItemIndex; }//»ñµÃÁĞ±í´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				GetVisibleLineCount() const;			//»ñµÃÁĞ±í¿ò¿ÉÒÔÍ¬Ê±ÏÔÊ¾µÄÏîµÄÊıÄ¿
+	void			SetTopItemIndex(int nTopItemIndex);		//è·å¾—åˆ—è¡¨çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				GetTopItemIndex() { return m_nTopItemIndex; }//è·å¾—åˆ—è¡¨çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				GetVisibleLineCount() const;			//è·å¾—åˆ—è¡¨æ¡†å¯ä»¥åŒæ—¶æ˜¾ç¤ºçš„é¡¹çš„æ•°ç›®
 	int				GetVisibleNodeCount(int nTopIndex) const;
-	int				GetCount()  { return m_nNumItem; }		//»ñÈ¡Êı¾İÏîµÄ×ÜÊıÄ¿
+	int				GetCount()  { return m_nNumItem; }		//è·å–æ•°æ®é¡¹çš„æ€»æ•°ç›®
 	int				GetCurCount();
-	int				GetCurSel() { return m_nSelItemIndex;  }//µÃµ½µ±Ç°Ñ¡ÔñµÄÊı¾İÏîµÄË÷Òı
+	int				GetCurSel() { return m_nSelItemIndex;  }//å¾—åˆ°å½“å‰é€‰æ‹©çš„æ•°æ®é¡¹çš„ç´¢å¼•
 	int				SetCurSel(int nSel);
 	void			SetScrollbar(KWndScrollBar* pScroll);
 	
-	virtual const char*	GetShortKey() {return NULL;}	//È¡¿ì½İ¼ü,ÓÃÓÚTipÏÔÊ¾
-	static void		SetAllButtonTipTextColor(unsigned int uColor);	//ÉèÖÃËùÓĞ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
+	virtual const char*	GetShortKey() {return NULL;}	//å–å¿«æ·é”®,ç”¨äºTipæ˜¾ç¤º
+	static void		SetAllButtonTipTextColor(unsigned int uColor);	//è®¾ç½®æ‰€æœ‰æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
 	static void		EnableAllButtonTip(int bEnable);		
 	virtual int		GetToolTipInfo(int nIndex, char* pBuffer, int nSize);
 	int		SetToolTipInfo(int nIndex, char* pBuffer, int nSize);
@@ -49,34 +49,34 @@ public:
 protected:
 	void			Clone(KWndList2* pCopy);
 private:
-	void			OnLButtonDown(int x, int y);			//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂ
-	void			OnLButtonDClick(int x, int y);			//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂ
-	void			OnMouseMove(int x, int y);				//ÏìÓ¦Êó±êÔÚÁĞ±í´°¿ÚÉÏÒÆ¶¯
+	void			OnLButtonDown(int x, int y);			//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹
+	void			OnLButtonDClick(int x, int y);			//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹
+	void			OnMouseMove(int x, int y);				//å“åº”é¼ æ ‡åœ¨åˆ—è¡¨çª—å£ä¸Šç§»åŠ¨
 	
 private:
-	void**			m_pContent;				//ÁĞ±íÏîÄÚÈİÊı¾İ
-	int				m_nItemSpace;			//¿ÉÒÔ±£´æµÄitemµÄÊıÄ¿
-	int				m_nNumItem;				//Êı¾İÏîµÄÊıÄ¿
+	void**			m_pContent;				//åˆ—è¡¨é¡¹å†…å®¹æ•°æ®
+	int				m_nItemSpace;			//å¯ä»¥ä¿å­˜çš„itemçš„æ•°ç›®
+	int				m_nNumItem;				//æ•°æ®é¡¹çš„æ•°ç›®
 
 	int				m_nNodeList;
-	int				m_nTopItemIndex;		//´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				m_nSelItemIndex;		//Ñ¡ÖĞµÄÊı¾İÏîµÄË÷Òı
+	int				m_nTopItemIndex;		//çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				m_nSelItemIndex;		//é€‰ä¸­çš„æ•°æ®é¡¹çš„ç´¢å¼•
 	int				m_nRowDis;
 
 	int				m_nLastData;
-	unsigned int	m_NodeItemColor;			//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_NodeItemBorderColor;		//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
-	unsigned int	m_ItemColor;			//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_ItemBorderColor;		//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
-	unsigned int	m_SelItemColor;			//±»Ñ¡ÖĞµÄÊı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_SelItemBorderColor;	//±»Ñ¡ÖĞµÄÊı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
+	unsigned int	m_NodeItemColor;			//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_NodeItemBorderColor;		//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_ItemColor;			//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_ItemBorderColor;		//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_SelItemColor;			//è¢«é€‰ä¸­çš„æ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_SelItemBorderColor;	//è¢«é€‰ä¸­çš„æ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
 	unsigned int	m_uSelItemBgColor;
 	unsigned int	m_uIconLineColor;
 	unsigned int	m_uNodeLineColor;
-	int				m_nFontSize;			//ÏÔÊ¾×ÖÌå´óĞ¡
+	int				m_nFontSize;			//æ˜¾ç¤ºå­—ä½“å¤§å°
 
 	KWndScrollBar  *m_pScrollbar;
 private:
-	static unsigned int	ms_uBtnTipTextColor;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-	static int			ms_nDisableBtnTip;		//ÊÇ·ñ½ûÖ¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
+	static unsigned int	ms_uBtnTipTextColor;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static int			ms_nDisableBtnTip;		//æ˜¯å¦ç¦æ­¢æŒ‰é’®çš„æç¤ºæ–‡å­—
 };

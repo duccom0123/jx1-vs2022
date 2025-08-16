@@ -3,7 +3,7 @@
 //
 // File:	KViewItem.cpp
 // Date:	2003.07.28
-// Code:	边城浪子
+// Code:	杈瑰煄娴瓙
 // Desc:	KViewItem Class
 //---------------------------------------------------------------------------
 
@@ -106,7 +106,7 @@ void	KViewItem::GetData(BYTE* pMsg)
 		m_sItem[i].nIdx = nItemIdx;
 	}
 
-	// 通知界面
+	// 閫氱煡鐣岄潰
 	CoreDataChanged(GDCNI_VIEW_PLAYERITEM, (DWORD)&sPlayer, 0);
 }
 

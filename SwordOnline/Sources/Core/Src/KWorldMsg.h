@@ -10,7 +10,7 @@ enum WORLDMSG						//	param1,		param2,		param3
 	GWM_NPC_BEGIN		= 1000,
 	GWM_NPC_DEL,					//	npcidx
 	GWM_NPC_CHANGE_REGION,			//	srcregion,	desregion,	npcidx
-									// zroc ˵����src dest �� server ���� idx���ڿͻ����� ID
+									// zroc 说明：src dest 在 server 上用 idx，在客户端用 ID
 
 	GWM_OBJ_BEGIN		= 2000,
 	GWM_OBJ_DEL,
@@ -40,8 +40,8 @@ enum	WORLDRETURN
 	GWR_SKILL_NOTENOUGHSTAMINA,
 	GWR_SKILL_NOTENOUGHMONEY,
 	GWR_SKILL_HAVENOSKILL,
-	GWR_SKILL_GTMAXTIMES,		//�ü���Ŀǰ�������������࣬���һ��
-	GWR_SKILL_LTPERCASTTIME,		//�޷����ü�����Ҫ�ȴ�һ��ʱ��
+	GWR_SKILL_GTMAXTIMES,		//该技能目前发出的数量过多，请等一会
+	GWR_SKILL_LTPERCASTTIME,		//无法发该技能需要等待一会时间
 };
 
 class KWorldMsgNode : public KNode

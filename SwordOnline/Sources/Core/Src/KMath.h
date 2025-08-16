@@ -14,13 +14,13 @@ void g_InitSeries();
 #endif
 
 //---------------------------------------------------------------------------
-// ÕıÏÒ±í (½«¸¡µãÊı *1024 ÕûĞÍ»¯)
+// æ­£å¼¦è¡¨ (å°†æµ®ç‚¹æ•° *1024 æ•´å‹åŒ–)
 extern int* g_nSin;
 
-// ÓàÏÒ±í (½«¸¡µãÊı *1024 ÕûĞÍ»¯)
+// ä½™å¼¦è¡¨ (å°†æµ®ç‚¹æ•° *1024 æ•´å‹åŒ–)
 extern int* g_nCos;
 
-// ÕıÏÒÓàÏÒµÄ²é±íº¯Êı´úÂë»º³åÇø
+// æ­£å¼¦ä½™å¼¦çš„æŸ¥è¡¨å‡½æ•°ä»£ç ç¼“å†²åŒº
 //extern unsigned char *g_InternalDirSinCosCode;
 
 //typedef int	__cdecl g_InternalDirSinCosFunction(int pSinCosTable[], int nDir, int nMaxDir);
@@ -49,7 +49,7 @@ inline int g_DirCos(int nDir, int nMaxDir)
 }
 
 //---------------------------------------------------------------------------
-// ÎåĞĞÏàÉúÏà¿Ë
+// äº”è¡Œç›¸ç”Ÿç›¸å…‹
 //extern int		g_nAccrueSeries[series_num];
 //extern int		g_nConquerSeries[series_num];
 
@@ -58,12 +58,12 @@ extern INT	g_nConquerSeries[series_num];
 extern INT	g_nAccruedSeries[series_num];
 extern INT	g_nConqueredSeries[series_num];
 
-// ÎåĞĞÏàÉúÏà¿Ëº¯Êı´úÂë»º³åÇø
+// äº”è¡Œç›¸ç”Ÿç›¸å…‹å‡½æ•°ä»£ç ç¼“å†²åŒº
 //extern unsigned char *g_InternalIsAccrueConquerCode;
 
 //typedef int __cdecl g_InternalIsAccrueConquerFunction(int pAccrueConquerTable[], int nSrcSeries, int nDesSeries);
 
-inline int g_IsAccrue(int nSrcSeries, int nDesSeries)  // ÏàÉú
+inline int g_IsAccrue(int nSrcSeries, int nDesSeries)  // ç›¸ç”Ÿ
 {
 	if (nSrcSeries < series_metal || nSrcSeries >= series_num)
 		return FALSE;
@@ -74,7 +74,7 @@ inline int g_IsAccrue(int nSrcSeries, int nDesSeries)  // ÏàÉú
 	return FALSE;//(*(g_InternalIsAccrueConquerFunction *)(&(g_InternalIsAccrueConquerCode[0])))(g_nAccrueSeries, nSrcSeries, nDesSeries);
 }
 
-inline int g_IsConquer(int nSrcSeries, int nDesSeries) //Ïà¿Ë
+inline int g_IsConquer(int nSrcSeries, int nDesSeries) //ç›¸å…‹
 {
 	if (nSrcSeries < series_metal || nSrcSeries >= series_num)
 		return FALSE;
@@ -100,7 +100,7 @@ inline BOOL g_IsConquer(INT nSrcSeries, INT nDesSeries)
 
 //---------------------------------------------------------------------------
 //Add by DNT
-// ÓÅ»¯Æ½·½¸ùº¯Êı
+// ä¼˜åŒ–å¹³æ–¹æ ¹å‡½æ•°
 /*typedef union
 {
 	int     i;          // as integer
@@ -196,12 +196,12 @@ inline INT	g_GetLength(INT nDx, INT Dy)
 	return (INT)sqrt((FLOAT)(nDx * nDx + Dy * Dy));
 }
 
-//Æ½·½
+//å¹³æ–¹
 inline INT	g_Square(INT n)
 {
 	return n * n;
 }
-// ·µ»Ø¾àÀëµÄÆ½·½(¼õÉÙ¿ª·½ÔËËã)
+// è¿”å›è·ç¦»çš„å¹³æ–¹(å‡å°‘å¼€æ–¹è¿ç®—)
 inline INT	g_GetDisSquare(INT nX1, INT nY1, INT nX2, INT nY2)
 {
 	return g_Square(nX1 - nX2) + g_Square(nY1 - nY2);
@@ -219,10 +219,10 @@ inline INT	g_GetNewDirIndex(INT nDx, INT nDy)
 
 	if (nDistance == 0) return -1;
 
-	INT		nSin = (nDy << 10) / nDistance;	// ·Å´ó1024±¶
+	INT		nSin = (nDy << 10) / nDistance;	// æ”¾å¤§1024å€
 
 	//find more than me as my dir
-	for (INT i = 0; i < 32; i++)		// Ë³Ê±Õë·½Ïò ´Ó270¶Èµ½90¶È£¬sinÖµµİ¼õ
+	for (INT i = 0; i < 32; i++)		// é¡ºæ—¶é’ˆæ–¹å‘ ä»270åº¦åˆ°90åº¦ï¼Œsinå€¼é€’å‡
 	{
 		if (nSin > g_nSin[i])
 			break;
@@ -261,7 +261,7 @@ inline int	g_GetOldDirIndex(int nX1, int nY1, int nX2, int nY2)
 	//	int		nYLength = (nY2 - nY1) * 2;
 	int		nYLength = nY2 - nY1;
 	int     nLeghthVal = nYLength << 10;
-	int     nSin = nLeghthVal / nDistance;	// ·Å´ó1024±¶
+	int     nSin = nLeghthVal / nDistance;	// æ”¾å¤§1024å€
 	//			nCha = nLeghthVal%nDistance;
 
 	/*	if (nLeghthVal>0)
@@ -276,21 +276,21 @@ inline int	g_GetOldDirIndex(int nX1, int nY1, int nX2, int nY2)
 
 		} */
 
-	for (int i = 0; i < 32; i++)		// Ë³Ê±Õë·½Ïò ´Ó270¶Èµ½90¶È£¬sinÖµµİ¼õ		   ×ó±ß
+	for (int i = 0; i < 32; i++)		// é¡ºæ—¶é’ˆæ–¹å‘ ä»270åº¦åˆ°90åº¦ï¼Œsinå€¼é€’å‡		   å·¦è¾¹
 	{
 		if (nSin > g_nSin[i])
 			break;
 		nRet = i;
 	}
 
-	if ((nX2 - nX1) > 0)	//ÓÒ±ß
+	if ((nX2 - nX1) > 0)	//å³è¾¹
 	{
 		nRet = 63 - nRet;
 	}
 	return nRet;
 }
 
-// ÏÂÃæµÄº¯Êı¼ÆËã·½ÏòÓĞÆ«²î£¬ÕâÀï×¨ÃÅĞ´Ò»¸öÌØÊâ°æ±¾Îª¸øÑ°Â·Ê¹ÓÃ
+// ä¸‹é¢çš„å‡½æ•°è®¡ç®—æ–¹å‘æœ‰åå·®ï¼Œè¿™é‡Œä¸“é—¨å†™ä¸€ä¸ªç‰¹æ®Šç‰ˆæœ¬ä¸ºç»™å¯»è·¯ä½¿ç”¨
 /*inline int	g_GetDirIdxForFindPath(int nX1, int nY1, int nX2, int nY2)
 {
 	int		nRet = -1;
@@ -305,14 +305,14 @@ inline int	g_GetOldDirIndex(int nX1, int nY1, int nX2, int nY2)
 
 	//	int		nYLength = (nY2 - nY1) * 2;
 	int		nYLength = nY2 - nY1;
-	int		nSin = (nYLength << 10) / nDistance;	// ·Å´ó1024±¶
+	int		nSin = (nYLength << 10) / nDistance;	// æ”¾å¤§1024å€
 
 	if(nSin > 1024)
 		nSin = 1024;
 	else if(nSin < -1024)
 		nSin = -1024;
 
-	for (int i = 0; i < 32; i++)		// Ë³Ê±Õë·½Ïò ´Ó270¶Èµ½90¶È£¬sinÖµµİ¼õ
+	for (int i = 0; i < 32; i++)		// é¡ºæ—¶é’ˆæ–¹å‘ ä»270åº¦åˆ°90åº¦ï¼Œsinå€¼é€’å‡
 	{
 		if (nSin > g_nSin[i])
 			break;

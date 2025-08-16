@@ -14,10 +14,10 @@
 #define CODEC_LZO		2
 //---------------------------------------------------------------------------
 typedef struct {
-	PBYTE		lpData;			// ´ıÑ¹Ëõ&Ñ¹ËõÇ° Êı¾İÖ¸Õë
-	DWORD		dwDataLen;		// ´ıÑ¹Ëõ&Ñ¹ËõÇ° Êı¾İ³¤¶È
-	PBYTE		lpPack;			// Ñ¹Ëõºó&Ñ¹Ëõºó Êı¾İÖ¸Õë
-	DWORD		dwPackLen;		// Ñ¹Ëõºó&Ñ¹Ëõºó Êı¾İ³¤¶È
+	PBYTE		lpData;			// å¾…å‹ç¼©&å‹ç¼©å‰ æ•°æ®æŒ‡é’ˆ
+	DWORD		dwDataLen;		// å¾…å‹ç¼©&å‹ç¼©å‰ æ•°æ®é•¿åº¦
+	PBYTE		lpPack;			// å‹ç¼©å&å‹ç¼©å æ•°æ®æŒ‡é’ˆ
+	DWORD		dwPackLen;		// å‹ç¼©å&å‹ç¼©å æ•°æ®é•¿åº¦
 } TCodeInfo;
 //---------------------------------------------------------------------------
 class ENGINE_API KCodec
@@ -26,7 +26,7 @@ public:
 	virtual DWORD	GetPackLen(DWORD dwDataLen);
 	virtual BOOL	Encode(TCodeInfo* pCodeInfo);
 	virtual BOOL	Decode(TCodeInfo* pCodeInfo);
-	//lpData;dwDataLen;lpPack;±ØĞëÕıÈ·ÉèÖÃ£¬dwPackLen²»Îª0¼´¿É	
+	//lpData;dwDataLen;lpPack;å¿…é¡»æ­£ç¡®è®¾ç½®ï¼ŒdwPackLenä¸ä¸º0å³å¯	
 };
 //---------------------------------------------------------------------------
 ENGINE_API void	g_InitCodec(KCodec** ppCodec, int nCompressMethod);

@@ -3,7 +3,7 @@
 //
 // File:	KFaction.cpp
 // Date:	2002.09.26
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸŽæµªå­
 // Desc:	Faction Class
 //---------------------------------------------------------------------------
 
@@ -19,7 +19,7 @@ KFaction	g_Faction;
 
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯£¬ÔØÈëÃÅÅÉËµÃ÷ÎÄ¼þ
+//	åŠŸèƒ½ï¼šåˆå§‹åŒ–ï¼Œè½½å…¥é—¨æ´¾è¯´æ˜Žæ–‡ä»¶
 //---------------------------------------------------------------------------
 BOOL	KFaction::Init()
 {
@@ -29,7 +29,7 @@ BOOL	KFaction::Init()
 	char		szCamp[camp_num][16] = {"C_BEGIN", "C_JUSTICE", "C_EVIL", "C_BALANCE", "C_FREE", "C_ANIMAL", "C_GM", "C_TONGWAR"};
 	int			i, j, k, nArrayPos;
 
-	// Çå¿Õ
+	// æ¸…ç©º
 	for (i = 0; i < MAX_FACTION; i++)
 	{
 		m_sAttribute[i].m_nIndex = i;
@@ -42,12 +42,12 @@ BOOL	KFaction::Init()
 	if ( !Ini.Load(FACTION_FILE) )
 		return FALSE;
 
-	// ¶ÁÈëÃ¿Ò»¸öÃÅÅÉÊý¾Ý
+	// è¯»å…¥æ¯ä¸€ä¸ªé—¨æ´¾æ•°æ®
 	for (i = 0; i < MAX_FACTION; i++)
 	{
 		sprintf(szSection, "%d", i);
 		Ini.GetString(szSection, "Series", "S_GOLD", szBuffer, sizeof(szBuffer));
-		// ÕÒµ½ÕóÓªÊý×éÖÐµÄÏàÓ¦Î»ÖÃ
+		// æ‰¾åˆ°é˜µè¥æ•°ç»„ä¸­çš„ç›¸åº”ä½ç½®
 		if (i == HUASHANID)
 		{
 			j=0;
@@ -92,7 +92,7 @@ BOOL	KFaction::Init()
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸ù¾ÝÎåÐÐÊôÐÔºÍ±¾ÊôÐÔµÚ¼¸¸öÃÅÅÉµÃµ½ÃÅÅÉ±àºÅ
+//	åŠŸèƒ½ï¼šæ ¹æ®äº”è¡Œå±žæ€§å’Œæœ¬å±žæ€§ç¬¬å‡ ä¸ªé—¨æ´¾å¾—åˆ°é—¨æ´¾ç¼–å·
 //---------------------------------------------------------------------------
 int		KFaction::GetID(int nSeries, int nNo)
 {
@@ -102,7 +102,7 @@ int		KFaction::GetID(int nSeries, int nNo)
 }
 
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸ù¾ÝÎåÐÐÊôÐÔºÍÃÅÅÉÃûµÃµ½ÃÅÅÉ±àºÅ
+//	åŠŸèƒ½ï¼šæ ¹æ®äº”è¡Œå±žæ€§å’Œé—¨æ´¾åå¾—åˆ°é—¨æ´¾ç¼–å·
 //---------------------------------------------------------------------------
 int		KFaction::GetID(int nSeries, char *lpszName)
 {
@@ -130,7 +130,7 @@ int		KFaction::GetID(char *lpszName)
 	return -1;
 }
 //---------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñµÃÄ³¸öÃÅÅÉµÄÕóÓª
+//	åŠŸèƒ½ï¼šèŽ·å¾—æŸä¸ªé—¨æ´¾çš„é˜µè¥
 //---------------------------------------------------------------------------
 int		KFaction::GetCamp(int nFactionID)
 {

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ--ÓÎÏ·ÏÔÊ¾Íæ¼ÒĞÅÏ¢Ö÷½çÃæ
+//	Â½Ã§ÃƒÃ¦--Ã“ÃÃÂ·ÃÃ”ÃŠÂ¾ÃÃ¦Â¼Ã’ÃÃ…ÃÂ¢Ã–Ã·Â½Ã§ÃƒÃ¦
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-16
@@ -253,7 +253,7 @@ void KImmediaItem::PaintWindow()
 KUiPlayerBar* KUiPlayerBar::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 KUiPlayerBar::KUiPlayerBar()
 {
@@ -283,7 +283,7 @@ KUiPlayerBar::~KUiPlayerBar()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiPlayerBar* KUiPlayerBar::GetIfVisible()
 {
@@ -293,7 +293,7 @@ KUiPlayerBar* KUiPlayerBar::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiPlayerBar* KUiPlayerBar::OpenWindow()
 {
@@ -317,7 +317,7 @@ KUiPlayerBar* KUiPlayerBar::OpenWindow()
 	return m_pSelf;
 }
 
-//ÇĞ»»´óĞ¡
+//Ã‡ÃÂ»Â»Â´Ã³ÃÂ¡
 void KUiPlayerBar::OnSwitchSize()
 {
 	m_bMiniMode = !m_bMiniMode;
@@ -327,7 +327,7 @@ void KUiPlayerBar::OnSwitchSize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂÊı¾İ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
 //--------------------------------------------------------------------------
 void KUiPlayerBar::UpdateData()
 {
@@ -361,7 +361,7 @@ void KUiPlayerBar::UpdateData()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiPlayerBar::CloseWindow(bool bDestroy)
 {
@@ -383,7 +383,7 @@ void KUiPlayerBar::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiPlayerBar::LoadScheme(const char* pScheme)
 {
@@ -462,7 +462,7 @@ void KUiPlayerBar::LoadScheme(KIniFile* pIni)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiPlayerBar::Initialize()
 {
@@ -504,7 +504,7 @@ void KUiPlayerBar::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿Úº¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 bool UiCloseWndsInGame(bool bAll);
 int KUiPlayerBar::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
@@ -563,7 +563,7 @@ int KUiPlayerBar::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 /*		else if (uParam == (unsigned int)(KWndWindow*)&m_UnlockBtn)
 		{
 			if (g_pCoreShell->GetLockState())
-				KUiGetString::OpenWindow(GSA_PW, "NhËp mËt khÈu", "", this, 0, 0, 1,16);
+				KUiGetString::OpenWindow(GSA_PW, "NhÃ‹p mÃ‹t khÃˆu", "", this, 0, 0, 1,16);
 			else
 				g_pCoreShell->OperationRequest(GOI_LOCKSTATE, 0, 0);
 		}*/
@@ -859,7 +859,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 
 	if (!bDirectSend)
 	{
-		if (TextMsgFilter(Buffer, nMsgLength))	//¿Í»§¶Ë¿ØÖÆÃüÁîÖ´ĞĞ¹ıÂË
+		if (TextMsgFilter(Buffer, nMsgLength))	//Â¿ÃÂ»Â§Â¶Ã‹Â¿Ã˜Ã–Ã†ÃƒÃ¼ÃÃ®Ã–Â´ÃÃÂ¹Ã½Ã‚Ã‹
 		{
 			m_pItem.Clear();
 			m_InputEdit.Clear();
@@ -870,7 +870,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 	if (g_pCoreShell == NULL)
 		return;
 
-	//====»ñÈ¡ÊäÈë×Ó´®Ç°¶Ë¿ÉÄÜÖ¸¶¨ÓĞµÄÏûÏ¢´«ËÍÄ¿±ê====
+	//====Â»Ã±ÃˆÂ¡ÃŠÃ¤ÃˆÃ«Ã—Ã“Â´Â®Ã‡Â°Â¶Ã‹Â¿Ã‰Ã„ÃœÃ–Â¸Â¶Â¨Ã“ÃÂµÃ„ÃÃ»ÃÂ¢Â´Â«Ã‹ÃÃ„Â¿Â±Ãª====
 	int bChannel = false;
 	int nDestChannel = -1;
 	char Name[32];
@@ -901,7 +901,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 		Name[31] = 0;
 	}
 
-	if (Name[0] == 0)	//²»Ö¸¶¨Ãû×Ö
+	if (Name[0] == 0)	//Â²Â»Ã–Â¸Â¶Â¨ÃƒÃ»Ã—Ã–
 	{
 		bChannel = true;
 		int nChannelDataCount = KUiMsgCentrePad::GetChannelCount();
@@ -911,7 +911,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 		}
 		else
 		{
-			//ÊÇ¸½½üÍæ¼Ò
+			//ÃŠÃ‡Â¸Â½Â½Ã¼ÃÃ¦Â¼Ã’
 			for (int n = 0; n < nChannelDataCount; n++)
 			{
 				if (KUiMsgCentrePad::IsChannelType(n, KUiMsgCentrePad::ch_Screen))
@@ -927,14 +927,14 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 		
 		Name[31] = 0;
 	}
-	else	//Ö¸¶¨Ãû×ÖµÄ»Ö¸´BufferÊı¾İ
+	else	//Ã–Â¸Â¶Â¨ÃƒÃ»Ã—Ã–ÂµÃ„Â»Ã–Â¸Â´BufferÃŠÃ½Â¾Ã
 	{
 		Buffer[nName - 1] = ' ';
 	}
 
 	nMsgLength -= nName;
 	
-	if (bChannel && !KUiMsgCentrePad::IsChannelType(nDestChannel, KUiMsgCentrePad::ch_GM))	//ÔÚ·ÇGMÆµµÀÖĞÊäÈëGMÖ¸Áî,²»·¢ËÍ³öÈ¥,ÒÔÃâĞ¹ÃÜ
+	if (bChannel && !KUiMsgCentrePad::IsChannelType(nDestChannel, KUiMsgCentrePad::ch_GM))	//Ã”ÃšÂ·Ã‡GMÃ†ÂµÂµÃ€Ã–ÃÃŠÃ¤ÃˆÃ«GMÃ–Â¸ÃÃ®,Â²Â»Â·Â¢Ã‹ÃÂ³Ã¶ÃˆÂ¥,Ã’Ã”ÃƒÃ¢ÃÂ¹ÃƒÃœ
 	{
 		if (nMsgLength > 3 &&
 			Buffer[nName] == '?' &&
@@ -944,7 +944,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 	}
 	if (!g_ChatFilter.IsTextPass(Buffer + nName))
 	{
-		char szWarning[] = "Xin l­u ı khi sö dông tõ ng÷ trong giao tiÕp!"; 
+		char szWarning[] = "Xin lÂ­u Ã½ khi sÃ¶ dÃ´ng tÃµ ngÃ· trong giao tiÃ•p!"; 
 		KUiMsgCentrePad::SystemMessageArrival(szWarning, sizeof(szWarning));
 		return;
 	}
@@ -1011,26 +1011,26 @@ BOOL KUiPlayerBar::IsCanSendMessage(const char* Buffer, int nLen, char* szDestNa
 	return TRUE;
 }
 
-void KUiPlayerBar::OnSendChannelMessage(DWORD nChannelID, const char* Buffer, int nLen)				//·¢ËÍÆµµÀÁÄÌìµ½·şÎñÆ÷
+void KUiPlayerBar::OnSendChannelMessage(DWORD nChannelID, const char* Buffer, int nLen)				//Â·Â¢Ã‹ÃÃ†ÂµÂµÃ€ÃÃ„ÃŒÃ¬ÂµÂ½Â·Ã¾ÃÃ±Ã†Ã·
 {
 	if (nChannelID != -1 && Buffer && nLen > 0)
 	{
 		int nLeft = KUiMsgCentrePad::PushChannelData(nChannelID, Buffer, nLen);
 		if (nLeft < 0)
 		{
-			char szWarning[] = "Kh«ng thÓ sö dông thiªn lı truyÒn ©m liªn tôc, xin B¹n ph¶i vËn khİ tr­íc";
+			char szWarning[] = "KhÂ«ng thÃ“ sÃ¶ dÃ´ng thiÂªn lÃ½ truyÃ’n Â©m liÂªn tÃ´c, xin BÂ¹n phÂ¶i vÃ‹n khÃ trÂ­Ã­c";
 			KUiMsgCentrePad::SystemMessageArrival(szWarning, sizeof(szWarning));
 		}
 		else if (nLeft > 0)
 		{
 			char szWarning[64];
-			sprintf(szWarning, "Tin nh¾n sÏ ®­îc göi ®i sau %d gi©y", (nLeft + 999 ) / 1000);
+			sprintf(szWarning, "Tin nhÂ¾n sÃ Â®Â­Ã®c gÃ¶i Â®i sau %d giÂ©y", (nLeft + 999 ) / 1000);
 			KUiMsgCentrePad::SystemMessageArrival(szWarning, strlen(szWarning) + 1);
 		}
 	}
 }
 
-void KUiPlayerBar::OnDirectSendChannelMessage(DWORD nChannelID, BYTE cost, const char* Buffer, int nLen)				//·¢ËÍÆµµÀÁÄÌìµ½·şÎñÆ÷
+void KUiPlayerBar::OnDirectSendChannelMessage(DWORD nChannelID, BYTE cost, const char* Buffer, int nLen)				//Â·Â¢Ã‹ÃÃ†ÂµÂµÃ€ÃÃ„ÃŒÃ¬ÂµÂ½Â·Ã¾ÃÃ±Ã†Ã·
 {
 	if (g_pCoreShell && nChannelID != -1 && Buffer && nLen > 0)
 	{
@@ -1065,7 +1065,7 @@ void KUiPlayerBar::OnDirectSendChannelMessage(DWORD nChannelID, BYTE cost, const
 	}
 }
 
-void KUiPlayerBar::OnSendSomeoneMessage(const char* Name, const char* Buffer, int nLen)				//·¢ËÍsomeoneÁÄÌìµ½·şÎñÆ÷
+void KUiPlayerBar::OnSendSomeoneMessage(const char* Name, const char* Buffer, int nLen)				//Â·Â¢Ã‹ÃsomeoneÃÃ„ÃŒÃ¬ÂµÂ½Â·Ã¾ÃÃ±Ã†Ã·
 {
 	if (g_pCoreShell && Name && Name[0] != 0 && Buffer && nLen > 0 && m_pSelf)
 	{
@@ -1124,7 +1124,7 @@ void KUiPlayerBar::InputRecentMsg(bool bPrior)
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏìÓ¦½çÃæ²Ù×÷È¡Æğ\·ÅÏÂ¶«Î÷
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Â½Ã§ÃƒÃ¦Â²Ã™Ã—Ã·ÃˆÂ¡Ã†Ã°\Â·Ã…ÃÃ‚Â¶Â«ÃÃ·
 //--------------------------------------------------------------------------
 void KUiPlayerBar::OnObjPickedDropped(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos)
 {
@@ -1177,7 +1177,7 @@ void KUiPlayerBar::OnObjPickedDropped(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDR
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÊ¹ÓÃÎïÆ·
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃŠÂ¹Ã“ÃƒÃÃ¯Ã†Â·
 //--------------------------------------------------------------------------
 void KUiPlayerBar::OnUseItem(int nIndex)
 {
@@ -1278,7 +1278,7 @@ void KUiPlayerBar::InputCurrentChannel(int nIndex, bool bFocus)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÇĞ»»µ½ÏÂÒ»¸öÆµµÀ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‡ÃÂ»Â»ÂµÂ½ÃÃ‚Ã’Â»Â¸Ã¶Ã†ÂµÂµÃ€
 //--------------------------------------------------------------------------
 void KUiPlayerBar::SwitchChannel(BOOL bUp)
 {
@@ -1314,7 +1314,7 @@ void KUiPlayerBar::SwitchChannel(BOOL bUp)
 
 
 //--------------------------------------------------------------------------
-//  ¹¦ÄÜ£ºµÃµ½PlayerBarÀïµ±Ç°µÄÆµµÀ
+//  Â¹Â¦Ã„ÃœÂ£ÂºÂµÃƒÂµÂ½PlayerBarÃ€Ã¯ÂµÂ±Ã‡Â°ÂµÃ„Ã†ÂµÂµÃ€
 //--------------------------------------------------------------------------
 int KUiPlayerBar::GetCurChannel()
 {
@@ -1326,7 +1326,7 @@ int KUiPlayerBar::GetCurChannel()
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸üĞÂ³£±äµÄÄÇĞ©ÊıÖµÊı¾İ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â³Â£Â±Ã¤ÂµÃ„Ã„Ã‡ÃÂ©ÃŠÃ½Ã–ÂµÃŠÃ½Â¾Ã
 //--------------------------------------------------------------------------
 void KUiPlayerBar::UpdateXXXNumber(int& nMana, int& nFullMana)
 {
@@ -1367,7 +1367,7 @@ void KUiPlayerBar::UpdateRuntimeAttribute(int& nMoney, int& nLevel)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º±ä¸üÎïÆ·°Ú»»
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ±Ã¤Â¸Ã¼ÃÃ¯Ã†Â·Â°ÃšÂ»Â»
 //--------------------------------------------------------------------------
 void KUiPlayerBar::UpdateItem(int nIndex, unsigned int uGenre, unsigned int uId)
 {
@@ -1379,7 +1379,7 @@ void KUiPlayerBar::UpdateItem(int nIndex, unsigned int uGenre, unsigned int uId)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º±ä¸ü¿ì½İ¼¼ÄÜ
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ±Ã¤Â¸Ã¼Â¿Ã¬Â½ÃÂ¼Â¼Ã„Ãœ
 //--------------------------------------------------------------------------
 void KUiPlayerBar::UpdateSkill(int nIndex, unsigned int uGenre, unsigned int uId)
 {
@@ -1389,7 +1389,7 @@ void KUiPlayerBar::UpdateSkill(int nIndex, unsigned int uGenre, unsigned int uId
 	}
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎÒÒªºôÎü
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ’Ã’ÂªÂºÃ´ÃÃ¼
 //--------------------------------------------------------------------------
 void KUiPlayerBar::Breathe()
 {
@@ -1423,22 +1423,22 @@ void KUiPlayerBar::Breathe()
 		if (!bSend)
 		{
 			if (nRet == 2 && nUseLevel > 0)
-				sprintf(szSystem, "B¹n cÇn th¨ng ®¼ng cÊp %d míi cã thÓ sö dông thiªn lı truyÒn ©m", nUseLevel);
+				sprintf(szSystem, "BÂ¹n cÃ‡n thÂ¨ng Â®Â¼ng cÃŠp %d mÃ­i cÃ£ thÃ“ sÃ¶ dÃ´ng thiÂªn lÃ½ truyÃ’n Â©m", nUseLevel);
 
 			if (nRet == 1 && nUseMoney > 0)
-				sprintf(szSystem, "Ng©n l­îng cña B¹n kh«ng ®ñ %d l­îng, kh«ng thÓ sö dông Thiªn lı truyÒn ¢m chuyÓn ph¸t tin tøc", nUseMoney);
+				sprintf(szSystem, "NgÂ©n lÂ­Ã®ng cÃ±a BÂ¹n khÂ«ng Â®Ã± %d lÂ­Ã®ng, khÂ«ng thÃ“ sÃ¶ dÃ´ng ThiÂªn lÃ½ truyÃ’n Â¢m chuyÃ“n phÂ¸t tin tÃ¸c", nUseMoney);
 
 			if (nRet == 3 && nUseMana > 0)
-				sprintf(szSystem, "Néi lùc cña B¹n kh«ng ®ñ %d ®iÓm, kh«ng thÓ sö dông Thiªn lı truyÒn ¢m chuyÓn ph¸t tin tøc", nUseMana);
+				sprintf(szSystem, "NÃ©i lÃ¹c cÃ±a BÂ¹n khÂ«ng Â®Ã± %d Â®iÃ“m, khÂ«ng thÃ“ sÃ¶ dÃ´ng ThiÂªn lÃ½ truyÃ’n Â¢m chuyÃ“n phÂ¸t tin tÃ¸c", nUseMana);
 		}
 		else
 		{
 			if (nUseMoney > 0 && nUseMana > 0)
-				sprintf(szSystem, "B¹n sö dông thiªn lı truyÒn ©m tiªu hao %d ng©n l­îng vµ néi lùc %d ®iÓm", nUseMoney, nUseMana);
+				sprintf(szSystem, "BÂ¹n sÃ¶ dÃ´ng thiÂªn lÃ½ truyÃ’n Â©m tiÂªu hao %d ngÂ©n lÂ­Ã®ng vÂµ nÃ©i lÃ¹c %d Â®iÃ“m", nUseMoney, nUseMana);
 			else if (nUseMoney > 0)
-				sprintf(szSystem, "B¹n sö dông thiªn lı truyÒn ©m tiªu hao %d ng©n l­îng", nUseMoney);
+				sprintf(szSystem, "BÂ¹n sÃ¶ dÃ´ng thiÂªn lÃ½ truyÃ’n Â©m tiÂªu hao %d ngÂ©n lÂ­Ã®ng", nUseMoney);
 			else if (nUseMana > 0)
-				sprintf(szSystem, "B¹n sö dông thiªn lı truyÒn ©m tiªu hao néi lùc %d ®iÓm", nUseMana);
+				sprintf(szSystem, "BÂ¹n sÃ¶ dÃ´ng thiÂªn lÃ½ truyÃ’n Â©m tiÂªu hao nÃ©i lÃ¹c %d Â®iÃ“m", nUseMana);
 		}
 
 		if (bSend)
@@ -1463,19 +1463,19 @@ void KUiPlayerBar::Breathe()
 	m_UnlockBtn.CheckButton(g_pCoreShell->GetLockState());
 }
 
-//0 ³É¹¦, ·µ»ØÏûºÄµÄÒøÁ½ºÍÄÚÁ¦
-//1 ÒòÎªnUseMoney,Ç®²»×ã
-//2 ÒòÎªnUseLevel,µÈ¼¶²»×ã
-//3 ÒòÎªnUseMana,ÄÚÁ¦²»×ã
+//0 Â³Ã‰Â¹Â¦, Â·ÂµÂ»Ã˜ÃÃ»ÂºÃ„ÂµÃ„Ã’Ã¸ÃÂ½ÂºÃÃ„ÃšÃÂ¦
+//1 Ã’Ã²ÃÂªnUseMoney,Ã‡Â®Â²Â»Ã—Ã£
+//2 Ã’Ã²ÃÂªnUseLevel,ÂµÃˆÂ¼Â¶Â²Â»Ã—Ã£
+//3 Ã’Ã²ÃÂªnUseMana,Ã„ÃšÃÂ¦Â²Â»Ã—Ã£
 int KUiPlayerBar::IsHasCost(BYTE cost, int nMoney, int nLevel, int nMana, int nFullMana, int& nUseMoney, int& nUseLevel, int& nUseMana)
 {
-	if (cost == 0)//Ãâ·Ñ
+	if (cost == 0)//ÃƒÃ¢Â·Ã‘
 	{
 		nUseMoney = 0;
 		nUseLevel = 0;
 		nUseMana = 0;
 	}
-	else if (cost == 1)//10ÔªÃ¿¾ä
+	else if (cost == 1)//10Ã”ÂªÃƒÂ¿Â¾Ã¤
 	{
 		if (nMoney < 100)
 		{
@@ -1486,7 +1486,7 @@ int KUiPlayerBar::IsHasCost(BYTE cost, int nMoney, int nLevel, int nMana, int nF
 		nUseLevel = 0;
 		nUseMana = 0;
 	}
-	else if (cost == 2)//2: <10Lv ? ²»ÄÜËµ : MaxMana/2/¾ä
+	else if (cost == 2)//2: <10Lv ? Â²Â»Ã„ÃœÃ‹Âµ : MaxMana/2/Â¾Ã¤
 	{
 		if (nLevel < 20)
 		{
@@ -1507,7 +1507,7 @@ int KUiPlayerBar::IsHasCost(BYTE cost, int nMoney, int nLevel, int nMana, int nF
 		nUseLevel = 20;
 		nUseMana = nFullMana / 2;
 	}
-	else if (cost == 3)//3: MaxMana/10/¾ä
+	else if (cost == 3)//3: MaxMana/10/Â¾Ã¤
 	{
 		if (nLevel < 10)
 		{
@@ -1528,7 +1528,7 @@ int KUiPlayerBar::IsHasCost(BYTE cost, int nMoney, int nLevel, int nMana, int nF
 		nUseLevel = 10;
 		nUseMana = nFullMana / 10;
 	}
-	else if (cost == 4)//4: <20Lv ? ²»ÄÜËµ : MaxMana*4/5/¾ä
+	else if (cost == 4)//4: <20Lv ? Â²Â»Ã„ÃœÃ‹Âµ : MaxMana*4/5/Â¾Ã¤
 	{
 		if (nLevel < 30)
 		{
@@ -1559,7 +1559,7 @@ int KUiPlayerBar::IsHasCost(BYTE cost, int nMoney, int nLevel, int nMana, int nF
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÍùÊäÈë¿òÈëĞÕÃû×Ö·û´®
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¹ÃŠÃ¤ÃˆÃ«Â¿Ã²ÃˆÃ«ÃÃ•ÃƒÃ»Ã—Ã–Â·Ã»Â´Â®
 //--------------------------------------------------------------------------
 
 void KUiPlayerBar::InputNameMsg(char bChannel, const char* szName, bool bFocus)
@@ -1569,10 +1569,10 @@ void KUiPlayerBar::InputNameMsg(char bChannel, const char* szName, bool bFocus)
 	if (bFocus && Wnd_GetFocusWnd() == NULL)
 		Wnd_SetFocusWnd(&m_pSelf->m_InputEdit);
 	
-	if (szName == NULL || szName[0] == 0)	//Ãû×ÖÊäÈëÎª¿Õ·µ»Ø
+	if (szName == NULL || szName[0] == 0)	//ÃƒÃ»Ã—Ã–ÃŠÃ¤ÃˆÃ«ÃÂªÂ¿Ã•Â·ÂµÂ»Ã˜
 		return;
 
-//	if (bChannel)	//µ±ÊäÈëÎªÆµµÀÊ±,Ê²Ã´¶¼²»×ö,ÒòÎªÓÃ»§²»ĞèÒª´Ë¹¦ÄÜ,µ«ÊÇºóÃæµÄ´úÂëÄÑµÃ¸ÄÁË
+//	if (bChannel)	//ÂµÂ±ÃŠÃ¤ÃˆÃ«ÃÂªÃ†ÂµÂµÃ€ÃŠÂ±,ÃŠÂ²ÃƒÂ´Â¶Â¼Â²Â»Ã—Ã¶,Ã’Ã²ÃÂªÃ“ÃƒÂ»Â§Â²Â»ÃÃ¨Ã’ÂªÂ´Ã‹Â¹Â¦Ã„Ãœ,ÂµÂ«ÃŠÃ‡ÂºÃ³ÃƒÃ¦ÂµÃ„Â´ÃºÃ‚Ã«Ã„Ã‘ÂµÃƒÂ¸Ã„ÃÃ‹
 //		return;
 
 	char Buffer[MAX_SENTENCE_LENGTH];
@@ -1595,7 +1595,7 @@ void KUiPlayerBar::InputNameMsg(char bChannel, const char* szName, bool bFocus)
 			nName++;
 		}
 
-		if (nName > nLen)	//Ô­ÊäÈëÖĞÃ»ÓĞÃû×Ö
+		if (nName > nLen)	//Ã”Â­ÃŠÃ¤ÃˆÃ«Ã–ÃÃƒÂ»Ã“ÃÃƒÃ»Ã—Ã–
 			nName = 0;
 	}
 	
@@ -1609,8 +1609,8 @@ void KUiPlayerBar::InputNameMsg(char bChannel, const char* szName, bool bFocus)
 		if (nName > 0 &&
 			(KShortcutKeyCentre::FindCommand(Buffer + 1) >= 0 ||
 			KShortcutKeyCentre::ms_FunsMap.find(Buffer + 1) != KShortcutKeyCentre::ms_FunsMap.end()
-			))	//µ±Ô­ÊäÈë´®ÖĞÓĞ"/"ÇÒÊÇº¯Êı¹Ø¼ü×ÖÊ±
-		{	//Ö»×·¼Ó" name"
+			))	//ÂµÂ±Ã”Â­ÃŠÃ¤ÃˆÃ«Â´Â®Ã–ÃÃ“Ã"/"Ã‡Ã’ÃŠÃ‡ÂºÂ¯ÃŠÃ½Â¹Ã˜Â¼Ã¼Ã—Ã–ÃŠÂ±
+		{	//Ã–Â»Ã—Â·Â¼Ã“" name"
 			m_pSelf->m_InputEdit.InsertString(" ", 1);
 			m_pSelf->m_InputEdit.InsertString(szName, strlen(szName));
 		}
@@ -1644,7 +1644,7 @@ int	KUiPlayerBar::FindRecentPlayer(const char* szName)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¸ù¾İindexÈ¡µÃÄ³ÃÜÁÄÆµµÀµÄÄ¿±êÍæ¼ÒÃû
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¹Â¾ÃindexÃˆÂ¡ÂµÃƒÃ„Â³ÃƒÃœÃÃ„Ã†ÂµÂµÃ€ÂµÃ„Ã„Â¿Â±ÃªÃÃ¦Â¼Ã’ÃƒÃ»
 //--------------------------------------------------------------------------
 char* KUiPlayerBar::GetRecentPlayerName(int nIndex)
 {
@@ -1764,7 +1764,7 @@ void KUiPlayerBar::InputItemMsg(unsigned int uId)
 		m_pSelf->m_pItem.nNameLen = nLen;
 		//m_pSelf->m_InputEdit.InsertString(szName2, nLen);
 
-		if (szName2 == NULL || szName2[0] == 0)	//Ãû×ÖÊäÈëÎª¿Õ·µ»Ø
+		if (szName2 == NULL || szName2[0] == 0)	//ÃƒÃ»Ã—Ã–ÃŠÃ¤ÃˆÃ«ÃÂªÂ¿Ã•Â·ÂµÂ»Ã˜
 			return;
 
 		char Buffer[MAX_SENTENCE_LENGTH];
@@ -1787,7 +1787,7 @@ void KUiPlayerBar::InputItemMsg(unsigned int uId)
 				nName++;
 			}
 
-			if (nName > nMsgLength)	//Ô­ÊäÈëÖĞÃ»ÓĞÃû×Ö
+			if (nName > nMsgLength)	//Ã”Â­ÃŠÃ¤ÃˆÃ«Ã–ÃÃƒÂ»Ã“ÃÃƒÃ»Ã—Ã–
 				nName = 0;
 		}
 		if(nName && nName == nMsgLength)

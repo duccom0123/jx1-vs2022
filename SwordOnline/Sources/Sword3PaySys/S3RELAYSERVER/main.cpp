@@ -314,8 +314,8 @@ public:
 		::DeleteCriticalSection(&m_switchsect);
 	}
 
-	//WriteInfo¿ÉÒÔ¶à¸öÏß³ÌÊ¹ÓÃ
-	//ÆäÖĞnLenÖ¸ÄÚ´æ³¤¶È
+	//WriteInfoå¯ä»¥å¤šä¸ªçº¿ç¨‹ä½¿ç”¨
+	//å…¶ä¸­nLenæŒ‡å†…å­˜é•¿åº¦
 	BOOL WriteInfo(BYTE* szInfo, DWORD nLen)
 	{
 		if (nLen <= 0 || szInfo == NULL)
@@ -337,7 +337,7 @@ public:
 		return bCanAdd;
 	}
 	
-	//ReadInfoÖ»ÄÜÒ»¸öÏß³Ì·ÃÎÊ
+	//ReadInfoåªèƒ½ä¸€ä¸ªçº¿ç¨‹è®¿é—®
 	BYTE* ReadInfo()
 	{
 		BYTE* pInfo = NULL;
@@ -395,7 +395,7 @@ int gTrace(LPCSTR fmt, ...)
 
 	n = strlen(tempbuff);
 
-	g_TraceBuffer.WriteInfo((BYTE*)tempbuff, n + 1);	//´ø0Ğ´Èë
+	g_TraceBuffer.WriteInfo((BYTE*)tempbuff, n + 1);	//å¸¦0å†™å…¥
 	return 0;
 }
 
@@ -455,7 +455,7 @@ void gShowTrace()
 			if (::SendMessage(g_listwnd, LB_ADDSTRING, 0, (LPARAM)pBuff) >= 0)
 				n++;
 
-			gTraceLogFile(pBuff, (*pMem) - 1);	//È¥0Ğ´ÎÄ¼ş
+			gTraceLogFile(pBuff, (*pMem) - 1);	//å»0å†™æ–‡ä»¶
 		}
 		else
 			break;

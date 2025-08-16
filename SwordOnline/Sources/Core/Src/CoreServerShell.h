@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	�����ʷ����Core�Ľӿڷ�������
+//	外界访问服务版Core的接口方法定义
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-20
 ------------------------------------------------------------------------------------------
-	��磨�����ϵͳ��ͨ���˽ӿڴ�Core��ȡ��Ϸ�������ݡ�
+	外界（如界面系统）通过此接口从Core获取游戏世界数据。
 *****************************************************************************************/
 
 #ifndef CORESERVERSHELL_H
@@ -15,31 +15,31 @@
 
 
 //=========================================================
-// Core�ⲿ�ͻ���core�Ĳ����������������
+// Core外部客户对core的操作请求的索引定义
 //=========================================================
 enum SERVER_SHELL_OPERATION_INDEX
 {
-	SSOI_LAUNCH = 1,			//��������
+	SSOI_LAUNCH = 1,			//启动服务
 	SSOI_TONG,
-	SSOI_SHUTDOWN,				//�رշ���
+	SSOI_SHUTDOWN,				//关闭服务
 	SSOI_BROADCASTING,			//boardcasting
 	//uParam = (char*)pMessage
 	//nParam = (int)nMsgLen
 
-	SSOI_TONG_CREATE,			// relay ��ᴴ���ɹ���֪ͨ core ������Ӧ�Ĵ���
-	SSOI_TONG_REFUSE_ADD,		// �ܾ�����������
-	SSOI_TONG_ADD,				// relay ����Ա���ӳɹ���֪ͨ core ������Ӧ�Ĵ���
-	SSOI_LOCK_ACCOUNTNAME,				// relay ����Ա���ӳɹ���֪ͨ core ������Ӧ�Ĵ���
-	SSOI_UNLOCK_ACCOUNTNAME,				// relay ����Ա���ӳɹ���֪ͨ core ������Ӧ�Ĵ���
-	SSOI_LOCK_CHAT,				// relay ����Ա���ӳɹ���֪ͨ core ������Ӧ�Ĵ���
-	SSOI_UNLOCK_CHAT,				// relay ����Ա���ӳɹ���֪ͨ core ������Ӧ�Ĵ���
+	SSOI_TONG_CREATE,			// relay 帮会创建成功，通知 core 进行相应的处理
+	SSOI_TONG_REFUSE_ADD,		// 拒绝帮会加入申请
+	SSOI_TONG_ADD,				// relay 帮会成员添加成功，通知 core 进行相应的处理
+	SSOI_LOCK_ACCOUNTNAME,				// relay 帮会成员添加成功，通知 core 进行相应的处理
+	SSOI_UNLOCK_ACCOUNTNAME,				// relay 帮会成员添加成功，通知 core 进行相应的处理
+	SSOI_LOCK_CHAT,				// relay 帮会成员添加成功，通知 core 进行相应的处理
+	SSOI_UNLOCK_CHAT,				// relay 帮会成员添加成功，通知 core 进行相应的处理
 };
 
 //=========================================================
-// Core�ⲿ�ͻ���core��ȡ��Ϸ���ݵ�������������������
+// Core外部客户向core获取游戏数据的数据项内容索引定义
 //=========================================================
-//����������������ز���uParam��nParam�����ע����δ�ἰ���򴫵ݶ�ֵ0��
-//����ر�ָ������ֵ���壬��ɹ���ȡ���ݷ���1��δ�ɹ�����0��
+//各数据项索引的相关参数uParam与nParam如果在注释中未提及，则传递定值0。
+//如果特别指明返回值含义，则成功获取数据返回1，未成功返回0。
 enum GAMEDATA_INDEX
 {
 	SGDI_CHARACTER_NAME,
@@ -54,17 +54,17 @@ enum GAMEDATA_INDEX
 	SGDI_CHARACTER_EXTPOINTCHANGED,
 	//uParam = (char*) id buffer 
 
-	// �����Ὠ�����������������Ƿ����
+	// 传入帮会建立参数，返回条件是否成立
 	// uParam : struct STONG_SERVER_TO_CORE_APPLY_CREATE point
-	// return : �����Ƿ����
+	// return : 条件是否成立
 	SGDI_TONG_APPLY_CREATE,
 
-	// ���������
+	// 申请加入帮会
 	// uParam : struct STONG_SERVER_TO_CORE_APPLY_ADD point
 	SGDI_TONG_APPLY_ADD,
 
-	// �жϼ����������Ƿ����
-	// uParam : ����� char point �����ڽ��հ������
+	// 判断加入帮会条件是否合适
+	// uParam : 传入的 char point ，用于接收帮会名称
 	// nParam : struct STONG_SERVER_TO_CORE_CHECK_ADD_CONDITION point
 	SGDI_TONG_CHECK_JOIN,
 
@@ -72,63 +72,63 @@ enum GAMEDATA_INDEX
 
 	SGDI_TONG_CHECK_ADD_CONDITION_REPLY,
 
-	// ��ð����Ϣ
-	// uParam : ����� STONG_SERVER_TO_CORE_GET_INFO point
+	// 获得帮会信息
+	// uParam : 传入的 STONG_SERVER_TO_CORE_GET_INFO point
 	SGDI_TONG_GET_INFO,
 
-	// �ж��Ƿ�������Ȩ��
-	// uParam : ����� TONG_APPLY_INSTATE_COMMAND point
+	// 判断是否有任命权利
+	// uParam : 传入的 TONG_APPLY_INSTATE_COMMAND point
 	// nParam : PlayerIndex
 	SGDI_TONG_INSTATE_POWER,
 
-	// ��������������ݱ仯
-	// uParam : ����� STONG_SERVER_TO_CORE_BE_INSTATED point
+	// 被任命，帮会数据变化
+	// uParam : 传入的 STONG_SERVER_TO_CORE_BE_INSTATED point
 	SGDI_TONG_BE_INSTATED,
 
-	// �ж��Ƿ�������Ȩ��
-	// uParam : ����� TONG_APPLY_KICK_COMMAND point
+	// 判断是否有踢人权利
+	// uParam : 传入的 TONG_APPLY_KICK_COMMAND point
 	// nParam : PlayerIndex
 	SGDI_TONG_KICK_POWER,
 
-	// ���߳����
-	// uParam : ����� STONG_SERVER_TO_CORE_BE_KICKED point
+	// 被踢出帮会
+	// uParam : 传入的 STONG_SERVER_TO_CORE_BE_KICKED point
 	SGDI_TONG_BE_KICKED,
 
-	// �뿪����ж�
-	// uParam : ����� TONG_APPLY_LEAVE_COMMAND point
+	// 离开帮会判断
+	// uParam : 传入的 TONG_APPLY_LEAVE_COMMAND point
 	// nParam : PlayerIndex
 	SGDI_TONG_LEAVE_POWER,
 
-	// �뿪���
-	// uParam : ����� STONG_SERVER_TO_CORE_LEAVE point
+	// 离开帮会
+	// uParam : 传入的 STONG_SERVER_TO_CORE_LEAVE point
 	SGDI_TONG_LEAVE,
 
-	// �ܷ�λ�ж�
-	// uParam : ����� TONG_APPLY_CHANGE_MASTER_COMMAND point
+	// 能否传位判断
+	// uParam : 传入的 TONG_APPLY_CHANGE_MASTER_COMMAND point
 	// nParam : PlayerIndex
 	SGDI_TONG_CHANGE_MASTER_POWER,
 
-	// �ܷ���ܴ�λ�ж�
-	// uParam : ����� STONG_SERVER_TO_CORE_CHECK_GET_MASTER_POWER point
+	// 能否接受传位判断
+	// uParam : 传入的 STONG_SERVER_TO_CORE_CHECK_GET_MASTER_POWER point
 	SGDI_TONG_GET_MASTER_POWER,
 
-	// ��λ�������ݸı�
-	// uParam : ����� STONG_SERVER_TO_CORE_CHANGE_AS point
+	// 传位导致身份改变
+	// uParam : 传入的 STONG_SERVER_TO_CORE_CHANGE_AS point
 	SGDI_TONG_CHANGE_AS,
 
-	// ��������
-	// uParam : ����� STONG_SERVER_TO_CORE_CHANGE_MASTER point
+	// 帮主换了
+	// uParam : 传入的 STONG_SERVER_TO_CORE_CHANGE_MASTER point
 	SGDI_TONG_CHANGE_MASTER,
 
-	// ��ð�����ַ���ת���ɵ� dword
+	// 获得帮会名字符串转换成的 dword
 	// nParam : PlayerIndex
 	SGDI_TONG_GET_TONG_NAMEID,
 
-	// ��½ʱ���ð����Ϣ
-	// uParam : ����� STONG_SERVER_TO_CORE_LOGIN point
+	// 登陆时候获得帮会信息
+	// uParam : 传入的 STONG_SERVER_TO_CORE_LOGIN point
 	SGDI_TONG_LOGIN,
 
-	// ֪ͨcore����ĳ��ҵİ����Ϣ
+	// 通知core发送某玩家的帮会信息
 	// nParam : player index
 	SGDI_TONG_SEND_SELF_INFO,
 	SGDI_TONG_MONEY_POWER,
@@ -195,16 +195,16 @@ struct iCoreServerShell
 	virtual void RemovePlayerForExchange(int nIndex) = 0;
 	virtual void RecoverPlayerExchange(int nIndex) = 0;
 	virtual int  AddCharacter(int nExtPoint, int nChangeExtPoint, void* pBuffer, GUID* pGuid) = 0;
-	//����Ϸ���Ͳ���
+	//向游戏发送操作
 	virtual int	 OperationRequest(unsigned int uOper, unsigned int uParam, int nParam) = 0;
-	//��ȡ����״��
+	//获取连接状况
 	virtual int	 GetConnectInfo(KCoreConnectInfo* pInfo) = 0;
 //	virtual	BOOL ValidPingTime(int nIndex) = 0;
-	//����Ϸ�����ȡ����
+	//从游戏世界获取数据
 	virtual int	 GetGameData(unsigned int uDataId, unsigned int uParam, int nParam) = 0;
-	//�ճ����core���Ҫ���������򷵻�0�����򷵻ط�0ֵ
+	//日常活动，core如果要寿终正寝则返回0，否则返回非0值
 	virtual int  Breathe() = 0;
-	//�ͷŽӿڶ���
+	//释放接口对象
 	virtual void Release() = 0;
 	virtual void SetSaveStatus(int nIndex, UINT uStatus) = 0;
 	virtual UINT GetSaveStatus(int nIndex) = 0;
@@ -219,7 +219,7 @@ struct iCoreServerShell
 
 #ifndef CORE_EXPORTS
 
-	//��ȡiCoreShell�ӿ�ʵ����ָ��
+	//获取iCoreShell接口实例的指针
 #ifndef __linxu
 	extern "C" 
 #endif

@@ -12,7 +12,7 @@ public:
 	DWORD	dwRed;
 	DWORD	dwGreen;
 	DWORD	dwBlue;
-	DWORD	dwIndex;	// Ë÷ÒýÖµ
+	DWORD	dwIndex;	// Ã‹Ã·Ã’Ã½Ã–Âµ
 	KOctreeNode	*tChild[8];
 public:
 	KOctreeNode();

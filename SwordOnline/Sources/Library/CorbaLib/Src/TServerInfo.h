@@ -11,8 +11,8 @@ char ServerObjName[40];
 int From;
 int To;
 
-long ActionNum;//Ã¿´Î·şÎñÔÚ·şÎñ¶ËµÄ´ÎÊı
-long LoopNum;//×Ü¹²Íê³É¶àÉÙ´Î¡£
+long ActionNum;//æ¯æ¬¡æœåŠ¡åœ¨æœåŠ¡ç«¯çš„æ¬¡æ•°
+long LoopNum;//æ€»å…±å®Œæˆå¤šå°‘æ¬¡ã€‚
 
 //CORBA::ORB::RequestSeq ReqSeq;
 };

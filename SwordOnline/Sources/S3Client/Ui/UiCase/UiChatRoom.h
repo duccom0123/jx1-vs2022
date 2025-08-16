@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ÁÄÌìÖ÷½çÃæ
+//	ç•Œé¢--èŠå¤©ä¸»ç•Œé¢
 //	Author	:   
 //	CreateTime:	2015-7-29
 ------------------------------------------------------------------------------------------
@@ -20,11 +20,11 @@ struct OneRoomInfo
 class KUiChatRoom : public KWndShowAnimate
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiChatRoom*	OpenWindow();		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiChatRoom*	GetIfVisible();		//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void				CloseWindow(bool bDestroy);	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸	
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiChatRoom*	OpenWindow();		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiChatRoom*	GetIfVisible();		//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void				CloseWindow(bool bDestroy);	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ	
 	static void				ServerRequestRoomList(KOneRoom *pRoom);
 	static void				ServerRequestMemberList(KOneMem *pMem);
 	static void				ServerRequestBlackList(KOneMem *pMem);
@@ -35,8 +35,8 @@ private:
 
 	KUiChatRoom();
 	~KUiChatRoom();
-	void	Initialize();							//³õÊ¼»¯
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Initialize();							//åˆå§‹åŒ–
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	void	Breathe();
 private:
 	static KUiChatRoom* m_pSelf;
@@ -53,9 +53,9 @@ private:
 	KWndButton	m_BtnPassword;
 	KWndText80	m_TxtCurRoomTitle;
 
-	KScrollMessageListBox	m_RoomList;	//ËµÃ÷ÎÄ×Ö
-	KScrollMessageListBox	m_MemberList;	//ËµÃ÷ÎÄ×Ö
-	KScrollMessageListBox	m_BlackList;	//ËµÃ÷ÎÄ×Ö
+	KScrollMessageListBox	m_RoomList;	//è¯´æ˜æ–‡å­—
+	KScrollMessageListBox	m_MemberList;	//è¯´æ˜æ–‡å­—
+	KScrollMessageListBox	m_BlackList;	//è¯´æ˜æ–‡å­—
 	
 	OneRoomInfo	Room;
 	int			m_nRoomNameLen;

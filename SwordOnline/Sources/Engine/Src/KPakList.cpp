@@ -18,7 +18,7 @@
 ENGINE_API KPakList* g_pPakList = NULL;
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹ºÔìº¯Êý
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
 //---------------------------------------------------------------------------
 KPakList::KPakList()
 {
@@ -27,7 +27,7 @@ KPakList::KPakList()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	·ÖÔìº¯Êý
+// åŠŸèƒ½:	åˆ†é€ å‡½æ•°
 //---------------------------------------------------------------------------
 KPakList::~KPakList()
 {
@@ -35,7 +35,7 @@ KPakList::~KPakList()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	¹Ø±ÕËùÓÐÎÄ¼þ
+// åŠŸèƒ½:	å…³é—­æ‰€æœ‰æ–‡ä»¶
 //---------------------------------------------------------------------------
 void KPakList::Close()
 {
@@ -45,10 +45,10 @@ void KPakList::Close()
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	ÔÚËùÓÐ°üÖÐÉ¨ÃèÖ¸¶¨ÎÄ¼þ
-// ²ÎÊý:	uId			ÎÄ¼þÃûID
-//			ElemRef		ÓÃÓÚ´æ·Å£¨´«³ö£©ÎÄ¼þÐÅÏ¢
-// ·µ»Ø:	ÊÇ·ñ³É¹¦ÕÒµ½
+// åŠŸèƒ½:	åœ¨æ‰€æœ‰åŒ…ä¸­æ‰«ææŒ‡å®šæ–‡ä»¶
+// å‚æ•°:	uId			æ–‡ä»¶åID
+//			ElemRef		ç”¨äºŽå­˜æ”¾ï¼ˆä¼ å‡ºï¼‰æ–‡ä»¶ä¿¡æ¯
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸæ‰¾åˆ°
 //---------------------------------------------------------------------------
 bool KPakList::FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef)
 {
@@ -65,9 +65,9 @@ bool KPakList::FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	°ÑÎÄ¼þÃû×ª»»Îª°üÖÐµÄid
-// ²ÎÊý:	pszFileName	ÎÄ¼þÃû
-// ·µ»Ø:	ÎÄ¼þÃû¶ÔÓ¦µÄ°üÖÐµÄid
+// åŠŸèƒ½:	æŠŠæ–‡ä»¶åè½¬æ¢ä¸ºåŒ…ä¸­çš„id
+// å‚æ•°:	pszFileName	æ–‡ä»¶å
+// è¿”å›ž:	æ–‡ä»¶åå¯¹åº”çš„åŒ…ä¸­çš„id
 //---------------------------------------------------------------------------
 unsigned long KPakList::FileNameToId(const char* pszFileName)
 {
@@ -85,10 +85,10 @@ unsigned long KPakList::FileNameToId(const char* pszFileName)
 }
 
 //---------------------------------------------------------------------------
-// ¹¦ÄÜ:	ÔÚËùÓÐ°üÖÐÉ¨ÃèÖ¸¶¨ÎÄ¼þ
-// ²ÎÊý:	pszFileName	ÎÄ¼þÃû
-//			ElemRef	ÓÃÓÚ´æ·Å£¨´«³ö£©ÎÄ¼þÐÅÏ¢
-// ·µ»Ø:	ÊÇ·ñ³É¹¦ÕÒµ½
+// åŠŸèƒ½:	åœ¨æ‰€æœ‰åŒ…ä¸­æ‰«ææŒ‡å®šæ–‡ä»¶
+// å‚æ•°:	pszFileName	æ–‡ä»¶å
+//			ElemRef	ç”¨äºŽå­˜æ”¾ï¼ˆä¼ å‡ºï¼‰æ–‡ä»¶ä¿¡æ¯
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸæ‰¾åˆ°
 //---------------------------------------------------------------------------
 bool KPakList::FindElemFile(const char* pszFileName, XPackElemFileRef& ElemRef)
 {
@@ -109,9 +109,9 @@ bool KPakList::FindElemFile(const char* pszFileName, XPackElemFileRef& ElemRef)
 }
 
 //--------------------------------------------------------------------
-// ¹¦ÄÜ:	Open package ini file
-// ²ÎÊý:	char* filename
-// ·µ»Ø:	BOOL
+// åŠŸèƒ½:	Open package ini file
+// å‚æ•°:	char* filename
+// è¿”å›ž:	BOOL
 //---------------------------------------------------------------------------
 bool KPakList::Open(const char* pPakListFile)
 {
@@ -168,7 +168,7 @@ bool KPakList::Open(const char* pPakListFile)
 	return bResult;
 }
 
-//¶ÁÈ¡°üÄÚµÄ×ÓÎÄ¼þ
+//è¯»å–åŒ…å†…çš„å­æ–‡ä»¶
 int KPakList::ElemFileRead(XPackElemFileRef& ElemRef,
 					void* pBuffer, unsigned uSize)
 {
@@ -177,7 +177,7 @@ int KPakList::ElemFileRead(XPackElemFileRef& ElemRef,
 	return 0;
 }
 
-//¶ÁÈ¡sprÎÄ¼þÍ·²¿»òÕû¸öspr
+//è¯»å–spræ–‡ä»¶å¤´éƒ¨æˆ–æ•´ä¸ªspr
 SPRHEAD* KPakList::GetSprHeader(XPackElemFileRef& ElemRef, SPROFFS*& pOffsetTable)
 {
 	if (ElemRef.nPackIndex >= 0 && ElemRef.nPackIndex < m_nPakNumber)
@@ -185,7 +185,7 @@ SPRHEAD* KPakList::GetSprHeader(XPackElemFileRef& ElemRef, SPROFFS*& pOffsetTabl
 	return NULL;
 }
 
-//¶ÁÈ¡°´Ö¡Ñ¹ËõµÄsprµÄÒ»Ö¡µÄÊý¾Ý
+//è¯»å–æŒ‰å¸§åŽ‹ç¼©çš„sprçš„ä¸€å¸§çš„æ•°æ®
 SPRFRAME* KPakList::GetSprFrame(int nPackIndex, SPRHEAD* pSprHeader, int nFrame)
 {
 	if (nPackIndex >= 0 && nPackIndex < m_nPakNumber)

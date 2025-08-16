@@ -21,9 +21,9 @@ namespace PackageCQ
 	struct pack_header
 	{
 		unsigned char signature[4];			//"PACK"
-		unsigned long count;				//数据的条目数
-		unsigned long index_offset;			//索引的偏移量
-		unsigned long data_offset;			//数据的偏移量
+		unsigned long count;				//鏁版嵁鐨勬潯鐩暟
+		unsigned long index_offset;			//绱㈠紩鐨勫亸绉婚噺
+		unsigned long data_offset;			//鏁版嵁鐨勫亸绉婚噺
 		unsigned long crc32;
 		unsigned char reserved[12];
 		

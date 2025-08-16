@@ -1,24 +1,24 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÁĞ±í´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ—è¡¨çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-8
 ------------------------------------------------------------------------------------------
-    ÁĞ±í´°¿ÚÖ»ÁĞ³öÎÄ×Ö¡£µ«ÊÇÃ¿Ïî¶¼¿ÉÒÔ¹ØÁªÆäËûÊı¾İ¡£
-	ÁĞ±í´°¿ÚÉèÖÃµÄÄÚÈİÎªÒ»¸öÊı×é£¬Êı×éµÄÃ¿Ò»¸öÔªËØ¶ÔÓ¦Ò»¸öÁĞ±íÏî¡£Ã¿¸öÊı×éÔ­ËØµÄ´æ´¢¿Õ¼ä´ó
-Ğ¡ÏàÍ¬¡£Ã¿¸öÊı×éÔªËØµÄ½á¹¹ÎªÒ»¸ö¶¨³¤µÄ×Ö·û´®»òÕßÎª±íº¬Ò»¸ö¶¨³¤×Ö·û´®³ÉÔ±µÄ½á¹¹£¬×Ö·û´®¿ÉÒÔ
-´¦ÓÚ½á¹¹ÖĞµÄÈÎÒâÎ»ÖÃ¡£ÁĞ±í´°¿ÚÀàÌá¹©·ÃÎÊº¯Êı¿ÉÒÔ»ñÈ¡ÕâĞ©Êı×éÔªËØ½á¹¹ÖĞµÄÕûÊıĞÎ³ÉÔ±µÄÖµ¡£
-    ÁĞ±í´°¿ÚËùÄÜÁĞ³öµÄÁĞ±íÏîÊıÄ¿Ğ¡ÓÚÊı×éÔªËØÊıÄ¿Ê±£¬¿ÉÒÔÉèÖÃÁĞ±í´°¿Ú¶¥²¿´ÓÄÄ¸öÊı×éÔªËØ¿ªÊ¼
-ÏÔÊ¾¡£
+    åˆ—è¡¨çª—å£åªåˆ—å‡ºæ–‡å­—ã€‚ä½†æ˜¯æ¯é¡¹éƒ½å¯ä»¥å…³è”å…¶ä»–æ•°æ®ã€‚
+	åˆ—è¡¨çª—å£è®¾ç½®çš„å†…å®¹ä¸ºä¸€ä¸ªæ•°ç»„ï¼Œæ•°ç»„çš„æ¯ä¸€ä¸ªå…ƒç´ å¯¹åº”ä¸€ä¸ªåˆ—è¡¨é¡¹ã€‚æ¯ä¸ªæ•°ç»„åŸç´ çš„å­˜å‚¨ç©ºé—´å¤§
+å°ç›¸åŒã€‚æ¯ä¸ªæ•°ç»„å…ƒç´ çš„ç»“æ„ä¸ºä¸€ä¸ªå®šé•¿çš„å­—ç¬¦ä¸²æˆ–è€…ä¸ºè¡¨å«ä¸€ä¸ªå®šé•¿å­—ç¬¦ä¸²æˆå‘˜çš„ç»“æ„ï¼Œå­—ç¬¦ä¸²å¯ä»¥
+å¤„äºç»“æ„ä¸­çš„ä»»æ„ä½ç½®ã€‚åˆ—è¡¨çª—å£ç±»æä¾›è®¿é—®å‡½æ•°å¯ä»¥è·å–è¿™äº›æ•°ç»„å…ƒç´ ç»“æ„ä¸­çš„æ•´æ•°å½¢æˆå‘˜çš„å€¼ã€‚
+    åˆ—è¡¨çª—å£æ‰€èƒ½åˆ—å‡ºçš„åˆ—è¡¨é¡¹æ•°ç›®å°äºæ•°ç»„å…ƒç´ æ•°ç›®æ—¶ï¼Œå¯ä»¥è®¾ç½®åˆ—è¡¨çª—å£é¡¶éƒ¨ä»å“ªä¸ªæ•°ç»„å…ƒç´ å¼€å§‹
+æ˜¾ç¤ºã€‚
 *****************************************************************************************/
 #pragma once
 #include "WndWindow.h"
 
-#define	WNDLIST_ES_HALIGN_CENTRE		0x0001		//Ë®Æ½¾ÓÖĞ
-#define	WNDLIST_ES_HALIGN_RIGHT			0x0002		//Ë®Æ½¿¿ÓÒ¶ÔÆë
+#define	WNDLIST_ES_HALIGN_CENTRE		0x0001		//æ°´å¹³å±…ä¸­
+#define	WNDLIST_ES_HALIGN_RIGHT			0x0002		//æ°´å¹³é å³å¯¹é½
 #define	WNDLIST_ES_HALIGN_FILTER		(WNDLIST_ES_HALIGN_RIGHT | WNDLIST_ES_HALIGN_CENTRE)
-#define	WNDLIST_ES_HIGHLIGHT_ENABLE		0x0004		//ÒÔ²»Í¬ÑÕÉ«ÏÔÊ¾Êó±êÖ¸ÕëÖ¸ÏòµÄÏî
-#define WNDLIST_ES_MULTI_SEL			0x0008		//¿ÉÒÔÍ¬Ê±Ñ¡ÖĞ¶àÏî
+#define	WNDLIST_ES_HIGHLIGHT_ENABLE		0x0004		//ä»¥ä¸åŒé¢œè‰²æ˜¾ç¤ºé¼ æ ‡æŒ‡é’ˆæŒ‡å‘çš„é¡¹
+#define WNDLIST_ES_MULTI_SEL			0x0008		//å¯ä»¥åŒæ—¶é€‰ä¸­å¤šé¡¹
 
 #define	NO_CUSTOM_COLOR					0xffffffff
 
@@ -27,26 +27,26 @@ class KWndScrollBar;
 class KWndList : public KWndWindow
 {
 public:
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual void	PaintWindow();							//»æÖÆ´°¿Ú
-	//ÉèÖÃÁĞ±íÏÔÊ¾µÄÄÚÈİ
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual void	PaintWindow();							//ç»˜åˆ¶çª—å£
+	//è®¾ç½®åˆ—è¡¨æ˜¾ç¤ºçš„å†…å®¹
 	void			SetContent(BYTE* pContent, int nNumItem, int nItemSize, int nStringOffset);
-	void			GetString(int nItemIndex, char* pBuffer);//»ñÈ¡ÁĞ±íÏîµÄ×Ö·û´®ÄÚÈİ
-	int				GetStrignLen(int nItemIndex);			//»ñµÃÁĞ±íÏîµÄ×Ö·û´®ÄÚÈİ³¤¶È¡£
-	//ÔÚÁĞ±íÖĞ²éÕÒÄ³¸ö×Ö·û´®¡£
+	void			GetString(int nItemIndex, char* pBuffer);//è·å–åˆ—è¡¨é¡¹çš„å­—ç¬¦ä¸²å†…å®¹
+	int				GetStrignLen(int nItemIndex);			//è·å¾—åˆ—è¡¨é¡¹çš„å­—ç¬¦ä¸²å†…å®¹é•¿åº¦ã€‚
+	//åœ¨åˆ—è¡¨ä¸­æŸ¥æ‰¾æŸä¸ªå­—ç¬¦ä¸²ã€‚
 	int				FindString(int nPrecedingStart, const char* pString);
-	//»ñµÃÁĞ±íÏî¹ØÁªÊı¾İ½á¹¹ÖĞÄ³¸öÕûÊıĞÍ³ÉÔ±µÄÖµ
+	//è·å¾—åˆ—è¡¨é¡¹å…³è”æ•°æ®ç»“æ„ä¸­æŸä¸ªæ•´æ•°å‹æˆå‘˜çš„å€¼
 	int				GetItemDataInt(int nItemIndex, int nDataOffset);
-	void			SetTopItemIndex(int nTopItemIndex);		//ÉèÖÃÁĞ±í´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				GetTopItemIndex() { return m_nTopItemIndex; }//»ñµÃÁĞ±í´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				GetVisibleItemCount() const;			//»ñµÃÁĞ±í¿ò¿ÉÒÔÍ¬Ê±ÏÔÊ¾µÄÏîµÄÊıÄ¿
-	int				GetCount()  { return m_nNumItem; }		//»ñÈ¡Êı¾İÏîµÄ×ÜÊıÄ¿
-	int				GetCurSel() { return m_nSelItemIndex;  }//µÃµ½µ±Ç°Ñ¡ÔñµÄÊı¾İÏîµÄË÷Òı
+	void			SetTopItemIndex(int nTopItemIndex);		//è®¾ç½®åˆ—è¡¨çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				GetTopItemIndex() { return m_nTopItemIndex; }//è·å¾—åˆ—è¡¨çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				GetVisibleItemCount() const;			//è·å¾—åˆ—è¡¨æ¡†å¯ä»¥åŒæ—¶æ˜¾ç¤ºçš„é¡¹çš„æ•°ç›®
+	int				GetCount()  { return m_nNumItem; }		//è·å–æ•°æ®é¡¹çš„æ€»æ•°ç›®
+	int				GetCurSel() { return m_nSelItemIndex;  }//å¾—åˆ°å½“å‰é€‰æ‹©çš„æ•°æ®é¡¹çš„ç´¢å¼•
 	int				SetCurSel(int nSel);
-	int				IsItemSel(int nIndex);					//ÅĞ¶ÏÄ³ÏîÊÇ·ñ±»Ñ¡ÖĞ
+	int				IsItemSel(int nIndex);					//åˆ¤æ–­æŸé¡¹æ˜¯å¦è¢«é€‰ä¸­
 	void			SetCustomColorOffset(int nOffset);
-	void			EnableMultiSel(int bEnable);			//ÆôÓÃ/½ûÓÃ¶àÑ¡
+	void			EnableMultiSel(int bEnable);			//å¯ç”¨/ç¦ç”¨å¤šé€‰
 	void			SetScrollbar(KWndScrollBar* pScroll);
 	void			SetSelItemBorderColor(unsigned int uColor)
 	{
@@ -57,38 +57,38 @@ public:
 protected:
 	void			Clone(KWndList* pCopy);
 private:
-	void			OnLButtonDown(int x, int y);			//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂ
-	void			OnRButtonDown(int x, int y);			//ÏìÓ¦Êó±êÓÒ¼ü°´ÏÂ
-	void			OnLButtonDClick(int x, int y);			//ÏìÓ¦Êó±ê×ó¼üdouble click
-	void			OnMouseMove(int x, int y);				//ÏìÓ¦Êó±êÔÚÁĞ±í´°¿ÚÉÏÒÆ¶¯
-	int				GetIemIndexAtPoint(int x, int y);		//»ñµÃµÄÖ¸¶¨Î»ÖÃµÄÑ¡ÏîµÄË÷Òı
+	void			OnLButtonDown(int x, int y);			//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹
+	void			OnRButtonDown(int x, int y);			//å“åº”é¼ æ ‡å³é”®æŒ‰ä¸‹
+	void			OnLButtonDClick(int x, int y);			//å“åº”é¼ æ ‡å·¦é”®double click
+	void			OnMouseMove(int x, int y);				//å“åº”é¼ æ ‡åœ¨åˆ—è¡¨çª—å£ä¸Šç§»åŠ¨
+	int				GetIemIndexAtPoint(int x, int y);		//è·å¾—çš„æŒ‡å®šä½ç½®çš„é€‰é¡¹çš„ç´¢å¼•
 	void			UpdateData();
 private:
-	KWndScrollBar*	m_pScrollbar;			//¹ö¶¯Ìõ
+	KWndScrollBar*	m_pScrollbar;			//æ»šåŠ¨æ¡
 
-	BYTE*			m_pContent;				//ÁĞ±íÏîÄÚÈİÊı¾İ
-	int				m_nNumItem;				//Êı¾İÏîµÄÊıÄ¿
-	int				m_nItemSize;			//Êı¾İÏî½á¹¹µÄ´æ´¢¿Õ¼ä¿í¶È
-	int				m_nStringOffset;		//ÒªÏÔÊ¾µÄ×Ö·û´®ÔÚÊı¾İÏî½á¹¹ÖĞµÄÆ«ÒÆÎ»ÖÃ
-	int				m_nColorOffset;			//ÒªÏÔÊ¾µÄ×Ö·û´®µÄÑÕÉ«ÔÚÊı¾İÏî½á¹¹ÖĞµÄÆ«ÒÆÎ»ÖÃ£¬
-					//Ö»µ±ÓĞWNDLIST_ES_CUSTOM_COLOR±ê¼ÇÊ±£¬²ÅÓĞĞ§¹û
+	BYTE*			m_pContent;				//åˆ—è¡¨é¡¹å†…å®¹æ•°æ®
+	int				m_nNumItem;				//æ•°æ®é¡¹çš„æ•°ç›®
+	int				m_nItemSize;			//æ•°æ®é¡¹ç»“æ„çš„å­˜å‚¨ç©ºé—´å®½åº¦
+	int				m_nStringOffset;		//è¦æ˜¾ç¤ºçš„å­—ç¬¦ä¸²åœ¨æ•°æ®é¡¹ç»“æ„ä¸­çš„åç§»ä½ç½®
+	int				m_nColorOffset;			//è¦æ˜¾ç¤ºçš„å­—ç¬¦ä¸²çš„é¢œè‰²åœ¨æ•°æ®é¡¹ç»“æ„ä¸­çš„åç§»ä½ç½®ï¼Œ
+					//åªå½“æœ‰WNDLIST_ES_CUSTOM_COLORæ ‡è®°æ—¶ï¼Œæ‰æœ‰æ•ˆæœ
 
-	int				m_nTopItemIndex;		//´°¿Ú¶¥²¿ÏÔÊ¾µÄÊı¾İÏîµÄË÷Òı
-	int				m_nSelItemIndex;		//Ñ¡ÖĞµÄÊı¾İÏîµÄË÷Òı
-	int				m_nHighLightItemIndex;	//¸ßÁÁ¶ÈÏÔÊ¾£¨Êó±êÖ¸ÕëÏÂ·½£©µÄÊı¾İÏîµÄË÷Òı
+	int				m_nTopItemIndex;		//çª—å£é¡¶éƒ¨æ˜¾ç¤ºçš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				m_nSelItemIndex;		//é€‰ä¸­çš„æ•°æ®é¡¹çš„ç´¢å¼•
+	int				m_nHighLightItemIndex;	//é«˜äº®åº¦æ˜¾ç¤ºï¼ˆé¼ æ ‡æŒ‡é’ˆä¸‹æ–¹ï¼‰çš„æ•°æ®é¡¹çš„ç´¢å¼•
 
-	unsigned int	m_ItemColor;			//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_ItemBorderColor;		//ÏÔÊ¾Êı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
-	unsigned int	m_SelItemColor;			//±»Ñ¡ÖĞµÄÊı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_SelItemBorderColor;	//±»Ñ¡ÖĞµÄÊı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
-	unsigned int	m_HighLightColor;		//¸ßÁÁ¶ÈÏÔÊ¾µÄÊı¾İÏîÎÄ±¾µÄÑÕÉ«
-	unsigned int	m_HighLightBorderColor;	//¸ßÁÁ¶ÈÏÔÊ¾µÄÊı¾İÏîÎÄ±¾µÄ±ßÔµÑÕÉ«
-	unsigned int	m_uSelItemBgColor;		//Ñ¡ÖĞÏîµÄ±³¾°É«£¬Èç¹ûÖµÎª0xffffffff±íÊ¾ÎŞ±³¾°É«
-	int				m_nFontSize;			//ÏÔÊ¾×ÖÌå´óĞ¡
+	unsigned int	m_ItemColor;			//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_ItemBorderColor;		//æ˜¾ç¤ºæ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_SelItemColor;			//è¢«é€‰ä¸­çš„æ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_SelItemBorderColor;	//è¢«é€‰ä¸­çš„æ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_HighLightColor;		//é«˜äº®åº¦æ˜¾ç¤ºçš„æ•°æ®é¡¹æ–‡æœ¬çš„é¢œè‰²
+	unsigned int	m_HighLightBorderColor;	//é«˜äº®åº¦æ˜¾ç¤ºçš„æ•°æ®é¡¹æ–‡æœ¬çš„è¾¹ç¼˜é¢œè‰²
+	unsigned int	m_uSelItemBgColor;		//é€‰ä¸­é¡¹çš„èƒŒæ™¯è‰²ï¼Œå¦‚æœå€¼ä¸º0xffffffffè¡¨ç¤ºæ— èƒŒæ™¯è‰²
+	int				m_nFontSize;			//æ˜¾ç¤ºå­—ä½“å¤§å°
 	int				m_nRowDis;
 	
-	int				m_nNumColumn;			//¿ÉÒÔÍ¬Ê±ÏÔÊ¾¼¸ÁĞÊı¾İ
-	unsigned int	m_uIsItemSelStatus;		//¼ÍÂ¼Ã¿¸öÏîÊÇ·ñ±»Ñ¡Ôñ
-	unsigned int*	m_puItemSelStatusList;	//¼ÍÂ¼ĞòºÅ32¼°ÒÔÉÏµÄÏîÊÇ·ñ±»Ñ¡Ôñ
-	unsigned int	m_uNumSelStatusList;	//m_upItemSelStatusList°üº¬µÄunsigned int¿Õ¼äµÄÊıÄ¿
+	int				m_nNumColumn;			//å¯ä»¥åŒæ—¶æ˜¾ç¤ºå‡ åˆ—æ•°æ®
+	unsigned int	m_uIsItemSelStatus;		//çºªå½•æ¯ä¸ªé¡¹æ˜¯å¦è¢«é€‰æ‹©
+	unsigned int*	m_puItemSelStatusList;	//çºªå½•åºå·32åŠä»¥ä¸Šçš„é¡¹æ˜¯å¦è¢«é€‰æ‹©
+	unsigned int	m_uNumSelStatusList;	//m_upItemSelStatusListåŒ…å«çš„unsigned intç©ºé—´çš„æ•°ç›®
 };

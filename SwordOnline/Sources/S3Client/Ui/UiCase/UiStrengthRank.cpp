@@ -2,7 +2,7 @@
 File        : UiStrengthRank.cpp
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-11-2003(mm-dd-yyyy)
-Description : ÅÅÃû´°¿ÚµÄÊµÏÖ²¿·Ö
+Description : æ’åçª—å£çš„å®ç°éƒ¨åˆ†
 *********************************************************************/
 
 #include "KWin32.h"
@@ -20,11 +20,11 @@ Description : ÅÅÃû´°¿ÚµÄÊµÏÖ²¿·Ö
 #include "UiStrengthRank.h"
 
 
-#define INDEX_AND_RANK_DATA_INI "ÅÅÃûµÄÁÙÊ±ÎÄ¼ş.ini"
+#define INDEX_AND_RANK_DATA_INI "æ’åçš„ä¸´æ—¶æ–‡ä»¶.ini"
 #define INDEX_AND_RANK_MAPPING "\\Ui\\RankMap.ini"
 #define STRENGTH_RANK_INI "UiStrengthRank.ini"
 
-//·¢ËÍ»ñÈ¡ĞÅÏ¢ÇëÇóÒÔºó£¬µÃ²»µ½ÏìÓ¦µÄ³¬Ê±Ê±¼ä
+//å‘é€è·å–ä¿¡æ¯è¯·æ±‚ä»¥åï¼Œå¾—ä¸åˆ°å“åº”çš„è¶…æ—¶æ—¶é—´
 #define GET_RANK_TIME_OUT 10000
 
 extern iCoreShell* g_pCoreShell;
@@ -66,7 +66,7 @@ KUiStrengthRank::~KUiStrengthRank()
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+*åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
 *****************************************************************************/
 KUiStrengthRank* KUiStrengthRank::GetIfVisible()
 {
@@ -77,7 +77,7 @@ KUiStrengthRank* KUiStrengthRank::GetIfVisible()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+*åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 *****************************************************************************/
 KUiStrengthRank* KUiStrengthRank::OpenWindow()
 {
@@ -98,7 +98,7 @@ KUiStrengthRank* KUiStrengthRank::OpenWindow()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ò¿ª´°¿Ú£¬ÏÔÊ¾Ä¬ÈÏÊı¾İ£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+*åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œæ˜¾ç¤ºé»˜è®¤æ•°æ®ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
 *****************************************************************************/
 KUiStrengthRank* KUiStrengthRank::OpenDefaultWindow()
 {
@@ -120,7 +120,7 @@ KUiStrengthRank* KUiStrengthRank::OpenDefaultWindow()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°²ÅÅÄ¬ÈÏÊı¾İµÄÏÔÊ¾
+*åŠŸèƒ½ï¼šå®‰æ’é»˜è®¤æ•°æ®çš„æ˜¾ç¤º
 *****************************************************************************/
 void KUiStrengthRank::ArrangeDefaultData()
 {
@@ -158,7 +158,7 @@ void KUiStrengthRank::ArrangeDefaultData()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º³õÊ¼»¯´°¿Ú
+*åŠŸèƒ½ï¼šåˆå§‹åŒ–çª—å£
 *****************************************************************************/
 void KUiStrengthRank::Initialize()
 {
@@ -196,7 +196,7 @@ void KUiStrengthRank::Initialize()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+*åŠŸèƒ½ï¼šå…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
 *****************************************************************************/
 void KUiStrengthRank::CloseWindow(bool bDestory)
 {
@@ -215,7 +215,7 @@ void KUiStrengthRank::CloseWindow(bool bDestory)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º¸üĞÂ¿Ø¼şÊı¾İµÄÍ³Ò»µ÷¶Èº¯Êı
+*åŠŸèƒ½ï¼šæ›´æ–°æ§ä»¶æ•°æ®çš„ç»Ÿä¸€è°ƒåº¦å‡½æ•°
 *****************************************************************************/
 void KUiStrengthRank::Breathe()
 {
@@ -237,7 +237,7 @@ void KUiStrengthRank::Breathe()
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÏìÓ¦´°¿ÚÏûÏ¢µÄ´°¿Úº¯Êı
+*åŠŸèƒ½ï¼šå“åº”çª—å£æ¶ˆæ¯çš„çª—å£å‡½æ•°
 *****************************************************************************/
 int	KUiStrengthRank::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -291,7 +291,7 @@ int	KUiStrengthRank::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
+*åŠŸèƒ½ï¼šè½½å…¥ç•Œé¢æ–¹æ¡ˆ
 *****************************************************************************/
 void KUiStrengthRank::LoadScheme(const char* pScheme)
 {
@@ -321,7 +321,7 @@ void KUiStrengthRank::LoadScheme(const char* pScheme)
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºĞ¶ÔØÍ¼ĞÎÎÄ¼ş
+*åŠŸèƒ½ï¼šå¸è½½å›¾å½¢æ–‡ä»¶
 *****************************************************************************/
 void KUiStrengthRank::ReleasePic()
 {
@@ -332,7 +332,7 @@ void KUiStrengthRank::ReleasePic()
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÊÍ·ÅÊı¾İºÍÖØÖÃÏÔÊ¾
+*åŠŸèƒ½ï¼šé‡Šæ”¾æ•°æ®å’Œé‡ç½®æ˜¾ç¤º
 *****************************************************************************/
 void KUiStrengthRank::ReleaseData()
 {
@@ -346,7 +346,7 @@ void KUiStrengthRank::ReleaseData()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º¸üĞÂË÷ÒıÊı¾İ-ÓĞINI¾ÍÈ¡INI£¬Ã»ÓĞ¾ÍÎÊCoreÒª£¬WAKAKA
+*åŠŸèƒ½ï¼šæ›´æ–°ç´¢å¼•æ•°æ®-æœ‰INIå°±å–INIï¼Œæ²¡æœ‰å°±é—®Coreè¦ï¼ŒWAKAKA
 *****************************************************************************/
 //void KUiStrengthRank::UpdateIndexData()
 //{
@@ -359,7 +359,7 @@ void KUiStrengthRank::ReleaseData()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º¸üĞÂÅÅÃûÊı¾İ-ÓĞINI¾ÍÈ¡INI£¬Ã»ÓĞ¾ÍÎÊCoreÒª£¬WAKAKA
+*åŠŸèƒ½ï¼šæ›´æ–°æ’åæ•°æ®-æœ‰INIå°±å–INIï¼Œæ²¡æœ‰å°±é—®Coreè¦ï¼ŒWAKAKA
 *****************************************************************************/
 void KUiStrengthRank::UpdateRankData(int nID)
 {
@@ -375,7 +375,7 @@ void KUiStrengthRank::UpdateRankData(int nID)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ÓINIÖĞÔØÈëË÷ÒıÊı¾İ
+*åŠŸèƒ½ï¼šä»INIä¸­è½½å…¥ç´¢å¼•æ•°æ®
 *****************************************************************************/
 BOOL KUiStrengthRank::LoadIndexIni(KIniFile *Ini)
 {
@@ -419,7 +419,7 @@ BOOL KUiStrengthRank::LoadIndexIni(KIniFile *Ini)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ÓINIÖĞÔØÈëÅÅÃûÊı¾İ
+*åŠŸèƒ½ï¼šä»INIä¸­è½½å…¥æ’åæ•°æ®
 *****************************************************************************/
 BOOL KUiStrengthRank::LoadRankIni(KIniFile *Ini, int nID)
 {
@@ -457,7 +457,7 @@ BOOL KUiStrengthRank::LoadRankIni(KIniFile *Ini, int nID)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ÓCoreÄÇÀïÇÀ½ÙË÷ÒıÊı¾İ
+*åŠŸèƒ½ï¼šä»Coreé‚£é‡ŒæŠ¢åŠ«ç´¢å¼•æ•°æ®
 *****************************************************************************/
 //void KUiStrengthRank::SendRobIndexToCore()
 //{
@@ -466,7 +466,7 @@ BOOL KUiStrengthRank::LoadRankIni(KIniFile *Ini, int nID)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ÓCoreÄÇÀï»ñÈ¡Ë÷ÒıÊı¾İ
+*åŠŸèƒ½ï¼šä»Coreé‚£é‡Œè·å–ç´¢å¼•æ•°æ®
 *****************************************************************************/
 //void KUiStrengthRank::SendGetIndexToCore()
 //{
@@ -479,7 +479,7 @@ BOOL KUiStrengthRank::LoadRankIni(KIniFile *Ini, int nID)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º´ÓCoreÄÇÀï»ñÈ¡ÅÅÃûÊı¾İ
+*åŠŸèƒ½ï¼šä»Coreé‚£é‡Œè·å–æ’åæ•°æ®
 *****************************************************************************/
 void KUiStrengthRank::SendGetRankToCore(int nID)
 {
@@ -492,7 +492,7 @@ void KUiStrengthRank::SendGetRankToCore(int nID)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°ÑIndexµÄÊı¾İ(m_data)¹¹Ôì½øÈ¥m_indexListÀïÃæ£¬ÄÇ¾Í¿ÉÒÔ»æÖÆµÄÊ±ºòÏÔÊ¾³öÀ´
+*åŠŸèƒ½ï¼šæŠŠIndexçš„æ•°æ®(m_data)æ„é€ è¿›å»m_indexListé‡Œé¢ï¼Œé‚£å°±å¯ä»¥ç»˜åˆ¶çš„æ—¶å€™æ˜¾ç¤ºå‡ºæ¥
 *****************************************************************************/
 void KUiStrengthRank::ConstructIndexView()
 {
@@ -512,7 +512,7 @@ void KUiStrengthRank::ConstructIndexView()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°ÑRankµÄÅÅÃûÊı¾İ¹¹Ôì½øÈ¥m_RankListÀïÃæ£¬ÒÔ¿ÉÒÔ»æÖÆµÄÊ±ºòÏÔÊ¾³öÀ´
+*åŠŸèƒ½ï¼šæŠŠRankçš„æ’åæ•°æ®æ„é€ è¿›å»m_RankListé‡Œé¢ï¼Œä»¥å¯ä»¥ç»˜åˆ¶çš„æ—¶å€™æ˜¾ç¤ºå‡ºæ¥
 *****************************************************************************/
 void KUiStrengthRank::ConstructRankView()
 {
@@ -529,33 +529,33 @@ void KUiStrengthRank::ConstructRankView()
 	    {
 			pNode->szMsg[pNode->usMsgLen] = KTC_TAB;
 			pNode->usMsgLen ++;
-			//¹¹Ôì¶îÍâÊı¾İ×Ö·û´®
+			//æ„é€ é¢å¤–æ•°æ®å­—ç¬¦ä¸²
 			if(m_pCurrentIndexNode->bValueAppened)
 			{
-			    //ÓĞµ¥Î»¾ÍĞ´ÏÂµ¥Î»
+			    //æœ‰å•ä½å°±å†™ä¸‹å•ä½
 			    if(m_pCurrentIndexNode->szUnit[0])
 			    {
 					if (m_pCurrentIndexNode->usIndexId == enumTopTenMasterHand || 
 						(m_pCurrentIndexNode->usIndexId >= enumFacTopTenMasterHand && m_pCurrentIndexNode->usIndexId < enumFacTopTenRicher)
 						)
-						sprintf(szBuf, "CÊp %d", pNode->nValueAppend % MAX_LEVEL + (pNode->nValueAppend % MAX_LEVEL == 0 ? MAX_LEVEL : 0), pNode->nValueAppend / MAX_LEVEL - (pNode->nValueAppend % MAX_LEVEL == 0 ? 1 : 0));
+						sprintf(szBuf, "Cï¿½p %d", pNode->nValueAppend % MAX_LEVEL + (pNode->nValueAppend % MAX_LEVEL == 0 ? MAX_LEVEL : 0), pNode->nValueAppend / MAX_LEVEL - (pNode->nValueAppend % MAX_LEVEL == 0 ? 1 : 0));
 					else if (m_pCurrentIndexNode->usIndexId == enumTopTenRicher || 
 						(m_pCurrentIndexNode->usIndexId >= enumFacTopTenRicher)
 						)
 					{
 						if (pNode->nValueAppend > MONEY_FLOOR)
-							sprintf(szBuf, "%d v¹n l­îng", pNode->nValueAppend / MONEY_FLOOR);
+							sprintf(szBuf, "%d vï¿½n lï¿½ï¿½ng", pNode->nValueAppend / MONEY_FLOOR);
 						else
-							sprintf(szBuf, "%d l­îng", pNode->nValueAppend);
+							sprintf(szBuf, "%d lï¿½ï¿½ng", pNode->nValueAppend);
 					}
 					else
 						sprintf(szBuf, "%d %s", pNode->nValueAppend, m_pCurrentIndexNode->szUnit);
 			    }
-                //¹¹ÔìºÃµÄ×Ö·û´®À©Õ¹½øÅÅÃû×Ö·û´®Àï
+                //æ„é€ å¥½çš„å­—ç¬¦ä¸²æ‰©å±•è¿›æ’åå­—ç¬¦ä¸²é‡Œ
 			    memcpy(pNode->szMsg + pNode->usMsgLen, szBuf, strlen(szBuf));
 			    pNode->usMsgLen += strlen(szBuf);
 			}
-           //¼Ó½øÉÏÉı³ÖÆ½ÏÂ½µÍ¼Æ¬
+           //åŠ è¿›ä¸Šå‡æŒå¹³ä¸‹é™å›¾ç‰‡
 			pNode->szMsg[pNode->usMsgLen] = KTC_TAB;
 			pNode->usMsgLen ++;
 
@@ -576,7 +576,7 @@ void KUiStrengthRank::ConstructRankView()
 			    }
 			    pNode->usMsgLen += 3;
 			}
-			//Õ¹¿ª
+			//å±•å¼€
 			pNode->usMsgLen = TDrawOutString(pNode->szMsg, pNode->usMsgLen,
 				                             m_nLineLen, m_nFontSize);
 		    m_RankList.AddOneMessage(pNode->szMsg, pNode->usMsgLen, 0);
@@ -598,7 +598,7 @@ void KUiStrengthRank::ConstructRankView()
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºĞÂµÄË÷ÒıÏûÏ¢À´ÁË
+*åŠŸèƒ½ï¼šæ–°çš„ç´¢å¼•æ¶ˆæ¯æ¥äº†
 *****************************************************************************/
 void KUiStrengthRank::NewIndexArrive(unsigned int uParam, struct KRankIndex *pIndex, bool command)
 {
@@ -624,7 +624,7 @@ void KUiStrengthRank::NewIndexArrive(unsigned int uParam, struct KRankIndex *pIn
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºĞÂµÄÅÅÃûĞÅÏ¢À´ÁË
+*åŠŸèƒ½ï¼šæ–°çš„æ’åä¿¡æ¯æ¥äº†
 *****************************************************************************/
 void KUiStrengthRank::NewRankArrive(unsigned int uParam, KRankMessage *pRankData)
 {
@@ -634,7 +634,7 @@ void KUiStrengthRank::NewRankArrive(unsigned int uParam, KRankMessage *pRankData
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÌí¼ÓË÷ÒıĞÅÏ¢
+*åŠŸèƒ½ï¼šæ·»åŠ ç´¢å¼•ä¿¡æ¯
 *****************************************************************************/
 void KUiStrengthRank::AddIndex(unsigned int uParam, struct KRankIndex *pIndex, bool command)
 {
@@ -676,7 +676,7 @@ void KUiStrengthRank::AddIndex(unsigned int uParam, struct KRankIndex *pIndex, b
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÌí¼ÓÅÅÃûĞÅÏ¢
+*åŠŸèƒ½ï¼šæ·»åŠ æ’åä¿¡æ¯
 *****************************************************************************/
 void KUiStrengthRank::AddRank(unsigned int uParam, KRankMessage *pRankData)
 {
@@ -705,7 +705,7 @@ void KUiStrengthRank::AddRank(unsigned int uParam, KRankMessage *pRankData)
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°ÑË÷ÒıºÍÅÅÃû¼ÇÂ¼½øÁÙÊ±ÎÄ¼ş
+*åŠŸèƒ½ï¼šæŠŠç´¢å¼•å’Œæ’åè®°å½•è¿›ä¸´æ—¶æ–‡ä»¶
 *****************************************************************************/
 void KUiStrengthRank::StoreTempIni()
 {
@@ -718,7 +718,7 @@ void KUiStrengthRank::StoreTempIni()
     sprintf(szFileName, "%s\\%s", g_UiBase.GetUserTempDataFolder(), INDEX_AND_RANK_DATA_INI);
     Ini.Load(szFileName);
 
-	//ÏÈĞ´Ë÷Òı
+	//å…ˆå†™ç´¢å¼•
 	nCount = KUiStrengthRank::m_IndexData.GetCount();
 	if(nCount)
 	{
@@ -736,7 +736,7 @@ void KUiStrengthRank::StoreTempIni()
 			if(!pIndexNode) break;
 		}
 	}
-    //È»ºóĞ´ÅÅÃû
+    //ç„¶åå†™æ’å
 	nCount = KUiStrengthRank::m_RankData.GetCount();
 	if(nCount && m_pSelf->m_pCurrentIndexNode)
 	{
@@ -756,7 +756,7 @@ void KUiStrengthRank::StoreTempIni()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°ÑĞÂÊÕµ½µÄË÷Òı×ÊÁÏ´æµ½ÁÙÊ±ÎÄ¼ş
+*åŠŸèƒ½ï¼šæŠŠæ–°æ”¶åˆ°çš„ç´¢å¼•èµ„æ–™å­˜åˆ°ä¸´æ—¶æ–‡ä»¶
 *****************************************************************************/
 void KUiStrengthRank::StoreNewDataToTempFile(unsigned int uParam, KRankIndex *pInData)
 {
@@ -787,7 +787,7 @@ void KUiStrengthRank::StoreNewDataToTempFile(unsigned int uParam, KRankIndex *pI
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°ÑĞÂÊÕµ½µÄÅÅÃû×ÊÁÏ´æµ½ÁÙÊ±ÎÄ¼ş
+*åŠŸèƒ½ï¼šæŠŠæ–°æ”¶åˆ°çš„æ’åèµ„æ–™å­˜åˆ°ä¸´æ—¶æ–‡ä»¶
 *****************************************************************************/
 void KUiStrengthRank::StoreNewDataToTempFile(unsigned int uParam, KRankMessage *pInData)
 {
@@ -816,7 +816,7 @@ void KUiStrengthRank::StoreNewDataToTempFile(unsigned int uParam, KRankMessage *
 
 
 /****************************************************************************
-*¹¦ÄÜ£º¼ì²âÁÙÊ±ÎÄ¼şÊÇ·ñ´æÔÚ£¬²»´æÔÚÔò´´½¨
+*åŠŸèƒ½ï¼šæ£€æµ‹ä¸´æ—¶æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨åˆ™åˆ›å»º
 *****************************************************************************/
 int KUiStrengthRank::AttachTempFile()
 {
@@ -843,7 +843,7 @@ int KUiStrengthRank::AttachTempFile()
 
 
 /****************************************************************************
-*¹¦ÄÜ£ºÇå¿ÕÁÙÊ±ÎÄ¼ş
+*åŠŸèƒ½ï¼šæ¸…ç©ºä¸´æ—¶æ–‡ä»¶
 *****************************************************************************/
 void KUiStrengthRank::RemoveTempFile()
 {
@@ -856,7 +856,7 @@ void KUiStrengthRank::RemoveTempFile()
 
 
 /****************************************************************************
-*¹¦ÄÜ£º°Ñ×Ö´®×óÓÒÀ©Õ¹µ½Ö¸¶¨³¤¶È£¬ÖĞ¼äÓÃTab·Ö¿ª
+*åŠŸèƒ½ï¼šæŠŠå­—ä¸²å·¦å³æ‰©å±•åˆ°æŒ‡å®šé•¿åº¦ï¼Œä¸­é—´ç”¨Tabåˆ†å¼€
 *****************************************************************************/
 int TDrawOutString(char *szBuf, int nBufLen, int nLineLen, int nFontsize)
 {

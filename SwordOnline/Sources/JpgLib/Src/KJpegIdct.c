@@ -4,13 +4,13 @@
 // File:	KJpegIdct.cpp
 // Date:	2000.08.08
 // Code:	Daniel Wang
-// Desc:	Jpeg ½âÂë MMX °æ±¾ 8x8 AAN IDCT
+// Desc:	Jpeg è§£ç  MMX ç‰ˆæœ¬ 8x8 AAN IDCT
 // From:	Cloud Wu's JPEG Decoder
 //---------------------------------------------------------------------------
 #include <windows.h>
 #include "KJpegLib.h"
 /****************************************************************************
-  ±¾º¯ÊıÕªÈ¡×Ô developer.intel.com
+  æœ¬å‡½æ•°æ‘˜å–è‡ª developer.intel.com
 
   ; esi - input and output data pointer
   ; the input data is tranposed and each 16 bit element in the 8x8 matrix 
@@ -43,10 +43,10 @@ static WORD preSC[64] = {
 		18081, 25080, 23624, 21261,  18081, 14206, 9785,  4988
 };
 //---------------------------------------------------------------------------
-// º¯Êı:	jpeg_idct_mmx
-// ¹¦ÄÜ:	MMX °æ±¾ 8x8 AAN IDCT
-// ²ÎÊı:	buf		½âÂëºóµÄ»º´æ
-// ·µ»Ø:	void
+// å‡½æ•°:	jpeg_idct_mmx
+// åŠŸèƒ½:	MMX ç‰ˆæœ¬ 8x8 AAN IDCT
+// å‚æ•°:	buf		è§£ç åçš„ç¼“å­˜
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void jpeg_idct_mmx(short* buf)
 {
@@ -902,7 +902,7 @@ void jpeg_idct_mmx(short* buf)
 		// (1)
 		//movq dword ptr [esi+8*1], mm1		; out1
 		
-		// ½« 16bit ±ä³É 8bit
+		// å°† 16bit å˜æˆ 8bit
 		// mm1=1,mm4=7,mm6=5,mm0=3,mm2=12,mm5=2,mm7=0
 		
 		packsswb mm7,[esi+8*4]; //mm7=4

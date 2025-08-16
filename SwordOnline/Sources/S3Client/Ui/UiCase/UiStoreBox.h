@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--´¢ÎïÏä½çÃæ
+//	ç•Œé¢--å‚¨ç‰©ç®±ç•Œé¢
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-21
@@ -17,16 +17,16 @@ struct KUiObjAtRegion;
 class KUiStoreBox : protected KWndShowAnimate
 {
 public:
-	static KUiStoreBox* OpenWindow(int nToPage);		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiStoreBox* GetIfVisible();		//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void			CloseWindow();		//¹Ø±Õ´°¿Ú
-	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
-	void			UpdateItem(int nToPage, KUiObjAtRegion* pItem, int bAdd);//ÎïÆ·±ä»¯¸üĞÂ
+	static KUiStoreBox* OpenWindow(int nToPage);		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiStoreBox* GetIfVisible();		//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void			CloseWindow();		//å…³é—­çª—å£
+	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void			UpdateItem(int nToPage, KUiObjAtRegion* pItem, int bAdd);//ç‰©å“å˜åŒ–æ›´æ–°
 private:
 	KUiStoreBox() {}
 	~KUiStoreBox() {}
-	void	Initialize();							//³õÊ¼»¯
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Initialize();							//åˆå§‹åŒ–
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	void	UpdateData(int nCurPage);
 	void	OnItemPickDrop(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);
 	void	OnClickItem(KUiDraggedObject* pItem);

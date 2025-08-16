@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//  ����ͼ��ͼ����Դ����
+//  无贴图的图形资源管理
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-11-11
@@ -13,255 +13,255 @@
 #include <ddraw.h>
 struct KImageParam;
 
-//## ����ͼ��ͼ����Դ������
-//## ������ͬid��ͼ�ζ���ֻ��һ����
+//## 无贴图的图形资源管理。
+//## 里面相同id的图形对象只存一个。
 class KImageStore2
 {
 public:
     KImageStore2();
     ~KImageStore2();
 
-//====���ImageStore����Ĳ���====
+//====针对ImageStore整体的操作====
 
-	//## ��ʼ��iResStore�ӿڶ���
+	//## 初始化iResStore接口对象。
     bool Init();
 
-    //## ����ͷ�ȫ����ͼ�ζ��󣬼Ȱ�����̬���صģ�Ҳ����ͨ������CreateImage���ɵġ�
+    //## 清空释放全部的图形对象，既包括动态加载的，也包括通过调用CreateImage生成的。
     void Free();
 
-    //## ����ͼ�ζ�̬����ƽ�������
+    //## 设置图形动态加载平衡参数。
     void SetBalanceParam(
-        //## ����ͼ�ε���Ŀ��ƽ��ֵ��
+        //## 加载图形的数目的平衡值。
         int nNumImage, 
-        //## ÿ���ٴ�����ͼ�ζ������һ��ƽ���顣
+        //## 每多少次引用图形对象后作一次平衡检查。
 		unsigned int uCheckPoint = 10000);
 
-//====��Ե���ͼ�εĲ���====
+//====针对单个图形的操作====
 
-	//## ����ڴ�ͼ�ζ���ʧ�ܣ��򷵻�0�����򷵻ظ���ͼ������ת�����ɵ���ֵid��
+	//## 如果内存图形对象失败，则返回0，否则返回根据图形名字转换而成的数值id。
     unsigned int CreateImage(
-        //## ͼ�ε����֡�
+        //## 图形的名字。
         const char* pszName, 
-        //## ͼ�κ��
+        //## 图形横宽
         int nWidth, 
-        //## ͼ���ݿ�
+        //## 图形纵宽
         int nHeight, 
-        //## ͼ������
+        //## 图形类型
         int nType);
 
-    //## ��ȡ�Ѿ����ڵ�ͨ��CreateImage������ͼ��
+    //## 获取已经存在的通过CreateImage创建的图形
     void* GetExistedCreateBitmap(
-		//## ͼ������
+		//## 图形名。
         const char* pszImage,
-		//## ͼ��id
+		//## 图形id
 		unsigned int uImage,
-		//## ͼ��ԭ����iImageStore�ڵ�λ�á�
+		//## 图形原来在iImageStore内的位置。
         short& nImagePosition);
 
 	bool CreateBitmapSurface(
-		//## ͼ������
+		//## 图形名。
         const char* pszImage,
-		//## ͼ��id
+		//## 图形id
 		unsigned int& uImage,
-		//## ͼ��ԭ����iImageStore�ڵ�λ�á�
+		//## 图形原来在iImageStore内的位置。
         short& nImagePosition);
 
-	//## ָ���ͷ�ĳ��ͼ��Դ��
+	//## 指定释放某个图资源。
     void FreeImage(
-        //## ͼ���ļ���/ͼ������
+        //## 图形文件名/图形名。
         const char* pszImage);
 
-    //## ��ȡͼ�ε����ݻ�������
+    //## 获取图形的数据缓冲区。
     void* GetImage(
-        //## ͼ��Դ�ļ�����/ͼ������
+        //## 图资源文件名称/图形名。
         const char* pszImage, 
-        //## ͼ��id
+        //## 图形id
         unsigned int& uImage, 
-        //## ͼ��ԭ����iImageStore�ڵ�λ�á�
+        //## 图形原来在iImageStore内的位置。
         short& nImagePosition, 
-        //## Ҫ��ȡͼ�ε�֡��������
+        //## 要获取图形的帧的索引。
         int nFrame,
-        //## ͼ��Դ����
+        //## 图资源类型
         int nType,
-		//������Ҫ��֡����buffer
+		//额外需要的帧数据buffer
 		void*& pFrameData);
 
-    //## ��ȡĳ��ͼ����Դ�������Ϣ��
+    //## 获取某个图形资源对象的信息。
     bool GetImageParam(
-        //## ָ�򱣴�ͼ����Դ�ļ���/ͼ�����Ļ�����
+        //## 指向保存图形资源文件名/图形名的缓冲区
         const char* pszImage,
-        //## ͼ��Դ����
+        //## 图资源类型
 		int nType,
-		//## ͼ����Ϣ�洢�ṹ��ָ��
+		//## 图形信息存储结构的指针
         KImageParam* pImageData);
 	
-	//## ��ȡĳ��ͼ����Դĳ֡����Ϣ��
+	//## 获取某个图形资源某帧的信息。
 	bool GetImageFrameParam(
-        //## ָ�򱣴�ͼ����Դ�ļ���/ͼ�����Ļ�����
+        //## 指向保存图形资源文件名/图形名的缓冲区
         const char* pszImage,
-        //## ͼ��Դ����
+        //## 图资源类型
 		int nType,
-		//ͼ��֡����
+		//图形帧索引
 		int		nFrame,
-        //## ֡ͼ�����������ͼ�ε�ƫ��
+        //## 帧图形相对于整个图形的偏移
 		KRPosition2* pOffset,
-		//## ֡ͼ�δ�С
+		//## 帧图形大小
 		KRPosition2* pSize);
 
-    //## ��ȡͼ��ָ��֡��ĳ������alphaֵ��
+    //## 获取图形指定帧的某个像点的alpha值。
     int GetImagePixelAlpha(
-        //## ͼ����Դ�ļ���/ͼ����
+        //## 图形资源文件名/图形名
         const char* pszImage, 
-        //## ͼ��Դ����
+        //## 图资源类型
         int nType,
-		//## ͼ�ε�֡������
+		//## 图形的帧索引。
         int nFrame, 
-        //## �����ͼ�к�����
+        //## 像点在图中横坐标
         int nX, 
-        //## �����ͼ��������
+        //## 像点在图中纵坐标
         int nY);
 
-    //## ����ͼ�ε��ļ��������ļ�ֻ��ISI_T_BITMAP16��ʽ��ͼ����Ч������ָ����ͼ���Ƿ�ɹ����浽�ļ���
+    //## 保存图形到文件。保存文件只对ISI_T_BITMAP16格式的图形有效。返回指表明图形是否成功保存到文件。
     bool SaveImage(
-        //## �����ļ������֡�
+        //## 保存文件的名字。
         const char* pszFile, 
-        //## ͼ����
+        //## 图形名
         const char* pszImage, 
-        //## Ŀ��ͼ���ļ�������
+        //## 目标图形文件的类型
         int nFileType);
 
 	unsigned int SetAdjustColorList(unsigned int* puColorList, unsigned int uCount);
 
 	char* GetAdjustColorPalette(
-		int nISPosition,	//ͼ����iImageStore�ڵ�λ�á�
-		unsigned uColor);//ƫɫ��
+		int nISPosition,	//图形在iImageStore内的位置。
+		unsigned uColor);//偏色量
 
 private:
 
 	struct _KISImageFrameObj
 	{        
-		bool			bRef;	//�ڱ��λ�ͼѭ�����Ƿ����õ�
+		bool			bRef;	//在本次绘图循环中是否被引用到
 		bool			bReserved;
 		unsigned short	sOffTableSize;
 		union
 		{
-			//ͼ��֡����ƫ�Ʊ���������Ӹ�֡����
+			//图形帧数据偏移表，表后紧接各帧数据
 			void*			pOffsetTable;
-			//֡���ݻ�����
+			//帧数据缓冲区
 			void*			pFrameData;
 		};
 	};
 
-    //## �洢����ͼ��id�������Լ�����ָ��Ľṹ
+    //## 存储保存图形id、类型以及对象指针的结构
     struct _KISImageObj
     {
-        //## ͼ�ε�id
+        //## 图形的id
         unsigned int uId;
-		//## ����Ϊ���ڴ��д�����ͼ�Σ����ܴӴ��̶�̬���أ�����cache������
+		//## 表明为在内存中创建的图形，不能从磁盘动态加载，不作cache处理。
         bool bNotCacheable;
-		//�Ƿ񰴵�֡����
+		//是否按单帧加载
         bool bSingleFrameLoad;
-		//�ڱ��λ�ͼѭ�����Ƿ����õ�
+		//在本次绘图循环中是否被引用到
 		bool bRef;
-        //## ͼ�ε�����
+        //## 图形的类型
         unsigned char bType;
-        //## ͼ�����ݶ���ָ�롣
+        //## 图形数据对象指针。
         void* pObject;
 		union
 		{
-			//ƫɫɫ��, ISI_T_SPR��ʽ��ͼ��
+			//偏色色盘, ISI_T_SPR格式的图用
 			char* pcAdjustColorPalettes;
-			//DirectDraw Surface, ISI_T_BITMAP16��ʽ��ͼ��
+			//DirectDraw Surface, ISI_T_BITMAP16格式的图用
             LPDIRECTDRAWSURFACE pSurface;
 		};
-		//ͼ�ε�֡����
+		//图形的帧对象
 		_KISImageFrameObj* pFrames;
     };
 
 private:
 
-	//## ��չm_pObjectList�Ŀռ䣬ʹ�ô洢����ͼ��Դ���ñ�������
+	//## 扩展m_pObjectList的空间，使得存储更多图资源引用表述对象。
     bool ExpandSpace();
 
-    //## ���ͼ��Դ�洢����ƽ��״����
+    //## 检查图资源存储量的平衡状况。
     void CheckBalance();
 
-    //## ��ø���id�ڼ�¼���е�λ�á�
-    //## ����ֵ���壺
-    //##  ����ֵ >= 0 --> ������id�ڼ�¼���е�λ�ã���0��ʼ������ֵ��
-    //##  ����ֵ < 0  --> ����û�и�����id�������Ҫ�����id�Ļ�������λ��Ӧ��Ϊ(-����ֵ-1)
+    //## 获得给定id在纪录表中的位置。
+    //## 返回值含义：
+    //##  返回值 >= 0 --> 给定的id在纪录表中的位置（以0开始索引数值）
+    //##  返回值 < 0  --> 表中没有给定的id，如果需要插入此id的话，插入位置应该为(-返回值-1)
     int FindImage(
         //##Documentation
-        //## ͼ�ε�id
+        //## 图形的id
         unsigned int uImage, 
         //##Documentation
-        //## ͼ�μ�¼��m_pObjectList�п��ܵ�λ�á�
+        //## 图形纪录在m_pObjectList中可能的位置。
         int nPossiblePosition);
 
-	//��ȡͼ�ζ����ĳһ֡�����ݻ�����
+	//获取图形对象的某一帧的数据缓冲区
 	void* GetSprFrame(
 		const char* pszImageFile,
 		_KISImageObj& ImgObject,
 		int nFrame);
 
-    //## �ͷ�ָ����ͼ�ζ���
+    //## 释放指定的图形对象。
     void FreeImageObject(
-        //## ͼ�ζ���ָ�롣
+        //## 图形对象指针。
         _KISImageObj& ImgObject,
-		//�ͷŴ�ͼ�ε���֡���ݣ��������ֵΪ��������ʾ�ͷ�����ͼ��
+		//释放此图形的哪帧数据，如果传入值为负数，表示释放整个图形
 		int nFrame = -1);
 
-    //## ����ͼ�ζ�������ָ��ͼ����Դ������ʧ�����
+    //## 生成图形对象，载入指定图形资源，返回失败与否。
     void* LoadImage(
-        //## ͼ���ļ���
+        //## 图形文件名
         const char* pszImageFile, 
-        //## ͼ������
+        //## 图形类型
         _KISImageObj& ImgObj,
-		//����ͼ�ε���һ֡����
+		//载入图形的哪一帧数据
 		int nFrame,
-		//���ڻ�ȡ֡���ݵĻ�����ָ��
+		//用于获取帧数据的缓冲区指针
 		void*& pFrameData);
 
-	//�ļ���ת��Ϊ�ַ���
+	//文件名转化为字符串
 	unsigned int ImageNameToId(const char* pszName);
 
 	char* CreateAdjustColorPalette(const char* pOrigPalette, int nNumColor);
 
-	//���ȫ����ƫɫɫ��
+	//清除全部的偏色色盘
 	void ClearAllAdjustColorPalette();
 
 private:
 
     enum IS_BALANCE_PARAM
 	{
-        //## ��չm_pObjectList��ÿ�β������ӵ�Ԫ�ص���Ŀ
+        //## 扩展m_pObjectList，每次操作增加的元素的数目
         ISBP_EXPAND_SPACE_STEP = 128,
-        //## ÿ���ٴ�����ͼ�ζ������һ��ƽ�����Ĭ��ֵ��
+        //## 每多少次引用图形对象后作一次平衡检查的默认值。
         ISBP_CHECK_POINT_DEF = 256 + 128, 
-        //## ͼ����Ŀƽ���Ĭ��ֵ
+        //## 图形数目平衡的默认值
         ISBP_BALANCE_NUM_DEF = 256 + 128,// + 128 + 512, 
-        //## ������Χ���Ȳ��ҵķ�Χ��С��
+        //## 靠近范围优先查找的范围大小。
         ISBP_TRY_RANGE_DEF = 8,
 	};
 
 private:
 
-    //## ����ͼ�ζ���ṹ�����Ա�����������ͼ�ε�id�����������С�
+    //## 保存图形对象结构的线性表。内容依据图形的id按照升序排列。
     _KISImageObj* m_pObjectList;
 
-    //## m_pObjectList�����а���_KISImageObjԪ�ص���Ŀ���ߵ�ǰ��������ɴ洢ͼ����Ϣ����Ŀ��m_pObjectList�ռ��С�ı�ʱͬʱ������ֵ��
+    //## m_pObjectList向量中包含_KISImageObj元素的数目。暨当前向量做多可存储图形信息的数目。m_pObjectList空间大小改变时同时调整此值。
     int m_nNumReserved;
 
-    //## ���ص�ͼ����Դ����Ŀ����Щͼ�ε���Ϣ�����Ŵ洢��m_pObjectList��ͷ��ʼ��λ�ã�����ͼ�ε�id�������С�
+    //## 在载的图形资源的数目。这些图形的信息紧挨着存储在m_pObjectList从头开始的位置，按照图形的id升序排列。
     int m_nNumImages;
 
-    //## ��ͼ�ζ�������ܴ������ۼӼ�¼ֵ��
+    //## 对图形对象访问总次数的累加纪录值。
     unsigned int m_uImageAccessCounter;
 
-    //## ����ƽ���ʱ�����á�
+    //## 调整平衡的时刻设置。
     unsigned int m_uCheckPoint;
 
-    //## �������ڴ���ͼ����Ŀ��ƽ��ֵ
+    //## 加载在内存中图形数目的平衡值
 	int m_nBalanceNum;
 
 	#define	MAX_ADJUSTABLE_COLOR_NUM	8

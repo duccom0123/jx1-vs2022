@@ -10,8 +10,8 @@ extern CORE_API int	g_GetGameScriptFunNum();
 extern CORE_API TLua_Funcs WorldScriptFuns[] ;
 extern CORE_API int	g_GetWorldScriptFunNum();
 
-//½Å±¾ÁĞ±íÊµÀı
-//Questions:µ¥»ú°æ¾çÇé½Å±¾ÁĞ±íÔÚÍøÂç°æÔİÓÃ.
-extern  KScriptList		g_StoryScriptList;	//µ¥»ú°æ¾çÇé½Å±¾ÁĞ±í
+//è„šæœ¬åˆ—è¡¨å®ä¾‹
+//Questions:å•æœºç‰ˆå‰§æƒ…è„šæœ¬åˆ—è¡¨åœ¨ç½‘ç»œç‰ˆæš‚ç”¨.
+extern  KScriptList		g_StoryScriptList;	//å•æœºç‰ˆå‰§æƒ…è„šæœ¬åˆ—è¡¨
 #endif
 

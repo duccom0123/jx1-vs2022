@@ -2,7 +2,7 @@
 File        : UiStrengthRank.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-11-2003(mm-dd-yyyy)
-Description : ÅÅÃû´°¿ÚµÄÍ·ÎÄ¼ş
+Description : æ’åçª—å£çš„å¤´æ–‡ä»¶
 *********************************************************************/
 
 #if !defined(AFX_KUISTRENGTHORDER_H__7801F7C7_BAE8_4A49_BEA8_63B5F8FA0BB1__INCLUDED_)
@@ -45,53 +45,53 @@ public:
 	KUiStrengthRank();
 	virtual ~KUiStrengthRank();
 
-	static        KUiStrengthRank* OpenWindow();    //´ò¿ª´°¿Ú
+	static        KUiStrengthRank* OpenWindow();    //æ‰“å¼€çª—å£
 	static        KUiStrengthRank* OpenDefaultWindow();
-	static        KUiStrengthRank* GetIfVisible();  //Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void   CloseWindow(bool bDestory = TRUE);//¹Ø±Õ´°¿Ú£¬Í¬
-	static void   LoadScheme(const char* pScheme);  //ÔØÈë½çÃæ·½°¸
+	static        KUiStrengthRank* GetIfVisible();  //å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void   CloseWindow(bool bDestory = TRUE);//å…³é—­çª—å£ï¼ŒåŒ
+	static void   LoadScheme(const char* pScheme);  //è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 
-	//ĞÂµÄÅÅÃûÊı¾İÀ´ÁË
+	//æ–°çš„æ’åæ•°æ®æ¥äº†
 	static void   NewRankArrive(unsigned int uParam, KRankMessage *pRankData);
-	//ĞÂµÄË÷ÒıÊı¾İÀ´ÁË
+	//æ–°çš„ç´¢å¼•æ•°æ®æ¥äº†
 	static void   NewIndexArrive(unsigned int uParam, struct KRankIndex *pIndex, bool command=false);
 
-	static int    AttachTempFile();                            //¼ì²âÁÙÊ±ÎÄ¼şÊÇ·ñ´æÔÚ£¬²»´æÔÚÔò´´½¨
-	static void   RemoveTempFile();                            //É¾³ıÁÙÊ±ÎÄ¼ş
+	static int    AttachTempFile();                            //æ£€æµ‹ä¸´æ—¶æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨åˆ™åˆ›å»º
+	static void   RemoveTempFile();                            //åˆ é™¤ä¸´æ—¶æ–‡ä»¶
 
 private:
-	static void   StoreTempData( );                            //°ÑË÷ÒıºÍÅÅÃû¼ÇÂ¼½øÁÙÊ±ÎÄ¼ş
-	static void   StoreNewDataToTempFile(unsigned int uParam,  //°ÑĞÂÊÕµ½µÄÅÅÃû×ÊÁÏ´æµ½ÁÙÊ±ÎÄ¼ş
+	static void   StoreTempData( );                            //æŠŠç´¢å¼•å’Œæ’åè®°å½•è¿›ä¸´æ—¶æ–‡ä»¶
+	static void   StoreNewDataToTempFile(unsigned int uParam,  //æŠŠæ–°æ”¶åˆ°çš„æ’åèµ„æ–™å­˜åˆ°ä¸´æ—¶æ–‡ä»¶
 		                                 KRankMessage *pInData);
-	static void   StoreNewDataToTempFile(unsigned int uParam,  //°ÑĞÂÊÕµ½µÄË÷Òı×ÊÁÏ´æµ½ÁÙÊ±ÎÄ¼ş
+	static void   StoreNewDataToTempFile(unsigned int uParam,  //æŠŠæ–°æ”¶åˆ°çš„ç´¢å¼•èµ„æ–™å­˜åˆ°ä¸´æ—¶æ–‡ä»¶
 		                                 KRankIndex *pInData);
 
 private:
 	int	   WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	virtual void Breathe();                                    //ß×£¿ÎªÊ²Ã´ÕâÀïÒ²ÓĞ£¿
+	virtual void Breathe();                                    //å’¦ï¼Ÿä¸ºä»€ä¹ˆè¿™é‡Œä¹Ÿæœ‰ï¼Ÿ
 
 private:
 	static KUiStrengthRank* m_pSelf;
 
 private:
 	void   Initialize();
-//	void   UpdateIndexData();                   //¸üĞÂË÷ÒıµÄÊı¾İ
-	void   UpdateRankData(int nID);             //¸üĞÂÖ¸¶¨ÅÅÃûµÄÊı¾İ
+//	void   UpdateIndexData();                   //æ›´æ–°ç´¢å¼•çš„æ•°æ®
+	void   UpdateRankData(int nID);             //æ›´æ–°æŒ‡å®šæ’åçš„æ•°æ®
 
-	static void StoreTempIni();                 //°ÑË÷ÒıºÍÅÅÃû¼ÇÂ¼½øÁÙÊ±ÎÄ¼ş
-	BOOL   LoadIndexIni(KIniFile *Ini);         //´ÓINIÖĞÔØÈëË÷ÒıÊı¾İ
-	BOOL   LoadRankIni(KIniFile *Ini, int nID); //´ÓINIÖĞÔØÈëÅÅÃûÊı¾İ
-                                                //ÕâÊÇ¿ÕĞĞ
-//	void   SendRobIndexToCore();                //´ÓCoreÄÇÀïÇÀ½ÙË÷ÒıÊı¾İ
-//	void   SendGetIndexToCore();                //¹¦ÄÜÍ¬ÉÏ£¬´ÓCoreÄÇÀï»ñÈ¡Ë÷ÒıÊı¾İ
-	void   SendGetRankToCore(int nID);          //ÏòCore·¢ËÍ»ñÈ¡ÅÅÃûÊı¾İµÄÇëÇó
-                                                //ÕâÒ²ÊÇ¿ÕĞĞ
-	void   ConstructIndexView();                //°ÑIndexµÄÊı¾İ(m_data)¹¹Ôì½øÈ¥m_indexListÀïÃæ£¬ÒÔÏÔÊ¾³öÀ´
-	void   ConstructRankView();                 //°ÑRankµÄÅÅÃûÊı¾İ¹¹Ôì½øÈ¥m_RankListÀïÃæ£¬ÒÔÏÔÊ¾³öÀ´
-	void   ReleasePic();                        //ÊÍ·ÅÍ¼ĞÎ×ÊÔ´
-	void   ReleaseData();                       //ÊÍ·ÅÊı¾İºÍÖØÖÃÏÔÊ¾
+	static void StoreTempIni();                 //æŠŠç´¢å¼•å’Œæ’åè®°å½•è¿›ä¸´æ—¶æ–‡ä»¶
+	BOOL   LoadIndexIni(KIniFile *Ini);         //ä»INIä¸­è½½å…¥ç´¢å¼•æ•°æ®
+	BOOL   LoadRankIni(KIniFile *Ini, int nID); //ä»INIä¸­è½½å…¥æ’åæ•°æ®
+                                                //è¿™æ˜¯ç©ºè¡Œ
+//	void   SendRobIndexToCore();                //ä»Coreé‚£é‡ŒæŠ¢åŠ«ç´¢å¼•æ•°æ®
+//	void   SendGetIndexToCore();                //åŠŸèƒ½åŒä¸Šï¼Œä»Coreé‚£é‡Œè·å–ç´¢å¼•æ•°æ®
+	void   SendGetRankToCore(int nID);          //å‘Coreå‘é€è·å–æ’åæ•°æ®çš„è¯·æ±‚
+                                                //è¿™ä¹Ÿæ˜¯ç©ºè¡Œ
+	void   ConstructIndexView();                //æŠŠIndexçš„æ•°æ®(m_data)æ„é€ è¿›å»m_indexListé‡Œé¢ï¼Œä»¥æ˜¾ç¤ºå‡ºæ¥
+	void   ConstructRankView();                 //æŠŠRankçš„æ’åæ•°æ®æ„é€ è¿›å»m_RankListé‡Œé¢ï¼Œä»¥æ˜¾ç¤ºå‡ºæ¥
+	void   ReleasePic();                        //é‡Šæ”¾å›¾å½¢èµ„æº
+	void   ReleaseData();                       //é‡Šæ”¾æ•°æ®å’Œé‡ç½®æ˜¾ç¤º
 
-	void   ArrangeDefaultData();                //°²ÅÅÄ¬ÈÏÊı¾İµÄÏÔÊ¾
+	void   ArrangeDefaultData();                //å®‰æ’é»˜è®¤æ•°æ®çš„æ˜¾ç¤º
 
 	static void   AddRank(unsigned int uParam, KRankMessage *pRankData);
 	static void   AddIndex(unsigned int uParam, struct KRankIndex *pIndex, bool command=false);
@@ -104,19 +104,19 @@ private:
 	KWndScrollBar			  m_RankScroll;
 
 	static KIniFile           m_IndexIDIni;
-	static KLinkStruct<KRankIndexNode> m_IndexData; //ËùÓĞË÷ÒıÊı¾İµÄÁ´±í
-	static KLinkStruct<KRankNode> m_RankData;       //Ò»ÏîÅÅÃûÊı¾İµÄÁ´±í
+	static KLinkStruct<KRankIndexNode> m_IndexData; //æ‰€æœ‰ç´¢å¼•æ•°æ®çš„é“¾è¡¨
+	static KLinkStruct<KRankNode> m_RankData;       //ä¸€é¡¹æ’åæ•°æ®çš„é“¾è¡¨
 
 	unsigned int              m_uColor;
-	static BOOL               m_bIsIndexDataChange;//Ë÷ÒıÊı¾İ¸Ä±äÁËÂğ£¿
-	static BOOL               m_bIsRankDataChange; //ÅÅÃûÊı¾İ¸Ä±äÁËÂğ£¿
-	KRankIndexNode           *m_pCurrentIndexNode; //µ±Ç°ÕıÔÚÏÔÊ¾µÄÅÅÃûµÄË÷Òı
+	static BOOL               m_bIsIndexDataChange;//ç´¢å¼•æ•°æ®æ”¹å˜äº†å—ï¼Ÿ
+	static BOOL               m_bIsRankDataChange; //æ’åæ•°æ®æ”¹å˜äº†å—ï¼Ÿ
+	KRankIndexNode           *m_pCurrentIndexNode; //å½“å‰æ­£åœ¨æ˜¾ç¤ºçš„æ’åçš„ç´¢å¼•
 
-	int                       m_nFontSize;          //×ÖÌå´óĞ¡
-	int                       m_nLineLen;           //¼ÆËã³öÀ´µÄĞĞ³¤¶È
-    unsigned short            m_usUpPic;            //ÉÏÉıµÄÍ¼Æ¬
-	unsigned short            m_usSteadyPic;        //³ÖÆ½µÄÍ¼Æ¬
-	unsigned short            m_usDownPic;          //ÏÂ½µµÄÍ¼Æ¬
+	int                       m_nFontSize;          //å­—ä½“å¤§å°
+	int                       m_nLineLen;           //è®¡ç®—å‡ºæ¥çš„è¡Œé•¿åº¦
+    unsigned short            m_usUpPic;            //ä¸Šå‡çš„å›¾ç‰‡
+	unsigned short            m_usSteadyPic;        //æŒå¹³çš„å›¾ç‰‡
+	unsigned short            m_usDownPic;          //ä¸‹é™çš„å›¾ç‰‡
 
 	int						  m_nLastIndex;
 	unsigned int             *m_pLastGettimes;

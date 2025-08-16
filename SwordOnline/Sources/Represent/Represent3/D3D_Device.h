@@ -17,33 +17,33 @@ public:
 	~CD3D_Device()			{ FreeAll(); }
 
 	// Creation/Destruction Routines...
-	// ´´½¨Éè±¸
+	// åˆ›å»ºè®¾å¤‡
 	bool					CreateDevice(D3DAdapterInfo* pAdapter,D3DDeviceInfo* pDevice,D3DModeInfo* pMode);
 	bool					SetMode(D3DModeInfo* pMode);
-	// ÊÍ·ÅÉè±¸ (and resets all that should be reset on device release)...
+	// é‡Šæ”¾è®¾å¤‡ (and resets all that should be reset on device release)...
 	void					FreeDevice();
-	// ÊÍ·ÅËùÓĞÉè±¸¶ÔÏó
+	// é‡Šæ”¾æ‰€æœ‰è®¾å¤‡å¯¹è±¡
 	bool					ReleaseDevObjects();
-	// »Ö¸´Éè±¸¶ÔÏó£¬µ÷ÓÃÉè±¸¶ÔÏóµÄReCreateObjectº¯Êı
+	// æ¢å¤è®¾å¤‡å¯¹è±¡ï¼Œè°ƒç”¨è®¾å¤‡å¯¹è±¡çš„ReCreateObjectå‡½æ•°
 	bool					RestoreDevObjects();
-	// ÖØÖÃÉè±¸³õÊ¼×´Ì¬ (²»ÊÍ·ÅÈÎºÎ¶«Î÷)...
+	// é‡ç½®è®¾å¤‡åˆå§‹çŠ¶æ€ (ä¸é‡Šæ”¾ä»»ä½•ä¸œè¥¿)...
 	void					Reset();
-	// ÖØÖÃÉè±¸¶ÔÏó±äÁ¿ (¾Ö²¿ÖØÖÃ - ÓÃÓÚÏó ALT-Tab ÕâÑùµÄ²Ù×÷)...
+	// é‡ç½®è®¾å¤‡å¯¹è±¡å˜é‡ (å±€éƒ¨é‡ç½® - ç”¨äºè±¡ ALT-Tab è¿™æ ·çš„æ“ä½œ)...
 	void					ResetDeviceVars();
-	// ÊÍ·ÅËùÓĞ³ÉÔ±±äÁ¿£¬È»ºóÖØÖÃ
+	// é‡Šæ”¾æ‰€æœ‰æˆå‘˜å˜é‡ï¼Œç„¶åé‡ç½®
 	void					FreeAll();
 
-	// ×´Ì¬ÉèÖÃºÍ¶ÁÈ¡º¯Êı
+	// çŠ¶æ€è®¾ç½®å’Œè¯»å–å‡½æ•°
 	D3DAdapterInfo*			GetAdapterInfo()	{ return m_pAdapter; }
 	D3DDeviceInfo*			GetDeviceInfo()		{ return m_pDevice; }
 	D3DModeInfo*			GetModeInfo()		{ return m_pMode; }
 	void					SetDefaultRenderStates();
 	void					SetupViewport(uint32 iLeft, uint32 iRight, uint32 iTop, uint32 iBottom, float fMinZ = 0.0f, float fMaxZ = 1.0f);
 
-	// äÖÈ¾º¯Êı
-	// ¿ªÊ¼äÖÈ¾Ò»Ö¡Ç°µ÷ÓÃ
+	// æ¸²æŸ“å‡½æ•°
+	// å¼€å§‹æ¸²æŸ“ä¸€å¸§å‰è°ƒç”¨
 	static bool				Start3D();
-	// Ò»Ö¡äÖÈ¾Íê³Éºóµ÷ÓÃ
+	// ä¸€å¸§æ¸²æŸ“å®Œæˆåè°ƒç”¨
 	static bool				End3D();
 	static bool				IsIn3D();
 	bool					ResetDevice();
@@ -56,8 +56,8 @@ public:
 	// Debug/Helper Functions...
 	void					ListDeviceCaps();	// ConsolePrint the device caps...
 
-	// ×¢Òâ: m_pD3DDevice ×÷Îª¹²ÓĞ³ÉÔ±ÊÇÎªÁË¿ìËÙ·ÃÎÊ
-    LPDIRECT3DDEVICE9		m_pD3DDevice;		// D3D äÖÈ¾Éè±¸
+	// æ³¨æ„: m_pD3DDevice ä½œä¸ºå…±æœ‰æˆå‘˜æ˜¯ä¸ºäº†å¿«é€Ÿè®¿é—®
+    LPDIRECT3DDEVICE9		m_pD3DDevice;		// D3D æ¸²æŸ“è®¾å¤‡
 private:
 //	D3DFORMAT				GetDefaultDepthStencilFormat(uint32 iZBitDepth,uint32 iStencilBitDepth);
 	D3DMULTISAMPLE_TYPE		GetDefaultMultiSampleType(uint32 Samples);
@@ -65,7 +65,7 @@ private:
 
 	// Device Info/Data...
 	D3DPRESENT_PARAMETERS	m_PresentationParam;
-	D3DCAPS9				m_DeviceCaps;		// ±£´æÉè±¸ÄÜÁ¦
+	D3DCAPS9				m_DeviceCaps;		// ä¿å­˜è®¾å¤‡èƒ½åŠ›
 	D3DAdapterInfo*			m_pAdapter;			// My Adaptor Info Pointer (Points into g_D3DShell's device list)
     D3DDeviceInfo*			m_pDevice;			// My Device Info Pointer (Points into g_D3DShell's device list)
     D3DModeInfo*			m_pMode;			// My Mode Info Pointer (Points into g_D3DShell's mode list)

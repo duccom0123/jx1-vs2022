@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹-´¿ÎÄ×Ö°´Å¥
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„-çº¯æ–‡å­—æŒ‰é’®
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-1-19
@@ -20,7 +20,7 @@
 
 extern iCoreShell*		g_pCoreShell;
 extern iRepresentShell*	g_pRepresentShell;
-unsigned int KWndPureTextBtn::ms_uBtnTipTextColor = 0xffffffff;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
+unsigned int KWndPureTextBtn::ms_uBtnTipTextColor = 0xffffffff;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
 
 KWndPureTextBtn::KWndPureTextBtn()
 {
@@ -105,7 +105,7 @@ void KWndPureTextBtn::AdjustPosition()
 
 }
 
-//»æÖÆ´°¿Ú
+//ç»˜åˆ¶çª—å£
 void KWndPureTextBtn::PaintWindow()
 {
 	KWndWindow::PaintWindow();
@@ -136,7 +136,7 @@ void KWndPureTextBtn::PaintWindow()
 	g_pRepresentShell->OutputRichText(m_nFontSize, &param, m_sText, m_nTextLen);
 }
 
-//ÉèÖÃÎÄ±¾ÎÄ×Ö
+//è®¾ç½®æ–‡æœ¬æ–‡å­—
 void KWndPureTextBtn::SetText(const char* pText, int nLen)
 {
 	if (pText == NULL)
@@ -170,7 +170,7 @@ void KWndPureTextBtn::CheckButton(int bChecked)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿Úº¯Êı£¨´¦ÀíÏûÏ¢£©
+//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°ï¼ˆå¤„ç†æ¶ˆæ¯ï¼‰
 //--------------------------------------------------------------------------
 int KWndPureTextBtn::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

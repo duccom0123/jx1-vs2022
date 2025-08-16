@@ -12,33 +12,33 @@
 #include "KFilePath.h"
 #include "KScanDir.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	
-// ¹¦ÄÜ:	
-// ²ÎÊı:	lpFileExt
-// ·µ»Ø:	void
+// å‡½æ•°:	
+// åŠŸèƒ½:	
+// å‚æ•°:	lpFileExt
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KScanFile::KScanFile()
 {
 	g_MemZero(m_FileExt, sizeof(m_FileExt));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	
-// ¹¦ÄÜ:	
-// ²ÎÊı:	lpFileExt
-// ·µ»Ø:	void
+// å‡½æ•°:	
+// åŠŸèƒ½:	
+// å‚æ•°:	lpFileExt
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KScanFile::DiscardFileExt(LPSTR lpFileExt)
 {
 	g_MemCopy(m_FileExt, lpFileExt, 3);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	RunSearch
-// ¹¦ÄÜ:	É¨ÃèÄ¿Â¼
-// ²ÎÊı:	lpRootPath		¸ùÄ¿Â¼
-//			lpScanPath		É¨ÃèÄ¿Â¼
-//			lpOutFile		Êä³öÎÄ¼ş
-// ·µ»Ø:	TRUE			³É¹¦
-//			FALSE			Ê§°Ü
+// å‡½æ•°:	RunSearch
+// åŠŸèƒ½:	æ‰«æç›®å½•
+// å‚æ•°:	lpRootPath		æ ¹ç›®å½•
+//			lpScanPath		æ‰«æç›®å½•
+//			lpOutFile		è¾“å‡ºæ–‡ä»¶
+// è¿”å›:	TRUE			æˆåŠŸ
+//			FALSE			å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KScanFile::RunSearch(LPSTR lpRootPath, LPSTR lpScanPath, LPSTR lpOutFile)
 {
@@ -55,10 +55,10 @@ BOOL KScanFile::RunSearch(LPSTR lpRootPath, LPSTR lpScanPath, LPSTR lpOutFile)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SearchDirectory
-// ¹¦ÄÜ:	É¨ÃèÄ¿Â¼£¬Êä³öÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	SearchDirectory
+// åŠŸèƒ½:	æ‰«æç›®å½•ï¼Œè¾“å‡ºç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KScanFile::SearchDirectory() 
 {
@@ -114,10 +114,10 @@ void KScanFile::SearchDirectory()
 	FindClose(hFind);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CheckFileExt
-// ¹¦ÄÜ:	¼ì²éÎÄ¼şÀ©Õ¹Ãû
-// ²ÎÊı:	FileName	
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	CheckFileExt
+// åŠŸèƒ½:	æ£€æŸ¥æ–‡ä»¶æ‰©å±•å
+// å‚æ•°:	FileName	
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KScanFile::CheckFileExt(LPSTR FileName)
 {
@@ -126,10 +126,10 @@ BOOL KScanFile::CheckFileExt(LPSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	OutputFileName
-// ¹¦ÄÜ:	Êä³öÎÄ¼şÃû
-// ²ÎÊı:	FileName	
-// ·µ»Ø:	void
+// å‡½æ•°:	OutputFileName
+// åŠŸèƒ½:	è¾“å‡ºæ–‡ä»¶å
+// å‚æ•°:	FileName	
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KScanFile::OutputFileName(LPSTR FileName)
 {

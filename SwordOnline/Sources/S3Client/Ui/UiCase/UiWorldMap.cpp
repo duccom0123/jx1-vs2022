@@ -1,6 +1,6 @@
 /* 
  * File:     UiWorldMap.cpp
- * Desc:     ÊÀ½çµØÍ¼
+ * Desc:     ä¸–ç•Œåœ°å›¾
  * Author:   flying
  * Creation: 2003/7/22
  */
@@ -69,7 +69,7 @@ KUiWorldmap* KUiWorldmap::GetIfVisible()
 		return NULL;
 }
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void KUiWorldmap::Initialize()
 {
 	AddChild(&m_Sign);
@@ -138,7 +138,7 @@ void KUiWorldmap::UpdateData()
 	KIniFile Ini;
 	if (Ini.Load(MAPLIST_SETTING_FILE))
 	{
-		//È¡µÃÊÀ½çµØÍ¼µÄÍ¼ĞÎÎÄ¼şÃ÷
+		//å–å¾—ä¸–ç•Œåœ°å›¾çš„å›¾å½¢æ–‡ä»¶æ˜
 		char	szBuffer[128];
 		char	CityText[64];
 		char	CapitalText[64];

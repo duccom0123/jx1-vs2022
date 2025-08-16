@@ -15,13 +15,13 @@
 class ENGINE_API KZipFile
 {
 private:
-	KFile		m_DiskFile;		// �����ļ�(���ڰ���)
-	KMemClass	m_FileBuff;		// ��ѹ���ļ�����
-	int			m_nZipFile;		// �Ƿ�����ڰ���
-	DWORD		m_FileOffs;		// ��ZIP�ļ��еď���
-	DWORD		m_FileSize;		// ûѹ��ǰ���ļ�����
-	DWORD		m_PackSize;		// ѹ���ļ�����
-	DWORD		m_FilePointer;	// �ļ�ָ���λ��(�����)
+	KFile		m_DiskFile;		// 磁盘文件(不在包中)
+	KMemClass	m_FileBuff;		// 解压后文件缓存
+	int			m_nZipFile;		// 是否存在于包中
+	DWORD		m_FileOffs;		// 在ZIP文件中的�桃�
+	DWORD		m_FileSize;		// 没压缩前的文件长度
+	DWORD		m_PackSize;		// 压缩文件长度
+	DWORD		m_FilePointer;	// 文件指针的位置(解码后)
 	BOOL		OpenZip(LPSTR FileName);
 	DWORD		ReadZip(PVOID pBuffer, DWORD dwSize);
 	DWORD		SeekZip(LONG lOffset, DWORD dwMethod);

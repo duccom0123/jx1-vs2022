@@ -1,6 +1,6 @@
 /* 
  * File:     UiCaveList.h
- * Desc:     世界地图
+ * Desc:     涓栫晫鍦板浘
  * Author:   flying
  * Creation: 2003/7/22
  */
@@ -14,17 +14,17 @@
 class KUiCaveList : protected KWndImage
 {
 public:
-	static KUiCaveList* OpenWindow();		//打开窗口，返回唯一的一个类对象实例
-	static void			CloseWindow();		//关闭窗口
+	static KUiCaveList* OpenWindow();		//鎵撳紑绐楀彛锛岃繑鍥炲敮涓�鐨勪竴涓被瀵硅薄瀹炰緥
+	static void			CloseWindow();		//鍏抽棴绐楀彛
 	static KUiCaveList*	GetIfVisible();
-	void				LoadScheme(const char* pScheme);	//载入界面方案
+	void				LoadScheme(const char* pScheme);	//杞藉叆鐣岄潰鏂规
 
 private:
 	KUiCaveList() {}
 	~KUiCaveList() {}
 	void	Initialize();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	Breathe();				//活动函数
+	void	Breathe();				//娲诲姩鍑芥暟
 	void	UpdateData();
 private:
 	static KUiCaveList* m_pSelf;

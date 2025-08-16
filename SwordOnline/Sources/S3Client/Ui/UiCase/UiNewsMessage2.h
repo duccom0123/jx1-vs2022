@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--ĞÂÎÅÏûÏ¢´°¿Ú
+//	ç•Œé¢--æ–°é—»æ¶ˆæ¯çª—å£
 //	Copyright : Kingsoft 2003
 //	Author	:   Fyt(Fan Zhanpeng)
 //	CreateTime:	2003-08-01
@@ -16,13 +16,13 @@
 
 struct KNewsMessageNode1 : public KNewsMessage
 {
-	unsigned int		uTime;			//Ò»°ãÏûÏ¢-´ËÊı¹Ì¶¨Îª0£»µ¹¼ÆÊıÏûÏ¢-±íÊ¾µ¹¼ÆÊıµÄºÁÃëÊı
-										//¶¨Ê±ÏûÏ¢£¬¶¨Ê±Ê±¼äÏŞ£¬(time()µÄÊ±¼äÁ¿)
+	unsigned int		uTime;			//ä¸€èˆ¬æ¶ˆæ¯-æ­¤æ•°å›ºå®šä¸º0ï¼›å€’è®¡æ•°æ¶ˆæ¯-è¡¨ç¤ºå€’è®¡æ•°çš„æ¯«ç§’æ•°
+										//å®šæ—¶æ¶ˆæ¯ï¼Œå®šæ—¶æ—¶é—´é™ï¼Œ(time()çš„æ—¶é—´é‡)
 	union
 	{
-		unsigned int	uShowTimes;		// ´ËÏûÏ¢ÒÑ¾­ÏÔÊ¾µÄ´ÎÊı£¨ÓÃÓÚÒ»°ãÏûÏ¢£©
-		unsigned int	uStartTime;		// µ½¼ÆÊ±¿ªÊ¼µÄÊ±¼ä£¨ÓÃÓÚµ¹¼ÆÊ±ÏûÏ¢£©
-		unsigned int	uLastShowTime;	// ×îºóÒ»´ÎÏÔÊ¾µÄÊ±¼ä£¨ÓÃÓÚ¶¨Ê±ÏûÏ¢£©
+		unsigned int	uShowTimes;		// æ­¤æ¶ˆæ¯å·²ç»æ˜¾ç¤ºçš„æ¬¡æ•°ï¼ˆç”¨äºä¸€èˆ¬æ¶ˆæ¯ï¼‰
+		unsigned int	uStartTime;		// åˆ°è®¡æ—¶å¼€å§‹çš„æ—¶é—´ï¼ˆç”¨äºå€’è®¡æ—¶æ¶ˆæ¯ï¼‰
+		unsigned int	uLastShowTime;	// æœ€åä¸€æ¬¡æ˜¾ç¤ºçš„æ—¶é—´ï¼ˆç”¨äºå®šæ—¶æ¶ˆæ¯ï¼‰
 	};
 	KNewsMessageNode1*	pNext;
 };
@@ -30,11 +30,11 @@ struct KNewsMessageNode1 : public KNewsMessage
 class KUiNewsMessage2 : protected KWndShadow
 {
 public:
-	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
-	static KUiNewsMessage2*	OpenWindow();						// ´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiNewsMessage2*  GetIfVisible();                     //Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void				CloseWindow(BOOL bDestory = FALSE);	// ¹Ø±Õ´°¿Ú
-	static void				LoadScheme(const char* pszScheme);	// ÔØÈë½çÃæ·½°¸
+	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
+	static KUiNewsMessage2*	OpenWindow();						// æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiNewsMessage2*  GetIfVisible();                     //å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void				CloseWindow(BOOL bDestory = FALSE);	// å…³é—­çª—å£
+	static void				LoadScheme(const char* pszScheme);	// è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	static void				MessageArrival(KNewsMessage* pMsg, SYSTEMTIME* pTime);
 	static void				EnableIdleMsg(BOOL bEnable);
 
@@ -45,53 +45,53 @@ private:
 	KUiNewsMessage2();
 	~KUiNewsMessage2() {}
 	void	Initialize();
-	void	LoadScheme(KIniFile* pIni);			// ÔØÈë½çÃæ·½°¸
-	virtual void	Breathe();					// ÎÒÒª»î¶¯£¬´¦ÀíÏûÏ¢¶ÓÁĞ-____-|||b°¢
-	virtual int		PtInWindow(int x, int y);	// ´©Í¸£¡£¡£¡
+	void	LoadScheme(KIniFile* pIni);			// è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	virtual void	Breathe();					// æˆ‘è¦æ´»åŠ¨ï¼Œå¤„ç†æ¶ˆæ¯é˜Ÿåˆ—-____-|||bé˜¿
+	virtual int		PtInWindow(int x, int y);	// ç©¿é€ï¼ï¼ï¼
 	virtual void	PaintWindow();
 
 	bool	AddMessage(KNewsMessage* pMsg, unsigned int uTime, unsigned int uTimeParam = 0);
-												// ÔÚÏûÏ¢¶ÓÁĞ-__-||bµÄ×îÇ°ÃæÔö¼ÓÒ»ÌõÏûÏ¢-__-||b
-	KNewsMessageNode1* 	SeparateMsg();			// °Ñm_pHandlingËùÖ¸µÄÏûÏ¢´ÓÁ´±í·ÖÀë³öÀ´£¡£¡£¡£¡£¡
-	void	AddToTail(KNewsMessageNode1* pNode);	// °ÑpNodeËùÖ¸µÄÏûÏ¢¼Óµ½Á´±íÄ©¶Ë£¡
-	bool	PickAMessage();						// ÔÚ¶ÓÁĞÖĞ£¬Ñ°ÕÒÊÇ·ñÓĞ·ûºÏÏÔÊ¾Ìõ¼şµÄÏûÏ¢£¬²¢ÇÒ¸ºÔğÉ¾³ı¹ıÊ±ÏûÏ¢
-	void	Reset();							// ÖØÖÃÏûÏ¢µÄÏÔÊ¾×´Ì¬
-	bool	ScrollMsg();						// ¹ö¶¯µ±Ç°ÏûÏ¢
-	void	PickFromIni();						// ÔÚIniÎÄ¼şÖĞËæ»ú³éÈ¡Ò»ÌõÏûÏ¢²åÈë¶ÓÁĞ
-	void	Clear();							// Çå³ıËùÓĞµÄÏûÏ¢
-	void	ConvertMsg();						// ×ª»»ÏûÏ¢µ½×îÖÕÏÔÊ¾ÄÚÈİ
-	bool	MakeCountingMsg();					// Éú³Éµ¹¼ÆÊ±ÏûÏ¢µÄÏÔÊ¾ÄÚÈİ
+												// åœ¨æ¶ˆæ¯é˜Ÿåˆ—-__-||bçš„æœ€å‰é¢å¢åŠ ä¸€æ¡æ¶ˆæ¯-__-||b
+	KNewsMessageNode1* 	SeparateMsg();			// æŠŠm_pHandlingæ‰€æŒ‡çš„æ¶ˆæ¯ä»é“¾è¡¨åˆ†ç¦»å‡ºæ¥ï¼ï¼ï¼ï¼ï¼
+	void	AddToTail(KNewsMessageNode1* pNode);	// æŠŠpNodeæ‰€æŒ‡çš„æ¶ˆæ¯åŠ åˆ°é“¾è¡¨æœ«ç«¯ï¼
+	bool	PickAMessage();						// åœ¨é˜Ÿåˆ—ä¸­ï¼Œå¯»æ‰¾æ˜¯å¦æœ‰ç¬¦åˆæ˜¾ç¤ºæ¡ä»¶çš„æ¶ˆæ¯ï¼Œå¹¶ä¸”è´Ÿè´£åˆ é™¤è¿‡æ—¶æ¶ˆæ¯
+	void	Reset();							// é‡ç½®æ¶ˆæ¯çš„æ˜¾ç¤ºçŠ¶æ€
+	bool	ScrollMsg();						// æ»šåŠ¨å½“å‰æ¶ˆæ¯
+	void	PickFromIni();						// åœ¨Iniæ–‡ä»¶ä¸­éšæœºæŠ½å–ä¸€æ¡æ¶ˆæ¯æ’å…¥é˜Ÿåˆ—
+	void	Clear();							// æ¸…é™¤æ‰€æœ‰çš„æ¶ˆæ¯
+	void	ConvertMsg();						// è½¬æ¢æ¶ˆæ¯åˆ°æœ€ç»ˆæ˜¾ç¤ºå†…å®¹
+	bool	MakeCountingMsg();					// ç”Ÿæˆå€’è®¡æ—¶æ¶ˆæ¯çš„æ˜¾ç¤ºå†…å®¹
 
 private:
 
-	KNewsMessageNode1*	m_pHead;			// ÏûÏ¢Á´±íÖĞµÄÍ·Ò»¸öÏûÏ¢
-	KNewsMessageNode1*	m_pHandling;		// ÕıÔÚÏÔÊ¾/´¦ÀíµÄĞÂÎÅÏûÏ¢
+	KNewsMessageNode1*	m_pHead;			// æ¶ˆæ¯é“¾è¡¨ä¸­çš„å¤´ä¸€ä¸ªæ¶ˆæ¯
+	KNewsMessageNode1*	m_pHandling;		// æ­£åœ¨æ˜¾ç¤º/å¤„ç†çš„æ–°é—»æ¶ˆæ¯
 
-	KIniFile		m_IniFile;				// ¼ÍÂ¼IniÎÄ¼şÖĞÒª³é³öÀ´ÏÔÊ¾µÄÒ»Ğ©ÏûÏ¢
+	KIniFile		m_IniFile;				// çºªå½•Iniæ–‡ä»¶ä¸­è¦æŠ½å‡ºæ¥æ˜¾ç¤ºçš„ä¸€äº›æ¶ˆæ¯
 
-	int				m_nIndentH;				// Ç°×ººÍÏÔÊ¾ÏûÏ¢²¿·İ·Ö¸ô¶àÉÙ
-	int				m_nIndentV;				// ÎÄ×ÖÏà¶ÔÓÚ´°¿Ú¶¥²¿µÄÏòÏÂËõ½ü£¨µ¥Î»£ºÏñËØµã£©
-	int				m_nFontSize;			// ×ÖÌå´óĞ¡
-	unsigned int	m_uTextColor;			// Ç°¾°×Ö·ûµÄÑÕÉ«
-	unsigned int	m_uTextBorderColor;		// ÎÄ×Ö±ßÔµÑÕÉ«
-	int				m_nVisionWidth;			// ÏÔÊ¾ÏûÏ¢µÄ¿Õ¼äµÄÏñËØ¿í¶È
-	int				m_nCharasVisibleLimitNum;// ×î¶à¿ÉµÄ×Ö·ûµÄÏŞÖÆ
-	int				m_nFontHalfWidth[2];	// ×Ö·ûµÄÁ½¸öÒ»°ë¿í¶È
+	int				m_nIndentH;				// å‰ç¼€å’Œæ˜¾ç¤ºæ¶ˆæ¯éƒ¨ä»½åˆ†éš”å¤šå°‘
+	int				m_nIndentV;				// æ–‡å­—ç›¸å¯¹äºçª—å£é¡¶éƒ¨çš„å‘ä¸‹ç¼©è¿‘ï¼ˆå•ä½ï¼šåƒç´ ç‚¹ï¼‰
+	int				m_nFontSize;			// å­—ä½“å¤§å°
+	unsigned int	m_uTextColor;			// å‰æ™¯å­—ç¬¦çš„é¢œè‰²
+	unsigned int	m_uTextBorderColor;		// æ–‡å­—è¾¹ç¼˜é¢œè‰²
+	int				m_nVisionWidth;			// æ˜¾ç¤ºæ¶ˆæ¯çš„ç©ºé—´çš„åƒç´ å®½åº¦
+	int				m_nCharasVisibleLimitNum;// æœ€å¤šå¯çš„å­—ç¬¦çš„é™åˆ¶
+	int				m_nFontHalfWidth[2];	// å­—ç¬¦çš„ä¸¤ä¸ªä¸€åŠå®½åº¦
 
-	unsigned int	m_uMaxIdleTime;			// ×î³¤ÎŞÏûÏ¢¿ÕÏĞÊ±¼ä
-	unsigned int	m_uShowInterval;		// Í¬Ò»¸öÏûÏ¢Á½´ÎÏÔÊ¾Ö®¼äµÄ¼ä¸ô
-	unsigned int	m_uScrollInterval;		// ×Ö·û¹ö¶¯µÄÊ±¼ä¼ä¸ô
+	unsigned int	m_uMaxIdleTime;			// æœ€é•¿æ— æ¶ˆæ¯ç©ºé—²æ—¶é—´
+	unsigned int	m_uShowInterval;		// åŒä¸€ä¸ªæ¶ˆæ¯ä¸¤æ¬¡æ˜¾ç¤ºä¹‹é—´çš„é—´éš”
+	unsigned int	m_uScrollInterval;		// å­—ç¬¦æ»šåŠ¨çš„æ—¶é—´é—´éš”
 
-	unsigned int	m_uLastShowTime;		// ÉÏÒ»´ÎÏÔÊ¾ÏûÏ¢µÄÊ±ºò
-	KNewsMessage	m_CurrentMsg;			// µ±Ç°ÏÔÊ¾µÄÏûÏ¢ÄÚÈİ
-	int				m_nLineLen;				// µ±Ç°ÏÔÊ¾ÏûÏ¢µÄ×ÜÏÔÊ¾×Ö·ûÊı³¤¶È
+	unsigned int	m_uLastShowTime;		// ä¸Šä¸€æ¬¡æ˜¾ç¤ºæ¶ˆæ¯çš„æ—¶å€™
+	KNewsMessage	m_CurrentMsg;			// å½“å‰æ˜¾ç¤ºçš„æ¶ˆæ¯å†…å®¹
+	int				m_nLineLen;				// å½“å‰æ˜¾ç¤ºæ¶ˆæ¯çš„æ€»æ˜¾ç¤ºå­—ç¬¦æ•°é•¿åº¦
 
-	unsigned int	m_uLastScrollTime;		// ÉÏ´Î¹ö¶¯µÄÊ±¼ä
-	bool	m_bJustIncoming;				// ÏûÏ¢ÕıÔÚ½øÈë,(Í·)»¹Î´¿ªÊ¼Àë¿ªÏÔÊ¾ÇøÓò
-	int		m_nCharIndex;					// ÏûÏ¢×Ö·ûµÄ¹ö¶¯ÏÂ±ê
-	int		m_nTextPosX;					// ÏûÏ¢ÏÔÊ¾ÇøÓòµÄ×óÉÏ½ÇX×ø±ê(Ïà¶Ô)
-	int		m_nHalfIndex;					// ×Ö·û°ë¿íµÄË÷Òı
-	int		m_nInsertPlace;					// Ö»¶Ôµ¹¼ÆÊıÏûÏ¢ÓĞĞ§
+	unsigned int	m_uLastScrollTime;		// ä¸Šæ¬¡æ»šåŠ¨çš„æ—¶é—´
+	bool	m_bJustIncoming;				// æ¶ˆæ¯æ­£åœ¨è¿›å…¥,(å¤´)è¿˜æœªå¼€å§‹ç¦»å¼€æ˜¾ç¤ºåŒºåŸŸ
+	int		m_nCharIndex;					// æ¶ˆæ¯å­—ç¬¦çš„æ»šåŠ¨ä¸‹æ ‡
+	int		m_nTextPosX;					// æ¶ˆæ¯æ˜¾ç¤ºåŒºåŸŸçš„å·¦ä¸Šè§’Xåæ ‡(ç›¸å¯¹)
+	int		m_nHalfIndex;					// å­—ç¬¦åŠå®½çš„ç´¢å¼•
+	int		m_nInsertPlace;					// åªå¯¹å€’è®¡æ•°æ¶ˆæ¯æœ‰æ•ˆ
 };
 
 #endif

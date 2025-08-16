@@ -21,15 +21,15 @@ public:
 	~KPakList();
 	bool		Open(const char* pPakListFile);
 	void		Close();
-	//查找包内的子文件
+	//鏌ユ壘鍖呭唴鐨勫瓙鏂囦欢
 	bool		FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef);
-	//查找包内的子文件
+	//鏌ユ壘鍖呭唴鐨勫瓙鏂囦欢
 	bool		FindElemFile(const char* pszFileName, XPackElemFileRef& ElemRef);
-	//读取包内的子文件
+	//璇诲彇鍖呭唴鐨勫瓙鏂囦欢
 	int			ElemFileRead(XPackElemFileRef& ElemRef, void* pBuffer, unsigned uSize);
-	//读取spr文件头部或整个spr
+	//璇诲彇spr鏂囦欢澶撮儴鎴栨暣涓猻pr
 	SPRHEAD*	GetSprHeader(XPackElemFileRef& ElemRef, SPROFFS*& pOffsetTable);
-	//读取按帧压缩的spr的一帧的数据
+	//璇诲彇鎸夊抚鍘嬬缉鐨剆pr鐨勪竴甯х殑鏁版嵁
 	SPRFRAME*	GetSprFrame(int nPackIndex, SPRHEAD* pSprHeader, int nFrame);
 private:
 	unsigned long FileNameToId(const char* pszFileName);

@@ -11,12 +11,12 @@ typedef struct {
 
 #include "KSprite.h"
 
-#define MINIMIZE_BLOCK_SIZE	16					//Ò»¸ö¿é×îÉÙ16¸ö×Ö½Ú
-#define MAX_LAST			16					//¼ÇÂ¼×î½üÊ¹ÓÃµÄÏî
+#define MINIMIZE_BLOCK_SIZE	16					//ä¸€ä¸ªå—æœ€å°‘16ä¸ªå­—èŠ‚
+#define MAX_LAST			16					//è®°å½•æœ€è¿‘ä½¿ç”¨çš„é¡¹
 
 class ZCache {
-	char *buffer;								//Êµ¼ÊµÄ»º³åÇø
-	item_info *free_items;						//¿ÕÏĞ¿é
+	char *buffer;								//å®é™…çš„ç¼“å†²åŒº
+	item_info *free_items;						//ç©ºé—²å—
 	long cache_size;
 	unsigned long last_items[MAX_LAST];
 	int last;
@@ -56,26 +56,26 @@ public:
 	}
 };
 
-//Ò»¸öPackÎÄ¼ş¾ßÓĞÏÂÃæµÄ½á¹¹:
-//Ê×ÏÈÊÇËÄ¸ö×Ö½ÚµÄÎÄ¼şµÄÍ·±êÖ¾:×Ö·û´®'PACK',È»ºóÊÇÏîµÄÊıÄ¿È»ºóÊÇË÷Òı¿ªÊ¼µÄÆ«ÒÆÁ¿\Êı¾İ¿ªÊ¼µÄÆ«ÒÆÁ¿,È»ºóÊÇĞ£ÑéºÍ,È»ºóÊÇ±£ÁôµÄ×Ö½Ú:
+//ä¸€ä¸ªPackæ–‡ä»¶å…·æœ‰ä¸‹é¢çš„ç»“æ„:
+//é¦–å…ˆæ˜¯å››ä¸ªå­—èŠ‚çš„æ–‡ä»¶çš„å¤´æ ‡å¿—:å­—ç¬¦ä¸²'PACK',ç„¶åæ˜¯é¡¹çš„æ•°ç›®ç„¶åæ˜¯ç´¢å¼•å¼€å§‹çš„åç§»é‡\æ•°æ®å¼€å§‹çš„åç§»é‡,ç„¶åæ˜¯æ ¡éªŒå’Œ,ç„¶åæ˜¯ä¿ç•™çš„å­—èŠ‚:
 //---------------------------------------------------------------------------------------------------------------------------------
-typedef struct {		//Ë÷ÒıĞÅÏ¢
+typedef struct {		//ç´¢å¼•ä¿¡æ¯
 	unsigned long id;
 	unsigned long offset;
 	long size;
 	long compress_size;
 } index_info;
 
-#define TYPE_NONE			0					//Ã»ÓĞÑ¹Ëõ
-#define TYPE_UCL			1					//UCLÑ¹Ëõ
-#define TYPE_BZIP2			2					//bzip2Ñ¹Ëõ
-#define TYPE_FRAME			0x10				//Ê¹ÓÃÁË¶ÀÁ¢Ö¡Ñ¹Ëõ
+#define TYPE_NONE			0					//æ²¡æœ‰å‹ç¼©
+#define TYPE_UCL			1					//UCLå‹ç¼©
+#define TYPE_BZIP2			2					//bzip2å‹ç¼©
+#define TYPE_FRAME			0x10				//ä½¿ç”¨äº†ç‹¬ç«‹å¸§å‹ç¼©
 
 typedef struct {
 	unsigned char signature[4];			//"PACK"
-	unsigned long count;				//Êı¾İµÄÌõÄ¿Êı
-	unsigned long index_offset;			//Ë÷ÒıµÄÆ«ÒÆÁ¿
-	unsigned long data_offset;			//Êı¾İµÄÆ«ÒÆÁ¿
+	unsigned long count;				//æ•°æ®çš„æ¡ç›®æ•°
+	unsigned long index_offset;			//ç´¢å¼•çš„åç§»é‡
+	unsigned long data_offset;			//æ•°æ®çš„åç§»é‡
 	unsigned long crc32;
 	unsigned char reserved[12];
 } z_pack_header;
@@ -84,14 +84,14 @@ class ZPackFile : public ZFile {
 protected:
 	index_info	*index_list;
 	z_pack_header header;
-	bool _readData(int node_index, char *node);								//½«Ö¸¶¨node_indexµÄÊı¾İÈ«²¿¶Áµ½Ö¸¶¨ÄÚ´æÖĞ£¬Èç¹ûĞèÒªµÄ»°Íê³É½âÑ¹Ëõ
+	bool _readData(int node_index, char *node);								//å°†æŒ‡å®šnode_indexçš„æ•°æ®å…¨éƒ¨è¯»åˆ°æŒ‡å®šå†…å­˜ä¸­ï¼Œå¦‚æœéœ€è¦çš„è¯å®Œæˆè§£å‹ç¼©
 public:
-	ZPackFile(const char *name, ZCache *cache);					//´ò¿ªÎÄ¼ş
+	ZPackFile(const char *name, ZCache *cache);					//æ‰“å¼€æ–‡ä»¶
 	virtual ~ZPackFile();
 	int getNodeIndex(unsigned long id);
 	char *getData(unsigned long index);
 	unsigned long getSize(unsigned long index);
-	char *getData(const char *name);										//»ñÈ¡Ö¸¶¨½ÚµãµÄÊı¾İ
+	char *getData(const char *name);										//è·å–æŒ‡å®šèŠ‚ç‚¹çš„æ•°æ®
 	void releaseData(char *data);
 };
 
@@ -105,7 +105,7 @@ typedef struct {
 	int				frame;
 } frame_index_info;
 
-#define MAX_IMAGE		0x10													//×î¶àÁÙÊ±ÎÄ¼şµÄ¸öÊı
+#define MAX_IMAGE		0x10													//æœ€å¤šä¸´æ—¶æ–‡ä»¶çš„ä¸ªæ•°
 
 class ZSPRPackFile : public ZPackFile
 {

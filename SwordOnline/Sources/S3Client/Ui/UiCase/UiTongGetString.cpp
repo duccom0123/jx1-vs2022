@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiGetString.cpp
-//	´´½¨Õß		£º	Wooy(Wu yue)
-//	´´½¨Ê±¼ä	£º	2003-3-18
-//	¹¦ÄÜÃèÊö	£º	»ñµÃ×Ö·û´®½çÃæ
+//	ÃÃ„Â¼Ã¾ÃƒÃ»		Â£Âº	UiGetString.cpp
+//	Â´Â´Â½Â¨Ã•ÃŸ		Â£Âº	Wooy(Wu yue)
+//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2003-3-18
+//	Â¹Â¦Ã„ÃœÃƒÃ¨ÃŠÃ¶	Â£Âº	Â»Ã±ÂµÃƒÃ—Ã–Â·Ã»Â´Â®Â½Ã§ÃƒÃ¦
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -26,7 +26,7 @@ KUiTongGetString::KUiTongGetString()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiTongGetString* KUiTongGetString::OpenWindow(const bool bEdit, const char* pszTitle,
 						const char* pszInitString,
@@ -64,7 +64,7 @@ KUiTongGetString* KUiTongGetString::OpenWindow(const bool bEdit, const char* psz
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±ÕÏú»Ù´°¿Ú
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•ÃÃºÂ»Ã™Â´Â°Â¿Ãš
 //--------------------------------------------------------------------------
 void KUiTongGetString::CloseWindow(bool bDestroy)
 {
@@ -89,7 +89,7 @@ KUiTongGetString*	KUiTongGetString::GetIfVisible()
 	return NULL;
 }
 
-//ÏÔÊ¾´°¿Ú
+//ÃÃ”ÃŠÂ¾Â´Â°Â¿Ãš
 void KUiTongGetString::Show(bool bEdit)
 {
 	int Left, Top;
@@ -105,7 +105,7 @@ void KUiTongGetString::Show(bool bEdit)
 	Wnd_SetExclusive((KWndWindow*)this);
 }
 
-//Òş²Ø´°¿Ú
+//Ã’Ã¾Â²Ã˜Â´Â°Â¿Ãš
 void KUiTongGetString::Hide()
 {
 	Wnd_SetFocusWnd(NULL);
@@ -114,7 +114,7 @@ void KUiTongGetString::Hide()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º³õÊ¼»¯
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
 //--------------------------------------------------------------------------
 void KUiTongGetString::Initialize()
 {
@@ -130,7 +130,7 @@ void KUiTongGetString::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KUiTongGetString::LoadScheme(const char* pScheme)
 {
@@ -151,7 +151,7 @@ void KUiTongGetString::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´°¿ÚÏûÏ¢º¯Êı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÃÃ»ÃÂ¢ÂºÂ¯ÃŠÃ½
 //--------------------------------------------------------------------------
 int KUiTongGetString::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -183,7 +183,7 @@ int KUiTongGetString::WndProc(unsigned int uMsg, unsigned int uParam, int nParam
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÏìÓ¦µã»÷È·ÈÏ°´Å¥
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦ÂµÃ£Â»Ã·ÃˆÂ·ÃˆÃÂ°Â´Ã…Â¥
 //--------------------------------------------------------------------------
 void KUiTongGetString::OnOk()
 {
@@ -199,7 +199,7 @@ void KUiTongGetString::OnOk()
 	else
 	{
 		UIMessageBox(((nLen < m_nMinLen) ?
-			"V¨n tù nhËp vµo qu¸ ng¾n" : "V¨n tù nhËp vµo qu¸ dµi"));
+			"VÂ¨n tÃ¹ nhÃ‹p vÂµo quÂ¸ ngÂ¾n" : "VÂ¨n tÃ¹ nhÃ‹p vÂµo quÂ¸ dÂµi"));
 	}
 }
 

@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ß[‘ò´°¿ÚµÄ½Ó¿Ú
+//	ÃŸ[â€˜Ã²Â´Â°Â¿ÃšÂµÃ„Â½Ã“Â¿Ãš
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-18
 ------------------------------------------------------------------------------------------
-	ÏòÎŞÊı¿¹ÈÕÏÈÁÒ¡£ÖÂ¾´£¡³«Òé9.18È«¹úÃù¾¯±¨¡£
+	ÃÃ²ÃÃÃŠÃ½Â¿Â¹ÃˆÃ•ÃÃˆÃÃ’Â¡Â£Ã–Ã‚Â¾Â´Â£Â¡Â³Â«Ã’Ã©9.18ÃˆÂ«Â¹ÃºÃƒÃ¹Â¾Â¯Â±Â¨Â¡Â£
 *****************************************************************************************/
 #include "KWin32.h"
 
@@ -42,7 +42,7 @@ KUiGameSpace	g_WndGameSpace;
 #define PREFIX_SUBWORLD 16
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÊäÈë´¦ÀíÏûÏ¢ÒÔ¼°Ò»Ğ©ÌØ¶¨´°¿ÚÏûÏ¢µÄÏìÓ¦
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃŠÃ¤ÃˆÃ«Â´Â¦Ã€Ã­ÃÃ»ÃÂ¢Ã’Ã”Â¼Â°Ã’Â»ÃÂ©ÃŒÃ˜Â¶Â¨Â´Â°Â¿ÃšÃÃ»ÃÂ¢ÂµÃ„ÃÃ¬Ã“Â¦
 //--------------------------------------------------------------------------
 int KUiGameSpace::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -145,7 +145,7 @@ int KUiGameSpace::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»æÖÆÓÎÏ·ÊÀ½ç
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ»Ã¦Ã–Ã†Ã“ÃÃÂ·ÃŠÃ€Â½Ã§
 //--------------------------------------------------------------------------
 void KUiGameSpace::PaintWindow()
 {
@@ -199,25 +199,25 @@ void ProcessPeople(KUiPlayerItem* pDest, int nAction)
 		return;
 	switch(nAction)
 	{
-	case ACTION_JOINTEAM:	//ÒªÓÃnIndex
+	case ACTION_JOINTEAM:	//Ã’ÂªÃ“ÃƒnIndex
 		if (g_pCoreShell && pDest->nData == PLAYER_MENU_STATE_TEAMOPEN && pDest->nIndex != -1)
 			g_pCoreShell->ApplyAddTeam(pDest);
 		break;
-	case ACTION_TRADE:	//ÒªÓÃnIndex
+	case ACTION_TRADE:	//Ã’ÂªÃ“ÃƒnIndex
 		if (g_pCoreShell && pDest->nData == PLAYER_MENU_STATE_TRADEOPEN && pDest->nIndex != -1)
 		{
 			g_pCoreShell->TradeApplyStart(pDest);
 		}
 		break;
-	case ACTION_CHAT:		//ÒªÓÃName
+	case ACTION_CHAT:		//Ã’ÂªÃ“ÃƒName
 		if (pDest->Name[0])
 			KUiPlayerBar::InputNameMsg(false, pDest->Name, true);
 		break;
-	case ACTION_MAKEFRIEND:	//ÒªÓÃName
+	case ACTION_MAKEFRIEND:	//Ã’ÂªÃ“ÃƒName
 		if (g_pCoreShell && !KUiChatCentre::IsMyFriend(pDest->Name))
 			g_pCoreShell->OperationRequest(GOI_CHAT_FRIEND_ADD,	(unsigned int)pDest, 0);
 		break;
-	case ACTION_INVITETEAM:			//ÒªÓÃuId
+	case ACTION_INVITETEAM:			//Ã’ÂªÃ“ÃƒuId
 		if (g_pCoreShell && pDest->uId != 0)
 		{
 			KUiPlayerTeam	TeamInfo;
@@ -228,15 +228,15 @@ void ProcessPeople(KUiPlayerItem* pDest, int nAction)
 			g_pCoreShell->TeamOperation(TEAM_OI_INVITE, (unsigned int)pDest, 0);
 		}
 		break;
-	case ACTION_FOLLOW:	//ÒªÓÃnIndex
+	case ACTION_FOLLOW:	//Ã’ÂªÃ“ÃƒnIndex
 		if (g_pCoreShell && pDest->nIndex != -1)
 			g_pCoreShell->OperationRequest(GOI_FOLLOW_SOMEONE, (unsigned int)pDest, 0);
 		break;
-	case ACTION_VIEWITEM:			//ÒªÓÃuId
+	case ACTION_VIEWITEM:			//Ã’ÂªÃ“ÃƒuId
 		if (g_pCoreShell && pDest->uId != 0)
 			g_pCoreShell->OperationRequest(GOI_VIEW_PLAYERITEM, (unsigned int)pDest->uId, 0);
 		break;
-	case ACTION_BLACKLIST:	//ÒªÓÃName
+	case ACTION_BLACKLIST:	//Ã’ÂªÃ“ÃƒName
 		AddBlackList(pDest->Name, "");
 		break;
 	case ACTION_TONG:
@@ -257,11 +257,11 @@ void ProcessPeople(KUiPlayerItem* pDest, int nAction)
 			g_pCoreShell->TongOperation(GTOI_TONG_ACTION, (unsigned int)&Param, (int)&Player);		
 		}
 		break;
-	case ACTION_JOINTONG_REPLY:	//ÒªÓÃnIndex
+	case ACTION_JOINTONG_REPLY:	//Ã’ÂªÃ“ÃƒnIndex
 		if (g_pCoreShell && pDest->nIndex != -1)
 			g_pCoreShell->JoinTongReply(pDest);
 		break;
-	case ACTION_REVENGE:			//ÒªÓÃuId
+	case ACTION_REVENGE:			//Ã’ÂªÃ“ÃƒuId
 		if (g_pCoreShell && pDest->uId != 0)
 			g_pCoreShell->OperationRequest(GOI_REVENGE_SOMEONE, (unsigned int)pDest, 0);
 		break;
@@ -302,15 +302,15 @@ void ProcessEmote(char* szDest, char *szDestChannel, int nEmoteIndex)
 			}
 			if (nChannelID != -1)
 			{
-				//¿ªÊ¼»ñÈ¡ºÍ×ª»»×Ö´®
+				//Â¿ÂªÃŠÂ¼Â»Ã±ÃˆÂ¡ÂºÃÃ—ÂªÂ»Â»Ã—Ã–Â´Â®
 				g_pCoreShell->GetGameData(GDI_PLAYER_BASE_INFO, (unsigned int)&MyInfo, 0);
        			if(szDest[0])
 					nStringLen = g_UiChatPhrase.GetEmote(nEmoteIndex, szBuff, sizeof(szBuff));
 				else
 					nStringLen = g_UiChatPhrase.GetEmote(nEmoteIndex, szBuff, sizeof(szBuff), 1);
-				//»ñÈ¡ºÍ×ª»»×Ö´®ÍæÁË
+				//Â»Ã±ÃˆÂ¡ÂºÃÃ—ÂªÂ»Â»Ã—Ã–Â´Â®ÃÃ¦ÃÃ‹
 
-				//·¢³öÈ¥
+				//Â·Â¢Â³Ã¶ÃˆÂ¥
 				if(KUiPlayerBar::IsCanSendMessage(szBuff, nStringLen, szDest, nChannelID))
 				{
 					char szBuffConverted[256];
@@ -337,18 +337,18 @@ void ProcessEmote(char* szDest, char *szDestChannel, int nEmoteIndex)
 
 char g_ActionName[][32] = 
 {
-	"T¸n gÉu",
-	"H¶o h÷u",
-	"Giao dŞch",
-	"NhËp ®éi",
-	"Tæ ®éi",
+	"TÂ¸n gÃ‰u",
+	"HÂ¶o hÃ·u",
+	"Giao dÃch",
+	"NhÃ‹p Â®Ã©i",
+	"TÃ¦ Â®Ã©i",
 	"Theo sau",
-	"Tin tøc",
-	"Sæ ®en",
-	"Bang héi",
-	"Xin nhËp bang",
-	"Mêi nhËp bang",
-	"Cõu s¸t",
+	"Tin tÃ¸c",
+	"SÃ¦ Â®en",
+	"Bang hÃ©i",
+	"Xin nhÃ‹p bang",
+	"MÃªi nhÃ‹p bang",
+	"CÃµu sÂ¸t",
 };
 
 bool IsInBlackName(char* strName);
@@ -385,10 +385,10 @@ void PopUpContextPeopleMenu(const KUiPlayerItem& SelectPlayer, int x, int y)
 	pMenuData->nItemHeight = 0;
 	for (i = 0; i < nActionDataCount; i++)
 	{
-		if ((i == ACTION_JOINTEAM && SelectPlayer.nIndex != -1 && SelectPlayer.nData == PLAYER_MENU_STATE_TEAMOPEN && (TeamInfo.nTeamServerID == -1 || (TeamInfo.nTeamServerID != SelectPlayer.nTeamID) && !bTrade)) ||	//"ÉêÇëÈë¶Ó", ¶Ô·½Î´´ò¿ª¶ÓÎéÊ±²»ÄÜ¼ÓÈë
-			(i == ACTION_TRADE && SelectPlayer.nIndex != -1 && SelectPlayer.nData == PLAYER_MENU_STATE_TRADEOPEN && !bTrade) ||	//"½»Ò×ÎïÆ·", ¶Ô·½Î´´ò¿ª½»Ò×Ê±²»ÄÜ¼ÓÈë
-			(i == ACTION_MAKEFRIEND && !KUiChatCentre::IsMyFriend((char*)SelectPlayer.Name)) || //"¼ÓÎªºÃÓÑ", ¶Ô·½ÒÑÊÇÎÒµÄºÃÓÑÊ±²»ÄÜÔÙÑûÇë
-			(i == ACTION_INVITETEAM && SelectPlayer.uId != 0 && TeamInfo.nCaptainPower > 0 && !bTrade)	||	//"ÑûÇë¼ÓÈë", ¶ÓÎé²»¿ÉÒÔ¼ÓÈËÁË¾Í²»ÄÜÑûÇë¼ÓÈë
+		if ((i == ACTION_JOINTEAM && SelectPlayer.nIndex != -1 && SelectPlayer.nData == PLAYER_MENU_STATE_TEAMOPEN && (TeamInfo.nTeamServerID == -1 || (TeamInfo.nTeamServerID != SelectPlayer.nTeamID) && !bTrade)) ||	//"Ã‰ÃªÃ‡Ã«ÃˆÃ«Â¶Ã“", Â¶Ã”Â·Â½ÃÂ´Â´Ã²Â¿ÂªÂ¶Ã“ÃÃ©ÃŠÂ±Â²Â»Ã„ÃœÂ¼Ã“ÃˆÃ«
+			(i == ACTION_TRADE && SelectPlayer.nIndex != -1 && SelectPlayer.nData == PLAYER_MENU_STATE_TRADEOPEN && !bTrade) ||	//"Â½Â»Ã’Ã—ÃÃ¯Ã†Â·", Â¶Ã”Â·Â½ÃÂ´Â´Ã²Â¿ÂªÂ½Â»Ã’Ã—ÃŠÂ±Â²Â»Ã„ÃœÂ¼Ã“ÃˆÃ«
+			(i == ACTION_MAKEFRIEND && !KUiChatCentre::IsMyFriend((char*)SelectPlayer.Name)) || //"Â¼Ã“ÃÂªÂºÃƒÃ“Ã‘", Â¶Ã”Â·Â½Ã’Ã‘ÃŠÃ‡ÃÃ’ÂµÃ„ÂºÃƒÃ“Ã‘ÃŠÂ±Â²Â»Ã„ÃœÃ”Ã™Ã‘Ã»Ã‡Ã«
+			(i == ACTION_INVITETEAM && SelectPlayer.uId != 0 && TeamInfo.nCaptainPower > 0 && !bTrade)	||	//"Ã‘Ã»Ã‡Ã«Â¼Ã“ÃˆÃ«", Â¶Ã“ÃÃ©Â²Â»Â¿Ã‰Ã’Ã”Â¼Ã“ÃˆÃ‹ÃÃ‹Â¾ÃÂ²Â»Ã„ÃœÃ‘Ã»Ã‡Ã«Â¼Ã“ÃˆÃ«
 			(i == ACTION_FOLLOW && SelectPlayer.nIndex != -1 && !bTrade) ||
 			(i == ACTION_VIEWITEM && SelectPlayer.uId != 0) ||
 			(i == ACTION_TONG && SelectPlayer.nIndex != -1 && bTongFlag && !bTrade) ||

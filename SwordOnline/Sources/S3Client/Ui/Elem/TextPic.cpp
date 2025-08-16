@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//	ÎÄ¼şÃû			:	TextPic.cpp
-//	´´½¨ÈË			:	ÍõÎ÷±´
-//	´´½¨Ê±¼ä		:	2003-6-22 23:13:12
-//	ÎÄ¼şËµÃ÷		:	ÎÄ×ÖÇ¶ÈëÊ½Í¼Æ¬
+//	æ–‡ä»¶å			:	TextPic.cpp
+//	åˆ›å»ºäºº			:	ç‹è¥¿è´
+//	åˆ›å»ºæ—¶é—´		:	2003-6-22 23:13:12
+//	æ–‡ä»¶è¯´æ˜		:	æ–‡å­—åµŒå…¥å¼å›¾ç‰‡
 //////////////////////////////////////////////////////////////////////////////////////
 
 #include "KWin32.h"
@@ -23,7 +23,7 @@ BOOL KInlinePicSink::Init(iRepresentShell* pShell)
 	if (!m_pRepShell)
 		return FALSE;
 	KIniFile ini;
-	if(!ini.Load("\\Ui\\±íÇé´óÈ«.ini"))
+	if(!ini.Load("\\Ui\\è¡¨æƒ…å¤§å…¨.ini"))
 		return FALSE;
 	char szBuffer[MAX_PATH];
 	int i,n;
@@ -36,7 +36,7 @@ BOOL KInlinePicSink::Init(iRepresentShell* pShell)
 
 	for (i = 0; i < n; i++)
 	{
-		sprintf(szBuffer, "\\spr\\Ui3\\±íÇé\\%02d.spr", i+1);
+		sprintf(szBuffer, "\\spr\\Ui3\\è¡¨æƒ…\\%02d.spr", i+1);
 		IR_InitUiImageRef(CurrentImg);
 		CurrentImg.nFlipTime = 0;
 		CurrentImg.nInterval = 0;
@@ -119,7 +119,7 @@ long KInlinePicSink::DrawPic(unsigned short wIndex, int x, int y)
 }
 
 
-//¶¯Ì¬¼ÓÔØÍ¼Æ¬,»ñÈ¡Ò»¸öWORD,¼´Í¼Æ¬µÄË÷Òı
+//åŠ¨æ€åŠ è½½å›¾ç‰‡,è·å–ä¸€ä¸ªWORD,å³å›¾ç‰‡çš„ç´¢å¼•
 long KInlinePicSink::AddCustomInlinePic(unsigned short& rwIndex, const char* szSprPathName)
 {
 	KUiImageRef CurrentImg;
@@ -160,7 +160,7 @@ long KInlinePicSink::AddCustomInlinePic(unsigned short& rwIndex, const char* szS
 	return rwIndex;
 }
 
-//¶¯Ì¬Ğ¶ÔØÍ¼Æ¬
+//åŠ¨æ€å¸è½½å›¾ç‰‡
 long KInlinePicSink::RemoveCustomInlinePic(unsigned short wIndex)
 {
 	if (wIndex < MAX_SYSTEM_INLINE_PICTURES ||

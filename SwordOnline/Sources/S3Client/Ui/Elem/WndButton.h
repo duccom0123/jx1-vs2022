@@ -1,25 +1,25 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--°´¼ü´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--æŒ‰é”®çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
 ------------------------------------------------------------------------------------------
-	°´Å¥´°¿Ú¡£
-	°´Å¥¿ÉÒÔ°üÀ¨ÒÔÏÂÌØĞÔ£º°´Å¥°´ÏÂÓëÎ´±»°´ÏÂÏÔÊ¾²»Í¬µÄÍ¼ĞÎ£»Ö¸ÕëÒÆ¶¯µ½°´Å¥ÉÏ·½Ê±ÏÔÊ¾¶¯»­£»
-	Ã¿µã»÷Ò»´Î°´Å¥ÇĞ»»Ò»´Î°´Å¥µÄÊÇ·ñ°´ÏÂ×´Ì¬(CheckBox)¡£
+	æŒ‰é’®çª—å£ã€‚
+	æŒ‰é’®å¯ä»¥åŒ…æ‹¬ä»¥ä¸‹ç‰¹æ€§ï¼šæŒ‰é’®æŒ‰ä¸‹ä¸æœªè¢«æŒ‰ä¸‹æ˜¾ç¤ºä¸åŒçš„å›¾å½¢ï¼›æŒ‡é’ˆç§»åŠ¨åˆ°æŒ‰é’®ä¸Šæ–¹æ—¶æ˜¾ç¤ºåŠ¨ç”»ï¼›
+	æ¯ç‚¹å‡»ä¸€æ¬¡æŒ‰é’®åˆ‡æ¢ä¸€æ¬¡æŒ‰é’®çš„æ˜¯å¦æŒ‰ä¸‹çŠ¶æ€(CheckBox)ã€‚
 *****************************************************************************************/
 #pragma once
 #include "WndImage.h"
 
 #define	WNDBTN_ES_FILTER		0x00ff
-#define	WNDBTN_ES_ANIMATION		0x0001		//Êó±êÖ¸ÕëÍ£ÁôÔÚ´°¿ÚÉÏ·½Ê±ÏÔÊ¾¶¯»­
-#define	WNDBTN_ES_CHECKBOX		0x0002		//ÇĞ»»×´Ì¬µÄ°´Å¤
-#define	WNDBTN_ES_SEND_HOLD_MSG	0x0004		//·¢ËÍÊó±ê±»°´×¡²»·ÅµÄÏûÏ¢
-#define	WNDBTN_ES_NO_OVERSOUND	0x0008		//Êó±êÖ¸ÕëÒÆµ½ÉÏ·½Ê±£¬²»²¥·ÅÉùÒôĞ§¹û
+#define	WNDBTN_ES_ANIMATION		0x0001		//é¼ æ ‡æŒ‡é’ˆåœç•™åœ¨çª—å£ä¸Šæ–¹æ—¶æ˜¾ç¤ºåŠ¨ç”»
+#define	WNDBTN_ES_CHECKBOX		0x0002		//åˆ‡æ¢çŠ¶æ€çš„æŒ‰æ‰­
+#define	WNDBTN_ES_SEND_HOLD_MSG	0x0004		//å‘é€é¼ æ ‡è¢«æŒ‰ä½ä¸æ”¾çš„æ¶ˆæ¯
+#define	WNDBTN_ES_NO_OVERSOUND	0x0008		//é¼ æ ‡æŒ‡é’ˆç§»åˆ°ä¸Šæ–¹æ—¶ï¼Œä¸æ’­æ”¾å£°éŸ³æ•ˆæœ
 
-#define	WNDBTN_F_DOWN		0x0200			//°´Å¦±»°´ÏÂ
-#define	WNDBTN_F_CHECKED	WNDBTN_F_DOWN	//°´Å¦±»Ñ¡ÖĞ
-#define	WNDBTN_F_OVER		0x0400			//Êó±êÍ£ÁôÔÚ´°¿ÚÉÏ·½
+#define	WNDBTN_F_DOWN		0x0200			//æŒ‰çº½è¢«æŒ‰ä¸‹
+#define	WNDBTN_F_CHECKED	WNDBTN_F_DOWN	//æŒ‰çº½è¢«é€‰ä¸­
+#define	WNDBTN_F_OVER		0x0400			//é¼ æ ‡åœç•™åœ¨çª—å£ä¸Šæ–¹
 
 class KWndButton : public KWndImage
 {
@@ -31,36 +31,36 @@ private:
 	short			m_nCheckOverFrame;
 	short			m_nOverStartFrame;
 	short			m_nDisableFrame;
-	static	KWndButton* m_pPressedDownBtn;	//±»µã»÷µ«ÊÇÃ»ÓĞ±»ÊÍ·ÅµÄ°´Å¥
+	static	KWndButton* m_pPressedDownBtn;	//è¢«ç‚¹å‡»ä½†æ˜¯æ²¡æœ‰è¢«é‡Šæ”¾çš„æŒ‰é’®
 	char			m_szTip[256];
 	int				m_nTipLen;
 	bool			m_bTipHover;
 public:
 	KWndButton();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual const char*	GetShortKey() {return NULL;}	//È¡¿ì½İ¼ü,ÓÃÓÚTipÏÔÊ¾
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual void	PaintWindow();							//´°Ìå»æÖÆ
-	int				IsButtonChecked();						//°´Å¥ÊÇ·ñ³öÓÚ°´ÏÂ×´Ì¬
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual const char*	GetShortKey() {return NULL;}	//å–å¿«æ·é”®,ç”¨äºTipæ˜¾ç¤º
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
+	int				IsButtonChecked();						//æŒ‰é’®æ˜¯å¦å‡ºäºæŒ‰ä¸‹çŠ¶æ€
 	int				IsButtonActive();
-	void			CheckButton(int bChecked);				//ÉèÖÃ°´Å¥µÄ°´ÏÂ×´Ì¬
-	void			Enable(int bEnable);					//½ûÖ¹»òÕßÔÊĞíÊ¹´°¿Ú±»²Ù×÷
+	void			CheckButton(int bChecked);				//è®¾ç½®æŒ‰é’®çš„æŒ‰ä¸‹çŠ¶æ€
+	void			Enable(int bEnable);					//ç¦æ­¢æˆ–è€…å…è®¸ä½¿çª—å£è¢«æ“ä½œ
 	void			Clone(KWndButton* pCopy);
-	static void		SetAllButtonTipTextColor(unsigned int uColor);	//ÉèÖÃËùÓĞ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-	static void		EnableAllButtonTip(int bEnable);					//½ûÖ¹/ÔÊĞíËùÓĞ°´Å¥µÄÌáÊ¾ÎÄ×Ö
+	static void		SetAllButtonTipTextColor(unsigned int uColor);	//è®¾ç½®æ‰€æœ‰æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static void		EnableAllButtonTip(int bEnable);					//ç¦æ­¢/å…è®¸æ‰€æœ‰æŒ‰é’®çš„æç¤ºæ–‡å­—
 	virtual void	OnButtonClick(){}
 	virtual int		GetToolTipInfo(char* szTip, int nMax);
 	int		SetToolTipInfo(char* szTip, int nMax);
 	void	SetToolTipHover(bool bFlag) {m_bTipHover = bFlag;};
 
 private:
-	void			OnLBtnDown(bool bDoubleClick);	//ÏìÓ¦Êó±ê×ó¼üÔÚ´Ë°´ÏÂ
+	void			OnLBtnDown(bool bDoubleClick);	//å“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æŒ‰ä¸‹
 	void			OnRButtonDown();
-	void			OnLBtnUp();						//ÏìÓ¦Êó±ê×ó¼üÔÚ´Ë·Å¿ª
-	void			OnLBtnDownMove();				//ÏìÓ¦Êó±ê×ó¼ü°´ÏÂÊ±µÄÒÆ¶¯
+	void			OnLBtnUp();						//å“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æ”¾å¼€
+	void			OnLBtnDownMove();				//å“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹æ—¶çš„ç§»åŠ¨
 private:
-	static unsigned int	ms_uBtnTipTextColor;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-	static int			ms_nDisableBtnTip;		//ÊÇ·ñ½ûÖ¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
+	static unsigned int	ms_uBtnTipTextColor;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static int			ms_nDisableBtnTip;		//æ˜¯å¦ç¦æ­¢æŒ‰é’®çš„æç¤ºæ–‡å­—
 };
 
 #include "WndText.h"
@@ -76,12 +76,12 @@ protected:
 	BOOL bPart;
 public:
 	KWndImageTextButton();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
 	void			Set2IntText(int nNumber1, int nNumber2, char Separator);
 	void			Set5IntText(int nNumber);
 	void			Set6IntText(int nNumber, char Separator);
 	void			Set2IntValue(int nNumber1, int nNumber2);
-	void			SetText(const char* pText, int nLen = -1);	//ÉèÖÃÎÄ±¾ÎÄ×Ö
-	int				GetText(char* pBuffer, int nSize);		//»ñÈ¡×Ö·û´®ÄÚÈİ
+	void			SetText(const char* pText, int nLen = -1);	//è®¾ç½®æ–‡æœ¬æ–‡å­—
+	int				GetText(char* pBuffer, int nSize);		//è·å–å­—ç¬¦ä¸²å†…å®¹
 	void			SetImage(short nType, const char* pszImgName, bool bAdjustWndSize = false);
 };

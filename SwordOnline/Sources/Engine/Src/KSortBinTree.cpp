@@ -8,13 +8,13 @@ KSortBinTree::KSortBinTree()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTSearch
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TBinTreeNode * pParentTBinTreeNode
-// ²ÎÊı:	TBinTreeNode * pTBinTreeNode
-// ²ÎÊı:	DWORD nKey
-// ²ÎÊı:	BOOL * pResult
-// ·µ»Ø:	TBinTreeNode * 
+// å‡½æ•°:	BTSearch
+// åŠŸèƒ½:	
+// å‚æ•°:	TBinTreeNode * pParentTBinTreeNode
+// å‚æ•°:	TBinTreeNode * pTBinTreeNode
+// å‚æ•°:	DWORD nKey
+// å‚æ•°:	BOOL * pResult
+// è¿”å›:	TBinTreeNode * 
 
 //---------------------------------------------------------------------------
 TBinTreeNode * KSortBinTree::Search(TBinTreeNode * pParentTBinTreeNode, TBinTreeNode * pTBinTreeNode, TBinTreeNode *pKeyNode, BOOL * pResult)
@@ -42,11 +42,11 @@ TBinTreeNode * KSortBinTree::Search(TBinTreeNode * pParentTBinTreeNode, TBinTree
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTInsert
-// ¹¦ÄÜ:	ÒÔpTScrptÎª¸¸£¬²åÈëÒÔszKeyÎª¹Ø¼üµãµÄ½áµã
-// ²ÎÊı:	TBinTreeNode *pTBinTreeNode 
-// ²ÎÊı:	char * szKey
-// ·µ»Ø:	TBinTreeNode * ·µ»Ø²åÈëµÄ½áµã
+// å‡½æ•°:	BTInsert
+// åŠŸèƒ½:	ä»¥pTScrptä¸ºçˆ¶ï¼Œæ’å…¥ä»¥szKeyä¸ºå…³é”®ç‚¹çš„ç»“ç‚¹
+// å‚æ•°:	TBinTreeNode *pTBinTreeNode 
+// å‚æ•°:	char * szKey
+// è¿”å›:	TBinTreeNode * è¿”å›æ’å…¥çš„ç»“ç‚¹
 //---------------------------------------------------------------------------
 TBinTreeNode * KSortBinTree::AddNode(TBinTreeNode *pNewTBinTreeNode, TBinTreeNode *pTBinTreeNode)
 {
@@ -63,7 +63,7 @@ TBinTreeNode * KSortBinTree::AddNode(TBinTreeNode *pNewTBinTreeNode, TBinTreeNod
 	if (*pNewTBinTreeNode == *pTBinTreeNode)
 		return NULL;
 
-	//¸ù¾İ´óĞ¡È·¶¨×ó×Ó»¹ÊÇÓÒ×Ó
+	//æ ¹æ®å¤§å°ç¡®å®šå·¦å­è¿˜æ˜¯å³å­
 	if (nResult = *pNewTBinTreeNode > *pTBinTreeNode)
 	{
 		pTBinTreeNode->pRightChild = pNewTBinTreeNode;
@@ -82,11 +82,11 @@ TBinTreeNode * KSortBinTree::AddNode(TBinTreeNode *pNewTBinTreeNode, TBinTreeNod
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	 BTDelete
-// ¹¦ÄÜ:	É¾³ı½áµã
-// ²ÎÊı:	TBinTreeNode * pTBinTreeNode
-// ²ÎÊı:	TBinTreeNode ** ppRootTBinTreeNode
-// ·µ»Ø:	TBinTreeNode * 
+// å‡½æ•°:	 BTDelete
+// åŠŸèƒ½:	åˆ é™¤ç»“ç‚¹
+// å‚æ•°:	TBinTreeNode * pTBinTreeNode
+// å‚æ•°:	TBinTreeNode ** ppRootTBinTreeNode
+// è¿”å›:	TBinTreeNode * 
 //---------------------------------------------------------------------------
 TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeNode ** ppRootTBinTreeNode)
 {
@@ -94,7 +94,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 	if (pTBinTreeNode == NULL)
 		return NULL;
 	
-	if (pTBinTreeNode->pLeftChild == NULL && pTBinTreeNode->pRightChild == NULL)//¸Ã½áµãÃ»ÓĞ×óÓÒ×Ó
+	if (pTBinTreeNode->pLeftChild == NULL && pTBinTreeNode->pRightChild == NULL)//è¯¥ç»“ç‚¹æ²¡æœ‰å·¦å³å­
 	{
 		if (*ppRootTBinTreeNode == pTBinTreeNode)
 		{
@@ -109,7 +109,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 			else 
 				nResult = 1;
 			
-			if (nResult < 0)//Ğ¡ÓÚ,´¦ÔÚ¸¸½áµã×ó·½
+			if (nResult < 0)//å°äº,å¤„åœ¨çˆ¶ç»“ç‚¹å·¦æ–¹
 				pTBinTreeNode->pParent->pLeftChild = NULL;
 			else
 				pTBinTreeNode->pParent->pRightChild = NULL;
@@ -121,7 +121,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 		return NULL;
 	}
 	
-	else if (!(pTBinTreeNode->pLeftChild && pTBinTreeNode->pRightChild))//Ö»ÓĞµ¥×ÓÊ±
+	else if (!(pTBinTreeNode->pLeftChild && pTBinTreeNode->pRightChild))//åªæœ‰å•å­æ—¶
 	{
 		if (pTBinTreeNode == *ppRootTBinTreeNode)
 		{
@@ -148,10 +148,10 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 		else 
 				nResult = 1;
 	
-		if (nResult < 0)//ÔÚ¸¸µÄ×ó±ß
+		if (nResult < 0)//åœ¨çˆ¶çš„å·¦è¾¹
 		{
 			
-			if (pTBinTreeNode->pLeftChild)//Ö»ÓĞ×ó×Ó
+			if (pTBinTreeNode->pLeftChild)//åªæœ‰å·¦å­
 			{
 				pTBinTreeNode->pParent->pLeftChild = pTBinTreeNode->pLeftChild;
 				pTBinTreeNode->pLeftChild->pParent = pTBinTreeNode->pParent;
@@ -168,7 +168,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 		}
 		else 
 		{
-			if (pTBinTreeNode->pLeftChild)//Ö»ÓĞ×ó×Ó
+			if (pTBinTreeNode->pLeftChild)//åªæœ‰å·¦å­
 			{
 				pTBinTreeNode->pParent->pRightChild = pTBinTreeNode->pLeftChild;
 				pTBinTreeNode->pLeftChild->pParent = pTBinTreeNode->pParent;
@@ -187,7 +187,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 		return NULL;
 		
 	}  
-	else//ÓĞÈ«×Ó 
+	else//æœ‰å…¨å­ 
 	{
 		
 		
@@ -198,11 +198,11 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 			if (pFindTBinTreeNode)
 			{
 				
-				//µÚÒ»²¿·Ö£º´¦Àí¸Ã½áµãÓĞ×ó×ÓÊ±£¬¶Ô×ó×Ó½øĞĞÖ¸ÏòµÄ¸Ä±ä
-				//¸Ã½áµãÈÔÓĞ×ó×Ó
+				//ç¬¬ä¸€éƒ¨åˆ†ï¼šå¤„ç†è¯¥ç»“ç‚¹æœ‰å·¦å­æ—¶ï¼Œå¯¹å·¦å­è¿›è¡ŒæŒ‡å‘çš„æ”¹å˜
+				//è¯¥ç»“ç‚¹ä»æœ‰å·¦å­
 				if (pFindTBinTreeNode->pLeftChild)
 				{
-					//µ±·¢ÏÖËù½«ÒªÌæ´úµÄ½áµãÕıÊÇËüµÄ×ó×ÓÊ±£¬½«Ô­À´µÄ¹ØÏµ²»½«±ä»¯£»·ñÔò°´Õı³£Ë¼Â·¸Ä±ä
+					//å½“å‘ç°æ‰€å°†è¦æ›¿ä»£çš„ç»“ç‚¹æ­£æ˜¯å®ƒçš„å·¦å­æ—¶ï¼Œå°†åŸæ¥çš„å…³ç³»ä¸å°†å˜åŒ–ï¼›å¦åˆ™æŒ‰æ­£å¸¸æ€è·¯æ”¹å˜
 					if (pFindTBinTreeNode != pTBinTreeNode->pLeftChild)
 					{
 						pFindTBinTreeNode->pParent->pRightChild = pFindTBinTreeNode->pLeftChild;
@@ -218,14 +218,14 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 					
 				}
 				
-				//µÚ¶ş²¿·Ö£º¸Ä±äÌæ»»½áµãÁ´½á£¬ÊµÏÖÓëÔ­½áµãÏàÍ¬¡£
-				//´¦Àíµ±¸ÃÌæ»»µÄ½áµãÎªÉ¾³ı½áµãµÄ×ó×ÓµÄÌØÊâÇé¿ö
+				//ç¬¬äºŒéƒ¨åˆ†ï¼šæ”¹å˜æ›¿æ¢ç»“ç‚¹é“¾ç»“ï¼Œå®ç°ä¸åŸç»“ç‚¹ç›¸åŒã€‚
+				//å¤„ç†å½“è¯¥æ›¿æ¢çš„ç»“ç‚¹ä¸ºåˆ é™¤ç»“ç‚¹çš„å·¦å­çš„ç‰¹æ®Šæƒ…å†µ
 				if (pFindTBinTreeNode == pTBinTreeNode->pLeftChild)
 				{
-					//Æä×ó×Ó²»ÓÃ½»´ú£¬±£³ÖÔ­×´
+					//å…¶å·¦å­ä¸ç”¨äº¤ä»£ï¼Œä¿æŒåŸçŠ¶
 					pTBinTreeNode->pRightChild->pParent = pFindTBinTreeNode;
 					
-					//Æä×ó×Ó²»ÓÃ½»´ú,±£³ÖÔ­×´	
+					//å…¶å·¦å­ä¸ç”¨äº¤ä»£,ä¿æŒåŸçŠ¶	
 					pFindTBinTreeNode->pRightChild = pTBinTreeNode->pRightChild;
 					pFindTBinTreeNode->pParent = pTBinTreeNode->pParent;
 					
@@ -244,7 +244,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 				}
 				
 				
-				//µÚÈı²¿·Ö   É¾³ı½áµãÖ®¸¸½áµãÁ´½á
+				//ç¬¬ä¸‰éƒ¨åˆ†   åˆ é™¤ç»“ç‚¹ä¹‹çˆ¶ç»“ç‚¹é“¾ç»“
 				
 				if (*ppRootTBinTreeNode == pTBinTreeNode)
 				{
@@ -262,7 +262,7 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 					nResult = 1;
 					
 					
-					if (nResult < 0)//ÔÚ¸¸µÄ×óÃæ
+					if (nResult < 0)//åœ¨çˆ¶çš„å·¦é¢
 					{
 						pTBinTreeNode->pParent->pLeftChild = pFindTBinTreeNode;
 					}
@@ -287,10 +287,10 @@ TBinTreeNode *  KSortBinTree::RemoveNode(TBinTreeNode * pTBinTreeNode, TBinTreeN
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTFindLess
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TBinTreeNode * pTBinTreeNode
-// ·µ»Ø:	TBinTreeNode * 
+// å‡½æ•°:	BTFindLess
+// åŠŸèƒ½:	
+// å‚æ•°:	TBinTreeNode * pTBinTreeNode
+// è¿”å›:	TBinTreeNode * 
 //---------------------------------------------------------------------------
 TBinTreeNode * KSortBinTree::FindLess(TBinTreeNode * pTBinTreeNode)
 {
@@ -306,12 +306,12 @@ TBinTreeNode * KSortBinTree::FindLess(TBinTreeNode * pTBinTreeNode)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BTPreorder
-// ¹¦ÄÜ:	
-// ²ÎÊı:	TBinTreeNode * pTBinTreeNode
-// ·µ»Ø:	DWORD  
+// å‡½æ•°:	BTPreorder
+// åŠŸèƒ½:	
+// å‚æ•°:	TBinTreeNode * pTBinTreeNode
+// è¿”å›:	DWORD  
 //---------------------------------------------------------------------------
-DWORD  KSortBinTree::InOrder(TBinTreeNode * pTBinTreeNode)//ÖĞĞò±éÀú
+DWORD  KSortBinTree::InOrder(TBinTreeNode * pTBinTreeNode)//ä¸­åºéå†
 {
 	static int Count = 0	;
 	if (pTBinTreeNode != NULL)
@@ -361,16 +361,16 @@ TBinTreeNode*  KSortBinTree::Insert(TBinTreeNode *pNewNode)
 
 BOOL   KSortBinTree::RemoveKeyNode(TBinTreeNode * pNode)
 {
-	BOOL nResult = FALSE;//²éÕÒµÄ½á¹û
+	BOOL nResult = FALSE;//æŸ¥æ‰¾çš„ç»“æœ
 	
-	TBinTreeNode * pTBinTreeNode = NULL;//²éÕÒ·µ»ØµÄÖ¸Õë
+	TBinTreeNode * pTBinTreeNode = NULL;//æŸ¥æ‰¾è¿”å›çš„æŒ‡é’ˆ
 	
 	if (m_pTreeRoot == NULL)
 		return FALSE;
 	
 	pTBinTreeNode = Search(m_pTreeRoot, m_pTreeRoot, pNode, &nResult);
 	
-	if (nResult && pTBinTreeNode) //ÔÚÁ´±íÖĞÕÒµ½ÁË¸Ã¹Ø¼ü×Ö
+	if (nResult && pTBinTreeNode) //åœ¨é“¾è¡¨ä¸­æ‰¾åˆ°äº†è¯¥å…³é”®å­—
 	{
 		
 		return RemoveThisNode(pTBinTreeNode);
@@ -388,7 +388,7 @@ BOOL   KSortBinTree::RemoveThisNode(TBinTreeNode * pNode)
 	if (m_pTreeRoot == NULL)
 		return FALSE;
 	TBinTreeNode * pDelNode;
-	//¸Ã½áµã²¢²»ÊôÓÚ±íÖĞµÄ½áµã£¬Ôò·µ»ØFALSE
+	//è¯¥ç»“ç‚¹å¹¶ä¸å±äºè¡¨ä¸­çš„ç»“ç‚¹ï¼Œåˆ™è¿”å›FALSE
 	if (pNode->pLeftChild == NULL&&pNode->pRightChild == NULL && pNode->pParent == NULL && pNode != m_pTreeRoot)
 		return FALSE;
 	pDelNode = RemoveNode(pNode, &m_pTreeRoot);

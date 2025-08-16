@@ -10,10 +10,10 @@
 #include "KCanvas.h"
 #include "KDrawFont.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawFont
-// ¹¦ÄÜ:	»æÖÆ´ø8¼¶AlphaµÄ×ÖÌå
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawFont
+// åŠŸèƒ½:	ç»˜åˆ¶å¸¦8çº§Alphaçš„å­—ä½“
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawFont(void* node, void* canvas)
 {
@@ -25,11 +25,11 @@ void g_DrawFont(void* node, void* canvas)
 	long nWidth = pNode->m_nWidth;// width of font
 	long nHeight = pNode->m_nHeight;// height of font
 	long nColor = pNode->m_nColor;// color of font
-	long nAlpha = pNode->m_nAlpha&0x001f;// nAlphaÖµ
-	long nTmpAlpha = 0;// nAlphaÖµ2
+	long nAlpha = pNode->m_nAlpha&0x001f;// nAlphaå€¼
+	long nTmpAlpha = 0;// nAlphaå€¼2
 	void* lpFont = pNode->m_pBitmap;// font pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -41,13 +41,13 @@ void g_DrawFont(void* node, void* canvas)
 
 	long nMask32 = pCanvas->m_nMask32;// RGB mask 32bit
 	
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long nNextLine = nPitch - Clipper.width * 2;
 	
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = nPitch * Clipper.y + nX * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -59,7 +59,7 @@ void g_DrawFont(void* node, void* canvas)
 		mov 	edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpFont
 		mov		ecx, Clipper.top
@@ -190,10 +190,10 @@ loc_DrawFont_exit:
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawFont
-// ¹¦ÄÜ:	»æÖÆ´ø8¼¶AlphaµÄ×ÖÌå
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawFont
+// åŠŸèƒ½:	ç»˜åˆ¶å¸¦8çº§Alphaçš„å­—ä½“
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawFontWithBorder(void* node, void* canvas)
 {
@@ -205,10 +205,10 @@ void g_DrawFontWithBorder(void* node, void* canvas)
 	long nWidth = pNode->m_nWidth;// width of font
 	long nHeight = pNode->m_nHeight;// height of font
 	long nColor = pNode->m_nColor;// color of font
-	long nBorderColor = pNode->m_nAlpha;// ±ßÔµµÄÑÕÉ«Öµ
+	long nBorderColor = pNode->m_nAlpha;// è¾¹ç¼˜çš„é¢œè‰²å€¼
 	void* lpFont = pNode->m_pBitmap;// font pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -220,13 +220,13 @@ void g_DrawFontWithBorder(void* node, void* canvas)
 
 	long nMask32 = pCanvas->m_nMask32;// RGB mask 32bit
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long nNextLine = nPitch - Clipper.width * 2;
 	
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = nPitch * Clipper.y + nX * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -238,7 +238,7 @@ void g_DrawFontWithBorder(void* node, void* canvas)
 		mov 	edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpFont
 		mov		ecx, Clipper.top
@@ -309,7 +309,7 @@ loc_DrawFont_0102:
 		mov		ebx, ecx
 		jl		DrawFrontWithBorder_DrawBorder
 
-		//»æÖÆ×Ö·ûµã
+		//ç»˜åˆ¶å­—ç¬¦ç‚¹
 		mov		eax, nColor
 		rep		stosw
 
@@ -320,7 +320,7 @@ loc_DrawFont_0102:
 		jg		loc_DrawFont_0100
 		jmp		loc_DrawFont_exit
  
-DrawFrontWithBorder_DrawBorder:		//»æÖÆ×Ö·ûµÄ±ßÔµ
+DrawFrontWithBorder_DrawBorder:		//ç»˜åˆ¶å­—ç¬¦çš„è¾¹ç¼˜
 		mov		eax, nBorderColor
 		rep		stosw
 
@@ -337,10 +337,10 @@ loc_DrawFont_exit:
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawFontSolid
-// ¹¦ÄÜ:	»æÖÆÊµĞÄ×ÖÌå
-// ²ÎÊı:	KDrawNode*, KCanvas* 
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawFontSolid
+// åŠŸèƒ½:	ç»˜åˆ¶å®å¿ƒå­—ä½“
+// å‚æ•°:	KDrawNode*, KCanvas* 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_DrawFontSolid(void* node, void* canvas)
 {
@@ -352,10 +352,10 @@ void g_DrawFontSolid(void* node, void* canvas)
 	long nWidth = pNode->m_nWidth;// width of font
 	long nHeight = pNode->m_nHeight;// height of font
 	long nColor = pNode->m_nColor;// color of font
-	long nAlpha = pNode->m_nAlpha&0x001f;// nAlphaÖµ
+	long nAlpha = pNode->m_nAlpha&0x001f;// nAlphaå€¼
 	void* lpFont = pNode->m_pBitmap;// font pointer
 
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KClipper Clipper;
 	if (!pCanvas->MakeClip(nX, nY, nWidth, nHeight, &Clipper))
 		return;
@@ -367,13 +367,13 @@ void g_DrawFontSolid(void* node, void* canvas)
 
 	long nMask32 = pCanvas->m_nMask32;// RGB mask 32bit
 
-	// ¼ÆËãÆÁÄ»ÏÂÒ»ĞĞµÄÆ«ÒÆ
+	// è®¡ç®—å±å¹•ä¸‹ä¸€è¡Œçš„åç§»
 	long nNextLine = nPitch - Clipper.width * 2;
 	
 	__asm
 	{
 //---------------------------------------------------------------------------
-// ¼ÆËã EDI Ö¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÁ¿ (ÒÔ×Ö½Ú¼Æ)
+// è®¡ç®— EDI æŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»é‡ (ä»¥å­—èŠ‚è®¡)
 // edi = nPitch * Clipper.y + nX * 2 + lpBuffer
 //---------------------------------------------------------------------------
 		mov		eax, nPitch
@@ -385,7 +385,7 @@ void g_DrawFontSolid(void* node, void* canvas)
 		mov 	edi, lpBuffer
 		add		edi, eax
 //---------------------------------------------------------------------------
-// ³õÊ¼»¯ ESI Ö¸ÏòÍ¼¿éÊı¾İÆğµã (Ìø¹ı Clipper.top ĞĞÍ¼ĞÎÊı¾İ)
+// åˆå§‹åŒ– ESI æŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹ (è·³è¿‡ Clipper.top è¡Œå›¾å½¢æ•°æ®)
 //---------------------------------------------------------------------------
 		mov		esi, lpFont
 		mov		ecx, Clipper.top

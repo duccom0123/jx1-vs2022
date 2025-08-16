@@ -27,7 +27,7 @@ extern iCoreShell*		g_pCoreShell;
 #define SCHEME_INI							"UiSuperShop.ini"
 #define SCHEME_SHOPPING_INI					"UiShopPing.ini"
 #define UI_WAIT_CLEAR_SHOPPINGCART			1
-#define MARKET_DISCOUNT_PIC					"\\spr\\Ui3\\ÂòÂô\\ĞÂÆæÕä¸ó½çÃæ\\%d_vn.spr"
+#define MARKET_DISCOUNT_PIC					"\\spr\\Ui3\\Ã‚Ã²Ã‚Ã´\\ÃÃ‚Ã†Ã¦Ã•Ã¤Â¸Ã³Â½Ã§ÃƒÃ¦\\%d_vn.spr"
 
 KUiShoppingCart* KUiShoppingCart::m_pSelf = NULL;
 
@@ -328,7 +328,7 @@ void KWndSellItem::Initialize()
 	m_MarketGoods_Buy.Enable(false);
 }
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 //--------------------------------------------------------------------------
 void KWndSellItem::LoadScheme(const char* pScheme)
 {
@@ -354,11 +354,11 @@ void KWndSellItem::Clear()
 {
 	m_MarketGoods_DisCount.Hide();
 	m_MarketGoods_imgNewArrival.Hide();
-	m_GoodsNameText.Clear();//ÎïÆ·Ãû
-	m_OriginalPriceText.Clear();//Ô­¼Û
-	m_OriginalPrice_NumberText.Clear();//Ô­¼Û
-	m_PriceText.Clear();//ĞÂ¼Û
-	m_Price_NumberText.Clear();//ĞÂ¼Û
+	m_GoodsNameText.Clear();//ÃÃ¯Ã†Â·ÃƒÃ»
+	m_OriginalPriceText.Clear();//Ã”Â­Â¼Ã›
+	m_OriginalPrice_NumberText.Clear();//Ã”Â­Â¼Ã›
+	m_PriceText.Clear();//ÃÃ‚Â¼Ã›
+	m_Price_NumberText.Clear();//ÃÃ‚Â¼Ã›
 	m_ItemBox.Celar();
 	m_MarketGoods_Buy.Enable(false);
 }
@@ -366,7 +366,7 @@ void KWndSellItem::PaintWindow()
 {
 //	KWndObjectBox::PaintWindow();
 }
-int		KWndSellItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)//´°¿Úº¯Êı
+int		KWndSellItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 {
 	if (uMsg == WND_N_BUTTON_CLICK )
 	{
@@ -459,7 +459,7 @@ void KUiSuperShop::CloseWindow(bool bDestroy)
 	{
 		//if (m_pSelf->m_pItemInfo.Obj.uGenre != CGOG_NOTHING)
 		//{
-		//	UIMessageBox("Giá hµng ch­a thanh to¸n. B¹n muèn hñy kh«ng?", m_pSelf, "X¸c nhËn", "Hñy bá", UI_WAIT_CLEAR_SHOPPINGCART);
+		//	UIMessageBox("GiÃ¡ hÂµng chÂ­a thanh toÂ¸n. BÂ¹n muÃ¨n hÃ±y khÂ«ng?", m_pSelf, "XÂ¸c nhÃ‹n", "HÃ±y bÃ¡", UI_WAIT_CLEAR_SHOPPINGCART);
 		//}
 		//else
 		//{	
@@ -606,7 +606,7 @@ void KUiSuperShop::SetSellTypeStart(int nStart)
 		char szName[80];
 		KTabFile	cTabFile;
 		if (cTabFile.Load(BUYSELL_FILE)) {
-			cTabFile.GetString((m_pBSinfo.m_nShopIdx[i]+2), "µÀ¾ßÒ»", "", szName, sizeof(szName));
+			cTabFile.GetString((m_pBSinfo.m_nShopIdx[i]+2), "ÂµÃ€Â¾ÃŸÃ’Â»", "", szName, sizeof(szName));
 		} else {
 			itoa(m_pBSinfo.m_nShopIdx[i], szName, 10);
 		}
@@ -709,8 +709,8 @@ void KUiSuperShop::UpdateItem(KUiObjAtContRegion* pItem, int nAdd)
 			(unsigned int)(&Obj), (int)(&Price)))
 			{
 				m_WndSellItem[nAdd].m_GoodsNameText.SetText(Price.szItemName);
-				m_WndSellItem[nAdd].m_OriginalPriceText.SetText("Gi¸ gèc:");
-				m_WndSellItem[nAdd].m_PriceText.SetText("Gi¸ thùc:");
+				m_WndSellItem[nAdd].m_OriginalPriceText.SetText("GiÂ¸ gÃ¨c:");
+				m_WndSellItem[nAdd].m_PriceText.SetText("GiÂ¸ thÃ¹c:");
 				if (Price.nCurPrice < Price.nOldPrice)
 				{
 					m_WndSellItem[nAdd].m_MarketGoods_DisCount.Show();
@@ -894,7 +894,7 @@ int KCanGetNumFrame::GetCurrentFrame()
 }
 
 
-#define SCHEME_INI_VN		"¾«Á¶Ê¯ÉÌµêvn.ini"
+#define SCHEME_INI_VN		"Â¾Â«ÃÂ¶ÃŠÂ¯Ã‰ÃŒÂµÃªvn.ini"
 
 KUiDynamicShop* KUiDynamicShop::m_pSelf = NULL;
 
@@ -908,7 +908,7 @@ KUiDynamicShop::KUiDynamicShop()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
 //--------------------------------------------------------------------------
 KUiDynamicShop* KUiDynamicShop::GetIfVisible()
 {
@@ -916,7 +916,7 @@ KUiDynamicShop* KUiDynamicShop::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 KUiDynamicShop* KUiDynamicShop::OpenWindow(BuySellInfo *pBSinfo)
 {
@@ -941,7 +941,7 @@ KUiDynamicShop* KUiDynamicShop::OpenWindow(BuySellInfo *pBSinfo)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
 //--------------------------------------------------------------------------
 void KUiDynamicShop::CloseWindow()
 {
@@ -955,7 +955,7 @@ void KUiDynamicShop::CloseWindow()
 	}
 }
 
-//³õÊ¼»¯
+//Â³ÃµÃŠÂ¼Â»Â¯
 void KUiDynamicShop::Initialize()
 {
 	for (int i = 0; i < MAX_SUPERSHOP_PAGETAB; i++)
@@ -980,7 +980,7 @@ void KUiDynamicShop::Initialize()
 	LoadScheme(Scheme);
 }
 
-//ÔØÈë½çÃæ·½°¸
+//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
 void KUiDynamicShop::LoadScheme(const char* pScheme)
 {
 	if (m_pSelf)
@@ -1017,7 +1017,7 @@ void KUiDynamicShop::CancelTrade()
 	CloseWindow();
 }
 
-//´°¿Úº¯Êı
+//Â´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
 int	KUiDynamicShop::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch (uMsg)
@@ -1103,7 +1103,7 @@ void KUiDynamicShop::OnBuyItem(KUiDraggedObject* pItem, bool bDoImmed)
 						Msg.byPriority = 0;
 						Msg.eType = SMT_NORMAL;
 						Msg.uReservedForUi = 0;
-						strcpy(Msg.szMessage, "NhÊn gi÷ phİm Shift ®ång thêi nhÊn chuét ph¶i lËp tøc mua ®­îc vËt phÈm!");
+						strcpy(Msg.szMessage, "NhÃŠn giÃ· phÃm Shift Â®Ã¥ng thÃªi nhÃŠn chuÃ©t phÂ¶i lÃ‹p tÃ¸c mua Â®Â­Ã®c vÃ‹t phÃˆm!");
 						KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 						return;
 					}	
@@ -1252,7 +1252,7 @@ void KUiDynamicShop::UpdateData()
 
 	if (m_pObjsList = (KUiObjAtContRegion*)malloc(sizeof(KUiObjAtContRegion) * m_nObjCount))
 	{
-		g_pCoreShell->GetDataDynamicShop(m_nCurrentShopId, (unsigned int)m_pObjsList, m_nObjCount);//µ¥Ïß³ÌÖ´ĞĞ£¬nCountÖµ²»±ä
+		g_pCoreShell->GetDataDynamicShop(m_nCurrentShopId, (unsigned int)m_pObjsList, m_nObjCount);//ÂµÂ¥ÃÃŸÂ³ÃŒÃ–Â´ÃÃÂ£Â¬nCountÃ–ÂµÂ²Â»Â±Ã¤
 		m_nPageCount = m_pObjsList[m_nObjCount - 1].nContainer + 1;
 		SetPage(0);
 	}

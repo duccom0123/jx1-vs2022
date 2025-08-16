@@ -54,7 +54,7 @@ KSubWorld::KSubWorld()
 	m_nWorldRegionWidth = 0;
 	m_nWorldRegionHeight = 0;
 	m_pWeatherMgr = NULL;
-	//MissionArryÖĞ0ËäÈ»ÎŞĞ§£¬µ«»¹ÊÇ¼ÓÉÏÈ¥£¬Èİ´í.TotalCount Îª¿Õ¼ä¼õ1£¬ËùÒÔ²»»áÔ½½ç
+	//MissionArryä¸­0è™½ç„¶æ— æ•ˆï¼Œä½†è¿˜æ˜¯åŠ ä¸Šå»ï¼Œå®¹é”™.TotalCount ä¸ºç©ºé—´å‡1ï¼Œæ‰€ä»¥ä¸ä¼šè¶Šç•Œ
 	for (int i = 0; i <= m_MissionArray.GetTotalCount(); i ++)
 	{
 		m_MissionArray.m_Data[i].SetOwner(this);
@@ -110,7 +110,7 @@ int KSubWorld::FindFreeRegion(int nX, int nY)
 			int nRegoinX = LOWORD(m_Region[i].m_RegionID);
 			int nRegoinY = HIWORD(m_Region[i].m_RegionID);
 
-			if ((nX - nRegoinX) * (nX - nRegoinX) + (nY - nRegoinY) * (nY - nRegoinY) > 2)	// ²»ÔÚ¸½½ü
+			if ((nX - nRegoinX) * (nX - nRegoinX) + (nY - nRegoinY) * (nY - nRegoinY) > 2)	// ä¸åœ¨é™„è¿‘
 				return i;
 		}
 	}
@@ -224,14 +224,14 @@ void KSubWorld::Mps2Map(int Rx, int Ry, int * nR, int * nX, int * nY, int *nDx, 
 	*nDx = 0;
 	*nDy = 0;
 #ifdef _SERVER
-	// ·Ç·¨µÄ×ø±ê
+	// éæ³•çš„åæ ‡
 	if (x >= m_nWorldRegionWidth + m_nRegionBeginX || y >= m_nWorldRegionHeight + m_nRegionBeginY || x < m_nRegionBeginX || y < m_nRegionBeginY)
 	{
 		*nR = -1;
 		return;
 	}
 #endif
-	// ·Ç·¨µÄ×ø±ê
+	// éæ³•çš„åæ ‡
 #ifdef _SERVER
 	*nR = GetRegionIndex(MAKELONG(x, y));
 #else
@@ -264,7 +264,7 @@ BYTE	KSubWorld::TestBarrier(int nMpsX, int nMpsY)
 	int x = nMpsX / (m_nRegionWidth * m_nCellWidth);
 	int	y = nMpsY / (m_nRegionHeight * m_nCellHeight);
 #ifdef _SERVER
-	// ·Ç·¨µÄ×ø±ê
+	// éæ³•çš„åæ ‡
 	if (x >= m_nWorldRegionWidth + m_nRegionBeginX || y >= m_nWorldRegionHeight + m_nRegionBeginY || x < m_nRegionBeginX || y < m_nRegionBeginY)
 		return 0xff;
 	int nRegion = GetRegionIndex(MAKELONG(x, y));
@@ -540,7 +540,7 @@ BOOL KSubWorld::LoadMap(int nId)
 	sprintf(szPath, "\\maps\\%s", szPathName);
 	int		nIdx =0;
 
-	// ¼ÓÔØµØÍ¼ÕÏ°­£¬²¢Á¬½Ó¸÷Region
+	// åŠ è½½åœ°å›¾éšœç¢ï¼Œå¹¶è¿æ¥å„Region
 	for (int nY = 0; nY < m_nWorldRegionHeight; nY++)
 	{
 		for (int nX = 0; nX < m_nWorldRegionWidth; nX++)
@@ -619,7 +619,7 @@ BOOL KSubWorld::LoadMap(int nId, int nRegion)
 
 		m_SubWorldID = nId;
 		g_ScenePlace.LoadSymbol(nId);
-		//g_ScenePlace.DirectFindPos(0, 0, FALSE, FALSE);	//»æ»­
+		//g_ScenePlace.DirectFindPos(0, 0, FALSE, FALSE);	//ç»˜ç”»
 
 		m_nRegionWidth = KScenePlaceRegionC::RWPP_AREGION_WIDTH / 32;
 		m_nRegionHeight = KScenePlaceRegionC::RWPP_AREGION_HEIGHT / 32;
@@ -877,7 +877,7 @@ void KSubWorld::NpcChangeRegion(int nSrcRnidx, int nDesRnIdx, int nIdx)
 	else if (nSrcRnidx >= 0)
 	{
 		SubWorld[Npc[nIdx].m_SubWorldIndex].m_Region[nSrcRnidx].RemoveNpc(nIdx);
-		if (nDesRnIdx != VOID_REGION)	// ²»ÊÇ¼ÓÈëµ½ËÀÍöÖØÉúÁ´±í
+		if (nDesRnIdx != VOID_REGION)	// ä¸æ˜¯åŠ å…¥åˆ°æ­»äº¡é‡ç”Ÿé“¾è¡¨
 			Npc[nIdx].m_RegionIndex = -1;
 	}
 
@@ -1009,7 +1009,7 @@ void KSubWorld::PlayerChangeRegion(int nSrcRnidx, int nDesRnIdx, int nIdx)
 	{
 		AddPlayer(nDesRnIdx, nIdx);
 	}
-/* ÒòÎªRemovePlayerºÍAddPlayerÒÑ¾­×öÁË´ÓÁ´±íÖĞÇå³ı½Úµã£¬ĞŞ¸ÄÖÜ±ß¾Å¸öREGIONµÄÒıÓÃ¼ÆÊıµÄ²Ù×÷ÁË
+/* å› ä¸ºRemovePlayerå’ŒAddPlayerå·²ç»åšäº†ä»é“¾è¡¨ä¸­æ¸…é™¤èŠ‚ç‚¹ï¼Œä¿®æ”¹å‘¨è¾¹ä¹ä¸ªREGIONçš„å¼•ç”¨è®¡æ•°çš„æ“ä½œäº†
 	KIndexNode* pNode = &Player[nIdx].m_Node;
 	if (pNode->m_Ref > 0)
 	{
@@ -1154,7 +1154,7 @@ void KSubWorld::LoadObject(char* szPath, char* szFileName)
 		return;
 
 	KIniFile IniFile;
-	// ¼ÓÔØÊÀ½çÖĞµÄ¶¯Ì¬Îï¼ş£¨Npc¡¢Object¡¢Trap£©
+	// åŠ è½½ä¸–ç•Œä¸­çš„åŠ¨æ€ç‰©ä»¶ï¼ˆNpcã€Objectã€Trapï¼‰
 	g_SetFilePath(szPath);
 	int nObjNumber = 0;
 	if (IniFile.Load(szFileName))
@@ -1199,7 +1199,7 @@ void KSubWorld::LoadObject(char* szPath, char* szFileName)
 		
 		switch(nType)
 		{
-		case kind_normal:		// ÆÕÍ¨Õ½¶·npc
+		case kind_normal:		// æ™®é€šæˆ˜æ–—npc
 			{
 				int nFindNo = g_NpcSetting.FindRow(szName);
 				if (nFindNo == -1)
@@ -1215,11 +1215,11 @@ void KSubWorld::LoadObject(char* szPath, char* szFileName)
 			break;
 		case kind_partner:
 			break;
-		case kind_dialoger:		// ÆÕÍ¨·ÇÕ½¶·npc
+		case kind_dialoger:		// æ™®é€šéæˆ˜æ–—npc
 			break;
-		case kind_bird:			// ¿Í»§¶Ëonly
+		case kind_bird:			// å®¢æˆ·ç«¯only
 			break;
-		case kind_mouse:		// ¿Í»§¶Ëonly
+		case kind_mouse:		// å®¢æˆ·ç«¯only
 			break;
 		default:
 			break;

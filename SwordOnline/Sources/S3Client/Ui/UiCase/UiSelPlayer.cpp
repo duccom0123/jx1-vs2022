@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼þÃû		£º	UiSelPlayer.cpp
-//	´´½¨Õß		£º	ÂÀ¹ð»ª
-//	´´½¨Ê±¼ä	£º	2002-9-10 14:24:12
-//	¹¦ÄÜÃèÊö	£º	
+//	æ–‡ä»¶å		ï¼š	UiSelPlayer.cpp
+//	åˆ›å»ºè€…		ï¼š	å•æ¡‚åŽ
+//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-10 14:24:12
+//	åŠŸèƒ½æè¿°	ï¼š	
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -35,7 +35,7 @@ const char*		PROP_GetTitleString(OBJ_ATTRIBYTE_TYPE eType);
 KUiSelPlayer* KUiSelPlayer::m_pSelf=NULL;
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÎö¹¹º¯Êý
+//	åŠŸèƒ½ï¼šæžæž„å‡½æ•°
 //--------------------------------------------------------------------------
 KUiSelPlayer::KUiSelPlayer()
 {
@@ -50,7 +50,7 @@ KUiSelPlayer::KUiSelPlayer()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀý
+//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›žå”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®žä¾‹
 //--------------------------------------------------------------------------
 KUiSelPlayer* KUiSelPlayer::OpenWindow()
 {
@@ -71,7 +71,7 @@ KUiSelPlayer* KUiSelPlayer::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ý¶ÔÏóÊµÀý
+//	åŠŸèƒ½ï¼šå…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®žä¾‹
 //--------------------------------------------------------------------------
 void KUiSelPlayer::CloseWindow()
 {
@@ -90,8 +90,8 @@ void KUiSelPlayer::Hide()
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý		: KUiSelPlayer::Initialize
-// ¹¦ÄÜ		: ³õÊ¼»¯
+// å‡½æ•°		: KUiSelPlayer::Initialize
+// åŠŸèƒ½		: åˆå§‹åŒ–
 // -------------------------------------------------------------------------
 void KUiSelPlayer::Initialize()
 {
@@ -105,13 +105,13 @@ void KUiSelPlayer::Initialize()
 	g_UiBase.GetCurSchemePath(Scheme, 128);
 	m_pSelf->LoadScheme(Scheme);
 
-	// ×¢²á±¾´°¿Ú
+	// æ³¨å†Œæœ¬çª—å£
 	Wnd_AddWindow(this, WL_TOPMOST);
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý		: KUiSelPlayer::LoadScheme
-// ¹¦ÄÜ		: ÔØÈë½çÃæ·½°¸
+// å‡½æ•°		: KUiSelPlayer::LoadScheme
+// åŠŸèƒ½		: è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 // -------------------------------------------------------------------------
 void KUiSelPlayer::LoadScheme(const char* pScheme)
 {
@@ -120,11 +120,11 @@ void KUiSelPlayer::LoadScheme(const char* pScheme)
 	sprintf(Buff, "%s\\%s", pScheme, SCHEME_INI_SELPLAYER);
 	if (Ini.Load(Buff))
 	{
-		Init(&Ini, "SelRole");	// ´°¿Ú±³¾°Êý¾Ý
+		Init(&Ini, "SelRole");	// çª—å£èƒŒæ™¯æ•°æ®
 		Ini.GetString("SelRole", "LoginBg", "", m_szLoginBg, sizeof(m_szLoginBg));
 		Ini.GetString("SelRole", "PlayerImgPrefix", "", m_szPlayerImgPrefix, sizeof(m_szPlayerImgPrefix));
 
-		Buff[0] = '\0';	// Çå¿Õ»º´æ
+		Buff[0] = '\0';	// æ¸…ç©ºç¼“å­˜
 		m_btnOk.Init(&Ini, "Ok");
 		m_btnCancel.Init(&Ini, "Cancel");
 		m_btnDel.Init(&Ini, "Del");
@@ -159,7 +159,7 @@ void KUiSelPlayer::LoadScheme(const char* pScheme)
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: »æÖÆ´°¿Ú
+// åŠŸèƒ½	: ç»˜åˆ¶çª—å£
 // -------------------------------------------------------------------------
 void KUiSelPlayer::PaintWindow()
 {
@@ -181,7 +181,7 @@ void KUiSelPlayer::PaintWindow()
 }
 
 // -------------------------------------------------------------------------
-// ¹¦ÄÜ	: ¸üÐÂ
+// åŠŸèƒ½	: æ›´æ–°
 // -------------------------------------------------------------------------
 void KUiSelPlayer::UpdateData()
 {
@@ -193,7 +193,7 @@ void KUiSelPlayer::UpdateData()
 		m_nSelPlayer = nSel;
 
 	int	x, y;
-	//---µ÷Õû×Ó´°¿ÚÎ»ÖÃ----
+	//---è°ƒæ•´å­çª—å£ä½ç½®----
 	switch(m_nNumPlayer)
 	{
 	case 1:
@@ -379,14 +379,14 @@ void KUiSelPlayer::UpdateData()
 void KUiSelPlayer::GetRoleImageName(char* pszName, const char* pszPrefix, unsigned char bGender, unsigned char bAttribute, int nIndex)
 {
 	_ASSERT(pszName && bAttribute >= series_metal && bAttribute < series_num);
-	static const char* pszAttribute[series_num] = { "½ð", "Ä¾", "Ë®", "»ð", "ÍÁ" };
-	static const char* pszGender[2] = { "ÄÐ", "Å®" };
+	static const char* pszAttribute[series_num] = { "é‡‘", "æœ¨", "æ°´", "ç«", "åœŸ" };
+	static const char* pszGender[2] = { "ç”·", "å¥³" };
 	sprintf(pszName, "%s_%s_%s_%d.spr", pszPrefix, pszAttribute[bAttribute],
 		(bGender ? pszGender[1] : pszGender[0]), nIndex);
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý	: ÏûÏ¢´¦Àí
+// å‡½æ•°	: æ¶ˆæ¯å¤„ç†
 // -------------------------------------------------------------------------
 int KUiSelPlayer::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -499,19 +499,19 @@ void KUiSelPlayer::OnSelectPlayer(int nSel, bool bPlaySound)
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý		: KUiSelPlayer::OnClickButton
-// ¹¦ÄÜ		: ÏìÓ¦µã»÷°´Å¥
-// ²ÎÊý		: KWndWindow* pWnd ---> ±»µã»÷µÄ¿Ø¼þÖ¸Õë
+// å‡½æ•°		: KUiSelPlayer::OnClickButton
+// åŠŸèƒ½		: å“åº”ç‚¹å‡»æŒ‰é’®
+// å‚æ•°		: KWndWindow* pWnd ---> è¢«ç‚¹å‡»çš„æŽ§ä»¶æŒ‡é’ˆ
 // -------------------------------------------------------------------------
 void KUiSelPlayer::OnClickButton(KWndButton* pWnd, bool bDoubleClick)
 {
-	// ---> ÅÐ¶ÏµãÖÐµÄÊÇÄÇ¸ö¿Ø¼þ
+	// ---> åˆ¤æ–­ç‚¹ä¸­çš„æ˜¯é‚£ä¸ªæŽ§ä»¶
 	for (int i = 0; i < m_nNumPlayer; i ++)
 	{
-		if (pWnd == (KWndWindow*)&m_player[i])	// µãÖÐÁËÄ³¸öÍæ¼ÒÐÅÏ¢¿ò
+		if (pWnd == (KWndWindow*)&m_player[i])	// ç‚¹ä¸­äº†æŸä¸ªçŽ©å®¶ä¿¡æ¯æ¡†
 		{
 			OnSelectPlayer(i, !bDoubleClick);
-            // Èç¹ûÊÇË«»÷£¬¾Í·ÂÕæÑ¡ÔñÓÃ»§
+            // å¦‚æžœæ˜¯åŒå‡»ï¼Œå°±ä»¿çœŸé€‰æ‹©ç”¨æˆ·
             if (bDoubleClick)
             {
         		OnEnterGame();
@@ -543,8 +543,8 @@ void KUiSelPlayer::OnEnterGame()
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý		: KUiSelPlayer::OnNew
-// ¹¦ÄÜ		: ÐÂ½¨°´Å¥µã»÷ÊÂ¼þ´¦Àí
+// å‡½æ•°		: KUiSelPlayer::OnNew
+// åŠŸèƒ½		: æ–°å»ºæŒ‰é’®ç‚¹å‡»äº‹ä»¶å¤„ç†
 // -------------------------------------------------------------------------
 void KUiSelPlayer::OnNew()
 {
@@ -552,7 +552,7 @@ void KUiSelPlayer::OnNew()
 	if (g_LoginLogic.GetRoleCount(nSel) < MAX_PLAYER_PER_ACCOUNT)
 	{
 		Hide();
-		KUiSelNativePlace::OpenWindow();	// ´ò¿ªÐÂ½¨½ÇÉ«¶Ô»°¿ò
+		KUiSelNativePlace::OpenWindow();	// æ‰“å¼€æ–°å»ºè§’è‰²å¯¹è¯æ¡†
 	}
 }
 
@@ -566,8 +566,8 @@ void KUiSelPlayer::OnDel()
 }
 
 // -------------------------------------------------------------------------
-// º¯Êý		: KUiSelPlayer::OnCancel
-// ¹¦ÄÜ		: È¡Ïû°´Å¥µã»÷ÊÂ¼þ´¦Àí
+// å‡½æ•°		: KUiSelPlayer::OnCancel
+// åŠŸèƒ½		: å–æ¶ˆæŒ‰é’®ç‚¹å‡»äº‹ä»¶å¤„ç†
 // -------------------------------------------------------------------------
 void KUiSelPlayer::OnCancel()
 {

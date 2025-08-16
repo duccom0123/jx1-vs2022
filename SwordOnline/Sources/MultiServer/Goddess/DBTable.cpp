@@ -35,7 +35,7 @@ ZDBTable::ZDBTable(const char *path, const char *name) {
 				ret = dbenv->set_flags(dbenv, DB_AUTO_COMMIT | DB_TXN_NOSYNC, 1);
 				index_number = 0;
 				strcpy(table_name, name);
-				return;				//³É¹¦ÁË
+				return;				//æˆåŠŸäº†
 			}
 		dbenv->close(dbenv, 0);
 	}
@@ -61,7 +61,7 @@ bool ZDBTable::open() {
     int index;
 	int ret;
 	if(!db_create(&primary_db, dbenv, 0)) {
-		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_CREATE| DB_AUTO_COMMIT | DB_THREAD, 0664)) {	//´ò¿ªÖ÷Êı¾İ¿â
+		if(!primary_db->open(primary_db, NULL, table_name, NULL, DB_BTREE, DB_CREATE| DB_AUTO_COMMIT | DB_THREAD, 0664)) {	//æ‰“å¼€ä¸»æ•°æ®åº“
 			for(index = 0; index < index_number; index++) {
 				sprintf(index_table_name, "%s.%d", table_name, index);
 				if(!db_create(&index_db[index], dbenv, 0)) {
@@ -77,8 +77,8 @@ bool ZDBTable::open() {
 				}
 				else break;
 			}
-			if(index == index_number) return true;										//³É¹¦ÁË
-			else while(--index) (index_db[index])->close(index_db[index], 0);				//³ö´í£¬¹Ø±ÕÇ°ÃæµÄË÷Òı±í
+			if(index == index_number) return true;										//æˆåŠŸäº†
+			else while(--index) (index_db[index])->close(index_db[index], 0);				//å‡ºé”™ï¼Œå…³é—­å‰é¢çš„ç´¢å¼•è¡¨
 			primary_db->close(primary_db, 0);
 		}
 	}
@@ -149,7 +149,7 @@ ZCursor *ZDBTable::_search(bool bKey, const char *key_ptr, int key_size, int ind
 	key.data = (void *)key_ptr;
 	key.size = key_size;
 	DBC* dbcp = NULL;
-	if(!key_ptr || !key_size) {							//Ã»ÓĞÉè¶¨Ë÷ÒıÖµ£¬ÒªÇó±éÀúÊı¾İ¿â
+	if(!key_ptr || !key_size) {							//æ²¡æœ‰è®¾å®šç´¢å¼•å€¼ï¼Œè¦æ±‚éå†æ•°æ®åº“
 		if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0)) {
 			return NULL;
 		}
@@ -159,10 +159,10 @@ ZCursor *ZDBTable::_search(bool bKey, const char *key_ptr, int key_size, int ind
 		}
 	}
 	else {
-		if(index == -1) {									//Ö÷¼üËÑË÷
+		if(index == -1) {									//ä¸»é”®æœç´¢
 			if(primary_db->get(primary_db, NULL, &key, &data, 0)) return NULL;
 		}
-		else if(is_index_unique[index]) {					//Ã»ÓĞÖØ¸´Ë÷Òı
+		else if(is_index_unique[index]) {					//æ²¡æœ‰é‡å¤ç´¢å¼•
 			if(bKey) {
 				if(index_db[index]->pget(index_db[index], NULL, &key, &pkey, &data, 0)) return NULL;
 			}
@@ -170,7 +170,7 @@ ZCursor *ZDBTable::_search(bool bKey, const char *key_ptr, int key_size, int ind
 				if(index_db[index]->get(index_db[index], NULL, &key, &data, 0)) return NULL;
 			}
 		}
-		else {												//´ò¿ªÓÎ±ê
+		else {												//æ‰“å¼€æ¸¸æ ‡
 			if(index_db[index]->cursor(index_db[index], NULL, &dbcp, 0)) {
 				return NULL;
 			}
@@ -295,7 +295,7 @@ bool ZDBTable::_next(bool bKey, ZCursor *cursor) {
     return true;
 }
 
-void ZDBTable::removeLog() {						//Çå³ıÈÕÖ¾ÎÄ¼ş
+void ZDBTable::removeLog() {						//æ¸…é™¤æ—¥å¿—æ–‡ä»¶
 	int ret;
 	char **begin, **list;
 	if((ret = dbenv->txn_checkpoint(dbenv, 0, 0, 0)) != 0) return;

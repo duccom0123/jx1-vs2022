@@ -2,7 +2,7 @@
 File        : UiTongCreateSheet.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : ´´½¨°ï»áµÄ±íµ¥
+Description : åˆ›å»ºå¸®ä¼šçš„è¡¨å•
 ********************************************************************************/
 
 
@@ -28,13 +28,13 @@ public:
 	KUiTongCreateSheet();
 	virtual ~KUiTongCreateSheet();
 
-	static        KUiTongCreateSheet* OpenWindow();  //´ò¿ª´°¿Ú
-	static        KUiTongCreateSheet* GetIfVisible();//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void   CloseWindow(bool bDestory = TRUE); //¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void   LoadScheme(const char* pScheme);   //ÔØÈë½çÃæ·½°¸
+	static        KUiTongCreateSheet* OpenWindow();  //æ‰“å¼€çª—å£
+	static        KUiTongCreateSheet* GetIfVisible();//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void   CloseWindow(bool bDestory = TRUE); //å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void   LoadScheme(const char* pScheme);   //è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 
 public:
-	static void   LinkToMainWindow(                 //½¨Á¢Õâ¸ö½çÃæºÍÖ÷½çÃæµÄ¹ØÁª
+	static void   LinkToMainWindow(                 //å»ºç«‹è¿™ä¸ªç•Œé¢å’Œä¸»ç•Œé¢çš„å…³è”
 		                      KWndWindow *pMain);
 
 	static void   ArrangeData(const char* szTongName,
@@ -43,16 +43,16 @@ private:
 	static        KUiTongCreateSheet *ms_pSelf;
 
 private:
-	void          Initialize();               //³õÊ¼»¯
+	void          Initialize();               //åˆå§‹åŒ–
 	                      /*------------------------------------------------*/
-	                                          //´°¿Úº¯Êı
+	                                          //çª—å£å‡½æ•°
 	virtual int   WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 
 private:
-	void          AlignmentButtonCheck(       //ÕıÖĞĞ°CheckBoxµÄ¹ÜÀíº¯Êı
+	void          AlignmentButtonCheck(       //æ­£ä¸­é‚ªCheckBoxçš„ç®¡ç†å‡½æ•°
 		                               int eSide);
 
-	void          OnDone();                   //ÏìÓ¦È·¶¨°´Å¥±»°´ÏÂ
+	void          OnDone();                   //å“åº”ç¡®å®šæŒ‰é’®è¢«æŒ‰ä¸‹
 
 private:
 	enum RESULT_TYPE
@@ -65,18 +65,18 @@ private:
 	unsigned int m_uHandleID;
 	int				m_nCurrentCamp;
 	KWndImage	  m_ImgTitle;
-	KWndText80	  m_TxtTongName,m_TxtTongCamp,m_ErrorBox;                //µ±°´ÏÂÈ·¶¨°´Å¥µÄÊ±ºò£¬ÄÄĞ©µØ·½Ã»ÌîºÃ
+	KWndText80	  m_TxtTongName,m_TxtTongCamp,m_ErrorBox;                //å½“æŒ‰ä¸‹ç¡®å®šæŒ‰é’®çš„æ—¶å€™ï¼Œå“ªäº›åœ°æ–¹æ²¡å¡«å¥½
 
-	KWndEdit32    m_EditTongName;             //°ï»áµÄÃû×Ö
-	KWndButton    m_BtnOrder, m_BtnNatural;   //ÕıÖĞĞ°(ÔÚDnDÎÄ»¯ÀïÃæ£¬Order´ú±íÖÈĞò¡¢
-	KWndButton    m_BtnChaos;                 //       Natural´ú±íÖĞÁ¢¡¢Chaos´ú±í»ìÂÒ)
+	KWndEdit32    m_EditTongName;             //å¸®ä¼šçš„åå­—
+	KWndButton    m_BtnOrder, m_BtnNatural;   //æ­£ä¸­é‚ª(åœ¨DnDæ–‡åŒ–é‡Œé¢ï¼ŒOrderä»£è¡¨ç§©åºã€
+	KWndButton    m_BtnChaos;                 //       Naturalä»£è¡¨ä¸­ç«‹ã€Chaosä»£è¡¨æ··ä¹±)
 
     KWndLabeledButton
-		          m_BtnDone, m_BtnCancel;     //È·¶¨/È¡Ïû°´Å¥
+		          m_BtnDone, m_BtnCancel;     //ç¡®å®š/å–æ¶ˆæŒ‰é’®
 
-	int           m_nSelectSide;              //Ñ¡ÔñÁËÄÄÒ»¸öÕóÓª
+	int           m_nSelectSide;              //é€‰æ‹©äº†å“ªä¸€ä¸ªé˜µè¥
 	char          m_szChangeCampImage[128], m_szNameNullString[32], 
-					m_szAlignmentNullString[32], m_szChangeFactionString[32];     //Ã»ÓĞÌîÃû×ÖµÄÌáÊ¾×Ö·û´®
+					m_szAlignmentNullString[32], m_szChangeFactionString[32];     //æ²¡æœ‰å¡«åå­—çš„æç¤ºå­—ç¬¦ä¸²
 };
 
 

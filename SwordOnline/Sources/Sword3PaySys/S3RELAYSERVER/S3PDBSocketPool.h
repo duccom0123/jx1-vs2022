@@ -28,7 +28,7 @@ public:
 	~KGatewayDataProcess();
 	std::string m_ServerName;
 	unsigned long m_nGameID;
-	unsigned long m_Address;						//服务器域名地址
+	unsigned long m_Address;						//鏈嶅姟鍣ㄥ煙鍚嶅湴鍧�
 	unsigned long m_nClientID;
 	virtual BOOL Stop();
 	virtual HANDLE Start(IServer* pServer);
@@ -40,7 +40,7 @@ protected:
 	BOOL CheckConnectAddress();
 	void ProcessClientData(const void * pData, DWORD dwDataSize);
 
-	short m_Port;									//服务器端口号
+	short m_Port;									//鏈嶅姟鍣ㄧ鍙ｅ彿
 	HANDLE m_hClosed;
 
 	DWORD ProcessData(S3PDBConVBC* pConn, const void* pData, DWORD dwDataSize);
@@ -62,7 +62,7 @@ protected:
 	BOOL IsStartAutoTime();
 	BOOL StartAutoTime();
 	void ExecuteAction(char* szAccount, char* szScript);
-	void ExecuteAction(char* szScript);	//广播执行脚本
+	void ExecuteAction(char* szScript);	//骞挎挱鎵ц鑴氭湰
 	void SendSystemInfo(unsigned long uID, char* szAccount, char *lpszSendName, char *lpszSentence, int nSentenceLength);
 
 	DWORD Main(LPVOID lpParam);

@@ -1,19 +1,19 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	������Ϣ���ֵ�һ�ع��˴�����
+//	输入消息文字第一重过滤处理。
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-1-10
 ------------------------------------------------------------------------------------------
-    ���������ֻ���Ϊ�������������������������桢���Եȿ������
+    把输入文字划分为聊天文字与控制命令，并处理界面、调试等控制命令。
 *****************************************************************************************/
 
-//����ǰ׺�ַ�
+//命令前缀字符
 #define		TEXT_CTRL_CMD_PREFIX	'?'
-//����ǰ׺�ַ�
+//聊天前缀字符
 #define		TEXT_CTRL_CHAT_PREFIX	'/'
-//Ƶ��ǰ׺�ַ�
+//频道前缀字符
 #define		TEXT_CTRL_CHANNEL_PREFIX	'&'
-//����ǰ׺�ַ�
+//表情前缀字符
 #define		TEXT_CTRL_EMOTE_PREFIX	'.'
 
 BOOL TextMsgFilter(const char* pText, int nLen);

@@ -23,21 +23,21 @@ private:
 	TPolygon	m_Polygon;
 public:
 	KPolygon();
-	BOOL		IsPointInPolygon(POINT pos);					//	¼ì²éµ±Ç°µãÊÇ·ñÔÚ¶à±ßĞÎÄÚ
-	BOOL		IsPointInPolygon(int x, int y);					//	¼ì²éµ±Ç°µãÊÇ·ñÔÚ¶à±ßĞÎÄÚ
-	BOOL		AddPointToVertex(POINT pos);					//	Ôö¼Ó¶¥µã
-	BOOL		AddPointToVertex(int x, int y);					//	Ôö¼Ó¶¥µã
-	int			GetNearVertex(POINT pos);						//	È¡µÃÓëµ±Ç°µã×î½üµÄ¶¥µãË÷Òı
-	int			GetVertexNumber() {return m_Polygon.nVertex;};	//	È¡µÃ¶à±ßĞÎµÄ¶¥µãÊıÄ¿
-	BOOL		GetIndexVertex(int i, POINT* vertex);			//	È¡µÃ¶à±ßĞÎµÄµÚI¸ö¶¥µã×ù±ê
-	BOOL		RemoveIndexVertex(int i);						//	´Ó¶à±ßĞÎÖĞÈ¥³ıµôÒ»¸ö¶¥µã
-	void		LoopVertex(int i);								//	°Ñ¶à±ßĞÎ¶¥µãË³Ğò½øĞĞI´ÎÑ­»·±ä»¯
-	void		Clear();										//	Çå¿Õ¶à±ßĞÎĞÅÏ¢
-	void		GetCenterPos(POINT*	pos);						//	È¡µÃÖØĞÄÎ»ÖÃ
-	LPPolygon	GetPolygonPtr() {return &m_Polygon;};			//	È¡µÃ¶à±ßĞÎÖ¸Õë
-	BOOL		ShiftVertex(int nDir, int nDistance);			//	°ÑÈÎÒâ¶¥µãÏòÊ²Ã´·½ÏòÒÆ¶¯
-	int			GetLeftVertex();								//	È¡µÃ×î×ó¶¥µãµÄË÷Òı
-	int			GetRightVertex();								//	È¡µÃ×îÓÒ¶¥µãµÄË÷Òı
+	BOOL		IsPointInPolygon(POINT pos);					//	æ£€æŸ¥å½“å‰ç‚¹æ˜¯å¦åœ¨å¤šè¾¹å½¢å†…
+	BOOL		IsPointInPolygon(int x, int y);					//	æ£€æŸ¥å½“å‰ç‚¹æ˜¯å¦åœ¨å¤šè¾¹å½¢å†…
+	BOOL		AddPointToVertex(POINT pos);					//	å¢åŠ é¡¶ç‚¹
+	BOOL		AddPointToVertex(int x, int y);					//	å¢åŠ é¡¶ç‚¹
+	int			GetNearVertex(POINT pos);						//	å–å¾—ä¸å½“å‰ç‚¹æœ€è¿‘çš„é¡¶ç‚¹ç´¢å¼•
+	int			GetVertexNumber() {return m_Polygon.nVertex;};	//	å–å¾—å¤šè¾¹å½¢çš„é¡¶ç‚¹æ•°ç›®
+	BOOL		GetIndexVertex(int i, POINT* vertex);			//	å–å¾—å¤šè¾¹å½¢çš„ç¬¬Iä¸ªé¡¶ç‚¹åº§æ ‡
+	BOOL		RemoveIndexVertex(int i);						//	ä»å¤šè¾¹å½¢ä¸­å»é™¤æ‰ä¸€ä¸ªé¡¶ç‚¹
+	void		LoopVertex(int i);								//	æŠŠå¤šè¾¹å½¢é¡¶ç‚¹é¡ºåºè¿›è¡ŒIæ¬¡å¾ªç¯å˜åŒ–
+	void		Clear();										//	æ¸…ç©ºå¤šè¾¹å½¢ä¿¡æ¯
+	void		GetCenterPos(POINT*	pos);						//	å–å¾—é‡å¿ƒä½ç½®
+	LPPolygon	GetPolygonPtr() {return &m_Polygon;};			//	å–å¾—å¤šè¾¹å½¢æŒ‡é’ˆ
+	BOOL		ShiftVertex(int nDir, int nDistance);			//	æŠŠä»»æ„é¡¶ç‚¹å‘ä»€ä¹ˆæ–¹å‘ç§»åŠ¨
+	int			GetLeftVertex();								//	å–å¾—æœ€å·¦é¡¶ç‚¹çš„ç´¢å¼•
+	int			GetRightVertex();								//	å–å¾—æœ€å³é¡¶ç‚¹çš„ç´¢å¼•
 };
 
 #endif

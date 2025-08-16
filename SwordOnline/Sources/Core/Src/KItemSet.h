@@ -14,7 +14,7 @@ enum enumAbrade
 	enumAbradeMove,
 	enumAbradeNum,
 };
-// Íæ¼ÒÖ®¼ä½»Ò×½øÐÐÊ±£¬ÓÃÓÚÅÐ¶ÏÍæ¼ÒÎïÆ·À¸ÄÜ·ñ·ÅÏÂÂò½øµÄÎïÆ·
+// çŽ©å®¶ä¹‹é—´äº¤æ˜“è¿›è¡Œæ—¶ï¼Œç”¨äºŽåˆ¤æ–­çŽ©å®¶ç‰©å“æ èƒ½å¦æ”¾ä¸‹ä¹°è¿›çš„ç‰©å“
 typedef struct
 {
 	int		m_nIdx;
@@ -36,23 +36,23 @@ typedef struct
 class KItemSet
 {
 private:
-	DWORD			m_dwIDCreator;		//	IDÉú³ÉÆ÷£¬ÓÃÓÚ¿Í»§¶ËÓë·þÎñÆ÷¶ËµÄ½»Á÷
-	KLinkArray		m_FreeIdx;			//	¿ÉÓÃ±í
-	KLinkArray		m_UseIdx;			//	ÒÑÓÃ±í
+	DWORD			m_dwIDCreator;		//	IDç”Ÿæˆå™¨ï¼Œç”¨äºŽå®¢æˆ·ç«¯ä¸ŽæœåŠ¡å™¨ç«¯çš„äº¤æµ
+	KLinkArray		m_FreeIdx;			//	å¯ç”¨è¡¨
+	KLinkArray		m_UseIdx;			//	å·²ç”¨è¡¨
 
 public:
 	int				m_nItemAbradeRate[enumAbradeNum][itempart_num];
 	REPAIR_ITEM_PARAM	m_sRepairParam;
 #ifdef _SERVER
-	// Íæ¼ÒÖ®¼ä½»Ò×½øÐÐÊ±£¬ÓÃÓÚÅÐ¶ÏÍæ¼ÒÎïÆ·À¸ÄÜ·ñ·ÅÏÂÂò½øµÄÎïÆ·
+	// çŽ©å®¶ä¹‹é—´äº¤æ˜“è¿›è¡Œæ—¶ï¼Œç”¨äºŽåˆ¤æ–­çŽ©å®¶ç‰©å“æ èƒ½å¦æ”¾ä¸‹ä¹°è¿›çš„ç‰©å“
 	TRADE_ITEM_INFO		*m_psItemInfo;
-	// Íæ¼ÒÖ®¼ä½»Ò×½øÐÐÊ±£¬ÓÃÓÚÅÐ¶ÏÍæ¼ÒÎïÆ·À¸ÄÜ·ñ·ÅÏÂÂò½øµÄÎïÆ·
+	// çŽ©å®¶ä¹‹é—´äº¤æ˜“è¿›è¡Œæ—¶ï¼Œç”¨äºŽåˆ¤æ–­çŽ©å®¶ç‰©å“æ èƒ½å¦æ”¾ä¸‹ä¹°è¿›çš„ç‰©å“
 	TRADE_ITEM_INFO		*m_psBackItemInfo;
 	// copy m_psItemInfo to m_psBackItemInfo
 	void			BackItemInfo();
-	// ÓÃÓÚÍæ¼Ò±»PKËÀÍöºóµÄ³Í·£¼ÆËã£¬µôÂäËæÉíÎïÆ·
+	// ç”¨äºŽçŽ©å®¶è¢«PKæ­»äº¡åŽçš„æƒ©ç½šè®¡ç®—ï¼ŒæŽ‰è½éšèº«ç‰©å“
 	PlayerItem		m_sLoseItemFromEquipmentRoom[EQUIPMENT_ROOM_WIDTH * EQUIPMENT_ROOM_HEIGHT];
-	// ÓÃÓÚÍæ¼Ò±»PKËÀÍöºóµÄ³Í·£¼ÆËã£¬µôÂä´©ÔÚÉíÉÏµÄ×°±¸
+	// ç”¨äºŽçŽ©å®¶è¢«PKæ­»äº¡åŽçš„æƒ©ç½šè®¡ç®—ï¼ŒæŽ‰è½ç©¿åœ¨èº«ä¸Šçš„è£…å¤‡
 	PlayerItem		m_sLoseEquipItem[itempart_num];
 #endif
 

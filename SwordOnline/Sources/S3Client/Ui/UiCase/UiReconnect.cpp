@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	UiReconnect.h
-//	´´½¨Õß		£º	Freeway Chen
-//	´´½¨Ê±¼ä	£º	2003-7-18
-//	¹¦ÄÜÃèÊö	£º	×Ô¶¯ÖØÁ¬µÄÁ÷³Ì¿ØÖÆ	
+//	ÃÃ„Â¼â‚«Ä‚Ã»		Â£Âº	UiReconnect.h
+//	Â´Â´Â½Â¨Æ ÃŸ		Â£Âº	Freeway Chen
+//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2003-7-18
+//	Â¹Â¦Ã„ÃœÄ‚Ã¨ÃŠÃ¶	Â£Âº	Ã—Ã”Â¶Â¯Ã–Ã˜ÃÂ¬ÂµÃ„ÃÃ·Â³Ì€Â¿Ã˜Ã–Ã†	
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -20,24 +20,24 @@
 #include "../../../Engine/Src/KDebug.h"
 #include <crtdbg.h>
 
-#define	MSG_RECONNECTING				"HÖ thèng ®ang kÕt nèi l¹i lÇn thø <color=255,0,0>%d<color>\n%s"
-#define	MSG_WAIT_TO_RECONNECT			"TiÕn hµnh kÕt nèi l¹i trong %d gi©y (lÇn thø <color=255,0,0>%d<color>)"
-#define	MSG_WAIT_NEXT_GROUP_RECONNECT	"TiÕn hµnh kÕt nèi l¹i trong %d gi©y"
+#define	MSG_RECONNECTING				"HÃ– thÃ¨ng Â®ang kÆ t nÃ¨i lÂ¹i lÃ‡n thÃ¸ <color=255,0,0>%d<color>\n%s"
+#define	MSG_WAIT_TO_RECONNECT			"TiÆ n hÂµnh kÆ t nÃ¨i lÂ¹i trong %d giÂ©y (lÃ‡n thÃ¸ <color=255,0,0>%d<color>)"
+#define	MSG_WAIT_NEXT_GROUP_RECONNECT	"TiÆ n hÂµnh kÆ t nÃ¨i lÂ¹i trong %d giÂ©y"
 #define	MSG_HIDE_RECONNECT_MSG_ID		"21"
 
-//Á½×é¶ÏÏßÖØÁ¬µÄ¼ä¸ôÊ±¼ä£¬µ¥Î»ºÁÃë
+//ÃÂ½Ã—Ã©Â¶ÃÃÃŸÃ–Ã˜ÃÂ¬ÂµÃ„Â¼Ã¤Â¸Ã´ÃŠÂ±Â¼Ã¤Â£Â¬ÂµÂ¥ÃÂ»ÂºÃÄ‚Ã«
 #define RECONNECT_GROUP_INTERVAL		60000
-//Á½´Î¶ÏÏßÖØÁ¬µÄ¼ä¸ôÊ±¼ä£¬µ¥Î»ºÁÃë
+//ÃÂ½Â´ÃÂ¶ÃÃÃŸÃ–Ã˜ÃÂ¬ÂµÃ„Â¼Ã¤Â¸Ã´ÃŠÂ±Â¼Ã¤Â£Â¬ÂµÂ¥ÃÂ»ÂºÃÄ‚Ã«
 #define RECONNECT_INTERVAL				10000
-//¿ªÊ¼Ê±²»¿É¼ûµÄÖØÁ¬µÄ´ÎÊı
+//Â¿ÂªÃŠÂ¼ÃŠÂ±Â²Â»Â¿Ã‰Â¼Ã»ÂµÃ„Ã–Ã˜ÃÂ¬ÂµÃ„Â´ÃÃŠÆ°
 #define INVISIBLE_RECONNECT_TIMES		3
-//²»¿É¼ûµÄÁ½´Î¶ÏÏßÖØÁ¬µÄ¼ä¸ôÊ±¼ä£¬µ¥Î»ºÁÃë
+//Â²Â»Â¿Ã‰Â¼Ã»ÂµÃ„ÃÂ½Â´ÃÂ¶ÃÃÃŸÃ–Ã˜ÃÂ¬ÂµÃ„Â¼Ã¤Â¸Ã´ÃŠÂ±Â¼Ã¤Â£Â¬ÂµÂ¥ÃÂ»ÂºÃÄ‚Ã«
 #define INVISIBLE_RECONNECT_INTERVAL	5000
 
-//È¡ÏûÖØÁ¬µÄ°´Å¥µÄÎÄ×Ö
-#define	RECONNECT_QUIT_BTN_LABEL	"Tho¸t"
-//Á¢¼´ÖØÁ¬µÄ°´Å¥µÄÎÄ×Ö
-#define	RECONNECT_START_AT_ONCE		"KÕt nèi l¹i"
+//ÃˆÂ¡ÃÃ»Ã–Ã˜ÃÂ¬ÂµÃ„Â°Â´Ã…Â¥ÂµÃ„ÃÃ„Ã—Ã–
+#define	RECONNECT_QUIT_BTN_LABEL	"ThoÂ¸t"
+//ÃÂ¢Â¼Â´Ã–Ã˜ÃÂ¬ÂµÃ„Â°Â´Ã…Â¥ÂµÃ„ÃÃ„Ã—Ã–
+#define	RECONNECT_START_AT_ONCE		"KÆ t nÃ¨i lÂ¹i"
 
 KReconnectWnd*	KReconnectWnd::m_pSelf = NULL;
 
@@ -140,7 +140,7 @@ void KReconnectWnd::Exit(bool bQuitGame)
 	}
 }
 
-// ÓÃÀ´¿ØÖÆÏÂÒ»´ÎÖØÁ¬µÄÊ±¼ä
+// Ã“Ä‚Ã€Â´Â¿Ã˜Ã–Ã†ÃÃ‚Ì‰Â»Â´ÃÃ–Ã˜ÃÂ¬ÂµÃ„ÃŠÂ±Â¼Ã¤
 void KReconnectWnd::Breathe()
 {
 	if (m_bStop)
@@ -148,7 +148,7 @@ void KReconnectWnd::Breathe()
 	char	szInfo[256];
 	int		nInfoLen;
 	if (m_bWaitToReconnect)
-	{	//====µÈ´ı½øĞĞÏÂ´Î×Ô¶¯ÖØÁ¬====
+	{	//====ÂµÃˆÂ´Æ°Â½Ã¸ÄÄÃÃ‚Â´ÃÃ—Ã”Â¶Â¯Ã–Ã˜ÃÂ¬====
 		unsigned int uRemain;
 		if (uRemain = IR_GetRemainTime(m_uToWaitTime, m_uWaitStartTime))
 		{
@@ -169,7 +169,7 @@ void KReconnectWnd::Breathe()
 			}
 		}
 		else
-		{	//====¿ªÊ¼ÏÂ´Î×Ô¶¯ÖØÁ¬====
+		{	//====Â¿ÂªÃŠÂ¼ÃÃ‚Â´ÃÃ—Ã”Â¶Â¯Ã–Ã˜ÃÂ¬====
 			StartReconnect();
 		}
 		return;
@@ -179,23 +179,23 @@ void KReconnectWnd::Breathe()
 	const char* pReconnectMsg = NULL;
 	switch (eStatus)
 	{
-	case LL_S_IN_GAME://====ÖØÁ¬³É¹¦====
+	case LL_S_IN_GAME://====Ã–Ã˜ÃÂ¬Â³Ã‰Â¹Â¦====
 		g_UiInformation.Close();
 		UiResumeGame();
 		Exit(false);
 		break;
-	case LL_S_IDLE:	//====ÖØÁ¬Ê§°Ü====
+	case LL_S_IDLE:	//====Ã–Ã˜ÃÂ¬ÃŠÂ§Â°Ãœ====
 		{
 			LOGIN_LOGIC_RESULT_INFO eResult= g_LoginLogic.GetResult();
 			if (eResult == LL_R_ACCOUNT_NOT_ENOUGH_POINT)
 			{
 				m_bStop = true;
-				pReconnectMsg = "Kh«ng ®ñ thêi gian ®Ó ch¬i!. H·y n¹p card ®Ó tiÕp tôc trß ch¬i!";
+				pReconnectMsg = "KhÂ«ng Â®Ã± thÃªi gian Â®Ã“ chÂ¬i!. HÂ·y nÂ¹p card Â®Ã“ tiÆ p tÃ´c trÃŸ chÂ¬i!";
 			}
 			else if (eResult == LL_R_ACCOUNT_FREEZE)
 			{
 				m_bStop = true;
-				pReconnectMsg = "Tµi kho¶n nµy ®· bŞ khãa";
+				pReconnectMsg = "TÂµi khoÂ¶n nÂµy Â®Â· bÌƒ khÄƒa";
 			}
 			else
 			{
@@ -209,22 +209,22 @@ void KReconnectWnd::Breathe()
 				else
 				{
 					m_uToWaitTime = RECONNECT_INTERVAL;
-					pReconnectMsg = "KÕt nèi thÊt b¹i";
+					pReconnectMsg = "KÆ t nÃ¨i thÃŠt bÂ¹i";
 				}
 			}
 		}
 		break;
-	case LL_S_ACCOUNT_CONFIRMING:	//µÈ´ıÕËºÅÃÜÂëÑéÖ¤
-		pReconnectMsg = "§ang tiÕn hµnh kiÓm tra tµi kho¶n vµ mËt khÈu";
+	case LL_S_ACCOUNT_CONFIRMING:	//ÂµÃˆÂ´Æ°Æ Ã‹ÂºÃ…Ä‚ÃœÃ‚Ã«Ã‘Ã©Ã–Â¤
+		pReconnectMsg = "Â§ang tiÆ n hÂµnh kiÃ“m tra tÂµi khoÂ¶n vÂµ mÃ‹t khÃˆu";
 		break;
-	case LL_S_WAIT_ROLE_LIST:		//µÈ´ı½ÓÊÕ½ÇÉ«ÁĞ±íÊı¾İ
-		pReconnectMsg = "§ang nhËn danh s¸ch nh©n vËt";
+	case LL_S_WAIT_ROLE_LIST:		//ÂµÃˆÂ´Æ°Â½Ã“ÃŠÆ Â½Ã‡Ã‰Â«ÃÄÂ±Ã­ÃŠÆ°Â¾Æ¯
+		pReconnectMsg = "Â§ang nhÃ‹n danh sÂ¸ch nhÂ©n vÃ‹t";
 		break;
-	case LL_S_WAIT_TO_LOGIN_GAMESERVER:	//µÈ´ıµÇÂ½ÓÎÏ··şÎñÆ÷
-		pReconnectMsg = "§ang phôc vô trß ch¬i";
+	case LL_S_WAIT_TO_LOGIN_GAMESERVER:	//ÂµÃˆÂ´Æ°ÂµÃ‡Ã‚Â½Ã“ÃÃÂ·Â·â‚«ÃÃ±Ã†Ã·
+		pReconnectMsg = "Â§ang phÃ´c vÃ´ trÃŸ chÂ¬i";
 		break;
-	case LL_S_ENTERING_GAME:		//ÕıÔÚ½øÈëÓÎÏ·
-		pReconnectMsg = "§ang ®¨ng nhËp vµo trß ch¬i";
+	case LL_S_ENTERING_GAME:		//Æ Æ°Ã”ÃšÂ½Ã¸ÃˆÃ«Ã“ÃÃÂ·
+		pReconnectMsg = "Â§ang Â®Â¨ng nhÃ‹p vÂµo trÃŸ chÂ¬i";
 		break;
 	}
 
@@ -242,17 +242,17 @@ void KReconnectWnd::Breathe()
 	}
 }
 
-int KReconnectWnd::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)//´°¿Úº¯Êı
+int KReconnectWnd::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)//Â´Â°Â¿ÃšÂºÂ¯ÃŠÆ°
 {
 	if (uMsg == WND_M_OTHER_WORK_RESULT)
 	{
-		if (nParam == 1)	//Á¢¼´ÖØÁ¬
+		if (nParam == 1)	//ÃÂ¢Â¼Â´Ã–Ã˜ÃÂ¬
 		{
 			StartReconnect();
 			Breathe();
 		}
 		else
-			Exit(true);		//È¡Ïû£¬ÍË³öÓÎÏ·
+			Exit(true);		//ÃˆÂ¡ÃÃ»Â£Â¬ÃÃ‹Â³Ã¶Ã“ÃÃÂ·
 	}
 	return 0;
 }

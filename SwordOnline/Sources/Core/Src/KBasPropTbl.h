@@ -4,36 +4,36 @@
 // File:	KBasPropTbl.h
 // Date:	2002.08.14
 // Code:	DongBo
-// Desc:    header file. ±¾ÎÄ¼þ¶¨ÒåµÄÀàÓÃÓÚ´Ótab fileÖÐ¶Á³öµÀ¾ßµÄ³õÊ¼ÊôÐÔ,
-//			²¢Éú³É¶ÔÓ¦µÄÊôÐÔ±í
+// Desc:    header file. æœ¬æ–‡ä»¶å®šä¹‰çš„ç±»ç”¨äºŽä»Žtab fileä¸­è¯»å‡ºé“å…·çš„åˆå§‹å±žæ€§,
+//			å¹¶ç”Ÿæˆå¯¹åº”çš„å±žæ€§è¡¨
 //---------------------------------------------------------------------------
 
 #ifndef	KBasPropTblH
 #define	KBasPropTblH
 
-#define		SZBUFLEN_0	80		// µäÐÍµÄ×Ö·û´®»º³åÇø³¤¶È
-#define		SZBUFLEN_1	1024		// µäÐÍµÄ×Ö·û´®»º³åÇø³¤¶È
+#define		SZBUFLEN_0	80		// å…¸åž‹çš„å­—ç¬¦ä¸²ç¼“å†²åŒºé•¿åº¦
+#define		SZBUFLEN_1	1024		// å…¸åž‹çš„å­—ç¬¦ä¸²ç¼“å†²åŒºé•¿åº¦
 
 #define		MAX_MAGIC_PREFIX	20
 #define		MAX_MAGIC_SUFFIX	20
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊö¿óÊ¯µÄ»ù±¾ÊôÐÔ. Ïà¹ØÊôÐÔÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°çŸ¿çŸ³çš„åŸºæœ¬å±žæ€§. ç›¸å…³å±žæ€§ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int			m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	char		m_szScript[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	int			m_nPrice;					// ¼Û¸ñ
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±»
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int			m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	char		m_szScript[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	int			m_nPrice;					// ä»·æ ¼
 	BOOL		m_bShortKey;
 	int			m_nMaxStack;
 } KBASICPROP_EVENTITEM;
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÒ©Æ·ÊôÐÔµÄÌØÐÔ£ºÊýÖµÓëÊ±¼ä
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°è¯å“å±žæ€§çš„ç‰¹æ€§ï¼šæ•°å€¼ä¸Žæ—¶é—´
 typedef struct
 {
 	int			nAttrib;
@@ -41,229 +41,229 @@ typedef struct
 	int			nTime;
 } KMEDATTRIB;
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÒ©Æ·µÄ»ù±¾ÊôÐÔ. Ïà¹ØÊôÐÔÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
-// ÊÊÓÃÓÚÒÔÏÂÒ©Æ·: ÉúÃü²¹³äÀà,ÄÚÁ¦²¹³äÀà,ÌåÁ¦²¹³äÀà,¶¾Ò©Àà,½â¶¾Àà,
-//					½âÈ¼ÉÕÀà,½â±ù¶³Àà
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°è¯å“çš„åŸºæœ¬å±žæ€§. ç›¸å…³å±žæ€§ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
+// é€‚ç”¨äºŽä»¥ä¸‹è¯å“: ç”Ÿå‘½è¡¥å……ç±»,å†…åŠ›è¡¥å……ç±»,ä½“åŠ›è¡¥å……ç±»,æ¯’è¯ç±»,è§£æ¯’ç±»,
+//					è§£ç‡ƒçƒ§ç±»,è§£å†°å†»ç±»
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	int			m_nParticularType;			// ÏêÏ¸Àà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int			m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	int			m_nSeries;					// ÎåÐÐÊôÐÔ
-	int			m_nPrice;					// ¼Û¸ñ
-	int			m_nLevel;					// µÈ¼¶
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±»
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	int			m_nParticularType;			// è¯¦ç»†ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int			m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	int			m_nSeries;					// äº”è¡Œå±žæ€§
+	int			m_nPrice;					// ä»·æ ¼
+	int			m_nLevel;					// ç­‰çº§
 	int			m_nMaxStack;
-	KMEDATTRIB	m_aryAttrib[2];				// Ò©Æ·µÄÊôÐÔ
+	KMEDATTRIB	m_aryAttrib[2];				// è¯å“çš„å±žæ€§
 } KBASICPROP_MEDICINE;
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÒ»¶Ô×î´ó,×îÐ¡Öµ
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°ä¸€å¯¹æœ€å¤§,æœ€å°å€¼
 typedef struct
 {
 	int			nMin;
 	int			nMax;
 } KMINMAXPAIR;
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚ¸ø³ö×°±¸µÄºËÐÄ²ÎÊý: »ù´¡ÊôÐÔ
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽç»™å‡ºè£…å¤‡çš„æ ¸å¿ƒå‚æ•°: åŸºç¡€å±žæ€§
 typedef struct
 {
-	int			nType;						// ÊôÐÔÀàÐÍ
-	KMINMAXPAIR	sRange;						// È¡Öµ·¶Î§
+	int			nType;						// å±žæ€§ç±»åž‹
+	KMINMAXPAIR	sRange;						// å–å€¼èŒƒå›´
 } KEQCP_BASIC;	// Equipment_CorePara_Basic
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚ¸ø³ö×°±¸µÄºËÐÄ²ÎÊý: ÐèÇóÊôÐÔ
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽç»™å‡ºè£…å¤‡çš„æ ¸å¿ƒå‚æ•°: éœ€æ±‚å±žæ€§
 typedef struct
 {
-	int			nType;						// ÊôÐÔÀàÐÍ
-	int			nPara;						// ÊýÖµ
+	int			nType;						// å±žæ€§ç±»åž‹
+	int			nPara;						// æ•°å€¼
 } KEQCP_REQ;	// Equipment_CorePara_Requirment
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚ¸ø³öÄ§·¨µÄºËÐÄ²ÎÊý
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽç»™å‡ºé­”æ³•çš„æ ¸å¿ƒå‚æ•°
 typedef struct
 {
-	int			nPropKind;					// ÐÞ¸ÄµÄÊôÐÔÀàÐÍ£¨¶ÔÍ¬Ò»¸öÊýÖµ¼Ó°Ù·Ö±ÈºÍ¼ÓµãÊý±»ÈÏÎªÊÇÁ½¸öÊôÐÔ£©
-	KMINMAXPAIR	aryRange[3];				// ÐÞ¸ÄÊôÐÔËùÐèµÄ¼¸¸ö²ÎÊý
+	int			nPropKind;					// ä¿®æ”¹çš„å±žæ€§ç±»åž‹ï¼ˆå¯¹åŒä¸€ä¸ªæ•°å€¼åŠ ç™¾åˆ†æ¯”å’ŒåŠ ç‚¹æ•°è¢«è®¤ä¸ºæ˜¯ä¸¤ä¸ªå±žæ€§ï¼‰
+	KMINMAXPAIR	aryRange[3];				// ä¿®æ”¹å±žæ€§æ‰€éœ€çš„å‡ ä¸ªå‚æ•°
 } KMACP;	// MagicAttrib_CorePara
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÅäÖÃÎÄ¼þÖÐ¸ø³öµÄÄ§·¨ÊôÐÔ. Ïà¹ØÊôÐÔÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°é…ç½®æ–‡ä»¶ä¸­ç»™å‡ºçš„é­”æ³•å±žæ€§. ç›¸å…³å±žæ€§ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
 // Add by Freeway Chen in 2003.5.30
-#define			MATF_CBDR		    11      // ÎïÆ·ÀàÐÍ type(ÏÖÔÚµÄÖµÎª equip_detailnum)
-#define         MATF_PREFIXPOSFIX   2       // Ç°×ººó×º
-#define         MATF_SERIES         5       // ÎåÐÐ
-#define         MATF_LEVEL          10      // ×î¶àÓÐ10¸ö¼¶±ð
+#define			MATF_CBDR		    11      // ç‰©å“ç±»åž‹ type(çŽ°åœ¨çš„å€¼ä¸º equip_detailnum)
+#define         MATF_PREFIXPOSFIX   2       // å‰ç¼€åŽç¼€
+#define         MATF_SERIES         5       // äº”è¡Œ
+#define         MATF_LEVEL          10      // æœ€å¤šæœ‰10ä¸ªçº§åˆ«
 
 typedef struct
 {
-	int			m_nPos;						// Ç°×º»¹ÊÇºó×º
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nClass;					// ÎåÐÐÒªÇó
-	int			m_nLevel;					// µÈ¼¶ÒªÇó
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	KMACP		m_MagicAttrib;				// ºËÐÄ²ÎÊý
-	int			m_DropRate[MATF_CBDR];		// ³öÏÖ¸ÅÂÊ
+	int			m_nPos;						// å‰ç¼€è¿˜æ˜¯åŽç¼€
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nClass;					// äº”è¡Œè¦æ±‚
+	int			m_nLevel;					// ç­‰çº§è¦æ±‚
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	KMACP		m_MagicAttrib;				// æ ¸å¿ƒå‚æ•°
+	int			m_DropRate[MATF_CBDR];		// å‡ºçŽ°æ¦‚çŽ‡
     //add by Freeway Chen in 2003.5.30
-    int         m_nUseFlag;                 // ¸ÃÄ§·¨ÊÇ·ñ±»Ê¹ÓÃ¹ý
+    int         m_nUseFlag;                 // è¯¥é­”æ³•æ˜¯å¦è¢«ä½¿ç”¨è¿‡
 } KMAGICATTRIB_TABFILE;
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÄ§·¨ÊôÐÔ. Ïà¹ØÊôÐÔÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°é­”æ³•å±žæ€§. ç›¸å…³å±žæ€§ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
 /*
 typedef struct
 {
-	int			m_nPos;						// Ç°×º»¹ÊÇºó×º
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nClass;					// ÎåÐÐÒªÇó
-	int			m_nLevel;					// µÈ¼¶ÒªÇó
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	KMACP		m_MagicAttrib;				// ºËÐÄ²ÎÊý
-	int			m_DropRate;					// ³öÏÖ¸ÅÂÊ
+	int			m_nPos;						// å‰ç¼€è¿˜æ˜¯åŽç¼€
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nClass;					// äº”è¡Œè¦æ±‚
+	int			m_nLevel;					// ç­‰çº§è¦æ±‚
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	KMACP		m_MagicAttrib;				// æ ¸å¿ƒå‚æ•°
+	int			m_DropRate;					// å‡ºçŽ°æ¦‚çŽ‡
 } KMAGICATTRIB;
 */
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊö×°±¸µÄ³õÊ¼ÊôÐÔ. Ïà¹ØÊý¾ÝÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°è£…å¤‡çš„åˆå§‹å±žæ€§. ç›¸å…³æ•°æ®ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
 typedef struct
 {
-	char			m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int				m_nItemGenre;				// µÀ¾ßÖÖÀà (ÎäÆ÷? Ò©Æ·? ¿óÊ¯?)
-	int				m_nDetailType;				// ¾ßÌåÀà±ð
-	int				m_nParticularType;			// ÏêÏ¸Àà±ð
-	char			m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int				m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int				m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int				m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char			m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	int				m_nSeries;					// ÎåÐÐÊôÐÔ
-	int				m_nPrice;					// ¼Û¸ñ
-	int				m_nLevel;					// µÈ¼¶
-	KEQCP_BASIC		m_aryPropBasic[7];			// »ù´¡ÊôÐÔ
-	KEQCP_REQ		m_aryPropReq[6];			// ÐèÇóÊôÐÔ
+	char			m_szName[SZBUFLEN_0];		// åç§°
+	int				m_nItemGenre;				// é“å…·ç§ç±» (æ­¦å™¨? è¯å“? çŸ¿çŸ³?)
+	int				m_nDetailType;				// å…·ä½“ç±»åˆ«
+	int				m_nParticularType;			// è¯¦ç»†ç±»åˆ«
+	char			m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int				m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int				m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int				m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char			m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	int				m_nSeries;					// äº”è¡Œå±žæ€§
+	int				m_nPrice;					// ä»·æ ¼
+	int				m_nLevel;					// ç­‰çº§
+	KEQCP_BASIC		m_aryPropBasic[7];			// åŸºç¡€å±žæ€§
+	KEQCP_REQ		m_aryPropReq[6];			// éœ€æ±‚å±žæ€§
 } KBASICPROP_EQUIPMENT;
 
 
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊöÎ¨Ò»×°±¸µÄ³õÊ¼ÊôÐÔ. Ïà¹ØÊý¾ÝÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°å”¯ä¸€è£…å¤‡çš„åˆå§‹å±žæ€§. ç›¸å…³æ•°æ®ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà (ÎäÆ÷? Ò©Æ·? ¿óÊ¯?)
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	int			m_nParticularType;			// ÏêÏ¸Àà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// ÎïÆ·À¸¿í¶È
-	int			m_nHeight;					// ÎïÆ·À¸¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	int			m_nSeries;					// ÎåÐÐÊôÐÔ
-	int			m_nPrice;					// ¼Û¸ñ
-	int			m_nLevel;					// µÈ¼¶	
-	KEQCP_BASIC	m_aryPropBasic[7];			// »ù´¡ÊôÐÔ
-	KEQCP_REQ	m_aryPropReq[6];			// ÐèÇóÊôÐÔ
-	int			m_aryMagicAttribs_0[MAX_ITEM_MAGICATTRIB];		// Ä§·¨ÊôÐÔ
-	int			m_aryMagicAttribs_10[MAX_ITEM_MAGICATTRIB];		// Ä§·¨ÊôÐÔ
-	int			m_nGroup;						// ËùÔÚÌ××°
-	int			m_nSetID;					// ËùÊôÐòºÅ
-	int			m_nNeedToActive1;					// À©Õ¹Ì××°
-	int			m_nNeedToActive2;					// À©Õ¹Ì××°
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±» (æ­¦å™¨? è¯å“? çŸ¿çŸ³?)
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	int			m_nParticularType;			// è¯¦ç»†ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// ç‰©å“æ å®½åº¦
+	int			m_nHeight;					// ç‰©å“æ é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	int			m_nSeries;					// äº”è¡Œå±žæ€§
+	int			m_nPrice;					// ä»·æ ¼
+	int			m_nLevel;					// ç­‰çº§	
+	KEQCP_BASIC	m_aryPropBasic[7];			// åŸºç¡€å±žæ€§
+	KEQCP_REQ	m_aryPropReq[6];			// éœ€æ±‚å±žæ€§
+	int			m_aryMagicAttribs_0[MAX_ITEM_MAGICATTRIB];		// é­”æ³•å±žæ€§
+	int			m_aryMagicAttribs_10[MAX_ITEM_MAGICATTRIB];		// é­”æ³•å±žæ€§
+	int			m_nGroup;						// æ‰€åœ¨å¥—è£…
+	int			m_nSetID;					// æ‰€å±žåºå·
+	int			m_nNeedToActive1;					// æ‰©å±•å¥—è£…
+	int			m_nNeedToActive2;					// æ‰©å±•å¥—è£…
 } KBASICPROP_EQUIPMENT_PLATINA;
-// ÒÔÏÂ½á¹¹ÓÃÓÚÃèÊö»Æ½ð×°±¸µÄ³õÊ¼ÊôÐÔ. Ïà¹ØÊý¾ÝÓÉÅäÖÃÎÄ¼þ(tab file)Ìá¹©
-// flying ¸ù¾Ý²ß»®ÐèÇóÐÞ¸Ä×ÔKBASICPROP_EQUIPMENT_PLATINAÀàÐÍ
+// ä»¥ä¸‹ç»“æž„ç”¨äºŽæè¿°é»„é‡‘è£…å¤‡çš„åˆå§‹å±žæ€§. ç›¸å…³æ•°æ®ç”±é…ç½®æ–‡ä»¶(tab file)æä¾›
+// flying æ ¹æ®ç­–åˆ’éœ€æ±‚ä¿®æ”¹è‡ªKBASICPROP_EQUIPMENT_PLATINAç±»åž‹
 // Fix By Minh Kiem
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà (ÎäÆ÷? Ò©Æ·? ¿óÊ¯?)
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	int			m_nParticularType;			// ÏêÏ¸Àà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// ÎïÆ·À¸¿í¶È
-	int			m_nHeight;					// ÎïÆ·À¸¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	int			m_nSeries;					// ÎåÐÐÊôÐÔ
-	int			m_nPrice;					// ¼Û¸ñ
-	int			m_nLevel;					// µÈ¼¶	
-	KEQCP_BASIC	m_aryPropBasic[7];			// »ù´¡ÊôÐÔ
-	KEQCP_REQ	m_aryPropReq[6];			// ÐèÇóÊôÐÔ
-	int			m_aryMagicAttribs[MAX_ITEM_MAGICATTRIB];		// Ä§·¨ÊôÐÔ
-	int			m_nGroup;						// ËùÔÚÌ××°
-	int			m_nSetID;					// ËùÊôÐòºÅ
-	int			m_nNeedToActive1;					// À©Õ¹Ì××°
-	int			m_nNeedToActive2;					// À©Õ¹Ì××°
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±» (æ­¦å™¨? è¯å“? çŸ¿çŸ³?)
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	int			m_nParticularType;			// è¯¦ç»†ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// ç‰©å“æ å®½åº¦
+	int			m_nHeight;					// ç‰©å“æ é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	int			m_nSeries;					// äº”è¡Œå±žæ€§
+	int			m_nPrice;					// ä»·æ ¼
+	int			m_nLevel;					// ç­‰çº§	
+	KEQCP_BASIC	m_aryPropBasic[7];			// åŸºç¡€å±žæ€§
+	KEQCP_REQ	m_aryPropReq[6];			// éœ€æ±‚å±žæ€§
+	int			m_aryMagicAttribs[MAX_ITEM_MAGICATTRIB];		// é­”æ³•å±žæ€§
+	int			m_nGroup;						// æ‰€åœ¨å¥—è£…
+	int			m_nSetID;					// æ‰€å±žåºå·
+	int			m_nNeedToActive1;					// æ‰©å±•å¥—è£…
+	int			m_nNeedToActive2;					// æ‰©å±•å¥—è£…
 } KBASICPROP_EQUIPMENT_GOLD;
 
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int			m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±»
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int			m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
 	int			m_nPrice;
 	BOOL		m_bShortKey;
-	int			m_nMaxStack;					// ÊÇ·ñ¿Éµþ·Å
+	int			m_nMaxStack;					// æ˜¯å¦å¯å æ”¾
 } KBASICPROP_QUEST;
 
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int			m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	char		m_szScript[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±»
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int			m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	char		m_szScript[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
 	int			m_nPrice;
 	BOOL		m_bShortKey;
-	int			m_nMaxStack;					// ÊÇ·ñ¿Éµþ·Å
+	int			m_nMaxStack;					// æ˜¯å¦å¯å æ”¾
 } KBASICPROP_TOWNPORTAL;
 
 typedef struct
 {
-	char		m_szName[SZBUFLEN_0];		// Ãû³Æ
-	int			m_nItemGenre;				// µÀ¾ßÖÖÀà
-	int			m_nDetailType;				// ¾ßÌåÀà±ð
-	char		m_szImageName[SZBUFLEN_0];	// ½çÃæÖÐµÄ¶¯»­ÎÄ¼þÃû
-	int			m_nObjIdx;					// ¶ÔÓ¦Îï¼þË÷Òý
-	int			m_nWidth;					// µÀ¾ßÀ¸ÖÐËùÕ¼¿í¶È
-	int			m_nHeight;					// µÀ¾ßÀ¸ÖÐËùÕ¼¸ß¶È
-	char		m_szIntro[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ö
-	char		m_szScript[SZBUFLEN_1];		// ËµÃ÷ÎÄ×Ös
-	int			m_nPrice;					// ¼Û¸ñ
+	char		m_szName[SZBUFLEN_0];		// åç§°
+	int			m_nItemGenre;				// é“å…·ç§ç±»
+	int			m_nDetailType;				// å…·ä½“ç±»åˆ«
+	char		m_szImageName[SZBUFLEN_0];	// ç•Œé¢ä¸­çš„åŠ¨ç”»æ–‡ä»¶å
+	int			m_nObjIdx;					// å¯¹åº”ç‰©ä»¶ç´¢å¼•
+	int			m_nWidth;					// é“å…·æ ä¸­æ‰€å å®½åº¦
+	int			m_nHeight;					// é“å…·æ ä¸­æ‰€å é«˜åº¦
+	char		m_szIntro[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—
+	char		m_szScript[SZBUFLEN_1];		// è¯´æ˜Žæ–‡å­—s
+	int			m_nPrice;					// ä»·æ ¼
 	BOOL		m_bShortKey;
 	int			m_nMaxStack;
 } KBASICPROP_MAGICSCRIPT;
 //=============================================================================
 
-class KBasicPropertyTable			// ËõÐ´: BPT,ÓÃÓÚÅÉÉúÀà
+class KBasicPropertyTable			// ç¼©å†™: BPT,ç”¨äºŽæ´¾ç”Ÿç±»
 {
 public:
 	KBasicPropertyTable();
 	~KBasicPropertyTable();
 
-// ÒÔÏÂÊÇºËÐÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 protected:
-	void*		m_pBuf;						// Ö¸ÏòÊôÐÔ±í»º³åÇøµÄÖ¸Õë
-											// ÊôÐÔ±íÊÇÒ»¸ö½á¹¹Êý×é,
-											// Æä¾ßÌåÀàÐÍÓÉÅÉÉúÀà¾ö¶¨
-	int			m_nNumOfEntries;			// ÊôÐÔ±íº¬ÓÐ¶àÉÙÏîÊý¾Ý
+	void*		m_pBuf;						// æŒ‡å‘å±žæ€§è¡¨ç¼“å†²åŒºçš„æŒ‡é’ˆ
+											// å±žæ€§è¡¨æ˜¯ä¸€ä¸ªç»“æž„æ•°ç»„,
+											// å…¶å…·ä½“ç±»åž‹ç”±æ´¾ç”Ÿç±»å†³å®š
+	int			m_nNumOfEntries;			// å±žæ€§è¡¨å«æœ‰å¤šå°‘é¡¹æ•°æ®
 
-// ÒÔÏÂÊÇ¸¨ÖúÐÔµÄ³ÉÔ±±äÁ¿
-    int         m_nSizeOfEntry;				// Ã¿ÏîÊý¾ÝµÄ´óÐ¡(¼´½á¹¹µÄ´óÐ¡)
-	char		m_szTabFile[MAX_PATH];		// tabfileµÄÎÄ¼þÃû
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æ€§çš„æˆå‘˜å˜é‡
+    int         m_nSizeOfEntry;				// æ¯é¡¹æ•°æ®çš„å¤§å°(å³ç»“æž„çš„å¤§å°)
+	char		m_szTabFile[MAX_PATH];		// tabfileçš„æ–‡ä»¶å
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
-	virtual BOOL Load();					// ´ÓtabfileÖÐ¶Á³ö³õÊ¼ÊôÐÔÖµ, ÌîÈëÊôÐÔ±í
+	virtual BOOL Load();					// ä»Žtabfileä¸­è¯»å‡ºåˆå§‹å±žæ€§å€¼, å¡«å…¥å±žæ€§è¡¨
 	int NumOfEntries() const { return m_nNumOfEntries; }
 
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	BOOL GetMemory();
 	void ReleaseMemory();
@@ -290,7 +290,7 @@ public:
 	KBPT_TownPortal();
 	~KBPT_TownPortal();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_TOWNPORTAL* GetRecord(IN int) const;
 
@@ -298,32 +298,32 @@ protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 };
 
-// =====>Ò©²Ä<=====
-// =====>Ò©Æ·<=====
+// =====>è¯æ<=====
+// =====>è¯å“<=====
 class KBPT_Medicine : public KBasicPropertyTable
 {
 public:
 	KBPT_Medicine();
 	~KBPT_Medicine();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_MEDICINE* GetRecord(IN int) const;
 	const KBASICPROP_MEDICINE* FindRecord(IN int, IN int) const;
 
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 };
 
-// =====>ÈÎÎñÎïÆ·<=====
+// =====>ä»»åŠ¡ç‰©å“<=====
 class KBPT_Quest : public KBasicPropertyTable
 {
 public:
 	KBPT_Quest();
 	~KBPT_Quest();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_QUEST* GetRecord(IN int) const;
 	const KBASICPROP_QUEST* FindRecord(IN int) const;
@@ -338,7 +338,7 @@ public:
 	KBPT_MagicScript();
 	~KBPT_MagicScript();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_MAGICSCRIPT* GetRecord(IN int) const;
 	const KBASICPROP_MAGICSCRIPT* FindRecord(IN int) const;
@@ -353,12 +353,12 @@ public:
 	KBPT_Equipment();
 	~KBPT_Equipment();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_EQUIPMENT* GetRecord(IN int) const;
 	const KBASICPROP_EQUIPMENT* FindRecord(IN int, IN int, IN int) const;
 	void Init(IN int);
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 };
@@ -369,31 +369,31 @@ public:
 	KBPT_Equipment_Platina();
 	virtual ~KBPT_Equipment_Platina();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_EQUIPMENT_PLATINA* GetRecord(IN int) const;
 	const KBASICPROP_EQUIPMENT_PLATINA* FindRecord(IN int, IN int, IN int) const;
 	int GetRecordCount() const {return KBasicPropertyTable::NumOfEntries();};
 	void Init();
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 };
 
-// »Æ½ð×°±¸
+// é»„é‡‘è£…å¤‡
 class KBPT_Equipment_Gold : public KBasicPropertyTable
 {
 public:
 	KBPT_Equipment_Gold();
 	virtual ~KBPT_Equipment_Gold();
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	const KBASICPROP_EQUIPMENT_GOLD* GetRecord(IN int) const;
 	const KBASICPROP_EQUIPMENT_GOLD* FindRecord(IN int, IN int, IN int) const;
 	int GetRecordCount() const {return KBasicPropertyTable::NumOfEntries();};
 	void Init();
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 };
@@ -404,16 +404,16 @@ public:
 	KBPT_MagicAttrib_TF();
 	~KBPT_MagicAttrib_TF();
 
-// ÒÔÏÂÊÇ¸¨Öú³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æˆå‘˜å˜é‡
 protected:
-	int m_naryMACount[2][MATF_CBDR];	// Ã¿ÖÖ×°±¸¿ÉÊÊÓÃµÄÄ§·¨ÊýÄ¿,·ÖÇ°ºó×º½øÐÐÍ³¼Æ
-										// ¹²ÓÐMATF_CBDRÖÖ×°±¸¿ÉÒÔ¾ß±¸Ä§·¨
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+	int m_naryMACount[2][MATF_CBDR];	// æ¯ç§è£…å¤‡å¯é€‚ç”¨çš„é­”æ³•æ•°ç›®,åˆ†å‰åŽç¼€è¿›è¡Œç»Ÿè®¡
+										// å…±æœ‰MATF_CBDRç§è£…å¤‡å¯ä»¥å…·å¤‡é­”æ³•
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	void GetMACount(int*) const;
 	const KMAGICATTRIB_TABFILE* GetRecord(IN int) const;
 
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	virtual BOOL LoadRecord(int i, KTabFile* pTF);
 	void Init();
@@ -425,7 +425,7 @@ public:
 	KBPT_MagicAttrib();
 	~KBPT_MagicAttrib();
 
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 };
 */
@@ -439,16 +439,16 @@ public:
 	KBPT_ClassMAIT();
 	~KBPT_ClassMAIT();
 
-// ÒÔÏÂÊÇºËÐÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 protected:
-	int*	m_pnTable;				// »º³åÇøÖ¸Õë, Ëù´æÊý¾ÝÎª
-									// KBPT_MagicAttrib_TF::m_pBufÊý×éµÄÏÂ±ê
-	int		m_nSize;				// »º³åÇøÄÚº¬¶àÉÙÏîÊý¾Ý(²¢·Ç×Ö½ÚÊý)
+	int*	m_pnTable;				// ç¼“å†²åŒºæŒ‡é’ˆ, æ‰€å­˜æ•°æ®ä¸º
+									// KBPT_MagicAttrib_TF::m_pBufæ•°ç»„çš„ä¸‹æ ‡
+	int		m_nSize;				// ç¼“å†²åŒºå†…å«å¤šå°‘é¡¹æ•°æ®(å¹¶éžå­—èŠ‚æ•°)
 
-// ÒÔÏÂÊÇ¸¨Öú³ÉÔ±±äÁ¿
-	int		m_nNumOfValidData;		// »º³åÇøÖÐÓÐÐ§Êý¾ÝµÄ¸öÊý
-									// ³õÊ¼»¯¹¤×÷Íê³Éºóm_nNumOfValidData < m_nSize
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æˆå‘˜å˜é‡
+	int		m_nNumOfValidData;		// ç¼“å†²åŒºä¸­æœ‰æ•ˆæ•°æ®çš„ä¸ªæ•°
+									// åˆå§‹åŒ–å·¥ä½œå®ŒæˆåŽm_nNumOfValidData < m_nSize
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
     BOOL Clear();
 	BOOL Insert(int nItemIndex);
@@ -464,23 +464,23 @@ public:
 	KBPT_ClassifiedMAT();
 	~KBPT_ClassifiedMAT();
 
-// ÒÔÏÂÊÇºËÐÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 protected:
-	int*	m_pnTable;				// »º³åÇøÖ¸Õë, Ëù´æÊý¾ÝÎª
-									// KBPT_MagicAttrib_TF::m_pBufÊý×éµÄÏÂ±ê
-	int		m_nSize;				// »º³åÇøÄÚº¬¶àÉÙÏîÊý¾Ý(²¢·Ç×Ö½ÚÊý)
+	int*	m_pnTable;				// ç¼“å†²åŒºæŒ‡é’ˆ, æ‰€å­˜æ•°æ®ä¸º
+									// KBPT_MagicAttrib_TF::m_pBufæ•°ç»„çš„ä¸‹æ ‡
+	int		m_nSize;				// ç¼“å†²åŒºå†…å«å¤šå°‘é¡¹æ•°æ®(å¹¶éžå­—èŠ‚æ•°)
 
-// ÒÔÏÂÊÇ¸¨Öú³ÉÔ±±äÁ¿
-	int		m_nNumOfValidData;		// »º³åÇøÖÐÓÐÐ§Êý¾ÝµÄ¸öÊý
-									// ³õÊ¼»¯¹¤×÷Íê³Éºóm_nNumOfValidData==m_nSize
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯è¾…åŠ©æˆå‘˜å˜é‡
+	int		m_nNumOfValidData;		// ç¼“å†²åŒºä¸­æœ‰æ•ˆæ•°æ®çš„ä¸ªæ•°
+									// åˆå§‹åŒ–å·¥ä½œå®ŒæˆåŽm_nNumOfValidData==m_nSize
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	BOOL GetMemory(int);
 	BOOL Set(int);
 	int Get(int) const;
 	BOOL GetAll(int*, int*) const;
 
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	void ReleaseMemory();
 };
@@ -491,7 +491,7 @@ public:
 	KLibOfBPT();
 	~KLibOfBPT();
 
-// ÒÔÏÂÊÇºËÐÄ³ÉÔ±±äÁ¿
+// ä»¥ä¸‹æ˜¯æ ¸å¿ƒæˆå‘˜å˜é‡
 protected:
 	KBPT_Medicine			m_BPTMedicine;
 	KBPT_MagicScript		m_BPTMagicScript;
@@ -521,12 +521,12 @@ protected:
 	KBPT_Equipment_Gold		m_BPTGoldEquip;
 	KBPT_Equipment_Platina	m_BPTPlatinaEquip;
     // Add by Freeway Chen in 2003.5.30
-	// ËÄÎ¬·Ö±ðÎªÇ°ºó×º¡¢ÎïÆ·ÀàÐÍ¡¢ÎåÐÐ¡¢¼¶±ð
+	// å››ç»´åˆ†åˆ«ä¸ºå‰åŽç¼€ã€ç‰©å“ç±»åž‹ã€äº”è¡Œã€çº§åˆ«
     KBPT_ClassMAIT          m_CMAIT[MATF_PREFIXPOSFIX][MATF_CBDR][MATF_SERIES][MATF_LEVEL];
 
 	KBPT_ClassifiedMAT		m_CMAT[2][MATF_CBDR];
 
-// ÒÔÏÂÊÇ¶ÔÍâ½Ó¿Ú
+// ä»¥ä¸‹æ˜¯å¯¹å¤–æŽ¥å£
 public:
 	BOOL Init();
 
@@ -590,7 +590,7 @@ public:
 	const int					GetMagicScriptRecordNumber() const;
 	const KBASICPROP_EVENTITEM*	GetEvent(IN int) const;
 	const int					GetEventRecordNumber() const;
-// ÒÔÏÂÊÇ¸¨Öúº¯Êý
+// ä»¥ä¸‹æ˜¯è¾…åŠ©å‡½æ•°
 protected:
 	BOOL InitMALib();
     

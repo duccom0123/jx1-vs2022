@@ -5,14 +5,14 @@
 
 #ifdef _SERVER
 
-#define MAX_WEATHER_NUM		8				// Ò»ÕÅµØÍ¼ÉÏ×î´óµÄÌìÆøÖÖÀàÊıÄ¿
+#define MAX_WEATHER_NUM		8				// ä¸€å¼ åœ°å›¾ä¸Šæœ€å¤§çš„å¤©æ°”ç§ç±»æ•°ç›®
 
 struct KWeatherInfo
 {
-	int		m_weatherID;		// ÌìÆøID
-	int		m_nOdds;			// ÌìÆø·¢Éú¸ÅÂÊ
-	int		m_nLifeTimeMin;		// ÌìÆø×îĞ¡³ÖĞøÊ±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
-	int		m_nLifeTimeMax;		// ÌìÆø×î´ó³ÖĞøÊ±¼ä£¬µ¥Î»ÎªÓÎÏ·Ö¡Êı
+	int		m_weatherID;		// å¤©æ°”ID
+	int		m_nOdds;			// å¤©æ°”å‘ç”Ÿæ¦‚ç‡
+	int		m_nLifeTimeMin;		// å¤©æ°”æœ€å°æŒç»­æ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
+	int		m_nLifeTimeMax;		// å¤©æ°”æœ€å¤§æŒç»­æ—¶é—´ï¼Œå•ä½ä¸ºæ¸¸æˆå¸§æ•°
 };
 
 class KWeatherMgr
@@ -20,22 +20,22 @@ class KWeatherMgr
 public:
 public:
 	KWeatherMgr();
-	// ´Ó.worºÍweather.iniÎÄ¼ş¶ÁÈ¡ĞÅÏ¢£¬Íê³É³õÊ¼»¯
-	// IniFile:ÒÑ¾­´ò¿ªµÄ.worÎÄ¼ş
+	// ä».worå’Œweather.iniæ–‡ä»¶è¯»å–ä¿¡æ¯ï¼Œå®Œæˆåˆå§‹åŒ–
+	// IniFile:å·²ç»æ‰“å¼€çš„.woræ–‡ä»¶
 	bool InitFromIni(KIniFile &IniFile);
-	// ·µ»Øµ±Ç°ÌìÆøID
+	// è¿”å›å½“å‰å¤©æ°”ID
 	int Activate();
 private:
-	bool			m_bInWeather;					// ÊÇ·ñÔÚÌìÆø×´Ì¬ÏÂ
-	int				m_nWeatherNum;					// ÌìÆøÀàĞÍÊıÄ¿
-	KWeatherInfo	m_weatherInfo[MAX_WEATHER_NUM];	// ÌìÆøĞÅÏ¢Êı×é
-	int				m_nFullOdds;					// ¶ÔÓ¦100%µÄ¸ÅÂÊÖµ
-	int				m_nCurWeather;					// µ±Ç°ÌìÆø
-	int				m_nHappenTimeMin;				// ÌìÆø·¢Éú×î¶ÌÊ±¼ä¼ä¸ô
-	int				m_nHappenTimeMax;				// ÌìÆø·¢Éú×î´óÊ±¼ä¼ä¸ô
-	int				m_nLastHappentime;				// ÉÏÒ»´ÎÌìÆøµÄ·¢ÉúÊ±¼ä
-	int				m_nNextHappentime;				// ÏÂÒ»´ÎÌìÆøµÄ·¢ÉúÊ±¼ä
-	int				m_nWeatherDuration;				// ÌìÆø³ÖĞøÊ±¼ä
+	bool			m_bInWeather;					// æ˜¯å¦åœ¨å¤©æ°”çŠ¶æ€ä¸‹
+	int				m_nWeatherNum;					// å¤©æ°”ç±»å‹æ•°ç›®
+	KWeatherInfo	m_weatherInfo[MAX_WEATHER_NUM];	// å¤©æ°”ä¿¡æ¯æ•°ç»„
+	int				m_nFullOdds;					// å¯¹åº”100%çš„æ¦‚ç‡å€¼
+	int				m_nCurWeather;					// å½“å‰å¤©æ°”
+	int				m_nHappenTimeMin;				// å¤©æ°”å‘ç”Ÿæœ€çŸ­æ—¶é—´é—´éš”
+	int				m_nHappenTimeMax;				// å¤©æ°”å‘ç”Ÿæœ€å¤§æ—¶é—´é—´éš”
+	int				m_nLastHappentime;				// ä¸Šä¸€æ¬¡å¤©æ°”çš„å‘ç”Ÿæ—¶é—´
+	int				m_nNextHappentime;				// ä¸‹ä¸€æ¬¡å¤©æ°”çš„å‘ç”Ÿæ—¶é—´
+	int				m_nWeatherDuration;				// å¤©æ°”æŒç»­æ—¶é—´
 private:
 };
 

@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ����ģ���һЩ���ݶ���
+// 场景模块的一些数据定义
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-11
@@ -9,23 +9,23 @@
 #ifndef SCENEDATADEF_H_HEADER_INCLUDED_C225572F
 #define SCENEDATADEF_H_HEADER_INCLUDED_C225572F
 
-#define	REGION_COMBIN_FILE_NAME_SERVER "Region_S.dat"		//������ͼ�������ݵķ������˰�ϲ��ļ����ļ���
-#define	REGION_COMBIN_FILE_NAME_CLIENT "Region_C.dat"		//������ͼ�������ݵĿͻ��˰�ϲ��ļ����ļ���
+#define	REGION_COMBIN_FILE_NAME_SERVER "Region_S.dat"		//场景地图区域数据的服务器端版合并文件的文件名
+#define	REGION_COMBIN_FILE_NAME_CLIENT "Region_C.dat"		//场景地图区域数据的客户端版合并文件的文件名
 
-//������ͼ�����ļ���ÿ��������֯�����ɸ��洢��ͬ���ݵ��ļ�����Щ�ļ���������Ϊ��λ���ֱ�ϲ���һ�������ļ�
-//�����ļ��ĸ�ʽ���£�
-//1.�ȴ洢һ�����ֽڵ�unsigned int���ݣ���ʾ�˺ϳ��ļ��й������������ļ�
-//2.�洢���ļ���С���Լ���ʼ��ʼƫ��λ�õ���Ϣ�ṹ���б����м������ļ����������м���KCombinFileSection
-//					�����ļ���ƫ��λ���Ǵ���Ϣ�ṹ���б�֮���λ�ÿ�ʼ����.
+//场景地图数据文件，每个区域组织成若干个存储不同数据的文件，这些文件又以区域为单位，分别合并成一个集合文件
+//集合文件的格式如下：
+//1.先存储一个四字节的unsigned int数据，表示此合成文件中共包含几个子文件
+//2.存储子文件大小，以及开始开始偏移位置的信息结构的列表。有几个子文件就连续存有几个KCombinFileSection
+//					各子文件的偏移位置是从信息结构的列表之后的位置开始算起.
 struct KCombinFileSection
 {
-	unsigned int	uOffset;	//��λ���ֽ�
-	unsigned int	uLength;	//��λ���ֽ�
+	unsigned int	uOffset;	//单位：字节
+	unsigned int	uLength;	//单位：字节
 };
-//3.���ļ��Ĵ洢����ÿ�����ļ���Ӧ��ʲô����SCENE_FILE_INDEX��ö�ٸ������͡�ÿ��ö��ֵ��ʾ���ļ��ںϲ��ļ��еĴ���������
+//3.子文件的存储次序，每个子文件对应于什么，由SCENE_FILE_INDEX里枚举给出解释。每个枚举值表示子文件在合并文件中的次序索引。
 enum SCENE_FILE_INDEX
 {
-	REGION_OBSTACLE_FILE_INDEX	= 0,//"OBSTACLE.DAT"�ϰ��ļ�
+	REGION_OBSTACLE_FILE_INDEX	= 0,//"OBSTACLE.DAT"障碍文件
 	REGION_TRAP_FILE_INDEX,			//"Trap.dat"
 	REGION_NPC_FILE_INDEX,			//"Npc_S.dat" or "Npc_C.dat"
 	REGION_OBJ_FILE_INDEX,			//"Obj_S.dat" or "Obj_C.dat"
@@ -34,313 +34,313 @@ enum SCENE_FILE_INDEX
 
 	REGION_ELEM_FILE_COUNT
 };
-//4.�洢���ļ������ݡ�
+//4.存储子文件的数据。
 
 
-#define REGION_GROUND_LAYER_FILE	"Ground.dat"			//�ر�����Ϣ�����ƴ洢�ļ�
-#define	REGION_BUILDIN_OBJ_FILE		"BuildinObj.Dat"		//������ͼ�ڽ����󼯺���Ϣ�ļ�
-#define	REGION_OBSTACLE_FILE		"OBSTACLE.DAT"			//�ϰ��ļ�
+#define REGION_GROUND_LAYER_FILE	"Ground.dat"			//地表层信息二进制存储文件
+#define	REGION_BUILDIN_OBJ_FILE		"BuildinObj.Dat"		//场景地图内建对象集合信息文件
+#define	REGION_OBSTACLE_FILE		"OBSTACLE.DAT"			//障碍文件
 #define REGION_NPC_FILE_SERVER		"Npc_S.dat"
 #define REGION_NPC_FILE_CLIENT		"Npc_C.dat"
 #define REGION_OBJ_FILE_SERVER		"Obj_S.dat"
 #define REGION_OBJ_FILE_CLIENT		"Obj_C.dat"
-#define REGION_TRAP_FILE			"Trap.dat"				//�¼����ļ�
+#define REGION_TRAP_FILE			"Trap.dat"				//事件点文件
 
 #define	MAX_RESOURCE_FILE_NAME_LEN	128
-#define NOT_ABOVE_HEAD_OBJ			0xFFFF	//���Ǹ߿ն���
+#define NOT_ABOVE_HEAD_OBJ			0xFFFF	//并非高空对象
 
 
 enum IPOT_RENDER_LAYER
 {
-	IPOT_RL_COVER_GROUND	= 0x01,		//ƽ���ڵ����ϣ���ȫ������֮��
-	IPOT_RL_OBJECT			= 0x02,		//��ǰ�����
-	IPOT_RL_INFRONTOF_ALL	= 0x04,		//��һ�е��ϲ�
-	IPOT_RL_LIGHT_PROP		= 0x08,		//�˶�����й�Դ����
+	IPOT_RL_COVER_GROUND	= 0x01,		//平铺在地面上，在全部物体之下
+	IPOT_RL_OBJECT			= 0x02,		//当前物体层
+	IPOT_RL_INFRONTOF_ALL	= 0x04,		//在一切的上层
+	IPOT_RL_LIGHT_PROP		= 0x08,		//此对象带有光源属性
 };
 
-//## ��ά����
+//## 三维坐标
 struct KTriDimensionCoord
 {
 	int x, y, z;
 };
 
-//������Ground.Dat�ر�����Ϣ�����ƴ洢�ļ�������
-//������洢�������������ݣ�
-//1.�ļ�ͷ�ṹ
+//■■■Ground.Dat地表层信息二进制存储文件■■■
+//按次序存储如下三部分内容：
+//1.文件头结构
 struct KGroundFileHead
 {
-	unsigned int uNumGrunode;	//�ر���ͼ�ε���Ŀ
-	unsigned int uNumObject;	//�������������·��֮��Ķ������Ŀ
+	unsigned int uNumGrunode;	//地表格图形的数目
+	unsigned int uNumObject;	//紧贴地面的类似路面之类的对象的数目
 	unsigned int uObjectDataOffset;
 };
-//2.�洢KGroundFileHead::nNumGrunode����KSPRCrunode�ṹ�����ĵر���ͼ��
-struct KSPRCrunode//## �ر���ͼ����Ϣ��
+//2.存储KGroundFileHead::nNumGrunode个以KSPRCrunode结构表述的地表格图形
+struct KSPRCrunode//## 地表格图形信息。
 {
 	struct KSPRCrunodeParam
 	{
-		unsigned short h, v;		//��ͼ�����ڵģ������ڣ��ر�������
-		unsigned short nFrame;		//����ͼ�εĵڼ�֡
-		unsigned short nFileNameLen;//ͼ���ļ������ȣ���������������ȡֵ���ɴ���MAX_RESOURCE_FILE_NAME_LEN
+		unsigned short h, v;		//此图形所在的（区域内）地表格坐标
+		unsigned short nFrame;		//引用图形的第几帧
+		unsigned short nFileNameLen;//图形文件名长度（包括结束符），取值不可大于MAX_RESOURCE_FILE_NAME_LEN
 	}	Param;
 
-	//## ͼ���ļ���
-	char szImgName[1];	//�˽ṹΪ�䳤��ʵ�ʳ���Ϊ�˽ṹ�е�nFileNameLen��ֵ
+	//## 图形文件名
+	char szImgName[1];	//此结构为变长，实际长度为此结构中的nFileNameLen数值
 };
-//3.�洢KGroundFileHead::nNumObject����KSPRCoverGroundObj�ṹ�����Ľ����������
-//Ҫ���ջ��Ƶ��Ⱥ�˳�����к�
+//3.存储KGroundFileHead::nNumObject个以KSPRCoverGroundObj结构表述的紧贴地面对象
+//要求按照绘制的先后顺序排列好
 #pragma pack(push, 2)
-struct KSPRCoverGroundObj//## �����������������·��֮��Ķ���ṹ��
+struct KSPRCoverGroundObj//## 表述紧贴地面的类似路面之类的对象结构。
 {
-	//## ����λ���ڳ�����ͼ�����ꡣ��λ�����������꣩
-	int nPositionX;			//��������
-	int nPositionY;			//��������
+	//## 对象定位点在场景地图的坐标。单位（场景点坐标）
+	int nPositionX;			//横向坐标
+	int nPositionY;			//纵向坐标
 	
-	char szImage[MAX_RESOURCE_FILE_NAME_LEN];	//���õ�ͼ�ε��ļ�����
+	char szImage[MAX_RESOURCE_FILE_NAME_LEN];	//引用的图形的文件名。
 	
-	unsigned short	nWidth;	//ͼ�κ��
-	unsigned short	nHeight;//ͼ���ݿ�
+	unsigned short	nWidth;	//图形横宽
+	unsigned short	nHeight;//图形纵宽
 
-	//## ����ͼ�εĵڼ�֡
+	//## 引用图形的第几帧
 	unsigned short nFrame;
 
-	//������Ϊ��ֵ0
+	//保留，为定值0
 	union
 	{
 		unsigned char	bReserved;
 		unsigned char	bRelateRegion;
 	};
 
-	//## ���ƴ�������
+	//## 绘制次序（主）
 	unsigned char	bOrder;
 
-	//## ���ƴ��򣨴Σ�
+	//## 绘制次序（次）
 	short	nLayer;
 
 };
 #pragma pack(pop)
-//������Ground.Dat�ر�����Ϣ�����ƴ洢�ļ�--�洢���ݽ���---������
+//■■■Ground.Dat地表层信息二进制存储文件--存储内容结束---■■■
 
 
-//������BuildinObj.Dat�����ڽ���������ƴ洢�ļ�������
-//������洢�������������ݣ�
-//1.�ļ�ͷ�ṹ
+//■■■BuildinObj.Dat场景内建对象二进制存储文件■■■
+//按次序存储如下三部分内容：
+//1.文件头结构
 struct KBuildinObjFileHead
 {
-	//## �������ڽ��������Ŀ
+	//## 区域中内建对象的数目
 	unsigned int nNumBios;		//nNumBios = nNumBiosTree + nNumBiosLine + nNumBiosPoint + nNumBiosAbove
-	//## ������ʽ������ڽ��������Ŀ
+	//## 以树方式排序的内建对象的数目
 	unsigned short nNumBiosTree;
-	//## �Եױ߷�ʽ������ڽ��������Ŀ
+	//## 以底边方式排序的内建对象的数目
 	unsigned short nNumBiosLine;
-	//## �Ե㷽ʽ������ڽ��������Ŀ
+	//## 以点方式排序的内建对象的数目
 	unsigned short nNumBiosPoint;
-	//## �߿��ڽ��������Ŀ
+	//## 高空内建对象的数目
 	unsigned short nNumBiosAbove;
 
-	//## �߿ն������Ļ�ͼ�����š�
+	//## 高空对象最大的绘图次序编号。
 	unsigned short nMaxAboveHeadObjOrder;
 	unsigned short nNumBulidinLight;
 };
-//2.KBuildinObjFileHead::nNumBios����KBuildinObj�ṹ�����ĳ����ڽ�����
-//�洢��˳��Ϊ:�洢�Ե㷽ʽ�����ȫ������;
-//�ٴ洢�Եױ߷�ʽ�����ȫ������;
-//�ٴ洢��������ʽ�����ȫ������;
-//�ٴ洢ȫ���ĸ߿ն���
-struct KBuildinObj//## ����������ͼ�ϵ��ڽ�����Ľṹ
+//2.KBuildinObjFileHead::nNumBios个以KBuildinObj结构表述的场景内建对象
+//存储的顺序为:存储以点方式排序的全部对象;
+//再存储以底边方式排序的全部对象;
+//再存储按按树方式排序的全部对象;
+//再存储全部的高空对象
+struct KBuildinObj//## 表述场景地图上的内建对象的结构
 {
-	//## ͼ�ε�����
-	unsigned int Props;//��ֵΪö��SPBIO_PROPSȡֵ�����
+	//## 图形的属性
+	unsigned int Props;//其值为枚举SPBIO_PROPS取值的组合
 
-	//====ͼ�����====
-	//�ĸ�ͼ�ε㰴��ʱ�뷽�����
-	KTriDimensionCoord ImgPos1;	//ͼ�ε�һ�����Ӧ�����
+	//====图形相关====
+	//四个图形点按逆时针方向摆列
+	KTriDimensionCoord ImgPos1;	//图形第一个点对应坐标点
 	KTriDimensionCoord ImgPos2;	
 	KTriDimensionCoord ImgPos3;
-	KTriDimensionCoord ImgPos4; //ͼ�ε��ĸ����Ӧ�����
+	KTriDimensionCoord ImgPos4; //图形第四个点对应坐标点
 
-	short	nImgWidth;		//ͼ����ͼ�Ŀ�(��λ�����ص�)
-	short	nImgHeight;		//ͼ����ͼ�ĸ�(��λ�����ص�)
+	short	nImgWidth;		//图形贴图的宽(单位：像素点)
+	short	nImgHeight;		//图形贴图的高(单位：像素点)
     
-	char  szImage[MAX_RESOURCE_FILE_NAME_LEN];	//ͼ����Դ���ļ���
-	unsigned int   uFlipTime;	//��ǰ֡�л�������ʱ��
-    unsigned short nFrame;		//���Ƶ�ͼ��֡����
-	unsigned short nImgNumFrames;//�˶������ͼ��֡����Ŀ
-	unsigned short nAniSpeed;	//�����Ĳ����ٶȣ�ֵ���ʾΪ��֡ͼ
+	char  szImage[MAX_RESOURCE_FILE_NAME_LEN];	//图形资源的文件名
+	unsigned int   uFlipTime;	//当前帧切换出来的时间
+    unsigned short nFrame;		//绘制的图形帧索引
+	unsigned short nImgNumFrames;//此对象包含图形帧的数目
+	unsigned short nAniSpeed;	//动画的播放速度，值零表示为单帧图
 
-	//====�߿ն���Ļ�ͼ˳��====
+	//====高空对象的绘图顺序====
 	unsigned short nOrder;
 
-	//====��Ƕ���λ��====
+	//====标记对象位置====
 	KTriDimensionCoord oPos1;
 	KTriDimensionCoord oPos2;
 
 	float fAngleXY;
 	float fNodicalY;
 };
-//������BuildinObj.Dat�����ڽ���������ƴ洢�ļ�--�洢���ݽ���---������
+//■■■BuildinObj.Dat场景内建对象二进制存储文件--存储内容结束---■■■
 
 
-//## spbio��������Զ���
+//## spbio对象的属性定义
 enum SPBIO_PROPS_LIST
 { 
 	//##Documentation
-	//## ƽ���ڵر��������ܹ��з֡�
+	//## 平行于地表，不作受光切分。
 	SPBIO_P_PLANETYPE_H = 0x00, 
 	//##Documentation
-	//## ƽ���ڵر��������ܹ��з֡�
+	//## 平行于地表，且作受光切分。
 	SPBIO_P_PLANETYPE_H_D = 0x01, 
 	//##Documentation
-	//## ��ֱ�ڵر��������ܹ��з֡�
+	//## 垂直于地表，不作受光切分。
 	SPBIO_P_PLANETYPE_V = 0x02, 
 	//##Documentation
-	//## ��ֱ�ڵر��������ܹ��з֡�
+	//## 垂直于地表，且作受光切分。
 	SPBIO_P_PLANETYPE_V_D = 0x03, 
 	//##Documentation
-	//## ͼ�����Ͷ���ֵmask
+	//## 图面类型定义值mask
 	SPBIO_P_PLANETYPE_MASK = 0x03, 
 	//##Documentation
-	//## ���ܹ�
+	//## 不受光
 	SPBIO_P_LIT_NONE = 0x00, 
 	//##Documentation
-	//## �����з��ܹ�
+	//## 按照切分受光
 	SPBIO_P_LIT_DIV = 0x04, 
 	//##Documentation
-	//## ���������ܹ�
+	//## 按照重心受光
 	SPBIO_P_LIT_CENTRE = 0x08, 
 	//##Documentation
-	//## ƽ���ܹ�
+	//## 平行受光
 	SPBIO_P_LIT_PARALLEL = 0x0C, 
 	//##Documentation
-	//## �����зַ�ʽ�����mask
+	//## 光照切分方式定义的mask
 	SPBIO_P_LIT_MASK = 0x0C, 
 	//##Documentation
-	//## ������
+	//## 不挡光
 	SPBIO_P_BLOCK_LIGHT_NONE = 0x00, 
 	//##Documentation
-	//## ���յױߵ���
+	//## 按照底边挡光
 	SPBIO_P_BLOCK_LIGHT_BOTTOM = 0x10, 
 	//##Documentation
-	//## ����һ��Բ����
+	//## 按照一个圆挡光
 	SPBIO_P_BLOCK_LIGHT_CIRCLE = 0x20, 
 	//##Documentation
-	//## ���ⷽʽ����ֵmask
+	//## 挡光方式定义值mask
 	SPBIO_P_BLOCK_LIGHT_MASK = 0x30, 
 	//##Documentation
-	//## ����뾶Ϊ0.2
+	//## 档光半径为0.2
 	SPBIO_P_BLOCK_L_RADIUS_2 = 0x00, 
 	//##Documentation
-	//## ����뾶Ϊ0.3
+	//## 档光半径为0.3
 	SPBIO_P_BLOCK_L_RADIUS_3 = 0x40, 
 	//##Documentation
-	//## ����뾶Ϊ0.4
+	//## 档光半径为0.4
 	SPBIO_P_BLOCK_L_RADIUS_4 = 0x80, 
 	//##Documentation
-	//## ����뾶Ϊ0.5
+	//## 档光半径为0.5
 	SPBIO_P_BLOCK_L_RADIUS_5 = 0xC0, 
 	//##Documentation
-	//## ����뾶Ϊ��ֵmask
+	//## 档光半径为数值mask
 	SPBIO_P_BLOCK_L_RADIUS_MASK = 0xC0, 
 	//##Documentation
-	//## ���յ�����
+	//## 按照点排序
 	SPBIO_P_SORTMANNER_POINT = 0x0000, 
 	//##Documentation
-	//## ���ձ�����
+	//## 按照边排序
 	SPBIO_P_SORTMANNER_LINE = 0x0100, 
 	//##Documentation
-	//## ����������
+	//## 按照树排序
 	SPBIO_P_SORTMANNER_TREE = 0x0200, 
 	//##Documentation
-	//## ����ʽ��mask
+	//## 排序方式的mask
 	SPBIO_P_SORTMANNER_MASK = 0x0300,
 	
 	//##Documentation
-	//## ��ҪҪ������ʾ
+	//## 需要要加亮显示
 	SPBIO_F_HIGHT_LIGHT = 0x0400,
 };
 
 
-//������Trap.dat�����¼�����Ϣ�����ƴ洢�ļ�������
-//������洢�������������ݣ�
-//1.�ļ�ͷ�ṹ
+//■■■Trap.dat场景事件点信息二进制存储文件■■■
+//按次序存储如下三部分内容：
+//1.文件头结构
 struct KTrapFileHead
 {
-	unsigned int uNumTrap;		//�¼������Ŀ
-	unsigned int uReserved[2];	//�̶�ֵΪ0
+	unsigned int uNumTrap;		//事件点的数目
+	unsigned int uReserved[2];	//固定值为0
 };
-//2.�洢KTrapFileHead::nNumTrap����KSPTrap�ṹ�����ĵر��¼���
+//2.存储KTrapFileHead::nNumTrap个以KSPTrap结构表述的地表事件点
 struct KSPTrap
 {
-	unsigned char	cX;			//Xλ��
-	unsigned char	cY;			//Yλ��
-	unsigned char	cNumCell;	//���������˼���С����
-	unsigned char	cReserved;	//�������̶�ֵΪ0
-	unsigned int	uTrapId;	//�����¼������ļ���ת�����õ����¼�id��ʶ
+	unsigned char	cX;			//X位置
+	unsigned char	cY;			//Y位置
+	unsigned char	cNumCell;	//连续覆盖了几个小格子
+	unsigned char	cReserved;	//保留，固定值为0
+	unsigned int	uTrapId;	//根据事件关联文件名转化而得到的事件id标识
 };
-//������Trap.Dat�����¼�����Ϣ�����ƴ洢�ļ�--�洢���ݽ���---������
+//■■■Trap.Dat场景事件点信息二进制存储文件--存储内容结束---■■■
 
 
-//������Npc_S.dat, Npc_C.dat��ͼ�ϵ�npc�洢�ļ�������
-//������洢�������������ݣ�
-//1.�ļ�ͷ�ṹ
+//■■■Npc_S.dat, Npc_C.dat地图上的npc存储文件■■■
+//按次序存储如下三部分内容：
+//1.文件头结构
 struct KNpcFileHead
 {
-	unsigned int uNumNpc;		//�¼������Ŀ
-	unsigned int uReserved[2];	//�̶�ֵΪ0
+	unsigned int uNumNpc;		//事件点的数目
+	unsigned int uReserved[2];	//固定值为0
 };
-//2.�洢KNpcFileHead::nNumNpc����KSPNpc�ṹ������npc
+//2.存储KNpcFileHead::nNumNpc个以KSPNpc结构表述的npc
 struct KSPNpc
 {
-	int					nTemplateID;	// ģ����(��Ӧģ���ļ�"\Settings\NpcS.txt"����Ŵ� 0 ��ʼ)
+	int					nTemplateID;	// 模板编号(对应模板文件"\Settings\NpcS.txt"，编号从 0 开始)
 	int					nPositionX;
 	int					nPositionY;
-	bool				bSpecialNpc;	// ����npc
-	char				cReserved[3];	// ����
-	char				szName[32];		// npc ����
-	short				nLevel;			// �ȼ�
-	short				nCurFrame;		// ����ʱͼ���ǵڼ�֡
-	short				nHeadImageNo;	// ͷ��ͼ�α��
-	short				shKind;			// npc����
-	unsigned char		cCamp;			// npc ��Ӫ
-	unsigned char		cSeries;		// npc ����
-	unsigned short		nScriptNameLen;	// Npc�ű��ļ������ȣ���������������ȡֵ���ɴ���MAX_RESOURCE_FILE_NAME_LEN
-	char				szScript[MAX_RESOURCE_FILE_NAME_LEN];	//Npc�ű��ļ���//�˽ṹʵ�ʴ洢ʱΪ�䳤��ʵ�ʳ���Ϊ�˽ṹ�е�nScriptNameLen��ֵ
+	bool				bSpecialNpc;	// 特殊npc
+	char				cReserved[3];	// 保留
+	char				szName[32];		// npc 名字
+	short				nLevel;			// 等级
+	short				nCurFrame;		// 载入时图像是第几帧
+	short				nHeadImageNo;	// 头像图形编号
+	short				shKind;			// npc类型
+	unsigned char		cCamp;			// npc 阵营
+	unsigned char		cSeries;		// npc 五行
+	unsigned short		nScriptNameLen;	// Npc脚本文件名长度（包括结束符），取值不可大于MAX_RESOURCE_FILE_NAME_LEN
+	char				szScript[MAX_RESOURCE_FILE_NAME_LEN];	//Npc脚本文件名//此结构实际存储时为变长，实际长度为此结构中的nScriptNameLen数值
 };
-//������Npc_S.dat, Npc_C.dat��ͼ�ϵ�npc�洢�ļ�--�洢���ݽ���---������
+//■■■Npc_S.dat, Npc_C.dat地图上的npc存储文件--存储内容结束---■■■
 
-//������Obj_S.dat, Obj_C.dat��ͼ�ϵ�Obj�洢�ļ�������
-//������洢�������������ݣ�
-//1.�ļ�ͷ�ṹ
+//■■■Obj_S.dat, Obj_C.dat地图上的Obj存储文件■■■
+//按次序存储如下三部分内容：
+//1.文件头结构
 struct KObjFileHead
 {
-	unsigned int uNumObj;		//�¼������Ŀ
-	unsigned int uReserved[2];	//�̶�ֵΪ0
+	unsigned int uNumObj;		//事件点的数目
+	unsigned int uReserved[2];	//固定值为0
 };
-//2.�洢KObjFileHead::nNumObj����KSPObj�ṹ������Obj
+//2.存储KObjFileHead::nNumObj个以KSPObj结构表述的Obj
 struct KSPObj
 {
-	int					nTemplateID;	//ģ����(��Ӧģ���ļ�"\Settings\ObjData.txt"����Ŵ�1��ʼ)
+	int					nTemplateID;	//模板编号(对应模板文件"\Settings\ObjData.txt"，编号从1开始)
 	short				nState;
-	unsigned short		nBioIndex;		//��bSkipPaintΪ��ֵʱ����������Ч������Ϊ��ֵ0
+	unsigned short		nBioIndex;		//当bSkipPaint为真值时，此数据有效，否则为定值0
 	KTriDimensionCoord	Pos;
 	char				nDir;
-	bool				bSkipPaint;		//�Ƿ���Դ�obj�Ļ���
-	unsigned short		nScriptNameLen;	//Obj�ű��ļ������ȣ���������������ȡֵ���ɴ���MAX_RESOURCE_FILE_NAME_LEN
-	char				szScript[MAX_RESOURCE_FILE_NAME_LEN];	//Obj�ű��ļ���//ʵ�ʴ洢ʱΪ�䳤��ʵ�ʳ���Ϊ�˽ṹ�е�nScriptNameLen��ֵ
+	bool				bSkipPaint;		//是否忽略此obj的绘制
+	unsigned short		nScriptNameLen;	//Obj脚本文件名长度（包括结束符），取值不可大于MAX_RESOURCE_FILE_NAME_LEN
+	char				szScript[MAX_RESOURCE_FILE_NAME_LEN];	//Obj脚本文件名//实际存储时为变长，实际长度为此结构中的nScriptNameLen数值
 };
-//������Obj_S.dat, Obj_C.dat��ͼ�ϵ�npc�洢�ļ�--�洢���ݽ���---������
+//■■■Obj_S.dat, Obj_C.dat地图上的npc存储文件--存储内容结束---■■■
 
-// �����ڽ���Դ���Խṹ
+// 场景内建光源属性结构
 struct KBuildInLightInfo
 {
-	KTriDimensionCoord	oPos;			// ��Դ����
-	DWORD				dwColor;		// ��Դ��ɫ������
-	int					nMinRange;		// ��С�뾶
-	int					nMaxRange;		// ���뾶
-	int					nCycle;			// ѭ������,����
+	KTriDimensionCoord	oPos;			// 光源坐标
+	DWORD				dwColor;		// 光源颜色和亮度
+	int					nMinRange;		// 最小半径
+	int					nMaxRange;		// 最大半径
+	int					nCycle;			// 循环周期,毫秒
 };
 
 #pragma pack(1)
-// ���ڹ��ռ������ɫ�ṹ
+// 用于光照计算的颜色结构
 struct KLColor
 {
 	//unsigned int r;
@@ -352,7 +352,7 @@ struct KLColor
 	unsigned short b;
     unsigned short ReserveForAlign;
 
-    // ����Ĵ��뵼�ºܶ��������ʧ
+    // 下面的代码导致很多的性能损失
 //	KLColor()
 //	{
 //        r = 0, g = 0, b = 0;

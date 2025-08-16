@@ -11,11 +11,11 @@
 #include "lhalib.h"
 #include "KCodecLha.h"
 //---------------------------------------------------------------------------
-// º¯Êý:	Encode
-// ¹¦ÄÜ:	Ñ¹Ëõ
-// ²ÎÊý:	pCodeInfo	´ýÑ¹ËõÊý¾ÝÖ¸Õë
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Encode
+// åŠŸèƒ½:	åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	å¾…åŽ‹ç¼©æ•°æ®æŒ‡é’ˆ
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodecLha::Encode(TCodeInfo* pCodeInfo)
 {
@@ -26,11 +26,11 @@ BOOL KCodecLha::Encode(TCodeInfo* pCodeInfo)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Decode
-// ¹¦ÄÜ:	½âÑ¹Ëõ
-// ²ÎÊý:	pCodeInfo	Ñ¹ËõÊý¾ÝÖ¸Õë
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	è§£åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	åŽ‹ç¼©æ•°æ®æŒ‡é’ˆ
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodecLha::Decode(TCodeInfo* pCodeInfo)
 {

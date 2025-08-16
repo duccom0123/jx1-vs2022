@@ -13,11 +13,11 @@
 #include "KFilePath.h"
 #include "KFileCopy.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	CopyFiles
-// ¹¦ÄÜ:	¿½±´ÎÄ¼ş
-// ²ÎÊı:	lpSrcDir		Ô´Ä¿Â¼
-//			lpDesDir		Ä¿±êÄ¿Â¼
-// ·µ»Ø:	void
+// å‡½æ•°:	CopyFiles
+// åŠŸèƒ½:	æ‹·è´æ–‡ä»¶
+// å‚æ•°:	lpSrcDir		æºç›®å½•
+//			lpDesDir		ç›®æ ‡ç›®å½•
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_DeleteFiles(LPSTR lpSrcDir, LPSTR lpDesDir)
 {
@@ -48,7 +48,7 @@ ENGINE_API void g_DeleteFiles(LPSTR lpSrcDir, LPSTR lpDesDir)
 		g_StrCpy(&szSrcDir[nSrcLen], FindData1.cFileName);
 		g_StrCpy(&szDesDir[nDesLen], FindData1.cFileName);
 		hFind2 = FindFirstFile(szDesDir, &FindData2);
-		// Èç¹ûszDesDirÃ»ÓĞÍ¬ÃûÎÄ¼ş¾ÍÉ¾³ıszSrcDirÏÂµÄÎÄ¼ş
+		// å¦‚æœszDesDiræ²¡æœ‰åŒåæ–‡ä»¶å°±åˆ é™¤szSrcDirä¸‹çš„æ–‡ä»¶
 		if (hFind2 == INVALID_HANDLE_VALUE)
 		{
 			SetFileAttributes(szSrcDir, FILE_ATTRIBUTE_NORMAL);
@@ -59,11 +59,11 @@ ENGINE_API void g_DeleteFiles(LPSTR lpSrcDir, LPSTR lpDesDir)
 	FindClose(hFind1);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	UpdateFiles
-// ¹¦ÄÜ:	¿½±´ÎÄ¼ş
-// ²ÎÊı:	lpSrcDir		Ô´Ä¿Â¼
-//			lpDesDir		Ä¿±êÄ¿Â¼
-// ·µ»Ø:	void
+// å‡½æ•°:	UpdateFiles
+// åŠŸèƒ½:	æ‹·è´æ–‡ä»¶
+// å‚æ•°:	lpSrcDir		æºç›®å½•
+//			lpDesDir		ç›®æ ‡ç›®å½•
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_UpdateFiles(LPSTR lpSrcDir, LPSTR lpDesDir)
 {
@@ -96,20 +96,20 @@ ENGINE_API void g_UpdateFiles(LPSTR lpSrcDir, LPSTR lpDesDir)
 		g_StrCpy(&szDesDir[nDesLen], FindData1.cFileName);
 		hFind2 = FindFirstFile(szDesDir, &FindData2);
 		if (hFind2 == INVALID_HANDLE_VALUE)
-		{	// Ã»ÓĞÍ¬ÃûÎÄ¼ş
+		{	// æ²¡æœ‰åŒåæ–‡ä»¶
 			CopyFile(szSrcDir, szDesDir, FALSE);
 		}
 		else
-		{	// ÓĞÍ¬ÃûÎÄ¼ş£¬¾Í±È½ÏĞŞÊ±¼ä
+		{	// æœ‰åŒåæ–‡ä»¶ï¼Œå°±æ¯”è¾ƒä¿®æ—¶é—´
 			lResult = CompareFileTime(&FindData1.ftLastWriteTime,
 				&FindData2.ftLastWriteTime);
 			if (lResult != 0)
-			{	// Ê±¼ä²»Í¬Ôò¿½±´¸²¸Ç£¬ÎªÈ·±£¿½±´³É¹¦£¬È¥µôÄ¿±êÎÄ¼şµÄÖ»¶ÁÊôĞÔ
+			{	// æ—¶é—´ä¸åŒåˆ™æ‹·è´è¦†ç›–ï¼Œä¸ºç¡®ä¿æ‹·è´æˆåŠŸï¼Œå»æ‰ç›®æ ‡æ–‡ä»¶çš„åªè¯»å±æ€§
 				SetFileAttributes(szDesDir, FILE_ATTRIBUTE_NORMAL);
 				CopyFile(szSrcDir, szDesDir, FALSE);
 			}
 		}
-		// È¥µô¿½±´¹ıÀ´µÄÎÄ¼şµÄÖ»¶ÁÊôĞÔ
+		// å»æ‰æ‹·è´è¿‡æ¥çš„æ–‡ä»¶çš„åªè¯»å±æ€§
 		SetFileAttributes(szDesDir, FILE_ATTRIBUTE_NORMAL);
 		FindClose(hFind2);
 	}

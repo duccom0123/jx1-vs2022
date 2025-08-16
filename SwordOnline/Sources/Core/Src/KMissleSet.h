@@ -5,8 +5,8 @@
 
 class CORE_API KMissleSet
 {
-	KLinkArray		m_FreeIdx;				//	¿ÉÓÃ±í
-	KLinkArray		m_UseIdx;				//	ÒÑÓÃ±í
+	KLinkArray		m_FreeIdx;				//	å¯ç”¨è¡¨
+	KLinkArray		m_UseIdx;				//	å·²ç”¨è¡¨
 public:
 	void	Init();
 	int		Activate();

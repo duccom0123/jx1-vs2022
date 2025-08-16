@@ -3,7 +3,7 @@
 //
 // File:	KPlayerPK.h
 // Date:	2003.07.15
-// Code:	±ß³ÇÀË×Ó
+// Code:	è¾¹åŸæµªå­
 // Desc:	PlayerPK Class
 //---------------------------------------------------------------------------
 
@@ -27,43 +27,43 @@ class KPlayerPK
 {
 	friend class KPlayer;
 private:
-	int		m_nPlayerIndex;					// Ö¸Ïò¶ÔÓ¦µÄplayerÊı×éµÄÎ»ÖÃ
-	int		m_nNormalPKFlag;				// Õı³£PK¿ª¹Ø TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
+	int		m_nPlayerIndex;					// æŒ‡å‘å¯¹åº”çš„playeræ•°ç»„çš„ä½ç½®
+	int		m_nNormalPKFlag;				// æ­£å¸¸PKå¼€å…³ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
 	BYTE	m_btLockPKState;
-	int		m_nEnmityPKState;				// ³ğÉ±PK×´Ì¬ 0 ¹Ø±Õ 1 ÕıÔÚ¼ÆÊ± 2 ³ğÉ±ÕıÔÚ½øĞĞ£¬¶ÔÓ¦ enumPK_ANMITY_STATE
-	int		m_nEnmityPKAim;					// ³ğÉ±PKÄ¿±ê£¬player idx
-	int		m_nEnmityPKTime;				// ³ğÉ±PK×´Ì¬Îª1ÕıÔÚ¼ÆÊ±£¬µ¹¼ÆÊ±¼ÆÊı
-	int		m_nEnmityPKLaunchFlag;			// ÊÇ·ñ³ğÉ±·¢ÆğÈË
+	int		m_nEnmityPKState;				// ä»‡æ€PKçŠ¶æ€ 0 å…³é—­ 1 æ­£åœ¨è®¡æ—¶ 2 ä»‡æ€æ­£åœ¨è¿›è¡Œï¼Œå¯¹åº” enumPK_ANMITY_STATE
+	int		m_nEnmityPKAim;					// ä»‡æ€PKç›®æ ‡ï¼Œplayer idx
+	int		m_nEnmityPKTime;				// ä»‡æ€PKçŠ¶æ€ä¸º1æ­£åœ¨è®¡æ—¶ï¼Œå€’è®¡æ—¶è®¡æ•°
+	int		m_nEnmityPKLaunchFlag;			// æ˜¯å¦ä»‡æ€å‘èµ·äºº
 	BOOL	m_bEnmitySpar;
-	int		m_nExercisePKFlag;				// ÇĞ´èÄ£Ê½PK¿ª¹Ø TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
-	int		m_nExercisePKAim;				// ÇĞ´èÄ£Ê½PKÄ¿±ê£¬player idx
-	int		m_nPKValue;						// PKÖµ
+	int		m_nExercisePKFlag;				// åˆ‡ç£‹æ¨¡å¼PKå¼€å…³ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
+	int		m_nExercisePKAim;				// åˆ‡ç£‹æ¨¡å¼PKç›®æ ‡ï¼Œplayer idx
+	int		m_nPKValue;						// PKå€¼
 	int		m_nBackFightMode;
 	unsigned int	m_uNextChangeNormalPK;
 	unsigned int	m_uNextChangeFightPK;
 public:
-	KPlayerPK();							// ¹¹Ôìº¯Êı
-	void	Init(int nPlayerIdx);			// ³õÊ¼»¯
+	KPlayerPK();							// æ„é€ å‡½æ•°
+	void	Init(int nPlayerIdx);			// åˆå§‹åŒ–
 	BOOL	CheckSwitchPK(BYTE bFlag, BOOL bCaptainSet);
-	void	SetNormalPKState(BYTE bFlag, BOOL bCaptainSet = FALSE);	// Éè¶¨Õı³£PK×´Ì¬
-	int		GetNormalPKState();				// »ñµÃÕı³£PK×´Ì¬
+	void	SetNormalPKState(BYTE bFlag, BOOL bCaptainSet = FALSE);	// è®¾å®šæ­£å¸¸PKçŠ¶æ€
+	int		GetNormalPKState();				// è·å¾—æ­£å¸¸PKçŠ¶æ€
 	void	SetLockPKState(BYTE bFlag, BYTE btState);
 	BYTE	GetLockPKState() {return m_btLockPKState;};
-	void	EnmityPKClose(BOOL bIsPKing = FALSE);				// ¹Ø±Õ³ğÉ±PK
-	BOOL	EnmityPKOpen(int nAim, BOOL bSpar);			// ³ğÉ±¿ªÊ¼
-	int		GetEnmityPKState();				// »ñµÃ³ğÉ±×´Ì¬
-	int		GetEnmityPKAim();				// »ñµÃ³ğÉ±Ä¿±ê
+	void	EnmityPKClose(BOOL bIsPKing = FALSE);				// å…³é—­ä»‡æ€PK
+	BOOL	EnmityPKOpen(int nAim, BOOL bSpar);			// ä»‡æ€å¼€å§‹
+	int		GetEnmityPKState();				// è·å¾—ä»‡æ€çŠ¶æ€
+	int		GetEnmityPKAim();				// è·å¾—ä»‡æ€ç›®æ ‡
 	BOOL	IsEnmityPKLauncher() {return m_nEnmityPKLaunchFlag;};
 	BOOL	IsEnmitySpar() {return m_bEnmitySpar;};
-	void	ExercisePKClose();				// ¹Ø±ÕÇĞ´èPK
-	BOOL	ExercisePKOpen(int nAim);		// ´ò¿ªÇĞ´èPK
-	int		GetExercisePKAim();				// »ñµÃÇĞ´èÄ¿±ê
+	void	ExercisePKClose();				// å…³é—­åˆ‡ç£‹PK
+	BOOL	ExercisePKOpen(int nAim);		// æ‰“å¼€åˆ‡ç£‹PK
+	int		GetExercisePKAim();				// è·å¾—åˆ‡ç£‹ç›®æ ‡
 	int		GetExercisePKState() {return m_nExercisePKFlag;};
-	void	SetPKValue(int nValue);			// Éè¶¨PKÖµ
-	int		GetPKValue();					// »ñµÃPKÖµ
-	void	AddPKValue(int nAdd);			// Ôö¼Ó(»ò¼õÉÙ)PKÖµ£¬PKÖµ×î¶à¼õÉÙµ½0
-	void	CloseAll();						// ¹Ø±Õ³ğÉ±PKºÍÇĞ´èPK
-	void	EnmityPKCountDown();			// ³ğÉ±µ¹¼ÆÊ±
+	void	SetPKValue(int nValue);			// è®¾å®šPKå€¼
+	int		GetPKValue();					// è·å¾—PKå€¼
+	void	AddPKValue(int nAdd);			// å¢åŠ (æˆ–å‡å°‘)PKå€¼ï¼ŒPKå€¼æœ€å¤šå‡å°‘åˆ°0
+	void	CloseAll();						// å…³é—­ä»‡æ€PKå’Œåˆ‡ç£‹PK
+	void	EnmityPKCountDown();			// ä»‡æ€å€’è®¡æ—¶
 
 	void	Active();
 };
@@ -75,36 +75,36 @@ class KPlayerPK
 {
 	friend class KPlayer;
 private:
-	int		m_nNormalPKFlag;				// Õı³£PK¿ª¹Ø TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
-	int		m_nEnmityPKState;				// ³ğÉ±PK×´Ì¬ 0 ¹Ø±Õ 1 ÕıÔÚ¼ÆÊ± 2 ³ğÉ±ÕıÔÚ½øĞĞ£¬¶ÔÓ¦ enumPK_ANMITY_STATE
-	int		m_nEnmityPKAim;					// ³ğÉ±PKÄ¿±ê£¬npc id
-	int		m_nEnmityPKTime;				// ³ğÉ±PK×´Ì¬Îª1ÕıÔÚ¼ÆÊ±£¬µ¹¼ÆÊ±¼ÆÊı
-	char	m_szEnmityAimName[32];			// ³ğÉ±Ä¿±êÃû×Ö
-	int		m_nExercisePKFlag;				// ÇĞ´èÄ£Ê½PK¿ª¹Ø TRUE ´ò¿ª£¬¿ÉÒÔ¿³ÈË  FALSE ¹Ø±Õ£¬²»¿ÉÒÔ¿³ÈË
-	int		m_nExercisePKAim;				// ÇĞ´èÄ£Ê½PKÄ¿±ê£¬npc id
-	char	m_szExerciseAimName[32];		// ÇĞ´èÄ¿±êÃû×Ö
-	int		m_nPKValue;						// PKÖµ
+	int		m_nNormalPKFlag;				// æ­£å¸¸PKå¼€å…³ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
+	int		m_nEnmityPKState;				// ä»‡æ€PKçŠ¶æ€ 0 å…³é—­ 1 æ­£åœ¨è®¡æ—¶ 2 ä»‡æ€æ­£åœ¨è¿›è¡Œï¼Œå¯¹åº” enumPK_ANMITY_STATE
+	int		m_nEnmityPKAim;					// ä»‡æ€PKç›®æ ‡ï¼Œnpc id
+	int		m_nEnmityPKTime;				// ä»‡æ€PKçŠ¶æ€ä¸º1æ­£åœ¨è®¡æ—¶ï¼Œå€’è®¡æ—¶è®¡æ•°
+	char	m_szEnmityAimName[32];			// ä»‡æ€ç›®æ ‡åå­—
+	int		m_nExercisePKFlag;				// åˆ‡ç£‹æ¨¡å¼PKå¼€å…³ TRUE æ‰“å¼€ï¼Œå¯ä»¥ç äºº  FALSE å…³é—­ï¼Œä¸å¯ä»¥ç äºº
+	int		m_nExercisePKAim;				// åˆ‡ç£‹æ¨¡å¼PKç›®æ ‡ï¼Œnpc id
+	char	m_szExerciseAimName[32];		// åˆ‡ç£‹ç›®æ ‡åå­—
+	int		m_nPKValue;						// PKå€¼
 
 public:
-	void	Init();							// ³õÊ¼»¯
-	void	ApplySetNormalPKState(BYTE bFlag);// Ïò·şÎñÆ÷ÉêÇë´ò¿ª¡¢¹Ø±ÕÕı³£PK×´Ì¬
-	void	SetNormalPKState(int bFlag, BOOL bShowMsg = TRUE);	// Éè¶¨Õı³£PK×´Ì¬
-	int		GetNormalPKState();				// »ñµÃÕı³£PK×´Ì¬
-	void	ApplyEnmityPK(int nNpcID);		// Ïò·şÎñÆ÷ÉêÇë³ğÉ±Ä³ÈË
+	void	Init();							// åˆå§‹åŒ–
+	void	ApplySetNormalPKState(BYTE bFlag);// å‘æœåŠ¡å™¨ç”³è¯·æ‰“å¼€ã€å…³é—­æ­£å¸¸PKçŠ¶æ€
+	void	SetNormalPKState(int bFlag, BOOL bShowMsg = TRUE);	// è®¾å®šæ­£å¸¸PKçŠ¶æ€
+	int		GetNormalPKState();				// è·å¾—æ­£å¸¸PKçŠ¶æ€
+	void	ApplyEnmityPK(int nNpcID);		// å‘æœåŠ¡å™¨ç”³è¯·ä»‡æ€æŸäºº
 	void	SparApplyStart(int nNpcID);
 	void	ReplyInvite(int nNpcID, int nResult);	
-	void	SetEnmityPKState(int nState, int nNpcID = 0, char *lpszName = NULL, BOOL bAim = 0, BOOL bSpar = FALSE);	// Éè¶¨³ğÉ±PK×´Ì¬
-	int		GetEnmityPKState()	{return m_nEnmityPKState;}		// »ñµÃ³ğÉ±PK×´Ì¬
-	int		GetEnmityPKAimNpcID()	{return m_nEnmityPKAim;}	// »ñµÃ³ğÉ±PKÄ¿±ênpc id
-	int		GetEnmityPKTime()	{return m_nEnmityPKTime;}		// »ñµÃ³ğÉ±PK×¼±¸Ê±¼ä
-	char*	GetEnmityPKAimName()	{return m_szEnmityAimName;}	// »ñµÃ³ğÉ±PKÄ¿±êÃû×Ö
-	void	EnmityPKCountDown();			// ³ğÉ±µ¹¼ÆÊ±
-	void	SetExercisePKState(int nState, int nNpcID = 0, char *lpszName = NULL);	// Éè¶¨ÇĞ´è×´Ì¬
-	int		GetExercisePKState()	{return m_nExercisePKFlag;}	// »ñµÃÇĞ´è×´Ì¬
-	int		GetExercisePKAim()	{return m_nExercisePKAim;}		// »ñµÃÇĞ´èÄ¿±ênpc id
-	char*	GetExercisePKName()	{return m_szExerciseAimName;}	// »ñµÃÇĞ´èÄ¿±êÃû×Ö
-	void	SetPKValue(int nValue);			// Éè¶¨PKÖµ
-	int		GetPKValue()	{return m_nPKValue;}	// »ñµÃPKÖµ
+	void	SetEnmityPKState(int nState, int nNpcID = 0, char *lpszName = NULL, BOOL bAim = 0, BOOL bSpar = FALSE);	// è®¾å®šä»‡æ€PKçŠ¶æ€
+	int		GetEnmityPKState()	{return m_nEnmityPKState;}		// è·å¾—ä»‡æ€PKçŠ¶æ€
+	int		GetEnmityPKAimNpcID()	{return m_nEnmityPKAim;}	// è·å¾—ä»‡æ€PKç›®æ ‡npc id
+	int		GetEnmityPKTime()	{return m_nEnmityPKTime;}		// è·å¾—ä»‡æ€PKå‡†å¤‡æ—¶é—´
+	char*	GetEnmityPKAimName()	{return m_szEnmityAimName;}	// è·å¾—ä»‡æ€PKç›®æ ‡åå­—
+	void	EnmityPKCountDown();			// ä»‡æ€å€’è®¡æ—¶
+	void	SetExercisePKState(int nState, int nNpcID = 0, char *lpszName = NULL);	// è®¾å®šåˆ‡ç£‹çŠ¶æ€
+	int		GetExercisePKState()	{return m_nExercisePKFlag;}	// è·å¾—åˆ‡ç£‹çŠ¶æ€
+	int		GetExercisePKAim()	{return m_nExercisePKAim;}		// è·å¾—åˆ‡ç£‹ç›®æ ‡npc id
+	char*	GetExercisePKName()	{return m_szExerciseAimName;}	// è·å¾—åˆ‡ç£‹ç›®æ ‡åå­—
+	void	SetPKValue(int nValue);			// è®¾å®šPKå€¼
+	int		GetPKValue()	{return m_nPKValue;}	// è·å¾—PKå€¼
 
 	void	Active();
 };

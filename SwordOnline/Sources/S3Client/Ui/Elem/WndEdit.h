@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÊäÈë´°¿Ú
+//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--è¾“å…¥çª—å£
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
@@ -10,11 +10,11 @@
 #include "WndText.h"
 
 #define	WNDEDIT_ES_FILTER				0x00ff
-#define	WNDEDIT_ES_ENGLISH_AVAILABLE	0x0001		//¿ÉÒÔÊäÈëÎ÷ÎÄ×Ö·û£¬·ûºÅ¡¢±êµãµÈ
-#define	WNDEDIT_ES_IME_AVAILABLE		0x0002		//¿ÉÒÔÊäÈëime×Ö·û£¨ÖĞÎÄ×Ö·û£©µÈ
+#define	WNDEDIT_ES_ENGLISH_AVAILABLE	0x0001		//å¯ä»¥è¾“å…¥è¥¿æ–‡å­—ç¬¦ï¼Œç¬¦å·ã€æ ‡ç‚¹ç­‰
+#define	WNDEDIT_ES_IME_AVAILABLE		0x0002		//å¯ä»¥è¾“å…¥imeå­—ç¬¦ï¼ˆä¸­æ–‡å­—ç¬¦ï¼‰ç­‰
 #define	WNDEDIT_ES_CHAR_TYPE_FILTER		(WNDEDIT_ES_ENGLISH_AVAILABLE | WNDEDIT_ES_IME_AVAILABLE)
-#define	WNDEDIT_ES_MASK_CHARACTER		0x0010		//ÏÔÊ¾Ê±ÒÔÌØÊâ·ûºÅÌæ»»ÒªÏÔÊ¾µÄ×Ö·û
-#define	WNDEDIT_ES_MULTI_LINE			0x0020		//¶àĞĞ±à¼­
+#define	WNDEDIT_ES_MASK_CHARACTER		0x0010		//æ˜¾ç¤ºæ—¶ä»¥ç‰¹æ®Šç¬¦å·æ›¿æ¢è¦æ˜¾ç¤ºçš„å­—ç¬¦
+#define	WNDEDIT_ES_MULTI_LINE			0x0020		//å¤šè¡Œç¼–è¾‘
 #define	WNDEDIT_F_HAVE_FOCUS			0x0100
 #define	WNDEDIT_F_HAVE_SHADOW			0x0200
 
@@ -23,24 +23,24 @@ class KWndEdit : public KWndWindow
 public:
 	KWndEdit();
 	~KWndEdit();
-	virtual int	Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
-	virtual void	PaintWindow();							//»æÖÆ´°¿Ú
+	virtual int	Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual void	PaintWindow();							//ç»˜åˆ¶çª—å£
 	void			SetColor(unsigned int uColor);
-	void			SetText(const char* pText, int nLen = -1);				//ÉèÖÃÎÄ±¾ÎÄ×Ö
-	int				GetText(char* pBuffer, int nSize, bool bExcludeSpace);//»ñÈ¡×Ö·û´®ÄÚÈİ
-	void			SetIntText(int nNumber);				//ÉèÖÃÎÄ±¾´®µÄÄÚÈİÎªÓë±íÊöËùÕûÊıµÄ×Ö·û´®
+	void			SetText(const char* pText, int nLen = -1);				//è®¾ç½®æ–‡æœ¬æ–‡å­—
+	int				GetText(char* pBuffer, int nSize, bool bExcludeSpace);//è·å–å­—ç¬¦ä¸²å†…å®¹
+	void			SetIntText(int nNumber);				//è®¾ç½®æ–‡æœ¬ä¸²çš„å†…å®¹ä¸ºä¸è¡¨è¿°æ‰€æ•´æ•°çš„å­—ç¬¦ä¸²
 	DWORD			GetIntNumber();
-	void			Enable(int bEnable);					//½ûÖ¹»òÕßÔÊĞíÊ¹´°¿Ú±»²Ù×÷
+	void			Enable(int bEnable);					//ç¦æ­¢æˆ–è€…å…è®¸ä½¿çª—å£è¢«æ“ä½œ
 	void			Clone(KWndEdit* pCopy);
 	void			Clear(bool bSafe = false);
 	int				InsertString(const char* pString, int nLen);
 	void			GetCaretPosition(int* nx, int* ny);
 	unsigned int	GetFocusBkColor()	{return m_FocusBkColor;}
 	void			SetFocusBkColor(unsigned int nC)	{m_FocusBkColor = nC;}
-	virtual const char*	GetShortKey() {return NULL;}	//È¡¿ì½İ¼ü,ÓÃÓÚTipÏÔÊ¾
-	static void		SetAllButtonTipTextColor(unsigned int uColor);	//ÉèÖÃËùÓĞ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-	static void		EnableAllButtonTip(int bEnable);					//½ûÖ¹/ÔÊĞíËùÓĞ°´Å¥µÄÌáÊ¾ÎÄ×Ö
+	virtual const char*	GetShortKey() {return NULL;}	//å–å¿«æ·é”®,ç”¨äºTipæ˜¾ç¤º
+	static void		SetAllButtonTipTextColor(unsigned int uColor);	//è®¾ç½®æ‰€æœ‰æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static void		EnableAllButtonTip(int bEnable);					//ç¦æ­¢/å…è®¸æ‰€æœ‰æŒ‰é’®çš„æç¤ºæ–‡å­—
 	virtual void	OnButtonClick(){}
 	virtual int		GetToolTipInfo(char* szTip, int nMax);
 	int		SetToolTipInfo(char* szTip, int nMax);
@@ -68,10 +68,10 @@ public:
 	};
 	
 protected:
-	void			SetTextPtr(char* pText, int nMaxLen);	//ÉèÖÃÎÄ±¾»º³åÇøÖ¸Õë
+	void			SetTextPtr(char* pText, int nMaxLen);	//è®¾ç½®æ–‡æœ¬ç¼“å†²åŒºæŒ‡é’ˆ
 	int				InsertChar(int nChar);					//
 	int				InsertChar(char cLow, char cHigh);		//
-	int				OnKeyDown(int nKeyCode, int nModifiers);//ÏìÓ¦¼üÅÌ°´¼ü²Ù×÷
+	int				OnKeyDown(int nKeyCode, int nModifiers);//å“åº”é”®ç›˜æŒ‰é”®æ“ä½œ
 
 private:
 	int				CharFromPos(int x, int y);				//retrieves information about the character closest to a specified point in the client area of an edit control
@@ -83,34 +83,34 @@ private:
 	
 private:
 	unsigned int	m_Flag;
-	int			m_nFontSize;				//×ÖÌå´óĞ¡
-	char*		m_pText;					//ÎÄ±¾»º³åÇøÖ¸Õë
-	int			m_nBufferSize;				//ÎÄ±¾»º³åÇøÖ¸ÕëµÄ³¤¶È
-	int			m_nLimitText;				//×Ö·û´®³¤¶È£¨BYTE£©ÏŞÖÆ£¬²»°üÀ¨×Ö·û´®½áÊø·ûºÅ¡£
-	int			m_nTextLen;					//×Ö·û´®Êµ¼Ê³¤¶È
+	int			m_nFontSize;				//å­—ä½“å¤§å°
+	char*		m_pText;					//æ–‡æœ¬ç¼“å†²åŒºæŒ‡é’ˆ
+	int			m_nBufferSize;				//æ–‡æœ¬ç¼“å†²åŒºæŒ‡é’ˆçš„é•¿åº¦
+	int			m_nLimitText;				//å­—ç¬¦ä¸²é•¿åº¦ï¼ˆBYTEï¼‰é™åˆ¶ï¼Œä¸åŒ…æ‹¬å­—ç¬¦ä¸²ç»“æŸç¬¦å·ã€‚
+	int			m_nTextLen;					//å­—ç¬¦ä¸²å®é™…é•¿åº¦
 
-	int			m_nSkipAhead;				//ÏÔÊ¾Ê±ºöÂÔÇ°¶Ë³¬³öµÄ×Ö·û£¬Ç°¶Ë±»ºöÂÔ×Ö·ûµÄÈİÁ¿
-	int			m_nSkipBehind;				//ÏÔÊ¾Ê±ºöÂÔºó¶Ë³¬³öµÄ×Ö·û£¬ºó¶Ë±»ºöÂÔ×Ö·ûµÄÈİÁ¿
+	int			m_nSkipAhead;				//æ˜¾ç¤ºæ—¶å¿½ç•¥å‰ç«¯è¶…å‡ºçš„å­—ç¬¦ï¼Œå‰ç«¯è¢«å¿½ç•¥å­—ç¬¦çš„å®¹é‡
+	int			m_nSkipBehind;				//æ˜¾ç¤ºæ—¶å¿½ç•¥åç«¯è¶…å‡ºçš„å­—ç¬¦ï¼Œåç«¯è¢«å¿½ç•¥å­—ç¬¦çš„å®¹é‡
 
-	int			m_nCaretLineIndex;			//²åÈë·ûËùÔÚµÄĞĞÎ»ÖÃ
-	int			m_nCaretPos;				//²åÈë·ûµÄÎ»ÖÃ
-	int			m_nCaretTime;				//¿ØÖÆ²åÈë·ûÏÔÊ¾µÄÊ±ÖÓ
+	int			m_nCaretLineIndex;			//æ’å…¥ç¬¦æ‰€åœ¨çš„è¡Œä½ç½®
+	int			m_nCaretPos;				//æ’å…¥ç¬¦çš„ä½ç½®
+	int			m_nCaretTime;				//æ§åˆ¶æ’å…¥ç¬¦æ˜¾ç¤ºçš„æ—¶é’Ÿ
 
     int         m_nCaretX;
     int         m_nCaretY;
 
     //HWND        m_hEdit;
 
-	unsigned int m_TextColor;				//×ÖÌåÑÕÉ«
-	unsigned int m_TextBorderColor;			//×ÖÌå±ßÔµÑÕÉ«
-	unsigned int m_FocusBkColor;			//ÓĞ½¹µãÊ±µÄ±³¾°ÑÕÉ«
+	unsigned int m_TextColor;				//å­—ä½“é¢œè‰²
+	unsigned int m_TextBorderColor;			//å­—ä½“è¾¹ç¼˜é¢œè‰²
+	unsigned int m_FocusBkColor;			//æœ‰ç„¦ç‚¹æ—¶çš„èƒŒæ™¯é¢œè‰²
 	
 	char			m_szTip[256];
 	int				m_nTipLen;
 	bool			m_bTipHover;
 private:
-	static unsigned int	ms_uBtnTipTextColor;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
-	static int			ms_nDisableBtnTip;		//ÊÇ·ñ½ûÖ¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
+	static unsigned int	ms_uBtnTipTextColor;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static int			ms_nDisableBtnTip;		//æ˜¯å¦ç¦æ­¢æŒ‰é’®çš„æç¤ºæ–‡å­—
 };
 
 class KWndEdit80 : public KWndEdit
@@ -121,7 +121,7 @@ public:
 	KWndEdit80();
 };
 //=====================================
-//	ÎÄ±¾»º³åÇø³¤¶ÈÎª32µÄÎÄ±¾ÊäÈë´°¿ÚÀà
+//	æ–‡æœ¬ç¼“å†²åŒºé•¿åº¦ä¸º32çš„æ–‡æœ¬è¾“å…¥çª—å£ç±»
 //=====================================
 class KWndEdit32 : public KWndEdit
 {
@@ -132,7 +132,7 @@ public:
 };
 
 //=====================================
-//	ÎÄ±¾»º³åÇø³¤¶ÈÎª32µÄÎÄ±¾ÊäÈë´°¿ÚÀà
+//	æ–‡æœ¬ç¼“å†²åŒºé•¿åº¦ä¸º32çš„æ–‡æœ¬è¾“å…¥çª—å£ç±»
 //=====================================
 class KWndEdit512 : public KWndEdit
 {

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	½çÃæ--µÀ¾ß½çÃæ
+//	ç•Œé¢--é“å…·ç•Œé¢
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -19,18 +19,18 @@ struct KUiObjAtRegion;
 class KUiItem : public KWndShowAnimate
 {
 public:
-	static KUiItem* OpenWindow(bool bFlag = true);				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
-	static KUiItem* GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
-	static void		CloseWindow(bool bDestroy);	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
-	static void		LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	static KUiItem* OpenWindow(bool bFlag = true);				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	static KUiItem* GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+	static void		CloseWindow(bool bDestroy);	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	static void		LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
 	static void		OnNpcTradeMode(bool bTrue);
-	void			UpdateItem(KUiObjAtRegion* pItem, int bAdd);//ÎïÆ·±ä»¯¸üĞÂ
-	void			Breathe();									//»î¶¯º¯Êı
+	void			UpdateItem(KUiObjAtRegion* pItem, int bAdd);//ç‰©å“å˜åŒ–æ›´æ–°
+	void			Breathe();									//æ´»åŠ¨å‡½æ•°
 private:
 	KUiItem() {}
 	~KUiItem() {}
-	void	Initialize();							//³õÊ¼»¯
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	Initialize();							//åˆå§‹åŒ–
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
 	void	UpdateData();
 	void	OnClickItem(KUiDraggedObject* pItem, bool bDoImmed);
 	void	OnRepairItem(KUiDraggedObject* pItem);

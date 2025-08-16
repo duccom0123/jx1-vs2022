@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//	ÎÄ¼şÃû			:	TextPic.h
-//	´´½¨ÈË			:	ÍõÎ÷±´
-//	´´½¨Ê±¼ä		:	2003-6-22 23:01:40
-//	ÎÄ¼şËµÃ÷		:	ÎÄ×ÖÇ¶ÈëÊ½Í¼Æ¬
+//	æ–‡ä»¶å			:	TextPic.h
+//	åˆ›å»ºäºº			:	ç‹è¥¿è´
+//	åˆ›å»ºæ—¶é—´		:	2003-6-22 23:01:40
+//	æ–‡ä»¶è¯´æ˜		:	æ–‡å­—åµŒå…¥å¼å›¾ç‰‡
 //////////////////////////////////////////////////////////////////////////////////////
 
 #ifndef __TEXTPIC_H__
@@ -31,9 +31,9 @@ protected:
 	vector<KImageParam> m_CustomImageParams;
 
 public:
-	//¶¯Ì¬¼ÓÔØÍ¼Æ¬,»ñÈ¡Ò»¸öWORD,¼´Í¼Æ¬µÄË÷Òı
+	//åŠ¨æ€åŠ è½½å›¾ç‰‡,è·å–ä¸€ä¸ªWORD,å³å›¾ç‰‡çš„ç´¢å¼•
 	long AddCustomInlinePic(unsigned short& wIndex, const char* szSprPathName);
-	//¶¯Ì¬Ğ¶ÔØÍ¼Æ¬
+	//åŠ¨æ€å¸è½½å›¾ç‰‡
 	long RemoveCustomInlinePic(unsigned short wIndex);
 	
 	long GetPicSize(unsigned short wIndex, int& cx, int& cy);

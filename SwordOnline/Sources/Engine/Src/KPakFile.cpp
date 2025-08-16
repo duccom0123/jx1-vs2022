@@ -14,14 +14,14 @@
 #endif
 
 //---------------------------------------------------------------------------
-// �ļ���ȡģʽ 0 = ���ȴӴ��̶�ȡ 1 = ���ȴ��ļ�����ȡ
+// 文件读取模式 0 = 优先从磁盘读取 1 = 优先从文件包读取
 static int m_nPakFileMode = 0;
 
 //---------------------------------------------------------------------------
-// ����:	SetFileMode
-// ����:	�����ļ���ȡģʽ
-// ����:	int
-// ����:	void
+// 函数:	SetFileMode
+// 功能:	设置文件读取模式
+// 参数:	int
+// 返回:	void
 //---------------------------------------------------------------------------
 void g_SetPakFileMode(int nFileMode)
 {
@@ -47,7 +47,7 @@ SPRHEAD* SprGetHeader(const char* pszFileName, SPROFFS*& pOffsetTable)
 	SPRHEAD* pSpr = NULL;
 	if (File.IsFileInPak())
 	{
-		//====���ļ�����Ѱ�Ҷ�ȡͼ�ļ�=====
+		//====到文件包内寻找读取图文件=====
 		XPackElemFileRef	PakRef;
 		//_ASSERT(g_pPakList);
 		if (g_pPakList->FindElemFile(pszFileName, PakRef))
@@ -61,22 +61,22 @@ SPRHEAD* SprGetHeader(const char* pszFileName, SPROFFS*& pOffsetTable)
 	{
 		bool			bOk = false;
 		SPRHEAD			Header;
-		//---���ļ�ͷ�����ж��Ƿ�Ϊ�Ϸ���sprͼ�ļ�---
+		//---读文件头，并判断是否为合法的spr图文件---
 		while (File.Read(&Header, sizeof(SPRHEAD)) == sizeof(SPRHEAD))
 		{
 			if (*(int*)&Header.Comment[0] != SPR_COMMENT_FLAG || Header.Colors > 256)
 				break;
-			//---Ϊ�������������ռ�---
+			//---为输出缓冲区分配空间---
 			unsigned int uEntireSize = File.Size();
 			pSpr = (SPRHEAD*)malloc(uEntireSize);
 			if (pSpr == NULL)
 				break;
 
 			uEntireSize -= sizeof(SPRHEAD);
-			//---��ȡsprʣ�µ�����---
+			//---读取spr剩下的数据---
 			if (File.Read(&pSpr[1], uEntireSize) == uEntireSize)
 			{
-				//----���ͼ��֡�������Ŀ�ʼλ��---
+				//----获得图形帧索引表的开始位置---
 				pOffsetTable = (SPROFFS*)(((char*)(pSpr)) + sizeof(SPRHEAD) + Header.Colors * 3);
 				Header.Reserved[PAK_INDEX_STORE_IN_RESERVED] = (WORD)(-1);
 				memcpy(pSpr, &Header, sizeof(SPRHEAD));
@@ -202,7 +202,7 @@ void release_image(KSGImageContent* pImage)
 #endif
 
 //---------------------------------------------------------------------------
-// ����:	���캯��
+// 功能:	购造函数
 //---------------------------------------------------------------------------
 KPakFile::KPakFile()
 {
@@ -213,7 +213,7 @@ KPakFile::KPakFile()
 }
 
 //---------------------------------------------------------------------------
-// ����:	���캯��
+// 功能:	析造函数
 //---------------------------------------------------------------------------
 KPakFile::~KPakFile()
 {
@@ -221,7 +221,7 @@ KPakFile::~KPakFile()
 }
 
 //---------------------------------------------------------------------------
-// ����:	�жϴ��ļ��Ƿ�Ӱ��д򿪵�
+// 功能:	判断此文件是否从包中打开的
 //---------------------------------------------------------------------------
 bool KPakFile::IsFileInPak()
 {
@@ -233,10 +233,10 @@ bool KPakFile::IsFileInPak()
 }
 
 //---------------------------------------------------------------------------
-// ����:	��һ���ļ�, ��Ѱ�ҵ�ǰĿ¼���Ƿ���ͬ���ĵ����ļ�,
-// ����:	FileName	�ļ���
-// ����:	TRUE		�ɹ�
-//			FALSE		ʧ��
+// 功能:	打开一个文件, 先寻找当前目录下是否有同名的单独文件,
+// 参数:	FileName	文件名
+// 返回:	TRUE		成功
+//			FALSE		失败
 //---------------------------------------------------------------------------
 BOOL KPakFile::Open(const char* pszFileName)
 {
@@ -247,7 +247,7 @@ BOOL KPakFile::Open(const char* pszFileName)
 	Close();
 
 #ifndef _SERVER
-	if (m_nPakFileMode == 0)	//0=���ȴӴ��̶�ȡ
+	if (m_nPakFileMode == 0)	//0=优先从磁盘读取
 	{
 #endif
 		bOk = (m_File.Open((char*)pszFileName) != FALSE);
@@ -257,7 +257,7 @@ BOOL KPakFile::Open(const char* pszFileName)
 			bOk = g_pPakList->FindElemFile(pszFileName, m_PackRef);
 		}
 	}
-	else	//1=���ȴ��ļ�����ȡ
+	else	//1=优先从文件包读取
 	{
 		if (g_pPakList)
 			bOk = g_pPakList->FindElemFile(pszFileName, m_PackRef);
@@ -269,10 +269,10 @@ BOOL KPakFile::Open(const char* pszFileName)
 }
 
 //---------------------------------------------------------------------------
-// ����:	���ļ��ж�ȡ����
-// ����:	pBuffer		������ָ��
-//			dwSize		Ҫ��ȡ�ĳ���
-// ����:	�������ֽڳ���
+// 功能:	从文件中读取数据
+// 参数:	pBuffer		缓冲区指针
+//			dwSize		要读取的长度
+// 返回:	读到的字节长度
 //---------------------------------------------------------------------------
 DWORD KPakFile::Read(void* pBuffer, unsigned int uSize)
 {
@@ -291,10 +291,10 @@ DWORD KPakFile::Read(void* pBuffer, unsigned int uSize)
 }
 
 //---------------------------------------------------------------------------
-// ����:	�ļ���ָ�붨λ
-// ����:	lOffset			ƫ����
-//			dwMethod		��λ����
-// ����:	�ļ���ָ��
+// 功能:	文件读指针定位
+// 参数:	lOffset			偏移量
+//			dwMethod		定位方法
+// 返回:	文件的指针
 //---------------------------------------------------------------------------
 DWORD KPakFile::Seek(int nOffset, unsigned int uMethod)
 {
@@ -322,8 +322,8 @@ DWORD KPakFile::Seek(int nOffset, unsigned int uMethod)
 }
 
 //---------------------------------------------------------------------------
-// ����:	�����ļ���ָ��
-// ����:	�ļ���ָ��
+// 功能:	返回文件的指针
+// 返回:	文件的指针
 //---------------------------------------------------------------------------
 DWORD KPakFile::Tell()
 {
@@ -338,8 +338,8 @@ DWORD KPakFile::Tell()
 }
 
 //---------------------------------------------------------------------------
-// ����:	�����ļ���С
-// ����:	�ļ��Ĵ�С in bytes
+// 功能:	返回文件大小
+// 返回:	文件的大小 in bytes
 //---------------------------------------------------------------------------
 DWORD KPakFile::Size()
 {
@@ -353,7 +353,7 @@ DWORD KPakFile::Size()
 	return uSize;
 }
 //---------------------------------------------------------------------------
-// ����:	�ر�һ���ļ�
+// 功能:	关闭一个文件
 //---------------------------------------------------------------------------
 void KPakFile::Close()
 {
@@ -373,14 +373,14 @@ void KPakFile::Close()
 
 
 //---------------------------------------------------------------------------
-// ÿ�ζ�ȡ���ݿ�Ĵ�С
+// 每次读取数据块的大小
 #define BLOCK_SIZE	(0x10000L)
 
 //---------------------------------------------------------------------------
-// ����:	��һ�����е��ļ�
-// ����:	FileName	�ļ���
-// ����:	TRUE		�ɹ�
-//			FALSE		ʧ��
+// 功能:	打开一个包中的文件
+// 参数:	FileName	文件名
+// 返回:	TRUE		成功
+//			FALSE		失败
 //---------------------------------------------------------------------------
 /*BOOL KPakFile::OpenPak(LPSTR FileName)
 {
@@ -389,69 +389,69 @@ void KPakFile::Close()
 
 	KAutoMutex	AutoMutex(g_pPakList->GetMutexPtr());
 
-	// �������ļ����в���Ҫ�򿪵��ļ��Ƿ����
+	// 在所有文件包中查找要打开的文件是否存在
 	m_nPackage = g_pPakList->Search(FileName, &m_dwFileOfs, &m_dwFileLen);
 	if (m_nPackage < 0)
 		return FALSE;
 
-	// m_nBlocks ����ĸ���, Դ�ļ�ÿ64K��Ϊһ����
-	// m_nBlocks * 2 Ϊ�鳤�ȱ��Ĵ�С(ÿ��Ĵ�С��һ��WORD��¼)
+	// m_nBlocks 即块的个数, 源文件每64K打为一个包
+	// m_nBlocks * 2 为块长度表的大小(每块的大小用一个WORD记录)
 	m_nBlocks = (m_dwFileLen + 0xffff) >> 16;
 
-	// �� block buffer �����ڴ�
+	// 给 block buffer 分配内存
 	if (!m_MemBlock.Alloc(m_nBlocks * 2))
 		return FALSE;
 
-	// �� file buffer �����ڴ�64K, Ϊ��ѹ��׼��
+	// 给 file buffer 分配内存64K, 为解压做准备
 	if (!m_MemFile.Alloc(BLOCK_SIZE))
 		return FALSE;
 
-	// �� read buffer �����ڴ�64K, Ϊ��ѹ��׼��
+	// 给 read buffer 分配内存64K, 为解压做准备
 	if (!m_MemRead.Alloc(BLOCK_SIZE))
 		return FALSE;
 
-	// �ļ�������ָ��
+	// 文件缓冲区指针
 	m_pBuffer = (PBYTE)m_MemFile.GetMemPtr();
 
-	// ÿ��ĳ��ȱ�
+	// 每块的长度表
 	m_pBlocks = (PWORD)m_MemBlock.GetMemPtr();
 
-	// �ƶ����ļ���ʼ
+	// 移动到文件开始
 	g_pPakList->Seek(m_dwFileOfs, FILE_BEGIN);
 
-	// ����ÿ��Ĵ�С
+	// 读入每块的大小
 	g_pPakList->Read(m_pBlocks, m_nBlocks * 2);
 
-	// ��һ��ѹ�����ݵ�ƫ����
+	// 第一块压缩数据的偏移量
 	m_dwFileOfs = m_dwFileOfs + m_nBlocks * 2;
 
-	// ��ȡѹ��������ʼλ��
+	// 读取压缩数据起始位置
 	m_dwDataPtr = m_dwFileOfs;
 
-	// ��ָ���λ��(������λ��) = 0;
+	// 读指针的位置(解码后的位置) = 0;
 	m_dwFilePtr = 0;
 
-	// �ɹ����ļ�
+	// 成功打开文件
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// ����:	ReadPak
-// ����:	���ļ��ж�ȡ����
-// ����:	pBuffer		������ָ��
-//			dwSize		Ҫ��ȡ�ĳ���
-// ����:	�������ֽڳ���
+// 函数:	ReadPak
+// 功能:	从文件中读取数据
+// 参数:	pBuffer		缓冲区指针
+//			dwSize		要读取的长度
+// 返回:	读到的字节长度
 //---------------------------------------------------------------------------
 DWORD KPakFile::ReadPak(PVOID pBuffer, DWORD dwSize)
 {
 	KAutoMutex AutoMutex(g_pPakList->GetMutexPtr());
 
-	// ����ǰ����ļ��ʹӰ��ж�
+	// 如果是包中文件就从包中读
 	UINT	nBlock = 0;
 	DWORD	dwReadSize = 0;
 	DWORD	dwBlockPos = 0;
 	PBYTE	pOutBuf = (PBYTE)pBuffer;
 
-	// �����ȡ���ȴ���ʣ���ļ�����
+	// 如果读取长度大于剩余文件长度
 	if (m_dwFilePtr + dwSize > m_dwFileLen)
 	{
 		dwSize =  m_dwFileLen - m_dwFilePtr;
@@ -462,30 +462,30 @@ DWORD KPakFile::ReadPak(PVOID pBuffer, DWORD dwSize)
 		dwReadSize = dwSize;
 	}
 
-	// �Ѿ�����Ŀ���
+	// 已经读入的块数
 	nBlock = m_dwFilePtr >> 16;
 
-	// �Ѿ�����С��64K��ĳ���
+	// 已经读入小于64K块的长度
 	dwBlockPos = m_dwFilePtr & 0xffff;
 
-	// ��ǰ����С��64K������
+	// 以前读过小于64K的数据
 	if (dwBlockPos)
 	{
-		// Ҫ�������ݳ���С��64K
+		// 要读的数据长度小于64K
 		if (dwBlockPos + dwSize <= BLOCK_SIZE)
 		{
-			// m_pBufferΪ64K��С, �ϴ��Ѷ�����
+			// m_pBuffer为64K大小, 上次已读入了
 			g_MemCopyMmx(pOutBuf, m_pBuffer + dwBlockPos, dwSize);
 			m_dwFilePtr += dwSize;
 
-			// �����ʱ m_dwFilePtr Ϊ64K �ı���
+			// 如果此时 m_dwFilePtr 为64K 的倍数
 			if ((m_dwFilePtr & 0xffff) == 0)
 				m_dwDataPtr += (m_pBlocks[nBlock] == 0)? BLOCK_SIZE : m_pBlocks[nBlock];
 
 			return dwSize;
 		}
 
-		// Ҫ�������ݳ��ȴ���64K
+		// 要读的数据长度大于64K
 		g_MemCopyMmx(pOutBuf, m_pBuffer + dwBlockPos, BLOCK_SIZE - dwBlockPos);
 		pOutBuf += BLOCK_SIZE - dwBlockPos;
 		m_dwDataPtr += (m_pBlocks[nBlock] == 0)? BLOCK_SIZE : m_pBlocks[nBlock];
@@ -493,8 +493,8 @@ DWORD KPakFile::ReadPak(PVOID pBuffer, DWORD dwSize)
 		dwSize -= (BLOCK_SIZE - dwBlockPos);
 	}
 
-	// �������ಿ��
-	while (dwSize > 0xffff) // ����64K
+	// 读入其余部分
+	while (dwSize > 0xffff) // 大于64K
 	{
 		ReadBlock(pOutBuf, nBlock);
 		pOutBuf += BLOCK_SIZE;
@@ -503,30 +503,30 @@ DWORD KPakFile::ReadPak(PVOID pBuffer, DWORD dwSize)
 		dwSize -= BLOCK_SIZE;
 	}
 
-	// �պö����򷵻�
+	// 刚好读完则返回
 	if (dwSize == 0)
 	{
 		return dwReadSize;
 	}
 
-	// ��һ��64K���ݿ鵽������
+	// 读一个64K数据块到缓冲区
 	ReadBlock(m_pBuffer, nBlock);
 
-	// �������������ݵ�Ŀ���ַ
+	// 拷贝缓冲区数据到目标地址
 	g_MemCopyMmx(pOutBuf, m_pBuffer, dwSize);
 
-	// �����ļ�ָ��
+	// 调整文件指针
 	m_dwFilePtr += dwSize;
 
-	// ���ض�ȡ���ֽڳ���
+	// 返回读取的字节长度
 	return dwReadSize;
 }
 //---------------------------------------------------------------------------
-// ����:	Seek
-// ����:	�ļ���ָ�붨λ
-// ����:	lOffset			ƫ����
-//			dwMethod		��λ����
-// ����:	�ļ���ָ��
+// 函数:	Seek
+// 功能:	文件读指针定位
+// 参数:	lOffset			偏移量
+//			dwMethod		定位方法
+// 返回:	文件的指针
 //---------------------------------------------------------------------------
 DWORD KPakFile::SeekPak(long lOffset, DWORD dwMethod)
 {
@@ -580,11 +580,11 @@ DWORD KPakFile::SeekPak(long lOffset, DWORD dwMethod)
 }
 
 //---------------------------------------------------------------------------
-// ����:	Save
-// ����:	�����ļ�
-// ����:	FileName	�ļ���
-// ����:	TRUE		�ɹ�
-//			FALSE		ʧ��
+// 函数:	Save
+// 功能:	保存文件
+// 参数:	FileName	文件名
+// 返回:	TRUE		成功
+//			FALSE		失败
 //---------------------------------------------------------------------------
 */
 BOOL KPakFile::Save(const char* pszFileName)
@@ -620,40 +620,40 @@ BOOL KPakFile::Save(const char* pszFileName)
 
 /*
 //---------------------------------------------------------------------------
-// ����:	ReadBlock
-// ����:	��һ��ѹ�����ݿ�
-// ����:	pBuffer		������ָ��
-//			nBlock		������
-// ����:	void
+// 函数:	ReadBlock
+// 功能:	读一个压缩数据块
+// 参数:	pBuffer		缓冲区指针
+//			nBlock		块索引
+// 返回:	void
 //---------------------------------------------------------------------------
 void KPakFile::ReadBlock(PBYTE pBuffer, int nBlock)
 {
 	TCodeInfo	CodeInfo;
 
-	// ���õ�ǰʹ�õ��ļ���
+	// 设置当前使用的文件包
 	g_pPakList->SetActivePak(m_nPackage);
 
-	// ����ѹ���ӿڽṹ
+	// 填充解压缩接口结构
 	CodeInfo.lpPack = (PBYTE)m_MemRead.GetMemPtr();
 	CodeInfo.dwPackLen = m_pBlocks[nBlock];
 	CodeInfo.lpData = pBuffer;
 	CodeInfo.dwDataLen = BLOCK_SIZE;
 
-	// ����Ƿ�ѹ����
-	if (CodeInfo.dwPackLen == 0) // û��ѹ��
+	// 检查是否压缩过
+	if (CodeInfo.dwPackLen == 0) // 没有压缩
 	{
 		g_pPakList->Seek(m_dwDataPtr, FILE_BEGIN);
 		g_pPakList->Read(CodeInfo.lpData, CodeInfo.dwDataLen);
 		return;
 	}
 
-	// ���һ���ʵ�ʳ��ȣ�ֻ��LHA�ã�
+	// 最后一块的实际长度（只有LHA用）
 	if (nBlock == (m_nBlocks - 1))
 	{
 		CodeInfo.dwDataLen = m_dwFileLen - nBlock * BLOCK_SIZE;
 	}
 
-	// �ƶ�ָ�룬��ȡѹ�����ݣ��ٽ�ѹ��
+	// 移动指针，读取压缩数据，再解压缩
 	g_pPakList->Seek(m_dwDataPtr, FILE_BEGIN);
 	g_pPakList->Read(CodeInfo.lpPack, CodeInfo.dwPackLen);
 	g_pPakList->Decode(&CodeInfo);

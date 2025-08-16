@@ -26,10 +26,10 @@
 //---------------------------------------------------------------------------
 ENGINE_API KCanvas* g_pCanvas = NULL;
 //---------------------------------------------------------------------------
-// º¯Êı:	KCanvas
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KCanvas
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KCanvas::KCanvas()
 {
@@ -49,10 +49,10 @@ KCanvas::~KCanvas()
 	Terminate();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Init canvas
-// ¹¦ÄÜ:	³õÊ¼»¯canvas
-// ²ÎÊı:	nWidth, nHeight
-// ·µ»Ø:	void
+// å‡½æ•°:	Init canvas
+// åŠŸèƒ½:	åˆå§‹åŒ–canvas
+// å‚æ•°:	nWidth, nHeight
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 bool KCanvas::Init(int nWidth, int nHeight)
 {
@@ -100,10 +100,10 @@ void KCanvas::Terminate()
 
 /*
 //---------------------------------------------------------------------------
-// º¯Êı:	Sub Mark Changed
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Sub Mark Changed
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::SubMarkChanged()
 {
@@ -120,10 +120,10 @@ void KCanvas::SubMarkChanged()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Sub Add Node
-// ¹¦ÄÜ:	
-// ²ÎÊı:	nCol, nRow, KDrawNode
-// ·µ»Ø:	void
+// å‡½æ•°:	Sub Add Node
+// åŠŸèƒ½:	
+// å‚æ•°:	nCol, nRow, KDrawNode
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::SubAddNode(int nX,int nY,int nW,int nH,KDrawNode* pNode)
 {
@@ -145,10 +145,10 @@ void KCanvas::SubAddNode(int nX,int nY,int nW,int nH,KDrawNode* pNode)
 			SubAdd(col, row, pNode);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Sub Add node
-// ¹¦ÄÜ:	
-// ²ÎÊı:	nCol, nRow, KDrawNode
-// ·µ»Ø:	void
+// å‡½æ•°:	Sub Add node
+// åŠŸèƒ½:	
+// å‚æ•°:	nCol, nRow, KDrawNode
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::SubAdd(int nCol, int nRow, KDrawNode* pNode)
 {
@@ -159,10 +159,10 @@ void KCanvas::SubAdd(int nCol, int nRow, KDrawNode* pNode)
 		pSubCanvas->num++;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Sub Changed Node
-// ¹¦ÄÜ:	
-// ²ÎÊı:	nCol, nRow, KDrawNode
-// ·µ»Ø:	void
+// å‡½æ•°:	Sub Changed Node
+// åŠŸèƒ½:	
+// å‚æ•°:	nCol, nRow, KDrawNode
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::SubChangedNode(int nX,int nY,int nW,int nH,KDrawNode* pNode)
 {
@@ -186,10 +186,10 @@ void KCanvas::SubChangedNode(int nX,int nY,int nW,int nH,KDrawNode* pNode)
 			SubChanged(col, row);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Sub Changed
-// ¹¦ÄÜ:	
-// ²ÎÊı:	nCol, nRow
-// ·µ»Ø:	void
+// å‡½æ•°:	Sub Changed
+// åŠŸèƒ½:	
+// å‚æ•°:	nCol, nRow
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::SubChanged(int nCol, int nRow)
 {
@@ -241,10 +241,10 @@ bool KCanvas::GetUpdateRect(LPRECT lpSrc, LPRECT lpDest)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Clip Rect
-// ¹¦ÄÜ:	²Ã¼ô±³¾°¾ØĞÎ
-// ²ÎÊı:	lpRect	¾ØĞÎÇøÓò
-// ·µ»Ø:	void
+// å‡½æ•°:	Clip Rect
+// åŠŸèƒ½:	è£å‰ªèƒŒæ™¯çŸ©å½¢
+// å‚æ•°:	lpRect	çŸ©å½¢åŒºåŸŸ
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KCanvas::RectClip(LPRECT lpRect)
 {
@@ -271,14 +271,14 @@ BOOL KCanvas::RectClip(LPRECT lpRect)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Make Clip
-// ¹¦ÄÜ:	¸ù¾İ»æÖÆ½øĞĞ²Ã¼õ
-// ²ÎÊı:	pClipper
-// ·µ»Ø:	void
+// å‡½æ•°:	Make Clip
+// åŠŸèƒ½:	æ ¹æ®ç»˜åˆ¶è¿›è¡Œè£å‡
+// å‚æ•°:	pClipper
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pClipper)
 {
-	// ³õÊ¼»¯²Ã¼õÁ¿
+	// åˆå§‹åŒ–è£å‡é‡
 	pClipper->x = nX;
 	pClipper->y = nY;
 	pClipper->width = nWidth;
@@ -287,7 +287,7 @@ BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pC
 	pClipper->left = 0;
 	pClipper->right = 0;
 	
-	// ÉÏ±ß½ç²Ã¼õ
+	// ä¸Šè¾¹ç•Œè£å‡
 	if (pClipper->y < m_ClipRect.top)
 	{
 		pClipper->y = m_ClipRect.top;
@@ -297,7 +297,7 @@ BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pC
 	if (pClipper->height <= 0)
 		return FALSE;
 	
-	// ÏÂ±ß½ç²Ã¼õ
+	// ä¸‹è¾¹ç•Œè£å‡
 	if (pClipper->height > m_ClipRect.bottom - pClipper->y)
 	{
 		pClipper->height = m_ClipRect.bottom - pClipper->y;
@@ -305,7 +305,7 @@ BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pC
 	if (pClipper->height <= 0)
 		return FALSE;
 	
-	// ×ó±ß½ç²Ã¼õ
+	// å·¦è¾¹ç•Œè£å‡
 	if (pClipper->x < m_ClipRect.left)
 	{
 		pClipper->x = m_ClipRect.left;
@@ -315,7 +315,7 @@ BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pC
 	if (pClipper->width <= 0)
 		return FALSE;
 	
-	// ÓÒ±ß½ç²Ã¼õ
+	// å³è¾¹ç•Œè£å‡
 	if (pClipper->width > m_ClipRect.right - pClipper->x)
 	{
 		pClipper->right = pClipper->width + pClipper->x - m_ClipRect.right;
@@ -327,10 +327,10 @@ BOOL KCanvas::MakeClip(long nX, long nY, long nWidth, long nHeight, KClipper* pC
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Fill Canvas
-// ¹¦ÄÜ:	Çå³ı±³¾°»º´æ(MMX°æ±¾)
-// ²ÎÊı:	dwColor	Ìî³äÑÕÉ«
-// ·µ»Ø:	void
+// å‡½æ•°:	Fill Canvas
+// åŠŸèƒ½:	æ¸…é™¤èƒŒæ™¯ç¼“å­˜(MMXç‰ˆæœ¬)
+// å‚æ•°:	dwColor	å¡«å……é¢œè‰²
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::FillCanvas(WORD wColor)
 {
@@ -379,10 +379,10 @@ void KCanvas::FillCanvas(WORD wColor)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Update canvas
-// ¹¦ÄÜ:	Ë¢ĞÂ»­²¼
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Update canvas
+// åŠŸèƒ½:	åˆ·æ–°ç”»å¸ƒ
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::UpdateCanvas()
 {
@@ -398,10 +398,10 @@ void KCanvas::UpdateCanvas()
 }
 /*
 //---------------------------------------------------------------------------
-// º¯Êı:	Update Screen Zoom
-// ¹¦ÄÜ:	Ë¢ĞÂÆÁÄ»
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Update Screen Zoom
+// åŠŸèƒ½:	åˆ·æ–°å±å¹•
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::UpdateScreen(LPRECT lpRect)
 {
@@ -422,8 +422,8 @@ void KCanvas::UpdateScreen(LPRECT lpRect)
 }*/
 
 //---------------------------------------------------------------------------
-// º¯Êı: °ÑSurfaceÕû¸öBltµ½»­²¼ÉÏ
-// ²ÎÊı: pDest»­²¼Ä¿±êÎ»ÖÃ
+// å‡½æ•°: æŠŠSurfaceæ•´ä¸ªBltåˆ°ç”»å¸ƒä¸Š
+// å‚æ•°: pDestç”»å¸ƒç›®æ ‡ä½ç½®
 //---------------------------------------------------------------------------
 void KCanvas::BltSurface(LPDIRECTDRAWSURFACE pSurface, RECT* pDestRect)
 {
@@ -434,10 +434,10 @@ void KCanvas::BltSurface(LPDIRECTDRAWSURFACE pSurface, RECT* pDestRect)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Blit canvas to back buffer
-// ¹¦ÄÜ:	°ÑCanvasµÄÄÚÈİCopyµ½ÏÔ´æµÄBackBufferÉÏ
-// ²ÎÊı:	LPRECT
-// ·µ»Ø:	void
+// å‡½æ•°:	Blit canvas to back buffer
+// åŠŸèƒ½:	æŠŠCanvasçš„å†…å®¹Copyåˆ°æ˜¾å­˜çš„BackBufferä¸Š
+// å‚æ•°:	LPRECT
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 inline void KCanvas::UpdateBackBuffer(LPRECT lpRect)
 {
@@ -559,10 +559,10 @@ loc_back_loop3:
 	g_pDirectDraw->UpdateScreen(&rc);*/
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Blit Canvas to front buffer
-// ¹¦ÄÜ:	°ÑCanvasµÄÄÚÈİCopyµ½Ö÷ÏÔ´æÉÏ
-// ²ÎÊı:	LPRECT
-// ·µ»Ø:	void
+// å‡½æ•°:	Blit Canvas to front buffer
+// åŠŸèƒ½:	æŠŠCanvasçš„å†…å®¹Copyåˆ°ä¸»æ˜¾å­˜ä¸Š
+// å‚æ•°:	LPRECT
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 inline void KCanvas::UpdateFrontBuffer(LPRECT lpRect)
 {
@@ -685,10 +685,10 @@ loc_front_loop3:
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Update Screen
-// ¹¦ÄÜ:	Ë¢ĞÂÆÁÄ»
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Update Screen
+// åŠŸèƒ½:	åˆ·æ–°å±å¹•
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::UpdateScreen()
 {
@@ -722,7 +722,7 @@ void KCanvas::UpdateScreen()
 
     //if (m_dwScreenMode == FULLSCREEN)
     //{  
-    //    ËÙ¶ÈÊÇ¿ì,µ«ÊÇ»áµ¼ÖÂÊäÈë·¨ÉÁË¸  
+    //    é€Ÿåº¦æ˜¯å¿«,ä½†æ˜¯ä¼šå¯¼è‡´è¾“å…¥æ³•é—ªçƒ  
     //    UpdateFrontBuffer(&rc);
     //    return;
     //}
@@ -734,10 +734,10 @@ void KCanvas::UpdateScreen()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw pixel
-// ¹¦ÄÜ:	»æÖÆÏóËØ
-// ²ÎÊı:	nX, nY, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw pixel
+// åŠŸèƒ½:	ç»˜åˆ¶è±¡ç´ 
+// å‚æ•°:	nX, nY, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawPixel(int nX, int nY, int nColor)
 {
@@ -755,10 +755,10 @@ void KCanvas::DrawPixel(int nX, int nY, int nColor)
 	g_DrawPixel(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw pixel alpha
-// ¹¦ÄÜ:	»æÖÆÏóËØ(´øÍ¸Ã÷¶È)
-// ²ÎÊı:	nX, nY, nColor, nAlpha
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw pixel alpha
+// åŠŸèƒ½:	ç»˜åˆ¶è±¡ç´ (å¸¦é€æ˜åº¦)
+// å‚æ•°:	nX, nY, nColor, nAlpha
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawPixelAlpha(int nX, int nY, int nColor, int nAlpha)
 {
@@ -777,10 +777,10 @@ void KCanvas::DrawPixelAlpha(int nX, int nY, int nColor, int nAlpha)
 	g_DrawPixelAlpha(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw line
-// ¹¦ÄÜ:	»æÖÆÖ±Ïß
-// ²ÎÊı:	nX1, nY1, nX2, nY2, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw line
+// åŠŸèƒ½:	ç»˜åˆ¶ç›´çº¿
+// å‚æ•°:	nX1, nY1, nX2, nY2, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawLine(int nX1, int nY1, int nX2, int nY2, int nColor)
 {
@@ -804,10 +804,10 @@ void KCanvas::DrawLine(int nX1, int nY1, int nX2, int nY2, int nColor)
 	g_DrawLine(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw line alpha
-// ¹¦ÄÜ:	»æÖÆÖ±Ïß
-// ²ÎÊı:	nX1, nY1, nX2, nY2, nColor, nAlpha
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw line alpha
+// åŠŸèƒ½:	ç»˜åˆ¶ç›´çº¿
+// å‚æ•°:	nX1, nY1, nX2, nY2, nColor, nAlpha
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawLineAlpha(int nX1, int nY1, int nX2, int nY2, int nColor, int nAlpha)
 {
@@ -832,10 +832,10 @@ void KCanvas::DrawLineAlpha(int nX1, int nY1, int nX2, int nY2, int nColor, int 
 	g_DrawLineAlpha(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw sprite on canvas
-// ¹¦ÄÜ:	»æÖÆ¶¯»­¾«ÁéÎ»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpSprite, lpPalette
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw sprite on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶åŠ¨ç”»ç²¾çµä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpSprite, lpPalette
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawSprite(int nX, int nY, int nWidth, int nHeight,
 						 void* lpSprite, void* lpPalette)
@@ -858,10 +858,10 @@ void KCanvas::DrawSprite(int nX, int nY, int nWidth, int nHeight,
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw sprite Mix color on canvas
-// ¹¦ÄÜ:	»ìÉ«»æÖÆ¶¯»­¾«ÁéÎ»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpSprite, lpPalette,nColor,nAlpha
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw sprite Mix color on canvas
+// åŠŸèƒ½:	æ··è‰²ç»˜åˆ¶åŠ¨ç”»ç²¾çµä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpSprite, lpPalette,nColor,nAlpha
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawSpriteMixColor(int nX, int nY, int nWidth, int nHeight,
 						 void* lpSprite, void* lpPalette,int nColor,int nAlpha)
@@ -885,10 +885,10 @@ void KCanvas::DrawSpriteMixColor(int nX, int nY, int nWidth, int nHeight,
 	g_DrawSpriteMixColor(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw sprite with color on canvas
-// ¹¦ÄÜ:	»ìÉ«»æÖÆ¶¯»­¾«ÁéÎ»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpSprite, lpPalette,nColor,nAlpha
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw sprite with color on canvas
+// åŠŸèƒ½:	æ··è‰²ç»˜åˆ¶åŠ¨ç”»ç²¾çµä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpSprite, lpPalette,nColor,nAlpha
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawSpriteWithColor(int nX, int nY, int nWidth, int nHeight,
 						 void* lpSprite, void* lpPalette,int nColor,int nAlpha)
@@ -914,10 +914,10 @@ void KCanvas::DrawSpriteWithColor(int nX, int nY, int nWidth, int nHeight,
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw sprite alpha on canvas
-// ¹¦ÄÜ:	»æÖÆ¶¯»­¾«ÁéÎ»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpSprite, lpPalette
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw sprite alpha on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶åŠ¨ç”»ç²¾çµä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpSprite, lpPalette
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawSpriteAlpha(int nX, int nY, int nWidth, int nHeight,
 							  void* lpSprite, void* lpPalette, int nExAlpha)
@@ -980,10 +980,10 @@ void KCanvas::DrawSprite3LevelAlpha(int nX, int nY, int nWidth, int nHeight, voi
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw font on canvas
-// ¹¦ÄÜ:	»æÖÆ×ÖÌå
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor, lpFont
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw font on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶å­—ä½“
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor, lpFont
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawFont(int nX, int nY, int nWidth, int nHeight, int nColor, int nAlpha,void* lpFont)
 {
@@ -1021,10 +1021,10 @@ void KCanvas::DrawFontWithBorder(int nX, int nY, int nWidth, int nHeight, int nC
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw font on canvas
-// ¹¦ÄÜ:	»æÖÆÊµĞÄ×ÖÌå
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor, lpFont
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw font on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶å®å¿ƒå­—ä½“
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor, lpFont
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawFontSolid(int nX, int nY, int nWidth, int nHeight, int nColor, int nAlpha,void* lpFont)
 {
@@ -1044,10 +1044,10 @@ void KCanvas::DrawFontSolid(int nX, int nY, int nWidth, int nHeight, int nColor,
 	g_DrawFontSolid(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw bitmap on canvas
-// ¹¦ÄÜ:	»æÖÆ256É«Î»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpBitmap, lpPalette
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw bitmap on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶256è‰²ä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpBitmap, lpPalette
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawBitmap(int nX, int nY, int nWidth, int nHeight, void* lpBitmap, void* lpPalette)
 {
@@ -1066,10 +1066,10 @@ void KCanvas::DrawBitmap(int nX, int nY, int nWidth, int nHeight, void* lpBitmap
 	g_DrawBitmap(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw fade on canvas
-// ¹¦ÄÜ:	»æÖÆÒõÓ°ÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nLevel
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw fade on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶é˜´å½±åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nLevel
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawFade(int nX, int nY, int nWidth, int nHeight, int nAlpha)
 {
@@ -1087,10 +1087,10 @@ void KCanvas::DrawFade(int nX, int nY, int nWidth, int nHeight, int nAlpha)
 	g_DrawFade(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw bitmap on canvas
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpBitmap
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw bitmap on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpBitmap
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawBitmap16(int nX, int nY, int nWidth, int nHeight, void* lpBitmap)
 {
@@ -1111,10 +1111,10 @@ void KCanvas::DrawBitmap16(int nX, int nY, int nWidth, int nHeight, void* lpBitm
 	g_DrawBitmap16mmx(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw bitmap on canvas
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpBitmap
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw bitmap on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpBitmap
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawBitmap16mmx(int nX, int nY, int nWidth, int nHeight, void* lpBitmap)
 {
@@ -1132,10 +1132,10 @@ void KCanvas::DrawBitmap16mmx(int nX, int nY, int nWidth, int nHeight, void* lpB
 	g_DrawBitmap16mmx(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw bitmap on canvas
-// ¹¦ÄÜ:	»æÖÆ16Î»É«Î»Í¼
-// ²ÎÊı:	nX, nY, nWidth, nHeight, lpBitmap
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw bitmap on canvas
+// åŠŸèƒ½:	ç»˜åˆ¶16ä½è‰²ä½å›¾
+// å‚æ•°:	nX, nY, nWidth, nHeight, lpBitmap
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DrawBitmap16win(int nX, int nY, int nWidth, int nHeight, void* lpBitmap)
 {
@@ -1153,10 +1153,10 @@ void KCanvas::DrawBitmap16win(int nX, int nY, int nWidth, int nHeight, void* lpB
 	g_DrawBitmap16win(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear a region on canvas
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColorÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear a region on canvas
+// åŠŸèƒ½:	ç”¨è‰²å½©nColoræ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::Clear(int nX, int nY, int nWidth, int nHeight, int nColor)
 {
@@ -1182,10 +1182,10 @@ void KCanvas::Clear(int nX, int nY, int nWidth, int nHeight, int nColor)
 	g_Clear(&Node, this);*/
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DotClear a region on canvas
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColor¸ôµãÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	DotClear a region on canvas
+// åŠŸèƒ½:	ç”¨è‰²å½©nColoréš”ç‚¹æ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::DotClear(int nX, int nY, int nWidth, int nHeight, int nColor)
 {
@@ -1203,10 +1203,10 @@ void KCanvas::DotClear(int nX, int nY, int nWidth, int nHeight, int nColor)
 	g_DotClear(&Node, this);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear a region on canvas
-// ¹¦ÄÜ:	ÓÃÉ«²ÊnColor´øalphaÇå³ıÇøÓòÇå³ıÇøÓò
-// ²ÎÊı:	nX, nY, nWidth, nHeight, nColor
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear a region on canvas
+// åŠŸèƒ½:	ç”¨è‰²å½©nColorå¸¦alphaæ¸…é™¤åŒºåŸŸæ¸…é™¤åŒºåŸŸ
+// å‚æ•°:	nX, nY, nWidth, nHeight, nColor
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KCanvas::ClearAlpha(int nX, int nY, int nWidth, int nHeight, int nColor,int nAlpha)
 {

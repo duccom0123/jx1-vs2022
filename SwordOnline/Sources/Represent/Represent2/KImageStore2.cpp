@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//  ÎŞÌùÍ¼µÄÍ¼ĞÎ×ÊÔ´¹ÜÀí
+//  æ— è´´å›¾çš„å›¾å½¢èµ„æºç®¡ç†
 //	Copyright : Kingsoft 2002-2003
 //	Author	: Wooy(Wu yue)
 //	CreateTime:	2002-11-11
@@ -10,10 +10,10 @@
 #include <crtdbg.h.>
 #include "../../Engine/Src/KColors.h"
 
-//ÎÄ¼şÃû×ª»¯Îª×Ö·û´®
+//æ–‡ä»¶åè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
 unsigned int KImageStore2::ImageNameToId(const char* pszName)
 {
-	//															-Á¨º¯Êı....,Å¼ÆäÊµºÃÎ¯ÍÛ¸Â-
+	//															-å“©å‡½æ•°....,å¶å…¶å®å¥½å§”å“‡å˜-
 	unsigned long uId = 0;
 	if (pszName && pszName[0])
 	{
@@ -21,7 +21,7 @@ unsigned int KImageStore2::ImageNameToId(const char* pszName)
 		{
 			if ((*pszName) < 'A' || (*pszName) > 'Z')
 				uId = (uId + i * (*pszName)) % 0x8000000b * 0xffffffef;
-			else						//ÖĞÎÄ×Ö·ûµÄºó×Ö½ÚÒà¿ÉÄÜ±»×ª»»£¬ÈËÎªµØ¼Ó´óÁËÖØÂëµÄ¸ÅÂÊ¡ö
+			else						//ä¸­æ–‡å­—ç¬¦çš„åå­—èŠ‚äº¦å¯èƒ½è¢«è½¬æ¢ï¼Œäººä¸ºåœ°åŠ å¤§äº†é‡ç çš„æ¦‚ç‡â– 
 				uId = (uId + i * ((*pszName) + 0x20)) % 0x8000000b * 0xffffffef;
 		}
 		uId ^= 0x12345678;
@@ -92,7 +92,7 @@ char* KImageStore2::CreateAdjustColorPalette(const char* pOrigPalette, int nNumC
 	return pPalette;
 }
 
-//ÉèÖÃÆ«É«ÁĞ±í
+//è®¾ç½®åè‰²åˆ—è¡¨
 unsigned int KImageStore2::SetAdjustColorList(unsigned int* puColorList, unsigned int uCount)
 {
 	if (uCount > MAX_ADJUSTABLE_COLOR_NUM)
@@ -125,8 +125,8 @@ unsigned int KImageStore2::CreateImage(const char* pszName, int nWidth, int nHei
 
 	if (nWidth > 0 && nHeight > 0 && uImage && nType == ISI_T_BITMAP16)
 	{
-		if ((nIdx = FindImage(uImage, 0)) < 0 &&	//±ØĞëÊÇ²»´æÔÚÍ¬idµÄÍ¼ĞÎ
-			(m_nNumImages < m_nNumReserved || ExpandSpace()))	//ÓĞ¿Õ¼ä´æ·ÅÍ¼ĞÎ¶ÔÏó
+		if ((nIdx = FindImage(uImage, 0)) < 0 &&	//å¿…é¡»æ˜¯ä¸å­˜åœ¨åŒidçš„å›¾å½¢
+			(m_nNumImages < m_nNumReserved || ExpandSpace()))	//æœ‰ç©ºé—´å­˜æ”¾å›¾å½¢å¯¹è±¡
 		{
 			pBitmap = (KSGImageContent *)malloc(KSG_IMAGE_CONTENT_SIZE(nWidth, nHeight));
 		}
@@ -276,18 +276,18 @@ void* KImageStore2::GetImage(const char* pszImage, unsigned int& uImage,
 			}
 			ImgObj.bRef = true;
 		}
-		//else ÂÔÈ¥Í¬idµ«ÊÇ²»Í¬Í¼ĞÎÀàĞÍÇé¿öµÄ´¦Àí¡£ÒòÎªÕâÊÇÊÜÏŞÇé¿ö
+		//else ç•¥å»åŒidä½†æ˜¯ä¸åŒå›¾å½¢ç±»å‹æƒ…å†µçš„å¤„ç†ã€‚å› ä¸ºè¿™æ˜¯å—é™æƒ…å†µ
 
-		//ÎªÁËÖ´ĞĞĞ§ÂÊËùÒÔÎ´°ÑÏÂÃæµÄÅĞ¶Ï·ÅÔÚCheckBalanceº¯ÊıÌåÀïÃæ¡£ÏÂÍ¬¡£
+		//ä¸ºäº†æ‰§è¡Œæ•ˆç‡æ‰€ä»¥æœªæŠŠä¸‹é¢çš„åˆ¤æ–­æ”¾åœ¨CheckBalanceå‡½æ•°ä½“é‡Œé¢ã€‚ä¸‹åŒã€‚
 		if (m_nNumImages > m_nBalanceNum && (++m_uImageAccessCounter) > m_uCheckPoint)
 			CheckBalance();
 		return pObject;
 	}
 
-	// ÓĞ¿Õ¼ä
+	// æœ‰ç©ºé—´
 	if (m_nNumImages < m_nNumReserved || ExpandSpace())
 	{
-		nImagePosition = - nImagePosition - 1;	// FindImageÊ±ÒÑ¾­ÕÒºÃÎ»ÖÃÁË
+		nImagePosition = - nImagePosition - 1;	// FindImageæ—¶å·²ç»æ‰¾å¥½ä½ç½®äº†
 		for (int i = m_nNumImages; i > nImagePosition; i--)
 		{
 			m_pObjectList[i] = m_pObjectList[i - 1];
@@ -322,7 +322,7 @@ void* KImageStore2::GetSprFrame(const char* pszImageFile, _KISImageObj& ImgObjec
 	{
 		_KISImageFrameObj* pFrame;
 		if (ImgObject.bSingleFrameLoad == false)
-		{	//Ò»´Î¼ÓÔØÈ«²¿Ö¡µÄÍ¼ĞÎ
+		{	//ä¸€æ¬¡åŠ è½½å…¨éƒ¨å¸§çš„å›¾å½¢
 			pFrame = ImgObject.pFrames;
 			//_ASSERT(pFrame);
 			//_ASSERT(pFrame->pOffsetTable);
@@ -335,7 +335,7 @@ void* KImageStore2::GetSprFrame(const char* pszImageFile, _KISImageObj& ImgObjec
 			pFrame = &ImgObject.pFrames[nFrame];
 			pFrame->bRef = true;
 			if ((pFrameData = pFrame->pFrameData) == NULL)
-			{	//Ö¸¶¨µÄÖ¡Êı¾İ»¹²»´æÔÚ
+			{	//æŒ‡å®šçš„å¸§æ•°æ®è¿˜ä¸å­˜åœ¨
 				pFrame->pFrameData = SprGetFrame((SPRHEAD*)ImgObject.pObject, nFrame);
 				pFrameData = pFrame->pFrameData;
 			}
@@ -456,10 +456,10 @@ int KImageStore2::GetImagePixelAlpha(const char* pszImage, int nType, int nFrame
 				nY++;
 				_asm
 				{
-					//Ê¹SDIÖ¸ÏòspriteÖĞµÄÍ¼ĞÎÊı¾İÎ»ÖÃ
+					//ä½¿SDIæŒ‡å‘spriteä¸­çš„å›¾å½¢æ•°æ®ä½ç½®
 					mov		esi, pSprite
 				dec_line:
-					dec		nY				//¼õµôÒ»ĞĞ
+					dec		nY				//å‡æ‰ä¸€è¡Œ
 					jz		last_line
 					
 					mov		edx, nNumPixels
@@ -533,10 +533,10 @@ void KImageStore2::CheckBalance()
     MEMORYSTATUS MemStatus;
     GlobalMemoryStatus(&MemStatus);
 
-    // Èç¹ûÊ£Óà¿É·ÖÅäµÄÎïÀíÄÚ´æ´óÓÚÕû¸öÎïÀíÄÚ´æµÄÒ»¸ö±ÈÀı£¬Ôò²»ĞèÒª½øĞĞCacheµ÷Õû
+    // å¦‚æœå‰©ä½™å¯åˆ†é…çš„ç‰©ç†å†…å­˜å¤§äºæ•´ä¸ªç‰©ç†å†…å­˜çš„ä¸€ä¸ªæ¯”ä¾‹ï¼Œåˆ™ä¸éœ€è¦è¿›è¡ŒCacheè°ƒæ•´
     if (MemStatus.dwAvailPhys > (MemStatus.dwTotalPhys / 32))
     {
-        if (m_nNumImages < 1024)    // CacheÖĞÍ¼Æ¬µÄÉÏÏŞ£¬CacheÖĞ×î¶àÓĞ1024ÕÅÍ¼Æ¬
+        if (m_nNumImages < 1024)    // Cacheä¸­å›¾ç‰‡çš„ä¸Šé™ï¼ŒCacheä¸­æœ€å¤šæœ‰1024å¼ å›¾ç‰‡
             return;
     }
 
@@ -738,7 +738,7 @@ void* KImageStore2::LoadImage(const char* pszImageFile, _KISImageObj& ImgObj, in
 		SPRHEAD*  pSprHeader = SprGetHeader(pszImageFile, pOffsTable);
 		if (pSprHeader)
 		{
-			if (pOffsTable)	//Ò»´Î¼ÓÔØÍêÕûµÄsprÍ¼
+			if (pOffsTable)	//ä¸€æ¬¡åŠ è½½å®Œæ•´çš„språ›¾
 			{
 				pFrameObj = (_KISImageFrameObj*)malloc(sizeof(_KISImageFrameObj));
 				if (pFrameObj)
@@ -759,7 +759,7 @@ void* KImageStore2::LoadImage(const char* pszImageFile, _KISImageObj& ImgObj, in
 					}					
 				}
 			}
-			else	//·ÖÖ¡¼ÓÔØµÄÍ¼
+			else	//åˆ†å¸§åŠ è½½çš„å›¾
 			{
 				int nSize = sizeof(_KISImageFrameObj) * pSprHeader->Frames;
 				pFrameObj = (_KISImageFrameObj*)malloc(nSize);
