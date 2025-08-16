@@ -1,4 +1,4 @@
- // S3Client.cpp : Defines the entry point for the application.
+﻿ // S3Client.cpp : Defines the entry point for the application.
 //
 
 #include "KWin32.h"
@@ -17,6 +17,7 @@
 #include "Ui/ChatFilter.h"
 #include "Ui/uibase.h"
 #include "ErrorCode.h"
+#include <locale.h>
 
 #define ClientVersion
 KMyApp		MyApp;
@@ -160,6 +161,12 @@ BOOL InitRepresentShell(BOOL bFullScreen, int nWidth, int nHeight)
 
 BOOL KMyApp::GameInit()
 {
+    SetConsoleCP(65001);         // Input UTF-8
+    SetConsoleOutputCP(65001);   // Output UTF-8
+
+    // Thiết lập môi trường cơ bản
+    setlocale(LC_ALL, "en_US.UTF-8");   // Thiết lập locale UTF-8 cụ thể
+
 	Error_SetErrorString("KMyApp::GameInit");
 #ifdef KUI_USE_HARDWARE_MOUSE
 	
@@ -181,9 +188,7 @@ BOOL KMyApp::GameInit()
         SetWindowText(g_GetMainHWnd(), g_szGameName);
 	}
 	g_FindDebugWindow("#32770","DebugWin");
-/*#ifdef _DEBUG
-	g_FindDebugWindow("#32770","DebugWin");
-#endif*/
+
 
 	KIniFile	IniFile;
 	if (!IniFile.Load("\\config.ini"))

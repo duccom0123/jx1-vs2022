@@ -44,31 +44,12 @@ BOOL KFile::Open(LPSTR FileName)
 {
 	char PathName[MAXPATH];
 	
-	// close prior file handle
-	//if (m_hFile != INVALID_HANDLE_VALUE)
-	//	Close();
-
 	if (m_hFile != NULL)
 		Close();
 
 	// get full path name
 	g_GetFullPath(PathName, FileName);
-/*#ifndef WIN32
-	char *name_ptr = PathName;
-	while(*name_ptr) {
-		if(*name_ptr == '\\') *name_ptr = '/';
-		name_ptr++;
-	}
-#endif
-	// Open the file for read
-	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_READ,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		OPEN_EXISTING,	// how to create
-		FILE_ATTRIBUTE_NORMAL,// file attributes
-		NULL);			// template file*/
+
 #ifndef WIN32
         char *ptr = PathName;
         while(*ptr) {
@@ -88,10 +69,6 @@ BOOL KFile::Open(LPSTR FileName)
 		if (NULL == (m_hFile = fopen(lcasePathName, "rb")))
 #endif
 	m_hFile = fopen(PathName, "rb");
-
-	// check file handle
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
 
 	if (m_hFile == NULL)
 	{
@@ -120,23 +97,7 @@ BOOL KFile::Create(LPSTR FileName)
 	// get full path name
 	g_GetFullPath(PathName, FileName);
 
-	// change file attribute for write
-//	SetFileAttributes(PathName, FILE_ATTRIBUTE_NORMAL);
-
-	// create file for write
-/*	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_WRITE,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		CREATE_ALWAYS,	// create or over write
-		FILE_ATTRIBUTE_NORMAL, // file attributes
-		NULL);			// template file
-*/	
 	m_hFile = fopen(PathName, "wb+");
-	// check file handle
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
 
 	if (m_hFile == NULL)
 		return FALSE;
@@ -163,21 +124,6 @@ BOOL KFile::Append(LPSTR FileName)
 	// get full path name
 	g_GetFullPath(PathName, FileName);
 
-	// change file attribute for write
-//	SetFileAttributes(PathName, FILE_ATTRIBUTE_NORMAL);
-
-	// create file for write
-/*	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_WRITE,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		OPEN_ALWAYS,	// Opens the file, if it exists. If the file does not exist, the function creates the file as if dwCreationDisposition were CREATE_NEW
-		FILE_ATTRIBUTE_NORMAL, // file attributes
-		NULL);			// template file*/
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
-	
 	// check file handle
 	m_hFile = fopen(PathName, "ab");
 	if (m_hFile == NULL)

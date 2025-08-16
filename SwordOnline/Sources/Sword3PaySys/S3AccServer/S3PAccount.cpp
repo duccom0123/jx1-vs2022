@@ -34,7 +34,7 @@ int S3PAccount::Login(S3PDBConVBC* pConn, const char* strAccName, const char* st
 		return iRet;
 
 	char strSQL[MAX_PATH];
-	sprintf(strSQL, "select iClientID from Account_info where (cAccName = '%s') and (cPassword COLLATE Chinese_PRC_CS_AS = '%s')", strAccName, strPassword);
+	sprintf(strSQL, "select iClientID from Account_info where (cAccName = '%s') and (cPassword = '%s')", strAccName, strPassword);
 	S3PResultVBC* pResult = NULL;
 	if (pConn->QuerySql(strSQL, &pResult))
 	{

@@ -313,7 +313,6 @@ BOOL KSwordOnLineSever::Init()
 {
 	m_bIsRunning = TRUE;
 	g_SetRootPath(NULL);
- //   system("color 1E");
 	g_SetFilePath("\\");
 	KIniFile iniFile;
 
@@ -341,34 +340,6 @@ BOOL KSwordOnLineSever::Init()
 	iniFile.GetInteger("Overload", "Precision", 200, &m_nPrecision);
 #endif
 
-	//Cho phep server su dung 1 IP duy nhat
-	if(CHECK_IPADDRESS)
-	{
-		KSG_PASSWORD Password;
-		char PassLic[256];
-		sprintf(PassLic,"%s",IPADDRESS);
-		KSG_StringToMD5String(Password.szPassword, m_szGatewayIP);
-		if (!g_StrCmp(Password.szPassword, PassLic))
-			return 0;
-		sprintf(PassLic,"%s",IPADDRESS);
-		KSG_StringToMD5String(Password.szPassword, m_szDatabaseIP);
-		if (!g_StrCmp(Password.szPassword, PassLic))
-			return 0;
-		sprintf(PassLic,"%s",IPADDRESS);
-		KSG_StringToMD5String(Password.szPassword, m_szTransferIP);
-		if (!g_StrCmp(Password.szPassword, PassLic))
-			return 0;
-		sprintf(PassLic,"%s",IPADDRESS);
-		KSG_StringToMD5String(Password.szPassword, m_szChatIP);
-		if (!g_StrCmp(Password.szPassword, PassLic))
-			return 0;	
-		sprintf(PassLic,"%s",IPADDRESS);
-		KSG_StringToMD5String(Password.szPassword, m_szTongIP);
-		if (!g_StrCmp(Password.szPassword, PassLic))
-			return 0;
-	}
-/////////////////////////////////////////////
-
 	m_nMaxPlayer = m_nMaxPlayerCount + m_nPrecision;
 	
 	if (m_nMaxPlayer <= 0)
@@ -381,8 +352,6 @@ BOOL KSwordOnLineSever::Init()
 	{
 		m_pGameStatus = new GameStatus[m_nMaxPlayer];
 	}
-	
-//	strcpy(m_szGameSvrIP, OnlineGameLib::Win32::net_ntoa(dwIp));
 	
 	/*
 	 * Open this server to player
