@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">
-      <UniqueIdentifier>{00ae3e53-2957-4b69-8dec-b7251a18d8c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">
       <UniqueIdentifier>{175e7a37-0969-4787-ac41-b0639ab7ef34}</UniqueIdentifier>
     </Filter>
     <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">

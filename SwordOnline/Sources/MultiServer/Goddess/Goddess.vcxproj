@@ -115,7 +115,7 @@ copy release\Goddess.exe ..\..\..\..\bin\Server\release\Goddess.exe</Command>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\Common\;..\Rainbow\Interface;..\Heaven\Interface;..\..\..\lib;..\..\..\Headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

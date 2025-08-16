@@ -70,7 +70,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <AdditionalIncludeDirectories>../Engine/src;../Core/src;../Engine/include;../../Headers;..\KMp3LibClass\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;SWORDONLINE_SHOW_DBUG_INFO;SWORDONLINE_USE_MD5_PASSWORD;%(PreprocessorDefinitions)</PreprocessorDefinitions>

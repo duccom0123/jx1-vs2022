@@ -115,7 +115,7 @@ copy release\ExpandPackage.dll ..\..\..\bin\Client\release\ExpandPackage.dll</Co
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>None</DebugInformationFormat>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;EXPANDPACKAGE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

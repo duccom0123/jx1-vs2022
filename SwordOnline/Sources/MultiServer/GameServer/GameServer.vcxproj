@@ -114,7 +114,7 @@ copy Release\GameServer.map ..\..\..\..\bin\Server\release\GameServer.map</Comma
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <AdditionalIncludeDirectories>..\Common\;..\Rainbow\Interface;..\Heaven\Interface;..\..\roledbserver;..\..\..\lib\;..\..\..\Headers\;..\..\..\Sources\Engine\src;..\..\..\Sources\Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WIN32_WINNT=0x0400;%(PreprocessorDefinitions)</PreprocessorDefinitions>

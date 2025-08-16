@@ -100,7 +100,7 @@ copy FilterText_StaticLib___Win32_Release\FilterText_StaticLib.lib ..\..\lib\rel
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;FILTERTEXT_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\FilterText_StaticLib___Win32_Debug\</AssemblerListingLocation>
