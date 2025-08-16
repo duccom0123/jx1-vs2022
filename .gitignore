@@ -27,3 +27,4 @@ ub
 /SwordOnline/Sources/MultiServer/Common/Debug
 /SwordOnline/Sources/Sword3PaySys/S3AccServer/Debug
 /SwordOnline/Sources/Sword3PaySys/S3RELAYSERVER/Debug
+*.user
