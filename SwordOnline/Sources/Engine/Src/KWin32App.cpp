@@ -80,14 +80,7 @@ BOOL KWin32App::Init(HINSTANCE hInstance)
 {
 	g_StrCpy(m_szClass, "Sword3 Class");
 	sprintf(m_szTitle, "V� L�m Truy�n K�");
-//#ifdef _DEBUG
-	{
-//		sout = freopen( "c:\\stdout1.txt", "a", stdout );
-//		serr = freopen( "c:\\stderr1.txt", "a", stderr );
-//		if (sout == NULL || serr == NULL)
-//			return 0;
-	}
-//#endif
+
 	if (!InitClass(hInstance))
 		return FALSE;
 

@@ -30,3 +30,4 @@ ub
 *.user
 /SwordOnline/Sources/S3Client/Debug
 /SwordOnline/Sources/Represent/Represent3/Debug
+*.zip
