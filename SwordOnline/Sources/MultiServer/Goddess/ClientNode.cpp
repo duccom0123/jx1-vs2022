@@ -9,7 +9,9 @@
 #include "Macro.h"
 
 #include "../../../../Headers/KGmProtocol.h"
-#include "RoleNameFilter.h"
+#include "../../Engine/Src/KGLog.h"
+#include "../../Engine/Src/FilterText.h"
+extern ITextFilter *g_fltRoleName;
 
 using OnlineGameLib::Win32::CCriticalSection;
 using OnlineGameLib::Win32::CPackager;
@@ -346,6 +348,9 @@ void CClientNode::_QueryRoleList( const void *pData, size_t dataLength )
 	cout << "_QueryRoleList::end" << endl;
 #endif
 }
+
+
+
 void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 {
 	ASSERT( m_pServer && pData && dataLength );
@@ -359,7 +364,6 @@ void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 	int nResult = 0;
 
 	{{
-	extern CRoleNameFilter g_fltRoleName;
 
 	TRoleData* pRoleData = (TRoleData*)(pPD->pDataBuffer + 1);
 
@@ -373,7 +377,7 @@ void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 		}
 		if (pos >= 1)
 		{
-			if (g_fltRoleName.IsTextPass(pRoleData->BaseInfo.szName))
+			if (g_fltRoleName->IsTextPass(pRoleData->BaseInfo.szName))
 				nResult = SaveRoleInfo( &pPD->pDataBuffer[1], NULL, TRUE, FALSE);
 			else
 				nResult = -1;

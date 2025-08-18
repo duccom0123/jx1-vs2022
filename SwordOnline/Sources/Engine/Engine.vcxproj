@@ -328,6 +328,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\FilterText.cpp" />
     <ClCompile Include="Src\KAutoMutex.cpp" />
     <ClCompile Include="Src\KAviFile.cpp" />
     <ClCompile Include="Src\KBitmap.cpp" />
@@ -442,6 +443,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KZipFile.cpp" />
     <ClCompile Include="Src\KZipList.cpp" />
     <ClCompile Include="Src\md5.cpp" />
+    <ClCompile Include="Src\Regexp.cpp" />
     <ClCompile Include="Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">kwin32.h</PrecompiledHeaderFile>
@@ -577,6 +579,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\FilterText.h" />
     <ClInclude Include="Src\KAutoMutex.h" />
     <ClInclude Include="Src\KAviFile.h" />
     <ClInclude Include="Src\KBinsTree.h" />
@@ -697,6 +700,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KZipList.h" />
     <ClInclude Include="Src\LinkStruct.h" />
     <ClInclude Include="Src\md5.h" />
+    <ClInclude Include="Src\Regexp.h" />
     <ClInclude Include="Src\XPackFile.h" />
     <ClInclude Include="Include\JpgLib.h" />
     <ClInclude Include="Include\LuaLib.h" />

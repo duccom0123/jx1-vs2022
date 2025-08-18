@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">
-      <UniqueIdentifier>{175e7a37-0969-4787-ac41-b0639ab7ef34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">
       <UniqueIdentifier>{6e535939-95ba-4c06-bb26-637f9da44c81}</UniqueIdentifier>
     </Filter>
     <Filter Include="½çĂæ\½çĂæÓ¦ÓĂ\̀áÊ¾´°¿Ú">
@@ -435,12 +432,6 @@
     <ClCompile Include="Ui\UiShell.cpp">
       <Filter>ui</Filter>
     </ClCompile>
-    <ClCompile Include="Ui\ChatFilter.cpp">
-      <Filter>ÆäËü</Filter>
-    </ClCompile>
-    <ClCompile Include="Ui\FilterTextLib.cpp">
-      <Filter>ÆäËü</Filter>
-    </ClCompile>
     <ClCompile Include="S3Client.cpp">
       <Filter>ÆäËü</Filter>
     </ClCompile>
@@ -774,12 +765,6 @@
     </ClInclude>
     <ClInclude Include="Ui\UiShell.h">
       <Filter>ui</Filter>
-    </ClInclude>
-    <ClInclude Include="Ui\ChatFilter.h">
-      <Filter>ÆäËü</Filter>
-    </ClInclude>
-    <ClInclude Include="Ui\FilterTextLib.h">
-      <Filter>ÆäËü</Filter>
     </ClInclude>
     <ClInclude Include="S3Client.h">
       <Filter>ÆäËü</Filter>

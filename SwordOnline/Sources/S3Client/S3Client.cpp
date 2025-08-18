@@ -13,8 +13,7 @@
 #include "Ui/Elem/TextPic.h"
 #include "Ui/Elem/UiCursor.h"
 #include "Ui/Elem/SpecialFuncs.h"
-#include "Ui/FilterTextLib.h"
-#include "Ui/ChatFilter.h"
+#include "../Engine/Src/FilterText.h"
 #include "Ui/uibase.h"
 #include "ErrorCode.h"
 #include <locale.h>
@@ -23,8 +22,8 @@
 KMyApp MyApp;
 HINSTANCE hInst;
 KPakList g_PakList;
-CFilterTextLib g_libFilterText;
-CChatFilter g_ChatFilter;
+ITextFilter *g_libFilterText;
+ITextFilter *g_ChatFilter;
 
 #define QUIT_QUESTION_ID "22"
 #define GAME_TITLE "23"
@@ -214,8 +213,9 @@ BOOL KMyApp::GameInit()
     }
 
     IniFile.Clear();
-
-    if (!g_libFilterText.Initialize() || !g_ChatFilter.Initialize())
+    g_libFilterText = CreateTextFilter();
+    g_ChatFilter = CreateTextFilter();
+    if (!g_libFilterText || !g_ChatFilter)
         return FALSE;
 
     if (!InitRepresentShell(g_bScreen, SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -329,8 +329,6 @@ BOOL KMyApp::GameExit()
 
     ::ShowCursor(TRUE);
 
-    g_ChatFilter.Uninitialize();
-    g_libFilterText.Uninitialize();
     return TRUE;
 }
 

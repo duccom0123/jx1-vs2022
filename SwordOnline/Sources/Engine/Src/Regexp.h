@@ -1,7 +1,8 @@
 #ifndef __REGEXP_H__
 #define __REGEXP_H__
 
-//class CString;
+#include <string>
+typedef std::basic_string<TCHAR> CString;
 class regexp;
 
 class Regexp

@@ -11,10 +11,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FilterText", "FilterText\FilterText.vcxproj", "{A56AA665-9AE6-A286-795C-5D59855D95A0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FilterText_StaticLib", "FilterText\FilterText_StaticLib.vcxproj", "{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameServer", "MultiServer\GameServer\GameServer.vcxproj", "{AC0549EF-9B7F-2DFB-7553-9928BFF11EAA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Goddess", "MultiServer\Goddess\Goddess.vcxproj", "{E673C82E-ECBE-1ADA-F51A-05631F772A69}"
@@ -76,20 +72,6 @@ Global
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Debug|Win32.Build.0 = Debug|Win32
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Release|Win32.ActiveCfg = Release|Win32
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Release|Win32.Build.0 = Release|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Debug|Win32.ActiveCfg = Debug|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Release|Win32.ActiveCfg = Release|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Release|Win32.Build.0 = Release|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Debug|Win32.Build.0 = Debug|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Release|Win32.ActiveCfg = Release|Win32
-		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Release|Win32.Build.0 = Release|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Client Debug|Win32.ActiveCfg = Debug|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Client Release|Win32.ActiveCfg = Release|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Client Release|Win32.Build.0 = Release|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Debug|Win32.ActiveCfg = Debug|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Debug|Win32.Build.0 = Debug|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Release|Win32.ActiveCfg = Release|Win32
-		{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}.Release|Win32.Build.0 = Release|Win32
 		{AC0549EF-9B7F-2DFB-7553-9928BFF11EAA}.Client Debug|Win32.ActiveCfg = Debug|Win32
 		{AC0549EF-9B7F-2DFB-7553-9928BFF11EAA}.Client Release|Win32.ActiveCfg = Release|Win32
 		{AC0549EF-9B7F-2DFB-7553-9928BFF11EAA}.Client Release|Win32.Build.0 = Release|Win32

@@ -278,8 +278,6 @@ copy Release\Game.map ..\..\..\bin\Client\release\Game.map</Command>
     <ClCompile Include="Ui\ShortcutKey.cpp" />
     <ClCompile Include="Ui\UiBase.cpp" />
     <ClCompile Include="Ui\UiShell.cpp" />
-    <ClCompile Include="Ui\ChatFilter.cpp" />
-    <ClCompile Include="Ui\FilterTextLib.cpp" />
     <ClCompile Include="S3Client.cpp" />
     <ClCompile Include="NetConnect\NetConnectAgent.cpp" />
     <ClCompile Include="Login\Login.cpp" />
@@ -399,8 +397,6 @@ copy Release\Game.map ..\..\..\bin\Client\release\Game.map</Command>
     <ClInclude Include="Ui\ShortcutKey.h" />
     <ClInclude Include="Ui\UiBase.h" />
     <ClInclude Include="Ui\UiShell.h" />
-    <ClInclude Include="Ui\ChatFilter.h" />
-    <ClInclude Include="Ui\FilterTextLib.h" />
     <ClInclude Include="S3Client.h" />
     <ClInclude Include="NetConnect\NetConnectAgent.h" />
     <ClInclude Include="NetConnect\NetMsgTargetObject.h" />

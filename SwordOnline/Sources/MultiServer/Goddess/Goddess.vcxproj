@@ -163,10 +163,8 @@ copy debug\Goddess.exe ..\..\..\..\bin\server\debug\Goddess.exe</Command>
     <ClCompile Include="DBBackup.cpp" />
     <ClCompile Include="DBDumpLoad.cpp" />
     <ClCompile Include="DBTable.cpp" />
-    <ClCompile Include="FilterTextLib.cpp" />
     <ClCompile Include="Goddess.cpp" />
     <ClCompile Include="IDBRoleServer.cpp" />
-    <ClCompile Include="RoleNameFilter.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
@@ -180,9 +178,7 @@ copy debug\Goddess.exe ..\..\..\..\bin\server\debug\Goddess.exe</Command>
     <ClInclude Include="DBBackup.h" />
     <ClInclude Include="DBDumpLoad.h" />
     <ClInclude Include="DBTable.h" />
-    <ClInclude Include="FilterTextLib.h" />
     <ClInclude Include="IDBRoleServer.h" />
-    <ClInclude Include="RoleNameFilter.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

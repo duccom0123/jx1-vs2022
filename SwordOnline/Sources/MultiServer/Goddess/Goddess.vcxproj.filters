@@ -36,16 +36,10 @@
     <ClCompile Include="DBTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilterTextLib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Goddess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IDBRoleServer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoleNameFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp">
@@ -68,13 +62,7 @@
     <ClInclude Include="DBTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilterTextLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IDBRoleServer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RoleNameFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdAfx.h">

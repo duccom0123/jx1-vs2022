@@ -4,114 +4,22 @@
 //#pragma message( __FILEINFO__ "This code is broken under _MBCS, " \
 //				 "see the comments at the top of this file." )
 #endif //_MBCS
-//
-//
-// In case this isn't obvious from the later comments this is an ALTERED
-// version of the software. If you like my changes then cool, but nearly
-// all of the functionality here is derived from Henry Spencer's original
-// work.
-//
-// This code should work correctly under both _SBCS and _UNICODE, I did
-// start working on making it work with _MBCS but gave up after a while
-// since I don't need this particular port and it's not going to be as
-// straight forward as the other two.
-//
-// The problem stems from the compiled program being stored as TCHARS,
-// the individual items need to be wide enough to hold whatever character
-// is thrown at them, but currently they are accessed as an array of
-// whatever size integral type is appropriate.  _MBCS would cause this
-// to be char, but at times it would need to be larger.  This would
-// require making the program be an array of short with the appropriate
-// conversions used everywhere.  Certainly it's doable, but it's a pain.
-// What's worse is that the current code will compile and run under _MBCS,
-// only breaking when it gets wide characters thrown against it.
-//
-// I've marked at least one bit of code with #pragma messages, I may not
-// get all of them, but they should be a start
-//
-// Guy Gascoigne - Piggford (ggp@bigfoot.com) Friday, February 27, 1998
 
-
-// regcomp and regexec -- regsub and regerror are elsewhere
-// @(#)regexp.c	1.3 of 18 April 87
-//
-//	Copyright (c) 1986 by University of Toronto.
-//	Written by Henry Spencer.  Not derived from licensed software.
-//
-//	Permission is granted to anyone to use this software for any
-//	purpose on any computer system, and to redistribute it freely,
-//	subject to the following restrictions:
-//
-//	1. The author is not responsible for the consequences of use of
-//		this software, no matter how awful, even if they arise
-//		from defects in it.
-//
-//	2. The origin of this software must not be misrepresented, either
-//		by explicit claim or by omission.
-//
-//	3. Altered versions must be plainly marked as such, and must not
-//		be misrepresented as being the original software.
-// *** THIS IS AN ALTERED VERSION.  It was altered by John Gilmore,
-// *** hoptoad!gnu, on 27 Dec 1986, to add \< and \> for word-matching
-// *** as in BSD grep and ex.
-// *** THIS IS AN ALTERED VERSION.  It was altered by John Gilmore,
-// *** hoptoad!gnu, on 28 Dec 1986, to optimize characters quoted with \.
-// *** THIS IS AN ALTERED VERSION.  It was altered by James A. Woods,
-// *** ames!jaw, on 19 June 1987, to quash a regcomp() redundancy.
-// *** THIS IS AN ALTERED VERSION.  It was altered by Geoffrey Noer,
-// *** THIS IS AN ALTERED VERSION.  It was altered by Guy Gascoigne - Piggford
-// *** guy@wyrdrune.com, on 15 March 1998, porting it to C++ and converting
-// *** it to be the engine for the Regexp class
-//
-// Beware that some of this code is subtly aware of the way operator
-// precedence is structured in regular expressions.  Serious changes in
-// regular-expression syntax might require a total rethink.
-
-#include "stdafx.h"
-#include "regexp.h"
+#include "KWin32.h"
 #include "malloc.h"
+#include "wtypes.h"
+#include "tchar.h"
+#include "assert.h"
+#define ASSERT assert
 
-// The first byte of the regexp internal "program" is actually this magic
-// number; the start node begins in the second byte.
+#include <vector>
+#include "regexp.h"
+
 
 const TCHAR	MAGIC = ((TCHAR)'\234');
 
-//#define new DEBUG_NEW
-
 #pragma warning( disable : 4711 )	// automatic inline selected
 
-// The "internal use only" fields in regexp.h are present to pass info from
-// compile to execute that permits the execute phase to run lots faster on
-// simple cases.  They are:
-//
-// regstart	char that must begin a match; '\0' if none obvious
-// reganch	is the match anchored (at beginning-of-line only)?
-// regmust	string (pointer into program) that match must include, or NULL
-// regmlen	length of regmust string
-//
-// Regstart and reganch permit very fast decisions on suitable starting
-// points for a match, cutting down the work a lot.  Regmust permits fast
-// rejection of lines that cannot possibly match.  The regmust tests are
-// costly enough that regcomp() supplies a regmust only if the
-// r.e. contains something potentially expensive (at present, the only
-// such thing detected is * or + at the start of the r.e., which can
-// involve a lot of backup).  Regmlen is supplied because the test in
-// regexec() needs it and regcomp() is computing it anyway.
-
-// Structure for regexp "program".  This is essentially a linear encoding
-// of a nondeterministic finite-state machine (aka syntax charts or
-// "railroad normal form" in parsing technology).  Each node is an opcode
-// plus a "next" pointer, possibly plus an operand.  "Next" pointers of
-// all nodes except BRANCH implement concatenation; a "next" pointer with
-// a BRANCH on both ends of it is connecting two alternatives.  (Here we
-// have one of the subtle syntax dependencies: an individual BRANCH (as
-// opposed to a collection of them) is never concatenated with anything
-// because of operator precedence.)  The operand of some types of node is
-// a literal string; for others, it is a node leading into a sub-FSM.  In
-// particular, the operand of a BRANCH node is the first node of the
-// branch.  (NB this is *not* a tree structure: the tail of the branch
-// connects to the thing following the set of BRANCHes.)  The opcodes
-// are:
 
 enum {
 //  definition	number		opnd?	meaning

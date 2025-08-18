@@ -359,8 +359,8 @@ void KUiNewPlayer::Breathe()
 	}
 }
 
-#include "../ChatFilter.h"
-extern CChatFilter g_ChatFilter;
+#include "../../Engine/Src/FilterText.h"
+extern ITextFilter *g_ChatFilter;
 
 int KUiNewPlayer::GetInputInfo()
 {
@@ -377,7 +377,7 @@ int KUiNewPlayer::GetInputInfo()
 			i ++;
 	}
 
-	if(!g_ChatFilter.IsTextPass(m_Info.Name))
+	if(!g_ChatFilter->IsTextPass(m_Info.Name))
 		i = 0;
 
 	if (i < nLen)

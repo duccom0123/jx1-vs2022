@@ -19,14 +19,14 @@
     <Filter Include="library files\release">
       <UniqueIdentifier>{cac0bbd6-a790-4888-ae8c-04980faebdab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="̉ëÂëÓë½âÂë">
-      <UniqueIdentifier>{b0cbe1b1-6819-4ee4-8425-7299ecf760fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ÎÄ×Ö´¦Àí">
-      <UniqueIdentifier>{0cfb21d8-f3b7-4b3a-a66d-e64c7430f40c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ucl">
       <UniqueIdentifier>{9f0911ce-95de-440a-a910-818a81974e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text">
+      <UniqueIdentifier>{0cfb21d8-f3b7-4b3a-a66d-e64c7430f40c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="enc">
+      <UniqueIdentifier>{b0cbe1b1-6819-4ee4-8425-7299ecf760fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -376,10 +376,10 @@
       <Filter>source files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Cryptography\EDOneTimePad.cpp">
-      <Filter>̉ëÂëÓë½âÂë</Filter>
+      <Filter>enc</Filter>
     </ClCompile>
     <ClCompile Include="Src\Text.cpp">
-      <Filter>ÎÄ×Ö´¦Àí</Filter>
+      <Filter>text</Filter>
     </ClCompile>
     <ClCompile Include="Src\ucl\alloc.c">
       <Filter>ucl</Filter>
@@ -443,6 +443,12 @@
     </ClCompile>
     <ClCompile Include="Src\KGLog.cpp">
       <Filter>source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FilterText.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Regexp.cpp">
+      <Filter>text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -813,10 +819,10 @@
       <Filter>library files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Cryptography\EDOneTimePad.h">
-      <Filter>̉ëÂëÓë½âÂë</Filter>
+      <Filter>enc</Filter>
     </ClInclude>
     <ClInclude Include="Src\Text.h">
-      <Filter>ÎÄ×Ö´¦Àí</Filter>
+      <Filter>text</Filter>
     </ClInclude>
     <ClInclude Include="Src\ucl\fake16.h">
       <Filter>ucl</Filter>
@@ -846,6 +852,12 @@
       <Filter>ucl</Filter>
     </ClInclude>
     <ClInclude Include="Src\KGLog.h">
+      <Filter>header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FilterText.h">
+      <Filter>header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Regexp.h">
       <Filter>header files</Filter>
     </ClInclude>
   </ItemGroup>

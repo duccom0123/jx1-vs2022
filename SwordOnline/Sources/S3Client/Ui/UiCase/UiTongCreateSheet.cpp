@@ -278,8 +278,8 @@ void KUiTongCreateSheet::AlignmentButtonCheck(int eSide)
 /*********************************************************************
 * 功能：响应确认按钮被按下
 **********************************************************************/
-#include "../ChatFilter.h"
-extern CChatFilter g_ChatFilter;
+#include "../../Engine/Src/FilterText.h"
+extern ITextFilter* g_ChatFilter;
 
 void KUiTongCreateSheet::OnDone()
 {
@@ -293,7 +293,7 @@ void KUiTongCreateSheet::OnDone()
 	{
 		if (m_nSelectSide != -1)
 		{
-			if(!g_ChatFilter.IsTextPass(szName))
+			if(!g_ChatFilter->IsTextPass(szName))
 			{
 				m_ErrorBox.SetText(MSG_TONG_CREATE_ERROR01);
 				return;
