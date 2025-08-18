@@ -105,12 +105,6 @@
     <ClCompile Include="Src\KDSound.cpp">
       <Filter>source files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\KEicScript.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\KEicScriptSet.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\KEngine.cpp">
       <Filter>source files</Filter>
     </ClCompile>
@@ -199,18 +193,6 @@
       <Filter>source files</Filter>
     </ClCompile>
     <ClCompile Include="Src\KMp3Music.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\KMp4Audio.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\KMp4Movie.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\KMp4Video.cpp">
-      <Filter>source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\KMpgMusic.cpp">
       <Filter>source files</Filter>
     </ClCompile>
     <ClCompile Include="Src\KMsgNode.cpp">
@@ -536,12 +518,6 @@
     <ClInclude Include="Src\KDSound.h">
       <Filter>header files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\KEicScript.h">
-      <Filter>header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\KEicScriptSet.h">
-      <Filter>header files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\KEngine.h">
       <Filter>header files</Filter>
     </ClInclude>
@@ -636,18 +612,6 @@
       <Filter>header files</Filter>
     </ClInclude>
     <ClInclude Include="Src\KMp3Music.h">
-      <Filter>header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\KMp4Audio.h">
-      <Filter>header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\KMp4Movie.h">
-      <Filter>header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\KMp4Video.h">
-      <Filter>header files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\KMpgMusic.h">
       <Filter>header files</Filter>
     </ClInclude>
     <ClInclude Include="Src\KMsgNode.h">

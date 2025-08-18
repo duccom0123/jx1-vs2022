@@ -34,27 +34,6 @@ KLuaScript::KLuaScript(void)
 }
 
 //---------------------------------------------------------------------------
-// 函数:	KLuaScript::KLuaScript
-// 功能:	
-// 参数:	int StackSize
-// 返回:	
-//---------------------------------------------------------------------------
-//KLuaScript::KLuaScript(int StackSize = 0)
-//{
-//	m_LuaState				= Lua_Create(StackSize);
-//
-//	if (m_LuaState == NULL )
-//	{
-//		ScriptError(LUA_CREATE_ERROR);
-//		m_IsRuning = FALSE;
-//		return ;
-//	}
-//	m_IsRuning				= TRUE;
-//	m_szScriptName[0]		= '\0';
-//}
-
-
-//---------------------------------------------------------------------------
 // 函数:	KLuaScript::~KLuaScript
 // 功能:	
 // 参数:	void

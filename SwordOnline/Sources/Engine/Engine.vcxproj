@@ -354,8 +354,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KDrawSprite.cpp" />
     <ClCompile Include="Src\KDrawSpriteAlpha.cpp" />
     <ClCompile Include="Src\KDSound.cpp" />
-    <ClCompile Include="Src\KEicScript.cpp" />
-    <ClCompile Include="Src\KEicScriptSet.cpp" />
     <ClCompile Include="Src\KEngine.cpp" />
     <ClCompile Include="Src\KEvent.cpp" />
     <ClCompile Include="Src\KFile.cpp" />
@@ -387,10 +385,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KMessage.cpp" />
     <ClCompile Include="Src\KMouse.cpp" />
     <ClCompile Include="Src\KMp3Music.cpp" />
-    <ClCompile Include="Src\KMp4Audio.cpp" />
-    <ClCompile Include="Src\KMp4Movie.cpp" />
-    <ClCompile Include="Src\KMp4Video.cpp" />
-    <ClCompile Include="Src\KMpgMusic.cpp" />
     <ClCompile Include="Src\KMsgNode.cpp" />
     <ClCompile Include="Src\KMusic.cpp" />
     <ClCompile Include="Src\KMutex.cpp" />
@@ -608,8 +602,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KDrawSprite.h" />
     <ClInclude Include="Src\KDrawSpriteAlpha.h" />
     <ClInclude Include="Src\KDSound.h" />
-    <ClInclude Include="Src\KEicScript.h" />
-    <ClInclude Include="Src\KEicScriptSet.h" />
     <ClInclude Include="Src\KEngine.h" />
     <ClInclude Include="Src\KEvent.h" />
     <ClInclude Include="Src\KFile.h" />
@@ -643,10 +635,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KMessage.h" />
     <ClInclude Include="Src\KMouse.h" />
     <ClInclude Include="Src\KMp3Music.h" />
-    <ClInclude Include="Src\KMp4Audio.h" />
-    <ClInclude Include="Src\KMp4Movie.h" />
-    <ClInclude Include="Src\KMp4Video.h" />
-    <ClInclude Include="Src\KMpgMusic.h" />
     <ClInclude Include="Src\KMsgNode.h" />
     <ClInclude Include="Src\KMusic.h" />
     <ClInclude Include="Src\KMutex.h" />
