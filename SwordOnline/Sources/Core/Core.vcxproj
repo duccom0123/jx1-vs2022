@@ -96,7 +96,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <AdditionalIncludeDirectories>..\engine\src;..\..\Headers;..\engine\include;..\Network;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -109,6 +109,7 @@
       <ObjectFileName>.\ClientDebug\</ObjectFileName>
       <ProgramDataBaseFileName>.\ClientDebug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <PostBuildEvent>
       <Command>md ..\..\..\bin\client\debug

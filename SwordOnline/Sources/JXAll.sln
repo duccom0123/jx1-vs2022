@@ -11,10 +11,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExpandPackage", "ExpandPackage2.0\ExpandPackage.vcxproj", "{3ED41B83-3996-54D3-26AC-90CACF83096C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExpandPackageStaticLib", "ExpandPackageStaticLib\ExpandPackageStaticLib.vcxproj", "{978BD0CB-41D2-8175-D777-CC0EE40C034E}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FilterText", "FilterText\FilterText.vcxproj", "{A56AA665-9AE6-A286-795C-5D59855D95A0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FilterText_StaticLib", "FilterText\FilterText_StaticLib.vcxproj", "{B5AB24A6-A4CC-D4FB-01DC-AB4203748C37}"
@@ -28,8 +24,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLibDll", "Library\LuaLib\LuaLibDll.vcxproj", "{FCB5799E-D6F2-E39D-C0A5-88DC5787835C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rainbow", "MultiServer\Rainbow\Rainbow.vcxproj", "{BBECDB85-36D4-18A4-97E1-A155A85F0D7F}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Represent2", "Represent\Represent2\Represent2.vcxproj", "{13D06A2E-74D9-2608-B014-1570EB656C30}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Represent3", "Represent\Represent3\Represent3.vcxproj", "{59BC6174-DF03-30CF-EDB2-C66D86510E55}"
 EndProject
@@ -82,20 +76,6 @@ Global
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Debug|Win32.Build.0 = Debug|Win32
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Release|Win32.ActiveCfg = Release|Win32
 		{9B4C4669-F0E7-FE2C-EFA5-66CAAB4FFB57}.Release|Win32.Build.0 = Release|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Client Debug|Win32.ActiveCfg = Debug|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Client Release|Win32.ActiveCfg = Release|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Client Release|Win32.Build.0 = Release|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Debug|Win32.Build.0 = Debug|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Release|Win32.ActiveCfg = Release|Win32
-		{3ED41B83-3996-54D3-26AC-90CACF83096C}.Release|Win32.Build.0 = Release|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Client Debug|Win32.ActiveCfg = Debug|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Client Release|Win32.ActiveCfg = Release|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Client Release|Win32.Build.0 = Release|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Debug|Win32.Build.0 = Debug|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Release|Win32.ActiveCfg = Release|Win32
-		{978BD0CB-41D2-8175-D777-CC0EE40C034E}.Release|Win32.Build.0 = Release|Win32
 		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Debug|Win32.ActiveCfg = Debug|Win32
 		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Release|Win32.ActiveCfg = Release|Win32
 		{A56AA665-9AE6-A286-795C-5D59855D95A0}.Client Release|Win32.Build.0 = Release|Win32
@@ -145,12 +125,6 @@ Global
 		{BBECDB85-36D4-18A4-97E1-A155A85F0D7F}.Debug|Win32.Build.0 = Debug|Win32
 		{BBECDB85-36D4-18A4-97E1-A155A85F0D7F}.Release|Win32.ActiveCfg = Release|Win32
 		{BBECDB85-36D4-18A4-97E1-A155A85F0D7F}.Release|Win32.Build.0 = Release|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Client Debug|Win32.ActiveCfg = Debug|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Client Release|Win32.ActiveCfg = Release|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Client Release|Win32.Build.0 = Release|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Debug|Win32.ActiveCfg = Debug|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Release|Win32.ActiveCfg = Release|Win32
-		{13D06A2E-74D9-2608-B014-1570EB656C30}.Release|Win32.Build.0 = Release|Win32
 		{59BC6174-DF03-30CF-EDB2-C66D86510E55}.Client Debug|Win32.ActiveCfg = Debug|Win32
 		{59BC6174-DF03-30CF-EDB2-C66D86510E55}.Client Release|Win32.ActiveCfg = Release|Win32
 		{59BC6174-DF03-30CF-EDB2-C66D86510E55}.Client Release|Win32.Build.0 = Release|Win32
