@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--æ–°é—»æ¶ˆæ¯çª—å£
+//	½çÃæ--ĞÂÎÅÏûÏ¢´°¿Ú
 //	Copyright : Kingsoft 2003
 //	Author	:   Fyt(Fan Zhanpeng)
 //	CreateTime:	2003-08-01
@@ -16,8 +16,8 @@
 
 struct KNewsSysMsg
 {
-	char	sMsg[MAX_MESSAGE_LENGTH];	//æ¶ˆæ¯å†…å®¹
-	int		nMsgLen;					//æ¶ˆæ¯å†…å®¹å­˜å‚¨é•¿åº¦
+	char	sMsg[MAX_MESSAGE_LENGTH];	//ÏûÏ¢ÄÚÈİ
+	int		nMsgLen;					//ÏûÏ¢ÄÚÈİ´æ´¢³¤¶È
 	int		nCurLen;
 	unsigned uTime;
 };
@@ -31,11 +31,11 @@ struct KNewsSysMsgNode
 class KUiNewsSysMsg : public KWndWindow
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiNewsSysMsg*	OpenWindow();						// æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiNewsSysMsg*  GetIfVisible();                     //å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void				CloseWindow(BOOL bDestory = FALSE);	// å…³é—­çª—å£
-	static void				LoadScheme(const char* pszScheme);	// è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiNewsSysMsg*	OpenWindow();						// ´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiNewsSysMsg*  GetIfVisible();                     //Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void				CloseWindow(BOOL bDestory = FALSE);	// ¹Ø±Õ´°¿Ú
+	static void				LoadScheme(const char* pszScheme);	// ÔØÈë½çÃæ·½°¸
 	static void				MessageArrival(const char* pMsg, unsigned short nMsgLength);
 
 private:
@@ -44,27 +44,27 @@ private:
 	KUiNewsSysMsg();
 	~KUiNewsSysMsg() {}
 	void	Initialize();
-	void	LoadScheme(KIniFile* pIni);			// è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	virtual int		PtInWindow(int x, int y);	// ç©¿é€ï¼ï¼ï¼
+	void	LoadScheme(KIniFile* pIni);			// ÔØÈë½çÃæ·½°¸
+	virtual int		PtInWindow(int x, int y);	// ´©Í¸£¡£¡£¡
 	virtual void	PaintWindow();
 	void	ClearAll();
 	bool	AddMessage(KNewsSysMsg* pMsg);
-												// åœ¨æ¶ˆæ¯é˜Ÿåˆ—-__-||bçš„æœ€å‰é¢å¢åŠ ä¸€æ¡æ¶ˆæ¯-__-||b
+												// ÔÚÏûÏ¢¶ÓÁĞ-__-||bµÄ×îÇ°ÃæÔö¼ÓÒ»ÌõÏûÏ¢-__-||b
 	int		GetSystemMessageCount();
 	bool	RemoveSystemMessage(int nIndex);
 	const KNewsSysMsg*	GetSystemMessage(int nIndex);
 private:
 
-	KNewsSysMsgNode*	m_pHead;			// æ¶ˆæ¯é“¾è¡¨ä¸­çš„å¤´ä¸€ä¸ªæ¶ˆæ¯
+	KNewsSysMsgNode*	m_pHead;			// ÏûÏ¢Á´±íÖĞµÄÍ·Ò»¸öÏûÏ¢
 	static	int			ms_nSystemMessageCount;
 
-	int				m_nIndentH;				// å‰ç¼€å’Œæ˜¾ç¤ºæ¶ˆæ¯éƒ¨ä»½åˆ†éš”å¤šå°‘
-	int				m_nIndentV;				// æ–‡å­—ç›¸å¯¹äºçª—å£é¡¶éƒ¨çš„å‘ä¸‹ç¼©è¿‘ï¼ˆå•ä½ï¼šåƒç´ ç‚¹ï¼‰
-	int				m_nFontSize;			// å­—ä½“å¤§å°
-	unsigned int	m_uTextColor;			// å‰æ™¯å­—ç¬¦çš„é¢œè‰²
-	unsigned int	m_uTextBorderColor;		// æ–‡å­—è¾¹ç¼˜é¢œè‰²
-	unsigned int	m_uShadowColor;			// å‰æ™¯å­—ç¬¦çš„é¢œè‰²
-	unsigned int	m_uShowInterval;		// åŒä¸€ä¸ªæ¶ˆæ¯ä¸¤æ¬¡æ˜¾ç¤ºä¹‹é—´çš„é—´éš”
+	int				m_nIndentH;				// Ç°×ººÍÏÔÊ¾ÏûÏ¢²¿·İ·Ö¸ô¶àÉÙ
+	int				m_nIndentV;				// ÎÄ×ÖÏà¶ÔÓÚ´°¿Ú¶¥²¿µÄÏòÏÂËõ½ü£¨µ¥Î»£ºÏñËØµã£©
+	int				m_nFontSize;			// ×ÖÌå´óĞ¡
+	unsigned int	m_uTextColor;			// Ç°¾°×Ö·ûµÄÑÕÉ«
+	unsigned int	m_uTextBorderColor;		// ÎÄ×Ö±ßÔµÑÕÉ«
+	unsigned int	m_uShadowColor;			// Ç°¾°×Ö·ûµÄÑÕÉ«
+	unsigned int	m_uShowInterval;		// Í¬Ò»¸öÏûÏ¢Á½´ÎÏÔÊ¾Ö®¼äµÄ¼ä¸ô
 };
 
 #endif

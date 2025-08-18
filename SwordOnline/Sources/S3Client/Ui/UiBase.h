@@ -1,34 +1,34 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	å‰‘ä¾ ç•Œé¢ç³»ç»Ÿ
+//	½£ÏÀ½çÃæÏµÍ³
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-17
 ------------------------------------------------------------------------------------------
-		å‰‘ä¾ ç•Œé¢ç³»ç»Ÿä»¥å‰‘ä¾ ç•Œé¢çª—å£å…ƒç´ ä½“ç³»ä¸ºåŸºç¡€ï¼Œä¸ºå‰‘ä¾ çš„å®é™…åº”ç”¨ç•Œé¢çš„å®ç°ã€‚æ¯ä¸ªç•Œé¢çª—å£
-    éƒ½æ˜¯éµä»iKUiWindowæ¥å£ã€‚ç•Œé¢ç³»ç»Ÿå¯ä»¥æ”¯æŒè®©çª—å£æœ‰ä¸åŒçš„å¤–è¡¨(skin)ï¼Œåœ¨ç³»ç»Ÿä¸­ç§°ä¸ºæ–¹æ¡ˆ(Scheme)
-	æ•´ä¸ªç•Œé¢ç³»ç»Ÿçš„å®ç°ç¨‹åºæ–‡ä»¶éƒ½ä»¥Uiä½œä¸ºæ–‡ä»¶åå‰ç¼€ã€‚
-	    ç•Œé¢ç³»ç»Ÿå°†é’ˆå¯¹æ¯ä¸ªï¼ˆç©å®¶ï¼‰åç§°idä¿å­˜ä¸€ä»½çª—å£è‡ªå®šä¹‰åº”ç”¨é…ç½®æ–‡ä»¶ã€‚
+		½£ÏÀ½çÃæÏµÍ³ÒÔ½£ÏÀ½çÃæ´°¿ÚÔªËØÌåÏµÎª»ù´¡£¬Îª½£ÏÀµÄÊµ¼ÊÓ¦ÓÃ½çÃæµÄÊµÏÖ¡£Ã¿¸ö½çÃæ´°¿Ú
+    ¶¼ÊÇ×ñ´ÓiKUiWindow½Ó¿Ú¡£½çÃæÏµÍ³¿ÉÒÔÖ§³ÖÈÃ´°¿ÚÓĞ²»Í¬µÄÍâ±í(skin)£¬ÔÚÏµÍ³ÖĞ³ÆÎª·½°¸(Scheme)
+	Õû¸ö½çÃæÏµÍ³µÄÊµÏÖ³ÌĞòÎÄ¼ş¶¼ÒÔUi×÷ÎªÎÄ¼şÃûÇ°×º¡£
+	    ½çÃæÏµÍ³½«Õë¶ÔÃ¿¸ö£¨Íæ¼Ò£©Ãû³Æid±£´æÒ»·İ´°¿Ú×Ô¶¨ÒåÓ¦ÓÃÅäÖÃÎÄ¼ş¡£
 
-        ç•Œé¢ç³»ç»Ÿçš„å®ç°ç±»ä¸ºKUiBaseã€‚ç•Œé¢ç³»ç»Ÿçš„åº”ç”¨ï¼š
-		Init --> åˆå§‹åŒ–ç•Œé¢ç³»ç»Ÿä¸å„ç•Œé¢çª—å£ï¼Œæ‰§è¡Œæ­¤æ“ä½œåï¼Œç•Œé¢çª—å£å¯ä»¥æ‰§è¡Œçª—å£æ“ä½œåŠŸèƒ½äº†ã€‚
-		LoadConfig --> è½½å…¥çª—å£çš„å¯å®šåˆ¶çš„é…ç½®ä¿¡æ¯ï¼Œå¦‚çª—å£çš„ä½ç½®ã€‚
-		LoadScheme --> è½½å…¥çª—å£ç³»ç»Ÿçš„ç•Œé¢æ–¹æ¡ˆï¼Œåœ¨æ‰§è¡Œè¿™ä¸ªæ“ä½œåï¼Œç•Œé¢çª—å£æ‰çŸ¥é“ç”¨ä»€ä¹ˆå›¾æ¥
-						è£…æ‰®è‡ªå·±ã€‚
+        ½çÃæÏµÍ³µÄÊµÏÖÀàÎªKUiBase¡£½çÃæÏµÍ³µÄÓ¦ÓÃ£º
+		Init --> ³õÊ¼»¯½çÃæÏµÍ³Óë¸÷½çÃæ´°¿Ú£¬Ö´ĞĞ´Ë²Ù×÷ºó£¬½çÃæ´°¿Ú¿ÉÒÔÖ´ĞĞ´°¿Ú²Ù×÷¹¦ÄÜÁË¡£
+		LoadConfig --> ÔØÈë´°¿ÚµÄ¿É¶¨ÖÆµÄÅäÖÃĞÅÏ¢£¬Èç´°¿ÚµÄÎ»ÖÃ¡£
+		LoadScheme --> ÔØÈë´°¿ÚÏµÍ³µÄ½çÃæ·½°¸£¬ÔÚÖ´ĞĞÕâ¸ö²Ù×÷ºó£¬½çÃæ´°¿Ú²ÅÖªµÀÓÃÊ²Ã´Í¼À´
+						×°°ç×Ô¼º¡£
 
-	æ³¨ï¼š
-		ç°åœ¨å…¨éƒ¨çª—å£ç•Œé¢æ–¹æ¡ˆæ˜¯ä¸€æ¬¡ä¸€èµ·è½½å…¥ï¼Œä½†æ˜¯æ¯ä¸ªç•Œé¢ä¸­ç”¨åˆ°çš„å›¾éƒ½åœ¨ç¬¬ä¸€æ¬¡è¢«æ˜¾ç¤ºçš„æ—¶å€™æ‰
-	è½½å…¥ï¼Œéœ€è¦æ—¶å¯ä»¥è¿›ä¸€æ­¥æ”¹é€ ä¼˜åŒ–ä¸ºå„ä¸ªçª—å£çš„ç•Œé¢æ–¹æ¡ˆåœ¨ç¬¬ä¸€æ¬¡æ˜¾ç¤ºçª—å£æ—¶å€™è¢«è½½å…¥ã€‚
+	×¢£º
+		ÏÖÔÚÈ«²¿´°¿Ú½çÃæ·½°¸ÊÇÒ»´ÎÒ»ÆğÔØÈë£¬µ«ÊÇÃ¿¸ö½çÃæÖĞÓÃµ½µÄÍ¼¶¼ÔÚµÚÒ»´Î±»ÏÔÊ¾µÄÊ±ºò²Å
+	ÔØÈë£¬ĞèÒªÊ±¿ÉÒÔ½øÒ»²½¸ÄÔìÓÅ»¯Îª¸÷¸ö´°¿ÚµÄ½çÃæ·½°¸ÔÚµÚÒ»´ÎÏÔÊ¾´°¿ÚÊ±ºò±»ÔØÈë¡£
 *****************************************************************************************/
 #pragma once
 
 enum UISYS_STATUS
 {
 	UIS_S_IDLE,
-	UIS_S_TRADE_PLAYER,		//ï¼ˆä¸Playerï¼‰äº¤æ˜“
-	UIS_S_TRADE_NPC,		//ï¼ˆä¸npcï¼‰äº¤æ˜“
-	UIS_S_TRADE_SALE,		//ï¼ˆä¸npcï¼‰äº¤æ˜“ å–
-	UIS_S_TRADE_BUY,		//ï¼ˆä¸npcï¼‰äº¤æ˜“ ä¹°
-	UIS_S_TRADE_REPAIR,		//ï¼ˆä¸npcï¼‰äº¤æ˜“ ä¿®ç†
+	UIS_S_TRADE_PLAYER,		//£¨ÓëPlayer£©½»Ò×
+	UIS_S_TRADE_NPC,		//£¨Óënpc£©½»Ò×
+	UIS_S_TRADE_SALE,		//£¨Óënpc£©½»Ò× Âô
+	UIS_S_TRADE_BUY,		//£¨Óënpc£©½»Ò× Âò
+	UIS_S_TRADE_REPAIR,		//£¨Óënpc£©½»Ò× ĞŞÀí
 	UIS_S_TRADE_SETPRICE,
 	UIS_S_LOCK_ITEM,
 	UIS_S_UNLOCK_ITEM,
@@ -74,60 +74,60 @@ class KUiBase
 public:
 	KUiBase();
 	~KUiBase();
-	int		Init();											//åˆå§‹åŒ–
-	void	Exit();											//é€€å‡º
+	int		Init();											//³õÊ¼»¯
+	void	Exit();											//ÍË³ö
 
-	void	SetUserAccount(char* pszId, char* pszRole);		//è®¾ç½®ç”¨æˆ·è´¦å·
-	int		GetUserPrivateDataFolder(char* pszFilePath, int nSize);	//è·å¾—å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„å­˜å‚¨ç›®å½•
-	const char*	GetUserTempDataFolder();					//è·å¾—ç©å®¶æ•°æ®çš„ä¸´æ—¶å­˜ç›˜ç›®å½•ä½ç½®
-	void	CleanTempDataFolder();							//æ¸…é™¤ç©å®¶æ•°æ®çš„ä¸´æ—¶å­˜ç›˜ç›®å½•å†…çš„å…¨éƒ¨æ–‡ä»¶
-	void	CleanPrivateDataFolder();						//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„å­˜å‚¨ç›®å½•
-	void	DeletePrivateDataFile(const char* pszFileName);	//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„æŸä¸ªæ–‡ä»¶
+	void	SetUserAccount(char* pszId, char* pszRole);		//ÉèÖÃÓÃ»§ÕËºÅ
+	int		GetUserPrivateDataFolder(char* pszFilePath, int nSize);	//»ñµÃµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄ´æ´¢Ä¿Â¼
+	const char*	GetUserTempDataFolder();					//»ñµÃÍæ¼ÒÊı¾İµÄÁÙÊ±´æÅÌÄ¿Â¼Î»ÖÃ
+	void	CleanTempDataFolder();							//Çå³ıÍæ¼ÒÊı¾İµÄÁÙÊ±´æÅÌÄ¿Â¼ÄÚµÄÈ«²¿ÎÄ¼ş
+	void	CleanPrivateDataFolder();						//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄ´æ´¢Ä¿Â¼
+	void	DeletePrivateDataFile(const char* pszFileName);	//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄÄ³¸öÎÄ¼ş
 
-	int		LoadScheme(const char* pSchemeName);			//æŒ‰ç…§æŸç§æ–¹æ¡ˆè½½å…¥ç•Œé¢(Skin)
-	int		SchemeCount();									//è·å¾—ç•Œé¢æ–¹æ¡ˆçš„æ•°ç›®
-	int		GetScheme(int nIndex, char* pName, char* pPath);//è·å¾—æŸä¸ªç•Œé¢æ–¹æ¡ˆçš„åç§°ä¸è·¯å¾„
-	int		GetCurSchemePath(char* pBuffer, int nSize);		//è·å¾—å½“å‰ç•Œé¢æ–¹æ¡ˆçš„è·¯å¾„
+	int		LoadScheme(const char* pSchemeName);			//°´ÕÕÄ³ÖÖ·½°¸ÔØÈë½çÃæ(Skin)
+	int		SchemeCount();									//»ñµÃ½çÃæ·½°¸µÄÊıÄ¿
+	int		GetScheme(int nIndex, char* pName, char* pPath);//»ñµÃÄ³¸ö½çÃæ·½°¸µÄÃû³ÆÓëÂ·¾¶
+	int		GetCurSchemePath(char* pBuffer, int nSize);		//»ñµÃµ±Ç°½çÃæ·½°¸µÄÂ·¾¶
 	
-	//æ“ä½œé…ç½®ã€è®¾å®šæ–‡ä»¶
-	KIniFile*	GetCommSettingFile();						//æ‰“å¼€ä¿å­˜ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
-	void		CloseCommSettingFile(bool bSave);			//å…³é—­ä¿å­˜ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
-	KIniFile*	GetPrivateSettingFile();					//æ‰“å¼€æ‰“å¼€å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
-	void		ClosePrivateSettingFile(bool bSave);		//å…³é—­æ‰“å¼€å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+	//²Ù×÷ÅäÖÃ¡¢Éè¶¨ÎÄ¼ş
+	KIniFile*	GetCommSettingFile();						//´ò¿ª±£´æ½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
+	void		CloseCommSettingFile(bool bSave);			//¹Ø±Õ±£´æ½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
+	KIniFile*	GetPrivateSettingFile();					//´ò¿ª´ò¿ªµ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
+	void		ClosePrivateSettingFile(bool bSave);		//¹Ø±Õ´ò¿ªµ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 	KIniFile*	GetCommConfigFile();
 	void		CloseCommConfigFile();
 
-	//è®¾ç½®è·å–ç•Œé¢æ“ä½œçŠ¶æ€
+	//ÉèÖÃ»ñÈ¡½çÃæ²Ù×÷×´Ì¬
 	UISYS_STATUS GetStatus() { return m_Status; }
 	void		 SetStatus(UISYS_STATUS eStatus);
 	void		 RestoreStatus();
-	void		 SetCurrentCursor();						//æ ¹æ®å½“å‰çŠ¶æ€è®¾ç½®é¼ æ ‡æŒ‡é’ˆå›¾å½¢
+	void		 SetCurrentCursor();						//¸ù¾İµ±Ç°×´Ì¬ÉèÖÃÊó±êÖ¸ÕëÍ¼ĞÎ
 	int			 IsOperationEnable(UISYS_OPERATION uOper);
 
-	void		LoadPrivateConfig();						//è½½å…¥é…ç½®çºªå½•ï¼Œå¦‚å®šåˆ¶çš„çª—å£ä½ç½®
-	int			SavePrivateConfig();						//å­˜å‚¨é…ç½®çºªå½•
+	void		LoadPrivateConfig();						//ÔØÈëÅäÖÃ¼ÍÂ¼£¬Èç¶¨ÖÆµÄ´°¿ÚÎ»ÖÃ
+	int			SavePrivateConfig();						//´æ´¢ÅäÖÃ¼ÍÂ¼
 
 	void		RegisterEvent(const char* szName, HANDLE hWnd);
 	void		UnregisterEvent(const char* szName, HANDLE hWnd);
-	int			NotifyEvent(const char* szEvent);		//0ä¸ºå·²ç»å¤„ç†, ä¸è¦å†å¤„ç†äº†, é0ä¸ºæœªå¤„ç†æˆ–é”™è¯¯
-	int			NotifyOneEvent(const char* szName, const char* szEvent);		//0ä¸ºå·²ç»å¤„ç†, ä¸è¦å†å¤„ç†äº†, é0ä¸ºæœªå¤„ç†æˆ–é”™è¯¯
+	int			NotifyEvent(const char* szEvent);		//0ÎªÒÑ¾­´¦Àí, ²»ÒªÔÙ´¦ÀíÁË, ·Ç0ÎªÎ´´¦Àí»ò´íÎó
+	int			NotifyOneEvent(const char* szName, const char* szEvent);		//0ÎªÒÑ¾­´¦Àí, ²»ÒªÔÙ´¦ÀíÁË, ·Ç0ÎªÎ´´¦Àí»ò´íÎó
 
 private:
 	void	LoadSchemeForEachWnd();
-	int		GetSchemePath(const char* pScheme);				//è·å¾—å½“å‰æŒ‡å®šç•Œé¢æ–¹æ¡ˆçš„ç›®å½•å
-	void	ClearFolder(const char* pszFolder, bool bDeleteFolder);	//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„å­˜å‚¨ç›®å½•
+	int		GetSchemePath(const char* pScheme);				//»ñµÃµ±Ç°Ö¸¶¨½çÃæ·½°¸µÄÄ¿Â¼Ãû
+	void	ClearFolder(const char* pszFolder, bool bDeleteFolder);	//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄ´æ´¢Ä¿Â¼
 
 public:
-	char		m_UserAccountId[32];		//å½“å‰ç©å®¶è´¦å·åœ¨ç•Œé¢ç³»ç»Ÿä¸­çš„id
+	char		m_UserAccountId[32];		//µ±Ç°Íæ¼ÒÕËºÅÔÚ½çÃæÏµÍ³ÖĞµÄid
 private:
-	UISYS_STATUS	m_Status;				//ç•Œé¢æ“ä½œçŠ¶æ€
-	UISYS_STATUS	m_PrevStatus;				//ç•Œé¢æ“ä½œçŠ¶æ€
+	UISYS_STATUS	m_Status;				//½çÃæ²Ù×÷×´Ì¬
+	UISYS_STATUS	m_PrevStatus;				//½çÃæ²Ù×÷×´Ì¬
 
-	char		m_CurScheme[32];			//å½“å‰ç•Œé¢æ–¹æ¡ˆçš„åç§°
-	char		m_CurSchemePath[40];		//å½“å‰ç•Œé¢æ–¹æ¡ˆçš„è·¯å¾„
+	char		m_CurScheme[32];			//µ±Ç°½çÃæ·½°¸µÄÃû³Æ
+	char		m_CurSchemePath[40];		//µ±Ç°½çÃæ·½°¸µÄÂ·¾¶
 
-	KIniFile*	m_pUiCommSettingFile;		//ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
-	KIniFile*	m_pUiPrivateSettingFile;	//å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+	KIniFile*	m_pUiCommSettingFile;		//½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
+	KIniFile*	m_pUiPrivateSettingFile;	//µ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 	KIniFile*	m_pUiCommConfigFile;
 
 	typedef std::map<std::string, HANDLE> EVENTWNDLIST;

@@ -1,28 +1,28 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--å›¾å½¢çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--Í¼ĞÎ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-25
 ------------------------------------------------------------------------------------------
-	æ˜¾ç¤º(spr)å›¾å½¢çš„çª—å£ã€‚
+	ÏÔÊ¾(spr)Í¼ĞÎµÄ´°¿Ú¡£
 *****************************************************************************************/
 #pragma once
 #include "WndWindow.h"
 #include "UiImage.h"
 
-#define	WNDIMG_ES_EXCLUDE_TRANS		0x0001		//ä»¥å›¾å½¢çš„å½¢çŠ¶æ¥ä½œä¸ºçª—å£çš„å½¢çŠ¶
+#define	WNDIMG_ES_EXCLUDE_TRANS		0x0001		//ÒÔÍ¼ĞÎµÄĞÎ×´À´×÷Îª´°¿ÚµÄĞÎ×´
 
 class KWndImage : public KWndWindow
 {
 public:
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
-	virtual int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
-	virtual void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
+	virtual void	PaintWindow();							//´°Ìå»æÖÆ
 	void			Clone(KWndImage* pCopy);
 	
-	void	SetFrame(int nFrame);							//è®¾ç½®å›¾å½¢å¸§
-	int		NextFrame();									//å›¾å½¢æ¢å¸§
-	void	SetMaxFrame(int nMaxFrame);							//è®¾ç½®å›¾å½¢å¸§
+	void	SetFrame(int nFrame);							//ÉèÖÃÍ¼ĞÎÖ¡
+	int		NextFrame();									//Í¼ĞÎ»»Ö¡
+	void	SetMaxFrame(int nMaxFrame);							//ÉèÖÃÍ¼ĞÎÖ¡
 	int 	GetMaxFrame();
 	void	SetImage(short nType, const char* pszImgName, bool bAdjustWndSize = false);
 	char*	GetImage();

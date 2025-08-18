@@ -33,17 +33,17 @@ extern iCoreShell*		g_pCoreShell;
 #define		MENU_SKILL8		0x34
 #define		MENU_SKILL9		0x36
 
-#define		NO_SETTINGS					"KhÂ«ng thiÃ•t lÃ‹p"
+#define		NO_SETTINGS					"Kh«ng thiÕt lËp"
 #define		MAGIC_KEYNAME				"%s >= %d"
 #define		MOVEMPS_KEYNAME				"%d:%d/%d"
 #define		SAVE_SECTION				"AutoPlay"
 
 char szArray_SelRoom[][64] = 
 {
-	"HÂµnh trang hÃ•t chÃ§ 1 Â«",
-	"HÂµnh trang hÃ•t chÃ§ 2 Â«",
-	"HÂµnh trang hÃ•t chÃ§ 4 Â«",
-	"HÂµnh trang hÃ•t chÃ§ 6 Â«",
+	"Hµnh trang hÕt chç 1 «",
+	"Hµnh trang hÕt chç 2 «",
+	"Hµnh trang hÕt chç 4 «",
+	"Hµnh trang hÕt chç 6 «",
 };
 
 KUiRecovery* KUiRecovery::m_pSelf = NULL;
@@ -660,53 +660,53 @@ void KUiRecovery::OnCheckInput()
 
 char szArray_Pickkind[][64] = 
 {
-	"TÃŠt cÂ¶ trang bÃ",
-	"Trang bÃ trang sÃ¸c",
-	"Trang bÃ thuÃ©c tÃnh",
+	"TÊt c¶ trang bŞ",
+	"Trang bŞ trang søc",
+	"Trang bŞ thuéc tİnh",
 };
 
 char szArray_Equipmagic[MAX_AUTO_FILTERL][2][64] = 
 {
-	"Sinh lÃ¹c(Â®)", 		"lifemax_v",
-	"NÃ©i lÃ¹c(Â®)", 		"manamax_v",
-	"ThÃ“ lÃ¹c(Â®)", 		"staminamax_v",
-	"PhÃ´c hÃ¥i SL(Â®)", 	"lifereplenish_v",
-	"PhÃ´c hÃ¥i NL(Â®)", 	"manareplenish_v",
-	"PhÃ´c hÃ¥i TL(Â®)", 	"staminareplenish_v",
-	"HÃ³t sinh lÃ¹c(%)", 	"steallifeenhance_p",
-	"HÃ³t nÃ©i lÃ¹c(%)", 	"stealmanaenhance_p",
-	"HÃ³t thÃ“ lÃ¹c(%)", 	"stealstaminaenhance_p",
-	"SÃ¸c mÂ¹nh(Â®)", 		"strength_v",
-	"ThÂ©n phÂ¸p(Â®)", 	"dexterity_v",
-	"Sinh khÃ(Â®)", 		"vitality_v",
-	"NÃ©i cÂ«ng(Â®)", 		"energy_v",
-	"PhÃŸng thÃ±(%)", 	"physicsres_p",
-	"KhÂ¸ng Â®Ã©c(%)", 	"poisonres_p",
-	"KhÂ¸ng bÂ¨ng(%)", 	"coldres_p",
-	"KhÂ¸ng hÃ¡a(%)", 	"fireres_p",
-	"KhÂ¸ng lÂ«i(%)", 	"lightingres_p",
-	"KhÂ¸ng tÃŠt cÂ¶(%)", 	"allres_p",
-	"TÃ¨c Â®Ã© chÂ¹y(%)", 	"fastwalkrun_p",
-	"TÃ¨c Â®Ã© Â®Â¸nh(%)", 	"attackspeed_v",
-	"PhÂ¶n Â®ÃŸn cÃ‹n(Â®)", 	"meleedamagereturn_v",
-	"STVL ngoÂ¹i(Â®)", 	"addphysicsdamage_v",
-	"BÂ¨ng sÂ¸t ngoÂ¹i(Â®)", "addcolddamage_v",
-	"Â§Ã©c sÂ¸t ngoÂ¹i(Â®)", "addpoisondamage_v",
-	"STVL ngoÂ¹i(%)", 	"addphysicsdamage_p",
+	"Sinh lùc(®)", 		"lifemax_v",
+	"Néi lùc(®)", 		"manamax_v",
+	"ThÓ lùc(®)", 		"staminamax_v",
+	"Phôc håi SL(®)", 	"lifereplenish_v",
+	"Phôc håi NL(®)", 	"manareplenish_v",
+	"Phôc håi TL(®)", 	"staminareplenish_v",
+	"Hót sinh lùc(%)", 	"steallifeenhance_p",
+	"Hót néi lùc(%)", 	"stealmanaenhance_p",
+	"Hót thÓ lùc(%)", 	"stealstaminaenhance_p",
+	"Søc m¹nh(®)", 		"strength_v",
+	"Th©n ph¸p(®)", 	"dexterity_v",
+	"Sinh khİ(®)", 		"vitality_v",
+	"Néi c«ng(®)", 		"energy_v",
+	"Phßng thñ(%)", 	"physicsres_p",
+	"Kh¸ng ®éc(%)", 	"poisonres_p",
+	"Kh¸ng b¨ng(%)", 	"coldres_p",
+	"Kh¸ng háa(%)", 	"fireres_p",
+	"Kh¸ng l«i(%)", 	"lightingres_p",
+	"Kh¸ng tÊt c¶(%)", 	"allres_p",
+	"Tèc ®é ch¹y(%)", 	"fastwalkrun_p",
+	"Tèc ®é ®¸nh(%)", 	"attackspeed_v",
+	"Ph¶n ®ßn cËn(®)", 	"meleedamagereturn_v",
+	"STVL ngo¹i(®)", 	"addphysicsdamage_v",
+	"B¨ng s¸t ngo¹i(®)", "addcolddamage_v",
+	"§éc s¸t ngo¹i(®)", "addpoisondamage_v",
+	"STVL ngo¹i(%)", 	"addphysicsdamage_p",
 	"CHSTTNL(%)", 		"damage2addmana_p",
-	"May mÂ¾n(%)", 		"lucky_v",
-	"BÃ¡ qua nÃ trÂ¸nh(%)", "ignoredefense_p",
-	"Â§Ã© chÃnh xÂ¸c(Â®)", 	"attackrating_v",
-	"STLV nÃ©i(Â®)", 		"addphysicsmagic_v",
-	"BÂ¨ng sÂ¸t nÃ©i(Â®)", 	"addcoldmagic_v",
-	"HÃ¡a sÂ¸t nÃ©i(Â®)", 	"addfiremagic_v",
-	"LÂ«i sÂ¸t nÃ©i(Â®)", 	"addlightingmagic_v",
-	"Â§Ã©c sÂ¸t nÃ©i(Â®)", 	"addpoisonmagic_v",
-	"GiÂ¶m chÃ‹m(%)", 	"freezetimereduce_p",
-	"GiÂ¶m trÃ³ng Â®Ã©c(%)", "poisontimereduce_p",
-	"GiÂ¶m choÂ¸ng(%)", 	"stuntimereduce_p",
-	"GiÂ¶m thÂ­Â¬ng(%)", 	"fasthitrecover_v",
-	"KÃ¼ nÂ¨ng vÃ¨n cÃ£(Â®)", "allskill_v",
+	"May m¾n(%)", 		"lucky_v",
+	"Bá qua nĞ tr¸nh(%)", "ignoredefense_p",
+	"§é chİnh x¸c(®)", 	"attackrating_v",
+	"STLV néi(®)", 		"addphysicsmagic_v",
+	"B¨ng s¸t néi(®)", 	"addcoldmagic_v",
+	"Háa s¸t néi(®)", 	"addfiremagic_v",
+	"L«i s¸t néi(®)", 	"addlightingmagic_v",
+	"§éc s¸t néi(®)", 	"addpoisonmagic_v",
+	"Gi¶m chËm(%)", 	"freezetimereduce_p",
+	"Gi¶m tróng ®éc(%)", "poisontimereduce_p",
+	"Gi¶m cho¸ng(%)", 	"stuntimereduce_p",
+	"Gi¶m th­¬ng(%)", 	"fasthitrecover_v",
+	"Kü n¨ng vèn cã(®)", "allskill_v",
 };
 void KUiPick::Initialize()
 {
@@ -1211,15 +1211,15 @@ void KUiPick::SaveSetting(KIniFile* pFile)
 char szArray_FightBack[][64] = 
 {
 	NO_SETTINGS,
-	"ThÃ¦ Â®Ãa phÃ¯",
+	"Thæ ®Şa phï",
 };
 
 char szArray_FightBoss[][64] = 
 {
 	NO_SETTINGS,
-	"TrÂ¸nh tÃŠt cÂ¶ Boss",
-	"ChÃ˜ trÂ¸nh Boss Xanh",
-	"ChÃ˜ trÂ¸nh Boss VÂµng",
+	"Tr¸nh tÊt c¶ Boss",
+	"ChØ tr¸nh Boss Xanh",
+	"ChØ tr¸nh Boss Vµng",
 };
 
 void KUiFight::Initialize()
@@ -1972,11 +1972,11 @@ KUiPlayerItem*	m_pNearbyPlayersList;
 char szArray_Team[][64] = 
 {
 	NO_SETTINGS,
-	"TÃ¹ nhÃ‹n tÃŠt cÂ¶ lÃªi mÃªi nhÃ£m",
-	"ChÃ˜ nhÃ‹n nhÃ£m cÃ£ trong danh sÂ¸ch",
-	"TÃ¹ mÃªi nhÃ£m tÃŠt cÂ¶",
-	"TÃ¹ mÃªi nhÃ£m theo danh sÂ¸ch",
-	"TÃµ chÃ¨i vÂµo nhÃ£m",
+	"Tù nhËn tÊt c¶ lêi mêi nhãm",
+	"ChØ nhËn nhãm cã trong danh s¸ch",
+	"Tù mêi nhãm tÊt c¶",
+	"Tù mêi nhãm theo danh s¸ch",
+	"Tõ chèi vµo nhãm",
 };
 
 void KUiOther::Initialize()

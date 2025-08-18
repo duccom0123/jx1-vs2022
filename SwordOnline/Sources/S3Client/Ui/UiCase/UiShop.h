@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiTrade.h
-//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-12-21
-//	åŠŸèƒ½æè¿°	ï¼š	npcäº¤æ˜“ç³»ç»Ÿç•Œé¢
+//	ÎÄ¼şÃû		£º	UiTrade.h
+//	´´½¨Õß		£º	Wooy(Wu yue)
+//	´´½¨Ê±¼ä	£º	2002-12-21
+//	¹¦ÄÜÃèÊö	£º	npc½»Ò×ÏµÍ³½çÃæ
 // -------------------------------------------------------------------------
 #pragma once
 
@@ -16,15 +16,15 @@ struct KUiObjAtContRegion;
 class KUiShop : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiShop*		OpenWindow();				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiShop*		GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void			CloseWindow();				//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiShop*		OpenWindow();				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiShop*		GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void			CloseWindow();				//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
 	static void			CancelTrade();
 	void				UpdateData();	
 	void				UpdateItem(KUiObjAtContRegion* pItem, int bAdd);
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 private:
 	KUiShop();
 	~KUiShop() {}
@@ -32,7 +32,7 @@ private:
 	void	Clear();
 	void	OnClickButton(KWndButton* pWnd, int bCheck);
 	void	OnBuyItem(KUiDraggedObject* pItem, bool bDoImmed);
-	void	Initialize();						//åˆå§‹åŒ–
+	void	Initialize();						//³õÊ¼»¯
 private:
 	static KUiShop*		m_pSelf;
 private:
@@ -40,7 +40,7 @@ private:
 	int					m_nObjCount;
 	int					m_nPageCount;
 	int					m_nCurrentPage;
-	KWndObjectMatrix	m_ItemsBox;		//ç‰©å“æ 
+	KWndObjectMatrix	m_ItemsBox;		//ÎïÆ·À¸
 	KWndButton			m_BuyBtn;
 	KWndButton			m_SellBtn;
 	KWndButton			m_RepairBtn;

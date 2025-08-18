@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ—è¡¨çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÁĞ±í´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-8
@@ -20,7 +20,7 @@ extern iRepresentShell*	g_pRepresentShell;
 #define IS_MULTI_SEL	(m_Style & WNDLIST_ES_MULTI_SEL)
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndList::KWndList()
 {
@@ -83,7 +83,7 @@ void KWndList::SetScrollbar(KWndScrollBar* pScroll)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 int KWndList::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -96,7 +96,7 @@ int KWndList::Init(KIniFile* pIniFile, const char* pSection)
 		if (m_nFontSize < 8)
 			m_nFontSize = 8;
 		pIniFile->GetInteger(pSection, "RowDis", 0, &m_nRowDis);
-		//====è¯»å–æ–‡å­—å¯¹é½æ–¹å¼====
+		//====¶ÁÈ¡ÎÄ×Ö¶ÔÆë·½Ê½====
 		m_Style &= ~WNDLIST_ES_HALIGN_FILTER;
 		int		nValue;
 		pIniFile->GetInteger(pSection, "HAlign", 0, &nValue);
@@ -147,7 +147,7 @@ int KWndList::Init(KIniFile* pIniFile, const char* pSection)
 	return false;
 }
 
-//å¯ç”¨/ç¦ç”¨å¤šé€‰
+//ÆôÓÃ/½ûÓÃ¶àÑ¡
 void KWndList::EnableMultiSel(int bEnable)
 {
 	if (bEnable && IS_MULTI_SEL == 0)
@@ -190,7 +190,7 @@ void KWndList::SetCustomColorOffset(int nOffset)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KWndList::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -227,7 +227,7 @@ int KWndList::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return nRet;
 }
 
-//è·å¾—çš„æŒ‡å®šä½ç½®çš„é€‰é¡¹çš„ç´¢å¼•
+//»ñµÃµÄÖ¸¶¨Î»ÖÃµÄÑ¡ÏîµÄË÷Òı
 int	KWndList::GetIemIndexAtPoint(int x, int y)
 {
 	int nSel = m_nTopItemIndex + (y - m_nAbsoluteTop) / (m_nFontSize + 1 + m_nRowDis) * m_nNumColumn;
@@ -243,7 +243,7 @@ int	KWndList::GetIemIndexAtPoint(int x, int y)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼üÔÚ´Ë°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndList::OnLButtonDown(int x, int y)
 {
@@ -275,7 +275,7 @@ void KWndList::OnLButtonDown(int x, int y)
 	}
 }
 
-//åˆ¤æ–­æŸé¡¹æ˜¯å¦è¢«é€‰ä¸­
+//ÅĞ¶ÏÄ³ÏîÊÇ·ñ±»Ñ¡ÖĞ
 int	KWndList::IsItemSel(int nIndex)
 {
 	if (IS_MULTI_SEL == 0)
@@ -287,7 +287,7 @@ int	KWndList::IsItemSel(int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å³é”®åœ¨æ­¤æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦Êó±êÓÒ¼üÔÚ´Ë°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndList::OnRButtonDown(int x, int y)
 {
@@ -299,7 +299,7 @@ void KWndList::OnRButtonDown(int x, int y)
 	}
 }
 
-//å“åº”é¼ æ ‡å·¦é”®double click
+//ÏìÓ¦Êó±ê×ó¼üdouble click
 void KWndList::OnLButtonDClick(int x, int y)
 {
 	int nSel = GetIemIndexAtPoint(x, y);
@@ -349,7 +349,7 @@ void KWndList::UpdateData()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡ç§»åŠ¨
+//	¹¦ÄÜ£ºÏìÓ¦Êó±êÒÆ¶¯
 //--------------------------------------------------------------------------
 void KWndList::OnMouseMove(int x, int y)
 {
@@ -365,7 +365,7 @@ void KWndList::OnMouseMove(int x, int y)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»˜åˆ¶çª—å£
+//	¹¦ÄÜ£º»æÖÆ´°¿Ú
 //--------------------------------------------------------------------------
 void KWndList::PaintWindow()
 {
@@ -448,7 +448,7 @@ void KWndList::PaintWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®åˆ—è¡¨å†…å®¹
+//	¹¦ÄÜ£ºÉèÖÃÁĞ±íÄÚÈİ
 //--------------------------------------------------------------------------
 void KWndList::SetContent(BYTE* pContent, int nNumItem, int nItemSize, int nStringOffset)
 {
@@ -495,7 +495,7 @@ void KWndList::SetContent(BYTE* pContent, int nNumItem, int nItemSize, int nStri
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŸ¥æ‰¾åˆ—è¡¨ï¼ˆæ˜¾ç¤ºï¼‰å­—ä¸²
+//	¹¦ÄÜ£º²éÕÒÁĞ±í£¨ÏÔÊ¾£©×Ö´®
 //--------------------------------------------------------------------------
 int	KWndList::FindString(int nPrecedingStart, const char* pString)
 {
@@ -512,7 +512,7 @@ int	KWndList::FindString(int nPrecedingStart, const char* pString)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—åˆ—è¡¨é¡¹æ•°æ®ä¸­çš„ä¸€ä¸ªæ•´æ•°
+//	¹¦ÄÜ£º»ñµÃÁĞ±íÏîÊı¾İÖĞµÄÒ»¸öÕûÊı
 //--------------------------------------------------------------------------
 int KWndList::GetItemDataInt(int nItemIndex, int nDataOffset)
 {
@@ -525,7 +525,7 @@ int KWndList::GetItemDataInt(int nItemIndex, int nDataOffset)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—åˆ—è¡¨é¡¹çš„(æ˜¾ç¤º)å­—ä¸²
+//	¹¦ÄÜ£º»ñµÃÁĞ±íÏîµÄ(ÏÔÊ¾)×Ö´®
 //--------------------------------------------------------------------------
 void KWndList::GetString(int nItemIndex, char* pBuffer)
 {
@@ -541,7 +541,7 @@ void KWndList::GetString(int nItemIndex, char* pBuffer)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—åˆ—è¡¨é¡¹çš„(æ˜¾ç¤º)å­—ä¸²çš„é•¿åº¦
+//	¹¦ÄÜ£º»ñµÃÁĞ±íÏîµÄ(ÏÔÊ¾)×Ö´®µÄ³¤¶È
 //--------------------------------------------------------------------------
 int KWndList::GetStrignLen(int nItemIndex)
 {
@@ -553,7 +553,7 @@ int KWndList::GetStrignLen(int nItemIndex)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®è¢«æ˜¾ç¤ºçš„æœ€é¡¶åˆ—è¡¨é¡¹çš„ç´¢å¼•å€¼
+//	¹¦ÄÜ£ºÉèÖÃ±»ÏÔÊ¾µÄ×î¶¥ÁĞ±íÏîµÄË÷ÒıÖµ
 //--------------------------------------------------------------------------
 void KWndList::SetTopItemIndex(int nTopItemIndex)
 {
@@ -562,7 +562,7 @@ void KWndList::SetTopItemIndex(int nTopItemIndex)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—åˆ—è¡¨æ¡†å¯ä»¥åŒæ—¶æ˜¾ç¤ºçš„é¡¹çš„æ•°ç›®
+//	¹¦ÄÜ£º»ñµÃÁĞ±í¿ò¿ÉÒÔÍ¬Ê±ÏÔÊ¾µÄÏîµÄÊıÄ¿
 //--------------------------------------------------------------------------
 int	KWndList::GetVisibleItemCount() const
 {

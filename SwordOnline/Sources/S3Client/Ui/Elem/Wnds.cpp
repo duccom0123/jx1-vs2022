@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	å‰‘ä¾ å¼•æ“ï¼Œç•Œé¢çª—å£ä½“ç³»ç»“æ„çš„æœ€åŸºæœ¬çª—å£å¯¹è±¡
+//	½£ÏÀÒıÇæ£¬½çÃæ´°¿ÚÌåÏµ½á¹¹µÄ×î»ù±¾´°¿Ú¶ÔÏó
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-9
@@ -26,7 +26,7 @@ extern iCoreShell*	g_pCoreShell;
 int WND_SHOW_MOUSE_OVER_WND = false;
 
 //=================
-//		çª—å£ç«™
+//		´°¿ÚÕ¾
 //=================
 static struct KWndStation
 {
@@ -79,7 +79,7 @@ static struct KWndStation
 static KWndWindow*	Wnd_GetActive(int x, int y, bool bBringToTop);
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ¸…é™¤å·¥ä½œï¼Œé”€æ¯å…¨éƒ¨çš„çª—å£
+//	¹¦ÄÜ£ºÇå³ı¹¤×÷£¬Ïú»ÙÈ«²¿µÄ´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_Cleanup()
 {
@@ -99,7 +99,7 @@ void Wnd_Cleanup()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»˜åˆ¶çª—å£
+//	¹¦ÄÜ£º»æÖÆ´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_RenderWindows()
 {
@@ -133,7 +133,7 @@ void Wnd_RenderWindows()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®©çª—å£æ´»åŠ¨
+//	¹¦ÄÜ£ºÈÃ´°¿Ú»î¶¯
 //--------------------------------------------------------------------------
 void Wnd_Heartbeat()
 {
@@ -145,7 +145,7 @@ void Wnd_Heartbeat()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ·»åŠ çª—å£
+//	¹¦ÄÜ£ºÌí¼Ó´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_AddWindow(KWndWindow* pWnd, WND_LAYER_LIST eLayer/* = WL_NORMAL*/)
 {
@@ -158,7 +158,7 @@ void Wnd_AddWindow(KWndWindow* pWnd, WND_LAYER_LIST eLayer/* = WL_NORMAL*/)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®è¿è¡Œæ¸¸æˆçª—å£
+//	¹¦ÄÜ£ºÉèÖÃÔËĞĞÓÎÏ·´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_SetGameSpaceWnd(KWndWindow* pWnd)
 {
@@ -184,7 +184,7 @@ void Wnd_ShowHideGameSpace(bool bShow)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”çª—å£ææ„
+//	¹¦ÄÜ£ºÏìÓ¦´°¿ÚÎö¹¹
 //--------------------------------------------------------------------------
 void Wnd_OnWindowDelete(KWndWindow* pWnd)
 {
@@ -222,11 +222,11 @@ void Wnd_OnWindowDelete(KWndWindow* pWnd)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå¼€å§‹æ‹–åŠ¨ç‰©ä½“
+//	¹¦ÄÜ£º¿ªÊ¼ÍÏ¶¯ÎïÌå
 //--------------------------------------------------------------------------
 int Wnd_DragBegin(const KUiDraggedObject* pObj, fnDrawDraggedObj fnDrawObjFunc)
 {
-	//åŸæ¥æœ‰ä¸ªå¯¹è±¡æ­£åœ¨è¢«æ‹–åŠ¨
+	//Ô­À´ÓĞ¸ö¶ÔÏóÕıÔÚ±»ÍÏ¶¯
 	if (s_WndStation.DragInfo.bDragging == false && pObj && pObj->uGenre)
 	{
 		s_WndStation.DragInfo.DraggedObj = *pObj;
@@ -249,7 +249,7 @@ int	Wnd_GetDragObj(KUiDraggedObject* pObj)
 	return s_WndStation.DragInfo.bDragging;
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»“æŸæ‹–åŠ¨çŠ¶æ€
+//	¹¦ÄÜ£º½áÊøÍÏ¶¯×´Ì¬
 //--------------------------------------------------------------------------
 void Wnd_DragFinished()
 {
@@ -257,7 +257,7 @@ void Wnd_DragFinished()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå¤„ç†è¾“å…¥
+//	¹¦ÄÜ£º´¦ÀíÊäÈë
 //--------------------------------------------------------------------------
 void Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -274,7 +274,7 @@ void Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 		if (g_pCoreShell)
 			g_pCoreShell->PAIOperation(GPI_PRIORITY_USE_MOUSE, FALSE, NULL, NULL);
 	}
-	//====é¼ æ ‡æŒ‡é’ˆæ¶ˆæ¯====
+	//====Êó±êÖ¸ÕëÏûÏ¢====
 	if ((uMsg >= WM_MOUSEFIRST && uMsg <= WM_MOUSELAST) || uMsg == WM_MOUSEHOVER)
 	{
 		int x = 0;
@@ -289,7 +289,7 @@ void Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 		{
 			s_WndStation.Cursor.GetPosition(x, y);
 		}
-		//====è®¾ç½®é¼ æ ‡æŒ‡é’ˆå›¾å½¢ä½ç½®====
+		//====ÉèÖÃÊó±êÖ¸ÕëÍ¼ĞÎÎ»ÖÃ====
 		s_WndStation.Cursor.SetPosition(x, y);
 
 		if (KPopupMenu::HandleInput(uMsg, uParam, nParam))
@@ -307,21 +307,21 @@ void Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 			pActiveWnd = s_WndStation.pCaptureMouseWnd;
 		else if (s_WndStation.pExclusiveWnd[0] == NULL)
 		{
-			//====å–å¾—é¼ æ ‡æ‰€æŒ‡çš„æœ€ä¸Šå±‚çª—å£é¢æ¿====
-			//====è®©è¢«é¼ æ ‡ç‚¹å‡»çš„çª—å£æˆä¸ºæœ€ä¸Šå±‚çª—å£é¢æ¿====
+			//====È¡µÃÊó±êËùÖ¸µÄ×îÉÏ²ã´°¿ÚÃæ°å====
+			//====ÈÃ±»Êó±êµã»÷µÄ´°¿Ú³ÉÎª×îÉÏ²ã´°¿ÚÃæ°å====
 			if ((uMsg == WM_LBUTTONDOWN || uMsg == WM_RBUTTONDOWN || uMsg == WM_MBUTTONDOWN) &&
 				s_WndStation.DragInfo.bDragging == 0)
 				pActiveWnd = Wnd_GetActive(x, y, true);
 			else
 				pActiveWnd = Wnd_GetActive(x, y, false);
 		}
-		else	//æœ‰ç‹¬å çª—å£æ—¶ï¼ŒActiveçª—å£å°±æ˜¯å®ƒäº†
+		else	//ÓĞ¶ÀÕ¼´°¿ÚÊ±£¬Active´°¿Ú¾ÍÊÇËüÁË
 			pActiveWnd = s_WndStation.pExclusiveWnd[0];
 
 		{
 			KWndWindow* pTopWnd = NULL;
 			if (pActiveWnd)			
-				pTopWnd = pActiveWnd->TopChildFromPoint(x, y);	//åªä¼ ç»™ä½äºé¼ æ ‡æŒ‡é’ˆä¸‹æ–¹çš„æœ€ä¸Šå±‚çš„çª—å£
+				pTopWnd = pActiveWnd->TopChildFromPoint(x, y);	//Ö»´«¸øÎ»ÓÚÊó±êÖ¸ÕëÏÂ·½µÄ×îÉÏ²ãµÄ´°¿Ú
 			if (pTopWnd != s_WndStation.pMouseOverWnd)
 			{
 				g_MouseOver.CancelMouseHoverInfo();
@@ -375,7 +375,7 @@ void Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 		}
 	}
 	else
-	{//====å¤„ç†å…¶ä»–æ¶ˆæ¯ï¼ˆå…¶å®éƒ½æ˜¯é”®ç›˜è¾“å…¥æ¶ˆæ¯ï¼‰====
+	{//====´¦ÀíÆäËûÏûÏ¢£¨ÆäÊµ¶¼ÊÇ¼üÅÌÊäÈëÏûÏ¢£©====
 		if (KPopupMenu::HandleInput(uMsg, uParam, nParam))
 			return;
 
@@ -463,8 +463,8 @@ void Wnd_TransmitInputToGameSpace(unsigned int uMsg, unsigned int uParam, int nP
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŠŠå¤„äºæŸä¸ªä½ç½®çš„çª—å£å¸¦åˆ°æœ€ä¸Šå±‚
-//	è¿”å›ï¼šæœ€ä¸Šå±‚çª—å£çš„æŒ‡é’ˆ
+//	¹¦ÄÜ£º°Ñ´¦ÓÚÄ³¸öÎ»ÖÃµÄ´°¿Ú´øµ½×îÉÏ²ã
+//	·µ»Ø£º×îÉÏ²ã´°¿ÚµÄÖ¸Õë
 //--------------------------------------------------------------------------
 KWndWindow* Wnd_GetActive(int x, int y, bool bBringToTop)
 {
@@ -500,14 +500,14 @@ KWndWindow* Wnd_GetActive(int x, int y, bool bBringToTop)
 	return pActive;
 }
 
-//æ”¹å˜é¼ æ ‡æŒ‡é’ˆæ˜¾ç¤ºçŠ¶æ€
+//¸Ä±äÊó±êÖ¸ÕëÏÔÊ¾×´Ì¬
 void Wnd_ShowCursor(int bShow)
 {
 	s_WndStation.Cursor.Show(bShow);
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æŒ‡é’ˆä½ç½®
+//	¹¦ÄÜ£ºÉèÖÃÊó±êÖ¸ÕëÎ»ÖÃ
 //--------------------------------------------------------------------------
 void Wnd_SetCursorPos(int x, int y)
 {
@@ -522,7 +522,7 @@ void Wnd_SetCursorPos(int x, int y)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å–é¼ æ ‡æŒ‡é’ˆä½ç½®
+//	¹¦ÄÜ£º»ñÈ¡Êó±êÖ¸ÕëÎ»ÖÃ
 //--------------------------------------------------------------------------
 void Wnd_GetCursorPos(int* px, int* py)
 {
@@ -538,7 +538,7 @@ void Wnd_GetCursorPos(int x, int y, int* px, int* py)
 {
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å–å½“å‰æŒ‚æ¥çš„è¾“å…¥ç„¦ç‚¹çª—å£
+//	¹¦ÄÜ£º»ñÈ¡µ±Ç°¹Ò½ÓµÄÊäÈë½¹µã´°¿Ú
 //--------------------------------------------------------------------------
 KWndWindow* Wnd_GetFocusWnd()
 {
@@ -546,7 +546,7 @@ KWndWindow* Wnd_GetFocusWnd()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŒ‚æ¥è¾“å…¥ç„¦ç‚¹çª—å£
+//	¹¦ÄÜ£º¹Ò½ÓÊäÈë½¹µã´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_SetFocusWnd(KWndWindow* pWnd)
 {
@@ -563,7 +563,7 @@ void Wnd_SetFocusWnd(KWndWindow* pWnd)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®è·Ÿè¸ªé¼ æ ‡åŠ¨ä½œçª—å£
+//	¹¦ÄÜ£ºÉèÖÃ¸ú×ÙÊó±ê¶¯×÷´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_SetCapture(KWndWindow* pWnd)
 {
@@ -575,7 +575,7 @@ void Wnd_SetCapture(KWndWindow* pWnd)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šé‡Šæ”¾çª—å£å¯¹é¼ æ ‡åŠ¨ä½œçš„è·Ÿè¸ª
+//	¹¦ÄÜ£ºÊÍ·Å´°¿Ú¶ÔÊó±ê¶¯×÷µÄ¸ú×Ù
 //--------------------------------------------------------------------------
 void Wnd_ReleaseCapture()
 {
@@ -587,7 +587,7 @@ void Wnd_ReleaseCapture()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®ç‹¬å çª—å£
+//	¹¦ÄÜ£ºÉèÖÃ¶ÀÕ¼´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_SetExclusive(KWndWindow* pWnd)
 {
@@ -615,7 +615,7 @@ void Wnd_SetExclusive(KWndWindow* pWnd)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå–æ¶ˆç‹¬å çª—å£
+//	¹¦ÄÜ£ºÈ¡Ïû¶ÀÕ¼´°¿Ú
 //--------------------------------------------------------------------------
 void Wnd_ReleaseExclusive(KWndWindow* pWnd)
 {
@@ -634,7 +634,7 @@ void Wnd_ReleaseExclusive(KWndWindow* pWnd)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè½½å…¥é¼ æ ‡æŒ‡é’ˆèµ„æº
+//	¹¦ÄÜ£ºÔØÈëÊó±êÖ¸Õë×ÊÔ´
 //--------------------------------------------------------------------------
 void Wnd_LoadCursor(int nIndex, const char* pImgFile)
 {
@@ -642,28 +642,28 @@ void Wnd_LoadCursor(int nIndex, const char* pImgFile)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆ‡æ¢å½“å‰é¼ æ ‡æŒ‡é’ˆå›¾å½¢
+//	¹¦ÄÜ£ºÇĞ»»µ±Ç°Êó±êÖ¸ÕëÍ¼ĞÎ
 //--------------------------------------------------------------------------
 int Wnd_SwitchCursor(int nIndex)
 {
 	return s_WndStation.Cursor.SwitchImage(nIndex);
 }
 
-//è®¾ç½®å±å¹•èŒƒå›´å¤§å°
+//ÉèÖÃÆÁÄ»·¶Î§´óĞ¡
 void Wnd_SetScreenSize(int nWidth, int nHeight)
 {
 	s_WndStation.ScreenSize.cx = nWidth;
 	s_WndStation.ScreenSize.cy = nHeight;
 }
 
-//è·å–å±å¹•èŒƒå›´å¤§å°
+//»ñÈ¡ÆÁÄ»·¶Î§´óĞ¡
 void Wnd_GetScreenSize(int& nWidth, int& nHeight)
 {
 	nWidth = s_WndStation.ScreenSize.cx;
 	nHeight = s_WndStation.ScreenSize.cy;
 }
 
-//è¿˜åŸé¼ æ ‡å›¾å½¢
+//»¹Ô­Êó±êÍ¼ĞÎ
 void	Wnd_RestoreCursor()
 {
 	s_WndStation.Cursor.RestoreCursor();

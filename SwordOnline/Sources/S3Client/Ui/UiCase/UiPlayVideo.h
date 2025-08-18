@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	æ’­æ”¾videoçª—å£
+//	²¥·Åvideo´°¿Ú
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-7-14
@@ -24,32 +24,32 @@ typedef u32 (*KLVideoGetCurrentFrameFn)(HKLVIDEO bnk);
 class KUiPlayVideo : protected KWndWindow
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiPlayVideo*	OpenWindow();							//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void				CloseWindow(bool bDestroy);				//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void				LoadScheme(const char* pszSettingFile, const char* pszSection);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiPlayVideo*	OpenWindow();							//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void				CloseWindow(bool bDestroy);				//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void				LoadScheme(const char* pszSettingFile, const char* pszSection);	//ÔØÈë½çÃæ·½°¸
 	
 	void					Setting(bool bProcessInput, bool bCloseWhenOver,
 								KWndWindow* pCaller, unsigned int uParam = 0);
 	int						OpenVideo(const char* pszVideoFile);
 	void					CloseVideo(bool bFinished = true);
-	void					SetPosition(int nLeft, int nTop);		//è®¾ç½®çª—å£ä½ç½®ï¼Œç›¸å¯¹åæ ‡
-	void					SetSize(int nWidth, int nHeight);		//è®¾ç½®çª—å£å¤§å°
+	void					SetPosition(int nLeft, int nTop);		//ÉèÖÃ´°¿ÚÎ»ÖÃ£¬Ïà¶Ô×ø±ê
+	void					SetSize(int nWidth, int nHeight);		//ÉèÖÃ´°¿Ú´óĞ¡
 
 	KUiPlayVideo();
 
 private:
-	//æ´»åŠ¨å‡½æ•°
+	//»î¶¯º¯Êı
 	void	Breathe();
-	//è¾“å…¥å¤„ç†æ¶ˆæ¯ä»¥åŠä¸€äº›ç‰¹å®šçª—å£æ¶ˆæ¯çš„å“åº”
+	//ÊäÈë´¦ÀíÏûÏ¢ÒÔ¼°Ò»Ğ©ÌØ¶¨´°¿ÚÏûÏ¢µÄÏìÓ¦
 	int	WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	//ç»˜åˆ¶
+	//»æÖÆ
 	void	PaintWindow();
-	//åˆå§‹åŒ–
+	//³õÊ¼»¯
 	int Initialize();
-	//å…³é—­
+	//¹Ø±Õ
 	void Terminate();
-	//æ’­æ”¾ç»“æŸ
+	//²¥·Å½áÊø
 	void OnPlayFinished();
 
 	~KUiPlayVideo() {}
@@ -62,8 +62,8 @@ private:
 
 	bool			m_bInitialized;
 
-	HKLVIDEO				  m_bnk;						//æ­£åœ¨æ’­æ”¾çš„Videoå¥æŸ„
-	HMODULE					  m_hVideoDll;					//KLVideo.dllçš„æ¨¡å—å¥æŸ„
+	HKLVIDEO				  m_bnk;						//ÕıÔÚ²¥·ÅµÄVideo¾ä±ú
+	HMODULE					  m_hVideoDll;					//KLVideo.dllµÄÄ£¿é¾ä±ú
 	KLVideoSoundFn            m_KLVideoSoundFn;
     KLVideoSndtrackFn         m_KLVideoSndtrackFn;
     KLVideoOpenFn             m_KLVideoOpen;

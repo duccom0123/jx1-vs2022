@@ -397,56 +397,56 @@ const char* KMagicDesc::GetDesc(void *pData)
 			}
 			switch(*(pTempDesc+1))
 			{
-			case 'm':		// ÃƒÃ…Ã…Ã‰
+			case 'm':		// ÃÅÅÉ
 				strcat(m_szDesc, g_Faction.m_sAttribute[nValue].m_szShowName);
 				i += strlen(g_Faction.m_sAttribute[nValue].m_szShowName);
 				break;
-			case 's':		// ÃÃ¥ÃÃ
+			case 's':		// ÎåĞĞ
 				switch(nValue)
 				{
 				case series_metal:
-					strcat(m_szDesc, "HÃ– Kim");
+					strcat(m_szDesc, "HÖ Kim");
 					break;
 				case series_wood:
-					strcat(m_szDesc, "HÃ– MÃ©c");
+					strcat(m_szDesc, "HÖ Méc");
 					break;
 				case series_water:
-					strcat(m_szDesc, "HÃ– ThÃ±y");
+					strcat(m_szDesc, "HÖ Thñy");
 					break;
 				case series_fire:
-					strcat(m_szDesc, "HÃ– HÃ¡a");
+					strcat(m_szDesc, "HÖ Háa");
 					break;
 				case series_earth:
-					strcat(m_szDesc, "HÃ– ThÃ¦ ");
+					strcat(m_szDesc, "HÖ Thæ ");
 					break;
 				default:
-					strcat(m_szDesc, "VÂ« HÃ– ");
+					strcat(m_szDesc, "V« HÖ ");
 					break;
 				}
 				i += 4;
 				break;
-			case 'k':		// ÃÃ»ÂºÃ„Ã€Ã ÃÃ
+			case 'k':		// ÏûºÄÀàĞÍ
 				switch(nValue)
 				{
 				case 0:
-					strcat(m_szDesc, "NÃ©i LÃ¹c\n");
+					strcat(m_szDesc, "Néi Lùc\n");
 					break;
 				case 1:
-					strcat(m_szDesc, "Sinh LÃ¹c\n");
+					strcat(m_szDesc, "Sinh Lùc\n");
 					break;
 				case 2:
-					strcat(m_szDesc, "ThÃ“ LÃ¹c\n");
+					strcat(m_szDesc, "ThÓ Lùc\n");
 					break;
 				case 3:
-					strcat(m_szDesc, "TiÃ’n\n");
+					strcat(m_szDesc, "TiÒn\n");
 					break;
 				default:
-					strcat(m_szDesc, "NÃ©i LÃ¹c\n");
+					strcat(m_szDesc, "Néi Lùc\n");
 					break;
 				}
 				i += 4;
 				break;
-			case 'd':		// ÃŠÃ½Ã—Ã–
+			case 'd':		// Êı×Ö
 				{
 					switch(nDescAddType)
 					{
@@ -490,22 +490,22 @@ const char* KMagicDesc::GetDesc(void *pData)
 					}
 					else
 					{
-						sprintf(szMsg, "VÃ¢ cÂ«ng vÃ¨n cÃ£");
+						sprintf(szMsg, "Vâ c«ng vèn cã");
 					}
 					strcat(m_szDesc,szMsg);
 					i += strlen(szMsg);
 				}
 				break;
-			case 'f':		// ÃŠÃ½Ã—Ã–
+			case 'f':		// Êı×Ö
 					char szMsg[80];
 					sprintf(szMsg, "%d", (int)(nValue/18));
 					strcat(m_szDesc,szMsg);
 					i += strlen(szMsg);
 				break;
-			case 'x':		// ÃÃ”Â±Ã°
+			case 'x':		// ĞÔ±ğ
 				if (nValue)
 				{
-					strcat(m_szDesc, "NÃ·");
+					strcat(m_szDesc, "N÷");
 					i += 2;
 				}
 				else
@@ -520,10 +520,10 @@ const char* KMagicDesc::GetDesc(void *pData)
 					switch(nValue)
 					{
 					case 9:
-						strcpy(szMsg, "tÂµn Â¶nh kÃo dÂµi");
+						strcpy(szMsg, "tµn ¶nh kĞo dµi");
 						break;
 					default:
-						strcpy(szMsg, "tÂµn Â¶nh");
+						strcpy(szMsg, "tµn ¶nh");
 						break;
 					}
 					strcat(m_szDesc,szMsg);
@@ -555,8 +555,8 @@ int	g_String2MagicID(char * szMagicAttribName)
 {
 	if ((!szMagicAttribName) || (!szMagicAttribName[0])) return -1;
 
-	//nValue2 ÂµÂ±Ã–ÂµÃÂª-1ÃŠÂ±ÃÂªÃ“Ã€Â¾ÃƒÃÃ”Ã—Â´ÃŒÂ¬Â£Â¬0ÃÂªÂ·Ã‡Ã—Â´ÃŒÂ¬Â£Â¬Ã†Ã¤Ã‹Ã¼Ã–ÂµÃÂªÃ“ÃÃŠÂ±ÃÂ§ÃÃ”Ã—Â´ÃŒÂ¬Ã„Â§Â·Â¨ÃÂ§Â¹Ã»
-	//ÃÃ¨Ã’ÂªÂ½Â«Ã—Â´ÃŒÂ¬ÃŠÃ½Â¾ÃÃ“Ã«Â·Ã‡Ã—Â´ÃŒÂ¬ÃŠÃ½Â¾ÃÂ·Ã–Ã€Ã«Â³Ã¶Ã€Â´Â£Â¬Â·Ã…ÃˆÃ«ÃÃ Ã“Â¦ÂµÃ„ÃŠÃ½Ã—Ã©Ã„ÃšÂ£Â¬Â²Â¢Â¼Ã‡Ã‚Â¼Ã—ÃœÃŠÃ½ÃÂ¿
+	//nValue2 µ±ÖµÎª-1Ê±ÎªÓÀ¾ÃĞÔ×´Ì¬£¬0Îª·Ç×´Ì¬£¬ÆäËüÖµÎªÓĞÊ±Ğ§ĞÔ×´Ì¬Ä§·¨Ğ§¹û
+	//ĞèÒª½«×´Ì¬Êı¾İÓë·Ç×´Ì¬Êı¾İ·ÖÀë³öÀ´£¬·ÅÈëÏàÓ¦µÄÊı×éÄÚ£¬²¢¼ÇÂ¼×ÜÊıÁ¿
 	
 	for (int i  = 0 ; i <= magic_normal_end; i ++)
 	{
@@ -570,8 +570,8 @@ int	KMagicDesc::String2MagicID(char * szMagicAttribName)
 {
 	if ((!szMagicAttribName) || (!szMagicAttribName[0])) return -1;
 
-	//nValue2 ÂµÂ±Ã–ÂµÃÂª-1ÃŠÂ±ÃÂªÃ“Ã€Â¾ÃƒÃÃ”Ã—Â´ÃŒÂ¬Â£Â¬0ÃÂªÂ·Ã‡Ã—Â´ÃŒÂ¬Â£Â¬Ã†Ã¤Ã‹Ã¼Ã–ÂµÃÂªÃ“ÃÃŠÂ±ÃÂ§ÃÃ”Ã—Â´ÃŒÂ¬Ã„Â§Â·Â¨ÃÂ§Â¹Ã»
-	//ÃÃ¨Ã’ÂªÂ½Â«Ã—Â´ÃŒÂ¬ÃŠÃ½Â¾ÃÃ“Ã«Â·Ã‡Ã—Â´ÃŒÂ¬ÃŠÃ½Â¾ÃÂ·Ã–Ã€Ã«Â³Ã¶Ã€Â´Â£Â¬Â·Ã…ÃˆÃ«ÃÃ Ã“Â¦ÂµÃ„ÃŠÃ½Ã—Ã©Ã„ÃšÂ£Â¬Â²Â¢Â¼Ã‡Ã‚Â¼Ã—ÃœÃŠÃ½ÃÂ¿
+	//nValue2 µ±ÖµÎª-1Ê±ÎªÓÀ¾ÃĞÔ×´Ì¬£¬0Îª·Ç×´Ì¬£¬ÆäËüÖµÎªÓĞÊ±Ğ§ĞÔ×´Ì¬Ä§·¨Ğ§¹û
+	//ĞèÒª½«×´Ì¬Êı¾İÓë·Ç×´Ì¬Êı¾İ·ÖÀë³öÀ´£¬·ÅÈëÏàÓ¦µÄÊı×éÄÚ£¬²¢¼ÇÂ¼×ÜÊıÁ¿
 	
 	for (int i  = 0 ; i <= magic_normal_end; i ++)
 	{

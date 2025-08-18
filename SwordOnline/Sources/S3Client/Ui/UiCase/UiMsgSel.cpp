@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÃÃ„Â¼Ã¾ÃƒÃ»		Â£Âº	UiMsgSel.h
-//	Â´Â´Â½Â¨Ã•ÃŸ		Â£Âº	Wooy(Wu yue)
-//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2003-1-6
-//	Â¹Â¦Ã„ÃœÃƒÃ¨ÃŠÃ¶	Â£Âº	Â´Ã¸Â¹Ã¶Â¶Â¯ÃŒÃµÂµÃ„ÃÃ»ÃÂ¢Ã‘Â¡Ã”Ã±
+//	ÎÄ¼şÃû		£º	UiMsgSel.h
+//	´´½¨Õß		£º	Wooy(Wu yue)
+//	´´½¨Ê±¼ä	£º	2003-1-6
+//	¹¦ÄÜÃèÊö	£º	´ø¹ö¶¯ÌõµÄÏûÏ¢Ñ¡Ôñ
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -37,7 +37,7 @@ KUiMsgSel::~KUiMsgSel()
 {
 }
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiMsgSel* KUiMsgSel::OpenWindow(KUiQuestionAndAnswer* pQAA, KUiImage *pPic) 
 { 
@@ -59,7 +59,7 @@ KUiMsgSel* KUiMsgSel::OpenWindow(KUiQuestionAndAnswer* pQAA, KUiImage *pPic)
 }  
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•ÃÃºÂ»Ã™Â´Â°Â¿Ãš
+//	¹¦ÄÜ£º¹Ø±ÕÏú»Ù´°¿Ú
 //--------------------------------------------------------------------------
 void KUiMsgSel::CloseWindow(bool bDestroy)
 {
@@ -87,7 +87,7 @@ KUiMsgSel* KUiMsgSel::GetIfVisible()
 	return NULL;
 }
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 int KUiMsgSel::Initialize(KUiImage *pPic)
 {
@@ -114,7 +114,7 @@ int KUiMsgSel::Initialize(KUiImage *pPic)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiMsgSel::LoadScheme(const char* pScheme)
 {
@@ -133,7 +133,7 @@ void KUiMsgSel::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÃÃ»ÃÂ¢ÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º´°¿ÚÏûÏ¢º¯Êı
 //--------------------------------------------------------------------------
 int KUiMsgSel::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -192,7 +192,7 @@ int KUiMsgSel::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 		}
 		else
 		{
-			ChangeCurSel(true);	//Â¾Â­ÃŠÂµÂ¼ÃŠÂ²Ã¢ÃŠÃ”Ã”ÃšnParam < 0 ÃŠÂ±ÃŠÃ‡ÃÃ²ÃÃ‚
+			ChangeCurSel(true);	//¾­Êµ¼Ê²âÊÔÔÚnParam < 0 Ê±ÊÇÏòÏÂ
 			nRet = 1;
 		}
 		break;
@@ -235,7 +235,7 @@ int KUiMsgSel::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦ÂµÃ£Â»Ã·Â°Â´Ã…Â¥
+//	¹¦ÄÜ£ºÏìÓ¦µã»÷°´Å¥
 //--------------------------------------------------------------------------
 void KUiMsgSel::OnClickMsg(int nMsg)
 {
@@ -262,7 +262,7 @@ void KUiMsgSel::ChangeCurSel(bool bNext)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ”ÃŠÂ¾Â´Â°Â¿Ãš
+//	¹¦ÄÜ£ºÏÔÊ¾´°¿Ú
 //--------------------------------------------------------------------------
 void KUiMsgSel::Show(KUiQuestionAndAnswer* pQAA)
 {
@@ -274,7 +274,7 @@ void KUiMsgSel::Show(KUiQuestionAndAnswer* pQAA)
 		int i = 0;
 		if (pQAA->AnswerCount <= 0)
 		{
-			m_MsgScrollList.GetMessageListBox()->AddOneMessage("KÃ•t thÃ³c Â®Ã¨i thoÂ¹i", -1);
+			m_MsgScrollList.GetMessageListBox()->AddOneMessage("KÕt thóc ®èi tho¹i", -1);
 		}
 		else
 		{
@@ -286,13 +286,13 @@ void KUiMsgSel::Show(KUiQuestionAndAnswer* pQAA)
 					g_StrCpyLen(m_szPic[i], pAnswer+5, sizeof(m_szPic[i]));
 					*pAnswer = 0;
 					if (!m_MsgScrollList.GetMessageListBox()->AddOneMessage(pQAA->Answer[i].AnswerText, pQAA->Answer[i].AnswerLen))
-						m_MsgScrollList.GetMessageListBox()->AddOneMessage("[--KÃch bÂ¶n xÃ¶ lÃ½ lÃ§i--]", -1);
+						m_MsgScrollList.GetMessageListBox()->AddOneMessage("[--KŞch b¶n xö lı lçi--]", -1);
 				}
 				else
 				{
 					m_szPic[i][0] = 0;
 					if (!m_MsgScrollList.GetMessageListBox()->AddOneMessage(pQAA->Answer[i].AnswerText, pQAA->Answer[i].AnswerLen))
-						m_MsgScrollList.GetMessageListBox()->AddOneMessage("[--KÃch bÂ¶n xÃ¶ lÃ½ lÃ§i--]", -1);
+						m_MsgScrollList.GetMessageListBox()->AddOneMessage("[--KŞch b¶n xö lı lçi--]", -1);
 				}
 			}				
 		}

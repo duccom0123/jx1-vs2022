@@ -1,11 +1,11 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--loginçª—å£
+//	½çÃæ--login´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-12
 ------------------------------------------------------------------------------------------
-	ç•Œé¢ä¸Šæœ‰ä¸ªé€‰é¡¹æŒ‰é’®å¯ä»¥é€‰æ‹©ï¼Œçºªå½•ç™»é™†è´¦å·ï¼Œåœ¨ä¸‹æ¬¡å‡ºç°ç™»é™†çª—å£æ—¶è‡ªåŠ¨å¡«å†™è´¦å·ã€‚
-	è´¦å·é‡‡ç”¨â€œä¸€æ¬¡ä¸€å¯†ç ä¹±æœ¬(one-time pad)â€çš„å˜ä½“æ³•åŠ å¯†å­˜å‚¨ã€‚
+	½çÃæÉÏÓĞ¸öÑ¡Ïî°´Å¥¿ÉÒÔÑ¡Ôñ£¬¼ÍÂ¼µÇÂ½ÕËºÅ£¬ÔÚÏÂ´Î³öÏÖµÇÂ½´°¿ÚÊ±×Ô¶¯ÌîĞ´ÕËºÅ¡£
+	ÕËºÅ²ÉÓÃ¡°Ò»´ÎÒ»ÃÜÂëÂÒ±¾(one-time pad)¡±µÄ±äÌå·¨¼ÓÃÜ´æ´¢¡£
 *****************************************************************************************/
 
 #pragma once
@@ -14,24 +14,24 @@
 #include "../Elem/WndShowAnimate.h"
 #include "../Elem/WndText.h"
 
-#define	MSG_ACCOUNT_PWD_ERROR			"æ‚¨è¾“å…¥çš„å¸å·æˆ–å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚"
+#define	MSG_ACCOUNT_PWD_ERROR			"ÄúÊäÈëµÄÕÊºÅ»òÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë¡£"
 
 
 class KUiLogin : protected KWndShowAnimate
 {
 public:
-	static KUiLogin* OpenWindow();				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void		 CloseWindow(bool bDestroy);//å…³é—­çª—å£
+	static KUiLogin* OpenWindow();				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void		 CloseWindow(bool bDestroy);//¹Ø±Õ´°¿Ú
 	static bool		 IsValidPassword(const char* pszPassword, int nLen);
 private:
 	KUiLogin();
 	~KUiLogin();
 	void	Show();
-	void	Initialize();							//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
+	void	Initialize();							//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
 	int		GetInputInfo(char* pszAccount, char* pszPassword);
-	void	OnLogin();								//ç™»é™†æ¸¸æˆä¸–ç•ŒæœåŠ¡å™¨
+	void	OnLogin();								//µÇÂ½ÓÎÏ·ÊÀ½ç·şÎñÆ÷
 	void	OnCancel();								//
 	void	OnKeyDown(unsigned int uKey);
 	void	OnEnableAutoLogin();
@@ -42,7 +42,7 @@ private:
 	{
 		UILOGIN_S_IDLE,
 		UILOGIN_S_LOGINING,
-	}			m_Status;//	ç™»é™†ç•Œé¢çš„çŠ¶æ€
+	}			m_Status;//	µÇÂ½½çÃæµÄ×´Ì¬
 	KWndEdit32	m_Account;
 	KWndEdit32	m_PassWord;
 	KWndButton	m_Login, m_Cancel;

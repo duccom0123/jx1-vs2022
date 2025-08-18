@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	å‰‘ä¾ åº”ç”¨ç•Œé¢çª—å£çš„å…¬å…±æŽ¥å£
+//	½£ÏÀÓ¦ÓÃ½çÃæ´°¿ÚµÄ¹«¹²½Ó¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-17
@@ -84,9 +84,9 @@ extern KUiChatPhrase    g_UiChatPhrase;
 
 enum UI_LIVING_STATUS
 {
-	UI_LIVING_S_DEAD,			//è¯¥é€€å‡ºç¨‹åºäº†
-	UI_LIVING_S_OUTGAME,		//ä¸æ˜¯æ¸¸æˆè¿è¡Œä¸­
-	UI_LIVING_S_INGAME,			//æ¸¸æˆè¿è¡Œä¸­
+	UI_LIVING_S_DEAD,			//¸ÃÍË³ö³ÌÐòÁË
+	UI_LIVING_S_OUTGAME,		//²»ÊÇÓÎÏ·ÔËÐÐÖÐ
+	UI_LIVING_S_INGAME,			//ÓÎÏ·ÔËÐÐÖÐ
 };
 
 static UI_LIVING_STATUS	s_UiLiveSeed = UI_LIVING_S_DEAD;
@@ -101,7 +101,7 @@ static int		s_nFrameRate = 30;
 char			s_VersionInfo[60];
 
 
-//æ˜¯å¦åŠ¨æ€è¿žæŽ¥Representè¿žæŽ¥åº“
+//ÊÇ·ñ¶¯Ì¬Á¬½ÓRepresentÁ¬½Ó¿â
 #define DYNAMIC_LINK_REPRESENT_LIBRARY
 
 #ifdef DYNAMIC_LINK_REPRESENT_LIBRARY
@@ -115,7 +115,7 @@ bool GetFileTimeVersionString(const char* pszFile, char* pszVersionString, int n
 {
 	if (pszVersionString)
 		pszVersionString[0] = 0;
-	//---æ‰“å¼€æ–‡ä»¶----
+	//---´ò¿ªÎÄ¼þ----
 	HANDLE	hFile = CreateFile(pszFile, GENERIC_READ, 0, NULL,
 		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (hFile == INVALID_HANDLE_VALUE)
@@ -140,7 +140,7 @@ bool GetFileTimeVersionString(const char* pszFile, char* pszVersionString, int n
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå‘é€æŽ¨å‡ºæ¶ˆæ¯
+//	¹¦ÄÜ£º·¢ËÍÍÆ³öÏûÏ¢
 //--------------------------------------------------------------------------
 void UiPostQuitMsg()
 {
@@ -148,14 +148,14 @@ void UiPostQuitMsg()
 		s_UiLiveSeed = UI_LIVING_S_DEAD;
 }
 
-//æ˜¯å¦å·²ç»é€‰æ‹©é€€å‡ºç¨‹åº
+//ÊÇ·ñÒÑ¾­Ñ¡ÔñÍË³ö³ÌÐò
 bool UiIsAlreadyQuit()
 {
 	return (s_UiLiveSeed == UI_LIVING_S_DEAD);
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç•Œé¢ç³»ç»Ÿåˆå§‹åŒ–
+//	¹¦ÄÜ£º½çÃæÏµÍ³³õÊ¼»¯
 //--------------------------------------------------------------------------
 int	UiInit()
 {
@@ -196,7 +196,7 @@ int	UiInit()
 	UiSoundLoadSetting();
 
 	KUiFaceSelector::LoadFaceList();
-	KShortcutKeyCentre::InitScript();	//è¦æ”¾åˆ°KUiFaceSelectorä¹‹åŽ
+	KShortcutKeyCentre::InitScript();	//Òª·Åµ½KUiFaceSelectorÖ®ºó
 		
 	char	szFile[MAX_PATH];
 	GetModuleFileName(NULL, szFile, MAX_PATH);
@@ -219,7 +219,7 @@ int	UiInit()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç•Œé¢ç³»ç»Ÿé€€å‡º
+//	¹¦ÄÜ£º½çÃæÏµÍ³ÍË³ö
 //--------------------------------------------------------------------------
 void	UiExit()
 {
@@ -231,10 +231,10 @@ void	UiExit()
 
 	KUiInit::StopTitleMusic();
 
-	//å„ç§ç•Œé¢åˆ é™¤è‡ªå·±çš„ä¸´æ—¶æ–‡ä»¶
+	//¸÷ÖÖ½çÃæÉ¾³ý×Ô¼ºµÄÁÙÊ±ÎÄ¼þ
 	KUiStrengthRank::RemoveTempFile();
 	KUiTongManager::RemoveTempFile();
-	//åˆ é™¤å®Œæ¯•
+	//É¾³ýÍê±Ï
 
 	UiCloseWndsInGame(true);
 	UiCloseWndsOutGame(true);
@@ -243,7 +243,7 @@ void	UiExit()
 	g_LoginLogic.ReturnToIdle();
 	g_LoginLogic.SaveLoginChoice();
 	g_UiBase.Exit();
-	KShortcutKeyCentre::UninitScript();//è¦åœ¨g_UiBase.Exit();åŽï¼Œå› ä¸ºè¦å­˜ç›˜
+	KShortcutKeyCentre::UninitScript();//ÒªÔÚg_UiBase.Exit();ºó£¬ÒòÎªÒª´æÅÌ
 	s_UiLiveSeed = UI_LIVING_S_DEAD;
 	KUiFaceSelector::Clear();
 	Wnd_Cleanup();
@@ -253,7 +253,7 @@ void	UiExit()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šï¿½_å§‹ç•Œé¢æŽ§åˆ¶æµç¨‹
+//	¹¦ÄÜ£ºé_Ê¼½çÃæ¿ØÖÆÁ÷³Ì
 //--------------------------------------------------------------------------
 int UiStart()
 {
@@ -264,7 +264,7 @@ int UiStart()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»˜åˆ¶ç•Œé¢
+//	¹¦ÄÜ£º»æÖÆ½çÃæ
 //--------------------------------------------------------------------------
 void UiPaint(int nGameLoop)
 {
@@ -292,7 +292,7 @@ void UiPaint(int nGameLoop)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç•Œé¢æ´»åŠ¨
+//	¹¦ÄÜ£º½çÃæ»î¶¯
 //--------------------------------------------------------------------------
 int UiHeartBeat()
 {
@@ -325,7 +325,7 @@ int UiHeartBeat()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå¤„ç†è¾“å…¥
+//	¹¦ÄÜ£º´¦ÀíÊäÈë
 //--------------------------------------------------------------------------
 void	UiProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -335,7 +335,7 @@ void	UiProcessInput(unsigned int uMsg, unsigned int uParam, int nParam)
 		{
 			COPYDATASTRUCT* pData = (COPYDATASTRUCT*)nParam;
 			if (pData && pData->cbData > 0 && pData->lpData && ((char*)pData->lpData)[pData->cbData - 1] == 0)
-			{	//æœ‰æ•°æ®,è€Œä¸”æ•°æ®é•¿åº¦ä¸ç­‰äºŽ0, è€Œä¸”æ•°æ®æ˜¯ä»¥0ç»“å°¾çš„å­—ç¬¦ä¸²
+			{	//ÓÐÊý¾Ý,¶øÇÒÊý¾Ý³¤¶È²»µÈÓÚ0, ¶øÇÒÊý¾ÝÊÇÒÔ0½áÎ²µÄ×Ö·û´®
 				KShortcutKeyCentre::ExcuteHWNDScript((const char *)pData->lpData);
 			}
 		}
@@ -367,7 +367,7 @@ void UiCloseWndsOutGame(bool bAll)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè¿›å…¥æ¸¸æˆè¿è¡Œæ—¶
+//	¹¦ÄÜ£º½øÈëÓÎÏ·ÔËÐÐÊ±
 //--------------------------------------------------------------------------
 void UiStartGame()
 {
@@ -419,7 +419,7 @@ void UiStartGame()
 	}
 }
 
-//æ¸¸æˆï¼ˆæ–­çº¿åŽï¼‰ç»§ç»­
+//ÓÎÏ·£¨¶ÏÏßºó£©¼ÌÐø
 void UiResumeGame()
 {
 	s_UiLiveSeed = UI_LIVING_S_INGAME;
@@ -527,7 +527,7 @@ bool UiCloseWndsInGame(bool bAll)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç¦»å¼€æ¸¸æˆè¿è¡Œæ—¶
+//	¹¦ÄÜ£ºÀë¿ªÓÎÏ·ÔËÐÐÊ±
 //--------------------------------------------------------------------------
 void UiEndGame()
 {
@@ -550,19 +550,19 @@ void UiEndGame()
 	g_UiBase.NotifyEvent(APP_EXITGAME);
 }
 
-//è®¾ç½®å±å¹•èŒƒå›´å¤§å°
+//ÉèÖÃÆÁÄ»·¶Î§´óÐ¡
 void UiSetScreenSize(int nWidth, int nHeight)
 {
 	Wnd_SetScreenSize(nWidth, nHeight);
 }
 
-//ä¸Žä¸€ä¸ªæ–°çš„GameServerå»ºç«‹è¿žæŽ¥
+//ÓëÒ»¸öÐÂµÄGameServer½¨Á¢Á¬½Ó
 void UiOnGameServerConnected()
 {
 	g_UiBase.SavePrivateConfig();
 }
 
-//ä¸Žä¸€ä¸ªæ–°çš„GameServerå»ºç«‹è¿žæŽ¥ï¼Œå¯åŠ¨åŒæ­¥å®Œæ¯•
+//ÓëÒ»¸öÐÂµÄGameServer½¨Á¢Á¬½Ó£¬Æô¶¯Í¬²½Íê±Ï
 void UiOnGameServerStartSyncEnd()
 {
 	KUiMsgCentrePad::OpenWindow();
@@ -570,7 +570,7 @@ void UiOnGameServerStartSyncEnd()
 	KUiChatCentre::CreateSeverUnit();
 	KUiAutoPlay::OpenWindow(false);
 	KUiStatus::OpenWindow(false);
-	g_UiBase.LoadPrivateConfig();	//ä¸å¤ªå¥½:-(
+	g_UiBase.LoadPrivateConfig();	//²»Ì«ºÃ:-(
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -725,7 +725,7 @@ int Player_Exp::GetToolTipInfo(char* szTip, int nMax)
 	if (KUiPlayerBar::GetExp(nFull, nCurrLevelExp, nCurrent) && szTip && nMax > 0)
 	{
 		char	szBuffer[64];
-		nLen = sprintf(szBuffer, "Kinh nghiï¿½m %d/%d", nCurrent, nFull);
+		nLen = sprintf(szBuffer, "Kinh nghiÖm %d/%d", nCurrent, nFull);
 		if (nLen <= nMax)
 			memcpy(szTip, szBuffer, nLen);
 		else

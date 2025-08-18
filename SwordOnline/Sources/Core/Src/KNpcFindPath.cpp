@@ -3,7 +3,7 @@
 //
 // File:	KNpcFindPath.cpp
 // Date:	2002.01.06
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@
 #define	MAX_FIND_TIMER	30
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //-------------------------------------------------------------------------
 KNpcFindPath::KNpcFindPath()
 {
@@ -32,8 +32,8 @@ KNpcFindPath::KNpcFindPath()
 };
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
-//	å‚æ•°ï¼šnNpc :è¿™ä¸ªå¯»è·¯æ˜¯å±äºå“ªä¸ª npc çš„
+//	¹¦ÄÜ£º³õÊ¼»¯
+//	²ÎÊı£ºnNpc :Õâ¸öÑ°Â·ÊÇÊôÓÚÄÄ¸ö npc µÄ
 //-------------------------------------------------------------------------
 void KNpcFindPath::Init(int nNpc)
 {
@@ -47,14 +47,14 @@ void KNpcFindPath::Init(int nNpc)
 	m_nFindTimes = 0;
 }
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šä¼ å…¥å½“å‰åæ ‡ã€æ–¹å‘ã€ç›®æ ‡ç‚¹åæ ‡ã€é€Ÿåº¦ï¼Œå¯»è·¯æ‰¾åˆ°ä¸‹ä¸€æ­¥åº”è¯¥èµ°çš„æ–¹å‘
-//	è¿”å›å€¼ï¼›å¦‚æœè¿”å›0ï¼šæœ‰éšœç¢ï¼Œä¸èƒ½èµ°äº†;1ï¼Œæ‰¾åˆ°ä¸€ä¸ªæ–¹å‘ï¼Œæ–¹å‘å€¼æ”¾åœ¨pnGetDir (æŒ‰64æ–¹å‘)ï¼›
-//			-1ï¼šåˆ°åœ°å›¾å¤–é¢å»äº†
+//	¹¦ÄÜ£º´«Èëµ±Ç°×ø±ê¡¢·½Ïò¡¢Ä¿±êµã×ø±ê¡¢ËÙ¶È£¬Ñ°Â·ÕÒµ½ÏÂÒ»²½Ó¦¸Ã×ßµÄ·½Ïò
+//	·µ»ØÖµ£»Èç¹û·µ»Ø0£ºÓĞÕÏ°­£¬²»ÄÜ×ßÁË;1£¬ÕÒµ½Ò»¸ö·½Ïò£¬·½ÏòÖµ·ÅÔÚpnGetDir (°´64·½Ïò)£»
+//			-1£ºµ½µØÍ¼ÍâÃæÈ¥ÁË
 //-------------------------------------------------------------------------
 #define		defFIND_PATH_STOP_DISTANCE		/*0*/64
 int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, int nMoveSpeed, int *pnGetDir)
 {
-	// å¦‚æœè·ç¦»æ¥è¿‘ï¼Œè®¤ä¸ºå·²ç»èµ°åˆ°äº†
+	// Èç¹û¾àÀë½Ó½ü£¬ÈÏÎªÒÑ¾­×ßµ½ÁË
 	if ( !CheckDistance(nXpos >> 10, nYpos >> 10, nDestX, nDestY, nMoveSpeed))
 	{
 		m_nFindTimer = 0;
@@ -63,7 +63,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 		return 0;
 	}
 
-	// ç›®æ ‡ç‚¹å¦‚æœæœ‰å˜åŒ–ï¼Œå–æ¶ˆåŸæ¥çš„æ‰¾è·¯çŠ¶æ€
+	// Ä¿±êµãÈç¹ûÓĞ±ä»¯£¬È¡ÏûÔ­À´µÄÕÒÂ·×´Ì¬
 	if (m_nDestX != nDestX || m_nDestY != nDestY)
 	{
 		m_nFindTimer = 0;
@@ -77,7 +77,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 	nWantDir = g_GetDirIndex(nXpos >> 10, nYpos >> 10, nDestX, nDestY);
 	x = g_DirCos(nWantDir, 64) * nMoveSpeed;
 	y = g_DirSin(nWantDir, 64) * nMoveSpeed;
-	// å¦‚æœæœ‰è·¯ï¼Œç›´æ¥èµ°
+	// Èç¹ûÓĞÂ·£¬Ö±½Ó×ß
 	int nCheckBarrier = CheckBarrier(x, y);
 	if ( nCheckBarrier == 0 )
 	{
@@ -85,17 +85,17 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 		*pnGetDir = nWantDir;
 		return 1;
 	}
-	// åœ°å›¾è¾¹ç¼˜
+	// µØÍ¼±ßÔµ
 	else if (nCheckBarrier == 0xff)
 	{
 		return -1;
 	}
 
 	int		i;
-	// ä»éæ‰¾è·¯çŠ¶æ€è¿›å…¥æ‰¾è·¯çŠ¶æ€
+	// ´Ó·ÇÕÒÂ·×´Ì¬½øÈëÕÒÂ·×´Ì¬
 	if (m_nFindState == 0)
 	{
-		// å¦‚æœç›®æ ‡ç‚¹æ˜¯éšœç¢è€Œä¸”å…·ä½“è¿‡è¿‘ï¼Œä¸æ‰¾äº†
+		// Èç¹ûÄ¿±êµãÊÇÕÏ°­¶øÇÒ¾ßÌå¹ı½ü£¬²»ÕÒÁË
 #ifdef _SERVER
 		nCheckBarrier = SubWorld[Npc[m_NpcIdx].m_SubWorldIndex].TestBarrier(nDestX, nDestY);
 #else
@@ -110,7 +110,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 			return 0;
 		}
 		
-		// å¦‚æœç¬¬äºŒæ¬¡è¿›å…¥æ‹å¼¯çŠ¶æ€ï¼Œä¸æ‰¾äº†ï¼ˆåªæ‹ä¸€æ¬¡å¼¯ï¼‰
+		// Èç¹ûµÚ¶ş´Î½øÈë¹ÕÍä×´Ì¬£¬²»ÕÒÁË£¨Ö»¹ÕÒ»´ÎÍä£©
 		m_nFindTimes++;
 		if (m_nFindTimes > 1)
 		{
@@ -120,7 +120,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 		int		nTempDir8, nTempDir64;
 		nTempDir8 = Dir64To8(nWantDir) + 8;
 		
-		// è½¬æ¢æˆ 8 æ–¹å‘åå½“å‰æ–¹å‘æ˜¯å¦å¯è¡Œ
+		// ×ª»»³É 8 ·½Ïòºóµ±Ç°·½ÏòÊÇ·ñ¿ÉĞĞ
 		nTempDir64 = Dir8To64(nTempDir8 & 0x07);
 		x = g_DirCos( nTempDir64, 64 ) * nMoveSpeed;
 		y = g_DirSin( nTempDir64, 64 ) * nMoveSpeed;
@@ -135,7 +135,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 			*pnGetDir = nTempDir64;
 			return 1;
 		}
-		// æŒ‰ 8 æ–¹å‘å¯»æ‰¾ï¼Œæ£€æŸ¥é™¤å»æ­£é¢å’ŒèƒŒé¢çš„å¦å¤– 6 ä¸ªæ–¹å‘
+		// °´ 8 ·½ÏòÑ°ÕÒ£¬¼ì²é³ıÈ¥ÕıÃæºÍ±³ÃæµÄÁíÍâ 6 ¸ö·½Ïò
 		for (i = 1; i < 4; i++)
 		{
 			nTempDir64 = Dir8To64((nTempDir8 + i) & 0x07);
@@ -164,10 +164,10 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 		}
 		return 0;
 	}
-	// åŸæœ¬æ˜¯æ‰¾è·¯çŠ¶æ€ï¼Œç»§ç»­æ‰¾è·¯
+	// Ô­±¾ÊÇÕÒÂ·×´Ì¬£¬¼ÌĞøÕÒÂ·
 	else
 	{
-		// å¦‚æœæ‰¾è·¯æ—¶é—´è¿‡é•¿ï¼Œä¸æ‰¾äº†
+		// Èç¹ûÕÒÂ·Ê±¼ä¹ı³¤£¬²»ÕÒÁË
 		if (m_nFindTimer >= m_nMaxTimeLong)
 		{
 			m_nFindState = 0;
@@ -176,16 +176,16 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 		m_nFindTimer++;
 		int		nWantDir8, nTempDir64;
 		nWantDir8 = Dir64To8(nWantDir) + 8;
-		// å½“å‰æ–¹å‘ä½äºç›®æ ‡æ–¹å‘çš„å³ä¾§
+		// µ±Ç°·½ÏòÎ»ÓÚÄ¿±ê·½ÏòµÄÓÒ²à
 		if (m_nPathSide == 1)
 		{
-			// åˆ¤æ–­æ˜¯å¦éœ€è¦æ£€æµ‹å½“å‰ç›®æ ‡æœå‘å¯¹åº”çš„ 8 æ–¹å‘ä¸Š
+			// ÅĞ¶ÏÊÇ·ñĞèÒª¼ì²âµ±Ç°Ä¿±ê³¯Ïò¶ÔÓ¦µÄ 8 ·½ÏòÉÏ
 			nTempDir64 = Dir8To64(nWantDir8 & 0x07);
 			if ((nTempDir64 < nWantDir && nWantDir - nTempDir64 <= 4) || (nTempDir64 > nWantDir && nTempDir64 - nWantDir >= 60))
 				i = 1;
 			else
 				i = 0;
-			// æ‹å¼¯è¿‡ç¨‹
+			// ¹ÕÍä¹ı³Ì
 			for (; i < 4; i++)
 			{
 				nTempDir64 = Dir8To64((nWantDir8 + i) & 0x07);
@@ -201,16 +201,16 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 			m_nFindTimer = 0;
 			return 0;
 		}
-		// å½“å‰æ–¹å‘ä½äºç›®æ ‡æ–¹å‘çš„å·¦ä¾§
+		// µ±Ç°·½ÏòÎ»ÓÚÄ¿±ê·½ÏòµÄ×ó²à
 		else
 		{
-			// åˆ¤æ–­æ˜¯å¦éœ€è¦æ£€æµ‹å½“å‰ç›®æ ‡æœå‘å¯¹åº”çš„ 8 æ–¹å‘ä¸Š
+			// ÅĞ¶ÏÊÇ·ñĞèÒª¼ì²âµ±Ç°Ä¿±ê³¯Ïò¶ÔÓ¦µÄ 8 ·½ÏòÉÏ
 			nTempDir64 = Dir8To64(nWantDir8 & 0x07);
 			if ((nTempDir64 < nWantDir && nWantDir - nTempDir64 <= 4) || (nTempDir64 > nWantDir && nTempDir64 - nWantDir >= 60))
 				i = 0;
 			else
 				i = 1;
-			// æ‹å¼¯è¿‡ç¨‹
+			// ¹ÕÍä¹ı³Ì
 			for (; i < 4; i++)
 			{
 				nTempDir64 = Dir8To64((nWantDir8 - i) & 0x07);
@@ -234,7 +234,7 @@ int	KNpcFindPath::GetDir(int nXpos,int nYpos, int nDir, int nDestX, int nDestY, 
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼š	64 æ–¹å‘è½¬æ¢ä¸º 8 æ–¹å‘
+//	¹¦ÄÜ£º	64 ·½Ïò×ª»»Îª 8 ·½Ïò
 //-------------------------------------------------------------------------
 int		KNpcFindPath::Dir64To8(int nDir)
 {
@@ -242,7 +242,7 @@ int		KNpcFindPath::Dir64To8(int nDir)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼š	8 æ–¹å‘è½¬æ¢ä¸º 64 æ–¹å‘
+//	¹¦ÄÜ£º	8 ·½Ïò×ª»»Îª 64 ·½Ïò
 //-------------------------------------------------------------------------
 int		KNpcFindPath::Dir8To64(int nDir)
 {
@@ -250,8 +250,8 @@ int		KNpcFindPath::Dir8To64(int nDir)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼š	åˆ¤æ–­ä¸¤ç‚¹é—´çš„ç›´çº¿è·ç¦»æ˜¯å¦å¤§äºæˆ–ç­‰äºç»™å®šè·ç¦»
-//	è¿”å›ï¼š	è·ç¦»å°äº nDistance è¿”å› FALSE ï¼Œå¦åˆ™è¿”å› TRUE
+//	¹¦ÄÜ£º	ÅĞ¶ÏÁ½µã¼äµÄÖ±Ïß¾àÀëÊÇ·ñ´óÓÚ»òµÈÓÚ¸ø¶¨¾àÀë
+//	·µ»Ø£º	¾àÀëĞ¡ÓÚ nDistance ·µ»Ø FALSE £¬·ñÔò·µ»Ø TRUE
 //-------------------------------------------------------------------------
 BOOL	KNpcFindPath::CheckDistance(int x1, int y1, int x2, int y2, int nDistance)
 {
@@ -259,7 +259,7 @@ BOOL	KNpcFindPath::CheckDistance(int x1, int y1, int x2, int y2, int nDistance)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼š	åˆ¤æ–­æŸä¸ªç‚¹æ˜¯å¦æ˜¯éšœç¢
+//	¹¦ÄÜ£º	ÅĞ¶ÏÄ³¸öµãÊÇ·ñÊÇÕÏ°­
 //-------------------------------------------------------------------------
 int	KNpcFindPath::CheckBarrier(int nChangeX, int nChangeY)
 {

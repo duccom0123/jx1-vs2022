@@ -1,12 +1,12 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	å‰‘ä¾ å¼•æ“ï¼Œç•Œé¢çª—å£å…ƒç´ ä½“ç³»å¤´æ–‡ä»¶
+//	½£ÏÀÒıÇæ£¬½çÃæ´°¿ÚÔªËØÌåÏµÍ·ÎÄ¼ş
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-9
 ------------------------------------------------------------------------------------------
-	ç•Œé¢å…ƒç´ ï¼ˆæ§ä»¶ï¼‰çš„å…±åŒåŸºç±»ä¸ºKWndWindowï¼ŒWnd_å‰ç¼€æ‰“å¤´çš„ä¸€ç»„å‡½æ•°ç”¨äºä½¿çª—å£å½¢æˆä¸€ä¸ªå¤§é›†åˆï¼Œ
-å®Œæˆä¸€äº›ç‰¹å®šçš„åŠŸèƒ½ã€‚
-    çª—å£ç³»ç»Ÿæ”¯æŒçƒ­é”®(HotKey)åŠŸèƒ½ï¼Œæœ€å¤šåŒæ—¶æ”¯æŒ24ä¸ªçƒ­é”®è®¾ç½®ï¼Œæ­¤ä¸Šé™æ•°å€¼å¯è¢«ä¿®æ”¹ã€‚
+	½çÃæÔªËØ£¨¿Ø¼ş£©µÄ¹²Í¬»ùÀàÎªKWndWindow£¬Wnd_Ç°×º´òÍ·µÄÒ»×éº¯ÊıÓÃÓÚÊ¹´°¿ÚĞÎ³ÉÒ»¸ö´ó¼¯ºÏ£¬
+Íê³ÉÒ»Ğ©ÌØ¶¨µÄ¹¦ÄÜ¡£
+    ´°¿ÚÏµÍ³Ö§³ÖÈÈ¼ü(HotKey)¹¦ÄÜ£¬×î¶àÍ¬Ê±Ö§³Ö24¸öÈÈ¼üÉèÖÃ£¬´ËÉÏÏŞÊıÖµ¿É±»ĞŞ¸Ä¡£
 *****************************************************************************************/
 
 class KWndWindow;
@@ -16,14 +16,14 @@ struct iKWndGameSpace;
 enum CURSOR_INDEX
 {
 	CURSOR_NORMAL = 0,
-	CURSOR_POINT_TO_ATTACKABLE,	//ç§»åˆ°æ”»å‡»ç›®æ ‡ä¸Š
-	CURSOR_POINT_TO_OBJ_NPC,	//ç§»åˆ°ä¸€èˆ¬OBJæˆ–NPCä¸Š
-	CURSOR_PICKABLE,			//å¯æ‹¾å–
-	CURSOR_SKILL_ENABLE,		//ç§»åˆ°å¯ä½¿ç”¨å¢ç›ŠæŠ€èƒ½çš„è§’è‰²å¯¹è±¡èº«ä¸Š
-	CURSOR_BUY,					//ä¹°ä¸œè¥¿
-	CURSOR_SELL,				//å–ä¸œè¥¿
-	CURSOR_REPAIR,				//ä¿®ä¸œè¥¿
-    CURSOR_USE,                 //çœ‹å¯¹è±¡çš„å›¾æ ‡
+	CURSOR_POINT_TO_ATTACKABLE,	//ÒÆµ½¹¥»÷Ä¿±êÉÏ
+	CURSOR_POINT_TO_OBJ_NPC,	//ÒÆµ½Ò»°ãOBJ»òNPCÉÏ
+	CURSOR_PICKABLE,			//¿ÉÊ°È¡
+	CURSOR_SKILL_ENABLE,		//ÒÆµ½¿ÉÊ¹ÓÃÔöÒæ¼¼ÄÜµÄ½ÇÉ«¶ÔÏóÉíÉÏ
+	CURSOR_BUY,					//Âò¶«Î÷
+	CURSOR_SELL,				//Âô¶«Î÷
+	CURSOR_REPAIR,				//ĞŞ¶«Î÷
+    CURSOR_USE,                 //¿´¶ÔÏóµÄÍ¼±ê
 	CURSOR_LOCK,
 	CURSOR_UNLOCK,
 	CURSOR_VIEW_PLAYERSHOP,
@@ -33,55 +33,55 @@ enum CURSOR_INDEX
 };
 
 //--------------------------------------------------------------------------
-//	ç»˜åˆ¶è¢«æ‹–å†…å®¹å‡½æ•°åŸå‹
+//	»æÖÆ±»ÍÏÄÚÈİº¯ÊıÔ­ĞÍ
 //--------------------------------------------------------------------------
-//	å‚æ•°ï¼š	x, y -> é¼ æ ‡æŒ‡é’ˆå½“å‰çš„åæ ‡ä½ç½®
-//			Obj -> è¢«æ‹–åŠ¨çš„å¯¹è±¡ä¿¡æ¯ç»“æ„
-//			nDropQeuryResult -> å½“å‰ç›®æ ‡åœ°æ–¹è¿”å›çš„æŸ¥è¯¢å¯å¦æ¥å—æ‹–æ¥çš„å¯¹è±¡çš„ç»“æœ
-//	è¿”å›ï¼šè¡¨ç¤ºç»˜åˆ¶å®Œè¢«æ‹–åŠ¨çš„ç‰©ä½“ä¹‹åæ˜¯å¦è¦ç»§ç»­ç»˜åˆ¶é¼ æ ‡æŒ‡é’ˆã€‚å¦‚æœé¼ æ ‡æŒ‡é’ˆå•å‰å±äºéšè—çŠ¶æ€åˆ™ï¼Œæ­¤å‡½æ•°è¿”å›å€¼è¢«å¿½ç•¥
+//	²ÎÊı£º	x, y -> Êó±êÖ¸Õëµ±Ç°µÄ×ø±êÎ»ÖÃ
+//			Obj -> ±»ÍÏ¶¯µÄ¶ÔÏóĞÅÏ¢½á¹¹
+//			nDropQeuryResult -> µ±Ç°Ä¿±êµØ·½·µ»ØµÄ²éÑ¯¿É·ñ½ÓÊÜÍÏÀ´µÄ¶ÔÏóµÄ½á¹û
+//	·µ»Ø£º±íÊ¾»æÖÆÍê±»ÍÏ¶¯µÄÎïÌåÖ®ºóÊÇ·ñÒª¼ÌĞø»æÖÆÊó±êÖ¸Õë¡£Èç¹ûÊó±êÖ¸Õëµ¥Ç°ÊôÓÚÒş²Ø×´Ì¬Ôò£¬´Ëº¯Êı·µ»ØÖµ±»ºöÂÔ
 typedef int (*fnDrawDraggedObj)(int x, int y, const KUiDraggedObject& Obj, int nDropQueryResult);
 
 enum WND_LAYER_LIST
 {
-	WL_LOWEST,		//æœ€åº•å±‚
-	WL_NORMAL,		//ä¸€èˆ¬
-	WL_TOPMOST,		//æœ€é¡¶å±‚
+	WL_LOWEST,		//×îµ×²ã
+	WL_NORMAL,		//Ò»°ã
+	WL_TOPMOST,		//×î¶¥²ã
 };
 
-void		Wnd_Cleanup();			//æ¸…é™¤å·¥ä½œï¼Œé”€æ¯å…¨éƒ¨çš„çª—å£
+void		Wnd_Cleanup();			//Çå³ı¹¤×÷£¬Ïú»ÙÈ«²¿µÄ´°¿Ú
 
-void		Wnd_GetScreenSize(int& nWidth, int& nHeight);//è·å–å±å¹•èŒƒå›´å¤§å°
-void		Wnd_SetScreenSize(int nWidth, int nHeight);  //è®¾ç½®å±å¹•èŒƒå›´å¤§å°
-void		Wnd_RenderWindows();						//ç»˜åˆ¶ç•Œé¢ç³»ç»Ÿ
-void		Wnd_AddWindow(KWndWindow* pWnd, WND_LAYER_LIST eLayer = WL_NORMAL);	//æ·»åŠ çª—å£
-void		Wnd_OnWindowDelete(KWndWindow* pWnd);		//å“åº”çª—å£çš„åˆ é™¤
-void		Wnd_SetGameSpaceWnd(KWndWindow* pWnd);	//è®¾ç½®è¿è¡Œæ¸¸æˆçª—å£
+void		Wnd_GetScreenSize(int& nWidth, int& nHeight);//»ñÈ¡ÆÁÄ»·¶Î§´óĞ¡
+void		Wnd_SetScreenSize(int nWidth, int nHeight);  //ÉèÖÃÆÁÄ»·¶Î§´óĞ¡
+void		Wnd_RenderWindows();						//»æÖÆ½çÃæÏµÍ³
+void		Wnd_AddWindow(KWndWindow* pWnd, WND_LAYER_LIST eLayer = WL_NORMAL);	//Ìí¼Ó´°¿Ú
+void		Wnd_OnWindowDelete(KWndWindow* pWnd);		//ÏìÓ¦´°¿ÚµÄÉ¾³ı
+void		Wnd_SetGameSpaceWnd(KWndWindow* pWnd);	//ÉèÖÃÔËĞĞÓÎÏ·´°¿Ú
 void		Wnd_GameSpaceHandleInput(bool bHandle);
 void		Wnd_TransmitInputToGameSpace(unsigned int uMsg, unsigned int uParam, int nParam);
 void		Wnd_ShowHideGameSpace(bool bShow);
-//----è¾“å…¥äº‹ä»¶å¤„ç†----
-//å¤„ç†è¾“å…¥ï¼Œç•Œé¢ç³»ç»Ÿå¦‚æœå¤„ç†äº†è¾“å…¥äº‹ä»¶ï¼Œåˆ™è¿”å›é0å€¼ï¼Œå¦åˆ™è¿”å›0å€¼ã€‚
+//----ÊäÈëÊÂ¼ş´¦Àí----
+//´¦ÀíÊäÈë£¬½çÃæÏµÍ³Èç¹û´¦ÀíÁËÊäÈëÊÂ¼ş£¬Ôò·µ»Ø·Ç0Öµ£¬·ñÔò·µ»Ø0Öµ¡£
 void		Wnd_ProcessInput(unsigned int uMsg, unsigned int uParam, int nParam);
 void		Wnd_Heartbeat();
-//----é¼ æ ‡æŒ‡é’ˆæ“ä½œ----
-void		Wnd_ShowCursor(int bShow);						//æ”¹å˜é¼ æ ‡æŒ‡é’ˆæ˜¾ç¤ºçŠ¶æ€
-void		Wnd_SetCursorPos(int x, int y);					//è®¾ç½®é¼ æ ‡æŒ‡é’ˆä½ç½®
-void		Wnd_GetCursorPos(int x, int y, int* px, int* py);				//è·å–é¼ æ ‡æŒ‡é’ˆä½ç½®
-void		Wnd_GetCursorPos(int* px, int* py);				//è·å–é¼ æ ‡æŒ‡é’ˆä½ç½®
-void		Wnd_LoadCursor(int nIndex, const char* pImgFile);//è½½å…¥é¼ æ ‡æŒ‡é’ˆèµ„æº
-int			Wnd_SwitchCursor(int nIndex);					//åˆ‡æ¢å½“å‰é¼ æ ‡æŒ‡é’ˆå›¾å½¢
-void		Wnd_RestoreCursor();							//è¿˜åŸé¼ æ ‡å›¾å½¢
-//----æ‹–åŠ¨å¯¹è±¡----
-//å¼€å§‹æ‹–åŠ¨ç‰©ä½“
+//----Êó±êÖ¸Õë²Ù×÷----
+void		Wnd_ShowCursor(int bShow);						//¸Ä±äÊó±êÖ¸ÕëÏÔÊ¾×´Ì¬
+void		Wnd_SetCursorPos(int x, int y);					//ÉèÖÃÊó±êÖ¸ÕëÎ»ÖÃ
+void		Wnd_GetCursorPos(int x, int y, int* px, int* py);				//»ñÈ¡Êó±êÖ¸ÕëÎ»ÖÃ
+void		Wnd_GetCursorPos(int* px, int* py);				//»ñÈ¡Êó±êÖ¸ÕëÎ»ÖÃ
+void		Wnd_LoadCursor(int nIndex, const char* pImgFile);//ÔØÈëÊó±êÖ¸Õë×ÊÔ´
+int			Wnd_SwitchCursor(int nIndex);					//ÇĞ»»µ±Ç°Êó±êÖ¸ÕëÍ¼ĞÎ
+void		Wnd_RestoreCursor();							//»¹Ô­Êó±êÍ¼ĞÎ
+//----ÍÏ¶¯¶ÔÏó----
+//¿ªÊ¼ÍÏ¶¯ÎïÌå
 int			Wnd_DragBegin(const KUiDraggedObject* pObj, fnDrawDraggedObj fnDrawObjFunc);
 int			Wnd_GetDragObj(KUiDraggedObject* pObj);
-void		Wnd_DragFinished();								//ç»“æŸæ‹–åŠ¨çŠ¶æ€
-//----å¤„ç†è¾“å…¥ç„¦ç‚¹çª—å£----
-void		Wnd_SetFocusWnd(KWndWindow* pWnd);				//è®¾ç½®è¾“å…¥ç„¦ç‚¹çª—å£
-KWndWindow*	Wnd_GetFocusWnd();								//è·å–è¾“å…¥ç„¦ç‚¹çª—å£
-//----è·Ÿè¸ªé¼ æ ‡äº‹ä»¶----
-void		Wnd_SetCapture(KWndWindow* pWnd);				//è®¾ç½®è·Ÿè¸ªé¼ æ ‡åŠ¨ä½œçª—å£
-void		Wnd_ReleaseCapture();							//é‡Šæ”¾çª—å£å¯¹é¼ æ ‡åŠ¨ä½œçš„è·Ÿè¸ª
-//----å¤„ç†çª—å£ç‹¬å ----
-void		Wnd_SetExclusive(KWndWindow* pWnd);				//è®¾ç½®ç‹¬å çª—å£
-void		Wnd_ReleaseExclusive(KWndWindow* pWnd);			//é‡Šæ”¾çª—å£çš„ç‹¬å çŠ¶æ€
+void		Wnd_DragFinished();								//½áÊøÍÏ¶¯×´Ì¬
+//----´¦ÀíÊäÈë½¹µã´°¿Ú----
+void		Wnd_SetFocusWnd(KWndWindow* pWnd);				//ÉèÖÃÊäÈë½¹µã´°¿Ú
+KWndWindow*	Wnd_GetFocusWnd();								//»ñÈ¡ÊäÈë½¹µã´°¿Ú
+//----¸ú×ÙÊó±êÊÂ¼ş----
+void		Wnd_SetCapture(KWndWindow* pWnd);				//ÉèÖÃ¸ú×ÙÊó±ê¶¯×÷´°¿Ú
+void		Wnd_ReleaseCapture();							//ÊÍ·Å´°¿Ú¶ÔÊó±ê¶¯×÷µÄ¸ú×Ù
+//----´¦Àí´°¿Ú¶ÀÕ¼----
+void		Wnd_SetExclusive(KWndWindow* pWnd);				//ÉèÖÃ¶ÀÕ¼´°¿Ú
+void		Wnd_ReleaseExclusive(KWndWindow* pWnd);			//ÊÍ·Å´°¿ÚµÄ¶ÀÕ¼×´Ì¬

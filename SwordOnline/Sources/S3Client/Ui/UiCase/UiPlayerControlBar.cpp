@@ -150,7 +150,7 @@ void KUiPlayerControlBar::Breathe()
 			{
 				if (m_pStateSkill = (KStateControl*)malloc(sizeof(KStateControl) * nCount))
 				{
-					g_pCoreShell->GetGameData(GDI_NPC_STATE_SKILL, (unsigned int)m_pStateSkill, nCount);//¬µ¬•√è√ü¬≥√å√ñ¬¥√ê√ê¬£¬¨nCount√ñ¬µ¬≤¬ª¬±√§
+					g_pCoreShell->GetGameData(GDI_NPC_STATE_SKILL, (unsigned int)m_pStateSkill, nCount);//µ•œﬂ≥Ã÷¥––£¨nCount÷µ≤ª±‰
 					int nSkillID;
 					for (int i = 0; i < nCount; i++)
 					{
@@ -270,7 +270,7 @@ void KUiPlayerControlBar::Add(int nSkillPos, KStateControl* pStateSkill)
 	if (pStateSkill->nLeftTime <= GAME_FPS)
 	{
 		strcpy(szTemp, "N/A");
-		strcat(pszDesc, "Duy tr√ó v√únh vi√în");
+		strcat(pszDesc, "Duy tr◊ v‹nh vi‘n");
 	}
 	else
 	{

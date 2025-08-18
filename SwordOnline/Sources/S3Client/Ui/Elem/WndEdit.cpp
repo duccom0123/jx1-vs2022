@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--è¾“å…¥çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÊäÈë´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
@@ -20,26 +20,26 @@ extern iRepresentShell*	g_pRepresentShell;
 
 static KIme	s_Ime;
 static BOOL	s_LastTimeIsIme;
-unsigned int KWndEdit::ms_uBtnTipTextColor = 0xffffffff;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
-int			 KWndEdit::ms_nDisableBtnTip   = false;		//æ˜¯å¦é™æ­¢æŒ‰é’®çš„æç¤ºæ–‡å­—
+unsigned int KWndEdit::ms_uBtnTipTextColor = 0xffffffff;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
+int			 KWndEdit::ms_nDisableBtnTip   = false;		//ÊÇ·ñ¾²Ö¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
 
 #define	MULTI_LINE	(m_Flag & WNDEDIT_ES_MULTI_LINE)
 
-//å¯»æ‰¾å­—ç¬¦ä¸²æ¢è¡Œçš„ä½ç½®
+//Ñ°ÕÒ×Ö·û´®»»ĞĞµÄÎ»ÖÃ
 int SplitStringLine(char* pString, int nLine, int nLineByte);
-//è®¾ç½®æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+//ÉèÖÃ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
 void KWndEdit::SetAllButtonTipTextColor(unsigned int uColor)
 {
 	ms_uBtnTipTextColor = uColor;
 }
 
-//ç¦æ­¢/å…è®¸æŒ‰é’®çš„æç¤ºæ–‡å­—
+//½ûÖ¹/ÔÊĞí°´Å¥µÄÌáÊ¾ÎÄ×Ö
 void KWndEdit::EnableAllButtonTip(int bEnable)
 {
 	ms_nDisableBtnTip = !bEnable;
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndEdit::KWndEdit()
 {
@@ -92,7 +92,7 @@ void KWndEdit::Clone(KWndEdit* pCopy)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 int KWndEdit::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -129,7 +129,7 @@ int KWndEdit::Init(KIniFile* pIniFile, const char* pSection)
 		else if (nValue == 2)
 			m_Flag |= WNDEDIT_ES_IME_AVAILABLE;
 
-		//====å­—ä¸²é™é•¿====
+		//====×Ö´®ÏŞ³¤====
 		pIniFile->GetInteger(pSection, "MaxLen", -1, &m_nLimitText);
 		if (m_nLimitText > m_nBufferSize - 1 || m_nLimitText == -1)
 			m_nLimitText = m_nBufferSize -1;
@@ -137,13 +137,13 @@ int KWndEdit::Init(KIniFile* pIniFile, const char* pSection)
 			m_nLimitText = 0;		
 		//if limitext value is been changed, ignore changing.
 
-		//===æ–‡å­—é¢œè‰²====
+		//===ÎÄ×ÖÑÕÉ«====
 		char	Buff[16];
 		pIniFile->GetString(pSection, "Color", "", Buff, 16);
 		m_TextColor = GetColor(Buff);
 		pIniFile->GetString(pSection, "BorderColor", "", Buff, 16);
 		m_TextBorderColor = GetColor(Buff);
-		//====æ–‡å­—å¤§å°====
+		//====ÎÄ×Ö´óĞ¡====
 		pIniFile->GetInteger(pSection, "Font", 12, &m_nFontSize);
 		if (m_nFontSize < 8)
 			m_nFontSize = 12;
@@ -190,7 +190,7 @@ int KWndEdit::Init(KIniFile* pIniFile, const char* pSection)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç¦æ­¢æˆ–è€…å…è®¸çª—å£è¢«æ“ä½œ
+//	¹¦ÄÜ£º½ûÖ¹»òÕßÔÊĞí´°¿Ú±»²Ù×÷
 //--------------------------------------------------------------------------
 void KWndEdit::Enable(int bEnable)
 {
@@ -207,7 +207,7 @@ void KWndEdit::Enable(int bEnable)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°ï¼ˆå¤„ç†æ¶ˆæ¯ï¼‰
+//	¹¦ÄÜ£º´°¿Úº¯Êı£¨´¦ÀíÏûÏ¢£©
 //--------------------------------------------------------------------------
 int KWndEdit::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -292,7 +292,7 @@ int KWndEdit::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 				    s_Ime.OpenIME();
 			}
 
-//			m_nCaretPos = m_nTextLen;	//æŠŠå…‰æ ‡ä½ç½®è®¾åœ¨æ–‡æœ¬æœ«å°¾
+//			m_nCaretPos = m_nTextLen;	//°Ñ¹â±êÎ»ÖÃÉèÔÚÎÄ±¾Ä©Î²
 			m_Flag |= WNDEDIT_F_HAVE_FOCUS;
 			m_nCaretTime = 0;
 
@@ -365,7 +365,7 @@ int KWndEdit::SetToolTipInfo(char* szTip, int nMax)
 	return m_nTipLen;
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ’å…¥å­—ç¬¦ä¸²
+//	¹¦ÄÜ£º²åÈë×Ö·û´®
 //--------------------------------------------------------------------------
 int KWndEdit::InsertString(const char* pString, int nLen)
 {
@@ -428,7 +428,7 @@ int KWndEdit::Paste()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é”®ç›˜æŒ‰é”®æ“ä½œ
+//	¹¦ÄÜ£ºÏìÓ¦¼üÅÌ°´¼ü²Ù×÷
 //--------------------------------------------------------------------------
 int KWndEdit::OnKeyDown(int nKeyCode, int nModifiers)
 {
@@ -537,11 +537,11 @@ int KWndEdit::OnKeyDown(int nKeyCode, int nModifiers)
 			}
 		}
 		break;
-	case 'C':	//ç²˜å¸–
+	case 'C':	//Õ³Ìû
 		if ((GetKeyState(VK_CONTROL) & 0x8000) && Copy())
 			nRet = 1;
 		break;
-	case 'V':	//ç²˜å¸–
+	case 'V':	//Õ³Ìû
 		if ((GetKeyState(VK_CONTROL) & 0x8000) && Paste())
 		{
 			UpdateData();
@@ -563,19 +563,19 @@ int KWndEdit::OnKeyDown(int nKeyCode, int nModifiers)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ’å…¥å­—ç¬¦æ“ä½œ
-//	è¿”å›ï¼šæ˜¯å¦æœ‰å­—ç¬¦ä¸²æ˜¯å¦è¢«æ‘†å˜
+//	¹¦ÄÜ£º²åÈë×Ö·û²Ù×÷
+//	·µ»Ø£ºÊÇ·ñÓĞ×Ö·û´®ÊÇ·ñ±»°Ú±ä
 //--------------------------------------------------------------------------
 int KWndEdit::InsertChar(int nChar)
 {
-	if (nChar > 0x80)	//æ­¤åˆ¤æ–­ä¸è¯­è¨€ç¼–ç è§„åˆ™ç›¸å…³
+	if (nChar > 0x80)	//´ËÅĞ¶ÏÓëÓïÑÔ±àÂë¹æÔòÏà¹Ø
 	{
 		if (m_Flag & WNDEDIT_ES_IME_AVAILABLE)
 			return (InsertChar((char)(nChar & 0xff), (char)(nChar >> 8)));
 		else
 			return false;
 	}
-	if (nChar == VK_BACK)		//é€€æ ¼
+	if (nChar == VK_BACK)		//ÍË¸ñ
 	{
 		if (m_nCaretPos)
 		{
@@ -595,10 +595,10 @@ int KWndEdit::InsertChar(int nChar)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåœ¨å­—ç¬¦ä¸²é‡Œæ‰§è¡Œæ’å…¥å­—ç¬¦æ“ä½œ
-//	å‚æ•°ï¼šcLow  -> ä¸ºè¦æ’å…¥çš„ä¸ºå•å­—èŠ‚å­—ç¬¦ï¼›å¦‚æœè¦æ’å…¥ä¸ºåŒå­—èŠ‚å­—ç¬¦ï¼Œåˆ™ä¸ºåä¸€ä¸ªå­—èŠ‚ã€‚
-//	      cHigh -> è¦æ’å…¥çš„ä¸ºå•å­—èŠ‚å­—ç¬¦æ—¶cHighä¸º0ï¼Œå¦‚æœè¦æ’å…¥ä¸ºåŒå­—èŠ‚å­—ç¬¦ï¼Œåˆ™ä¸ºå‰ä¸€ä¸ªå­—èŠ‚ã€‚
-//	è¿”å›ï¼šå­—ç¬¦ä¸²æ˜¯å¦è¢«æ”¹å˜
+//	¹¦ÄÜ£ºÔÚ×Ö·û´®ÀïÖ´ĞĞ²åÈë×Ö·û²Ù×÷
+//	²ÎÊı£ºcLow  -> ÎªÒª²åÈëµÄÎªµ¥×Ö½Ú×Ö·û£»Èç¹ûÒª²åÈëÎªË«×Ö½Ú×Ö·û£¬ÔòÎªºóÒ»¸ö×Ö½Ú¡£
+//	      cHigh -> Òª²åÈëµÄÎªµ¥×Ö½Ú×Ö·ûÊ±cHighÎª0£¬Èç¹ûÒª²åÈëÎªË«×Ö½Ú×Ö·û£¬ÔòÎªÇ°Ò»¸ö×Ö½Ú¡£
+//	·µ»Ø£º×Ö·û´®ÊÇ·ñ±»¸Ä±ä
 //--------------------------------------------------------------------------
 int	KWndEdit::InsertChar(char cLow, char cHigh)
 {
@@ -620,19 +620,19 @@ int	KWndEdit::InsertChar(char cLow, char cHigh)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå­—ç¬¦ä¸²è¢«æ›´æ–°
+//	¹¦ÄÜ£º×Ö·û´®±»¸üĞÂ
 //--------------------------------------------------------------------------
 void KWndEdit::UpdateData()
 {
 	FmtForShow();
 	if (m_pParentWnd)
-	{	//å‘é€æ›´æ–°æ¶ˆæ¯
+	{	//·¢ËÍ¸üĞÂÏûÏ¢
 		m_pParentWnd->WndProc(WND_N_EDIT_CHANGE, (unsigned int)(KWndWindow*)this, 0);
 	}
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¡ç®—æ›´æ–°å½±å“å­—ç¬¦ä¸²æ˜¾ç¤ºçš„ä¸€äº›æ§åˆ¶å‚æ•°
+//	¹¦ÄÜ£º¼ÆËã¸üĞÂÓ°Ïì×Ö·û´®ÏÔÊ¾µÄÒ»Ğ©¿ØÖÆ²ÎÊı
 //--------------------------------------------------------------------------
 void KWndEdit::FmtForShow()
 {	
@@ -641,7 +641,7 @@ void KWndEdit::FmtForShow()
 	int	nLineLen = (m_Width * 2) / m_nFontSize;
 	if ((m_Flag & WNDEDIT_ES_MULTI_LINE) == 0)
 	//============================
-	//		å•è¡Œè¾“å…¥çª—å£å¤„ç†
+	//		µ¥ĞĞÊäÈë´°¿Ú´¦Àí
 	//============================
 	{
 		int nJumpLen = 4;
@@ -657,7 +657,7 @@ void KWndEdit::FmtForShow()
 			m_nSkipBehind = m_nSkipAhead + TSplitString(m_pText + m_nSkipAhead, nLineLen, true);
 	}
 	//============================
-	//		å¤šè¡Œè¾“å…¥çª—å£å¤„ç†
+	//		¶àĞĞÊäÈë´°¿Ú´¦Àí
 	//============================
 	else
 	{
@@ -701,7 +701,7 @@ void KWndEdit::FmtForShow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå¯»æ‰¾å­—ç¬¦ä¸²æ¢è¡Œçš„ä½ç½®
+//	¹¦ÄÜ£ºÑ°ÕÒ×Ö·û´®»»ĞĞµÄÎ»ÖÃ
 //--------------------------------------------------------------------------
 int SplitStringLine(char* pString, int nLine, int nLineByte)
 {
@@ -724,7 +724,7 @@ int SplitStringLine(char* pString, int nLine, int nLineByte)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—ä½“ç»˜åˆ¶
+//	¹¦ÄÜ£º´°Ìå»æÖÆ
 //--------------------------------------------------------------------------
 void KWndEdit::PaintWindow()
 {
@@ -856,7 +856,7 @@ void KWndEdit::PaintWindow()
     //ShowCaret(::g_GetMainHWnd());
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æ–‡æœ¬ç¼“å†²åŒºæŒ‡é’ˆ
+//	¹¦ÄÜ£ºÉèÖÃÎÄ±¾»º³åÇøÖ¸Õë
 //--------------------------------------------------------------------------
 void KWndEdit::SetTextPtr(char* pText, int nMaxLen)
 {
@@ -869,7 +869,7 @@ void KWndEdit::SetTextPtr(char* pText, int nMaxLen)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æ–‡æœ¬æ–‡å­—
+//	¹¦ÄÜ£ºÉèÖÃÎÄ±¾ÎÄ×Ö
 //--------------------------------------------------------------------------
 void KWndEdit::SetText(const char* pText, int nLen)
 {
@@ -903,7 +903,7 @@ void KWndEdit::Clear(bool bSafe)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æ•°å€¼æ–‡å­—
+//	¹¦ÄÜ£ºÉèÖÃÊıÖµÎÄ×Ö
 //--------------------------------------------------------------------------
 void KWndEdit::SetIntText(int nNumber)
 {
@@ -921,7 +921,7 @@ DWORD	KWndEdit::GetIntNumber()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å–å­—ç¬¦ä¸²å†…å®¹
+//	¹¦ÄÜ£º»ñÈ¡×Ö·û´®ÄÚÈİ
 //--------------------------------------------------------------------------
 int KWndEdit::GetText(char* pBuffer, int nSize, bool bExcludeSpace)
 {
@@ -964,7 +964,7 @@ KWndEdit80::KWndEdit80()
 	SetTextPtr(m_Text, 80);
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndEdit32::KWndEdit32()
 {
@@ -973,7 +973,7 @@ KWndEdit32::KWndEdit32()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndEdit512::KWndEdit512()
 {

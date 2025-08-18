@@ -44,19 +44,19 @@ public:
 	char		m_szMapPath[FILE_NAME_LENGTH];
 	//KLittleMap	m_cLittleMap;
 #endif
-	int			m_nWorldRegionWidth;			//	SubWorldé‡Œå®½å‡ ä¸ªRegion
-	int			m_nWorldRegionHeight;			//	SubWorldé‡Œé«˜å‡ ä¸ªRegion
-	int			m_nTotalRegion;					//	SubWorldé‡ŒRegionä¸ªæ•°
-	int			m_nRegionWidth;					//	Regionçš„æ ¼å­å®½åº¦
-	int			m_nRegionHeight;				//	Regionçš„æ ¼å­é«˜åº¦
-	int			m_nCellWidth;					//	Cellçš„åƒç´ å®½åº¦
-	int			m_nCellHeight;					//	Cellçš„åƒç´ é«˜åº¦
+	int			m_nWorldRegionWidth;			//	SubWorldÀï¿í¼¸¸öRegion
+	int			m_nWorldRegionHeight;			//	SubWorldÀï¸ß¼¸¸öRegion
+	int			m_nTotalRegion;					//	SubWorldÀïRegion¸öÊı
+	int			m_nRegionWidth;					//	RegionµÄ¸ñ×Ó¿í¶È
+	int			m_nRegionHeight;				//	RegionµÄ¸ñ×Ó¸ß¶È
+	int			m_nCellWidth;					//	CellµÄÏñËØ¿í¶È
+	int			m_nCellHeight;					//	CellµÄÏñËØ¸ß¶È
 	int			m_nRegionBeginX;				
 	int			m_nRegionBeginY;
-	int			m_nWeather;						//	å¤©æ°”å˜åŒ–
-	DWORD		m_dwCurrentTime;				//	å½“å‰å¸§
-	KWorldMsg	m_WorldMessage;					//	æ¶ˆæ¯
-	KList		m_NoneRegionNpcList;			//	ä¸åœ¨åœ°å›¾ä¸Šçš„NPC
+	int			m_nWeather;						//	ÌìÆø±ä»¯
+	DWORD		m_dwCurrentTime;				//	µ±Ç°Ö¡
+	KWorldMsg	m_WorldMessage;					//	ÏûÏ¢
+	KList		m_NoneRegionNpcList;			//	²»ÔÚµØÍ¼ÉÏµÄNPC
 
 #ifdef _SERVER
 	KWeatherMgr *m_pWeatherMgr;
@@ -73,21 +73,21 @@ public:
 	void		AddPlayer(int nRegion, int nIdx);
 	void		RemovePlayer(int nRegion, int nIdx);
 	void		Close();
-	int			GetDistance(int nRx1, int nRy1, int nRx2, int nRy2);						// åƒç´ çº§åæ ‡
-	void		Map2Mps(int nR, int nX, int nY, int nDx, int nDy, int *nRx, int *nRy);		// æ ¼å­åæ ‡è½¬åƒç´ åæ ‡
-	static void Map2Mps(int nRx, int nRy, int nX, int nY, int nDx, int nDy, int *pnX, int *pnY);		// æ ¼å­åæ ‡è½¬åƒç´ åæ ‡
-	void		Mps2Map(int Rx, int Ry, int * nR, int * nX, int * nY, int *nDx, int * nDy);	// åƒç´ åæ ‡è½¬æ ¼å­åæ ‡
-	void		GetMps(int *nX, int *nY, int nSpeed, int nDir, int nMaxDir = 64);			// å–å¾—æŸæ–¹å‘æŸé€Ÿåº¦ä¸‹ä¸€ç‚¹çš„åæ ‡
+	int			GetDistance(int nRx1, int nRy1, int nRx2, int nRy2);						// ÏñËØ¼¶×ø±ê
+	void		Map2Mps(int nR, int nX, int nY, int nDx, int nDy, int *nRx, int *nRy);		// ¸ñ×Ó×ø±ê×ªÏñËØ×ø±ê
+	static void Map2Mps(int nRx, int nRy, int nX, int nY, int nDx, int nDy, int *pnX, int *pnY);		// ¸ñ×Ó×ø±ê×ªÏñËØ×ø±ê
+	void		Mps2Map(int Rx, int Ry, int * nR, int * nX, int * nY, int *nDx, int * nDy);	// ÏñËØ×ø±ê×ª¸ñ×Ó×ø±ê
+	void		GetMps(int *nX, int *nY, int nSpeed, int nDir, int nMaxDir = 64);			// È¡µÃÄ³·½ÏòÄ³ËÙ¶ÈÏÂÒ»µãµÄ×ø±ê
 	BYTE		TestBarrier(int nMpsX, int nMpsY);
-	BYTE		TestBarrier(int nRegion, int nMapX, int nMapY, int nDx, int nDy, int nChangeX, int nChangeY);	// æ£€æµ‹ä¸‹ä¸€ç‚¹æ˜¯å¦ä¸ºéšœç¢
-	BYTE		TestBarrierMin(int nRegion, int nMapX, int nMapY, int nDx, int nDy, int nChangeX, int nChangeY);	// æ£€æµ‹ä¸‹ä¸€ç‚¹æ˜¯å¦ä¸ºéšœç¢
-	BYTE		GetBarrier(int nMpsX, int nMpsY);											// å–å¾—æŸç‚¹çš„éšœç¢ä¿¡æ¯
+	BYTE		TestBarrier(int nRegion, int nMapX, int nMapY, int nDx, int nDy, int nChangeX, int nChangeY);	// ¼ì²âÏÂÒ»µãÊÇ·ñÎªÕÏ°­
+	BYTE		TestBarrierMin(int nRegion, int nMapX, int nMapY, int nDx, int nDy, int nChangeX, int nChangeY);	// ¼ì²âÏÂÒ»µãÊÇ·ñÎªÕÏ°­
+	BYTE		GetBarrier(int nMpsX, int nMpsY);											// È¡µÃÄ³µãµÄÕÏ°­ĞÅÏ¢
 	DWORD		GetTrap(int nMpsX, int nMpsY);
 	void		MessageLoop();
-	int			FindRegion(int RegionID);													// æ‰¾åˆ°æŸIDçš„Regionçš„ç´¢å¼•
+	int			FindRegion(int RegionID);													// ÕÒµ½Ä³IDµÄRegionµÄË÷Òı
 	int			FindFreeRegion(int nX = 0, int nY = 0);
 #ifdef _SERVER
-	int			RevivalAllNpc();//å°†åœ°å›¾ä¸Šæ‰€æœ‰çš„NpcåŒ…æ‹¬å·²æ­»äº¡çš„Npcå…¨éƒ¨æ¢å¤æˆåŸå§‹çŠ¶æ€
+	int			RevivalAllNpc();//½«µØÍ¼ÉÏËùÓĞµÄNpc°üÀ¨ÒÑËÀÍöµÄNpcÈ«²¿»Ö¸´³ÉÔ­Ê¼×´Ì¬
 	void		BroadCast(const char* pBuffer, size_t uSize);
 	void		BroadCastRegion(const void* pBuffer, size_t uSize, int &nMaxCount, int nRegionIndex, int nOX, int nOY);
 	BOOL		LoadMap(int nIdx);

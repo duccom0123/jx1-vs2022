@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiReconnect.h
-//	åˆ›å»ºè€…		ï¼š	Freeway Chen
-//	åˆ›å»ºæ—¶é—´	ï¼š	2003-7-18
-//	åŠŸèƒ½æè¿°	ï¼š	è‡ªåŠ¨é‡è¿çš„æµç¨‹æ§åˆ¶	
+//	ÎÄ¼şÃû		£º	UiReconnect.h
+//	´´½¨Õß		£º	Freeway Chen
+//	´´½¨Ê±¼ä	£º	2003-7-18
+//	¹¦ÄÜÃèÊö	£º	×Ô¶¯ÖØÁ¬µÄÁ÷³Ì¿ØÖÆ	
 //
 // -------------------------------------------------------------------------
 #ifndef __UIRECONNECT_H__
@@ -21,8 +21,8 @@ private:
 	KReconnectWnd()  {}
 	~KReconnectWnd() {}
 
-	virtual int	    WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
-	virtual void	Breathe();													//çª—å£çš„æŒç»­è¡Œä¸º
+	virtual int	    WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	virtual void	Breathe();													//´°¿ÚµÄ³ÖĞøĞĞÎª
 	void			FirstReconnect();
 	bool			StartReconnect();
 

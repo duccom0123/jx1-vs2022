@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--æŠ€èƒ½çª—å£
+//	½çÃæ--¼¼ÄÜ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-28
@@ -25,14 +25,14 @@ class KUiFightSkillSubPage : public KWndPage
 {
 public:
 	KUiFightSkillSubPage();
-	void	Initialize(/*int nSubPageIndex*/);				//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	UpdateRemainPoint(int nPoint);				//æ›´æ–°å‡çº§ç‚¹æ•°
-	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//æ›´æ–°å•ä¸ªæŠ€èƒ½
-	void	UpdateData(KUiSkillData* pSkills);			//æ›´æ–°æ•°æ®
+	void	Initialize(/*int nSubPageIndex*/);				//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);			//ÔØÈë½çÃæ·½°¸
+	void	UpdateRemainPoint(int nPoint);				//¸üĞÂÉı¼¶µãÊı
+	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//¸üĞÂµ¥¸ö¼¼ÄÜ
+	void	UpdateData(KUiSkillData* pSkills);			//¸üĞÂÊı¾İ
 private:
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
-	void	PaintWindow();								//ç»˜åˆ¶çª—å£
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	PaintWindow();								//»æÖÆ´°¿Ú
 private:
 //	int			m_nSubPagIndex;
 	int			m_nRemainSkillPoint;
@@ -49,11 +49,11 @@ private:
 class KUiFightSkillSub : public KWndPageSet
 {
 public:	
-	void	Initialize();								//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	UpdateRemainPoint(int nPoint);				//æ›´æ–°å‡çº§ç‚¹æ•°
-	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//æ›´æ–°æŠ€èƒ½
-	void	UpdateData();								//æ›´æ–°æ•°æ®
+	void	Initialize();								//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);			//ÔØÈë½çÃæ·½°¸
+	void	UpdateRemainPoint(int nPoint);				//¸üĞÂÉı¼¶µãÊı
+	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//¸üĞÂ¼¼ÄÜ
+	void	UpdateData();								//¸üĞÂÊı¾İ
 private:
 	KUiFightSkillSubPage	m_SubPages[FIGHT_SKILL_SUB_PAGE_COUNT];
 	KWndButton				m_SubPageBtn[FIGHT_SKILL_SUB_PAGE_COUNT];
@@ -62,11 +62,11 @@ private:
 class KUiFightSkill : public KWndPage
 {
 public:
-	void	Initialize();								//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	UpdateRemainPoint(int nPoint);				//æ›´æ–°å‡çº§ç‚¹æ•°
-	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//æ›´æ–°æŠ€èƒ½
-	void	UpdateData();								//æ›´æ–°æ•°æ®	
+	void	Initialize();								//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);			//ÔØÈë½çÃæ·½°¸
+	void	UpdateRemainPoint(int nPoint);				//¸üĞÂÉı¼¶µãÊı
+	void	UpdateSkill(KUiSkillData* pSkill, int nIndex);	//¸üĞÂ¼¼ÄÜ
+	void	UpdateData();								//¸üĞÂÊı¾İ	
 private:
 	KWndText32			m_RemainSkillPoint;
 	KUiFightSkillSub	m_InternalPad;
@@ -75,19 +75,19 @@ private:
 class KUiSkills : public KWndPageSet
 {
 public:
-	static KUiSkills* OpenWindow();							//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiSkills* GetIfVisible();						//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void		 CloseWindow(bool bDestroy);			//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void		 LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	static void		 UpdateSkill(KUiSkillData* pSkill, int nIndex);	//æ›´æ–°æŠ€èƒ½
+	static KUiSkills* OpenWindow();							//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiSkills* GetIfVisible();						//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void		 CloseWindow(bool bDestroy);			//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void		 LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
+	static void		 UpdateSkill(KUiSkillData* pSkill, int nIndex);	//¸üĞÂ¼¼ÄÜ
 
-	void	UpdateFightRemainPoint(int nPoint);				//æ›´æ–°æˆ˜æ–—æŠ€èƒ½å‡çº§ç‚¹æ•°
+	void	UpdateFightRemainPoint(int nPoint);				//¸üĞÂÕ½¶·¼¼ÄÜÉı¼¶µãÊı
 
 private:
 	KUiSkills(){}
 	~KUiSkills() {}
-	void	Initialize();							//åˆå§‹åŒ–
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	void	Initialize();							//³õÊ¼»¯
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 private:
 	static KUiSkills* m_pSelf;
 private:

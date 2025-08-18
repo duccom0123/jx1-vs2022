@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	Â½Ã§ÃƒÃ¦--ÃÂµÃÂ³ÃÃ»ÃÂ¢Ã–ÃÃÃ„
+//	½çÃæ--ÏµÍ³ÏûÏ¢ÖĞĞÄ
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-15
@@ -37,7 +37,7 @@ extern iCoreShell*		g_pCoreShell;
 extern iRepresentShell*	g_pRepresentShell;
 
 #define	SCHEME_INI					"UiSysMsgCentre.ini"
-#define	SYSTEM_MSG_SENDER_NAME		"HÃ– thÃ¨ng"
+#define	SYSTEM_MSG_SENDER_NAME		"HÖ thèng"
 #define	MSG_LIST_EXPAND_STEP		4
 #define	POPUP_MOVE_INTERVAL_DEF		20
 #define MSG_DISAPPEAR_INTERVAL_DEF	30000
@@ -45,7 +45,7 @@ extern iRepresentShell*	g_pRepresentShell;
 #define	LAST_MOVEMENT_POS			-1
 #define	MAX_MSG_IN_RECYCLE_HEAP		10
 
-#define	MSG_BACK_TO_TOWN	"VÃ’ thÂµnh dÂ­Ã¬ng sÃ¸c"
+#define	MSG_BACK_TO_TOWN	"VÒ thµnh d­ìng søc"
 
 #define	POP_UP_TIME			uReservedForUi
 
@@ -53,7 +53,7 @@ KUiSysMsgCentre*		KUiSysMsgCentre::m_pSelf = NULL;
 
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Â¹Ã”Ã¬ÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KUiSysMsgCentre::KUiSysMsgCentre()
 {
@@ -79,7 +79,7 @@ KUiSysMsgCentre::~KUiSysMsgCentre()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiSysMsgCentre* KUiSysMsgCentre::OpenWindow()
 {
@@ -95,7 +95,7 @@ KUiSysMsgCentre* KUiSysMsgCentre::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 void KUiSysMsgCentre::Initialize()
 {
@@ -123,7 +123,7 @@ void KUiSysMsgCentre::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿Ãš
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
 //--------------------------------------------------------------------------
 void KUiSysMsgCentre::CloseWindow()
 {
@@ -137,7 +137,7 @@ void KUiSysMsgCentre::CloseWindow()
 
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiSysMsgCentre::LoadScheme(const char* pScheme)
 {
@@ -152,7 +152,7 @@ void KUiSysMsgCentre::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiSysMsgCentre::LoadScheme(KIniFile* pIni)
 {
@@ -191,7 +191,7 @@ void KUiSysMsgCentre::LoadScheme(KIniFile* pIni)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KUiSysMsgCentre::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -248,41 +248,41 @@ int KUiSysMsgCentre::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return nRet;
 }
 
-//ÃÃ¬Ã“Â¦Â²Ã™Ã—Ã·Â½Ã¡ÃŠÃ¸Â£Â¬ÃÃ¦Â¼Ã’Ã’Ã‘Â¾Â­Ã—Ã¶Â³Ã¶Ã‘Â¡Ã”Ã±Â¡Â£
+//ÏìÓ¦²Ù×÷½áÊø£¬Íæ¼ÒÒÑ¾­×ö³öÑ¡Ôñ¡£
 void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 {
 	//_ASSERT(m_pHandlingMsg);
 	KUiPlayerItem* pPlayer = NULL;
 	switch(uParam)
 	{
-	case SMCT_UI_RENASCENCE:	//Ã‘Â¡Ã”Ã±Ã–Ã˜Ã‰Ãº
-		g_pCoreShell->OperationRequest(GOI_PLAYER_RENASCENCE, 0, nSelAction);//nSelAction=0Â£ÂºÃ”Â­ÂµÃ˜Ã–Ã˜Ã‰Ãº, nSelAction=1Â£ÂºÂ»Ã˜Â³Ã‡
+	case SMCT_UI_RENASCENCE:	//Ñ¡ÔñÖØÉú
+		g_pCoreShell->OperationRequest(GOI_PLAYER_RENASCENCE, 0, nSelAction);//nSelAction=0£ºÔ­µØÖØÉú, nSelAction=1£º»Ø³Ç
 		break;
-	case SMCT_UI_TEAM_INVITE:	//Â´Ã°Ã“Â¦Â»Ã²Â¾ÃœÂ¾Ã¸Â¼Ã“ÃˆÃ«Â¶Ã“ÃÃ©ÂµÃ„Ã‘Ã»Ã‡Ã«
+	case SMCT_UI_TEAM_INVITE:	//´ğÓ¦»ò¾Ü¾ø¼ÓÈë¶ÓÎéµÄÑûÇë
 		if (m_pHandlingMsg)
 		{
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem))
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->TeamOperation(TEAM_OI_INVITE_RESPONSE,
-				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
-	case SMCT_UI_TEAM_APPLY:	//Â´Ã°Ã“Â¦Â»Ã²Â¾ÃœÂ¾Ã¸Â¼Ã“ÃˆÃ«Â¶Ã“ÃÃ©ÂµÃ„Ã‰ÃªÃ‡Ã«,
+	case SMCT_UI_TEAM_APPLY:	//´ğÓ¦»ò¾Ü¾ø¼ÓÈë¶ÓÎéµÄÉêÇë,
 		if (m_pHandlingMsg)
 		{
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem))
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->TeamOperation(TEAM_OI_APPLY_RESPONSE,
-				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
-	case SMCT_UI_FRIEND_INVITE:	//Ã…ÃºÃ—Â¼Â»Ã²Â¾ÃœÂ¾Ã¸Â±Ã°ÃˆÃ‹Â¼Ã“Ã—Ã”Â¼ÂºÃÂªÂºÃƒÃ“Ã‘
+	case SMCT_UI_FRIEND_INVITE:	//Åú×¼»ò¾Ü¾ø±ğÈË¼Ó×Ô¼ºÎªºÃÓÑ
 		if (m_pHandlingMsg)
 		{
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem));
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->OperationRequest(GOI_CHAT_FRIEND_INVITE,
-				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 			if (nSelAction == 0)
 			{
 				int nUnit = KUiChatCentre::FindUnitIndexByRoleNameAtServerUnit(pPlayer->Name);
@@ -301,7 +301,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem));
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->OperationRequest(GOI_TRADE_INVITE_RESPONSE,
-					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
 	case SMCT_UI_TRADE_FOLKGAME:
@@ -310,7 +310,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem));
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->OperationRequest(GOI_TRADE_FOLKGAME_INVITE_RESPONSE,
-					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
 	case SMCT_UI_SPAR:
@@ -319,7 +319,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem));
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->OperationRequest(GOI_SPAR_INVITE_RESPONSE,
-					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+					(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
 	case SMCT_UI_TONG_JOIN:
@@ -328,7 +328,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem))
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->TongOperation(GTOI_TONG_JOIN,
-				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
 	case SMCT_UI_TONG_JOIN_APPLY:
@@ -337,7 +337,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 			//_ASSERT(m_pHandlingMsg->byParamSize >= sizeof(KUiPlayerItem))
 			pPlayer = (KUiPlayerItem*)(&m_pHandlingMsg[1]);
 			g_pCoreShell->TongOperation(GTOI_TONG_JOIN_REPLY,
-				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0Â£ÂºÂ´Ã°Ã“Â¦, nSelAction=1Â£ÂºÂ¾ÃœÂ¾Ã¸
+				(unsigned int)pPlayer, (nSelAction == 0));	//nSelAction=0£º´ğÓ¦, nSelAction=1£º¾Ü¾ø
 		}
 		break;
 	}
@@ -352,7 +352,7 @@ void KUiSysMsgCentre::OnConfirmOperFinished(unsigned int uParam, int nSelAction)
 	}
 }
 
-//Ã…ÃÂ¶ÃÃ’Â»Â¸Ã¶ÂµÃ£ÃŠÃ‡Â·Ã±Ã”ÃšÂ´Â°Â¿ÃšÂ·Â¶ÃÂ§Ã„Ãš,Â´Â«ÃˆÃ«ÂµÃ„ÃŠÃ‡Â¾Ã¸Â¶Ã”Ã—Ã¸Â±Ãª
+//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
 int	KUiSysMsgCentre::PtInWindow(int x, int y)
 {
 	if (KWndWindow::PtInWindow(x, y))
@@ -368,7 +368,7 @@ int	KUiSysMsgCentre::PtInWindow(int x, int y)
 
 void KUiSysMsgCentre::Breathe()
 {
-	//ÃˆÃƒÂ³Â¬ÃŠÂ±ÂµÃ„ÃÃ»ÃÂ¢ÃÃ»ÃŠÂ§
+	//ÈÃ³¬Ê±µÄÏûÏ¢ÏûÊ§
 	int	i, j;
 	for (i = 0; i < SMT_WAR; i++)
 	{
@@ -385,7 +385,7 @@ void KUiSysMsgCentre::Breathe()
 		}
 	}
 
-	//Ã’Ã†Â¶Â¯Ã•Ã½Ã”ÃšÂµÂ¯Â³Ã¶ÃÃ»ÃÂ¢
+	//ÒÆ¶¯ÕıÔÚµ¯³öÏûÏ¢
 	if (m_MsgHeap[POPUPING_MSG_HEAP_INDEX].nNumValid)
 	{
 		if (IR_IsTimePassed(m_uMoveInterval, m_uLastMovementTime))
@@ -407,12 +407,12 @@ bool KUiSysMsgCentre::AMessageArrival(KSystemMessage* pMsg, void* pParam)
 		KUiMsgCentrePad::SystemMessageArrival(pMsg->szMessage, strlen(pMsg->szMessage));
 		return true;
 	}
-	if (pMsg->byConfirmType == SMCT_UI_RENASCENCE)	//Ã–Ã˜Ã‰Ãº
+	if (pMsg->byConfirmType == SMCT_UI_RENASCENCE)	//ÖØÉú
 	{
 		UIMessageBox(pMsg->szMessage, m_pSelf, MSG_BACK_TO_TOWN, NULL, SMCT_UI_RENASCENCE, 5000);
 		return true;
 	}
-	//Â¹Ã½Ã‚Ã‹ÃÃ ÃÂ¬ÂµÃ„ÃÃ»ÃÂ¢
+	//¹ıÂËÏàÍ¬µÄÏûÏ¢
 	if (pMsg->byConfirmType != SMCT_MSG_BOX)
 	{
 		if (m_pSelf->FilterSameMsg(pMsg, pParam))
@@ -585,11 +585,11 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 		if (bImmedDel == false)
 			UIMessageBox(pMsg->szMessage);
 		break;
-	case SMCT_UI_ATTRIBUTE:		//Â´Ã²Â¿ÂªÃŠÃ´ÃÃ”Ã’Â³ÃƒÃ¦
+	case SMCT_UI_ATTRIBUTE:		//´ò¿ªÊôĞÔÒ³Ãæ
 		if (bImmedDel == false)
 			KUiStatus::OpenWindow();
 		break;
-	case SMCT_UI_SKILLS:		//Â´Ã²Â¿ÂªÂ¼Â¼Ã„ÃœÃ’Â³ÃƒÃ¦
+	case SMCT_UI_SKILLS:		//´ò¿ª¼¼ÄÜÒ³Ãæ
 		if (bImmedDel == false)
 			KUiSkills::OpenWindow();
 		break;
@@ -600,41 +600,41 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 			KUiSkills::OpenWindow();
 		}
 		break;
-	case SMCT_UI_TEAM:			//Â´Ã²Â¿ÂªÂ¶Ã“ÃÃ©Â¹ÃœÃ€Ã­ÃƒÃ¦Â°Ã¥
+	case SMCT_UI_TEAM:			//´ò¿ª¶ÓÎé¹ÜÀíÃæ°å
 		if (bImmedDel == false)
 			KUiTeamManage::OpenWindow();
 		break;
-	case SMCT_UI_TEAM_INVITE:	//Â´Ã°Ã“Â¦Â»Ã²Â¾ÃœÂ¾Ã¸Â¼Ã“ÃˆÃ«Â¶Ã“ÃÃ©ÂµÃ„Ã‘Ã»Ã‡Ã«
+	case SMCT_UI_TEAM_INVITE:	//´ğÓ¦»ò¾Ü¾ø¼ÓÈë¶ÓÎéµÄÑûÇë
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s mÃªi bÂ¹n gia nhÃ‹p tÃ¦ Â®Ã©i.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s mêi b¹n gia nhËp tæ ®éi.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
 		break;
-	case SMCT_UI_TEAM_APPLY:	//Â´Ã°Ã“Â¦Â»Ã²Â¾ÃœÂ¾Ã¸Â¼Ã“ÃˆÃ«Â¶Ã“ÃÃ©ÂµÃ„Ã‰ÃªÃ‡Ã«
+	case SMCT_UI_TEAM_APPLY:	//´ğÓ¦»ò¾Ü¾ø¼ÓÈë¶ÓÎéµÄÉêÇë
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s xin gia nhÃ‹p Â®Ã©i cÃ±a bÂ¹n.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s xin gia nhËp ®éi cña b¹n.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
 		break;
-	case SMCT_UI_INTERVIEW:		//Â´Ã²Â¿ÂªÃÃ„ÃŒÃ¬Â¶Ã”Â»Â°Â½Ã§ÃƒÃ¦
+	case SMCT_UI_INTERVIEW:		//´ò¿ªÁÄÌì¶Ô»°½çÃæ
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
 		KUiPlayerBar::InputNameMsg(false, pPlayer->Name, true);
 		break;
-	case SMCT_UI_FRIEND_INVITE:	//Ã…ÃºÃ—Â¼Â»Ã²Â¾ÃœÂ¾Ã¸Â±Ã°ÃˆÃ‹Â¼Ã“Ã—Ã”Â¼ÂºÃÂªÂºÃƒÃ“Ã‘
+	case SMCT_UI_FRIEND_INVITE:	//Åú×¼»ò¾Ü¾ø±ğÈË¼Ó×Ô¼ºÎªºÃÓÑ
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s muÃ¨n kÃ•t giao hÂ¶o hÃ·u vÃ­i bÂ¹n.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s muèn kÕt giao h¶o h÷u víi b¹n.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -642,9 +642,9 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 	case SMCT_UI_TRADE:
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s mÃªi Â®Â­Ã®c giao dÃch vÃ­i bÂ¹n.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s mêi ®­îc giao dŞch víi b¹n.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -652,9 +652,9 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 	case SMCT_UI_TRADE_FOLKGAME:
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s mÃªi Â®ÃŠu Â®Ã¨ thuÃ‹t vÃ­i bÂ¹n.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s mêi ®Êu ®è thuËt víi b¹n.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -662,9 +662,9 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 	case SMCT_UI_SPAR:
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s mÃªi ngÂ­Â¬i cÃ¯ng tÃ» thÃ vÃ¢ nghÃ–.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s mêi ng­¬i cïng tû thİ vâ nghÖ.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -672,9 +672,9 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 	case SMCT_UI_TONG_JOIN:
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s xin phÃp gia nhÃ‹p Bang.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s xin phĞp gia nhËp Bang.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -682,9 +682,9 @@ void KUiSysMsgCentre::ConfirmMsg(KSystemMessage* pMsg, bool bImmedDel)
 	case SMCT_UI_TONG_JOIN_APPLY:
 		_ASSERT (pMsg->byParamSize >= sizeof(KUiPlayerItem));
 		pPlayer = (KUiPlayerItem*)(&pMsg[1]);
-		sprintf(szBuf, "%s mÃªi bÂ¹n gia nhÃ‹p Bang.", pPlayer->Name);
-		pFirstBtnText = "Â§Ã¥ng Ã½!";
-		pSecBtnText = "CÃ¹ tuyÃ–t";
+		sprintf(szBuf, "%s mêi b¹n gia nhËp Bang.", pPlayer->Name);
+		pFirstBtnText = "§ång ı!";
+		pSecBtnText = "Cù tuyÖt";
 		_ASSERT(m_pHandlingMsg == NULL);
 		m_pHandlingMsg = pMsg;
 		pMsg = NULL;
@@ -811,7 +811,7 @@ bool KUiSysMsgCentre::AddAMsgToHeap(KSystemMessage* pMsg, int nHeapIndex, bool b
 	return true;
 }
 
-//Â»Ã¦Ã–Ã†Â´Â°Â¿Ãš
+//»æÖÆ´°¿Ú
 void KUiSysMsgCentre::PaintWindow()
 {
 	KWndWindow::PaintWindow();

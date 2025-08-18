@@ -85,7 +85,7 @@ int cLittleMap::SetRegionSize(unsigned int cx,unsigned int cy)
 
 int cLittleMap::SetCameraTo(int x, int y, int z) 
 {
-	//鍙樻崲鎴愪负鍦板浘缂栬緫鍣ㄧ殑鍧愭爣
+	//变换成为地图编辑器的坐标
 	m_stMap.xTo = x;
 	m_stMap.yTo = y;
 	m_stMap.zTo = z;
@@ -152,7 +152,7 @@ int cLittleMap::RemoveAllNpcs()
 ///////////////////////////////////////////////////////////////////////////
 int cLittleMap::OnCameraUpdate()
 {
-	//灏咾BITMAP鐢诲埌image
+	//将KBITMAP画到image
 	return true;
 }
 

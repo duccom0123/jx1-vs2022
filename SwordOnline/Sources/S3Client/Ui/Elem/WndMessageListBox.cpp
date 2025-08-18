@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	ShowChatText.cpp
-//	åˆ›å»ºè€…		ï¼š	å½­å»ºæ³¢
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-16 16:22:56
-//	åŠŸèƒ½æè¿°	ï¼š	æ˜¾ç¤ºèŠå¤©å†…å®¹
+//	ÎÄ¼şÃû		£º	ShowChatText.cpp
+//	´´½¨Õß		£º	Åí½¨²¨
+//	´´½¨Ê±¼ä	£º	2002-9-16 16:22:56
+//	¹¦ÄÜÃèÊö	£º	ÏÔÊ¾ÁÄÌìÄÚÈİ
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -28,12 +28,12 @@ extern iCoreShell*		g_pCoreShell;
 KWndMessageListBox::KWndMessageListBox()
 {
 	m_pScrollbar = NULL;
-	m_pMessages = NULL;			//ä¿¡æ¯æ•°æ®
-	m_nNumMessage = 0;			//ä¿¡æ¯æ¡æ•°ç›®
-	m_nCapability = 0;			//ä¿¡æ¯æ¡æœ€å¤šå…è®¸æ•°ç›®
-	m_nFontSize = 12;			//å­—ä½“å¤§å°
+	m_pMessages = NULL;			//ĞÅÏ¢Êı¾İ
+	m_nNumMessage = 0;			//ĞÅÏ¢ÌõÊıÄ¿
+	m_nCapability = 0;			//ĞÅÏ¢Ìõ×î¶àÔÊĞíÊıÄ¿
+	m_nFontSize = 12;			//×ÖÌå´óĞ¡
 	m_nNumMaxShowLine = 0;
-	m_nNumBytesPerLine = 20;	//æ¯ä¸€è¡Œå­—ç¬¦çš„æ•°ç›®	
+	m_nNumBytesPerLine = 20;	//Ã¿Ò»ĞĞ×Ö·ûµÄÊıÄ¿	
 	m_nStartShowMsg = 0;
 	m_nStartMsgSkipLine = 0;
 	m_nNumVisibleTextLine = 0;
@@ -51,7 +51,7 @@ KWndMessageListBox::KWndMessageListBox()
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: ææ„å‡½æ•°
+// ¹¦ÄÜ	: Îö¹¹º¯Êı
 // -------------------------------------------------------------------------
 KWndMessageListBox::~KWndMessageListBox()
 {
@@ -78,7 +78,7 @@ void KWndMessageListBox::SetItemActived(BOOL bItemActived)
 		KUiPlayerControlBar::ClearItemBtn();
 }
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: è®¾ç½®å¯ä»¥å®¹çº³è®¯æ¯çš„æ•°ç›®
+// ¹¦ÄÜ	: ÉèÖÃ¿ÉÒÔÈİÄÉÑ¶Ï¢µÄÊıÄ¿
 // -------------------------------------------------------------------------
 int KWndMessageListBox::SetCapability(int nNumMessage)
 {
@@ -129,7 +129,7 @@ int KWndMessageListBox::SetCapability(int nNumMessage)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: è®¾ç½®å…³è”æ»šåŠ¨æ¡
+// ¹¦ÄÜ	: ÉèÖÃ¹ØÁª¹ö¶¯Ìõ
 // -------------------------------------------------------------------------
 void KWndMessageListBox::SetScrollbar(KWndScrollBar* pScroll)
 {
@@ -138,7 +138,7 @@ void KWndMessageListBox::SetScrollbar(KWndScrollBar* pScroll)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: æ–°æ·»ä¸€æ¡ä¿¡æ¯
+// ¹¦ÄÜ	: ĞÂÌíÒ»ÌõĞÅÏ¢
 // -------------------------------------------------------------------------
 int KWndMessageListBox::AddOneMessage(const char* pText, int nLen, unsigned int uTextBKColor, int nData/* = -1*/, KItemBtn* pIB/* = NULL*/)
 {
@@ -204,7 +204,7 @@ int KWndMessageListBox::AddOneMessage(const char* pText, int nLen, unsigned int 
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: åˆ é™¤ä¸€æ¡æ¶ˆæ¯
+// ¹¦ÄÜ	: É¾³ıÒ»ÌõÏûÏ¢
 // -------------------------------------------------------------------------
 void KWndMessageListBox::RemoveAMessage(int nIndex)
 {
@@ -243,7 +243,7 @@ void KWndMessageListBox::RemoveAMessage(int nIndex)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: åˆ é™¤å…¨éƒ¨æ¶ˆæ¯
+// ¹¦ÄÜ	: É¾³ıÈ«²¿ÏûÏ¢
 // -------------------------------------------------------------------------
 void KWndMessageListBox::Clear()
 {
@@ -283,7 +283,7 @@ void KWndMessageListBox::Clone(KWndMessageListBox* pCopy)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: åˆå§‹åŒ–
+// ¹¦ÄÜ	: ³õÊ¼»¯
 // -------------------------------------------------------------------------
 int KWndMessageListBox::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -293,11 +293,11 @@ int KWndMessageListBox::Init(KIniFile* pIniFile, const char* pSection)
 		pIniFile->GetInteger(pSection, "MaxMsgCount", 16, &nValue);
 		SetCapability(nValue);
 		pIniFile->GetInteger(pSection, "HitText", 0, &m_bHitText);
-		//====æ–‡å­—å¤§å°====
+		//====ÎÄ×Ö´óĞ¡====
 		pIniFile->GetInteger(pSection, "Font", 16, &m_nFontSize);
 		if (m_nFontSize < 4)
 			m_nFontSize = 4;
-		//---æ–‡å­—æ˜¾ç¤ºå®½åº¦ä¸è¡Œæ•°---
+		//---ÎÄ×ÖÏÔÊ¾¿í¶ÈÓëĞĞÊı---
 		m_nNumBytesPerLine = (m_Width * 2) / m_nFontSize;
 		if (m_nNumBytesPerLine < 2)
 			m_nNumBytesPerLine = 2;
@@ -380,7 +380,7 @@ int KWndMessageListBox::Init(KIniFile* pIniFile, const char* pSection)
 	return false;
 }
 
-//è®¾ç½®çª—å£å¤§å°
+//ÉèÖÃ´°¿Ú´óĞ¡
 void KWndMessageListBox::SetSize(int nWidth, int nHeight)
 {
 	ClearHideLine();
@@ -392,7 +392,7 @@ void KWndMessageListBox::SetSize(int nWidth, int nHeight)
 
 	KWndWindow::SetSize(nWidth, nHeight);
 
-	//---æ–‡å­—æ˜¾ç¤ºå®½åº¦ä¸è¡Œæ•°---
+	//---ÎÄ×ÖÏÔÊ¾¿í¶ÈÓëĞĞÊı---
 	int nNumBytesPerLine = (m_Width * 2) / m_nFontSize;
 	if (nNumBytesPerLine < 2)
 		nNumBytesPerLine = 2;
@@ -441,7 +441,7 @@ void KWndMessageListBox::SetFontSize(int nFontSize)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: æ ¹æ®å†…å®¹å¢åˆ æˆ–è€…çª—å£å°ºå¯¸å˜åŒ–é‡æ–°ä½œäº›å‚æ•°è®¡ç®—ä»¥åŠæ»šåŠ¨æ¡å®¹é‡è°ƒæ•´
+// ¹¦ÄÜ	: ¸ù¾İÄÚÈİÔöÉ¾»òÕß´°¿Ú³ß´ç±ä»¯ÖØĞÂ×÷Ğ©²ÎÊı¼ÆËãÒÔ¼°¹ö¶¯ÌõÈİÁ¿µ÷Õû
 // -------------------------------------------------------------------------
 void KWndMessageListBox::UpdateData()
 {
@@ -485,7 +485,7 @@ void KWndMessageListBox::UpdateData()
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: è·å–ç¬¬ä¸€æ¡è¢«æ˜¾ç¤ºçš„æ–‡å­—æ˜¯å…¨éƒ¨æ–‡å­—çš„ç¬¬å‡ è¡Œ
+// ¹¦ÄÜ	: »ñÈ¡µÚÒ»Ìõ±»ÏÔÊ¾µÄÎÄ×ÖÊÇÈ«²¿ÎÄ×ÖµÄµÚ¼¸ĞĞ
 // -------------------------------------------------------------------------
 int KWndMessageListBox::GetFirstShowLine()
 {
@@ -496,7 +496,7 @@ int KWndMessageListBox::GetFirstShowLine()
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: è®¾ç½®ç¬¬ä¸€æ¡è¢«æ˜¾ç¤ºçš„æ–‡å­—æ˜¯å…¨éƒ¨æ–‡å­—çš„ç¬¬å‡ è¡Œ
+// ¹¦ÄÜ	: ÉèÖÃµÚÒ»Ìõ±»ÏÔÊ¾µÄÎÄ×ÖÊÇÈ«²¿ÎÄ×ÖµÄµÚ¼¸ĞĞ
 // -------------------------------------------------------------------------
 void KWndMessageListBox::SetFirstShowLine(int nLine)
 {
@@ -548,7 +548,7 @@ int KWndMessageListBox::GetItemLineCount(int nIndex)
 }
 
 // -------------------------------------------------------------------------
-// åŠŸèƒ½	: ç»˜åˆ¶çª—å£
+// ¹¦ÄÜ	: »æÖÆ´°¿Ú
 // -------------------------------------------------------------------------
 void KWndMessageListBox::PaintWindow()
 {
@@ -557,10 +557,10 @@ void KWndMessageListBox::PaintWindow()
 	if (g_pRepresentShell == NULL || m_nNumMessage == 0)
 		return;
 
-	if (m_nHideNumLine >= m_nNumMaxShowLine)//å®Œå…¨éšè—äº†,å°±ä¸ç”¨ç”»äº†
+	if (m_nHideNumLine >= m_nNumMaxShowLine)//ÍêÈ«Òş²ØÁË,¾Í²»ÓÃ»­ÁË
 		return;
 	
-	if (m_nHideNumLine >= m_nNumVisibleTextLine)	//å¯è§å­—å®Œå…¨éšè—äº†,å°±ä¸ç”¨ç”»äº†
+	if (m_nHideNumLine >= m_nNumVisibleTextLine)	//¿É¼û×ÖÍêÈ«Òş²ØÁË,¾Í²»ÓÃ»­ÁË
 		return;
 
 	int	nCurMsg = m_nStartShowMsg;
@@ -615,7 +615,7 @@ void KWndMessageListBox::PaintWindow()
 		{
 			if (nCurMsg == m_nSelMsgIndex && (m_Style & MSGLISTBOX_S_SELABLE))
 			{
-				//ç»˜åˆ¶èƒŒæ™¯è‰²
+				//»æÖÆ±³¾°É«
 				if (m_SelMsgBgColor)
 				{
 					bg.Color.Color_dw = m_SelMsgBgColor;
@@ -639,7 +639,7 @@ void KWndMessageListBox::PaintWindow()
 				Param.BorderColor = m_MsgBorderColor;
 			}
 
-			if (pCurMsg->uTextBKColor)	//ç»˜åˆ¶æ–‡å­—è¡¬åº•
+			if (pCurMsg->uTextBKColor)	//»æÖÆÎÄ×Ö³Äµ×
 			{
 				bg.Color.Color_dw = pCurMsg->uTextBKColor;
 				bg.oPosition.nX = Param.nX;
@@ -681,7 +681,7 @@ void KWndMessageListBox::PaintWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KWndMessageListBox::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -786,7 +786,7 @@ int KWndMessageListBox::HitTextAtPoint(int x, int y)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼üÔÚ´Ë°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndMessageListBox::OnLButtonDown(int x, int y)
 {	
@@ -799,7 +799,7 @@ void KWndMessageListBox::OnLButtonDown(int x, int y)
 		return;
 }
 
-//å“åº”é¼ æ ‡å·¦é”®double click
+//ÏìÓ¦Êó±ê×ó¼üdouble click
 void KWndMessageListBox::OnLButtonDClick(int x, int y)
 {
 	int nSel = HitTextAtPoint(x, y);
@@ -827,7 +827,7 @@ int	KWndMessageListBox::SetCurSel(int nIndex)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡ç§»åŠ¨
+//	¹¦ÄÜ£ºÏìÓ¦Êó±êÒÆ¶¯
 //--------------------------------------------------------------------------
 void KWndMessageListBox::OnMouseMove(int x, int y)
 {
@@ -843,13 +843,13 @@ void KWndMessageListBox::OnMouseMove(int x, int y)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å–ä¸€æ¡ä¿¡æ¯çš„å†…å®¹
-//  å‚æ•°ï¼šnIndex  --> ä¿¡æ¯çš„ç´¢å¼•ï¼Œå¦‚æœå€¼å°ä½™0ï¼Œåˆ™-n(n>0)è¡¨ç¤ºå€’æ•°ç¬¬næ¡ä¿¡æ¯
-//        pBuffer --> æ¥å—ä¿¡æ¯å†…å®¹çš„ç¼“å†²åŒº
-//        nLen    --> pBufferæ‰€æŒ‡ç¼“å†²åŒºçš„å¤§å°
-//        bExcludeCtrl --> æ˜¯å¦å»é™¤ä¿¡æ¯ä¸­çš„æ§åˆ¶ç¬¦
-//  è¿”å›ï¼šå¦‚æœè¿”å›å€¼>=0è¡¨ç¤ºå–å¾—äº†æŒ‡å®šçš„ä¿¡æ¯çš„å†…å®¹ï¼Œè¿”å›å€¼ä¸ºå­˜åˆ°pBufferç¼“å†²åŒºä¸­ä¿¡æ¯çš„é•¿åº¦
-//        å¦‚æœè¿”å›å€¼<0è¡¨ç¤ºæ“ä½œå¤±è´¥ï¼ŒåŸå› å¯èƒ½ä¸ºä¸å­˜åœ¨æŒ‡å®šç´¢å¼•çš„ä¿¡æ¯æ¡ç›®ï¼Œæˆ–è€…ç¼“å†²åŒºå¤§å°ä¸è¶³ç­‰åŸå› ã€‚
+//	¹¦ÄÜ£º»ñÈ¡Ò»ÌõĞÅÏ¢µÄÄÚÈİ
+//  ²ÎÊı£ºnIndex  --> ĞÅÏ¢µÄË÷Òı£¬Èç¹ûÖµĞ¡Óà0£¬Ôò-n(n>0)±íÊ¾µ¹ÊıµÚnÌõĞÅÏ¢
+//        pBuffer --> ½ÓÊÜĞÅÏ¢ÄÚÈİµÄ»º³åÇø
+//        nLen    --> pBufferËùÖ¸»º³åÇøµÄ´óĞ¡
+//        bExcludeCtrl --> ÊÇ·ñÈ¥³ıĞÅÏ¢ÖĞµÄ¿ØÖÆ·û
+//  ·µ»Ø£ºÈç¹û·µ»ØÖµ>=0±íÊ¾È¡µÃÁËÖ¸¶¨µÄĞÅÏ¢µÄÄÚÈİ£¬·µ»ØÖµÎª´æµ½pBuffer»º³åÇøÖĞĞÅÏ¢µÄ³¤¶È
+//        Èç¹û·µ»ØÖµ<0±íÊ¾²Ù×÷Ê§°Ü£¬Ô­Òò¿ÉÄÜÎª²»´æÔÚÖ¸¶¨Ë÷ÒıµÄĞÅÏ¢ÌõÄ¿£¬»òÕß»º³åÇø´óĞ¡²»×ãµÈÔ­Òò¡£
 //--------------------------------------------------------------------------
 int KWndMessageListBox::GetOneMessage(int nIndex, char* pBuffer, int nLen, bool bExcludeCtrl)
 {
@@ -885,10 +885,10 @@ int KWndMessageListBox::GetOneMessageData(int nIndex)
 	return -1;
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šä»çª—å£åˆ†ç¦»å‡ºæ•°æ®
-//	è¿”å›ï¼šçª—å£çš„æ•°æ®çš„å¥æŸ„ã€‚
-//	å¤‡æ³¨ï¼šæ­¤è¿”å›å¥æŸ„ï¼Œåç»­å¿…é¡»è°ƒç”¨BindDataä½¿å®ƒè¢«è®¾ç½®å›çª—å£æˆ–è°ƒç”¨FreeDataé‡Šæ”¾å®ƒï¼Œ
-//			å¦åˆ™ä¼šé€ æˆå†…å­˜çš„æ³„æ¼ã€‚
+//	¹¦ÄÜ£º´Ó´°¿Ú·ÖÀë³öÊı¾İ
+//	·µ»Ø£º´°¿ÚµÄÊı¾İµÄ¾ä±ú¡£
+//	±¸×¢£º´Ë·µ»Ø¾ä±ú£¬ºóĞø±ØĞëµ÷ÓÃBindDataÊ¹Ëü±»ÉèÖÃ»Ø´°¿Ú»òµ÷ÓÃFreeDataÊÍ·ÅËü£¬
+//			·ñÔò»áÔì³ÉÄÚ´æµÄĞ¹Â©¡£
 //--------------------------------------------------------------------------
 unsigned int KWndMessageListBox::SplitData()
 {
@@ -926,12 +926,12 @@ unsigned int KWndMessageListBox::SplitData()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»™çª—å£æ†ç»‘æ•°æ®
-//  å‚æ•°ï¼šhData --> è¦æ†ç»‘åˆ°çª—å£çš„æ•°æ®çš„å¥æŸ„ï¼Œæ­¤å¥æŸ„ä¸ºä¹‹å‰è°ƒç”¨SplitDataæˆ–
-//					BindDataå‡½æ•°è·å¾—çš„è¿”å›å€¼ã€‚
-//	è¿”å›ï¼šæ†ç»‘æ“ä½œä¹‹å‰ï¼Œçª—å£çš„æ•°æ®çš„å¥æŸ„ã€‚
-//	å¤‡æ³¨ï¼šæ­¤è¿”å›å¥æŸ„ï¼Œåç»­å¿…é¡»è°ƒç”¨BindDataä½¿å®ƒè¢«è®¾ç½®å›çª—å£æˆ–è°ƒç”¨FreeDataé‡Šæ”¾å®ƒï¼Œ
-//			å¦åˆ™ä¼šé€ æˆå†…å­˜çš„æ³„æ¼ã€‚
+//	¹¦ÄÜ£º¸ø´°¿ÚÀ¦°óÊı¾İ
+//  ²ÎÊı£ºhData --> ÒªÀ¦°óµ½´°¿ÚµÄÊı¾İµÄ¾ä±ú£¬´Ë¾ä±úÎªÖ®Ç°µ÷ÓÃSplitData»ò
+//					BindDataº¯Êı»ñµÃµÄ·µ»ØÖµ¡£
+//	·µ»Ø£ºÀ¦°ó²Ù×÷Ö®Ç°£¬´°¿ÚµÄÊı¾İµÄ¾ä±ú¡£
+//	±¸×¢£º´Ë·µ»Ø¾ä±ú£¬ºóĞø±ØĞëµ÷ÓÃBindDataÊ¹Ëü±»ÉèÖÃ»Ø´°¿Ú»òµ÷ÓÃFreeDataÊÍ·ÅËü£¬
+//			·ñÔò»áÔì³ÉÄÚ´æµÄĞ¹Â©¡£
 //--------------------------------------------------------------------------
 unsigned int KWndMessageListBox::BindData(unsigned int hData)
 {
@@ -982,9 +982,9 @@ unsigned int KWndMessageListBox::BindData(unsigned int hData)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šé‡Šæ”¾çª—å£æ•°æ®å¥æŸ„
-//  å‚æ•°ï¼šhData --> è¦é‡Šæ”¾çš„çª—å£çš„æ•°æ®çš„å¥æŸ„ï¼Œæ­¤å¥æŸ„ä¸ºä¹‹å‰è°ƒç”¨SplitDataæˆ–
-//					BindDataå‡½æ•°è·å¾—çš„è¿”å›å€¼ã€‚
+//	¹¦ÄÜ£ºÊÍ·Å´°¿ÚÊı¾İ¾ä±ú
+//  ²ÎÊı£ºhData --> ÒªÊÍ·ÅµÄ´°¿ÚµÄÊı¾İµÄ¾ä±ú£¬´Ë¾ä±úÎªÖ®Ç°µ÷ÓÃSplitData»ò
+//					BindDataº¯Êı»ñµÃµÄ·µ»ØÖµ¡£
 //--------------------------------------------------------------------------
 void KWndMessageListBox::FreeData(unsigned int	hData)
 {
@@ -1070,7 +1070,7 @@ KScrollMessageListBox::KScrollMessageListBox()
 	AddChild(&m_Scroll);
 }
 
-int KScrollMessageListBox::Init(KIniFile* pIniFile, const char* pSection)//åˆå§‹åŒ–
+int KScrollMessageListBox::Init(KIniFile* pIniFile, const char* pSection)//³õÊ¼»¯
 {
 	if (KWndWindow::Init(pIniFile, pSection))
 	{
@@ -1087,7 +1087,7 @@ int KScrollMessageListBox::Init(KIniFile* pIniFile, const char* pSection)//åˆå§
 		pIniFile->GetInteger2(pSection, "MsgLineCount", &nMinLineCount, &nMaxLineCount);
 		InitMinMaxLineCount(nMinLineCount, nMaxLineCount);
 
-		m_MsgList.SetScrollbar(&m_Scroll);	//å°ºå¯¸å…¨éƒ¨è®¡ç®—å®Œæ¯•åå†åŠ å…³ç³»
+		m_MsgList.SetScrollbar(&m_Scroll);	//³ß´çÈ«²¿¼ÆËãÍê±ÏºóÔÙ¼Ó¹ØÏµ
 
 		RECT rc;
 		if (m_Style & WND_S_SIZE_WITH_ALL_CHILD)
@@ -1101,7 +1101,7 @@ int KScrollMessageListBox::Init(KIniFile* pIniFile, const char* pSection)//åˆå§
 	return false;
 }
 
-//çª—å£å‡½æ•°
+//´°¿Úº¯Êı
 int KScrollMessageListBox::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch(uMsg)
@@ -1181,10 +1181,10 @@ int KScrollMessageListBox::GetMinHeight()
 /////////////////////////////////////////////////////////////////////////////////
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šä»iniè¯»å–å†…å®¹åˆ°KWndMessageListBoxå®ä¾‹
-//  å‚æ•°ï¼špBox ->  KWndMessageListBoxå®ä¾‹æŒ‡é’ˆ
-//		  pFile -> Iniè®¾ç½®æ–‡ä»¶æŒ‡é’ˆ
-//		  pszSection -> Iniä¸­å­˜å‚¨æ‰€è¦è¯»å–å†…å®¹çš„æ®µçš„æ ‡è¯†
+//	¹¦ÄÜ£º´Óini¶ÁÈ¡ÄÚÈİµ½KWndMessageListBoxÊµÀı
+//  ²ÎÊı£ºpBox ->  KWndMessageListBoxÊµÀıÖ¸Õë
+//		  pFile -> IniÉèÖÃÎÄ¼şÖ¸Õë
+//		  pszSection -> IniÖĞ´æ´¢ËùÒª¶ÁÈ¡ÄÚÈİµÄ¶ÎµÄ±êÊ¶
 //--------------------------------------------------------------------------
 bool MsgListBox_LoadContent(KWndMessageListBox* pBox, KIniFile* pFile, const char* pszSection)
 {

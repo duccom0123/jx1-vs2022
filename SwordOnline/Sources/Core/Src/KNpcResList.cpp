@@ -3,7 +3,7 @@
 //
 // File:	KNpcResList.cpp
 // Date:	2002.01.06
-// Code:	边城浪子
+// Code:	�߳�����
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 #include "KCore.h"
@@ -26,7 +26,7 @@ KNpcResList::~KNpcResList()
 	KNpcResNode		*pTempNode;
 	KNpcResNode		*pTempNextNode;
 
-    // 释放所有链表中的节点
+    // �ͷ����������еĽڵ�
    	pTempNode = (KNpcResNode *)this->GetHead();
 	while (pTempNode)
     {
@@ -39,7 +39,7 @@ KNpcResList::~KNpcResList()
 }
 
 //-------------------------------------------------------------------------
-//	功能：	初始化
+//	���ܣ�	��ʼ��
 //-------------------------------------------------------------------------
 BOOL	KNpcResList::Init()
 {
@@ -55,7 +55,7 @@ BOOL	KNpcResList::Init()
 }
 
 //-------------------------------------------------------------------------
-//	功能：	查找同名的 NpcResNode 并返回节点
+//	���ܣ�	����ͬ���� NpcResNode �����ؽڵ�
 //-------------------------------------------------------------------------
 KNpcResNode*	KNpcResList::FindNpcRes(char *lpszNpcName)
 {
@@ -87,7 +87,7 @@ KNpcResNode*	KNpcResList::FindNpcRes(char *lpszNpcName)
 }
 
 //-------------------------------------------------------------------------
-//	功能：	添加一个 NpcResNode 并返回节点，如果已存在，直接返回节点
+//	���ܣ�	����һ�� NpcResNode �����ؽڵ㣬����Ѵ��ڣ�ֱ�ӷ��ؽڵ�
 //-------------------------------------------------------------------------
 KNpcResNode*	KNpcResList::AddNpcRes(char *lpszNpcName)
 {

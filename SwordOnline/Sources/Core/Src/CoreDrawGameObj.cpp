@@ -15,7 +15,7 @@
 #include "KOption.h"
 #endif
 
-#define  PHYSICSSKILLICON "\\spr\\Ui\\æŠ€èƒ½å›¾æ ‡\\icon_sk_ty_ap.spr"
+#define  PHYSICSSKILLICON "\\spr\\Ui\\¼¼ÄÜÍ¼±ê\\icon_sk_ty_ap.spr"
 
 #define SHOW_SPACE_HEIGHT	5
 #define	ITEM_CELL_WIDTH		26
@@ -38,8 +38,8 @@ void	CoreDrawGameObj(unsigned int uObjGenre, unsigned int uId, int x, int y, int
 				Npc[uId].PaintBlood(nHeight / 2);
 
 				int nnHeight = nHeight;
-				nHeight = Npc[uId].PaintChat(nnHeight);	//èŠå¤©ä¿¡æ¯ä¸­æœ‰åå­—
-				if (nHeight == nnHeight)	//æ²¡æœ‰èŠå¤©ä¿¡æ¯æ—¶ç»˜åˆ¶äººç‰©ä¿¡æ¯
+				nHeight = Npc[uId].PaintChat(nnHeight);	//ÁÄÌìĞÅÏ¢ÖĞÓĞÃû×Ö
+				if (nHeight == nnHeight)	//Ã»ÓĞÁÄÌìĞÅÏ¢Ê±»æÖÆÈËÎïĞÅÏ¢
 				{
 					if (NpcSet.CheckShowLife())
 					{	
@@ -62,24 +62,24 @@ void	CoreDrawGameObj(unsigned int uObjGenre, unsigned int uId, int x, int y, int
 
 					if (NpcSet.CheckShowName())
 					{
-						if (nnHeight != nHeight)	//æœ‰å†…åŠ›æ˜¾ç¤ºæ—¶
+						if (nnHeight != nHeight)	//ÓĞÄÚÁ¦ÏÔÊ¾Ê±
 						{
-							nHeight += SHOW_SPACE_HEIGHT;//å¥½çœ‹
+							nHeight += SHOW_SPACE_HEIGHT;//ºÃ¿´
 						}
 							if (Player[CLIENT_PLAYER_INDEX].GetTargetNpc() && Player[CLIENT_PLAYER_INDEX].GetTargetNpc() == uId)
-								nHeight = Npc[uId].PaintInfo(nHeight, NORMAL_FONTSIZE + 2, 0xff000000);	//è¢«é€‰ä¸­çš„äººåæ”¾å¤§æ˜¾ç¤º
+								nHeight = Npc[uId].PaintInfo(nHeight, NORMAL_FONTSIZE + 2, 0xff000000);	//±»Ñ¡ÖĞµÄÈËÃû·Å´óÏÔÊ¾
 							else
 								nHeight = Npc[uId].PaintInfo(nHeight, NORMAL_FONTSIZE, 0xff000000);
 						Npc[uId].PaintTop(nHeight, nnHeight, NORMAL_FONTSIZE, 0xff000000);
 					}
 					else
 					{
-						if (nnHeight != nHeight)	//æœ‰å†…åŠ›æ˜¾ç¤ºæ—¶
+						if (nnHeight != nHeight)	//ÓĞÄÚÁ¦ÏÔÊ¾Ê±
 						{
-							nHeight += SHOW_SPACE_HEIGHT;//å¥½çœ‹
+							nHeight += SHOW_SPACE_HEIGHT;//ºÃ¿´
 						}
 						if (Player[CLIENT_PLAYER_INDEX].GetTargetNpc() && Player[CLIENT_PLAYER_INDEX].GetTargetNpc() == uId)
-							nHeight = Npc[uId].PaintInfo(nHeight, NORMAL_FONTSIZE, 0xff000000);	//è¢«é€‰ä¸­çš„äººåæ”¾å¤§æ˜¾ç¤º
+							nHeight = Npc[uId].PaintInfo(nHeight, NORMAL_FONTSIZE, 0xff000000);	//±»Ñ¡ÖĞµÄÈËÃû·Å´óÏÔÊ¾
 
 						Npc[uId].PaintTop(nnHeight, nnHeight, NORMAL_FONTSIZE, 0xff000000);
 					}

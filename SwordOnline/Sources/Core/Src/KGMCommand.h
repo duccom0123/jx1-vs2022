@@ -4,8 +4,8 @@
 #include "KCore.h"
 enum	EGameMasterCommand
 {
-		GMDoScriptAction,			//æŒ‡å¯¹æŸä¸ªç©å®¶æ‰§è¡ŒæŸä¸ªè„šæœ¬æŒ‡ä»¤
-		GMDoWorldScriptAction,		//æŒ‡å¯¹æŸå°æ¸¸æˆä¸–ç•Œæ‰§è¡ŒæŸ
+		GMDoScriptAction,			//Ö¸¶ÔÄ³¸öÍæ¼ÒÖ´ĞĞÄ³¸ö½Å±¾Ö¸Áî
+		GMDoWorldScriptAction,		//Ö¸¶ÔÄ³Ì¨ÓÎÏ·ÊÀ½çÖ´ĞĞÄ³
 		GMRunScriptFile,
 		GMReloadScriptFile,
 		GMReloadAllScriptFile,

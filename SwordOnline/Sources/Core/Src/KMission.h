@@ -13,11 +13,11 @@
 #include "KSortScript.h"
 
 //Mission
-//æ¯ä¸ªMissionæœ‰è‡ªå·²çš„ç‹¬ç«‹çš„å…¨å±€å˜é‡
-//ä¸ºæ¯ä¸€ä¸ªMissionè®°å½•ç©å®¶åˆ—è¡¨çš„ç»Ÿä¸€çš„æœºåˆ¶
-//åŒ…æ‹¬æœ€å¤§äººæ•°ï¼Œç­‰ç­‰éƒ½è¦æœ‰
-//åŠ ä¸ªChanelï¼Œæœ‰åˆ©äºæ¶ˆæ¯å‘é€
-//æœ‰åŠŸèƒ½å¯ä»¥ç¼–åˆ—æ‰€æœ‰çš„å‚åŠ è€…id
+//Ã¿¸öMissionÓĞ×ÔÒÑµÄ¶ÀÁ¢µÄÈ«¾Ö±äÁ¿
+//ÎªÃ¿Ò»¸öMission¼ÇÂ¼Íæ¼ÒÁĞ±íµÄÍ³Ò»µÄ»úÖÆ
+//°üÀ¨×î´óÈËÊı£¬µÈµÈ¶¼ÒªÓĞ
+//¼Ó¸öChanel£¬ÓĞÀûÓÚÏûÏ¢·¢ËÍ
+//ÓĞ¹¦ÄÜ¿ÉÒÔ±àÁĞËùÓĞµÄ²Î¼ÓÕßid
 extern int g_PlayerTimerCallBackFun(void * pOwner, char * szScriptFileName, DWORD dwTimerTaskId);
 extern int g_MissionTimerCallBackFun(void * pOwner, char * szScriptFileName, DWORD dwTimerTaskId);
 #define MAX_TIMER_PERMISSION 4
@@ -38,7 +38,7 @@ typedef struct
 	unsigned long m_ucNpcGroup;
 	unsigned long m_ulJoinTime;
 }TMissionNpcInfo;
-//ç®¡ç†ç©å®¶é›†åˆçš„æ¨¡æ¿ç±»
+//¹ÜÀíÍæ¼Ò¼¯ºÏµÄÄ£°åÀà
 
 template<class T , unsigned long ulSize>
 class _KMissionPlayerArray:public KLinkArrayTemplate<T , ulSize>
@@ -99,7 +99,7 @@ public:
 typedef _KMissionPlayerArray<TMissionPlayerInfo, MAX_PLAYER> KMissionPlayerArray;
 typedef _KMissionNpcArray<TMissionNpcInfo, MAX_NPC> KMissionNpcArray;
 
-//ç®¡ç†Missionæ—¶é—´è§¦å‘å™¨é›†åˆçš„æ¨¡æ¿ç±»
+//¹ÜÀíMissionÊ±¼ä´¥·¢Æ÷¼¯ºÏµÄÄ£°åÀà
 typedef KTimerFunArray <KTimerTaskFun, MAX_TIMER_PERMISSION, g_MissionTimerCallBackFun> KMissionTimerArray;
 
 class KMission

@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiTrade.h
-//	åˆ›å»ºè€…		ï¼š	å•æ¡‚å, Wooy(Wu yue)
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-16 11:57:03
-//	åŠŸèƒ½æè¿°	ï¼š	ç©å®¶äº¤æ˜“ç³»ç»Ÿç•Œé¢
+//	ÎÄ¼şÃû		£º	UiTrade.h
+//	´´½¨Õß		£º	ÂÀ¹ğ»ª, Wooy(Wu yue)
+//	´´½¨Ê±¼ä	£º	2002-9-16 11:57:03
+//	¹¦ÄÜÃèÊö	£º	Íæ¼Ò½»Ò×ÏµÍ³½çÃæ
 // -------------------------------------------------------------------------
 #pragma once
 
@@ -18,30 +18,30 @@ struct KUiObjAtRegion;
 class KUiTrade : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiTrade*	OpenWindow(KUiPlayerItem* pOther, BOOL bFolkGame);//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiTrade*	GetIfVisible();					//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void			CloseWindow();					//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiTrade*	OpenWindow(KUiPlayerItem* pOther, BOOL bFolkGame);//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiTrade*	GetIfVisible();					//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void			CloseWindow();					//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
 
-	void				OnChangedTakewithItem(KUiObjAtRegion* pObj, int bAdd);	//å¯¹æ–¹å˜æ›´éšèº«ç‰©å“
-	void				OnOppositeChangedItem(KUiObjAtRegion* pObj, int bAdd);	//å¯¹æ–¹å˜æ›´äº¤æ˜“ç‰©å“
-	void				OnSelfChangedItem(KUiObjAtRegion* pObj, int bAdd);		//è‡ªå·±å˜æ›´äº¤æ˜“ç‰©å“
+	void				OnChangedTakewithItem(KUiObjAtRegion* pObj, int bAdd);	//¶Ô·½±ä¸üËæÉíÎïÆ·
+	void				OnOppositeChangedItem(KUiObjAtRegion* pObj, int bAdd);	//¶Ô·½±ä¸ü½»Ò×ÎïÆ·
+	void				OnSelfChangedItem(KUiObjAtRegion* pObj, int bAdd);		//×Ô¼º±ä¸ü½»Ò×ÎïÆ·
 	void				UpdateOperData(BOOL bSelfAsk=FALSE, BOOL bDestReply=FALSE);
 
-	void				UpdateTradeEnd(int bTraded);	//äº¤æ˜“ç»“æŸ
+	void				UpdateTradeEnd(int bTraded);	//½»Ò×½áÊø
 
 private:
 	KUiTrade();
 	~KUiTrade();
-	void	Initialize();						//åˆå§‹åŒ–
-	void	LoadScheme(KIniFile* pIni);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	void	Initialize();						//³õÊ¼»¯
+	void	LoadScheme(KIniFile* pIni);			//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 
-	void	Clear();						//æ¸…é™¤å†…å®¹
+	void	Clear();						//Çå³ıÄÚÈİ
 	void	Breathe();
-	void	OnTrade();						//å“åº”ç‚¹å‡»å¼€å§‹äº¤æ˜“
-	void	OnOk(int bChecked);				//å“åº”ç‚¹å‡»æœ‰äº¤æ˜“æ„å‘
+	void	OnTrade();						//ÏìÓ¦µã»÷¿ªÊ¼½»Ò×
+	void	OnOk(int bChecked);				//ÏìÓ¦µã»÷ÓĞ½»Ò×ÒâÏò
 	void	OnCancelTrade();
 	void	OnAdjustMoney(bool bAdd);
 	void	OnAdjustedMoney();
@@ -52,25 +52,25 @@ private:
 private:
 	static KUiTrade*	m_pSelf;
 private:
-	KWndText32			m_TakewithMoney;	//éšèº«çš„é‡‘é’±
-	KWndObjectMatrix	m_TakewithItemsBox;	//éšèº«çš„ç‰©å“
+	KWndText32			m_TakewithMoney;	//ËæÉíµÄ½ğÇ®
+	KWndObjectMatrix	m_TakewithItemsBox;	//ËæÉíµÄÎïÆ·
 
-	KWndObjectMatrix	m_SelfItemsBox;		//ç‰©å“æ 
-	KWndEdit32			m_SelfMoney;		//é’±å¸
-	KWndButton			m_Ok;				//ç¡®è®¤
-	KWndButton			m_Cancel;			//å–æ¶ˆ
-	KWndButton			m_Trade;			//æ‰§è¡Œäº¤æ˜“
-	KWndButton			m_AddMoney;			//å¢åŠ é’±
-	KWndButton			m_ReduceMoney;		//å‡å°‘é’±
+	KWndObjectMatrix	m_SelfItemsBox;		//ÎïÆ·À¸
+	KWndEdit32			m_SelfMoney;		//Ç®±Ò
+	KWndButton			m_Ok;				//È·ÈÏ
+	KWndButton			m_Cancel;			//È¡Ïû
+	KWndButton			m_Trade;			//Ö´ĞĞ½»Ò×
+	KWndButton			m_AddMoney;			//Ôö¼ÓÇ®
+	KWndButton			m_ReduceMoney;		//¼õÉÙÇ®
 	int					m_nSelfTradeMoney;
 
 	int					m_nAdjustingMoney;
 	int					m_nTakewithMoney;
 
-	KWndText32			m_OtherName;		//å¯¹æ–¹çš„å§“å
-	KWndObjectMatrix	m_OtherItemsBox;	//ç‰©å“æ 
-	KWndText32			m_OtherMoney;		//é’±å¸
-	KWndText32			m_Info;				//å¯¹æ–¹çŠ¶æ€è®¯æ¯
+	KWndText32			m_OtherName;		//¶Ô·½µÄĞÕÃû
+	KWndObjectMatrix	m_OtherItemsBox;	//ÎïÆ·À¸
+	KWndText32			m_OtherMoney;		//Ç®±Ò
+	KWndText32			m_Info;				//¶Ô·½×´Ì¬Ñ¶Ï¢
 	KUiPlayerItem		m_OtherData;
 	
 	unsigned int		m_uWaitTradeMsgColor;

@@ -30,7 +30,7 @@ void KNpcAI::Activate(int nIndex)
 	m_nIndex = nIndex;	
 	if (Npc[m_nIndex].IsPlayer())
 	{
-		// æ–°å¢çš„Player AIåœ¨è¿™é‡Œè°ƒç”¨å®ç°ã€‚
+		// ĞÂÔöµÄPlayer AIÔÚÕâÀïµ÷ÓÃÊµÏÖ¡£
 		ProcessPlayer();
 		return;
 	}
@@ -90,7 +90,7 @@ void KNpcAI::Activate(int nIndex)
 	{
 		if (CanShowNpc())
 		{
-			// è®©NPCéšæœºä¼‘æ¯ä¸€ä¸‹ï¼Œæ˜¯ä¸ªå¥½å»ºè®®ã€‚
+			// ÈÃNPCËæ»úĞİÏ¢Ò»ÏÂ£¬ÊÇ¸öºÃ½¨Òé¡£
 			if (GetRandomNumber(0, 1))	
 			{
 				Npc[m_nIndex].m_AiParam[5] = 0;
@@ -145,7 +145,7 @@ void	KNpcAI::FindPathNpc()
 			}
 		}
 	}
-	// å–å¾—åˆ°ç›®æ ‡çš„è·ç¦»
+	// È¡µÃµ½Ä¿±êµÄ¾àÀë
 	int distance = NpcSet.GetDistance(nIdx, m_nIndex);
 	if (distance <= MAX_FIND_PATH_NPC_DISTANCE)
 	{
@@ -188,7 +188,7 @@ void	KNpcAI::FindPathNpc()
 // flying add these functions
 // Run at client.
 #ifndef _SERVER
-// ä»…ä»…æœ‰ç”»é¢æ•ˆæœçš„NPC
+// ½ö½öÓĞ»­ÃæĞ§¹ûµÄNPC
 int KNpcAI::ProcessShowNpc()
 {
     int nResult  = false;
@@ -196,43 +196,43 @@ int KNpcAI::ProcessShowNpc()
 
 	switch (Npc[m_nIndex].m_AiMode)
 	{
-	// é£é¸Ÿå‹
+	// ·ÉÄñĞÍ
 	case 11:
 		nRetCode = ShowNpcType11();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// èœ»èœ“å‹
+	// òßòÑĞÍ
 	case 12:
 		nRetCode = ShowNpcType12();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// é±¼ç±»å‹
+	// ÓãÀàĞÍ
 	case 13:
 		nRetCode = ShowNpcType13();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// è€é¼ å‹
+	// ÀÏÊóĞÍ
 	case 14:
 		nRetCode = ShowNpcType14();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// é¸¡çŠ¬å‹
+	// ¼¦È®ĞÍ
 	case 15:
 		nRetCode = ShowNpcType15();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// å…”å­å‹
+	// ÍÃ×ÓĞÍ
 	case 16:
 		nRetCode = ShowNpcType16();
         if (!nRetCode)
             goto Exit0;
 		break;
-	// è´è¶å‹
+	// ºûµûĞÍ
 	case 17:
 		nRetCode = ShowNpcType17();
         if (!nRetCode)
@@ -246,7 +246,7 @@ int KNpcAI::ProcessShowNpc()
 Exit0:
 	return nResult;
 }
-// é£é¸Ÿå‹
+// ·ÉÄñĞÍ
 int KNpcAI::ShowNpcType11()
 {
     int nResult = false;
@@ -263,12 +263,12 @@ int KNpcAI::ShowNpcType11()
 	int nOffY = 0;
 	int nOffsetDir = 0;
 	
-	// æ•ˆæœåŠ å¼º éšæœºè°ƒæ•´é«˜åº¦
+	// Ğ§¹û¼ÓÇ¿ Ëæ»úµ÷Õû¸ß¶È
 	aNpc.m_Height = GetRandomNumber(aNpc.m_AiParam[6] - 4, aNpc.m_AiParam[6]);
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -279,7 +279,7 @@ int KNpcAI::ShowNpcType11()
 	
     nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
 
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -293,12 +293,12 @@ int KNpcAI::ShowNpcType11()
 	else
 		aNpc.m_Dir %= 64;
 	
-    // æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+    // ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
     if (!nRetCode)
         goto Exit0;
 
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);	
@@ -308,7 +308,7 @@ Exit0:
 	return nResult;
 }
 
-// èœ»èœ“å‹
+// òßòÑĞÍ
 // done
 int KNpcAI::ShowNpcType12()
 {
@@ -326,12 +326,12 @@ int KNpcAI::ShowNpcType12()
 	int nOffsetDir = 0;
 	KNpc& aNpc = Npc[m_nIndex];
 
-	// æ•ˆæœåŠ å¼º éšæœºè°ƒæ•´é«˜åº¦
+	// Ğ§¹û¼ÓÇ¿ Ëæ»úµ÷Õû¸ß¶È
 	aNpc.m_Height = GetRandomNumber(aNpc.m_AiParam[6] - 4, aNpc.m_AiParam[6]);
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 		
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -340,7 +340,7 @@ int KNpcAI::ShowNpcType12()
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
 
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -357,11 +357,11 @@ int KNpcAI::ShowNpcType12()
 	else
 		aNpc.m_Dir %= 64;
 
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
 	if (!nRetCode)
 		goto Exit0;
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -371,7 +371,7 @@ Exit0:
 	return nResult;
 }
 
-// é±¼ç±»å‹
+// ÓãÀàĞÍ
 // done
 int KNpcAI::ShowNpcType13()
 {
@@ -391,7 +391,7 @@ int KNpcAI::ShowNpcType13()
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -400,7 +400,7 @@ int KNpcAI::ShowNpcType13()
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
 
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -413,7 +413,7 @@ int KNpcAI::ShowNpcType13()
 	}
 	//if (KeepActiveShowRange())
 	//	aNpc.m_Dir += 32;
-	// é™„è¿‘æœ‰ç©å®¶
+	// ¸½½üÓĞÍæ¼Ò
 	nIndex = IsPlayerCome();
 	if (nIndex > 0)
 	{
@@ -421,9 +421,9 @@ int KNpcAI::ShowNpcType13()
 		DoShowFlee(nIndex);
 		goto Exit0;
 	}
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -433,7 +433,7 @@ Exit0:
 	return nResult;
 }
 
-// è€é¼ å‹
+// ÀÏÊóĞÍ
 // done
 int KNpcAI::ShowNpcType14()
 {
@@ -452,17 +452,17 @@ int KNpcAI::ShowNpcType14()
 	KNpc& aNpc = Npc[m_nIndex];
 
 	nRandom = GetRandomNumber(1, 10);
-	// æ‰å¤´å°±è·‘
+	// µôÍ·¾ÍÅÜ
 	if (nRandom < 4)
 		nDistance = -nDistance;
-	// å—·å—·å‘å‘†
+	// à»à»·¢´ô
 	else if (nRandom < 7)
 	{
 		aNpc.SendCommand(do_stand);
 		goto Exit0;
 	}
 	aNpc.GetMpsPos(&nCurX, &nCurY);
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -470,7 +470,7 @@ int KNpcAI::ShowNpcType14()
 	if (GetRandomNumber(0, 1))
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -487,11 +487,11 @@ int KNpcAI::ShowNpcType14()
 		aNpc.m_Dir += 64;
 	else
 		aNpc.m_Dir %= 64;
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
 	if (!nRetCode)
 		goto Exit0;
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -501,7 +501,7 @@ Exit0:
 	return nResult;
 }
 
-// é¸¡çŠ¬å‹
+// ¼¦È®ĞÍ
 int KNpcAI::ShowNpcType15()
 {
 	int nResult  = false;
@@ -520,7 +520,7 @@ int KNpcAI::ShowNpcType15()
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -529,7 +529,7 @@ int KNpcAI::ShowNpcType15()
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
 
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -542,7 +542,7 @@ int KNpcAI::ShowNpcType15()
 	}
 	//if (KeepActiveShowRange())
 	//	aNpc.m_Dir += 32;
-	// é™„è¿‘æœ‰ç©å®¶
+	// ¸½½üÓĞÍæ¼Ò
 	nIndex = IsPlayerCome();
 	if (nIndex > 0)
 	{
@@ -550,9 +550,9 @@ int KNpcAI::ShowNpcType15()
 		DoShowFlee(nIndex);
 		goto Exit0;
 	}
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -562,7 +562,7 @@ Exit0:
 	return nResult;
 }
 
-// å…”å­å‹
+// ÍÃ×ÓĞÍ
 int KNpcAI::ShowNpcType16()
 {
 	int nResult  = false;
@@ -582,7 +582,7 @@ int KNpcAI::ShowNpcType16()
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -590,7 +590,7 @@ int KNpcAI::ShowNpcType16()
 	if (GetRandomNumber(0, 1))
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);
-	// é™„è¿‘æœ‰ç©å®¶
+	// ¸½½üÓĞÍæ¼Ò
 	nIndex = IsPlayerCome();
 	if (nIndex > 0)
 	{
@@ -601,7 +601,7 @@ int KNpcAI::ShowNpcType16()
 		goto Exit1;
 	}
 
-	// è®¡ç®—è·ç¦»
+	// ¼ÆËã¾àÀë
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -613,16 +613,16 @@ int KNpcAI::ShowNpcType16()
 		aNpc.m_AiParam[5] = 0;
 	}
 
-	// è®¡ç®—æ–°è§’åº¦
+	// ¼ÆËãĞÂ½Ç¶È
 	//if (KeepActiveShowRange())
 	//	aNpc.m_Dir += 32;
 	aNpc.m_Dir += GetRandomNumber(0, 6);
 	aNpc.m_Dir %= 64;
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
 	if (!nRetCode)
 		goto Exit0;
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -633,7 +633,7 @@ Exit0:
 	return nResult;
 }
 
-// è´è¶å‹
+// ºûµûĞÍ
 int KNpcAI::ShowNpcType17()
 {
 	int nResult  = false;
@@ -650,12 +650,12 @@ int KNpcAI::ShowNpcType17()
 	int nOffsetDir = 0;
 	KNpc& aNpc = Npc[m_nIndex];
 
-	// æ•ˆæœåŠ å¼º éšæœºè°ƒæ•´é«˜åº¦
+	// Ğ§¹û¼ÓÇ¿ Ëæ»úµ÷Õû¸ß¶È
 	aNpc.m_Height = GetRandomNumber(aNpc.m_AiParam[6] - 4, aNpc.m_AiParam[6]);
 
 	aNpc.GetMpsPos(&nCurX, &nCurY);
 		
-	// è®¡ç®—æ–°è§’åº¦ å’Œ è·ç¦»
+	// ¼ÆËãĞÂ½Ç¶È ºÍ ¾àÀë
 	if (aNpc.m_AiParam[3] > 0)
 		nOffsetDir = GetRandomNumber(aNpc.m_AiParam[3], aNpc.m_AiParam[2]);
 	else
@@ -664,7 +664,7 @@ int KNpcAI::ShowNpcType17()
 		nOffsetDir = -nOffsetDir;
 	nDistance = GetRandomNumber(aNpc.m_AiParam[0] - aNpc.m_AiParam[1], aNpc.m_AiParam[0]);	
 
-	// å–å¾—è¿åŠ¨æ‰€éœ€çš„æ—¶é—´ï¼Œä¿å­˜åœ¨å‚æ•°è¡¨ä¸­
+	// È¡µÃÔË¶¯ËùĞèµÄÊ±¼ä£¬±£´æÔÚ²ÎÊı±íÖĞ
 	if (aNpc.m_CurrentWalkSpeed > 0)
 	{
 		aNpc.m_AiParam[4] = (int) nDistance / (int)aNpc.m_CurrentWalkSpeed;
@@ -687,11 +687,11 @@ int KNpcAI::ShowNpcType17()
 		aNpc.m_Dir += 64;
 	else
 		aNpc.m_Dir %= 64;
-	// æ ¹æ®ä¸‰è§’å‡½æ•°è®¡ç®—åç§»çš„Xã€Yæ•°å€¼
+	// ¸ù¾İÈı½Çº¯Êı¼ÆËãÆ«ÒÆµÄX¡¢YÊıÖµ
 	nRetCode = GetNpcMoveOffset(aNpc.m_Dir, nDistance, &nOffX, &nOffY);
 	if (!nRetCode)
 		goto Exit0;
-	// è·å–ç›®æ ‡åæ ‡
+	// »ñÈ¡Ä¿±ê×ø±ê
 	nDesX = nCurX + nOffX;
 	nDesY = nCurY + nOffY;
 	aNpc.SendCommand(do_walk, nDesX, nDesY);
@@ -758,11 +758,11 @@ void KNpcAI::FollowPeople(int nIdx)
 		return;
 	}
 
-	// å–å¾—åˆ°ç›®æ ‡çš„è·ç¦»
+	// È¡µÃµ½Ä¿±êµÄ¾àÀë
 	int distance = NpcSet.GetDistance(nIdx, m_nIndex);
 	int	nRelation = NpcSet.GetRelation(m_nIndex, nIdx);
 
-	// å°äºå¯¹è¯åŠå¾„å°±å¼€å§‹å¯¹è¯
+	// Ğ¡ÓÚ¶Ô»°°ë¾¶¾Í¿ªÊ¼¶Ô»°
 	if ((Npc[nIdx].m_Kind == kind_dialoger))
 	{
 		if (distance <= Npc[nIdx].m_DialogRadius)
@@ -777,7 +777,7 @@ void KNpcAI::FollowPeople(int nIdx)
 			return;
 		}
 	}
-	// è·ç¦»å°äºæ”»å‡»èŒƒå›´å°±å¼€å§‹æ”»å‡»
+	// ¾àÀëĞ¡ÓÚ¹¥»÷·¶Î§¾Í¿ªÊ¼¹¥»÷
 	if (nRelation == relation_enemy)
 	{
 		if (distance <= Npc[m_nIndex].m_CurrentAttackRadius)
@@ -785,7 +785,7 @@ void KNpcAI::FollowPeople(int nIdx)
 			Npc[m_nIndex].SendCommand(do_skill, Npc[m_nIndex].m_ActiveSkillID, -1, nIdx);
 			SendClientCmdSkill(Npc[m_nIndex].m_ActiveSkillID, -1, Npc[nIdx].m_dwID);
 		}
-		// å—·å—·è¿½
+		// à»à»×·
 		else
 		{
 			int nDesX, nDesY;
@@ -804,7 +804,7 @@ void KNpcAI::FollowPeople(int nIdx)
 		}
 		return;
 	}
-	// è·Ÿéš
+	// ¸úËæ
 	if (Npc[nIdx].m_Kind == kind_player)
 	{
 		// flow
@@ -849,16 +849,16 @@ int KNpcAI::GetNearestNpc(int nRelation)
 	nRangeX = nRangeX / SubWorld[nSubWorld].m_nCellWidth;
 	nRangeY = nRangeY / SubWorld[nSubWorld].m_nCellHeight;	
 
-	// æ£€æŸ¥è§†é‡èŒƒå›´å†…çš„æ ¼å­é‡Œçš„NPC
-	for (int i = 0; i < nRangeX; i++)	// i, jç”±0å¼€å§‹è€Œä¸æ˜¯ä»-rangeå¼€å§‹æ˜¯è¦ä¿è¯Nearest
+	// ¼ì²éÊÓÒ°·¶Î§ÄÚµÄ¸ñ×ÓÀïµÄNPC
+	for (int i = 0; i < nRangeX; i++)	// i, jÓÉ0¿ªÊ¼¶ø²»ÊÇ´Ó-range¿ªÊ¼ÊÇÒª±£Ö¤Nearest
 	{
 		for (int j = 0; j < nRangeY; j++)
 		{
-			// å»æ‰è¾¹è§’å‡ ä¸ªæ ¼å­ï¼Œä¿è¯è§†é‡æ˜¯æ¤­åœ†å½¢
+			// È¥µô±ß½Ç¼¸¸ö¸ñ×Ó£¬±£Ö¤ÊÓÒ°ÊÇÍÖÔ²ĞÎ
 			if ((i * i + j * j) > nRangeX * nRangeX)
 				continue;
 
-			// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+			// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 			nRMx = nMapX + i;
 			nRMy = nMapY + j;
 			nSearchRegion = nRegion;
@@ -886,13 +886,13 @@ int KNpcAI::GetNearestNpc(int nRelation)
 			}
 			if (nSearchRegion == -1)
 				continue;
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC			
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC			
 			nRet = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nIndex, nRelation);
 			if (Npc[nRet].m_HideState.nTime > 0)
 				nRet = 0;
 			if (nRet > 0)
 				return nRet;	
-			// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+			// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 			nRMx = nMapX - i;
 			nRMy = nMapY + j;
 			nSearchRegion = nRegion;
@@ -920,13 +920,13 @@ int KNpcAI::GetNearestNpc(int nRelation)
 			}
 			if (nSearchRegion == -1)
 				continue;
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC			
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC			
 			nRet = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nIndex, nRelation);
 			if (Npc[nRet].m_HideState.nTime > 0)
 				nRet = 0;
 			if (nRet > 0)
 				return nRet;
-			// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+			// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 			nRMx = nMapX - i;
 			nRMy = nMapY - j;
 			nSearchRegion = nRegion;
@@ -954,13 +954,13 @@ int KNpcAI::GetNearestNpc(int nRelation)
 			}
 			if (nSearchRegion == -1)
 				continue;
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC			
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC			
 			nRet = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nIndex, nRelation);
 			if (Npc[nRet].m_HideState.nTime > 0)
 				nRet = 0;
 			if (nRet > 0)
 				return nRet;
-			// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+			// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 			nRMx = nMapX + i;
 			nRMy = nMapY - j;
 			nSearchRegion = nRegion;			
@@ -988,7 +988,7 @@ int KNpcAI::GetNearestNpc(int nRelation)
 			}
 			if (nSearchRegion == -1)
 				continue;
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC
 			nRet = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nIndex, nRelation);
 			if (Npc[nRet].m_HideState.nTime > 0)
 				nRet = 0;
@@ -1001,7 +1001,7 @@ int KNpcAI::GetNearestNpc(int nRelation)
 
 #ifndef _SERVER
 // flying add this
-// æŸ¥æ‰¾ç¦»æŸä¸ªNPCæœ€è¿‘çš„ç©å®¶
+// ²éÕÒÀëÄ³¸öNPC×î½üµÄÍæ¼Ò
 int KNpcAI::IsPlayerCome()
 {
 	int nResult = 0;
@@ -1014,10 +1014,10 @@ int KNpcAI::IsPlayerCome()
 
 	nPlayer = Player[CLIENT_PLAYER_INDEX].m_nIndex;
 	distance = NpcSet.GetDistance(nPlayer, m_nIndex);
-	// é¸¡çœ‹çš„åˆ°çš„ç©å®¶
+	// ¼¦¿´µÄµ½µÄÍæ¼Ò
 	if (distance < Npc[m_nIndex].m_VisionRadius)
 	{
-		// åˆ†åˆ«å¤„ç†èµ°å’Œè·‘
+		// ·Ö±ğ´¦Àí×ßºÍÅÜ
 		if (Player[CLIENT_PLAYER_INDEX].m_RunStatus ||
 			Npc[m_nIndex].m_CurrentVisionRadius > distance * 4)
 		{
@@ -1042,16 +1042,16 @@ int KNpcAI::GetNpcNumber(int nRelation)
 	nRangeX = nRangeX / SubWorld[nSubWorld].m_nCellWidth;
 	nRangeY = nRangeY / SubWorld[nSubWorld].m_nCellHeight;
 
-	// æ£€æŸ¥è§†é‡èŒƒå›´å†…çš„æ ¼å­é‡Œçš„NPC
+	// ¼ì²éÊÓÒ°·¶Î§ÄÚµÄ¸ñ×ÓÀïµÄNPC
 	for (int i = -nRangeX; i < nRangeX; i++)
 	{
 		for (int j = -nRangeY; j < nRangeY; j++)
 		{
-			// å»æ‰è¾¹è§’å‡ ä¸ªæ ¼å­ï¼Œä¿è¯è§†é‡æ˜¯æ¤­åœ†å½¢
+			// È¥µô±ß½Ç¼¸¸ö¸ñ×Ó£¬±£Ö¤ÊÓÒ°ÊÇÍÖÔ²ĞÎ
 			if ((i * i + j * j) > nRangeX * nRangeX)
 				continue;
 
-			// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+			// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 			nRMx = nMapX + i;
 			nRMy = nMapY + j;
 			nSearchRegion = nRegion;
@@ -1079,7 +1079,7 @@ int KNpcAI::GetNpcNumber(int nRelation)
 			}
 			if (nSearchRegion == -1)
 				continue;
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC			
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC			
 			int nNpcIdx = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nIndex, nRelation);
 			if (nNpcIdx > 0)
 				nRet++;
@@ -1153,7 +1153,7 @@ BOOL KNpcAI::InEyeshot(int nIdx)
 
 void KNpcAI::CommonAction()
 {
-	// å¦‚æœæ˜¯å¯¹è¯ç±»çš„NPCï¼Œå°±åŸåœ°ä¸åŠ¨
+	// Èç¹ûÊÇ¶Ô»°ÀàµÄNPC£¬¾ÍÔ­µØ²»¶¯
 	if (Npc[m_nIndex].m_Kind == kind_dialoger)
 	{
 		if (Npc[m_nIndex].m_Doing != do_stand)
@@ -1190,19 +1190,19 @@ BOOL KNpcAI::KeepActiveRange()
 	Npc[m_nIndex].GetMpsPos(&x, &y);
 	int	nRange = g_GetDistance(Npc[m_nIndex].m_OriginX, Npc[m_nIndex].m_OriginY, x, y);
 
-	// å‘ç°è¶…å‡ºæ´»åŠ¨èŒƒå›´ï¼ŒæŠŠå½“å‰æ´»åŠ¨èŒƒå›´ç¼©å°ï¼Œé¿å…åœ¨æ´»åŠ¨èŒƒå›´è¾¹ç¼˜æ¥å›æ™ƒã€‚
+	// ·¢ÏÖ³¬³ö»î¶¯·¶Î§£¬°Ñµ±Ç°»î¶¯·¶Î§ËõĞ¡£¬±ÜÃâÔÚ»î¶¯·¶Î§±ßÔµÀ´»Ø»Î¡£
 	if (Npc[m_nIndex].m_ActiveRadius < nRange)
 	{
 		Npc[m_nIndex].m_CurrentActiveRadius = Npc[m_nIndex].m_ActiveRadius / 2;
 	}
 
-	// å‘ç°è¶…å‡ºå½“å‰æ´»åŠ¨èŒƒå›´ï¼Œå¾€å›èµ°
+	// ·¢ÏÖ³¬³öµ±Ç°»î¶¯·¶Î§£¬Íù»Ø×ß
 	if (Npc[m_nIndex].m_CurrentActiveRadius < nRange)
 	{
 		Npc[m_nIndex].SendCommand(do_walk, Npc[m_nIndex].m_OriginX, Npc[m_nIndex].m_OriginY);
 		return TRUE;
 	}
-	else	// åœ¨å½“å‰æ´»åŠ¨èŒƒå›´å†…ï¼Œæ¢å¤å½“å‰æ´»åŠ¨èŒƒå›´å¤§å°ã€‚
+	else	// ÔÚµ±Ç°»î¶¯·¶Î§ÄÚ£¬»Ö¸´µ±Ç°»î¶¯·¶Î§´óĞ¡¡£
 	{
 		Npc[m_nIndex].m_CurrentActiveRadius = Npc[m_nIndex].m_ActiveRadius;
 		return FALSE;
@@ -1210,7 +1210,7 @@ BOOL KNpcAI::KeepActiveRange()
 }
 
 #ifndef _SERVER
-// 15/16 AiMode NPCçš„é€ƒé€¸åŠ¨ä½œ
+// 15/16 AiMode NPCµÄÌÓÒİ¶¯×÷
 int KNpcAI::DoShowFlee(int nIdx)
 {
 	int nResult  = false;
@@ -1236,7 +1236,7 @@ Exit0:
 
 #endif
 
-// é€ƒç¦»Npc[nIdx]
+// ÌÓÀëNpc[nIdx]
 void KNpcAI::Flee(int nIdx)
 {
 	int x1, y1, x2, y2;
@@ -1250,54 +1250,54 @@ void KNpcAI::Flee(int nIdx)
 	Npc[m_nIndex].SendCommand(do_walk, x1, y1);
 }
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šä¸»åŠ¨ç±»1
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1ã€2ã€3ã€4] å››ç§æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½1 2 3 4
-//	m_AiParam[5ã€6] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨Ö÷¶¯Àà1
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1¡¢2¡¢3¡¢4] ËÄÖÖ¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ1 2 3 4
+//	m_AiParam[5¡¢6] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType01()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// å¦‚æœåŸæœ¬æ²¡æœ‰é”å®šæ•Œäººæˆ–è€…è¿™ä¸ªæ•Œäººè·‘å¤ªè¿œï¼Œé‡æ–°é”å®šæ•Œäºº
+	// Èç¹ûÔ­±¾Ã»ÓĞËø¶¨µĞÈË»òÕßÕâ¸öµĞÈËÅÜÌ«Ô¶£¬ÖØĞÂËø¶¨µĞÈË
 	if (nEnemyIdx <= 0 || Npc[nEnemyIdx].m_dwID <= 0 || !InEyeshot(nEnemyIdx) )
 	{
 		nEnemyIdx = GetNearestNpc(relation_enemy);
 		Npc[m_nIndex].m_nPeopleIdx = nEnemyIdx;
 	}
 
-	// å‘¨å›´æ²¡æœ‰æ•Œäººï¼Œä¸€å®šæ¦‚ç‡å¾…æœº/å·¡é€»
+	// ÖÜÎ§Ã»ÓĞµĞÈË£¬Ò»¶¨¸ÅÂÊ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[5])	// å¾…æœº
+		if (nRand < pAIParam[5])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[5] + pAIParam[6])	// å·¡é€»
+		if (nRand < pAIParam[5] + pAIParam[6])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[1])
@@ -1332,7 +1332,7 @@ void	KNpcAI::ProcessAIType01()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1342,53 +1342,53 @@ void	KNpcAI::ProcessAIType01()
 
 
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šä¸»åŠ¨ç±»2
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1] å‰©ä½™ç”Ÿå‘½ä½äºè¿™ä¸ªç™¾åˆ†æ¯”çš„æ—¶å€™æ‰§è¡Œç›¸åº”å¤„ç†
-//	m_AiParam[2] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°çš„æ—¶å€™æ˜¯å¦æ‰§è¡Œç›¸åº”å¤„ç†çš„æ¦‚ç‡
-//	m_AiParam[3] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°å¹¶å†³å®šè¦æ‰§è¡Œç›¸åº”å¤„ç†ï¼Œä½¿ç”¨å›å¤æŠ€èƒ½çš„æ¦‚ç‡ å¯¹åº”SkillListé‡Œé¢çš„æŠ€èƒ½ 1
-//	m_AiParam[4ã€5ã€6] ä¸‰ç§æ”»å‡»æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½ 2 3 4
-//	m_AiParam[7ã€8] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨Ö÷¶¯Àà2
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1] Ê£ÓàÉúÃüµÍÓÚÕâ¸ö°Ù·Ö±ÈµÄÊ±ºòÖ´ĞĞÏàÓ¦´¦Àí
+//	m_AiParam[2] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖµÄÊ±ºòÊÇ·ñÖ´ĞĞÏàÓ¦´¦ÀíµÄ¸ÅÂÊ
+//	m_AiParam[3] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖ²¢¾ö¶¨ÒªÖ´ĞĞÏàÓ¦´¦Àí£¬Ê¹ÓÃ»Ø¸´¼¼ÄÜµÄ¸ÅÂÊ ¶ÔÓ¦SkillListÀïÃæµÄ¼¼ÄÜ 1
+//	m_AiParam[4¡¢5¡¢6] ÈıÖÖ¹¥»÷¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ 2 3 4
+//	m_AiParam[7¡¢8] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType02()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// å¦‚æœåŸæœ¬æ²¡æœ‰é”å®šæ•Œäººæˆ–è€…è¿™ä¸ªæ•Œäººè·‘å¤ªè¿œï¼Œé‡æ–°é”å®šæ•Œäºº
+	// Èç¹ûÔ­±¾Ã»ÓĞËø¶¨µĞÈË»òÕßÕâ¸öµĞÈËÅÜÌ«Ô¶£¬ÖØĞÂËø¶¨µĞÈË
 	if (nEnemyIdx <= 0 || Npc[nEnemyIdx].m_dwID <= 0 || !InEyeshot(nEnemyIdx) )
 	{
 		nEnemyIdx = GetNearestNpc(relation_enemy);
 		Npc[m_nIndex].m_nPeopleIdx = nEnemyIdx;
 	}
 
-	// å‘¨å›´æ²¡æœ‰æ•Œäººï¼Œä¸€å®šæ¦‚ç‡å¾…æœº/å·¡é€»
+	// ÖÜÎ§Ã»ÓĞµĞÈË£¬Ò»¶¨¸ÅÂÊ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// æ£€æµ‹å‰©ä½™ç”Ÿå‘½æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œç”Ÿå‘½å¤ªå°‘ä¸€å®šæ¦‚ç‡ä½¿ç”¨è¡¥è¡€æŠ€èƒ½æˆ–é€ƒè·‘
+	// ¼ì²âÊ£ÓàÉúÃüÊÇ·ñ·ûºÏÌõ¼ş£¬ÉúÃüÌ«ÉÙÒ»¶¨¸ÅÂÊÊ¹ÓÃ²¹Ñª¼¼ÄÜ»òÌÓÅÜ
 	if (Npc[m_nIndex].m_CurrentLife * 100 / Npc[m_nIndex].m_CurrentLifeMax < pAIParam[1])
 	{
-		if (g_RandPercent(pAIParam[2]))	// æ˜¯å¦ä½¿ç”¨è¡¥è¡€æŠ€èƒ½æˆ–é€ƒè·‘
+		if (g_RandPercent(pAIParam[2]))	// ÊÇ·ñÊ¹ÓÃ²¹Ñª¼¼ÄÜ»òÌÓÅÜ
 		{
-			if (Npc[m_nIndex].m_AiAddLifeTime < pAIParam[9] && g_RandPercent(pAIParam[3]))	// ä½¿ç”¨è¡¥è¡€æŠ€èƒ½
+			if (Npc[m_nIndex].m_AiAddLifeTime < pAIParam[9] && g_RandPercent(pAIParam[3]))	// Ê¹ÓÃ²¹Ñª¼¼ÄÜ
 			{
 				Npc[m_nIndex].SetActiveSkill(1);
 				Npc[m_nIndex].SendCommand(do_skill, Npc[m_nIndex].m_ActiveSkillID, -1, m_nIndex);
 				Npc[m_nIndex].m_AiAddLifeTime++;
 				return;
 			}
-			else	// é€ƒè·‘
+			else	// ÌÓÅÜ
 			{
 				Flee(nEnemyIdx);
 				return;
@@ -1396,23 +1396,23 @@ void	KNpcAI::ProcessAIType02()
 		}
 	}
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[7])	// å¾…æœº
+		if (nRand < pAIParam[7])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[7] + pAIParam[8])	// å·¡é€»
+		if (nRand < pAIParam[7] + pAIParam[8])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[4])
@@ -1439,7 +1439,7 @@ void	KNpcAI::ProcessAIType02()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1447,52 +1447,52 @@ void	KNpcAI::ProcessAIType02()
 }
 
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šä¸»åŠ¨ç±»3
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1] å‰©ä½™ç”Ÿå‘½ä½äºè¿™ä¸ªç™¾åˆ†æ¯”çš„æ—¶å€™æ‰§è¡Œç›¸åº”å¤„ç†
-//	m_AiParam[2] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°çš„æ—¶å€™æ˜¯å¦æ‰§è¡Œç›¸åº”å¤„ç†çš„æ¦‚ç‡
-//	m_AiParam[3] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°å¹¶å†³å®šè¦æ‰§è¡Œç›¸åº”å¤„ç†ï¼Œä½¿ç”¨æ”»å‡»æŠ€èƒ½çš„æ¦‚ç‡ å¯¹åº”SkillListé‡Œé¢çš„æŠ€èƒ½ 1
-//	m_AiParam[4ã€5ã€6] ä¸‰ç§æ”»å‡»æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½ 2 3 4
-//	m_AiParam[7ã€8] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨Ö÷¶¯Àà3
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1] Ê£ÓàÉúÃüµÍÓÚÕâ¸ö°Ù·Ö±ÈµÄÊ±ºòÖ´ĞĞÏàÓ¦´¦Àí
+//	m_AiParam[2] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖµÄÊ±ºòÊÇ·ñÖ´ĞĞÏàÓ¦´¦ÀíµÄ¸ÅÂÊ
+//	m_AiParam[3] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖ²¢¾ö¶¨ÒªÖ´ĞĞÏàÓ¦´¦Àí£¬Ê¹ÓÃ¹¥»÷¼¼ÄÜµÄ¸ÅÂÊ ¶ÔÓ¦SkillListÀïÃæµÄ¼¼ÄÜ 1
+//	m_AiParam[4¡¢5¡¢6] ÈıÖÖ¹¥»÷¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ 2 3 4
+//	m_AiParam[7¡¢8] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType03()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// å¦‚æœåŸæœ¬æ²¡æœ‰é”å®šæ•Œäººæˆ–è€…è¿™ä¸ªæ•Œäººè·‘å¤ªè¿œï¼Œé‡æ–°é”å®šæ•Œäºº
+	// Èç¹ûÔ­±¾Ã»ÓĞËø¶¨µĞÈË»òÕßÕâ¸öµĞÈËÅÜÌ«Ô¶£¬ÖØĞÂËø¶¨µĞÈË
 	if (nEnemyIdx <= 0 || Npc[nEnemyIdx].m_dwID <= 0 || !InEyeshot(nEnemyIdx) )
 	{
 		nEnemyIdx = GetNearestNpc(relation_enemy);
 		Npc[m_nIndex].m_nPeopleIdx = nEnemyIdx;
 	}
 
-	// å‘¨å›´æ²¡æœ‰æ•Œäººï¼Œä¸€å®šæ¦‚ç‡å¾…æœº/å·¡é€»
+	// ÖÜÎ§Ã»ÓĞµĞÈË£¬Ò»¶¨¸ÅÂÊ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// æ£€æµ‹å‰©ä½™ç”Ÿå‘½æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œç”Ÿå‘½å¤ªå°‘ä¸€å®šæ¦‚ç‡ä½¿ç”¨æ”»å‡»æŠ€èƒ½æˆ–é€ƒè·‘
+	// ¼ì²âÊ£ÓàÉúÃüÊÇ·ñ·ûºÏÌõ¼ş£¬ÉúÃüÌ«ÉÙÒ»¶¨¸ÅÂÊÊ¹ÓÃ¹¥»÷¼¼ÄÜ»òÌÓÅÜ
 	if (Npc[m_nIndex].m_CurrentLife * 100 / Npc[m_nIndex].m_CurrentLifeMax < pAIParam[1])
 	{
-		if (g_RandPercent(pAIParam[2]))	// æ˜¯å¦ä½¿ç”¨æ”»å‡»æŠ€èƒ½æˆ–é€ƒè·‘
+		if (g_RandPercent(pAIParam[2]))	// ÊÇ·ñÊ¹ÓÃ¹¥»÷¼¼ÄÜ»òÌÓÅÜ
 		{
-			if (g_RandPercent(pAIParam[3]))	// ä½¿ç”¨æ”»å‡»æŠ€èƒ½
+			if (g_RandPercent(pAIParam[3]))	// Ê¹ÓÃ¹¥»÷¼¼ÄÜ
 			{
 				Npc[m_nIndex].SetActiveSkill(1);
 				FollowAttack(nEnemyIdx);
 				return;
 			}
-			else	// é€ƒè·‘
+			else	// ÌÓÅÜ
 			{
 				Flee(nEnemyIdx);
 				return;
@@ -1500,23 +1500,23 @@ void	KNpcAI::ProcessAIType03()
 		}
 	}
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[7])	// å¾…æœº
+		if (nRand < pAIParam[7])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[7] + pAIParam[8])	// å·¡é€»
+		if (nRand < pAIParam[7] + pAIParam[8])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[4])
@@ -1543,7 +1543,7 @@ void	KNpcAI::ProcessAIType03()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1551,48 +1551,48 @@ void	KNpcAI::ProcessAIType03()
 }
 
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šè¢«åŠ¨ç±»1
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1ã€2ã€3ã€4] å››ç§æ”»å‡»æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½ 1 2 3 4
-//	m_AiParam[5ã€6] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨±»¶¯Àà1
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1¡¢2¡¢3¡¢4] ËÄÖÖ¹¥»÷¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ 1 2 3 4
+//	m_AiParam[5¡¢6] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType04()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// æ˜¯å¦å—åˆ°æ”»å‡»ï¼Œå¦ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»
+	// ÊÇ·ñÊÜµ½¹¥»÷£¬·ñ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[5])	// å¾…æœº
+		if (nRand < pAIParam[5])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[5] + pAIParam[6])	// å·¡é€»
+		if (nRand < pAIParam[5] + pAIParam[6])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[1])
@@ -1627,7 +1627,7 @@ void	KNpcAI::ProcessAIType04()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1635,47 +1635,47 @@ void	KNpcAI::ProcessAIType04()
 }
 
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šè¢«åŠ¨ç±»2
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1] å‰©ä½™ç”Ÿå‘½ä½äºè¿™ä¸ªç™¾åˆ†æ¯”çš„æ—¶å€™æ‰§è¡Œç›¸åº”å¤„ç†
-//	m_AiParam[2] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°çš„æ—¶å€™æ˜¯å¦æ‰§è¡Œç›¸åº”å¤„ç†çš„æ¦‚ç‡
-//	m_AiParam[3] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°å¹¶å†³å®šè¦æ‰§è¡Œç›¸åº”å¤„ç†ï¼Œä½¿ç”¨å›å¤æŠ€èƒ½çš„æ¦‚ç‡ å¯¹åº”SkillListé‡Œé¢çš„æŠ€èƒ½ 1
-//	m_AiParam[4ã€5ã€6] ä¸‰ç§æ”»å‡»æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½ 2 3 4
-//	m_AiParam[7ã€8] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨±»¶¯Àà2
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1] Ê£ÓàÉúÃüµÍÓÚÕâ¸ö°Ù·Ö±ÈµÄÊ±ºòÖ´ĞĞÏàÓ¦´¦Àí
+//	m_AiParam[2] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖµÄÊ±ºòÊÇ·ñÖ´ĞĞÏàÓ¦´¦ÀíµÄ¸ÅÂÊ
+//	m_AiParam[3] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖ²¢¾ö¶¨ÒªÖ´ĞĞÏàÓ¦´¦Àí£¬Ê¹ÓÃ»Ø¸´¼¼ÄÜµÄ¸ÅÂÊ ¶ÔÓ¦SkillListÀïÃæµÄ¼¼ÄÜ 1
+//	m_AiParam[4¡¢5¡¢6] ÈıÖÖ¹¥»÷¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ 2 3 4
+//	m_AiParam[7¡¢8] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType05()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// æ˜¯å¦å—åˆ°æ”»å‡»ï¼Œå¦ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»
+	// ÊÇ·ñÊÜµ½¹¥»÷£¬·ñ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
-	// æ£€æµ‹å‰©ä½™ç”Ÿå‘½æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œç”Ÿå‘½å¤ªå°‘ä¸€å®šæ¦‚ç‡ä½¿ç”¨è¡¥è¡€æŠ€èƒ½æˆ–é€ƒè·‘
+	// ¼ì²âÊ£ÓàÉúÃüÊÇ·ñ·ûºÏÌõ¼ş£¬ÉúÃüÌ«ÉÙÒ»¶¨¸ÅÂÊÊ¹ÓÃ²¹Ñª¼¼ÄÜ»òÌÓÅÜ
 	if (Npc[m_nIndex].m_CurrentLife * 100 / Npc[m_nIndex].m_CurrentLifeMax < pAIParam[1])
 	{
-		if (g_RandPercent(pAIParam[2]))	// æ˜¯å¦ä½¿ç”¨è¡¥è¡€æŠ€èƒ½æˆ–é€ƒè·‘
+		if (g_RandPercent(pAIParam[2]))	// ÊÇ·ñÊ¹ÓÃ²¹Ñª¼¼ÄÜ»òÌÓÅÜ
 		{
-			if (Npc[m_nIndex].m_AiAddLifeTime < pAIParam[9] && g_RandPercent(pAIParam[3]))	// ä½¿ç”¨è¡¥è¡€æŠ€èƒ½
+			if (Npc[m_nIndex].m_AiAddLifeTime < pAIParam[9] && g_RandPercent(pAIParam[3]))	// Ê¹ÓÃ²¹Ñª¼¼ÄÜ
 			{
 				Npc[m_nIndex].m_AiAddLifeTime++;
 				Npc[m_nIndex].SetActiveSkill(1);
 				Npc[m_nIndex].SendCommand(do_skill, Npc[m_nIndex].m_ActiveSkillID, -1, m_nIndex);
 				return;
 			}
-			else	// é€ƒè·‘
+			else	// ÌÓÅÜ
 			{
 				Flee(nEnemyIdx);
 				return;
@@ -1683,23 +1683,23 @@ void	KNpcAI::ProcessAIType05()
 		}
 	}
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[7])	// å¾…æœº
+		if (nRand < pAIParam[7])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[7] + pAIParam[8])	// å·¡é€»
+		if (nRand < pAIParam[7] + pAIParam[8])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[4])
@@ -1726,7 +1726,7 @@ void	KNpcAI::ProcessAIType05()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1734,46 +1734,46 @@ void	KNpcAI::ProcessAIType05()
 }
 
 //------------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ™®é€šè¢«åŠ¨ç±»3
-//	m_AiParam[0] æ— æ•Œäººæ—¶å€™çš„å·¡é€»æ¦‚ç‡
-//	m_AiParam[1] å‰©ä½™ç”Ÿå‘½ä½äºè¿™ä¸ªç™¾åˆ†æ¯”çš„æ—¶å€™æ‰§è¡Œç›¸åº”å¤„ç†
-//	m_AiParam[2] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°çš„æ—¶å€™æ˜¯å¦æ‰§è¡Œç›¸åº”å¤„ç†çš„æ¦‚ç‡
-//	m_AiParam[3] åœ¨m_AiParam[1]çš„æƒ…å†µå‡ºç°å¹¶å†³å®šè¦æ‰§è¡Œç›¸åº”å¤„ç†ï¼Œä½¿ç”¨æ”»å‡»æŠ€èƒ½çš„æ¦‚ç‡ å¯¹åº”SkillListé‡Œé¢çš„æŠ€èƒ½ 1
-//	m_AiParam[4ã€5ã€6] ä¸‰ç§æ”»å‡»æŠ€èƒ½çš„ä½¿ç”¨æ¦‚ç‡ï¼Œåˆ†åˆ«å¯¹åº”SkillListé‡Œçš„æŠ€èƒ½ 2 3 4
-//	m_AiParam[7ã€8] çœ‹è§æ•Œäººä½†æ¯”è¾ƒè¿œæ—¶ï¼Œå¾…æœºã€å·¡é€»çš„æ¦‚ç‡
+//	¹¦ÄÜ£ºÆÕÍ¨±»¶¯Àà3
+//	m_AiParam[0] ÎŞµĞÈËÊ±ºòµÄÑ²Âß¸ÅÂÊ
+//	m_AiParam[1] Ê£ÓàÉúÃüµÍÓÚÕâ¸ö°Ù·Ö±ÈµÄÊ±ºòÖ´ĞĞÏàÓ¦´¦Àí
+//	m_AiParam[2] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖµÄÊ±ºòÊÇ·ñÖ´ĞĞÏàÓ¦´¦ÀíµÄ¸ÅÂÊ
+//	m_AiParam[3] ÔÚm_AiParam[1]µÄÇé¿ö³öÏÖ²¢¾ö¶¨ÒªÖ´ĞĞÏàÓ¦´¦Àí£¬Ê¹ÓÃ¹¥»÷¼¼ÄÜµÄ¸ÅÂÊ ¶ÔÓ¦SkillListÀïÃæµÄ¼¼ÄÜ 1
+//	m_AiParam[4¡¢5¡¢6] ÈıÖÖ¹¥»÷¼¼ÄÜµÄÊ¹ÓÃ¸ÅÂÊ£¬·Ö±ğ¶ÔÓ¦SkillListÀïµÄ¼¼ÄÜ 2 3 4
+//	m_AiParam[7¡¢8] ¿´¼ûµĞÈËµ«±È½ÏÔ¶Ê±£¬´ı»ú¡¢Ñ²ÂßµÄ¸ÅÂÊ
 //------------------------------------------------------------------------------
 void	KNpcAI::ProcessAIType06()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
 
 	int nEnemyIdx = Npc[m_nIndex].m_nPeopleIdx;
-	// æ˜¯å¦å—åˆ°æ”»å‡»ï¼Œå¦ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»
+	// ÊÇ·ñÊÜµ½¹¥»÷£¬·ñ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß
 	if (nEnemyIdx <= 0)
 	{
-		// pAIParam[0]:å·¡é€»æ¦‚ç‡
+		// pAIParam[0]:Ñ²Âß¸ÅÂÊ
 		if (pAIParam[0] > 0 && g_RandPercent(pAIParam[0]))
-		{	// å·¡é€»
+		{	// Ñ²Âß
 			CommonAction();
 		}
 		return;
 	}
 
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
-	// æ£€æµ‹å‰©ä½™ç”Ÿå‘½æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œç”Ÿå‘½å¤ªå°‘ä¸€å®šæ¦‚ç‡ä½¿ç”¨æ”»å‡»æŠ€èƒ½æˆ–é€ƒè·‘
+	// ¼ì²âÊ£ÓàÉúÃüÊÇ·ñ·ûºÏÌõ¼ş£¬ÉúÃüÌ«ÉÙÒ»¶¨¸ÅÂÊÊ¹ÓÃ¹¥»÷¼¼ÄÜ»òÌÓÅÜ
 	if (Npc[m_nIndex].m_CurrentLife * 100 / Npc[m_nIndex].m_CurrentLifeMax < pAIParam[1])
 	{
-		if (g_RandPercent(pAIParam[2]))	// æ˜¯å¦ä½¿ç”¨æ”»å‡»æŠ€èƒ½æˆ–é€ƒè·‘
+		if (g_RandPercent(pAIParam[2]))	// ÊÇ·ñÊ¹ÓÃ¹¥»÷¼¼ÄÜ»òÌÓÅÜ
 		{
-			if (g_RandPercent(pAIParam[3]))	// ä½¿ç”¨æ”»å‡»æŠ€èƒ½
+			if (g_RandPercent(pAIParam[3]))	// Ê¹ÓÃ¹¥»÷¼¼ÄÜ
 			{
 				Npc[m_nIndex].SetActiveSkill(1);
-				FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+				FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 				return;
 			}
-			else	// é€ƒè·‘
+			else	// ÌÓÅÜ
 			{
 				Flee(nEnemyIdx);
 				return;
@@ -1781,23 +1781,23 @@ void	KNpcAI::ProcessAIType06()
 		}
 	}
 
-	// å¦‚æœæ•Œäººåœ¨æ‰€æœ‰æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å¤–ï¼Œä¸€å®šæ¦‚ç‡é€‰æ‹©å¾…æœº/å·¡é€»/å‘æ•Œäººé è¿‘
+	// Èç¹ûµĞÈËÔÚËùÓĞ¼¼ÄÜ¹¥»÷·¶Î§Ö®Íâ£¬Ò»¶¨¸ÅÂÊÑ¡Ôñ´ı»ú/Ñ²Âß/ÏòµĞÈË¿¿½ü
 	if (KNpcSet::GetDistanceSquare(m_nIndex, nEnemyIdx) > pAIParam[MAX_AI_PARAM - 1])
 	{
 		int		nRand;
 		nRand = g_Random(100);
-		if (nRand < pAIParam[7])	// å¾…æœº
+		if (nRand < pAIParam[7])	// ´ı»ú
 			return;
-		if (nRand < pAIParam[7] + pAIParam[8])	// å·¡é€»
+		if (nRand < pAIParam[7] + pAIParam[8])	// Ñ²Âß
 		{
 			CommonAction();
 			return;
 		}
-		FollowAttack(nEnemyIdx);	// å‘æ•Œäººé è¿‘
+		FollowAttack(nEnemyIdx);	// ÏòµĞÈË¿¿½ü
 		return;
 	}
 
-	// æ•Œäººåœ¨æœ€å¤§æŠ€èƒ½æ”»å‡»èŒƒå›´ä¹‹å†…ï¼Œé€‰æ‹©ä¸€ç§æŠ€èƒ½æ”»å‡»
+	// µĞÈËÔÚ×î´ó¼¼ÄÜ¹¥»÷·¶Î§Ö®ÄÚ£¬Ñ¡ÔñÒ»ÖÖ¼¼ÄÜ¹¥»÷
 	int		nRand;
 	nRand = g_Random(100);
 	if (nRand < pAIParam[4])
@@ -1824,7 +1824,7 @@ void	KNpcAI::ProcessAIType06()
 			return;
 		}
 	}
-	else	// å¾…æœº
+	else	// ´ı»ú
 	{
 		return;
 	}
@@ -1832,11 +1832,11 @@ void	KNpcAI::ProcessAIType06()
 }
 
 /*
-// ä¸€èˆ¬ä¸»åŠ¨å‹
+// Ò»°ãÖ÷¶¯ĞÍ
 void KNpcAI::ProcessAIType1()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
-	// æ˜¯å¦å·²è¶…è¿‡æ´»åŠ¨åŠå¾„
+	// ÊÇ·ñÒÑ³¬¹ı»î¶¯°ë¾¶
 	if (KeepActiveRange())
 		return;
 
@@ -1914,7 +1914,7 @@ void KNpcAI::ProcessAIType1()
 */
 
 /*
-// ä¸€èˆ¬è¢«åŠ¨å‹
+// Ò»°ã±»¶¯ĞÍ
 void KNpcAI::ProcessAIType2()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -1988,7 +1988,7 @@ void KNpcAI::ProcessAIType2()
 */
 
 /*
-// ä¸€èˆ¬é€ƒè·‘å‹
+// Ò»°ãÌÓÅÜĞÍ
 void KNpcAI::ProcessAIType3()
 {
 	int* pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2070,7 +2070,7 @@ void KNpcAI::ProcessAIType3()
 */
 
 /*
-// é€ƒè·‘åŠ å¼ºå‹
+// ÌÓÅÜ¼ÓÇ¿ĞÍ
 void KNpcAI::ProcessAIType4()
 {
 	int*	pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2130,7 +2130,7 @@ void KNpcAI::ProcessAIType4()
 */
 
 /*
-//	äººå¤šå°±è·‘å‹
+//	ÈË¶à¾ÍÅÜĞÍ
 void KNpcAI::ProcessAIType5()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2182,7 +2182,7 @@ void KNpcAI::ProcessAIType5()
 */
 
 /*
-//	æˆç¾¤ç»“é˜Ÿå‹
+//	³ÉÈº½á¶ÓĞÍ
 void KNpcAI::ProcessAIType6()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2233,7 +2233,7 @@ void KNpcAI::ProcessAIType6()
 */
 
 /*
-// æŒ¨æ‰“èšå †å‹
+// °¤´ò¾Û¶ÑĞÍ
 void KNpcAI::ProcessAIType7()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2290,7 +2290,7 @@ void KNpcAI::ProcessAIType7()
 */
 
 /*
-//	ä¸»åŠ¨é€æ­»å‹
+//	Ö÷¶¯ËÍËÀĞÍ
 void KNpcAI::ProcessAIType8()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2342,7 +2342,7 @@ void KNpcAI::ProcessAIType8()
 */
 
 /*
-//	è¶Šæˆ˜è¶Šå‹‡å‹
+//	Ô½Õ½Ô½ÓÂĞÍ
 void KNpcAI::ProcessAIType9()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;
@@ -2389,7 +2389,7 @@ void KNpcAI::ProcessAIType9()
 */
 
 /*
-//	é€ƒè·‘ä¸æ‰å‹
+//	ÌÓÅÜ²»µôĞÍ
 void KNpcAI::ProcessAIType10()
 {
 	int *pAIParam = Npc[m_nIndex].m_AiParam;

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	æ’­æ”¾videoçª—å£
+//	²¥·Åvideo´°¿Ú
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-7-14
@@ -47,7 +47,7 @@ KUiPlayVideo::KUiPlayVideo()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiPlayVideo* KUiPlayVideo::OpenWindow()
 {
@@ -63,7 +63,7 @@ KUiPlayVideo* KUiPlayVideo::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè¾“å…¥å¤„ç†æ¶ˆæ¯ä»¥åŠä¸€äº›ç‰¹å®šçª—å£æ¶ˆæ¯çš„å“åº”
+//	¹¦ÄÜ£ºÊäÈë´¦ÀíÏûÏ¢ÒÔ¼°Ò»Ğ©ÌØ¶¨´°¿ÚÏûÏ¢µÄÏìÓ¦
 //--------------------------------------------------------------------------
 int KUiPlayVideo::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -89,7 +89,7 @@ int KUiPlayVideo::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return nRet;
 }
 
-//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 void KUiPlayVideo::CloseWindow(bool bDestroy)
 {
 	if (m_pSelf)
@@ -106,7 +106,7 @@ void KUiPlayVideo::CloseWindow(bool bDestroy)
 	}
 }
 
-//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+//ÔØÈë½çÃæ·½°¸
 void KUiPlayVideo::LoadScheme(const char* pszSettingFile, const char* pszSection)
 {
 	if (m_pSelf && pszSettingFile && pszSection && pszSettingFile[0] && pszSection[0])
@@ -269,7 +269,7 @@ void KUiPlayVideo::Breathe()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šç»˜åˆ¶æ¸¸æˆä¸–ç•Œ
+//	¹¦ÄÜ£º»æÖÆÓÎÏ·ÊÀ½ç
 //--------------------------------------------------------------------------
 void KUiPlayVideo::PaintWindow()
 {
@@ -319,7 +319,7 @@ void KUiPlayVideo::PaintWindow()
 	m_uBitmapIsPosition = img.nISPosition;
 }
 
-//æ’­æ”¾ç»“æŸ
+//²¥·Å½áÊø
 void KUiPlayVideo::OnPlayFinished()
 {
 	KWndWindow* pCaller = m_pCaller;
@@ -331,13 +331,13 @@ void KUiPlayVideo::OnPlayFinished()
 		pCaller->WndProc(WND_M_OTHER_WORK_RESULT, uParam, 0);
 }
 
-//è®¾ç½®çª—å£ä½ç½®ï¼Œç›¸å¯¹åæ ‡
+//ÉèÖÃ´°¿ÚÎ»ÖÃ£¬Ïà¶Ô×ø±ê
 void KUiPlayVideo::SetPosition(int nLeft, int nTop)		
 {
 	KWndWindow::SetPosition(nLeft, nTop);
 }
 
-//è®¾ç½®çª—å£å¤§å°
+//ÉèÖÃ´°¿Ú´óĞ¡
 void KUiPlayVideo::SetSize(int nWidth, int nHeight)
 {
 	if (m_bnk == NULL)

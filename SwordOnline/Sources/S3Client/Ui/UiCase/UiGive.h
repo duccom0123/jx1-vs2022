@@ -1,6 +1,6 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiGive.h
-//	åŠŸèƒ½æè¿°	ï¼š	è·å¾—å­—ä¸²ç•Œé¢
+//	ÎÄ¼şÃû		£º	UiGive.h
+//	¹¦ÄÜÃèÊö	£º	»ñµÃ×Ö´®½çÃæ
 // -------------------------------------------------------------------------
 #pragma once
 
@@ -14,25 +14,25 @@ struct KUiObjAtRegion;
 class KUiGive : protected KWndImage
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiGive*	OpenWindow(const char* szName, char* szInitString);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiGive*	OpenWindow(const char* szName, char* szInitString);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 	static KUiGive*	GetIfVisible();
-	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
+	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
 	void	OnClickItem(KUiDraggedObject* pItem);
 	void	OnItemPickDrop(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);
-	void	UpdateItem(KUiObjAtRegion* pItem, int bAdd);//ç‰©å“å˜åŒ–æ›´æ–°
+	void	UpdateItem(KUiObjAtRegion* pItem, int bAdd);//ÎïÆ·±ä»¯¸üĞÂ
 private:
 	KUiGive();
 	~KUiGive() {}
-	void	Initialize();								//åˆå§‹åŒ–
+	void	Initialize();								//³õÊ¼»¯
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	UpdateData(const char* szName, char* szInitString);
 private:
 	static KUiGive*	m_pSelf;
 	KWndText32			m_Title;
 	KWndMessageListBox	m_ContentList;
-	KWndScrollBar		m_ContentScroll;	//å¤‡é€‰æ–‡å­—å’Œæ»šåŠ¨æ¡
+	KWndScrollBar		m_ContentScroll;	//±¸Ñ¡ÎÄ×ÖºÍ¹ö¶¯Ìõ
 	KWndObjectMatrix	m_ItemBox;
 	KWndButton			m_Confirm;
 	KWndButton			m_Cancel;

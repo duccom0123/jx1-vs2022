@@ -15,11 +15,11 @@ class KSkillSpecial
 	//Class Member
 public:
 	int			m_nRegionId;		
-	int			m_nCurrentMapX;			//	褰撳墠鐨刋鍧愭爣
-	int			m_nCurrentMapY;			//	褰撳墠鐨刌鍧愭爣
-	int			m_nCurrentMapZ;			//	褰撳墠鐨刏鍧愭爣
-	int			m_nXOffset;				//	褰撳墠鐨刋鏂瑰悜鍋忕Щ
-	int			m_nYOffset;				//	褰撳墠鐨刌鏂瑰悜鍋忕Щ
+	int			m_nCurrentMapX;			//	当前的X坐标
+	int			m_nCurrentMapY;			//	当前的Y坐标
+	int			m_nCurrentMapZ;			//	当前的Z坐标
+	int			m_nXOffset;				//	当前的X方向偏移
+	int			m_nYOffset;				//	当前的Y方向偏移
 	int			m_nPX;
 	int			m_nPY;
 	int			m_nPZ;

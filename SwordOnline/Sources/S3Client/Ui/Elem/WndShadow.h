@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	é˜´å½±çª—å£
+//	ÒõÓ°´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-5
@@ -11,8 +11,8 @@
 class KWndShadow : public KWndWindow
 {
 public:
-	virtual int	Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
-	virtual int		PtInWindow(int x, int y);	//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
+	virtual int	Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
+	virtual int		PtInWindow(int x, int y);	//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
 	void	SetColor(unsigned int uColor);
 	void	Clone(KWndShadow* pCopy);
 	KWndShadow() { m_uColor = 0; }

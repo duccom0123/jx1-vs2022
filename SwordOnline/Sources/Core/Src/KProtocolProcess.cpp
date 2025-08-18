@@ -703,7 +703,7 @@ void KProtocolProcess::NetCommandSkill(BYTE* pMsg)
 	if (MapY < 0)
 		return ;
 
-	//å½“æŒ‡å®šæŸä¸ªç›®æ ‡æ—¶(MapX == -1),MapYä¸ºç›®æ ‡çš„NpcdwIDï¼Œéœ€è¦è½¬æ¢æˆæœ¬åœ°çš„NpcIndexæ‰è¡Œ
+	//µ±Ö¸¶¨Ä³¸öÄ¿±êÊ±(MapX == -1),MapYÎªÄ¿±êµÄNpcdwID£¬ĞèÒª×ª»»³É±¾µØµÄNpcIndex²ÅĞĞ
 	if (MapX < 0)
 	{
 		if (MapX != -1)
@@ -748,7 +748,7 @@ void KProtocolProcess::NetCommandWalk(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥é˜Ÿä¼åˆ›å»ºå¤±è´¥
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª¶ÓÎé´´½¨Ê§°Ü
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cApplyCreateTeamFalse(BYTE* pMsg)
 {
@@ -757,12 +757,12 @@ void KProtocolProcess::s2cApplyCreateTeamFalse(BYTE* pMsg)
 
 	switch (pCreateFalse->m_btErrorID)
 	{
-	// å·²ç»åœ¨é˜Ÿä¼ä¸­ï¼Œè¯´æ˜å®¢æˆ·ç«¯é˜Ÿä¼æ•°æ®æœ‰é”™è¯¯ï¼Œç”³è¯·é‡æ–°è·å¾—é˜Ÿä¼æ•°æ®
+	// ÒÑ¾­ÔÚ¶ÓÎéÖĞ£¬ËµÃ÷¿Í»§¶Ë¶ÓÎéÊı¾İÓĞ´íÎó£¬ÉêÇëÖØĞÂ»ñµÃ¶ÓÎéÊı¾İ
 	case Team_Create_Error_InTeam:
 		Player[CLIENT_PLAYER_INDEX].ApplySelfTeamInfo();
 		break;
 
-	// å½“å‰å¤„äºä¸èƒ½ç»„é˜ŸçŠ¶æ€
+	// µ±Ç°´¦ÓÚ²»ÄÜ×é¶Ó×´Ì¬
 	case Team_Create_Error_CannotCreate:
 		sprintf(sMsg.szMessage, MSG_TEAM_CANNOT_CREATE);
 		sMsg.eType = SMT_NORMAL;
@@ -793,14 +793,14 @@ void KProtocolProcess::s2cApplyCreateTeamFalse(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥æŸ¥è¯¢æŸä¸ªé˜Ÿä¼ç»„é˜Ÿæƒ…å†µå¤±è´¥
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª²éÑ¯Ä³¸ö¶ÓÎé×é¶ÓÇé¿öÊ§°Ü
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cApplyTeamInfoFalse(BYTE* pMsg)
 {
-	// ç•Œé¢æ˜¾ç¤ºé˜Ÿä¼æŸ¥è¯¢å¤±è´¥(not end)
+	// ½çÃæÏÔÊ¾¶ÓÎé²éÑ¯Ê§°Ü(not end)
 }
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥åˆ›å»ºä¸€æ”¯é˜Ÿä¼
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª´´½¨Ò»Ö§¶ÓÎé
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cCreateTeam(BYTE* pMsg)
 {
@@ -832,7 +832,7 @@ void KProtocolProcess::s2cCreateTeam(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘è¿‡æ¥çš„å½“å‰æŸå±æ€§çš„ç‚¹æ•°
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢¹ıÀ´µÄµ±Ç°Ä³ÊôĞÔµÄµãÊı
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cGetCurAttribute(BYTE* pMsg)
 {
@@ -840,7 +840,7 @@ void KProtocolProcess::s2cGetCurAttribute(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘æ¥çš„ç»Ÿç‡åŠ›ç»éªŒå€¼
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢À´µÄÍ³ÂÊÁ¦¾­ÑéÖµ
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cGetLeadExp(BYTE* pMsg)
 {
@@ -881,7 +881,7 @@ void KProtocolProcess::s2cGetLeadExp(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘è¿‡æ¥çš„æŸæŠ€èƒ½ç‚¹æ•°
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢¹ıÀ´µÄÄ³¼¼ÄÜµãÊı
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cGetSkillLevel(BYTE* pMsg)
 {
@@ -905,7 +905,7 @@ void KProtocolProcess::s2cGetSkillLevel(BYTE* pMsg)
 		Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_SkillList.SetTempSkill(nSkillIndex, pSkill->m_bTempSkill);
 	}
 
-	// é€šçŸ¥ç•Œé¢æ›´æ–°æŠ€èƒ½æ•°æ®
+	// Í¨Öª½çÃæ¸üĞÂ¼¼ÄÜÊı¾İ
 	CoreDataChanged(GDCNI_FIGHT_SKILL_POINT, 0, Player[CLIENT_PLAYER_INDEX].m_nSkillPoint);
 	KUiSkillData SkillData;
 
@@ -916,15 +916,15 @@ void KProtocolProcess::s2cGetSkillLevel(BYTE* pMsg)
 			
 	switch(eStyle)
 	{
-	case SKILL_SS_Missles:			//	å­å¼¹ç±»		æœ¬æŠ€èƒ½ç”¨äºå‘é€å­å¼¹ç±»
+	case SKILL_SS_Missles:			//	×Óµ¯Àà		±¾¼¼ÄÜÓÃÓÚ·¢ËÍ×Óµ¯Àà
 	case SKILL_SS_Melee:
-	case SKILL_SS_InitiativeNpcState:	//	ä¸»åŠ¨ç±»		æœ¬æŠ€èƒ½ç”¨äºæ”¹å˜å½“å‰Npcçš„ä¸»åŠ¨çŠ¶æ€
-	case SKILL_SS_PassivityNpcState:		//	è¢«åŠ¨ç±»		æœ¬æŠ€èƒ½ç”¨äºæ”¹å˜Npcçš„è¢«åŠ¨çŠ¶æ€
+	case SKILL_SS_InitiativeNpcState:	//	Ö÷¶¯Àà		±¾¼¼ÄÜÓÃÓÚ¸Ä±äµ±Ç°NpcµÄÖ÷¶¯×´Ì¬
+	case SKILL_SS_PassivityNpcState:		//	±»¶¯Àà		±¾¼¼ÄÜÓÃÓÚ¸Ä±äNpcµÄ±»¶¯×´Ì¬
 		{
 			if(pOrdinSkill->IsBase())
 				return;
 		}break;
-	case SKILL_SS_Thief:					//	å·çªƒç±»
+	case SKILL_SS_Thief:					//	ÍµÇÔÀà
 		{
 			
 		}
@@ -942,7 +942,7 @@ void KProtocolProcess::s2cGetSkillLevel(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘æ¥çš„é˜Ÿå‹ç­‰çº§å˜åŒ–é€šçŸ¥
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢À´µÄ¶ÓÓÑµÈ¼¶±ä»¯Í¨Öª
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cGetTeammateLevel(BYTE* pMsg)
 {
@@ -970,20 +970,20 @@ void KProtocolProcess::s2cGetTeammateLevel(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥ç¦»å¼€é—¨æ´¾
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨ÖªÀë¿ªÃÅÅÉ
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cLeaveFaction(BYTE* pMsg)
 {
 	Player[CLIENT_PLAYER_INDEX].m_cFaction.LeaveFaction();
 
-	// æ”¹å˜é˜µè¥
+	// ¸Ä±äÕóÓª
 	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].SetCamp(camp_free);
 
 	CoreDataChanged(GDCNI_PLAYER_BASE_INFO, 0, 0);
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥æœ‰æˆå‘˜ç¦»å¼€(åŒ…æ‹¬è‡ªå·±ç¦»å¼€)
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨ÖªÓĞ³ÉÔ±Àë¿ª(°üÀ¨×Ô¼ºÀë¿ª)
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cLeaveTeam(BYTE* pMsg)
 {
@@ -995,7 +995,7 @@ void KProtocolProcess::s2cLeaveTeam(BYTE* pMsg)
 
 	PLAYER_LEAVE_TEAM	*pLeaveTeam = (PLAYER_LEAVE_TEAM*)pMsg;
 
-	// è‡ªå·±ç¦»å¼€
+	// ×Ô¼ºÀë¿ª
 	if (pLeaveTeam->m_dwNpcID == Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_dwID)
 	{
 		Player[CLIENT_PLAYER_INDEX].m_cTeam.m_nFlag = 0;
@@ -1004,7 +1004,7 @@ void KProtocolProcess::s2cLeaveTeam(BYTE* pMsg)
 		if (Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].GetMenuState() == PLAYER_MENU_STATE_TEAMOPEN)
 			Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].SetMenuState(PLAYER_MENU_STATE_NORMAL);
 	}
-	// åˆ«äººç¦»å¼€
+	// ±ğÈËÀë¿ª
 	else
 	{
 		g_Team[0].DeleteMember(pLeaveTeam->m_dwNpcID);
@@ -1015,7 +1015,7 @@ void KProtocolProcess::s2cLeaveTeam(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥å‡çº§
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨ÖªÉı¼¶
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cLevelUp(BYTE* pMsg)
 {
@@ -1052,7 +1052,7 @@ void KProtocolProcess::s2cRemoveItem(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘æ¥çš„é—¨æ´¾ä¿¡æ¯
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢À´µÄÃÅÅÉĞÅÏ¢
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cSetFactionData(BYTE* pMsg)
 {
@@ -1076,11 +1076,11 @@ void KProtocolProcess::s2cSetMissionData(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥é˜Ÿä¼çŠ¶æ€(é˜Ÿé•¿ç”³è¯·å¼€æ”¾ã€å…³é—­é˜Ÿä¼çŠ¶æ€æ—¶æ‰ä¼šæ”¶åˆ°æ­¤ä¿¡æ¯)
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª¶ÓÎé×´Ì¬(¶Ó³¤ÉêÇë¿ª·Å¡¢¹Ø±Õ¶ÓÎé×´Ì¬Ê±²Å»áÊÕµ½´ËĞÅÏ¢)
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cSetTeamState(BYTE* pMsg)
 {
-	// å®¢æˆ·ç«¯æ•°æ®æœ‰è¯¯ï¼Œç”³è¯·æ›´æ–°æ•°æ®
+	// ¿Í»§¶ËÊı¾İÓĞÎó£¬ÉêÇë¸üĞÂÊı¾İ
 	PLAYER_TEAM_CHANGE_STATE	*pTeamState = (PLAYER_TEAM_CHANGE_STATE*)pMsg;
 	switch (pTeamState->m_btState)
 	{
@@ -1148,7 +1148,7 @@ void KProtocolProcess::s2cSetTeamState(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥é˜Ÿä¼çŠ¶æ€(é˜Ÿé•¿ç”³è¯·å¼€æ”¾ã€å…³é—­é˜Ÿä¼çŠ¶æ€æ—¶æ‰ä¼šæ”¶åˆ°æ­¤ä¿¡æ¯)
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª¶ÓÎé×´Ì¬(¶Ó³¤ÉêÇë¿ª·Å¡¢¹Ø±Õ¶ÓÎé×´Ì¬Ê±²Å»áÊÕµ½´ËĞÅÏ¢)
 //-------------------------------------------------------------------------
 void	KProtocolProcess::s2cApplyAddTeam(BYTE* pMsg)
 {
@@ -1156,7 +1156,7 @@ void	KProtocolProcess::s2cApplyAddTeam(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘æ¥çš„æŸä¸ªé˜Ÿä¼çš„ç»„é˜Ÿæƒ…å†µï¼Œæ˜¾ç¤ºä¹‹
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢À´µÄÄ³¸ö¶ÓÎéµÄ×é¶ÓÇé¿ö£¬ÏÔÊ¾Ö®
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cShowTeamInfo(BYTE* pMsg)
 {
@@ -1233,7 +1233,7 @@ void KProtocolProcess::s2cSyncMagic(BYTE* pMsg)
 	}
 }
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘è¿‡æ¥çš„åŒæ­¥moneyçš„æ¶ˆæ¯
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢¹ıÀ´µÄÍ¬²½moneyµÄÏûÏ¢
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cSyncMoney(BYTE* pMsg)
 {
@@ -1243,11 +1243,11 @@ void KProtocolProcess::s2cSyncMoney(BYTE* pMsg)
 void KProtocolProcess::s2cSyncRoleList(BYTE* pMsg)
 {
 	ROLE_LIST_SYNC	*pSync = (ROLE_LIST_SYNC *)pMsg;
-	// TODO: é€šè¿‡CORESHELLäº¤ç»™ç•Œé¢ï¼Ÿ
+	// TODO: Í¨¹ıCORESHELL½»¸ø½çÃæ£¿
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥æœ‰æ–°äººåŠ å…¥é˜Ÿä¼
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨ÖªÓĞĞÂÈË¼ÓÈë¶ÓÎé
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cTeamAddMember(BYTE* pMsg)
 {
@@ -1280,7 +1280,7 @@ void KProtocolProcess::s2cTeamAddMember(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨é€šçŸ¥æ›´æ¢é˜Ÿé•¿
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷Í¨Öª¸ü»»¶Ó³¤
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cTeamChangeCaptain(BYTE* pMsg)
 {
@@ -1295,14 +1295,14 @@ void KProtocolProcess::s2cTeamChangeCaptain(BYTE* pMsg)
 	PLAYER_TEAM_CHANGE_CAPTAIN	*pChange = (PLAYER_TEAM_CHANGE_CAPTAIN*)pMsg;
 
 	nMemNo = g_Team[0].FindMemberID(pChange->m_dwCaptainID);
-	// å½“å‰é˜Ÿä¼æ•°æ®æœ‰è¯¯
+	// µ±Ç°¶ÓÎéÊı¾İÓĞÎó
 	if ((DWORD)g_Team[0].m_nCaptain != pChange->m_dwMemberID || nMemNo < 0)
 	{
 		Player[CLIENT_PLAYER_INDEX].ApplySelfTeamInfo();
 		return;
 	}
 
-	// è‡ªå·±è¢«ä»»å‘½ä¸ºé˜Ÿé•¿
+	// ×Ô¼º±»ÈÎÃüÎª¶Ó³¤
 	if (Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_dwID == pChange->m_dwCaptainID)
 	{
 		KSystemMessage	sMsg;
@@ -1316,7 +1316,7 @@ void KProtocolProcess::s2cTeamChangeCaptain(BYTE* pMsg)
 		sMsg.byParamSize = 0;
 		CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 	}
-	else	// åˆ«äººè¢«ä»»å‘½ä¸ºé˜Ÿé•¿
+	else	// ±ğÈË±»ÈÎÃüÎª¶Ó³¤
 	{
 		KSystemMessage	sMsg;
 		if (pChange->m_bMySelf)
@@ -1330,7 +1330,7 @@ void KProtocolProcess::s2cTeamChangeCaptain(BYTE* pMsg)
 		CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 	}
 
-	// æ›´æ¢äººå‘˜
+	// ¸ü»»ÈËÔ±
 	nLevel = g_Team[0].m_nMemLevel[0];
 	strcpy(szName, g_Team[0].m_szMemName[0]);
 	g_Team[0].m_nCaptain = pChange->m_dwCaptainID;
@@ -1355,14 +1355,14 @@ void KProtocolProcess::s2cTeamChangeCaptain(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨å‘æ¥çš„è‡ªå·±é˜Ÿä¼çš„ç»„é˜Ÿæƒ…å†µï¼Œæ›´æ–°ç›¸åº”ä¿¡æ¯
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷·¢À´µÄ×Ô¼º¶ÓÎéµÄ×é¶ÓÇé¿ö£¬¸üĞÂÏàÓ¦ĞÅÏ¢
 //-------------------------------------------------------------------------
 void KProtocolProcess::s2cUpdataSelfTeamInfo(BYTE* pMsg)
 {
 	int		i;
 	PLAYER_SEND_SELF_TEAM_INFO	*pSelfInfo = (PLAYER_SEND_SELF_TEAM_INFO*)pMsg;
 
-	// æ•°æ®åŒ…å‡ºé”™
+	// Êı¾İ°ü³ö´í
 	if (pSelfInfo->m_dwNpcID[0] == 0)
 		return;
 
@@ -1373,11 +1373,11 @@ void KProtocolProcess::s2cUpdataSelfTeamInfo(BYTE* pMsg)
 	if (Player[CLIENT_PLAYER_INDEX].m_nNextLevelLeadExp == 0)
 		Player[CLIENT_PLAYER_INDEX].m_nNextLevelLeadExp = Player[CLIENT_PLAYER_INDEX].m_nLeadLevel;
 
-	if (Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_dwID == pSelfInfo->m_dwNpcID[0])	// é˜Ÿé•¿
+	if (Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_dwID == pSelfInfo->m_dwNpcID[0])	// ¶Ó³¤
 	{
 		Player[CLIENT_PLAYER_INDEX].m_cTeam.m_nFigure = TEAM_CAPTAIN;
 	}
-	else													// é˜Ÿå‘˜
+	else													// ¶ÓÔ±
 	{
 		Player[CLIENT_PLAYER_INDEX].m_cTeam.m_nFigure = TEAM_MEMBER;
 		for (i = 0; i < MAX_TEAM_APPLY_LIST; i++)
@@ -1623,7 +1623,7 @@ void KProtocolProcess::SyncNpcMin(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨æ¶ˆæ¯åŒæ­¥æœ¬ç©å®¶npcæ•°æ®
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷ÏûÏ¢Í¬²½±¾Íæ¼ÒnpcÊı¾İ
 //-------------------------------------------------------------------------
 void KProtocolProcess::SyncNpcMinPlayer(BYTE* pMsg)
 {	
@@ -1710,7 +1710,7 @@ void KProtocolProcess::SyncNpcMinPlayer(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨æ¶ˆæ¯æ·»åŠ ä¸€ä¸ªobj
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷ÏûÏ¢Ìí¼ÓÒ»¸öobj
 //-------------------------------------------------------------------------
 void KProtocolProcess::SyncObjectAdd(BYTE* pMsg)
 {
@@ -1747,7 +1747,7 @@ void KProtocolProcess::SyncObjectAdd(BYTE* pMsg)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨æ¶ˆæ¯æ›´æ–°æŸä¸ªobjæ–¹å‘
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷ÏûÏ¢¸üĞÂÄ³¸öobj·½Ïò
 //-------------------------------------------------------------------------
 void KProtocolProcess::SyncObjectDir(BYTE* pMsg)
 {
@@ -1756,7 +1756,7 @@ void KProtocolProcess::SyncObjectDir(BYTE* pMsg)
 	nObjIndex = ObjSet.FindID(pObjSyncDir->m_nID);
 	if (nObjIndex <= 0)
 	{
-		// å‘æœåŠ¡å™¨å‘æ·»åŠ è¯·æ±‚
+		// Ïò·şÎñÆ÷·¢Ìí¼ÓÇëÇó
 		OBJ_CLIENT_SYNC_ADD	sObjClientSyncAdd;
 		sObjClientSyncAdd.ProtocolType = c2s_requestobj;
 		sObjClientSyncAdd.m_nID = pObjSyncDir->m_nID;
@@ -1764,13 +1764,13 @@ void KProtocolProcess::SyncObjectDir(BYTE* pMsg)
 			g_pClient->SendPackToServer(&sObjClientSyncAdd, sizeof(sObjClientSyncAdd));
 	}
 	else
-	{	// åŒæ­¥æ–¹å‘
+	{	// Í¬²½·½Ïò
 		Object[nObjIndex].SetDir(pObjSyncDir->m_btDir);
 	}
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨æ¶ˆæ¯åˆ é™¤æŸä¸ªobj
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷ÏûÏ¢É¾³ıÄ³¸öobj
 //-------------------------------------------------------------------------
 void KProtocolProcess::SyncObjectRemove(BYTE* pMsg)
 {
@@ -1778,13 +1778,13 @@ void KProtocolProcess::SyncObjectRemove(BYTE* pMsg)
 	int				nObjIndex;
 	nObjIndex = ObjSet.FindID(pObjSyncRemove->m_nID);
 	if (nObjIndex > 0)
-	{	// åˆ é™¤
+	{	// É¾³ı
 		Object[nObjIndex].Remove(pObjSyncRemove->m_btSoundFlag);
 	}
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ”¶åˆ°æœåŠ¡å™¨æ¶ˆæ¯æ›´æ–°æŸä¸ªobjçŠ¶æ€
+//	¹¦ÄÜ£ºÊÕµ½·şÎñÆ÷ÏûÏ¢¸üĞÂÄ³¸öobj×´Ì¬
 //-------------------------------------------------------------------------
 void KProtocolProcess::SyncObjectState(BYTE* pMsg)
 {
@@ -1793,7 +1793,7 @@ void KProtocolProcess::SyncObjectState(BYTE* pMsg)
 	nObjIndex = ObjSet.FindID(pObjSyncState->m_nID);
 	if (nObjIndex <= 0)
 	{
-		// å‘æœåŠ¡å™¨å‘æ·»åŠ è¯·æ±‚
+		// Ïò·şÎñÆ÷·¢Ìí¼ÓÇëÇó
 		OBJ_CLIENT_SYNC_ADD	sObjClientSyncAdd;
 		sObjClientSyncAdd.ProtocolType = c2s_requestobj;
 		sObjClientSyncAdd.m_nID = pObjSyncState->m_nID;
@@ -1801,7 +1801,7 @@ void KProtocolProcess::SyncObjectState(BYTE* pMsg)
 			g_pClient->SendPackToServer(&sObjClientSyncAdd, sizeof(sObjClientSyncAdd));
 	}
 	else
-	{	// åŒæ­¥çŠ¶æ€
+	{	// Í¬²½×´Ì¬
 		if (Object[nObjIndex].m_nRegionIdx == -1)
 		{
 			int	nRegion;
@@ -1984,17 +1984,17 @@ void KProtocolProcess::SyncWorld(BYTE* pMsg)
 	
 	if (SubWorld[0].m_dwCurrentTime > WorldSync->Frame)
 	{
-		// å®¢æˆ·ç«¯å¿«äº†ï¼Œå‡é€Ÿå¤„ç†ï¼Œæˆ–è€…æ˜¯Lagå¼•èµ·çš„æ—§æ¶ˆæ¯ï¼Œéœ€è¦å¤„ç†
+		// ¿Í»§¶Ë¿ìÁË£¬¼õËÙ´¦Àí£¬»òÕßÊÇLagÒıÆğµÄ¾ÉÏûÏ¢£¬ĞèÒª´¦Àí
 	}
 	else if (SubWorld[0].m_dwCurrentTime < WorldSync->Frame)
 	{
-		// å®¢æˆ·ç«¯æ…¢äº†ï¼ŒåŠ é€Ÿå¤„ç†
+		// ¿Í»§¶ËÂıÁË£¬¼ÓËÙ´¦Àí
 	}
 
 	SubWorld[0].m_dwCurrentTime = WorldSync->Frame;
 
 
-	// åŒæ­¥å¤©æ°”
+	// Í¬²½ÌìÆø
 	SubWorld[0].m_nWeather = WorldSync->Weather;
 	g_ScenePlace.ChangeWeather(WorldSync->Weather);
 }
@@ -2120,7 +2120,7 @@ void	KProtocolProcess::s2cDirectlyCastSkill(BYTE * pMsg)
 	MapX = *(int *)&pMsg[13];
 	MapY = *(int *)&pMsg[17];
 	
-	//å½“æŒ‡å®šæŸä¸ªç›®æ ‡æ—¶(MapX == -1),MapYä¸ºç›®æ ‡çš„NpcdwIDï¼Œéœ€è¦è½¬æ¢æˆæœ¬åœ°çš„NpcIndexæ‰è¡Œ
+	//µ±Ö¸¶¨Ä³¸öÄ¿±êÊ±(MapX == -1),MapYÎªÄ¿±êµÄNpcdwID£¬ĞèÒª×ª»»³É±¾µØµÄNpcIndex²ÅĞĞ
 	if (MapX == -1)
 	{
 		if (MapY < 0 ) return;
@@ -3666,62 +3666,62 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 			sMsg.byPriority = 0;
 			sMsg.byParamSize = 0;
 
-			sprintf(sMsg.szMessage, "Thï¿½nh lï¿½p bang hï¿½i thï¿½t bï¿½i");
+			sprintf(sMsg.szMessage, "Thµnh lËp bang héi thÊt b¹i");
 			CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 
 			switch (pFail->m_btFailId)
 			{
 			case enumTONG_CREATE_ERROR_ID1:		// Player[m_nPlayerIndex].m_nIndex <= 0
 				break;
-			case enumTONG_CREATE_ERROR_ID2:		// äº¤æ˜“è¿‡ç¨‹ä¸­
+			case enumTONG_CREATE_ERROR_ID2:		// ½»Ò×¹ı³ÌÖĞ
 				break;
-			case enumTONG_CREATE_ERROR_ID3:		// å¸®ä¼šåé—®é¢˜
+			case enumTONG_CREATE_ERROR_ID3:		// °ï»áÃûÎÊÌâ
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR09);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID4:		// å¸®ä¼šé˜µè¥é—®é¢˜
+			case enumTONG_CREATE_ERROR_ID4:		// °ï»áÕóÓªÎÊÌâ
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR02);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID5:		// å·²ç»æ˜¯å¸®ä¼šæˆå‘˜
+			case enumTONG_CREATE_ERROR_ID5:		// ÒÑ¾­ÊÇ°ï»á³ÉÔ±
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR03);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID6:		// è‡ªå·±çš„é˜µè¥é—®é¢˜
+			case enumTONG_CREATE_ERROR_ID6:		// ×Ô¼ºµÄÕóÓªÎÊÌâ
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR04);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID7:		// ç­‰çº§é—®é¢˜
+			case enumTONG_CREATE_ERROR_ID7:		// µÈ¼¶ÎÊÌâ
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR05);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID8:		// é’±é—®é¢˜
+			case enumTONG_CREATE_ERROR_ID8:		// Ç®ÎÊÌâ
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR10);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID9:		// ç»„é˜Ÿä¸èƒ½å»ºå¸®ä¼š
+			case enumTONG_CREATE_ERROR_ID9:		// ×é¶Ó²»ÄÜ½¨°ï»á
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR08);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID10:	// å¸®ä¼šæ¨¡å—å‡ºé”™
+			case enumTONG_CREATE_ERROR_ID10:	// °ï»áÄ£¿é³ö´í
 				break;
-			case enumTONG_CREATE_ERROR_ID11:	// åå­—å­—ç¬¦ä¸²å‡ºé”™
+			case enumTONG_CREATE_ERROR_ID11:	// Ãû×Ö×Ö·û´®³ö´í
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR11, TongData.m_sTongParam.m_nRepute);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID12:	// åå­—å­—ç¬¦ä¸²è¿‡é•¿
+			case enumTONG_CREATE_ERROR_ID12:	// Ãû×Ö×Ö·û´®¹ı³¤
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR12, TongData.m_sTongParam.m_nFuYuan);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID13:	// å¸®ä¼šåŒåé”™è¯¯
+			case enumTONG_CREATE_ERROR_ID13:	// °ï»áÍ¬Ãû´íÎó
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR13);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID14:	// å¸®ä¼šäº§ç”Ÿå¤±è´¥
+			case enumTONG_CREATE_ERROR_ID14:	// °ï»á²úÉúÊ§°Ü
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR14);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
-			case enumTONG_CREATE_ERROR_ID15:	// å¸®ä¼šäº§ç”Ÿå¤±è´¥
+			case enumTONG_CREATE_ERROR_ID15:	// °ï»á²úÉúÊ§°Ü
 				sprintf(sMsg.szMessage, MSG_TONG_CREATE_ERROR15);
 				CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				break;
@@ -3740,7 +3740,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 			dwNameID = g_FileName2Id(szName);
 			nPlayerIdx = pApply->m_nPlayerIdx;
 
-			// ç»™ç•Œé¢å‘æ¶ˆæ¯ï¼Œæ”¶åˆ°ç”³è¯·ï¼Œæ˜¯å¦åŒæ„
+			// ¸ø½çÃæ·¢ÏûÏ¢£¬ÊÕµ½ÉêÇë£¬ÊÇ·ñÍ¬Òâ
 			KSystemMessage	sMsg;
 			sprintf(sMsg.szMessage, MSG_TONG_APPLY_ADD_SELF_MSG, szName);
 			sMsg.eType = SMT_CLIQUE;
@@ -3765,7 +3765,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 			memcpy(szMaster, pAdd->m_szMaster, sizeof(szMaster));
 
 			Player[CLIENT_PLAYER_INDEX].m_cTong.AddTong(pAdd->m_btCamp, szName, szAgname, szMaster);
-			// é€šçŸ¥ç•Œé¢æ›´æ–°æ•°æ®
+			// Í¨Öª½çÃæ¸üĞÂÊı¾İ
 			KUiGameObjectWithName	sUi;
 			memset(&sUi, 0, sizeof(sUi));
 			strcpy(sUi.szName, szName);
@@ -3781,7 +3781,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 		{
 			TONG_HEAD_INFO_SYNC	*pInfo = (TONG_HEAD_INFO_SYNC*)pMsg;
 
-			// é€šçŸ¥ç•Œé¢å¾—åˆ°æŸå¸®ä¼šä¿¡æ¯
+			// Í¨Öª½çÃæµÃµ½Ä³°ï»áĞÅÏ¢
 			int nIdx = NpcSet.SearchID(pInfo->m_dwNpcID);
 			if (nIdx <= 0)
 				break;
@@ -3840,7 +3840,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 		{
 			TONG_SELF_INFO_SYNC	*pInfo = (TONG_SELF_INFO_SYNC*)pMsg;
 			Player[CLIENT_PLAYER_INDEX].m_cTong.SetSelfInfo(pInfo);
-			// é€šçŸ¥ç•Œé¢æ›´æ–°æ•°æ®
+			// Í¨Öª½çÃæ¸üĞÂÊı¾İ
 			KTongInfo	sInfo;
 			memset(&sInfo, 0, sizeof(sInfo));
 			sInfo.nFaction = pInfo->m_btCamp;
@@ -3866,7 +3866,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 		{
 			TONG_MANAGER_INFO_SYNC	*pInfo = (TONG_MANAGER_INFO_SYNC*)pMsg;
 
-			// é€šçŸ¥ç•Œé¢å¾—åˆ°æŸå¸®ä¼šé˜Ÿé•¿ä¿¡æ¯
+			// Í¨Öª½çÃæµÃµ½Ä³°ï»á¶Ó³¤ĞÅÏ¢
 			KUiGameObjectWithName	sObj;
 			strcpy(sObj.szName, pInfo->m_szTongName);
 			sObj.nData = enumTONG_FIGURE_MANAGER;
@@ -3893,7 +3893,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 		{
 			TONG_MEMBER_INFO_SYNC	*pInfo = (TONG_MEMBER_INFO_SYNC*)pMsg;
 
-			// é€šçŸ¥ç•Œé¢å¾—åˆ°æŸå¸®ä¼šå¸®ä¼—ä¿¡æ¯
+			// Í¨Öª½çÃæµÃµ½Ä³°ï»á°ïÖÚĞÅÏ¢
 			KUiGameObjectWithName	sObj;
 			strcpy(sObj.szName, pInfo->m_szTongName);
 			sObj.nData = enumTONG_FIGURE_MEMBER;
@@ -3924,7 +3924,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 	case enumTONG_SYNC_ID_INSTATE:
 		{
 			TONG_INSTATE_SYNC	*pInstate = (TONG_INSTATE_SYNC*)pMsg;
-			// é€šçŸ¥ç•Œé¢ä»»å‘½æ˜¯å¦æˆåŠŸ
+			// Í¨Öª½çÃæÈÎÃüÊÇ·ñ³É¹¦
 			KUiGameObjectWithName	sUi;
 			strcpy(sUi.szName, pInstate->m_szName);
 			sUi.nData = TONG_ACTION_ASSIGN;
@@ -3937,7 +3937,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 	case enumTONG_SYNC_ID_KICK:
 		{
 			TONG_KICK_SYNC	*pKick = (TONG_KICK_SYNC*)pMsg;
-			// é€šçŸ¥ç•Œé¢è¸¢äººæ˜¯å¦æˆåŠŸ
+			// Í¨Öª½çÃæÌßÈËÊÇ·ñ³É¹¦
 			KUiGameObjectWithName	sUi;
 			strcpy(sUi.szName, pKick->m_szName);
 			sUi.nData = TONG_ACTION_DISMISS;
@@ -3953,7 +3953,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 
 			switch (pFail->m_btFailID)
 			{
-			case 0:		// å¯¹æ–¹ä¸åœ¨çº¿
+			case 0:		// ¶Ô·½²»ÔÚÏß
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -3964,7 +3964,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 					CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				}
 				break;
-			case 1:		// å¯¹æ–¹èƒ½åŠ›ä¸å¤Ÿï¼
+			case 1:		// ¶Ô·½ÄÜÁ¦²»¹»£¡
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -3975,7 +3975,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 					CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				}
 				break;
-			case 2:		// åå­—ä¸å¯¹ï¼
+			case 2:		// Ãû×Ö²»¶Ô£¡
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -3998,7 +3998,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 			
 			switch (pFail->m_btFailID)
 			{
-			case 0:		// å¯¹æ–¹ä¸åœ¨çº¿
+			case 0:		// ¶Ô·½²»ÔÚÏß
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -4009,7 +4009,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 					CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				}
 				break;
-			case 1:		// å¯¹æ–¹èƒ½åŠ›ä¸å¤Ÿï¼
+			case 1:		// ¶Ô·½ÄÜÁ¦²»¹»£¡
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -4020,7 +4020,7 @@ void KProtocolProcess::s2cExtendTong(BYTE* pMsg)
 					CoreDataChanged(GDCNI_SYSTEM_MESSAGE, (unsigned int)&sMsg, 0);
 				}
 				break;
-			case 2:		// åå­—ä¸å¯¹ï¼
+			case 2:		// Ãû×Ö²»¶Ô£¡
 				{
 					KSystemMessage	sMsg;
 					sMsg.eType = SMT_NORMAL;
@@ -4491,7 +4491,7 @@ void KProtocolProcess::s2cApplyCreateChatRoomFalse(BYTE* pMsg)
 	sMsg.byParamSize = 0;
 	switch (pCreateFalse->m_btErrorID)
 	{
-	// å·²ç»åœ¨é˜Ÿä¼ä¸­ï¼Œè¯´æ˜å®¢æˆ·ç«¯é˜Ÿä¼æ•°æ®æœ‰é”™è¯¯ï¼Œç”³è¯·é‡æ–°è·å¾—é˜Ÿä¼æ•°æ®
+	// ÒÑ¾­ÔÚ¶ÓÎéÖĞ£¬ËµÃ÷¿Í»§¶Ë¶ÓÎéÊı¾İÓĞ´íÎó£¬ÉêÇëÖØĞÂ»ñµÃ¶ÓÎéÊı¾İ
 	case ChatRoom_Create_Error_Name:
 		sprintf(sMsg.szMessage, MSG_CHATROOM_CREATE_ERROR_NAME);
 		break;
@@ -4560,7 +4560,7 @@ void KProtocolProcess::NpcRequestCommand(int nIndex, BYTE* pProtocol)
 }
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå®¢æˆ·ç«¯å‘æœåŠ¡å™¨è¯·æ±‚æ›´æ–°æŸä¸ªobjæ•°æ®
+//	¹¦ÄÜ£º¿Í»§¶ËÏò·şÎñÆ÷ÇëÇó¸üĞÂÄ³¸öobjÊı¾İ
 //-------------------------------------------------------------------------
 void KProtocolProcess::ObjRequestCommand(int nIndex, BYTE* pProtocol)
 {
@@ -4609,7 +4609,7 @@ void KProtocolProcess::NpcSkillCommand(int nIndex, BYTE* pProtocol)
 	int ParamX = pNetCommand->nSkillID;
 	int ParamY = pNetCommand->nMpsX;
 	int ParamZ = pNetCommand->nMpsY;
-	// å‚æ•°åˆæ³•æ€§æ£€æŸ¥
+	// ²ÎÊıºÏ·¨ĞÔ¼ì²é
 	if (ParamX <= 0 || ParamX > MAX_SKILL )
 	{
 		return ;
@@ -4870,18 +4870,18 @@ void KProtocolProcess::ObjMouseClick(int nIndex, BYTE* pProtocol)
 		&nObjX,
 		&nObjY);
 /*
-	Obj_Kind_MapObj = 0,		// åœ°å›¾ç‰©ä»¶ï¼Œä¸»è¦ç”¨äºåœ°å›¾åŠ¨ç”»
-	Obj_Kind_Body,				// npc çš„å°¸ä½“
-	Obj_Kind_Box,				// å®ç®±
-	Obj_Kind_Item,				// æ‰åœ¨åœ°ä¸Šçš„è£…å¤‡
-	Obj_Kind_Money,				// æ‰åœ¨åœ°ä¸Šçš„é’±
-	Obj_Kind_LoopSound,			// å¾ªç¯éŸ³æ•ˆ
-	Obj_Kind_RandSound,			// éšæœºéŸ³æ•ˆ
-	Obj_Kind_Light,				// å…‰æºï¼ˆ3Dæ¨¡å¼ä¸­å‘å…‰çš„ä¸œè¥¿ï¼‰
-	Obj_Kind_Door,				// é—¨ç±»
-	Obj_Kind_Trap,				// é™·é˜±
-	Obj_Kind_Prop,				// å°é“å…·ï¼Œå¯é‡ç”Ÿ
-	Obj_Kind_Num,				// ç‰©ä»¶çš„ç§ç±»æ•°
+	Obj_Kind_MapObj = 0,		// µØÍ¼Îï¼ş£¬Ö÷ÒªÓÃÓÚµØÍ¼¶¯»­
+	Obj_Kind_Body,				// npc µÄÊ¬Ìå
+	Obj_Kind_Box,				// ±¦Ïä
+	Obj_Kind_Item,				// µôÔÚµØÉÏµÄ×°±¸
+	Obj_Kind_Money,				// µôÔÚµØÉÏµÄÇ®
+	Obj_Kind_LoopSound,			// Ñ­»·ÒôĞ§
+	Obj_Kind_RandSound,			// Ëæ»úÒôĞ§
+	Obj_Kind_Light,				// ¹âÔ´£¨3DÄ£Ê½ÖĞ·¢¹âµÄ¶«Î÷£©
+	Obj_Kind_Door,				// ÃÅÀà
+	Obj_Kind_Trap,				// ÏİÚå
+	Obj_Kind_Prop,				// Ğ¡µÀ¾ß£¬¿ÉÖØÉú
+	Obj_Kind_Num,				// Îï¼şµÄÖÖÀàÊı
 */
 	switch (Object[nObjIdx].m_nKind)
 	{
@@ -4906,9 +4906,9 @@ void KProtocolProcess::StoreMoneyCommand(int nIndex, BYTE* pProtocol)
 {
 	STORE_MONEY_COMMAND*	pCommand = (STORE_MONEY_COMMAND *)pProtocol;
 
-	if (pCommand->m_byDir)	// å–é’±
+	if (pCommand->m_byDir)	// È¡Ç®
 		Player[nIndex].m_ItemList.ExchangeMoney(room_repository, room_equipment, pCommand->m_dwMoney);
-	else					// å­˜é’±
+	else					// ´æÇ®
 		Player[nIndex].m_ItemList.ExchangeMoney(room_equipment, room_repository, pCommand->m_dwMoney);
 }
 

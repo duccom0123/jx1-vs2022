@@ -3,7 +3,7 @@
 
 #include "KCore.h"
 #include "KLuaScript.h"
-//排序二叉树，保存经过文件名转数字的脚本的id,并实现快速查找对应脚本
+//��������������澭���ļ���ת���ֵĽű���id,��ʵ�ֿ��ٲ��Ҷ�Ӧ�ű�
 
 #include "KBinTreeNode.h"
 #include "KBinsTree.h"

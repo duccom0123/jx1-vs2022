@@ -30,7 +30,7 @@ KNpcSet::KNpcSet()
 	m_dwIDCreator = 1000;
 }
 
-// é»„é‡‘æ€ªç‰©è®¾å®šæ–‡ä»¶çš„åˆå§‹åŒ–æ²¡æœ‰æ”¾åœ¨è¿™é‡Œï¼Œç›´æ¥æ”¾åœ¨ core çš„åˆå§‹åŒ–é‡Œé¢
+// »Æ½ğ¹ÖÎïÉè¶¨ÎÄ¼şµÄ³õÊ¼»¯Ã»ÓĞ·ÅÔÚÕâÀï£¬Ö±½Ó·ÅÔÚ core µÄ³õÊ¼»¯ÀïÃæ
 void KNpcSet::Init()
 {
     // Add by Freeway Chen in 2003.6.29    
@@ -38,7 +38,7 @@ void KNpcSet::Init()
 	m_FreeIdx.Init(MAX_NPC);
 	m_UseIdx.Init(MAX_NPC);
 
-	// å¼€å§‹æ—¶æ‰€æœ‰çš„æ•°ç»„å…ƒç´ éƒ½ä¸ºç©º
+	// ¿ªÊ¼Ê±ËùÓĞµÄÊı×éÔªËØ¶¼Îª¿Õ
 	for (int i = MAX_NPC - 1; i > 0; i--)
 	{
 		m_FreeIdx.Insert(i);
@@ -155,40 +155,40 @@ BOOL KNpcSet::IsNpcExist(int nIdx, DWORD dwId)
 // Add by Freeway Chen in 2003.6.29
 NPC_RELATION KNpcSet::GenOneRelation(NPCKIND Kind1, NPCKIND Kind2, NPCCAMP Camp1, NPCCAMP Camp2)
 {
-	// è·¯äººNPCæ²¡æœ‰æˆ˜æ–—å…³ç³»
+	// Â·ÈËNPCÃ»ÓĞÕ½¶·¹ØÏµ
 	if (Kind1 == kind_dialoger || Kind2 == kind_dialoger)
 		return relation_dialog;
 
 	if (Kind1 >= kind_bird || Kind2 >= kind_bird)
 		return relation_none;
 
-	// è·¯äººé˜µè¥æ²¡æœ‰æˆ˜æ–—å…³ç³»
+	// Â·ÈËÕóÓªÃ»ÓĞÕ½¶·¹ØÏµ
 	if (Camp1 == camp_event || Camp2 == camp_event)
 		return relation_none;
 	
-	// æ–°æ‰‹å’ŒåŠ¨ç‰©è¿˜æ˜¯æˆ˜æ–—å…³ç³»
+	// ĞÂÊÖºÍ¶¯Îï»¹ÊÇÕ½¶·¹ØÏµ
 	if ((Camp1 == camp_begin && Camp2 == camp_animal)
 		||(Camp1 == camp_animal && Camp2 == camp_begin))
 		return relation_enemy;
 
-	// åªè¦æœ‰ä¸€ä¸ªæ–°æ‰‹ï¼Œå°±ä¸å­˜åœ¨æˆ˜æ–—å…³ç³»(æ˜¯åŒç›Ÿå…³ç³»ï¼Œå¤§å®¶å¸®æ–°æ‰‹)
+	// Ö»ÒªÓĞÒ»¸öĞÂÊÖ£¬¾Í²»´æÔÚÕ½¶·¹ØÏµ(ÊÇÍ¬ÃË¹ØÏµ£¬´ó¼Ò°ïĞÂÊÖ)
 	if (Camp1 == camp_begin || Camp2 == camp_begin)
 		return relation_ally;
 	
-    // ä¸¤ä¸ªéƒ½æ˜¯ç©å®¶
+    // Á½¸ö¶¼ÊÇÍæ¼Ò
 	if (Kind1 == kind_player && Kind2 == kind_player)
 	{
-		// åªè¦æœ‰ä¸€ä¸ªç©å®¶å¼€äº†PKï¼Œå°±ä¸€å®šå­˜åœ¨æˆ˜æ–—å…³ç³»
+		// Ö»ÒªÓĞÒ»¸öÍæ¼Ò¿ªÁËPK£¬¾ÍÒ»¶¨´æÔÚÕ½¶·¹ØÏµ
 		if (Camp1 == camp_free || Camp2 == camp_free)
 		{
 			return relation_enemy;
 		}
 	}
-	// åŒé˜µè¥ä¸ºä¼™ä¼´å…³ç³»
+	// Í¬ÕóÓªÎª»ï°é¹ØÏµ
 	if (Camp1 == Camp2)
 		return relation_ally;
 
-	// å…¶ä»–æƒ…å†µä¸ºæˆ˜æ–—å…³ç³»
+	// ÆäËûÇé¿öÎªÕ½¶·¹ØÏµ
 	return relation_enemy;
 }
 
@@ -248,7 +248,7 @@ int	KNpcSet::SearchID(DWORD dwID)
 
 #ifndef _SERVER
 //---------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŸ¥æ‰¾æŸä¸ªClientIDçš„npcæ˜¯å¦å­˜åœ¨
+//	¹¦ÄÜ£º²éÕÒÄ³¸öClientIDµÄnpcÊÇ·ñ´æÔÚ
 //---------------------------------------------------------------------------
 int		KNpcSet::SearchClientID(KClientNpcID sClientID)
 {
@@ -316,7 +316,7 @@ int KNpcSet::FindFree()
 
 #ifndef _SERVER
 //---------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ·»åŠ ä¸€ä¸ªå®¢æˆ·ç«¯npcï¼ˆéœ€è¦è®¾å®šClientNpcIDï¼‰
+//	¹¦ÄÜ£ºÌí¼ÓÒ»¸ö¿Í»§¶Ënpc£¨ĞèÒªÉè¶¨ClientNpcID£©
 //---------------------------------------------------------------------------
 int		KNpcSet::AddClientNpc(int nTemplateID, int nRegionX, int nRegionY, int nMpsX, int nMpsY, int nNo)
 {
@@ -368,7 +368,7 @@ int KNpcSet::Add(int nSubWorld, void* pNpcInfo)
 				g_StrCpyLen(Npc[nRet].ActionScript, &pKSNpcInfo->szScript[1], sizeof(Npc[nRet].ActionScript));
 			else
 				g_StrCpyLen(Npc[nRet].ActionScript, pKSNpcInfo->szScript, sizeof(Npc[nRet].ActionScript));
-			// ä¿æŒå°å†™ï¼Œä¿è¯è„šæœ¬å¯¹åº”å…³ç³»
+			// ±£³ÖĞ¡Ğ´£¬±£Ö¤½Å±¾¶ÔÓ¦¹ØÏµ
 			g_StrLower(Npc[nRet].ActionScript);
 			Npc[nRet].m_ActionScriptID = g_FileName2Id(Npc[nRet].ActionScript);
 		}
@@ -416,7 +416,7 @@ int KNpcSet::Add(int nNpcSettingIdxInfo, int nSubWorld, int nRegion, int nMapX, 
 	Npc[i].Remove();
 #endif
 
-	int nNpcSettingIdx = (short)HIWORD(nNpcSettingIdxInfo);// >> 7; //é™¤äº128
+	int nNpcSettingIdx = (short)HIWORD(nNpcSettingIdxInfo);// >> 7; //³ıÓÚ128
 	int nLevel = LOWORD(nNpcSettingIdxInfo);// & 0x7f; 
 
 	Npc[i].m_Index = i;
@@ -445,7 +445,7 @@ int KNpcSet::Add(int nNpcSettingIdxInfo, int nSubWorld, int nRegion, int nMapX, 
 #ifdef _SERVER
 	SetID(i);
 #endif
-	// ä¿®æ”¹å¯ç”¨ä¸ä½¿ç”¨è¡¨
+	// ĞŞ¸Ä¿ÉÓÃÓëÊ¹ÓÃ±í
 	m_FreeIdx.Remove(i);
 	m_UseIdx.Insert(i);
 	SubWorld[nSubWorld].m_Region[nRegion].AddNpc(i);//m_WorldMessage.Send(GWM_NPC_ADD, nRegion, i);
@@ -525,7 +525,7 @@ void KNpcSet::RemoveAll()
 
 #ifndef _SERVER
 //---------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šä»npcæ•°ç»„ä¸­å¯»æ‰¾å±äºæŸä¸ªregionçš„ client npc ï¼Œæ·»åŠ è¿›å»
+//	¹¦ÄÜ£º´ÓnpcÊı×éÖĞÑ°ÕÒÊôÓÚÄ³¸öregionµÄ client npc £¬Ìí¼Ó½øÈ¥
 //---------------------------------------------------------------------------
 void	KNpcSet::InsertNpcToRegion(int nRegionIdx)
 {
@@ -748,7 +748,7 @@ void KNpcSet::CheckBalance()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å‘¨å›´ç©å®¶åˆ—è¡¨ï¼Œç”¨äºç•Œé¢ï¼Œé˜Ÿä¼é‚€è¯·åˆ—è¡¨
+//	¹¦ÄÜ£º»ñµÃÖÜÎ§Íæ¼ÒÁĞ±í£¬ÓÃÓÚ½çÃæ£¬¶ÓÎéÑûÇëÁĞ±í
 //-------------------------------------------------------------------------
 int		KNpcSet::GetAroundPlayerForTeamInvite(KUiPlayerItem *pList, int nCount)
 {
@@ -828,7 +828,7 @@ int		KNpcSet::GetAroundPlayerForTeamInvite(KUiPlayerItem *pList, int nCount)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å‘¨å›´ç©å®¶åˆ—è¡¨(ç”¨äºåˆ—è¡¨)
+//	¹¦ÄÜ£º»ñµÃÖÜÎ§Íæ¼ÒÁĞ±í(ÓÃÓÚÁĞ±í)
 //-------------------------------------------------------------------------
 int		KNpcSet::GetAroundPlayer(KUiPlayerItem *pList, int nCount)
 {
@@ -882,8 +882,8 @@ int		KNpcSet::GetAroundPlayer(KUiPlayerItem *pList, int nCount)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„åå­—
-//			bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
+//	¹¦ÄÜ£ºÉè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÃû×Ö
+//			bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
 //-------------------------------------------------------------------------
 void	KNpcSet::SetShowNameFlag(BOOL bFlag)
 {
@@ -896,7 +896,7 @@ void	KNpcSet::SetShowNameFlag(BOOL bFlag)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„åå­—  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
+//	¹¦ÄÜ£ºÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÃû×Ö  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
 //-------------------------------------------------------------------------
 BOOL	KNpcSet::CheckShowName()
 {
@@ -906,8 +906,8 @@ BOOL	KNpcSet::CheckShowName()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„è¡€
-//			bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
+//	¹¦ÄÜ£ºÉè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÑª
+//			bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
 //-------------------------------------------------------------------------
 void	KNpcSet::SetShowLifeFlag(BOOL bFlag)
 {
@@ -920,7 +920,7 @@ void	KNpcSet::SetShowLifeFlag(BOOL bFlag)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„è¡€  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
+//	¹¦ÄÜ£ºÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÑª  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
 //-------------------------------------------------------------------------
 BOOL	KNpcSet::CheckShowLife()
 {
@@ -930,8 +930,8 @@ BOOL	KNpcSet::CheckShowLife()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾å®šæ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„å†…åŠ›
-//			bFlag ==	TRUE æ˜¾ç¤ºï¼ŒbFlag == FALSE ä¸æ˜¾ç¤º zroc add
+//	¹¦ÄÜ£ºÉè¶¨ÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÄÚÁ¦
+//			bFlag ==	TRUE ÏÔÊ¾£¬bFlag == FALSE ²»ÏÔÊ¾ zroc add
 //-------------------------------------------------------------------------
 void	KNpcSet::SetShowObjFlag(BOOL bFlag)
 {
@@ -944,7 +944,7 @@ void	KNpcSet::SetShowObjFlag(BOOL bFlag)
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆ¤æ–­æ˜¯å¦å…¨éƒ¨æ˜¾ç¤ºç©å®¶çš„å†…åŠ›  è¿”å›å€¼ TRUE æ˜¾ç¤ºï¼ŒFALSE ä¸æ˜¾ç¤º
+//	¹¦ÄÜ£ºÅĞ¶ÏÊÇ·ñÈ«²¿ÏÔÊ¾Íæ¼ÒµÄÄÚÁ¦  ·µ»ØÖµ TRUE ÏÔÊ¾£¬FALSE ²»ÏÔÊ¾
 //-------------------------------------------------------------------------
 BOOL	KNpcSet::CheckShowObj()
 {
@@ -953,8 +953,8 @@ BOOL	KNpcSet::CheckShowObj()
 #endif
 
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŠŠæ‰€æœ‰npcçš„ bActivateFlag è®¾ä¸º FALSE
-//		(æ¯æ¬¡æ¸¸æˆå¾ªç¯å¤„ç†æ‰€æœ‰npcçš„activateä¹‹å‰åšè¿™ä¸ªå¤„ç†)
+//	¹¦ÄÜ£º°ÑËùÓĞnpcµÄ bActivateFlag ÉèÎª FALSE
+//		(Ã¿´ÎÓÎÏ·Ñ­»·´¦ÀíËùÓĞnpcµÄactivateÖ®Ç°×öÕâ¸ö´¦Àí)
 //-------------------------------------------------------------------------
 void	KNpcSet::ClearActivateFlagOfAllNpc()
 {
@@ -970,7 +970,7 @@ void	KNpcSet::ClearActivateFlagOfAllNpc()
 
 #ifndef _SERVER
 //-------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å‘¨å›´åŒé˜µè¥çš„å·²å¼€æ”¾é˜Ÿä¼é˜Ÿé•¿åˆ—è¡¨ ä¸åŒé˜µè¥ç°åœ¨å¯ä»¥ç»„é˜Ÿ
+//	¹¦ÄÜ£º»ñµÃÖÜÎ§Í¬ÕóÓªµÄÒÑ¿ª·Å¶ÓÎé¶Ó³¤ÁĞ±í ²»Í¬ÕóÓªÏÖÔÚ¿ÉÒÔ×é¶Ó
 //-------------------------------------------------------------------------
 void	KNpcSet::GetAroundOpenCaptain(int nCamp)
 {
@@ -987,7 +987,7 @@ void	KNpcSet::GetAroundOpenCaptain(int nCamp)
 			continue;
 		if (nIdx == Player[CLIENT_PLAYER_INDEX].m_nIndex)
 			continue;
-		// ä¸åŒé˜µè¥ç°åœ¨å¯ä»¥ç»„é˜Ÿï¼Œè€æ‰‹ä¸èƒ½åŠ å…¥æ–°äººé˜Ÿä¼ï¼Œæ–°äººå¯ä»¥åŠ å…¥è€æ‰‹é˜Ÿä¼
+		// ²»Í¬ÕóÓªÏÖÔÚ¿ÉÒÔ×é¶Ó£¬ÀÏÊÖ²»ÄÜ¼ÓÈëĞÂÈË¶ÓÎé£¬ĞÂÈË¿ÉÒÔ¼ÓÈëÀÏÊÖ¶ÓÎé
 		if (Npc[nIdx].m_Camp == camp_begin && nCamp != camp_begin)
 			continue;
 //		if (Npc[nIdx].m_Camp != nCamp)
@@ -1012,7 +1012,7 @@ void	KNpcSet::GetAroundOpenCaptain(int nCamp)
 				continue;
 			if (nIdx == Player[CLIENT_PLAYER_INDEX].m_nIndex)
 				continue;
-			// ä¸åŒé˜µè¥ç°åœ¨å¯ä»¥ç»„é˜Ÿï¼Œè€æ‰‹ä¸èƒ½åŠ å…¥æ–°äººé˜Ÿä¼ï¼Œæ–°äººå¯ä»¥åŠ å…¥è€æ‰‹é˜Ÿä¼
+			// ²»Í¬ÕóÓªÏÖÔÚ¿ÉÒÔ×é¶Ó£¬ÀÏÊÖ²»ÄÜ¼ÓÈëĞÂÈË¶ÓÎé£¬ĞÂÈË¿ÉÒÔ¼ÓÈëÀÏÊÖ¶ÓÎé
 			if (Npc[nIdx].m_Camp == camp_begin && nCamp != camp_begin)
 				continue;
 //			if (Npc[nIdx].m_Camp != nCamp)
@@ -1035,7 +1035,7 @@ void	KNpcSet::GetAroundOpenCaptain(int nCamp)
 }
 #endif
 
-#ifndef _SERVER	// ç”¨äºå®¢æˆ·ç«¯
+#ifndef _SERVER	// ÓÃÓÚ¿Í»§¶Ë
 int	KNpcSet::SearchNpcAt(int nX, int nY, int nRelation, int nRange)
 {
 	int nIdx;
@@ -1157,7 +1157,7 @@ int KNpcSet::GetRequestIndex(DWORD dwID)
 
 NPC_RELATION KNpcSet::GetRelation(int nId1, int nId2)
 {
-	// åŒä¸€ä¸ªäºº
+	// Í¬Ò»¸öÈË
 	if (nId1 == nId2)
 		return relation_self;
 

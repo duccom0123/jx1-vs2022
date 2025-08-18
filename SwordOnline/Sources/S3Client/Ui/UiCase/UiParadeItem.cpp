@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	Â½Ã§ÃƒÃ¦--Ã—Â´ÃŒÂ¬Â½Ã§ÃƒÃ¦
+//	½çÃæ--×´Ì¬½çÃæ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -23,35 +23,35 @@ extern iCoreShell*		g_pCoreShell;
 KUiParadeItem* KUiParadeItem::m_pSelf = NULL;
 
 // -------------------------------------------------------------------------
-// ---> Â½Â¨ÃÂ¢Â¿Ã˜Â¼Ã¾Ã“Ã«UIEP_*Ã’Ã”Â¼Â°Â¿Ã‰Â½Ã“Ã„Ã‰ÃÃ¯Ã†Â·ÂµÃ„Ã€Ã ÃÃÂµÃ„Â¶Ã”Ã“Â¦Â¹Ã˜ÃÂµ
+// ---> ½¨Á¢¿Ø¼şÓëUIEP_*ÒÔ¼°¿É½ÓÄÉÎïÆ·µÄÀàĞÍµÄ¶ÔÓ¦¹ØÏµ
 static struct UE_CTRL_MAP
 {
 	int				nPosition;
 	const char*		pIniSection;
 }CtrlItemMap[_ITEM_COUNT] =
 {
-	{ UIEP_HEAD,		"Cap"		},	//Ã—Â°Â±Â¸-ÃƒÂ±Ã—Ã“
-	{ UIEP_HAND,		"Weapon"	},	//Ã—Â°Â±Â¸-ÃÃ¤Ã†Ã·
-	{ UIEP_NECK,		"Necklace"	},	//Ã—Â°Â±Â¸-ÃÃ®ÃÂ´
-	{ UIEP_FINESSE,		"Bangle"	},	//Ã—Â°Â±Â¸-ÃŠÃ–Ã¯Ã­
-	{ UIEP_BODY,		"Cloth"		},	//Ã—Â°Â±Â¸-Ã’Ã‚Â·Ã¾
-	{ UIEP_WAIST,		"Sash"		},	//Ã—Â°Â±Â¸-Ã‘Ã¼Â´Ã¸
-	{ UIEP_FINGER1,		"Ring1"		},	//Ã—Â°Â±Â¸-Â½Ã¤Ã–Â¸
-	{ UIEP_FINGER2,		"Ring2"		},	//Ã—Â°Â±Â¸-Â½Ã¤Ã–Â¸
-	{ UIEP_WAIST_DECOR,	"Pendant"	},	//Ã—Â°Â±Â¸-Ã‘Ã¼Ã—Âº
-	{ UIEP_FOOT,		"Shoes"		},	//Ã—Â°Â±Â¸-ÃÂ¬Ã—Ã“
-	{ UIEP_HORSE,		"Horse"		},	//Ã—Â°Â±Â¸-Ã‚Ã­
+	{ UIEP_HEAD,		"Cap"		},	//×°±¸-Ã±×Ó
+	{ UIEP_HAND,		"Weapon"	},	//×°±¸-ÎäÆ÷
+	{ UIEP_NECK,		"Necklace"	},	//×°±¸-ÏîÁ´
+	{ UIEP_FINESSE,		"Bangle"	},	//×°±¸-ÊÖïí
+	{ UIEP_BODY,		"Cloth"		},	//×°±¸-ÒÂ·ş
+	{ UIEP_WAIST,		"Sash"		},	//×°±¸-Ñü´ø
+	{ UIEP_FINGER1,		"Ring1"		},	//×°±¸-½äÖ¸
+	{ UIEP_FINGER2,		"Ring2"		},	//×°±¸-½äÖ¸
+	{ UIEP_WAIST_DECOR,	"Pendant"	},	//×°±¸-Ñü×º
+	{ UIEP_FOOT,		"Shoes"		},	//×°±¸-Ğ¬×Ó
+	{ UIEP_HORSE,		"Horse"		},	//×°±¸-Âí
 	{ UIEP_MASK,		"Mask"		},
-	{ UIEP_MANTLE,		"Mantle"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_SIGNET,		"Signet"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_SHIPIN,		"Shipin"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_HOODS,		"Hoods"		},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_CLOAK,		"Cloak"		},	//Ã—Â°Â±Â¸-Ã‚Ã­
+	{ UIEP_MANTLE,		"Mantle"	},	//×°±¸-Âí
+	{ UIEP_SIGNET,		"Signet"	},	//×°±¸-Âí
+	{ UIEP_SHIPIN,		"Shipin"	},	//×°±¸-Âí
+	{ UIEP_HOODS,		"Hoods"		},	//×°±¸-Âí
+	{ UIEP_CLOAK,		"Cloak"		},	//×°±¸-Âí
 };
 
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
+//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 //--------------------------------------------------------------------------
 KUiParadeItem* KUiParadeItem::GetIfVisible()
 {
@@ -61,9 +61,9 @@ KUiParadeItem* KUiParadeItem::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
-KUiParadeItem* KUiParadeItem::OpenWindow(KUiPlayerItem* pDest)//pdest la splayer do Ã  , gio lay cai teamid do ra la id cua avatar thoi
+KUiParadeItem* KUiParadeItem::OpenWindow(KUiPlayerItem* pDest)//pdest la splayer do à , gio lay cai teamid do ra la id cua avatar thoi
 {
 	if (m_pSelf == NULL)
 	{
@@ -86,7 +86,7 @@ KUiParadeItem* KUiParadeItem::OpenWindow(KUiPlayerItem* pDest)//pdest la splayer
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 void KUiParadeItem::CloseWindow(bool bDestroy)
 {
@@ -106,7 +106,7 @@ void KUiParadeItem::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 void KUiParadeItem::Initialize()
 {
@@ -143,7 +143,7 @@ void KUiParadeItem::SwitchExpand(BOOL bShow)
 			bShow?m_EquipBox[i].Show():m_EquipBox[i].Hide();
 }
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiParadeItem::LoadScheme(const char* pScheme)
 {
@@ -157,7 +157,7 @@ void KUiParadeItem::LoadScheme(const char* pScheme)
 	}
 }
 
-//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//ÔØÈë½çÃæ·½°¸
 void KUiParadeItem::LoadScheme(class KIniFile* pIni)
 {
 	if (g_pCoreShell->GetGameData(GDI_PLAYER_IS_MALE, 0, m_Dest.uId))
@@ -186,7 +186,7 @@ void KUiParadeItem::LoadScheme(class KIniFile* pIni)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KUiParadeItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -206,7 +206,7 @@ int KUiParadeItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â»Ã¹Â±Â¾ÃŠÃ½Â¾ÃÂ£Â¨ÃˆÃ‹ÃƒÃ»ÂµÃˆÂ²Â»Ã’Ã—Â±Ã¤ÃŠÃ½Â¾ÃÂ£Â©
+//	¹¦ÄÜ£º¸üĞÂ»ù±¾Êı¾İ£¨ÈËÃûµÈ²»Ò×±äÊı¾İ£©
 //--------------------------------------------------------------------------
 void KUiParadeItem::UpdateBaseData(KUiPlayerItem* pDest)
 {
@@ -221,7 +221,7 @@ void KUiParadeItem::UpdateBaseData(KUiPlayerItem* pDest)
 	if (Info.szTongName[0])
 		m_Tong  .SetText(Info.szTongName);
 	else
-		m_Tong  .SetText("ChÂ­a vÂµo bang");
+		m_Tong  .SetText("Ch­a vµo bang");
 	m_WorldRank   .SetIntText(Info.nRankInWorld, true);
 	m_PKValue   .SetIntText(Info.nPKValue);
 	m_FuYuan    .SetIntText(Info.nFuYuan);
@@ -397,7 +397,7 @@ void KUiParadeItem::UpdateBaseData(KUiPlayerItem* pDest)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
+//	¹¦ÄÜ£º¸üĞÂÊı¾İ
 //--------------------------------------------------------------------------
 void KUiParadeItem::UpdateData(KUiPlayerItem* pDest)
 {
@@ -429,7 +429,7 @@ void KUiParadeItem::UpdateAllEquips(KUiPlayerItem* pDest)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ—Â°Â±Â¸Â±Ã¤Â»Â¯Â¸Ã¼ÃÃ‚
+//	¹¦ÄÜ£º×°±¸±ä»¯¸üĞÂ
 //--------------------------------------------------------------------------
 void KUiParadeItem::UpdateEquip(KUiObjAtRegion* pEquip, int bAdd)
 {

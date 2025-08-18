@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	¬Ω√ß√É√¶--¬¥¬¢√é√Ø√è√§¬Ω√ß√É√¶
+//	ΩÁ√Ê--¥¢ŒÔœ‰ΩÁ√Ê
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-21
@@ -31,7 +31,7 @@ enum WAIT_OTHER_WND_OPER_PARAM
 };
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫√à√ß¬π√ª¬¥¬∞¬ø√ö√ï√Ω¬±¬ª√è√î√ä¬æ¬£¬¨√î√≤¬∑¬µ¬ª√ò√ä¬µ√Ä√Ω√ñ¬∏√ï√´
+//	π¶ƒ‹£∫»Áπ˚¥∞ø⁄’˝±ªœ‘ æ£¨‘Ú∑µªÿ µ¿˝÷∏’Î
 //--------------------------------------------------------------------------
 KUiStoreBox* KUiStoreBox::GetIfVisible()
 {
@@ -41,7 +41,7 @@ KUiStoreBox* KUiStoreBox::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬¥√≤¬ø¬™¬¥¬∞¬ø√ö¬£¬¨¬∑¬µ¬ª√ò√é¬®√í¬ª¬µ√Ñ√í¬ª¬∏√∂√Ä√†¬∂√î√è√≥√ä¬µ√Ä√Ω
+//	π¶ƒ‹£∫¥Úø™¥∞ø⁄£¨∑µªÿŒ®“ªµƒ“ª∏ˆ¿‡∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 KUiStoreBox* KUiStoreBox::OpenWindow(int nToPage)
 {
@@ -66,7 +66,7 @@ KUiStoreBox* KUiStoreBox::OpenWindow(int nToPage)
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬π√ò¬±√ï¬¥¬∞¬ø√ö
+//	π¶ƒ‹£∫πÿ±’¥∞ø⁄
 //--------------------------------------------------------------------------
 void KUiStoreBox::CloseWindow()
 {
@@ -79,7 +79,7 @@ void KUiStoreBox::CloseWindow()
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬≥√µ√ä¬º¬ª¬Ø
+// π¶ƒ‹	: ≥ı ºªØ
 // -------------------------------------------------------------------------
 void KUiStoreBox::Initialize()
 {
@@ -102,7 +102,7 @@ void KUiStoreBox::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬π¬π√î√¨¬∫¬Ø√ä√Ω
+//	π¶ƒ‹£∫ππ‘Ï∫Ø ˝
 //--------------------------------------------------------------------------
 void KUiStoreBox::UpdateData(int nCurPage)
 {
@@ -118,32 +118,32 @@ void KUiStoreBox::UpdateData(int nCurPage)
 	switch (m_nCurPage)
 	{
 		case REPOSITORY_ONE:
-			m_CurPage.SetText("R¬≠¬¨ng m√´ r√©ng 1");
+			m_CurPage.SetText("R≠¨ng mÎ rÈng 1");
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX1);
 			uIndex = GDI_ITEM_IN_STORE_BOX1;
 			break;
 		case REPOSITORY_TWO:
-			m_CurPage.SetText("R¬≠¬¨ng m√´ r√©ng 2");
+			m_CurPage.SetText("R≠¨ng mÎ rÈng 2");
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX2);
 			uIndex = GDI_ITEM_IN_STORE_BOX2;
 			break;
 		case REPOSITORY_THREE:
-			m_CurPage.SetText("R¬≠¬¨ng m√´ r√©ng 3");
+			m_CurPage.SetText("R≠¨ng mÎ rÈng 3");
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX3);
 			uIndex = GDI_ITEM_IN_STORE_BOX3;
 			break;
 		case REPOSITORY_FOUR:
-			m_CurPage.SetText("R¬≠¬¨ng m√´ r√©ng 4");
+			m_CurPage.SetText("R≠¨ng mÎ rÈng 4");
 			uIndex = GDI_ITEM_IN_STORE_BOX4;
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX4);
 			break;
 		case REPOSITORY_FIVE:
-			m_CurPage.SetText("R¬≠¬¨ng m√´ r√©ng 5");
+			m_CurPage.SetText("R≠¨ng mÎ rÈng 5");
 			uIndex = GDI_ITEM_IN_STORE_BOX5;
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX5);
 			break;
 		default:
-			m_CurPage.SetText("R¬≠¬¨ng ch√∏a ¬Æ√•");
+			m_CurPage.SetText("R≠¨ng ch¯a ÆÂ");
 			m_ItemBox.SetContainerId((int)UOC_STORE_BOX);
 			uIndex = GDI_ITEM_IN_STORE_BOX;
 			break;
@@ -155,7 +155,7 @@ void KUiStoreBox::UpdateData(int nCurPage)
 
 	if (pObjs = (KUiObjAtRegion*)malloc(sizeof(KUiObjAtRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(uIndex, (unsigned int)pObjs, nCount);//¬µ¬•√è√ü¬≥√å√ñ¬¥√ê√ê¬£¬¨nCount√ñ¬µ¬≤¬ª¬±√§
+		g_pCoreShell->GetGameData(uIndex, (unsigned int)pObjs, nCount);//µ•œﬂ≥Ã÷¥––£¨nCount÷µ≤ª±‰
 		for (int i = 0; i < nCount; i++)
 			UpdateItem(m_nCurPage, &pObjs[i], true);
 		free(pObjs);
@@ -164,7 +164,7 @@ void KUiStoreBox::UpdateData(int nCurPage)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: √é√Ø√Ü¬∑¬±√§¬ª¬Ø¬∏√º√ê√Ç
+// π¶ƒ‹	: ŒÔ∆∑±‰ªØ∏¸–¬
 // -------------------------------------------------------------------------
 void KUiStoreBox::UpdateItem(int nToPage, KUiObjAtRegion* pItem, int bAdd)
 {
@@ -199,7 +199,7 @@ void KUiStoreBox::UpdateItem(int nToPage, KUiObjAtRegion* pItem, int bAdd)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: √î√ò√à√´¬Ω√ß√É√¶¬∑¬Ω¬∞¬∏
+// π¶ƒ‹	: ‘ÿ»ÎΩÁ√Ê∑Ω∞∏
 // -------------------------------------------------------------------------
 void KUiStoreBox::LoadScheme(const char* pScheme)
 {
@@ -222,7 +222,7 @@ void KUiStoreBox::LoadScheme(const char* pScheme)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬¥¬∞¬ø√ö¬∫¬Ø√ä√Ω
+// π¶ƒ‹	: ¥∞ø⁄∫Ø ˝
 // -------------------------------------------------------------------------
 int KUiStoreBox::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

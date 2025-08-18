@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--æŠ€èƒ½æ ‘çª—å£
+//	½çÃæ--¼¼ÄÜÊ÷´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -18,32 +18,32 @@ enum SHORTCUT_KEY_INDEX;
 class KUiSkillTree : protected KWndWindow
 {
 public:
-	static KUiSkillTree*	OpenWindow(int bLeft);			//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiSkillTree*	GetIfVisible();					//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void				CloseWindow(bool bDestroy);		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static KUiSkillTree*	OpenWindow(int bLeft);			//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiSkillTree*	GetIfVisible();					//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void				CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
 	static void				HandleShortcutKey(int nIndex);
 	static void				LoadConfig(KIniFile* pIni);
-	static void				SaveConfig(KIniFile* pIni);		//ä¿å­˜è‡ªå®šä¹‰é…ç½®
+	static void				SaveConfig(KIniFile* pIni);		//±£´æ×Ô¶¨ÒåÅäÖÃ
 
 	static void				DirectHandleShortcutKey(int nIndex);
 private:
 	KUiSkillTree();
 	~KUiSkillTree() {}
-	void	Initialize();							//åˆå§‹åŒ–
-	void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
+	void	Initialize();							//³õÊ¼»¯
+	void	PaintWindow();							//´°Ìå»æÖÆ
 	int		PtInWindow(int x, int y);
-	void	UpdateData();							//æ›´æ–°æ•°æ®
+	void	UpdateData();							//¸üĞÂÊı¾İ
 	void	UpdateWndRect();
-	void	Hide();									//éšè—çª—å£
-	int		GetSkillAtPos(int x, int y);			//å¾—åˆ°æŒ‡å®šä½ç½®çš„æŠ€èƒ½çš„ç´¢å¼•
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	void	Hide();									//Òş²Ø´°¿Ú
+	int		GetSkillAtPos(int x, int y);			//µÃµ½Ö¸¶¨Î»ÖÃµÄ¼¼ÄÜµÄË÷Òı
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 private:
 	static KUiSkillTree*	m_pSelf;
 private:
 	int				m_nNumSkills;
 	KUiSkillData	m_Skills[SKILLTREE_MAX_SKILL_COUNT];
-					//KUiSkillData::nLevelåœ¨æ­¤çš„å«ä¹‰è¡¨ç¤ºä½æ­¤æŠ€èƒ½æ˜¾ç¤ºåœ¨ç¬¬å‡ åˆ—
+					//KUiSkillData::nLevelÔÚ´ËµÄº¬Òå±íÊ¾Î»´Ë¼¼ÄÜÏÔÊ¾ÔÚµÚ¼¸ÁĞ
 
 	int				m_nFont;
 	unsigned int	m_uColor;
@@ -53,6 +53,6 @@ private:
 	int				m_nRightLeft, m_nRightTop;
 	int				m_nWidthPerSkill, m_nHeightPerSkill;
 	static KUiSkillData	ms_ShortcutSkills[SKILLTREE_SHORTCUT_SKILL_COUNT];
-					//KUiSkillData::nLevelåœ¨æ­¤çš„å«ä¹‰0è¡¨ç¤ºå·¦æ‰‹æŠ€èƒ½ï¼Œ1è¡¨ç¤ºå³æ‰‹æŠ€èƒ½
+					//KUiSkillData::nLevelÔÚ´ËµÄº¬Òå0±íÊ¾×óÊÖ¼¼ÄÜ£¬1±íÊ¾ÓÒÊÖ¼¼ÄÜ
 
 };

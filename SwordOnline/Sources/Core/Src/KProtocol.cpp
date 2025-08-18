@@ -8,7 +8,7 @@
 
 int	g_nProtocolSize[MAX_PROTOCOL_NUM] = 
 {
-#ifndef _SERVER				// 客户端接收到的服务器到客户端的协议长度
+#ifndef _SERVER				// �ͻ��˽��յ��ķ��������ͻ��˵�Э�鳤��
 	-1,							// s2c_login,
 	-1,							// s2c_logout,
 	sizeof(BYTE),				// s2c_syncend,

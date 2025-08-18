@@ -2,7 +2,7 @@
 File        : UiTongAssignBox.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : ä»»å‘½å¸®ä¼šèŒä½çš„ç•Œé¢
+Description : ÈÎÃü°ï»áÖ°Î»µÄ½çÃæ
 ********************************************************************************/
 
 #include "KWin32.h"
@@ -48,7 +48,7 @@ KUiTongAssignBox::~KUiTongAssignBox()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šæ‰“å¼€çª—å£
+* ¹¦ÄÜ£º´ò¿ª´°¿Ú
 **********************************************************************/
 KUiTongAssignBox* KUiTongAssignBox::OpenWindow()
 {
@@ -73,7 +73,7 @@ KUiTongAssignBox* KUiTongAssignBox::OpenWindow()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+* ¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 **********************************************************************/
 KUiTongAssignBox* KUiTongAssignBox::GetIfVisible()
 {
@@ -84,7 +84,7 @@ KUiTongAssignBox* KUiTongAssignBox::GetIfVisible()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+* ¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 **********************************************************************/
 void KUiTongAssignBox::CloseWindow(bool bDestory)
 {
@@ -102,7 +102,7 @@ void KUiTongAssignBox::CloseWindow(bool bDestory)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šåˆå§‹åŒ–
+* ¹¦ÄÜ£º³õÊ¼»¯
 **********************************************************************/
 void KUiTongAssignBox::Initialize()
 {
@@ -126,7 +126,7 @@ void KUiTongAssignBox::Initialize()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šè½½å…¥ç•Œé¢æ–¹æ¡ˆ
+* ¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
 **********************************************************************/
 void KUiTongAssignBox::LoadScheme(const char* pScheme)
 {
@@ -171,7 +171,7 @@ void KUiTongAssignBox::LoadScheme(const char* pScheme)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+* ¹¦ÄÜ£º´°¿Úº¯Êı
 **********************************************************************/
 int KUiTongAssignBox::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -242,7 +242,7 @@ int KUiTongAssignBox::WndProc(unsigned int uMsg, unsigned int uParam, int nParam
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå»ºç«‹è¿™ä¸ªç•Œé¢å’Œä¸»ç•Œé¢çš„å…³è”
+* ¹¦ÄÜ£º½¨Á¢Õâ¸ö½çÃæºÍÖ÷½çÃæµÄ¹ØÁª
 **********************************************************************/
 void KUiTongAssignBox::LinkToMainWindow(KWndWindow *pMain)
 {
@@ -255,7 +255,7 @@ void KUiTongAssignBox::LinkToMainWindow(KWndWindow *pMain)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šä¸ºä»»å‘½æ¡ˆçš„ä¹¦å†™å®‰æ’æ•°æ®
+* ¹¦ÄÜ£ºÎªÈÎÃü°¸µÄÊéĞ´°²ÅÅÊı¾İ
 **********************************************************************/
 void KUiTongAssignBox::ArrangeData(int nType, char* szTarName, char* szTarAgName, int nCurrentFigure, int nCurrentPosition)
 {
@@ -310,7 +310,7 @@ void KUiTongAssignBox::ArrangeData(int nType, char* szTarName, char* szTarAgName
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šCheckç®¡ç†å‡½æ•°
+* ¹¦ÄÜ£ºCheck¹ÜÀíº¯Êı
 **********************************************************************/
 void KUiTongAssignBox::UpdateCheckButton(int nFigure)
 {
@@ -360,7 +360,7 @@ void KUiTongAssignBox::UpdateCheckButton(int nFigure)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå¼¹å‡ºç¡®è®¤çª—å£
+* ¹¦ÄÜ£ºµ¯³öÈ·ÈÏ´°¿Ú
 **********************************************************************/
 void KUiTongAssignBox::PopupConfirmWindow(const char* pszInfo, unsigned int uHandleID)
 {
@@ -375,7 +375,7 @@ void KUiTongAssignBox::PopupConfirmWindow(const char* pszInfo, unsigned int uHan
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå“åº”ç¡®è®¤æ“ä½œ
+* ¹¦ÄÜ£ºÏìÓ¦È·ÈÏ²Ù×÷
 **********************************************************************/
 void KUiTongAssignBox::OnConfirm()
 {

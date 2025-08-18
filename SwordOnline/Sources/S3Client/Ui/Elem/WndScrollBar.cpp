@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--æ»šåŠ¨æ¡çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--¹ö¶¯Ìõ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-23
@@ -13,7 +13,7 @@
 extern iRepresentShell*	g_pRepresentShell;
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndScrollBar::KWndScrollBar()
 {
@@ -48,7 +48,7 @@ void KWndScrollBar::Clone(KWndScrollBar* pCopy)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–çª—å£
+//	¹¦ÄÜ£º³õÊ¼»¯´°¿Ú
 //--------------------------------------------------------------------------
 int KWndScrollBar::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -92,7 +92,7 @@ int KWndScrollBar::Init(KIniFile* pIniFile, const char* pSection)
 	return false;
 }
 
-//è®¾ç½®çª—å£å¤§å°
+//ÉèÖÃ´°¿Ú´óĞ¡
 void KWndScrollBar::SetSize(int nWidth, int nHeight)
 {
 	if (m_Flag & WNDSCROLL_ES_VERTICAL)
@@ -108,7 +108,7 @@ void KWndScrollBar::SetSize(int nWidth, int nHeight)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KWndScrollBar::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -149,7 +149,7 @@ int KWndScrollBar::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return 0;
 }
 
-//çª—ä½“ç»˜åˆ¶
+//´°Ìå»æÖÆ
 void KWndScrollBar::PaintWindow()
 {
 	KWndWindow::PaintWindow();
@@ -186,7 +186,7 @@ void KWndScrollBar::PaintWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®å–å€¼èŒƒå›´
+//	¹¦ÄÜ£ºÉèÖÃÈ¡Öµ·¶Î§
 //--------------------------------------------------------------------------
 void KWndScrollBar::SetValueRange(int nMinValue,int nMaxValue)
 {
@@ -199,7 +199,7 @@ void KWndScrollBar::SetValueRange(int nMinValue,int nMaxValue)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®ä½ç½®
+//	¹¦ÄÜ£ºÉèÖÃÎ»ÖÃ
 //--------------------------------------------------------------------------
 void KWndScrollBar::SetScrollPos(int nPosition)
 {
@@ -222,7 +222,7 @@ void KWndScrollBar::SetScrollPos(int nPosition)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æ»‘åŠ¨å—çª—å£ä½ç½®
+//	¹¦ÄÜ£ºÉèÖÃ»¬¶¯¿é´°¿ÚÎ»ÖÃ
 //--------------------------------------------------------------------------
 void KWndScrollBar::SetSlideBtnPos()
 {
@@ -250,7 +250,7 @@ void KWndScrollBar::SetSlideBtnPos()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼ü°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndScrollBar::OnLButtonDown(int x,int y)
 {
@@ -288,7 +288,7 @@ int	KWndScrollBar::ScrollPage(bool bPre)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”æ»‘åŠ¨æŒ‰é’®è¢«æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦»¬¶¯°´Å¥±»°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndScrollBar::OnSlideBtnPressed()
 {
@@ -297,7 +297,7 @@ void KWndScrollBar::OnSlideBtnPressed()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ­£åœ¨æ‹–åŠ¨æ»‘åŠ¨æŒ‰é’®
+//	¹¦ÄÜ£ºÕıÔÚÍÏ¶¯»¬¶¯°´Å¥
 //--------------------------------------------------------------------------
 void KWndScrollBar::OnDraggingSlide(int x, int y)
 {

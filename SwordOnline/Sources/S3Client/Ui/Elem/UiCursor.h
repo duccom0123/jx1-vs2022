@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	é¼ æ ‡æŒ‡é’ˆçª—å£
+//	Êó±êÖ¸Õë´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-17
@@ -16,14 +16,14 @@
 class KUiCursor
 {
 public:
-	void	Show(int bShow);								//è®¾ç½®é¼ æ ‡æŒ‡é’ˆçš„æ˜¾ç¤ºçŠ¶æ€
-	void	SetPosition(int h, int v);						//è®¾ç½®é¼ æ ‡æŒ‡é’ˆä½ç½®
-	void	GetPosition(int& h, int& v);					//è·å–é¼ æ ‡æŒ‡é’ˆä½ç½®
-	void	SetImage(int nIndex, const char* pImgFile);		//è½½å…¥é¼ æ ‡æŒ‡é’ˆå›¾å½¢
-	int		SwitchImage(int nIndex);						//åˆ‡æ¢å½“å‰é¼ æ ‡æŒ‡é’ˆå›¾å½¢
-	void	RestoreCursor();	        					//é‡æ–°æ¿€æ´»é¼ æ ‡
-	void	Paint();										//ç»˜åˆ¶é¼ æ ‡æŒ‡é’ˆ
-	void	Cleanup();										//æ¸…ç©ºå…¨éƒ¨èµ„æº
+	void	Show(int bShow);								//ÉèÖÃÊó±êÖ¸ÕëµÄÏÔÊ¾×´Ì¬
+	void	SetPosition(int h, int v);						//ÉèÖÃÊó±êÖ¸ÕëÎ»ÖÃ
+	void	GetPosition(int& h, int& v);					//»ñÈ¡Êó±êÖ¸ÕëÎ»ÖÃ
+	void	SetImage(int nIndex, const char* pImgFile);		//ÔØÈëÊó±êÖ¸ÕëÍ¼ĞÎ
+	int		SwitchImage(int nIndex);						//ÇĞ»»µ±Ç°Êó±êÖ¸ÕëÍ¼ĞÎ
+	void	RestoreCursor();	        					//ÖØĞÂ¼¤»îÊó±ê
+	void	Paint();										//»æÖÆÊó±êÖ¸Õë
+	void	Cleanup();										//Çå¿ÕÈ«²¿×ÊÔ´
 	KUiCursor();
 	~KUiCursor();
 private:

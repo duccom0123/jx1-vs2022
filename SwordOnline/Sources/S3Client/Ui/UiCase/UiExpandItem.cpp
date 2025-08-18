@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	¬Ω√ß√É√¶--¬¥¬¢√é√Ø√è√§¬Ω√ß√É√¶
+//	ΩÁ√Ê--¥¢ŒÔœ‰ΩÁ√Ê
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-21
@@ -28,7 +28,7 @@ KUiExpandItem* KUiExpandItem::m_pSelf = NULL;
 
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫√à√ß¬π√ª¬¥¬∞¬ø√ö√ï√Ω¬±¬ª√è√î√ä¬æ¬£¬¨√î√≤¬∑¬µ¬ª√ò√ä¬µ√Ä√Ω√ñ¬∏√ï√´
+//	π¶ƒ‹£∫»Áπ˚¥∞ø⁄’˝±ªœ‘ æ£¨‘Ú∑µªÿ µ¿˝÷∏’Î
 //--------------------------------------------------------------------------
 KUiExpandItem* KUiExpandItem::GetIfVisible()
 {
@@ -38,7 +38,7 @@ KUiExpandItem* KUiExpandItem::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬¥√≤¬ø¬™¬¥¬∞¬ø√ö¬£¬¨¬∑¬µ¬ª√ò√é¬®√í¬ª¬µ√Ñ√í¬ª¬∏√∂√Ä√†¬∂√î√è√≥√ä¬µ√Ä√Ω
+//	π¶ƒ‹£∫¥Úø™¥∞ø⁄£¨∑µªÿŒ®“ªµƒ“ª∏ˆ¿‡∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 KUiExpandItem* KUiExpandItem::OpenWindow()
 {
@@ -59,7 +59,7 @@ KUiExpandItem* KUiExpandItem::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬π√ò¬±√ï¬¥¬∞¬ø√ö
+//	π¶ƒ‹£∫πÿ±’¥∞ø⁄
 //--------------------------------------------------------------------------
 void KUiExpandItem::CloseWindow()
 {
@@ -71,7 +71,7 @@ void KUiExpandItem::CloseWindow()
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬≥√µ√ä¬º¬ª¬Ø
+// π¶ƒ‹	: ≥ı ºªØ
 // -------------------------------------------------------------------------
 void KUiExpandItem::Initialize()
 {
@@ -96,7 +96,7 @@ void KUiExpandItem::OnNpcTradeMode(bool bTrue)
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬π¬π√î√¨¬∫¬Ø√ä√Ω
+//	π¶ƒ‹£∫ππ‘Ï∫Ø ˝
 //--------------------------------------------------------------------------
 void KUiExpandItem::UpdateData()
 {
@@ -110,7 +110,7 @@ void KUiExpandItem::UpdateData()
 
 	if (pObjs = (KUiObjAtRegion*)malloc(sizeof(KUiObjAtRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(GDI_ITEM_EXPANDITEM, (unsigned int)pObjs, nCount);//¬µ¬•√è√ü¬≥√å√ñ¬¥√ê√ê¬£¬¨nCount√ñ¬µ¬≤¬ª¬±√§
+		g_pCoreShell->GetGameData(GDI_ITEM_EXPANDITEM, (unsigned int)pObjs, nCount);//µ•œﬂ≥Ã÷¥––£¨nCount÷µ≤ª±‰
 		for (int i = 0; i < nCount; i++)
 			UpdateItem(&pObjs[i], true);
 		free(pObjs);
@@ -119,7 +119,7 @@ void KUiExpandItem::UpdateData()
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: √é√Ø√Ü¬∑¬±√§¬ª¬Ø¬∏√º√ê√Ç
+// π¶ƒ‹	: ŒÔ∆∑±‰ªØ∏¸–¬
 // -------------------------------------------------------------------------
 void KUiExpandItem::UpdateItem(KUiObjAtRegion* pItem, int bAdd)
 {
@@ -145,7 +145,7 @@ void KUiExpandItem::UpdateItem(KUiObjAtRegion* pItem, int bAdd)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: √î√ò√à√´¬Ω√ß√É√¶¬∑¬Ω¬∞¬∏
+// π¶ƒ‹	: ‘ÿ»ÎΩÁ√Ê∑Ω∞∏
 // -------------------------------------------------------------------------
 void KUiExpandItem::LoadScheme(const char* pScheme)
 {
@@ -162,7 +162,7 @@ void KUiExpandItem::LoadScheme(const char* pScheme)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬¥¬∞¬ø√ö¬∫¬Ø√ä√Ω
+// π¶ƒ‹	: ¥∞ø⁄∫Ø ˝
 // -------------------------------------------------------------------------
 int KUiExpandItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -265,7 +265,7 @@ void KUiExpandItem::OnClickItem(KUiDraggedObject* pItem, bool bDoImmed)
 					Msg.byPriority = 0;
 					Msg.eType = SMT_NORMAL;
 					Msg.uReservedForUi = 0;
-					strcpy(Msg.szMessage, "Nh√än gi√∑ ph√ùm Shift ¬Æ√•ng th√™i nh√än chu√©t ph¬∂i l√ãp t√∏c b¬∏n ¬Æ¬≠√Æc v√ãt ph√àm!");
+					strcpy(Msg.szMessage, "Nh n gi˜ ph›m Shift ÆÂng thÍi nh n chuÈt ph∂i lÀp t¯c b∏n Æ≠Óc vÀt ph»m!");
 					KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 				}
 			}

@@ -88,7 +88,7 @@ extern CORE_API int g_ScreenY;
 #define __TEXT_LINE__(LINE) ITOA(LINE)
 
 //#ifdef _DEBUG
-#define ATTENTION(MSG) __FILE__"("__TEXT_LINE__(__LINE__)") : â˜…ATTENTIONâ˜… â†’ "#MSG
+#define ATTENTION(MSG) __FILE__"("__TEXT_LINE__(__LINE__)") : ¡ïATTENTION¡ï ¡ú "#MSG
 //#else
 //#define ATTENTION(MSG) __FILE__"("__TEXT_LINE__(__LINE__)") : ATTENTION!! error: "#MSG
 //#endif
@@ -135,11 +135,11 @@ extern unsigned int g_ulAdjustColorCount;
 #endif
 
 #ifndef _SERVER
-extern KTabFile		g_NpcKindFile; //è®°å½•Npcäººç‰©ç±»å‹æ–‡ä»¶
+extern KTabFile		g_NpcKindFile; //¼ÇÂ¼NpcÈËÎïÀàĞÍÎÄ¼ş
 #endif
 
 #ifndef _SERVER
-extern BOOL g_bUISelIntelActiveWithServer;//å½“å‰é€‰æ‹©æ¡†æ˜¯å¦ä¸æœåŠ¡å™¨ç«¯äº¤äº’
+extern BOOL g_bUISelIntelActiveWithServer;//µ±Ç°Ñ¡Ôñ¿òÊÇ·ñÓë·şÎñÆ÷¶Ë½»»¥
 extern BOOL g_bUISpeakActiveWithServer;
 extern int g_bUISelLastSelCount;
 #endif
@@ -154,7 +154,7 @@ enum DBMESSAGE
 
 enum DBI_COMMAND
 {
-	DBI_PLAYERSAVE,  // å‚æ•°1 æ˜¯å¦å¯ä»¥æ–°å»ºè§’è‰²
+	DBI_PLAYERSAVE,  // ²ÎÊı1 ÊÇ·ñ¿ÉÒÔĞÂ½¨½ÇÉ«
 	DBI_PLAYERLOAD,
 	DBI_PLAYERDELETE,
 	DBI_GETPLAYERLISTFROMACCOUNT,

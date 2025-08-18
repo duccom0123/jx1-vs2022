@@ -1,11 +1,11 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiSelPlayer.h
-//	åˆ›å»ºè€…		ï¼š	å•æ¡‚å
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-10 14:24:08
-//	åŠŸèƒ½æè¿°	ï¼š	
-//	---> è§’è‰²é€‰æ‹©ç•Œé¢,åŒ…å«ä»¥ä¸‹ç•Œé¢å…ƒç´ :
-//		1) ä¸‰ä¸ªå¯é€‰æ‹©çš„è§’è‰²
-//		2) å››ä¸ªæŒ‰é’®ï¼šç¡®å®šï¼Œæ–°å»ºï¼Œåˆ é™¤ï¼Œå–æ¶ˆ
+//	ÎÄ¼şÃû		£º	UiSelPlayer.h
+//	´´½¨Õß		£º	ÂÀ¹ğ»ª
+//	´´½¨Ê±¼ä	£º	2002-9-10 14:24:08
+//	¹¦ÄÜÃèÊö	£º	
+//	---> ½ÇÉ«Ñ¡Ôñ½çÃæ,°üº¬ÒÔÏÂ½çÃæÔªËØ:
+//		1) Èı¸ö¿ÉÑ¡ÔñµÄ½ÇÉ«
+//		2) ËÄ¸ö°´Å¥£ºÈ·¶¨£¬ĞÂ½¨£¬É¾³ı£¬È¡Ïû
 // -------------------------------------------------------------------------
 #pragma once 
 
@@ -21,23 +21,23 @@
 class KUiSelPlayer : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiSelPlayer* OpenWindow();					//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void			 CloseWindow();					//å…³é—­çª—å£
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiSelPlayer* OpenWindow();					//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void			 CloseWindow();					//¹Ø±Õ´°¿Ú
 
 	static void	GetRoleImageName(char* pszName, const char* pszPrefix, unsigned char bGender, unsigned char bAttribute, int nIndex);
 
 private:
 	KUiSelPlayer();
 	~KUiSelPlayer() {}
-	void	Initialize();						//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	PaintWindow();						//çª—ä½“ç»˜åˆ¶
-	void	UpdateData();						//æ›´æ–°
+	void	Initialize();						//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	void	PaintWindow();						//´°Ìå»æÖÆ
+	void	UpdateData();						//¸üĞÂ
 
 	void	Hide();
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//æ¶ˆæ¯å¤„ç†
-	void	OnClickButton(KWndButton* pWnd, bool bDoubleClick);	//å“åº”ç‚¹å‡»æŒ‰é’®
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//ÏûÏ¢´¦Àí
+	void	OnClickButton(KWndButton* pWnd, bool bDoubleClick);	//ÏìÓ¦µã»÷°´Å¥
 	void	OnNew();
 	void	OnDel();
 	void	OnCancel();
@@ -49,15 +49,15 @@ private:
 	static KUiSelPlayer* m_pSelf;
 private:
 	KWndText80	m_LifeTimeText;
-	// ç•Œé¢å…ƒç´ 
+	// ½çÃæÔªËØ
 	KWndText32	m_Name[MAX_PLAYER_PER_ACCOUNT];
 	KWndText32	m_Level[MAX_PLAYER_PER_ACCOUNT];
-	KWndButton	m_player[MAX_PLAYER_PER_ACCOUNT];	// ä¸‰ä¸ªè§’è‰²
+	KWndButton	m_player[MAX_PLAYER_PER_ACCOUNT];	// Èı¸ö½ÇÉ«
 	KWndImage	m_PlayerInfoBg[MAX_PLAYER_PER_ACCOUNT];
-	KWndButton	m_btnOk;		// ç¡®å®š
-	KWndButton	m_btnCancel;	// å–æ¶ˆ
-	KWndButton	m_btnNew;		// æ–°å»ºè§’è‰²
-	KWndButton	m_btnDel;		// åˆ é™¤è§’è‰²
+	KWndButton	m_btnOk;		// È·¶¨
+	KWndButton	m_btnCancel;	// È¡Ïû
+	KWndButton	m_btnNew;		// ĞÂ½¨½ÇÉ«
+	KWndButton	m_btnDel;		// É¾³ı½ÇÉ«
 
 	unsigned char	m_Gender[MAX_PLAYER_PER_ACCOUNT];
 	unsigned char	m_Attribute[MAX_PLAYER_PER_ACCOUNT];
@@ -76,7 +76,7 @@ private:
 private:
 	int			m_bJustClicked;
 	short		m_nNumPlayer;
-	short		m_nSelPlayer;	// å½“å‰é€‰ä¸­çš„æ˜¯ç¬¬å‡ ä¸ªè§’è‰²
-						//  -1	-- æ— é€‰ä¸­ï¼›    0	-- é€‰ä¸­ç¬¬ä¸€ä¸ªï¼›
-						//  1	-- é€‰ä¸­ç¬¬äºŒä¸ªï¼›2	-- é€‰ä¸­ç¬¬ä¸‰ä¸ªï¼›
+	short		m_nSelPlayer;	// µ±Ç°Ñ¡ÖĞµÄÊÇµÚ¼¸¸ö½ÇÉ«
+						//  -1	-- ÎŞÑ¡ÖĞ£»    0	-- Ñ¡ÖĞµÚÒ»¸ö£»
+						//  1	-- Ñ¡ÖĞµÚ¶ş¸ö£»2	-- Ñ¡ÖĞµÚÈı¸ö£»
 };

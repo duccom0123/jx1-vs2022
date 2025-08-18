@@ -9,7 +9,7 @@ private:
 public:
 	size_t			m_ulFreeSize;
 	T m_Data[ulSize];
-	KLinkArray		m_FreeIdx;							//	å¯ç”¨è¡¨
+	KLinkArray		m_FreeIdx;							//	¿ÉÓÃ±í
 
 	KLinkArray		m_UseIdx;	
 
@@ -79,7 +79,7 @@ public:
 
 	KLinkArrayTemplate()
 	{
-		m_ulTotalSize = m_ulFreeSize = ulSize - 1;//ç”±äºŽindex0æ˜¯æ— æ•ˆçš„ï¼Œæ‰€ä»¥å®žé™…æ•°é‡è¦å‡ä¸€ä¸ª
+		m_ulTotalSize = m_ulFreeSize = ulSize - 1;//ÓÉÓÚindex0ÊÇÎÞÐ§µÄ£¬ËùÒÔÊµ¼ÊÊýÁ¿Òª¼õÒ»¸ö
 		m_FreeIdx.Init(ulSize);
 		m_UseIdx.Init(ulSize);
 		for (int i = ulSize - 1; i > 0 ; i --)

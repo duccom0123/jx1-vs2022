@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	WndToolBar.h
-//	åˆ›å»ºè€…		ï¼š	ä¸‡é‡Œ
-//	åˆ›å»ºæ—¶é—´	ï¼š	2003-7-23 21:55:37
-//	åŠŸèƒ½æè¿°	ï¼š	
+//	ÎÄ¼şÃû		£º	WndToolBar.h
+//	´´½¨Õß		£º	ÍòÀï
+//	´´½¨Ê±¼ä	£º	2003-7-23 21:55:37
+//	¹¦ÄÜÃèÊö	£º	
 //
 // -------------------------------------------------------------------------
 #ifndef __WNDTOOLBAR_H__
@@ -23,9 +23,9 @@ class KWndToolBar : public KWndImage
 public:
 	KWndToolBar();
 	~KWndToolBar();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
-	virtual void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	virtual void	PaintWindow();							//´°Ìå»æÖÆ
 
 	void			Clone(KWndToolBar* pCopy);
 	int GetButtonCount() { return m_nButtonNum;	}

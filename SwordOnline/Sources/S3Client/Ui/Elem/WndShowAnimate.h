@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ‡æ¢æ˜¾ç¤ºçŠ¶æ€æ—¶å¸¦ç§»åŠ¨æ§åˆ¶çš„å›¾å½¢çš„çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÇĞ»»ÏÔÊ¾×´Ì¬Ê±´øÒÆ¶¯¿ØÖÆµÄÍ¼ĞÎµÄ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-17
@@ -11,7 +11,7 @@
 class KWndShowAnimate : public KWndMovingImage
 {
 public:
-	virtual int	Init(KIniFile* pIniFile, const char* pSection);//åˆå§‹åŒ–
+	virtual int	Init(KIniFile* pIniFile, const char* pSection);//³õÊ¼»¯
 	virtual void Show();
 	virtual void Hide();
     virtual void ShowCompleted();
@@ -28,5 +28,5 @@ private:
 	SIZE	m_AppearRange;
 	SIZE	m_DisappearRange;
 	static	unsigned int ms_uMoveTimeInterval;
-	unsigned int	m_uMoveLastTime;		//å½“å‰å¸§åˆ‡æ¢å‡ºæ¥çš„æ—¶é—´
+	unsigned int	m_uMoveLastTime;		//µ±Ç°Ö¡ÇĞ»»³öÀ´µÄÊ±¼ä
 };

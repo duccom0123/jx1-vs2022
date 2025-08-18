@@ -12,7 +12,7 @@ void KMissleSet::Init()
 	m_FreeIdx.Init(MAX_MISSLE);
 	m_UseIdx.Init(MAX_MISSLE);
 	
-	// å¼€å§‹æ—¶æ‰€æœ‰çš„æ•°ç»„å…ƒç´ éƒ½ä¸ºç©º
+	// ¿ªÊ¼Ê±ËùÓÐµÄÊý×éÔªËØ¶¼Îª¿Õ
 	for (int i = MAX_MISSLE - 1; i > 0; i--)
 	{
 		m_FreeIdx.Insert(i);

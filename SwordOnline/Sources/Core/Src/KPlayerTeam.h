@@ -3,7 +3,7 @@
 //
 // File:	KPlayerTeam.h
 // Date:	2002.01.06
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 // Desc:	Team Class
 //---------------------------------------------------------------------------
 
@@ -43,16 +43,16 @@ enum
 };
 
 #ifdef _SERVER
-class KPlayerTeam	// æœåŠ¡å™¨ç«¯ç©å®¶çš„ç»„é˜Ÿä¿¡æ¯
+class KPlayerTeam	// ·şÎñÆ÷¶ËÍæ¼ÒµÄ×é¶ÓĞÅÏ¢
 {
 	friend class KPlayer;
 public:
-	int		m_nFlag;			// æ ‡å¿—æ˜¯å¦å·²ç»ç»„é˜Ÿ
-	int		m_nID;				// å¦‚æœå·²ç»ç»„é˜Ÿï¼Œé˜Ÿä¼çš„ id
-	int		m_nFigure;			// å¦‚æœå·²ç»ç»„é˜Ÿï¼Œplayer çš„èº«ä»½ï¼šTEAM_CAPTAIN TEAM_MEMBER
-	int		m_nApplyCaptainID;	// ç”³è¯·åŠ å…¥çš„ç›®æ ‡é˜Ÿä¼çš„é˜Ÿé•¿çš„ npc id
-	int		m_nInviteList[MAX_TEAM_MEMBER];	// é‚€è¯·ç©å®¶åŠ å…¥æœ¬é˜Ÿä¼åˆ—è¡¨
-	int		m_nListPos;			// åˆ—è¡¨å½“å‰ä½ç½®
+	int		m_nFlag;			// ±êÖ¾ÊÇ·ñÒÑ¾­×é¶Ó
+	int		m_nID;				// Èç¹ûÒÑ¾­×é¶Ó£¬¶ÓÎéµÄ id
+	int		m_nFigure;			// Èç¹ûÒÑ¾­×é¶Ó£¬player µÄÉí·İ£ºTEAM_CAPTAIN TEAM_MEMBER
+	int		m_nApplyCaptainID;	// ÉêÇë¼ÓÈëµÄÄ¿±ê¶ÓÎéµÄ¶Ó³¤µÄ npc id
+	int		m_nInviteList[MAX_TEAM_MEMBER];	// ÑûÇëÍæ¼Ò¼ÓÈë±¾¶ÓÎéÁĞ±í
+	int		m_nListPos;			// ÁĞ±íµ±Ç°Î»ÖÃ
 
 private:
 	BOOL	m_bCreatTeamFlag;
@@ -78,28 +78,28 @@ public:
 #endif
 
 #ifndef _SERVER
-class KTeamApplyList	// ç”³è¯·åŠ å…¥é˜Ÿä¼è€…åˆ—è¡¨ä¸­çš„ç”³è¯·äººä¿¡æ¯
+class KTeamApplyList	// ÉêÇë¼ÓÈë¶ÓÎéÕßÁĞ±íÖĞµÄÉêÇëÈËĞÅÏ¢
 {
 public:
-	DWORD	m_dwNpcID;			// ç”³è¯·äºº npc id
-	DWORD	m_dwTimer;			// ç”³è¯·æ—¶é—´è®¡æ•°å™¨
-	int		m_nLevel;			// ç”³è¯·äººç­‰çº§
-	char	m_szName[32];		// ç”³è¯·äººå§“å
+	DWORD	m_dwNpcID;			// ÉêÇëÈË npc id
+	DWORD	m_dwTimer;			// ÉêÇëÊ±¼ä¼ÆÊıÆ÷
+	int		m_nLevel;			// ÉêÇëÈËµÈ¼¶
+	char	m_szName[32];		// ÉêÇëÈËĞÕÃû
 public:
 	KTeamApplyList() {Release();};
 	void	Release() {m_dwNpcID = 0; m_dwTimer = 0; m_nLevel = 0; m_szName[0] = 0;};
-};				// å®¢æˆ·ç«¯ä¿å­˜åœ¨é˜Ÿé•¿ player èº«ä¸Šçš„é˜Ÿä¼ç”³è¯·äººåˆ—è¡¨ä¿¡æ¯
+};				// ¿Í»§¶Ë±£´æÔÚ¶Ó³¤ player ÉíÉÏµÄ¶ÓÎéÉêÇëÈËÁĞ±íĞÅÏ¢
 
-class KPlayerTeam	// å®¢æˆ·ç«¯ç©å®¶çš„ç»„é˜Ÿä¿¡æ¯
+class KPlayerTeam	// ¿Í»§¶ËÍæ¼ÒµÄ×é¶ÓĞÅÏ¢
 {
 public:
-	int		m_nFlag;			// æ ‡å¿—æ˜¯å¦å·²ç»ç»„é˜Ÿ
-	int		m_nFigure;			// å¦‚æœå·²ç»ç»„é˜Ÿï¼Œplayer çš„èº«ä»½ï¼šTEAM_CAPTAIN TEAM_MEMBER
+	int		m_nFlag;			// ±êÖ¾ÊÇ·ñÒÑ¾­×é¶Ó
+	int		m_nFigure;			// Èç¹ûÒÑ¾­×é¶Ó£¬player µÄÉí·İ£ºTEAM_CAPTAIN TEAM_MEMBER
 
-	int		m_nApplyCaptainID;	// ç”³è¯·åŠ å…¥çš„ç›®æ ‡é˜Ÿä¼çš„é˜Ÿé•¿çš„ npc id
-	DWORD	m_dwApplyTimer;		// ç”³è¯·æ—¶é—´è®¡æ•°å™¨ï¼ˆç”³è¯·å¤šä¹…äº†ï¼Œè¶…è¿‡æ—¶é—´å–æ¶ˆç”³è¯·ï¼‰
-	BOOL	m_bAutoRefuseInviteFlag;// æ˜¯å¦è‡ªåŠ¨æ‹’ç»åˆ«äººçš„åŠ å…¥é˜Ÿä¼çš„é‚€è¯· TRUE è‡ªåŠ¨æ‹’ç»   FALSE æ‰‹åŠ¨
-	KTeamApplyList	m_sApplyList[MAX_TEAM_APPLY_LIST];	// å¦‚æœä¸ºé˜Ÿé•¿ï¼Œé˜Ÿä¼çš„ç”³è¯·äººåˆ—è¡¨
+	int		m_nApplyCaptainID;	// ÉêÇë¼ÓÈëµÄÄ¿±ê¶ÓÎéµÄ¶Ó³¤µÄ npc id
+	DWORD	m_dwApplyTimer;		// ÉêÇëÊ±¼ä¼ÆÊıÆ÷£¨ÉêÇë¶à¾ÃÁË£¬³¬¹ıÊ±¼äÈ¡ÏûÉêÇë£©
+	BOOL	m_bAutoRefuseInviteFlag;// ÊÇ·ñ×Ô¶¯¾Ü¾ø±ğÈËµÄ¼ÓÈë¶ÓÎéµÄÑûÇë TRUE ×Ô¶¯¾Ü¾ø   FALSE ÊÖ¶¯
+	KTeamApplyList	m_sApplyList[MAX_TEAM_APPLY_LIST];	// Èç¹ûÎª¶Ó³¤£¬¶ÓÎéµÄÉêÇëÈËÁĞ±í
 	BOOL	m_bAutoAccept;
 	BOOL	m_bAutoAcceptWithName;
 	BOOL	m_bCreatTeamFlag;
@@ -108,15 +108,15 @@ public:
 	KPlayerTeam();
 	void	Release();
 	void	ReleaseList();
-	BOOL	ApplyCreate();//char *lpszTeamName);				// ç”³è¯·åˆ›å»ºä¸€æ”¯é˜Ÿä¼
-	void	InviteAdd(DWORD dwNpcID);						// é‚€è¯·åŠ å…¥é˜Ÿä¼
-	void	ReceiveInvite(TEAM_INVITE_ADD_SYNC *pInvite);	// æ”¶åˆ°é‚€è¯·
-	void	ReplyInvite(int nIdx, int nResult);				// å›å¤é‚€è¯·
-	void	SetAutoRefuseInvite(BOOL bFlag);				// è®¾å®šæ˜¯å¦è‡ªåŠ¨æ‹’ç»åˆ«äººçš„åŠ å…¥é˜Ÿä¼çš„é‚€è¯·
-	BOOL	GetAutoRefuseState();							// è·å¾—æ˜¯å¦è‡ªåŠ¨æ‹’ç»åˆ«äººçš„åŠ å…¥é˜Ÿä¼çš„é‚€è¯·çŠ¶æ€
-	int		GetInfo(KUiPlayerTeam *pTeam);					// è·å¾—è‡ªèº«é˜Ÿä¼ä¿¡æ¯ï¼ˆç»™ç•Œé¢ï¼‰
-	void	UpdateInterface();								// æ›´æ–°ç•Œé¢æ˜¾ç¤º
-	void	DeleteOneFromApplyList(DWORD dwNpcID);			// ä»ç”³è¯·äººåˆ—è¡¨ä¸­åˆ é™¤æŸä¸ªç”³è¯·äºº
+	BOOL	ApplyCreate();//char *lpszTeamName);				// ÉêÇë´´½¨Ò»Ö§¶ÓÎé
+	void	InviteAdd(DWORD dwNpcID);						// ÑûÇë¼ÓÈë¶ÓÎé
+	void	ReceiveInvite(TEAM_INVITE_ADD_SYNC *pInvite);	// ÊÕµ½ÑûÇë
+	void	ReplyInvite(int nIdx, int nResult);				// »Ø¸´ÑûÇë
+	void	SetAutoRefuseInvite(BOOL bFlag);				// Éè¶¨ÊÇ·ñ×Ô¶¯¾Ü¾ø±ğÈËµÄ¼ÓÈë¶ÓÎéµÄÑûÇë
+	BOOL	GetAutoRefuseState();							// »ñµÃÊÇ·ñ×Ô¶¯¾Ü¾ø±ğÈËµÄ¼ÓÈë¶ÓÎéµÄÑûÇë×´Ì¬
+	int		GetInfo(KUiPlayerTeam *pTeam);					// »ñµÃ×ÔÉí¶ÓÎéĞÅÏ¢£¨¸ø½çÃæ£©
+	void	UpdateInterface();								// ¸üĞÂ½çÃæÏÔÊ¾
+	void	DeleteOneFromApplyList(DWORD dwNpcID);			// ´ÓÉêÇëÈËÁĞ±íÖĞÉ¾³ıÄ³¸öÉêÇëÈË
 
 	void	SetCreatTeamFlag(BOOL bFlag);
 	BOOL	GetCreatTeamFlag() {return m_bCreatTeamFlag;};
@@ -127,58 +127,58 @@ public:
 #endif
 
 
-// æ­¤é˜Ÿä¼æ˜¯å¦ä¸ºç©ºé€šè¿‡åˆ¤æ–­é˜Ÿé•¿ id æ¥å†³å®šï¼Œå½“ä¸º -1 æ—¶ä¸ºç©ºï¼ˆæ¯ä¸ªé˜Ÿä¼å¿…å®šæœ‰ä¸€ä¸ªé˜Ÿé•¿ï¼‰
+// ´Ë¶ÓÎéÊÇ·ñÎª¿ÕÍ¨¹ıÅĞ¶Ï¶Ó³¤ id À´¾ö¶¨£¬µ±Îª -1 Ê±Îª¿Õ£¨Ã¿¸ö¶ÓÎé±Ø¶¨ÓĞÒ»¸ö¶Ó³¤£©
 class KTeam
 {
 private:
-	int		m_nIndex;									// æœ¬ Team åœ¨ g_Team ä¸­çš„ä½ç½®
+	int		m_nIndex;									// ±¾ Team ÔÚ g_Team ÖĞµÄÎ»ÖÃ
 #ifdef _SERVER
 	int		m_nTurnPick;
 #endif
 public:
-	int		m_nState;									// é˜Ÿä¼çŠ¶æ€ï¼šTeam_S_Open Team_S_Close
+	int		m_nState;									// ¶ÓÎé×´Ì¬£ºTeam_S_Open Team_S_Close
 	int		m_nModePick;
-	int		m_nCaptain;									// é˜Ÿé•¿ id ï¼ŒæœåŠ¡å™¨ç«¯ç”¨ player index ï¼Œå®¢æˆ·ç«¯ç”¨ npc id ï¼Œ-1 ä¸ºç©º
-	int		m_nMember[MAX_TEAM_MEMBER];					// æ‰€æœ‰é˜Ÿå‘˜ id ï¼ŒæœåŠ¡å™¨ç«¯ç”¨ player index ï¼Œå®¢æˆ·ç«¯ç”¨ npc id ï¼Œ-1 ä¸ºç©º
-	int		m_nMemNum;									// å·²æœ‰é˜Ÿå‘˜æ•°é‡(ä¸åŒ…æ‹¬é˜Ÿé•¿)
+	int		m_nCaptain;									// ¶Ó³¤ id £¬·şÎñÆ÷¶ËÓÃ player index £¬¿Í»§¶ËÓÃ npc id £¬-1 Îª¿Õ
+	int		m_nMember[MAX_TEAM_MEMBER];					// ËùÓĞ¶ÓÔ± id £¬·şÎñÆ÷¶ËÓÃ player index £¬¿Í»§¶ËÓÃ npc id £¬-1 Îª¿Õ
+	int		m_nMemNum;									// ÒÑÓĞ¶ÓÔ±ÊıÁ¿(²»°üÀ¨¶Ó³¤)
 #ifndef _SERVER
-	int		m_nMemLevel[MAX_TEAM_MEMBER + 1];			// é˜Ÿå‘˜ç­‰çº§ (ç¬¬ä¸€ä¸ªé˜Ÿå‘˜ä¸ºé˜Ÿé•¿) (é˜Ÿå‘˜å‡çº§çš„æ—¶å€™è¦é€šçŸ¥æ‰€æœ‰å…¶ä»–é˜Ÿå‘˜ not end)
-	char	m_szMemName[MAX_TEAM_MEMBER + 1][32];		// é˜Ÿå‘˜åå­— (ç¬¬ä¸€ä¸ªé˜Ÿå‘˜ä¸ºé˜Ÿé•¿)
-	DWORD	m_nTeamServerID;								// é˜Ÿä¼åœ¨æœåŠ¡å™¨ä¸Šçš„å”¯ä¸€æ ‡è¯†
+	int		m_nMemLevel[MAX_TEAM_MEMBER + 1];			// ¶ÓÔ±µÈ¼¶ (µÚÒ»¸ö¶ÓÔ±Îª¶Ó³¤) (¶ÓÔ±Éı¼¶µÄÊ±ºòÒªÍ¨ÖªËùÓĞÆäËû¶ÓÔ± not end)
+	char	m_szMemName[MAX_TEAM_MEMBER + 1][32];		// ¶ÓÔ±Ãû×Ö (µÚÒ»¸ö¶ÓÔ±Îª¶Ó³¤)
+	DWORD	m_nTeamServerID;								// ¶ÓÎéÔÚ·şÎñÆ÷ÉÏµÄÎ¨Ò»±êÊ¶
 #endif
 
 public:
-	KTeam();											// æ„é€ å‡½æ•°
-	void	Release();									// æ¸…ç©º
-	void	SetIndex(int nIndex);						// è®¾å®š Team åœ¨ g_Team ä¸­çš„ä½ç½®
-	BOOL	SetTeamOpen(BOOL bNotify = FALSE);			// è®¾å®šé˜Ÿä¼çŠ¶æ€ï¼šæ‰“å¼€ï¼ˆå…è®¸æ¥å—æ–°æˆå‘˜ï¼‰
-	BOOL	SetTeamClose(BOOL bNotify = FALSE);			// è®¾å®šé˜Ÿä¼çŠ¶æ€ï¼šå…³é—­ï¼ˆä¸å…è®¸æ¥å—æ–°æˆå‘˜ï¼‰
-	BOOL	SetModePick(int nMode);								// è®¾å®šé˜Ÿä¼çŠ¶æ€ï¼šå…³é—­ï¼ˆä¸å…è®¸æ¥å—æ–°æˆå‘˜ï¼‰
-	int		CalcCaptainPower();							// è®¡ç®—é˜Ÿé•¿èƒ½ç»Ÿå¸…é˜Ÿå‘˜çš„äººæ•°
-	int		FindFree();									// å¯»æ‰¾é˜Ÿå‘˜ç©ºä½
-	int		FindMemberID(DWORD dwNpcID);				// å¯»æ‰¾å…·æœ‰æŒ‡å®šnpc idçš„é˜Ÿå‘˜ï¼ˆä¸åŒ…æ‹¬é˜Ÿé•¿ï¼‰
+	KTeam();											// ¹¹Ôìº¯Êı
+	void	Release();									// Çå¿Õ
+	void	SetIndex(int nIndex);						// Éè¶¨ Team ÔÚ g_Team ÖĞµÄÎ»ÖÃ
+	BOOL	SetTeamOpen(BOOL bNotify = FALSE);			// Éè¶¨¶ÓÎé×´Ì¬£º´ò¿ª£¨ÔÊĞí½ÓÊÜĞÂ³ÉÔ±£©
+	BOOL	SetTeamClose(BOOL bNotify = FALSE);			// Éè¶¨¶ÓÎé×´Ì¬£º¹Ø±Õ£¨²»ÔÊĞí½ÓÊÜĞÂ³ÉÔ±£©
+	BOOL	SetModePick(int nMode);								// Éè¶¨¶ÓÎé×´Ì¬£º¹Ø±Õ£¨²»ÔÊĞí½ÓÊÜĞÂ³ÉÔ±£©
+	int		CalcCaptainPower();							// ¼ÆËã¶Ó³¤ÄÜÍ³Ë§¶ÓÔ±µÄÈËÊı
+	int		FindFree();									// Ñ°ÕÒ¶ÓÔ±¿ÕÎ»
+	int		FindMemberID(DWORD dwNpcID);				// Ñ°ÕÒ¾ßÓĞÖ¸¶¨npc idµÄ¶ÓÔ±£¨²»°üÀ¨¶Ó³¤£©
 #ifdef _SERVER
-	BOOL	CreateTeam(int nPlayerIndex);//, char *lpszName);// åˆ›å»ºä¸€æ”¯é˜Ÿä¼
-	BOOL	AddMember(int nPlayerIndex);				// æ·»åŠ ä¸€ä¸ªé˜Ÿä¼æˆå‘˜
-	BOOL	DeleteMember(int nPlayerIndex);				// åˆ é™¤ä¸€ä¸ªé˜Ÿä¼æˆå‘˜
-	BOOL	CheckFull();								// åˆ¤æ–­é˜Ÿä¼æ˜¯å¦å·²ç»æ»¡å‘˜
+	BOOL	CreateTeam(int nPlayerIndex);//, char *lpszName);// ´´½¨Ò»Ö§¶ÓÎé
+	BOOL	AddMember(int nPlayerIndex);				// Ìí¼ÓÒ»¸ö¶ÓÎé³ÉÔ±
+	BOOL	DeleteMember(int nPlayerIndex);				// É¾³ıÒ»¸ö¶ÓÎé³ÉÔ±
+	BOOL	CheckFull();								// ÅĞ¶Ï¶ÓÎéÊÇ·ñÒÑ¾­ÂúÔ±
 	void	NotifyModePick();
 	void	NotifyMemberModePick(int nPlayerIndex);
-	BOOL	IsOpen();									// åˆ¤æ–­é˜Ÿä¼æ˜¯å¦æ˜¯æ‰“å¼€çŠ¶æ€
-	BOOL	CheckIn(int nSelfIndex, int nPlayerIndex);					// åˆ¤æ–­æŸäººæ˜¯å¦æ˜¯é˜Ÿä¼æˆå‘˜
-	BOOL	CheckItemIn(int nPlayerIndex);					// åˆ¤æ–­æŸäººæ˜¯å¦æ˜¯é˜Ÿä¼æˆå‘˜
+	BOOL	IsOpen();									// ÅĞ¶Ï¶ÓÎéÊÇ·ñÊÇ´ò¿ª×´Ì¬
+	BOOL	CheckIn(int nSelfIndex, int nPlayerIndex);					// ÅĞ¶ÏÄ³ÈËÊÇ·ñÊÇ¶ÓÎé³ÉÔ±
+	BOOL	CheckItemIn(int nPlayerIndex);					// ÅĞ¶ÏÄ³ÈËÊÇ·ñÊÇ¶ÓÎé³ÉÔ±
 #endif
 #ifndef _SERVER
-	// å®¢æˆ·ç«¯åˆ›å»ºä¸€æ”¯é˜Ÿä¼ï¼ˆå®¢æˆ·ç«¯åªå¯èƒ½å­˜åœ¨ä¸€æ”¯é˜Ÿä¼ï¼Œå±äºæœ¬åœ°ç©å®¶ï¼‰
+	// ¿Í»§¶Ë´´½¨Ò»Ö§¶ÓÎé£¨¿Í»§¶ËÖ»¿ÉÄÜ´æÔÚÒ»Ö§¶ÓÎé£¬ÊôÓÚ±¾µØÍæ¼Ò£©
 	void	CreateTeam(int nCaptainNpcID, char *lpszCaptainName, int nCaptainLevel, DWORD nTeamServerID);
-	BOOL	AddMember(DWORD dwNpcID, int nLevel, char *lpszNpcName);// æ·»åŠ ä¸€ä¸ªé˜Ÿä¼æˆå‘˜
-	void	DeleteMember(DWORD dwNpcID);				// å®¢æˆ·ç«¯åˆ é™¤ä¸€ä¸ªé˜Ÿä¼æˆå‘˜
-	int		GetMemberInfo(KUiPlayerItem *pList, int nCount);	// è¾“å‡ºé˜Ÿå‘˜ä¿¡æ¯(æŒ‰ç•Œé¢çš„è¦æ±‚ï¼Œç»™ç•Œé¢)
+	BOOL	AddMember(DWORD dwNpcID, int nLevel, char *lpszNpcName);// Ìí¼ÓÒ»¸ö¶ÓÎé³ÉÔ±
+	void	DeleteMember(DWORD dwNpcID);				// ¿Í»§¶ËÉ¾³ıÒ»¸ö¶ÓÎé³ÉÔ±
+	int		GetMemberInfo(KUiPlayerItem *pList, int nCount);	// Êä³ö¶ÓÔ±ĞÅÏ¢(°´½çÃæµÄÒªÇó£¬¸ø½çÃæ)
 #endif
 
 private:
 #ifdef _SERVER
-	BOOL	CheckAddCondition(int nPlayerIndex);		// åˆ¤æ–­åŠ å…¥é˜Ÿä¼çš„å±æ€§æ¡ä»¶æ˜¯å¦åˆé€‚
+	BOOL	CheckAddCondition(int nPlayerIndex);		// ÅĞ¶Ï¼ÓÈë¶ÓÎéµÄÊôĞÔÌõ¼şÊÇ·ñºÏÊÊ
 #endif
 
 };
@@ -189,11 +189,11 @@ extern	KTeam	g_Team[MAX_TEAM];
 class KTeamSet
 {
 public:
-	void	Init();										// åˆå§‹åŒ–
-	int		CreateTeam(int nPlayerID);//, char *lpszName);	// åˆ›å»ºä¸€æ”¯é˜Ÿä¼
+	void	Init();										// ³õÊ¼»¯
+	int		CreateTeam(int nPlayerID);//, char *lpszName);	// ´´½¨Ò»Ö§¶ÓÎé
 private:
-	int		FindFree();									// æŸ¥æ‰¾ g_Team ä¸­çš„ç©ºä½
-//	BOOL	CheckName(char *lpszName);					// åˆ¤æ–­é˜Ÿåæ˜¯å¦å¯ç”¨
+	int		FindFree();									// ²éÕÒ g_Team ÖĞµÄ¿ÕÎ»
+//	BOOL	CheckName(char *lpszName);					// ÅĞ¶Ï¶ÓÃûÊÇ·ñ¿ÉÓÃ
 };
 
 extern	KTeamSet	g_TeamSet;

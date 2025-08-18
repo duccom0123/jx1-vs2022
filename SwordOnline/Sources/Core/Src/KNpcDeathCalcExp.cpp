@@ -3,7 +3,7 @@
 //
 // File:	KNpcDeathCalcExp.cpp
 // Date:	2003.07.21
-// Code:	杈瑰煄娴瓙
+// Code:	边城浪子
 // Desc:	KNpcDeathCalcExp Class
 //---------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ int		KNpcDeathCalcExp::CalcExp()
 	{
 		if (m_sCalcInfo[i].m_nAttackIdx <= 0)
 			continue;
-		// 濡傛灉缁勯槦
+		// 如果组队
 		if (Player[m_sCalcInfo[i].m_nAttackIdx].m_cTeam.m_nFlag && Player[m_sCalcInfo[i].m_nAttackIdx].m_cTeam.m_nID >= 0)
 		{
 			int		nTeam, nPlayer, nDistance, nMinDistance;
@@ -93,14 +93,14 @@ int		KNpcDeathCalcExp::CalcExp()
 			nPlayer = 0;
 			nMinDistance = PLAYER_SHARE_EXP_DISTANCE * PLAYER_SHARE_EXP_DISTANCE;
 			nTeam = Player[m_sCalcInfo[i].m_nAttackIdx].m_cTeam.m_nID;
-			// 闃熼暱
+			// 队长
 			nDistance = KNpcSet::GetDistanceSquare(m_nNpcIdx, Player[g_Team[nTeam].m_nCaptain].m_nIndex);
 			if (nDistance >= 0 && nDistance < nMinDistance)
 			{
 				nMinDistance = nDistance;
 				nPlayer = g_Team[nTeam].m_nCaptain;
 			}
-			// 闃熷憳
+			// 队员
 			for (j = 0; j < MAX_TEAM_MEMBER; j++)
 			{
 				if (g_Team[nTeam].m_nMember[j] <= 0)
@@ -123,7 +123,7 @@ int		KNpcDeathCalcExp::CalcExp()
 				Player[nPlayer].AddExp(m_sCalcInfo[i].m_nTotalDamage * Npc[m_nNpcIdx].m_CurrentExperience / Npc[m_nNpcIdx].m_CurrentLifeMax, Npc[m_nNpcIdx].m_Level);
 			}
 		}
-		// 濡傛灉娌℃湁缁勯槦
+		// 如果没有组队
 		else
 		{
 			int nDistance = KNpcSet::GetDistanceSquare(m_nNpcIdx, Player[m_sCalcInfo[i].m_nAttackIdx].m_nIndex);

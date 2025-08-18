@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	Êñá‰ª∂Âêç		Ôºö	UiTrade.h
-//	ÂàõÂª∫ËÄÖ		Ôºö	Wooy(Wu yue)
-//	ÂàõÂª∫Êó∂Èó¥	Ôºö	2002-12-21
-//	ÂäüËÉΩÊèèËø∞	Ôºö	npc‰∫§ÊòìÁ≥ªÁªüÁïåÈù¢
+//	Œƒº˛√˚		£∫	UiTrade.h
+//	¥¥Ω®’ﬂ		£∫	Wooy(Wu yue)
+//	¥¥Ω® ±º‰	£∫	2002-12-21
+//	π¶ƒ‹√Ë ˆ	£∫	npcΩª“◊œµÕ≥ΩÁ√Ê
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -36,7 +36,7 @@ KUiPlayerShop::KUiPlayerShop()
 }
 
 //--------------------------------------------------------------------------
-//	ÂäüËÉΩÔºöÂ¶ÇÊûúÁ™óÂè£Ê≠£Ë¢´ÊòæÁ§∫ÔºåÂàôËøîÂõûÂÆû‰æãÊåáÈíà
+//	π¶ƒ‹£∫»Áπ˚¥∞ø⁄’˝±ªœ‘ æ£¨‘Ú∑µªÿ µ¿˝÷∏’Î
 //--------------------------------------------------------------------------
 KUiPlayerShop* KUiPlayerShop::GetIfVisible()
 {
@@ -44,7 +44,7 @@ KUiPlayerShop* KUiPlayerShop::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	ÂäüËÉΩÔºöÊâìÂºÄÁ™óÂè£ÔºåËøîÂõûÂîØ‰∏ÄÁöÑ‰∏Ä‰∏™Á±ªÂØπË±°ÂÆû‰æã
+//	π¶ƒ‹£∫¥Úø™¥∞ø⁄£¨∑µªÿŒ®“ªµƒ“ª∏ˆ¿‡∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 KUiPlayerShop* KUiPlayerShop::OpenWindow(KUiPlayerItem* pDest)
 {
@@ -72,7 +72,7 @@ KUiPlayerShop* KUiPlayerShop::OpenWindow(KUiPlayerItem* pDest)
 }
 
 //--------------------------------------------------------------------------
-//	ÂäüËÉΩÔºöÂÖ≥Èó≠Á™óÂè£ÔºåÂêåÊó∂ÂèØ‰ª•ÈÄâÂàôÊòØÂê¶Âà†Èô§ÂØπË±°ÂÆû‰æã
+//	π¶ƒ‹£∫πÿ±’¥∞ø⁄£¨Õ¨ ±ø…“‘—°‘Ú «∑Ò…æ≥˝∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 void KUiPlayerShop::CloseWindow()
 {
@@ -89,7 +89,7 @@ void KUiPlayerShop::CloseWindow()
 	}
 }
 
-//ÂàùÂßãÂåñ
+//≥ı ºªØ
 void KUiPlayerShop::Initialize()
 {
 	AddChild(&m_ItemsBox);
@@ -104,7 +104,7 @@ void KUiPlayerShop::Initialize()
 	LoadScheme(Scheme);
 }
 
-//ËΩΩÂÖ•ÁïåÈù¢ÊñπÊ°à
+//‘ÿ»ÎΩÁ√Ê∑Ω∞∏
 void KUiPlayerShop::LoadScheme(const char* pScheme)
 {
 	if (m_pSelf)
@@ -129,7 +129,7 @@ void KUiPlayerShop::CancelTrade()
 	CloseWindow();
 }
 
-//Á™óÂè£ÂáΩÊï∞
+//¥∞ø⁄∫Ø ˝
 int	KUiPlayerShop::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	switch (uMsg)
@@ -223,7 +223,7 @@ void KUiPlayerShop::UpdateItem()
 	m_pObjsList = NULL;
 	if (m_pObjsList = (KUiObjAtContRegion*)malloc(sizeof(KUiObjAtContRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(GDI_TRADE_PLAYER_ITEM, (unsigned int)m_pObjsList, nCount);//ÂçïÁ∫øÁ®ãÊâßË°åÔºånCountÂÄº‰∏çÂèò
+		g_pCoreShell->GetGameData(GDI_TRADE_PLAYER_ITEM, (unsigned int)m_pObjsList, nCount);//µ•œﬂ≥Ã÷¥––£¨nCount÷µ≤ª±‰
 
 		for (int i = 0; i < nCount; i++)
 		{

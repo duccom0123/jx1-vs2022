@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--æŒ‰é”®çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--°´¼ü´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-22
@@ -21,23 +21,23 @@ extern iRepresentShell*	g_pRepresentShell;
 extern iCoreShell*		g_pCoreShell;
 
 KWndButton*	 KWndButton::m_pPressedDownBtn = NULL;
-unsigned int KWndButton::ms_uBtnTipTextColor = 0xffffffff;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
-int			 KWndButton::ms_nDisableBtnTip   = false;		//æ˜¯å¦é™æ­¢æŒ‰é’®çš„æç¤ºæ–‡å­—
+unsigned int KWndButton::ms_uBtnTipTextColor = 0xffffffff;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
+int			 KWndButton::ms_nDisableBtnTip   = false;		//ÊÇ·ñ¾²Ö¹°´Å¥µÄÌáÊ¾ÎÄ×Ö
 
-//è®¾ç½®æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+//ÉèÖÃ°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
 void KWndButton::SetAllButtonTipTextColor(unsigned int uColor)
 {
 	ms_uBtnTipTextColor = uColor;
 }
 
-//ç¦æ­¢/å…è®¸æŒ‰é’®çš„æç¤ºæ–‡å­—
+//½ûÖ¹/ÔÊĞí°´Å¥µÄÌáÊ¾ÎÄ×Ö
 void KWndButton::EnableAllButtonTip(int bEnable)
 {
 	ms_nDisableBtnTip = !bEnable;
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KWndButton::KWndButton()
 {
@@ -70,7 +70,7 @@ void KWndButton::Clone(KWndButton* pCopy)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–çª—å£
+//	¹¦ÄÜ£º³õÊ¼»¯´°¿Ú
 //--------------------------------------------------------------------------
 int KWndButton::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -131,7 +131,7 @@ int KWndButton::Init(KIniFile* pIniFile, const char* pSection)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŒ‰é’®æ˜¯å¦å‡ºäºæŒ‰ä¸‹çŠ¶æ€
+//	¹¦ÄÜ£º°´Å¥ÊÇ·ñ³öÓÚ°´ÏÂ×´Ì¬
 //--------------------------------------------------------------------------
 int KWndButton::IsButtonChecked()
 {
@@ -142,7 +142,7 @@ int KWndButton::IsButtonChecked()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æŒ‰é’®çš„æŒ‰ä¸‹çŠ¶æ€
+//	¹¦ÄÜ£ºÉèÖÃ°´Å¥µÄ°´ÏÂ×´Ì¬
 //--------------------------------------------------------------------------
 void KWndButton::CheckButton(int bChecked)
 {
@@ -165,7 +165,7 @@ int	KWndButton::IsButtonActive()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°ï¼ˆå¤„ç†æ¶ˆæ¯ï¼‰
+//	¹¦ÄÜ£º´°¿Úº¯Êı£¨´¦ÀíÏûÏ¢£©
 //--------------------------------------------------------------------------
 int KWndButton::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -286,7 +286,7 @@ int KWndButton::SetToolTipInfo(char* szTip, int nMax)
 
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—ä½“ç»˜åˆ¶
+//	¹¦ÄÜ£º´°Ìå»æÖÆ
 //--------------------------------------------------------------------------
 void KWndButton::PaintWindow()
 {
@@ -310,7 +310,7 @@ void KWndButton::PaintWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æŒ‰ä¸‹
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼üÔÚ´Ë°´ÏÂ
 //--------------------------------------------------------------------------
 void KWndButton::OnLBtnDown(bool bDoubleClick)
 {
@@ -360,7 +360,7 @@ void KWndButton::OnRButtonDown()
 			(unsigned int)(KWndWindow*)this, (m_Flag & WNDBTN_F_CHECKED));
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®åœ¨æ­¤æ”¾å¼€
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼üÔÚ´Ë·Å¿ª
 //--------------------------------------------------------------------------
 void KWndButton::OnLBtnUp()
 {
@@ -378,7 +378,7 @@ void KWndButton::OnLBtnUp()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå“åº”é¼ æ ‡å·¦é”®æŒ‰ä¸‹æ—¶çš„ç§»åŠ¨
+//	¹¦ÄÜ£ºÏìÓ¦Êó±ê×ó¼ü°´ÏÂÊ±µÄÒÆ¶¯
 //--------------------------------------------------------------------------
 void KWndButton::OnLBtnDownMove()
 {
@@ -392,7 +392,7 @@ void KWndButton::OnLBtnDownMove()
 	}
 }
 
-//ç¦æ­¢æˆ–è€…å…è®¸ä½¿çª—å£è¢«æ“ä½œ
+//½ûÖ¹»òÕßÔÊĞíÊ¹´°¿Ú±»²Ù×÷
 void KWndButton::Enable(int bEnable)
 {
 	KWndWindow::Enable(bEnable);
@@ -456,12 +456,12 @@ void KWndImageTextButton::Set6IntText(int nNumber, char Separator)
 	m_Text.Set6IntText(nNumber, Separator);
 }
 
-void KWndImageTextButton::SetText(const char* pText, int nLen)	//è®¾ç½®æ–‡æœ¬æ–‡å­—
+void KWndImageTextButton::SetText(const char* pText, int nLen)	//ÉèÖÃÎÄ±¾ÎÄ×Ö
 {
 	m_Text.SetText(pText, nLen);
 }
 
-int	KWndImageTextButton::GetText(char* pBuffer, int nSize)		//è·å–å­—ç¬¦ä¸²å†…å®¹
+int	KWndImageTextButton::GetText(char* pBuffer, int nSize)		//»ñÈ¡×Ö·û´®ÄÚÈİ
 {
 	return m_Text.GetText(pBuffer, nSize);
 }

@@ -5,7 +5,7 @@
 #include "KMission.h"
 
 #define MAX_MISSIONARRAY_VALUE_COUNT 10
-//ç®¡ç†Missionçš„é›†åˆ
+//¹ÜÀíMissionµÄ¼¯ºÏ
 
 template <class T, size_t ulSize>
 class KMissionArray : public KLinkArrayTemplate<T,  ulSize>
@@ -91,7 +91,7 @@ public:
 };
 
 
-//ç®¡ç†å®šæ—¶è§¦å‘å™¨çš„é›†åˆ
+//¹ÜÀí¶¨Ê±´¥·¢Æ÷µÄ¼¯ºÏ
 template <class T, size_t ulSize, PF_TimerCallBackFun CallFun>
 class KTimerFunArray :public KLinkArrayTemplate < T, ulSize>
 {

@@ -30,7 +30,7 @@ private:
 	void					Initialize();
 	void					LoadScheme(const char* pScheme);
 	int						WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void					UpdateData();	//æ›´æ–°æŠ€èƒ½
+	void					UpdateData();	//¸üĞÂ¼¼ÄÜ
 	void					Breathe();
 	void					OnCheckInput();
 	void					CartRelease();
@@ -98,7 +98,7 @@ public:
 	KWndText80            		m_Price_NumberText;
 	KWndLabeledButton			m_MarketGoods_Buy;
 private: 
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
     
 };
 
@@ -153,8 +153,8 @@ private:
 	int      					m_nCurrentPage;
 	int     					m_nCurrentShopId;
 	int      					m_nPageCount;
-	unsigned int				m_uEnableTextColor;		//m_ToggleBtnæ ‡é¢˜æ–‡å­—çš„é¢œè‰²
-	unsigned int				m_uInvalidTextColor;	//m_ToggleBtnæ ‡é¢˜æ–‡å­—çš„é¢œè‰²	
+	unsigned int				m_uEnableTextColor;		//m_ToggleBtn±êÌâÎÄ×ÖµÄÑÕÉ«
+	unsigned int				m_uInvalidTextColor;	//m_ToggleBtn±êÌâÎÄ×ÖµÄÑÕÉ«	
 	
 	KUiObjAtContRegion*	m_pObjsList;
 	int					m_nObjCount;
@@ -165,16 +165,16 @@ private:
 class KUiDynamicShop : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiDynamicShop*		OpenWindow(BuySellInfo* pBSinfo);				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiDynamicShop*		GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void			CloseWindow();				//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiDynamicShop*		OpenWindow(BuySellInfo* pBSinfo);				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiDynamicShop*		GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void			CloseWindow();				//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
 	static void			CancelTrade();
 	void				UpdateShop(BuySellInfo* pBSinfo);
 	void				UpdateData();
 	void				UpdateItem(KUiObjAtContRegion* pItem, int bAdd);
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 private:
 	KUiDynamicShop();
 	~KUiDynamicShop() {}
@@ -183,7 +183,7 @@ private:
 	void	Clear();
 	void	OnClickButton(KWndButton* pWnd, int bCheck);
 	void	OnBuyItem(KUiDraggedObject* pItem, bool bDoImmed);
-	void	Initialize();						//åˆå§‹åŒ–
+	void	Initialize();						//³õÊ¼»¯
 private:
 	static KUiDynamicShop*		m_pSelf;
 private:
@@ -195,7 +195,7 @@ private:
 	
 	BuySellInfo					m_pBSinfo;
 	KWndLabeledButton			m_SellType[MAX_SUPERSHOP_PAGETAB];	
-	KWndObjectMatrix			m_ItemsBox;		//ç‰©å“æ 
+	KWndObjectMatrix			m_ItemsBox;		//ÎïÆ·À¸
 	KWndLabeledButton			m_BuyBtn;
 	KWndLabeledButton			m_SellBtn;
 	KWndLabeledButton			m_RepairBtn;

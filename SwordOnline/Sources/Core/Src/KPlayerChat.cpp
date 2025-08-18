@@ -3,7 +3,7 @@
 //
 // File:	KPlayerChat.cpp
 // Date:	2002.10.05
-// Code:	Â±ÃŸÂ³Ã‡Ã€Ã‹Ã—Ã“
+// Code:	±ß³ÇÀË×Ó
 // Desc:	PlayerChat Class
 //---------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@
 #include "KTongProtocol.h"
 
 //---------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‡Ã¥Â¿Ã•
+//	¹¦ÄÜ£ºÇå¿Õ
 //---------------------------------------------------------------------------
 void	KPlayerChat::Release()
 {
@@ -53,7 +53,7 @@ void	KPlayerChat::SendSystemInfo(int nType, int nTargetIdx, char *lpszSendName, 
 	if(nTargetIdx)
 	{
 		TReplaceText(lpszSentence, PLAYERNAME_KEY, Npc[Player[nTargetIdx].m_nIndex].Name);
-		TReplaceText(lpszSentence, SEXNAME_KEY, Npc[Player[nTargetIdx].m_nIndex].m_nSex? "CÂ« nÂ­Â¬ng":"ThiÃ•u hiÃ–p");
+		TReplaceText(lpszSentence, SEXNAME_KEY, Npc[Player[nTargetIdx].m_nIndex].m_nSex? "C« n­¬ng":"ThiÕu hiÖp");
 		nSentenceLength = strlen(lpszSentence);
 	}
 
@@ -78,14 +78,14 @@ void	KPlayerChat::SendSystemInfo(int nType, int nTargetIdx, char *lpszSendName, 
 	pCccSync->ProtocolType = chat_channelchat;
 	pCccSync->wSize = chatsize - 1;
 	pCccSync->packageID = -1;
-	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // Â¿Ã‰Ã„ÃœÃÃ¨Ã’ÂªÂ¸Ã¹Â¾ÃÃÃ¦Â¼Ã’Ã‰Ã­Â·ÃÂ¸Ã„Â¶Â¯
+	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // ¿ÉÄÜĞèÒª¸ù¾İÍæ¼ÒÉí·İ¸Ä¶¯
 	pCccSync->channelid = nChannedID;
 	pCccSync->sentlen = nSentenceLength;
 	memcpy(pCccSync + 1, lpszSentence, nSentenceLength);
 	pCccSync->item[0] = 0;
 	pCccSync->someflag = 0;
 
-	if (bAll)	// Â¸Ã¸ÃˆÂ«ÃŒÃ¥ÃÃ¦Â¼Ã’Â·Â¢Ã‹Ã
+	if (bAll)	// ¸øÈ«ÌåÍæ¼Ò·¢ËÍ
 	{
 		int nTargetIdx;
 		nTargetIdx = PlayerSet.GetFirstPlayer();
@@ -95,7 +95,7 @@ void	KPlayerChat::SendSystemInfo(int nType, int nTargetIdx, char *lpszSendName, 
 			nTargetIdx = PlayerSet.GetNextPlayer();
 		}
 	}
-	else			// Â¸Ã¸Ã„Â³Â¸Ã¶ÃŒÃ˜Â¶Â¨ÃÃ¦Â¼Ã’Â·Â¢Ã‹Ã
+	else			// ¸øÄ³¸öÌØ¶¨Íæ¼Ò·¢ËÍ
 	{
 		if (nTargetIdx <= 0)
 		{
@@ -139,7 +139,7 @@ void KPlayerChat::SendGlobalSystemInfo(char *lpszSendName, char *lpszSentence, i
 	pCccSync->ProtocolType = chat_channelchat;
 	pCccSync->wSize = chatsize - 1;
 	pCccSync->packageID = -1;
-	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // Â¿Ã‰Ã„ÃœÃÃ¨Ã’ÂªÂ¸Ã¹Â¾ÃÃÃ¦Â¼Ã’Ã‰Ã­Â·ÃÂ¸Ã„Â¶Â¯
+	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // ¿ÉÄÜĞèÒª¸ù¾İÍæ¼ÒÉí·İ¸Ä¶¯
 	pCccSync->channelid = -1;
 	pCccSync->sentlen = nSentenceLength;
 	memcpy(pCccSync + 1, lpszSentence, nSentenceLength);
@@ -244,9 +244,9 @@ void KPlayerChat::SendInfoToIP(DWORD nIP, DWORD nID, char *lpszAccName, char *lp
 }
 #endif
 
-#define 	ADDBROTHER_UNITNAME 			"ThÂ©n nhÂ©n\n"
-#define 	ADDENEMY_UNITNAME	 			"CÃµu nhÂ©n\n"
-#define 	ADDMATE_UNITNAME	 			"PhÃ¨i ngÃ‰u\n"
+#define 	ADDBROTHER_UNITNAME 			"Th©n nh©n\n"
+#define 	ADDENEMY_UNITNAME	 			"Cõu nh©n\n"
+#define 	ADDMATE_UNITNAME	 			"Phèi ngÉu\n"
 
 #ifdef _SERVER
 void KPlayerChat::MakeBrother(const STRINGLIST& brothers)
@@ -256,7 +256,7 @@ void KPlayerChat::MakeBrother(const STRINGLIST& brothers)
 
 	static const size_t max_packagesize = 1000;
 	char buffer[max_packagesize];	//max package size
-	size_t maxsize = max_packagesize - 1;	//ÃÃ´Â¸Ã¶0ÂµÃ„ÃÂ»Ã–Ãƒ
+	size_t maxsize = max_packagesize - 1;	//Áô¸ö0µÄÎ»ÖÃ
 	size_t basesize = sizeof(FRIEND_ASSOCIATEBEVY);
 
 	FRIEND_ASSOCIATEBEVY* pGf = (FRIEND_ASSOCIATEBEVY*)(buffer);
@@ -276,11 +276,11 @@ void KPlayerChat::MakeBrother(const STRINGLIST& brothers)
 
 		if (cursor + appendsize > maxsize)
 		{
-			buffer[cursor++] = specOver;	//Â¼Ã“Â¸Ã¶Â½Ã¡ÃÂ²,Â·Â¢Ã—ÃŸ
+			buffer[cursor++] = specOver;	//¼Ó¸ö½áÎ²,·¢×ß
 
 			g_NewProtocolProcess.PushMsgInTong(buffer, cursor);
 
-			cursor = basesize;	//Â´Ã“ÃÂ·Â¿ÂªÃŠÂ¼
+			cursor = basesize;	//´ÓÍ·¿ªÊ¼
 		}
 
 		strcpy(buffer + cursor, dst.c_str());

@@ -29,12 +29,12 @@ private:
 	void			ProcessAIType8();
 	void			ProcessAIType9();
 	void			ProcessAIType10();*/
-	void			ProcessAIType01();		// æ™®é€šä¸»åŠ¨ç±»1
-	void			ProcessAIType02();		// æ™®é€šä¸»åŠ¨ç±»2
-	void			ProcessAIType03();		// æ™®é€šä¸»åŠ¨ç±»3
-	void			ProcessAIType04();		// æ™®é€šè¢«åŠ¨ç±»1
-	void			ProcessAIType05();		// æ™®é€šè¢«åŠ¨ç±»2
-	void			ProcessAIType06();		// æ™®é€šè¢«åŠ¨ç±»3
+	void			ProcessAIType01();		// ÆÕÍ¨Ö÷¶¯Àà1
+	void			ProcessAIType02();		// ÆÕÍ¨Ö÷¶¯Àà2
+	void			ProcessAIType03();		// ÆÕÍ¨Ö÷¶¯Àà3
+	void			ProcessAIType04();		// ÆÕÍ¨±»¶¯Àà1
+	void			ProcessAIType05();		// ÆÕÍ¨±»¶¯Àà2
+	void			ProcessAIType06();		// ÆÕÍ¨±»¶¯Àà3
 	void			FollowAttack(int nIdx);
 	BOOL			InEyeshot(int nIdx);
 	void			CommonAction();
@@ -50,9 +50,9 @@ private:
 #endif
 	friend class KNpc;
 #ifndef _SERVER
-	// è£…é¥°æ€§è´¨NPCè¿åŠ¨å‡½æ•°ç³»åˆ— 
+	// ×°ÊÎĞÔÖÊNPCÔË¶¯º¯ÊıÏµÁĞ 
 	// flying add these on Jun.4.2003
-	// æ‰€æœ‰è£…é¥°æ€§NPCè¿åŠ¨å¤„ç†å…¥å£ï¼Œç”±Activate(int)å†…éƒ¨è°ƒç”¨
+	// ËùÓĞ×°ÊÎĞÔNPCÔË¶¯´¦ÀíÈë¿Ú£¬ÓÉActivate(int)ÄÚ²¿µ÷ÓÃ
 	int				ProcessShowNpc();
 	int  			ShowNpcType11();
 	int				ShowNpcType12();
@@ -63,12 +63,12 @@ private:
 	int				ShowNpcType17();
 	int             GetNpcMoveOffset(int nDir, int nDistance, int *pnX, int *pnY);
 
-	// åˆ¤æ–­æ˜¯å¦è¶…å‡ºèŒƒå›´
+	// ÅĞ¶ÏÊÇ·ñ³¬³ö·¶Î§
 	//BOOL KeepActiveShowRange();
-	// 16/17 AiMode NPCçš„é€ƒé€¸åŠ¨ä½œ
+	// 16/17 AiMode NPCµÄÌÓÒİ¶¯×÷
 	int				DoShowFlee(int nIdx);
 
-	// åˆ¤æ–­æ˜¯å¦è¿™ä¸ªå¸§å†…å¯ä»¥ç»™è¯¥NPCä¸‹æŒ‡ä»¤
+	// ÅĞ¶ÏÊÇ·ñÕâ¸öÖ¡ÄÚ¿ÉÒÔ¸ø¸ÃNPCÏÂÖ¸Áî
 	BOOL			CanShowNpc();
 #endif
 	// flying add the function to get nearest player.

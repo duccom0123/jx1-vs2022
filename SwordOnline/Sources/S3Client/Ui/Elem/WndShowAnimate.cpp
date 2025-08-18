@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ‡æ¢æ˜¾ç¤ºçŠ¶æ€æ—¶å¸¦ç§»åŠ¨æ§åˆ¶çš„å›¾å½¢çš„çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÇĞ»»ÏÔÊ¾×´Ì¬Ê±´øÒÆ¶¯¿ØÖÆµÄÍ¼ĞÎµÄ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-17
@@ -28,7 +28,7 @@ void KWndShowAnimate::Clone(KWndShowAnimate* pCopy)
 	}
 }
 
-//åˆå§‹åŒ–
+//³õÊ¼»¯
 int KWndShowAnimate::Init(KIniFile* pIniFile, const char* pSection)
 {
 	if (KWndMovingImage::Init(pIniFile, pSection))
@@ -115,7 +115,7 @@ void KWndShowAnimate::ShowCompleted()
 }
 
 
-//çª—ä½“ç»˜åˆ¶
+//´°Ìå»æÖÆ
 void KWndShowAnimate::PaintWindow()
 {
 	if (m_nCurrentSpeed)

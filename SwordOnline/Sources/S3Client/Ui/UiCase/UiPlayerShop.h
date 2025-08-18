@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiTrade.h
-//	åˆ›å»ºè€…		ï¼š	Wooy(Wu yue)
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-12-21
-//	åŠŸèƒ½æè¿°	ï¼š	npcäº¤æ˜“ç³»ç»Ÿç•Œé¢
+//	ÎÄ¼şÃû		£º	UiTrade.h
+//	´´½¨Õß		£º	Wooy(Wu yue)
+//	´´½¨Ê±¼ä	£º	2002-12-21
+//	¹¦ÄÜÃèÊö	£º	npc½»Ò×ÏµÍ³½çÃæ
 // -------------------------------------------------------------------------
 #pragma once
 
@@ -17,14 +17,14 @@ struct KUiObjAtContRegion;
 class KUiPlayerShop : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiPlayerShop*		OpenWindow(KUiPlayerItem* pDest);				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiPlayerShop*		GetIfVisible();				//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void			CloseWindow();				//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void			LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiPlayerShop*		OpenWindow(KUiPlayerItem* pDest);				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiPlayerShop*		GetIfVisible();				//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void			CloseWindow();				//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void			LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
 	static void			CancelTrade();
 	void				UpdateData(KUiPlayerItem* pDest);	
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 	void			UpdateItem();
 
 private:
@@ -33,7 +33,7 @@ private:
 	void	Clear();
 	void	OnClickButton(KWndButton* pWnd, int bCheck);
 	void	OnBuyItem(KUiDraggedObject* pItem);
-	void	Initialize();						//åˆå§‹åŒ–
+	void	Initialize();						//³õÊ¼»¯
 private:
 	static KUiPlayerShop*		m_pSelf;
 private:
@@ -41,7 +41,7 @@ private:
 	int					m_nObjCount;
 	int					m_nPageCount;
 	int					m_nCurrentPage;
-	KWndObjectMatrix	m_ItemsBox;		//ç‰©å“æ 
+	KWndObjectMatrix	m_ItemsBox;		//ÎïÆ·À¸
 	KWndButton			m_CloseBtn;
 	KUiPlayerItem		m_Dest;
 	KWndText32			m_Name;

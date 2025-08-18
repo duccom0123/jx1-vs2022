@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--é€‰æ‹©æ¸¸æˆæœåŠ¡å™¨çª—å£
+//	½çÃæ--Ñ¡ÔñÓÎÏ··şÎñÆ÷´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-12
@@ -13,14 +13,14 @@
 class KUiNotice : protected KWndShowAnimate
 {
 public:
-	static KUiNotice* OpenWindow();				//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void			 CloseWindow(bool bDestroy);//å…³é—­çª—å£
+	static KUiNotice* OpenWindow();				//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void			 CloseWindow(bool bDestroy);//¹Ø±Õ´°¿Ú
 private:
 	KUiNotice();
 	~KUiNotice();
-	void	Initialize();						//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
+	void	Initialize();						//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
 	void	OnLogin();
 	void	OnCancel();
 	int		OnKeyDown(unsigned int uKey);

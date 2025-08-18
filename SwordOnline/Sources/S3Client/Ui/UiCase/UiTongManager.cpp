@@ -2,7 +2,7 @@
 File        : UiTongManager.cpp
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : Â¹ÃœÃ€Ã­Â°Ã¯Â»Ã¡ÂµÃ„Â½Ã§ÃƒÃ¦
+Description : ¹ÜÀí°ï»áµÄ½çÃæ
 *********************************************************************/
 
 #include "KWin32.h"
@@ -43,7 +43,7 @@ int             KUiTongManager::m_nMemberDataIndex = 0;
 int             KUiTongManager::m_nCaptainDataIndex = 0;
 
 #define TONG_MANAGER_INI "UiTongManager.ini"
-#define TONG_DATA_TEMP_FILE "Â°Ã¯Â»Ã¡ÃÃ™ÃŠÂ±ÃÃ„Â¼Ã¾.ini"
+#define TONG_DATA_TEMP_FILE "°ï»áÁÙÊ±ÎÄ¼ş.ini"
 
 #define TONG_REQUEST_INTERVAL 			100000
 
@@ -57,37 +57,37 @@ enum INPUT_STRING_PARAM
 
 char szArray_QingXiang[][64] = 
 {
-	"BÃ¡ trÃ¨ng mÃ´c nÂµy",
-	"HoÂµi niÃ–m",
-	"ThÃch PK",
-	"Tranh bÂ¸",
-	"TÃnh nÂ¨ng PVE",
-	"KÃ•t giao",
-	"TÃ—m cÃ¨ nhÂ©n",
-	"DÃ¹ thi vÂ« tranh"
+	"Bá trèng môc nµy",
+	"Hoµi niÖm",
+	"Thİch PK",
+	"Tranh b¸",
+	"Tİnh n¨ng PVE",
+	"KÕt giao",
+	"T×m cè nh©n",
+	"Dù thi v« tranh"
 };
 
 char szArray_Jiyu[][64] = 
 {
-	"BÃ¡ trÃ¨ng mÃ´c nÂµy",
-	"TÃ¨ng kim",
-	"VÂ­Ã®t Â¶i",
-	"Â§Â¸nh boss",
-	"CÂ«ng thÂµnh",
-	"Phong lÂ¨ng Â®Ã©",
-	"DÂ· tÃˆu",
-	"ViÂªm Â®Ã•",
-	"TÃn sÃ¸"
+	"Bá trèng môc nµy",
+	"Tèng kim",
+	"V­ît ¶i",
+	"§¸nh boss",
+	"C«ng thµnh",
+	"Phong l¨ng ®é",
+	"D· tÈu",
+	"Viªm ®Õ",
+	"Tİn sø"
 };
 
 char szArray_Jiyu_Ne[][64] = 
 {
-	"KhÂ«ng hiÃ“n thÃ",
+	"Kh«ng hiÓn thŞ",
 	"Kim Long",
 	"Thanh Long",
-	"BÂ¹ch Long",
-	"HÃ¡a Long",
-	"HÂ¾c Long"
+	"B¹ch Long",
+	"Háa Long",
+	"H¾c Long"
 };
 
 extern iRepresentShell*	g_pRepresentShell;
@@ -119,7 +119,7 @@ KUiTongManager::~KUiTongManager()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿Ãš
+* ¹¦ÄÜ£º´ò¿ª´°¿Ú
 **********************************************************************/
 KUiTongManager* KUiTongManager::OpenWindow()
 {
@@ -143,7 +143,7 @@ KUiTongManager* KUiTongManager::OpenWindow()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â°Â²Ã…Ã…Â½Ã§ÃƒÃ¦Â²Â¼Â¾Ã–
+* ¹¦ÄÜ£º´ò¿ª´°¿Ú£¬Í¬Ê±°²ÅÅ½çÃæ²¼¾Ö
 **********************************************************************/
 KUiTongManager* KUiTongManager::OpenWindow(char* pszPlayerName)
 {
@@ -157,7 +157,7 @@ KUiTongManager* KUiTongManager::OpenWindow(char* pszPlayerName)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¹Â¾ÃÂ´Â«ÃˆÃ«ÂµÃ„ÃÃ¦Â¼Ã’ÃƒÃ»Ã—Ã–Â£Â¬Â°Â²Ã…Ã…Â½Ã§ÃƒÃ¦Â²Â¼Â¾Ã–
+* ¹¦ÄÜ£º¸ù¾İ´«ÈëµÄÍæ¼ÒÃû×Ö£¬°²ÅÅ½çÃæ²¼¾Ö
 **********************************************************************/
 void KUiTongManager::ArrangeComposition(char* pszPlayerName)
 {
@@ -197,7 +197,7 @@ void KUiTongManager::ArrangeComposition(char* pszPlayerName)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
+* ¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 **********************************************************************/
 KUiTongManager* KUiTongManager::GetIfVisible()
 {
@@ -208,7 +208,7 @@ KUiTongManager* KUiTongManager::GetIfVisible()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+* ¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 **********************************************************************/
 void KUiTongManager::CloseWindow(bool bDestory)
 {
@@ -225,7 +225,7 @@ void KUiTongManager::CloseWindow(bool bDestory)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+* ¹¦ÄÜ£º³õÊ¼»¯
 **********************************************************************/
 void KUiTongManager::Initialize()
 {
@@ -294,7 +294,7 @@ void KUiTongManager::Initialize()
 }
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+* ¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
 **********************************************************************/
 void KUiTongManager::LoadScheme(const char* pScheme)
 {
@@ -392,7 +392,7 @@ void KUiTongManager::LoadScheme(const char* pScheme)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
+* ¹¦ÄÜ£º´°¿Úº¯Êı
 **********************************************************************/
 int KUiTongManager::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -526,11 +526,11 @@ int KUiTongManager::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 				KUiGetMoney::OpenWindow(0, m_TongData.nMoney, this, RESULT_T_GET, NULL);
 		}
 		else if (uParam == (unsigned int)&m_BtnChangeTitle)
-			KUiTongGetString::OpenWindow(true, "Â§Ã¦i danh hiÃ–u", NULL, this, ISP_NEW_AGNAME, 4, defTONG_NAME_LENGTH_12);
+			KUiTongGetString::OpenWindow(true, "§æi danh hiÖu", NULL, this, ISP_NEW_AGNAME, 4, defTONG_NAME_LENGTH_12);
 		else if (uParam == (unsigned int)&m_BtnChangeMaleTitle)
-			KUiTongGetString::OpenWindow(true, "Â§Ã¦i hiÃ–u nam", NULL, this, ISP_NEW_MALEAGNAME, 4, defTONG_NAME_LENGTH_12);
+			KUiTongGetString::OpenWindow(true, "§æi hiÖu nam", NULL, this, ISP_NEW_MALEAGNAME, 4, defTONG_NAME_LENGTH_12);
 		else if (uParam == (unsigned int)&m_BtnChangeFemaleTitle)
-			KUiTongGetString::OpenWindow(true, "Â§Ã¦i hiÃ–u nÃ·", NULL, this, ISP_NEW_FEMALEAGNAME, 4, defTONG_NAME_LENGTH_12);
+			KUiTongGetString::OpenWindow(true, "§æi hiÖu n÷", NULL, this, ISP_NEW_FEMALEAGNAME, 4, defTONG_NAME_LENGTH_12);
 		else if (uParam == (unsigned int)&m_Save)
 		{
 			PopupConfirmWindow(m_szSaveJiyu, RESULT_T_SAVEJIYU);
@@ -688,7 +688,7 @@ int KUiTongManager::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 }
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â°Â´Ã…Â¥Ã…Ã¤Ã–ÃƒÂ·Â½Â°Â¸
+* ¹¦ÄÜ£º¸üĞÂ°´Å¥ÅäÖÃ·½°¸
 **********************************************************************/
 void KUiTongManager::OnCheckInput()
 {
@@ -705,7 +705,7 @@ void KUiTongManager::OnCheckInput()
 }
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â°Â´Ã…Â¥Ã…Ã¤Ã–ÃƒÂ·Â½Â°Â¸
+* ¹¦ÄÜ£º¸üĞÂ°´Å¥ÅäÖÃ·½°¸
 **********************************************************************/
 void KUiTongManager::UpdateBtnTheme(int nType, BOOL bDissable)
 {
@@ -821,7 +821,7 @@ void KUiTongManager::UpdateBtnTheme(int nType, BOOL bDissable)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â°Ã¯Â»Ã¡Ã‘Â¶ÃÂ¢ÂµÃ„ÃÃ”ÃŠÂ¾
+* ¹¦ÄÜ£º¸üĞÂ°ï»áÑ¶Ï¢µÄÏÔÊ¾
 **********************************************************************/
 void KUiTongManager::UpdateTongInfoView()
 {
@@ -831,7 +831,7 @@ void KUiTongManager::UpdateTongInfoView()
 	m_MasterName.SetText(m_TongData.szMasterName);
 	time_t rawtime=(m_TongData.nMasterJoinTm+1451581200);
 	struct tm * timeinfo = localtime ( &rawtime );
-	int nMsgLen=sprintf(Buff, "<color=189,190,189>LÃ‹p bang: <color=0,255,0>%02d:%02d:%02d %02d-%02d-%04d<color>\n\nCÃ¨ng hiÃ•n tuÃ‡n trÂ­Ã­c: <color=0,255,0>%d<color>\nCÃ¨ng hiÃ•n tuÃ‡n nÂµy: <color=0,255,0>%d<color>\nCÃ¨ng hiÃ•n khÂ¶ dÃ´ng: <color=0,255,0>%d<color><color>", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900,
+	int nMsgLen=sprintf(Buff, "<color=189,190,189>LËp bang: <color=0,255,0>%02d:%02d:%02d %02d-%02d-%04d<color>\n\nCèng hiÕn tuÇn tr­íc: <color=0,255,0>%d<color>\nCèng hiÕn tuÇn nµy: <color=0,255,0>%d<color>\nCèng hiÕn kh¶ dông: <color=0,255,0>%d<color><color>", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900,
 			KSG_StringGetValue(3,m_TongData.nMasterSaveEff,1), KSG_StringGetValue(3,m_TongData.nMasterSaveEff,2), KSG_StringGetValue(3,m_TongData.nMasterSaveEff,3));
 	m_MasterName.SetToolTipInfo(Buff,nMsgLen);
 	switch(m_TongData.nFaction)
@@ -849,7 +849,7 @@ void KUiTongManager::UpdateTongInfoView()
 	m_MemberCount.SetText(itoa(m_TongData.nMemberCount+m_TongData.nManagerCount+m_TongData.nDirectorCount, Buff, 10));
 	m_Money.Set3IntText(m_TongData.nMoney,true);
 	m_TongLevel.SetIntText(m_TongData.btLevel);
-	m_TotalEff.Set3IntText(m_TongData.dwTotalEff,true,"Â®iÃ“m");
+	m_TotalEff.Set3IntText(m_TongData.dwTotalEff,true,"®iÓm");
 	m_nTongJiyuParam=m_TongData.nTongJiyuParam;
 	for(int i=0;i<MAX_TONGJIYU;i++)
 	{
@@ -868,7 +868,7 @@ void KUiTongManager::UpdateTongInfoView()
 	}
 }
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚ÃÃÂ±Ã­Ã€Â¸ÂµÃ„ÃÃ”ÃŠÂ¾
+* ¹¦ÄÜ£º¸üĞÂÁĞ±íÀ¸µÄÏÔÊ¾
 **********************************************************************/
 void KUiTongManager::UpdateTongListView()
 {
@@ -909,7 +909,7 @@ void KUiTongManager::UpdateTongListView()
 					{
 						time_t rawtime=(pNode->nJoinTm+1451581200);
 						struct tm * timeinfo = localtime ( &rawtime );
-						nMsgLen=sprintf(szMsgBuff, "<color=189,190,189>NhÃ‹p bang: <color=0,255,0>%02d:%02d:%02d %02d-%02d-%04d<color>\n\nCÃ¨ng hiÃ•n tuÃ‡n trÂ­Ã­c: <color=0,255,0>%d<color>\nCÃ¨ng hiÃ•n tuÃ‡n nÂµy: <color=0,255,0>%d<color>\nCÃ¨ng hiÃ•n khÂ¶ dÃ´ng: <color=0,255,0>%d<color><color>", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900,
+						nMsgLen=sprintf(szMsgBuff, "<color=189,190,189>NhËp bang: <color=0,255,0>%02d:%02d:%02d %02d-%02d-%04d<color>\n\nCèng hiÕn tuÇn tr­íc: <color=0,255,0>%d<color>\nCèng hiÕn tuÇn nµy: <color=0,255,0>%d<color>\nCèng hiÕn kh¶ dông: <color=0,255,0>%d<color><color>", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec, timeinfo->tm_mday, timeinfo->tm_mon+1, timeinfo->tm_year+1900,
 							KSG_StringGetValue(3,pNode->nSaveEff,1), KSG_StringGetValue(3,pNode->nSaveEff,2), KSG_StringGetValue(3,pNode->nSaveEff,3));
 						m_List.SetItemColor(i, pNode->bOnline?0x00fffb6b:0x0000929c);
 						m_List.SetToolTipInfo(i, szMsgBuff, nMsgLen);
@@ -924,7 +924,7 @@ void KUiTongManager::UpdateTongListView()
 }
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ·ÂµÂ»Ã˜ÂµÂ±Ã‡Â°Ã‹Ã¹Ã‘Â¡Ã”Ã±ÂµÃ„ÃÃÂ±Ã­Ã€Ã ÃÃÃ‹Ã¹Â¶Ã”Ã“Â¦ÂµÃ„ÃŠÃ½Â¾ÃÂ¼Â¯
+* ¹¦ÄÜ£º·µ»Øµ±Ç°ËùÑ¡ÔñµÄÁĞ±íÀàĞÍËù¶ÔÓ¦µÄÊı¾İ¼¯
 **********************************************************************/
 KLinkStruct<KPilgarlicItem>* KUiTongManager::GetCurrentSelectedData()
 {
@@ -950,7 +950,7 @@ KLinkStruct<KPilgarlicItem>* KUiTongManager::GetCurrentSelectedData()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ·ÂµÂ»Ã˜Ã‹Ã¹Ã‘Â¡Ã”Ã±ÂµÃ„Â»Ã¡Ã”Â±
+* ¹¦ÄÜ£º·µ»ØËùÑ¡ÔñµÄ»áÔ±
 **********************************************************************/
 KPilgarlicItem* KUiTongManager::GetSelectedPlayer()
 {
@@ -967,7 +967,7 @@ KPilgarlicItem* KUiTongManager::GetSelectedPlayer()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ½Â¸Ã¶ÃÃÂ±Ã­CheckBoxÂµÃ„Â¹ÃœÃ€Ã­
+* ¹¦ÄÜ£ºÈı¸öÁĞ±íCheckBoxµÄ¹ÜÀí
 **********************************************************************/
 void KUiTongManager::UpdateListCheckButton(int nType)
 {
@@ -1039,7 +1039,7 @@ void KUiTongManager::UpdatePageofList()
 		m_BtnPrev.Enable(true);
 }
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ°Ã‘Â°Ã¯Â»Ã¡ÃÃ…ÃÂ¢Ã€Â¸Ã‡Ã¥Â¿Ã•
+* ¹¦ÄÜ£º°Ñ°ï»áĞÅÏ¢À¸Çå¿Õ
 **********************************************************************/
 void KUiTongManager::ClearTongData()
 {
@@ -1064,7 +1064,7 @@ void KUiTongManager::ClearTongData()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂµÂ¯Â³Ã¶ÃˆÂ·ÃˆÃÂ´Â°Â¿Ãš
+* ¹¦ÄÜ£ºµ¯³öÈ·ÈÏ´°¿Ú
 **********************************************************************/
 void KUiTongManager::PopupConfirmWindow(const char* pszInfo, unsigned int uHandleID)
 {
@@ -1090,7 +1090,7 @@ void KUiTongManager::PopupConfirmWindow(const char* pszInfo, unsigned int uHandl
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ½Ã“ÃŠÃœÃÃ‚ÂµÃ„ÃŠÃ½Â¾ÃÂµÃ„ÃŠÃ½Â¾ÃÂ½Ã“Â¿Ãš
+* ¹¦ÄÜ£º½ÓÊÜĞÂµÄÊı¾İµÄÊı¾İ½Ó¿Ú
 **********************************************************************/
 void KUiTongManager::OpenJiyuPopup(int nIndex)
 {
@@ -1200,7 +1200,7 @@ void KUiTongManager::NewDataArrive(KUiGameObjectWithName *ParamInfo, KTongMember
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ²Ã©Ã‘Â¯ÃŒÃ˜Â¶Â¨ÃÂ»Ã–ÃƒÂµÃ„Ã‡Â°ÃƒÃ¦Â£Â¬Ã„Â³Â¸Ã¶ÃƒÃ»Ã—Ã–ÃŠÃ‡Â·Ã±Ã’Ã‘Â¾Â­Â´Ã¦Ã”Ãš
+* ¹¦ÄÜ£º²éÑ¯ÌØ¶¨Î»ÖÃµÄÇ°Ãæ£¬Ä³¸öÃû×ÖÊÇ·ñÒÑ¾­´æÔÚ
 **********************************************************************/
 int KUiTongManager::IsPlayerExist(KPilgarlicItem *MeToCmp, KLinkStruct<KPilgarlicItem> *pData)
 {
@@ -1225,7 +1225,7 @@ int KUiTongManager::IsPlayerExist(KPilgarlicItem *MeToCmp, KLinkStruct<KPilgarli
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ½Ã“ÃŠÃœÂ°Ã¯Â»Ã¡ÃÃ…ÃÂ¢
+* ¹¦ÄÜ£º½ÓÊÜ°ï»áĞÅÏ¢
 **********************************************************************/
 void KUiTongManager::TongInfoArrive(KUiPlayerRelationWithOther* Relation, KTongInfo *pTongInfo)
 {
@@ -1263,7 +1263,7 @@ void KUiTongManager::TongInfoArrive(KUiPlayerRelationWithOther* Relation, KTongI
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ°Ã‘ÃÃ‚ÂµÂ½ÂµÃ„ÃÃÂ±Ã­ÃÃ…ÃÂ¢Â´Ã¦ÂµÂ½ÃÃ™ÃŠÂ±ÃÃ„Â¼Ã¾
+* ¹¦ÄÜ£º°ÑĞÂµ½µÄÁĞ±íĞÅÏ¢´æµ½ÁÙÊ±ÎÄ¼ş
 **********************************************************************/
 void KUiTongManager::SaveNewData(KUiGameObjectWithName *ParamInfo, KTongMemberItem *pIncome)
 {
@@ -1311,7 +1311,7 @@ void KUiTongManager::SaveNewData(KUiGameObjectWithName *ParamInfo, KTongMemberIt
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ°Ã‘Ã–Â¸Â¶Â¨Ã€Ã ÃÃÂµÃ„ÃÃÂ±Ã­ÃŠÃ½Â¾ÃÃ•Ã»Â¸Ã¶Â´Ã¦Â´Â¢Ã†Ã°Ã€Â´
+* ¹¦ÄÜ£º°ÑÖ¸¶¨ÀàĞÍµÄÁĞ±íÊı¾İÕû¸ö´æ´¢ÆğÀ´
 **********************************************************************/
 void KUiTongManager::SaveWholeData(int nType)
 {
@@ -1366,7 +1366,7 @@ void KUiTongManager::SaveWholeData(int nType)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Ã—ÃŠÃÃ
+* ¹¦ÄÜ£ºÔØÈë×ÊÁÏ
 **********************************************************************/
 void KUiTongManager::LoadData(int nType)
 {
@@ -1411,7 +1411,7 @@ void KUiTongManager::LoadData(int nType)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Ã—ÃŠÃÃÂµÃ„Â´Â¦Ã€Ã­ÂºÂ¯ÃŠÃ½
+* ¹¦ÄÜ£ºÔØÈë×ÊÁÏµÄ´¦Àíº¯Êı
 **********************************************************************/
 int KUiTongManager::LoadDataHandler(KLinkStruct<KPilgarlicItem> *pData,
 									const char* szSection)
@@ -1452,7 +1452,7 @@ int KUiTongManager::LoadDataHandler(KLinkStruct<KPilgarlicItem> *pData,
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ²CoreÂ·Â¢Â³Ã¶ÃŠÃ½Â¾ÃÃ‡Ã«Ã‡Ã³
+* ¹¦ÄÜ£ºÏòCore·¢³öÊı¾İÇëÇó
 **********************************************************************/
 void KUiTongManager::RequestData(int nType, int nIndex)
 {
@@ -1468,7 +1468,7 @@ void KUiTongManager::RequestData(int nType, int nIndex)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Â¾Â³Ã½ÃÃ™ÃŠÂ±ÃÃ„Â¼Ã¾
+* ¹¦ÄÜ£ºÉ¾³ıÁÙÊ±ÎÄ¼ş
 **********************************************************************/
 int KUiTongManager::RemoveTempFile()
 {
@@ -1481,7 +1481,7 @@ int KUiTongManager::RemoveTempFile()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã·Ã–Ã–Â°Ã¯Â»Ã¡Â²Ã™Ã—Ã·ÂµÃ„Â´Â¦Ã€Ã­ÂºÂ¯ÃŠÃ½
+* ¹¦ÄÜ£º¸÷ÖÖ°ï»á²Ù×÷µÄ´¦Àíº¯Êı
 **********************************************************************/
 void KUiTongManager::OnAction(int nType)
 {
@@ -1526,7 +1526,7 @@ void KUiTongManager::OnAction(int nType)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Ã‹Â¢ÃÃ‚Â°Â´Ã…Â¥ÂµÃ„Â²Ã™Ã—Ã·ÂºÂ¯ÃŠÃ½
+* ¹¦ÄÜ£ºÏìÓ¦Ë¢ĞÂ°´Å¥µÄ²Ù×÷º¯Êı
 **********************************************************************/
 void KUiTongManager::OnRefresh()
 {
@@ -1574,7 +1574,7 @@ void KUiTongManager::OnRefresh()
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ¶Ã”Â½Ã¡Â¹Ã»ÂµÃ„ÃÃ¬Ã“Â¦ÃˆÃ«Â¿Ãš
+* ¹¦ÄÜ£º¶Ô½á¹ûµÄÏìÓ¦Èë¿Ú
 **********************************************************************/
 void KUiTongManager::ResponseResult(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1611,7 +1611,7 @@ void KUiTongManager::ResponseResult(KUiGameObjectWithName *pResult, int nbIsSucc
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Ã€Ã«Â°Ã¯ÂºÃ³ÂµÃ„Â²Ã™Ã—Ã·
+* ¹¦ÄÜ£ºÏìÓ¦Àë°ïºóµÄ²Ù×÷
 **********************************************************************/
 void KUiTongManager::ResponseLeave(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1624,7 +1624,7 @@ void KUiTongManager::ResponseLeave(KUiGameObjectWithName *pResult, int nbIsSucce
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦ÃŒÃŸÃˆÃ‹ÂºÃ³ÂµÃ„Â²Ã™Ã—Ã·
+* ¹¦ÄÜ£ºÏìÓ¦ÌßÈËºóµÄ²Ù×÷
 **********************************************************************/
 void KUiTongManager::ResponseDismiss(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1652,7 +1652,7 @@ void KUiTongManager::ResponseDismiss(KUiGameObjectWithName *pResult, int nbIsSuc
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Â´Â«ÃÂ»ÂºÃ³ÂµÃ„Â²Ã™Ã—Ã·
+* ¹¦ÄÜ£ºÏìÓ¦´«Î»ºóµÄ²Ù×÷
 **********************************************************************/
 void KUiTongManager::ResponseDemise(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1665,7 +1665,7 @@ void KUiTongManager::ResponseDemise(KUiGameObjectWithName *pResult, int nbIsSucc
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Â´Â«ÃÂ»ÂºÃ³ÂµÃ„Â²Ã™Ã—Ã·
+* ¹¦ÄÜ£ºÏìÓ¦´«Î»ºóµÄ²Ù×÷
 **********************************************************************/
 void KUiTongManager::ResponseAssign(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1715,7 +1715,7 @@ void KUiTongManager::ResponseAssign(KUiGameObjectWithName *pResult, int nbIsSucc
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Ã‰ÃªÃ‡Ã«ÂºÃ³ÂµÃ„Â²Ã™Ã—Ã·
+* ¹¦ÄÜ£ºÏìÓ¦ÉêÇëºóµÄ²Ù×÷
 **********************************************************************/
 void KUiTongManager::ResponseApply(KUiGameObjectWithName *pResult, int nbIsSucceed)
 {
@@ -1742,7 +1742,7 @@ void KUiTongManager::ResponseApply(KUiGameObjectWithName *pResult, int nbIsSucce
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ²Ã©Ã‘Â¯ÃŒÃ˜Â¶Â¨ÃƒÃ»Ã—Ã–ÂµÃ„ÃÃ¦Â¼Ã’ÂµÃ„ÃŠÃ½Â¾ÃÃÂ»Ã–Ãƒ
+* ¹¦ÄÜ£º²éÑ¯ÌØ¶¨Ãû×ÖµÄÍæ¼ÒµÄÊı¾İÎ»ÖÃ
 **********************************************************************/
 KLinkStruct<KPilgarlicItem>* KUiTongManager::FindPlayer(char *pszName)
 {
@@ -1764,7 +1764,7 @@ KLinkStruct<KPilgarlicItem>* KUiTongManager::FindPlayer(char *pszName)
 
 
 /*********************************************************************
-* Â¹Â¦Ã„ÃœÂ£ÂºÂ²Ã©Ã•Ã’ÃÃ¦Â¼Ã’Â´Â¦Ã€Ã­ÂºÂ¯ÃŠÃ½
+* ¹¦ÄÜ£º²éÕÒÍæ¼Ò´¦Àíº¯Êı
 **********************************************************************/
 KLinkStruct<KPilgarlicItem>* KUiTongManager::HandleFind(KLinkStruct<KPilgarlicItem> *pData, char *pszName)
 {

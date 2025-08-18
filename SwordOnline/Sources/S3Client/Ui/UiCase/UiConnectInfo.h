@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--loginè¿‡ç¨‹ä¿¡æ¯çª—å£
+//	½çÃæ--login¹ý³ÌÐÅÏ¢´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-16
@@ -13,60 +13,60 @@
 
 enum LOGIN_BG_INFO_MSG_INDEX
 {
-	CI_MI_CONNECTING = 1,		//1=è¿žæŽ¥ä¸­
-	CI_MI_CONNECT_FAILED,		//2=è¿žæŽ¥å¤±è´¥
-	CI_MI_CONNECT_SERV_BUSY,	//3=æœåŠ¡å™¨å¿™
-	CI_MI_CONNECT_TIMEOUT,		//4=è¿žæŽ¥è¶…æ—¶æœªèŽ·å¾—å“åº”
-	CI_MI_ACCOUNT_PWD_ERROR,	//5=è´¦å·/å¯†ç é”™è¯¯
-	CI_MI_ACCOUNT_LOCKED,		//6=è´¦å·è¢«é”å®š
-	CI_MI_ERROR_ROLE_NAME,		//7=æ–°å»ºè§’è‰²çš„åå­—ä¸åˆæ³•
-	CI_MI_CREATING_ROLE,		//8=æ­£åœ¨æ–°å»ºè§’è‰²
-	CI_MI_DELETING_ROLE,		//9=æ­£åœ¨åˆ é™¤è§’è‰²
-	CI_MI_GETTING_ROLE_DATA,	//10=å–è§’è‰²æ•°æ®ä¸­
-	CI_MI_ENTERING_GAME,		//11=è¿›å…¥æ¸¸æˆä¸­
-	CI_MI_SVRDOWN,				//12=æ¸¸æˆæœåŠ¡å™¨å·²æ»¡æˆ–æ­£åœ¨ç»´æŠ¤ä¸­
+	CI_MI_CONNECTING = 1,		//1=Á¬½ÓÖÐ
+	CI_MI_CONNECT_FAILED,		//2=Á¬½ÓÊ§°Ü
+	CI_MI_CONNECT_SERV_BUSY,	//3=·þÎñÆ÷Ã¦
+	CI_MI_CONNECT_TIMEOUT,		//4=Á¬½Ó³¬Ê±Î´»ñµÃÏìÓ¦
+	CI_MI_ACCOUNT_PWD_ERROR,	//5=ÕËºÅ/ÃÜÂë´íÎó
+	CI_MI_ACCOUNT_LOCKED,		//6=ÕËºÅ±»Ëø¶¨
+	CI_MI_ERROR_ROLE_NAME,		//7=ÐÂ½¨½ÇÉ«µÄÃû×Ö²»ºÏ·¨
+	CI_MI_CREATING_ROLE,		//8=ÕýÔÚÐÂ½¨½ÇÉ«
+	CI_MI_DELETING_ROLE,		//9=ÕýÔÚÉ¾³ý½ÇÉ«
+	CI_MI_GETTING_ROLE_DATA,	//10=È¡½ÇÉ«Êý¾ÝÖÐ
+	CI_MI_ENTERING_GAME,		//11=½øÈëÓÎÏ·ÖÐ
+	CI_MI_SVRDOWN,				//12=ÓÎÏ··þÎñÆ÷ÒÑÂú»òÕýÔÚÎ¬»¤ÖÐ
 
-	CI_MI_TO_DEL_ROLE,			//13=è¦åˆ é™¤è§’è‰²
-    CI_MI_INVALID_PROTOCOLVERSION,  //14=ç‰ˆæœ¬å·è¾ƒæ—§ï¼Œéœ€è¦å‡çº§åˆ°æ–°çš„å®¢æˆ·ç«¯
+	CI_MI_TO_DEL_ROLE,			//13=ÒªÉ¾³ý½ÇÉ«
+    CI_MI_INVALID_PROTOCOLVERSION,  //14=°æ±¾ºÅ½Ï¾É£¬ÐèÒªÉý¼¶µ½ÐÂµÄ¿Í»§¶Ë
 
-	CI_MI_ERROR_LOGIN_INPUT,	//15=ç™»é™†ç•Œé¢è¾“å…¥çš„è´¦å·å¯†ç æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥
-	CI_MI_ERROR_CONFIRM_INPUT,	//16=åˆ é™¤è§’è‰²æ—¶ï¼Œè¾“å…¥çš„å¯†ç æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥
-	CI_MI_INVALID_LOGIN_INPUT1,	//17=å§“åä¸­ä¸å¯ä»¥åŒ…å«ç©ºæ ¼ã€åˆ¶è¡¨æ ¼ç­‰å­—ç¬¦ï¼
-	CI_MI_INVALID_LOGIN_INPUT2,	//18=å§“åé•¿åº¦å¿…é¡»åœ¨2åˆ°8ä¸ªæ±‰å­—ä»¥å†…ï¼Œå…è®¸è¾“å…¥è‹±æ–‡å­—ç¬¦ï¼Œè¯·é‡æ–°è¾“å…¥å§“åï¼
-	CI_MI_NOT_ENOUGH_ACCOUNT_POINT,	//19=ç‚¹å¡ä¸è¶³
-	CI_MI_INVALID_PASSWORD,		//20=è¾“å…¥çš„å¯†ç ä¸æ­£ç¡®ã€‚
-	CI_MI_ACCOUNT_FREEZE = 30,	//30=è´¦å·å†»ç»“
+	CI_MI_ERROR_LOGIN_INPUT,	//15=µÇÂ½½çÃæÊäÈëµÄÕËºÅÃÜÂëÓÐÎó£¬ÇëÖØÐÂÊäÈë
+	CI_MI_ERROR_CONFIRM_INPUT,	//16=É¾³ý½ÇÉ«Ê±£¬ÊäÈëµÄÃÜÂëÓÐÎó£¬ÇëÖØÐÂÊäÈë
+	CI_MI_INVALID_LOGIN_INPUT1,	//17=ÐÕÃûÖÐ²»¿ÉÒÔ°üº¬¿Õ¸ñ¡¢ÖÆ±í¸ñµÈ×Ö·û£¡
+	CI_MI_INVALID_LOGIN_INPUT2,	//18=ÐÕÃû³¤¶È±ØÐëÔÚ2µ½8¸öºº×ÖÒÔÄÚ£¬ÔÊÐíÊäÈëÓ¢ÎÄ×Ö·û£¬ÇëÖØÐÂÊäÈëÐÕÃû£¡
+	CI_MI_NOT_ENOUGH_ACCOUNT_POINT,	//19=µã¿¨²»×ã
+	CI_MI_INVALID_PASSWORD,		//20=ÊäÈëµÄÃÜÂë²»ÕýÈ·¡£
+	CI_MI_ACCOUNT_FREEZE = 30,	//30=ÕËºÅ¶³½á
 };
 
 enum LOGIN_BG_NEXT_STEP
 {
-	CI_NS_INIT_WND	= 1000,		//è½¬åˆ°å¼€å§‹ç•Œé¢
-	CI_NS_SEL_SERVER,			//è½¬åˆ°é€‰æœåŠ¡å™¨ç•Œé¢
-	CI_NS_LOGIN_WND,			//è½¬åˆ°ç™»é™†ç•Œé¢
-	CI_NS_SEL_ROLE_WND,			//è½¬åˆ°æ–°å»ºè§’è‰²ç•Œé¢
-	CI_NS_NEW_ROLE_WND,			//è½¬åˆ°æ–°å»ºè§’è‰²ç•Œé¢
-	CI_NS_CONFIRM_DEL_ROLE,		//è½¬åˆ°ç¡®è®¤åˆ é™¤è§’è‰²ç•Œé¢
-	CI_NS_EXIT_PROGRAM,			//é€€å‡ºç¨‹åº
+	CI_NS_INIT_WND	= 1000,		//×ªµ½¿ªÊ¼½çÃæ
+	CI_NS_SEL_SERVER,			//×ªµ½Ñ¡·þÎñÆ÷½çÃæ
+	CI_NS_LOGIN_WND,			//×ªµ½µÇÂ½½çÃæ
+	CI_NS_SEL_ROLE_WND,			//×ªµ½ÐÂ½¨½ÇÉ«½çÃæ
+	CI_NS_NEW_ROLE_WND,			//×ªµ½ÐÂ½¨½ÇÉ«½çÃæ
+	CI_NS_CONFIRM_DEL_ROLE,		//×ªµ½È·ÈÏÉ¾³ý½ÇÉ«½çÃæ
+	CI_NS_EXIT_PROGRAM,			//ÍË³ö³ÌÐò
 };
 
 class KUiConnectInfo : protected KWndImage
 {
 public:
-	//eDesireLoginStatusä¸ºæ²¡ä¸¾LOGIN_LOGIC_STATUSæˆ–LOGIN_BG_NEXT_STEPçš„å€¼ä¹‹ä¸€
+	//eDesireLoginStatusÎªÃ»¾ÙLOGIN_LOGIC_STATUS»òLOGIN_BG_NEXT_STEPµÄÖµÖ®Ò»
 	static KUiConnectInfo*	OpenWindow(LOGIN_BG_INFO_MSG_INDEX eIndex,
 									int eDesireLoginStatus,
-									int nParam = 0);	//æ‰“å¼€çª—å£ï¼Œè¿”å›žå”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®žä¾‹
-	static void				CloseWindow(bool bDestroy);				//å…³é—­çª—å£
+									int nParam = 0);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀý
+	static void				CloseWindow(bool bDestroy);				//¹Ø±Õ´°¿Ú
 
 private:
 	KUiConnectInfo();
 	~KUiConnectInfo() {}
-	void	Initialize();							//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
+	void	Initialize();							//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êý
 	void	PaintWindow();
 	void	SetInfoMsg(LOGIN_BG_INFO_MSG_INDEX eIndex);
-	void	Breathe();								//æ´»åŠ¨å‡½æ•°
+	void	Breathe();								//»î¶¯º¯Êý
 	bool	OnDelRole();
 	void	OnCancelDelRole();
 	void	OnClickConfirmBtn();

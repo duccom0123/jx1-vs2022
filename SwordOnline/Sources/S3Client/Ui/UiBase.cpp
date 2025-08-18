@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	å‰‘ä¾ ç•Œé¢ç³»ç»ŸåŸºç¡€åŠŸèƒ½æ¨¡å—
+//	½£ÏÀ½çÃæÏµÍ³»ù´¡¹¦ÄÜÄ£¿é
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-17
@@ -54,14 +54,14 @@ extern iRepresentShell*	g_pRepresentShell;
 extern iCoreShell*      g_pCoreShell;
 
 
-#define	UI_INFO_FILE_PATH			"\\Ui"				//ç•Œé¢ä¿¡æ¯æ–‡ä»¶å­˜æ”¾çš„æ ¹ç›®å½•
+#define	UI_INFO_FILE_PATH			"\\Ui"				//½çÃæĞÅÏ¢ÎÄ¼ş´æ·ÅµÄ¸ùÄ¿Â¼
 #define	UI_COMMON_CONFIG_FILE		"\\Ui\\Setting.ini"
-#define	UI_PUBLIC_SETTING			"UiPubLicSetting.ini"			//æŸä¸ªç•Œé¢æ–¹æ¡ˆçš„è®¾å®šæ–‡ä»¶
+#define	UI_PUBLIC_SETTING			"UiPubLicSetting.ini"			//Ä³¸ö½çÃæ·½°¸µÄÉè¶¨ÎÄ¼ş
 
-#define	UI_USER_DATA_FOLDER			"\\UserData"		//ç©å®¶æ•°æ®çš„å­˜ç›˜ç›®å½•ä½ç½®
-#define	UI_USER_DATA_TEMP_FOLDER	"\\UserData\\Temp"	//ç©å®¶æ•°æ®çš„ä¸´æ—¶å­˜ç›˜ç›®å½•ä½ç½®
-#define	UI_COMMON_SETTING_FILE		"\\UserData\\UiCommon.ini"//ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶çš„åç§°
-#define UI_PRIVATE_SETTING_FILE		"UiConfig.ini"		//ç•Œé¢ä¸ªäººæ•°æ®çš„å­˜å‚¨æ–‡ä»¶
+#define	UI_USER_DATA_FOLDER			"\\UserData"		//Íæ¼ÒÊı¾İµÄ´æÅÌÄ¿Â¼Î»ÖÃ
+#define	UI_USER_DATA_TEMP_FOLDER	"\\UserData\\Temp"	//Íæ¼ÒÊı¾İµÄÁÙÊ±´æÅÌÄ¿Â¼Î»ÖÃ
+#define	UI_COMMON_SETTING_FILE		"\\UserData\\UiCommon.ini"//½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼şµÄÃû³Æ
+#define UI_PRIVATE_SETTING_FILE		"UiConfig.ini"		//½çÃæ¸öÈËÊı¾İµÄ´æ´¢ÎÄ¼ş
 
 #define	THEME_SECTION			"Theme"
 #define	FONT_SECTION			"FontList"
@@ -72,28 +72,28 @@ const char*	$Main = "Main";
 KUiBase	g_UiBase;
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KUiBase::KUiBase()
 {
 	m_CurScheme[0] = 0;
 	m_CurSchemePath[0] = 0;
 	m_UserAccountId[0] = 0;
-	m_pUiCommSettingFile = NULL;	//ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
-	m_pUiPrivateSettingFile = NULL;	//å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+	m_pUiCommSettingFile = NULL;	//½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
+	m_pUiPrivateSettingFile = NULL;	//µ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 	m_Status = UIS_S_IDLE;
 	m_PrevStatus = UIS_S_IDLE;
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šææ„å‡½æ•°
+//	¹¦ÄÜ£ºÎö¹¹º¯Êı
 //--------------------------------------------------------------------------
 KUiBase::~KUiBase()
 {
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šé€€å‡ºå‡½æ•°
+//	¹¦ÄÜ£ºÍË³öº¯Êı
 //--------------------------------------------------------------------------
 void KUiBase::Exit()
 {
@@ -107,19 +107,19 @@ void KUiBase::Exit()
 	extern int WND_SHOW_MOUSE_OVER_WND;
 #endif
 
-//è·å¾—ç©å®¶æ•°æ®çš„ä¸´æ—¶å­˜ç›˜ç›®å½•ä½ç½®
+//»ñµÃÍæ¼ÒÊı¾İµÄÁÙÊ±´æÅÌÄ¿Â¼Î»ÖÃ
 const char*	KUiBase::GetUserTempDataFolder()
 {
 	return UI_USER_DATA_TEMP_FOLDER;
 }
 
-//æ¸…é™¤ç©å®¶æ•°æ®çš„ä¸´æ—¶å­˜ç›˜ç›®å½•å†…çš„å…¨éƒ¨æ–‡ä»¶
+//Çå³ıÍæ¼ÒÊı¾İµÄÁÙÊ±´æÅÌÄ¿Â¼ÄÚµÄÈ«²¿ÎÄ¼ş
 void KUiBase::CleanTempDataFolder()
 {
 	ClearFolder(UI_USER_DATA_TEMP_FOLDER, false);
 }
 
-//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„å­˜å‚¨ç›®å½•
+//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄ´æ´¢Ä¿Â¼
 void KUiBase::ClearFolder(const char* pszFolder, bool bDeleteFolder)
 {
 	char szPathFile[MAX_PATH];
@@ -151,7 +151,7 @@ void KUiBase::ClearFolder(const char* pszFolder, bool bDeleteFolder)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 int KUiBase::Init()
 {
@@ -186,14 +186,14 @@ int KUiBase::Init()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®ç”¨æˆ·è´¦å·
+//	¹¦ÄÜ£ºÉèÖÃÓÃ»§ÕËºÅ
 //--------------------------------------------------------------------------
 void KUiBase::SetUserAccount(char* pszId, char* pszRole)
 {
 	if (pszId == NULL || pszId[0] == 0 || pszRole == NULL || pszRole[0] == 0)
 		return;
 
-	//æ ¹æ®(ç©å®¶)åç§°idè·å¾—å¯¹åº”å¤„ç†è¿‡å­—ç¬¦ä¸²id
+	//¸ù¾İ(Íæ¼Ò)Ãû³Æid»ñµÃ¶ÔÓ¦´¦Àí¹ı×Ö·û´®id
 	{
 		m_UserAccountId[0] = 0;
 		unsigned int	uID1 =  g_FileName2Id(pszId);
@@ -204,7 +204,7 @@ void KUiBase::SetUserAccount(char* pszId, char* pszRole)
 	}
 }
 
-//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„å­˜å‚¨ç›®å½•
+//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄ´æ´¢Ä¿Â¼
 void KUiBase::CleanPrivateDataFolder()
 {
 	char	szBuffer[MAX_PATH];
@@ -212,7 +212,7 @@ void KUiBase::CleanPrivateDataFolder()
 	ClearFolder(szBuffer, true);
 }
 
-//æ¸…é™¤å½“å‰ç©å®¶ç§æœ‰æ•°æ®çš„æŸä¸ªæ–‡ä»¶
+//Çå³ıµ±Ç°Íæ¼ÒË½ÓĞÊı¾İµÄÄ³¸öÎÄ¼ş
 void KUiBase::DeletePrivateDataFile(const char* pszFileName)
 {
 	char	szBuffer[MAX_PATH], szPathFile[MAX_PATH];
@@ -227,7 +227,7 @@ void KUiBase::DeletePrivateDataFile(const char* pszFileName)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè½½å…¥é…ç½®çºªå½•ï¼Œå¦‚å®šåˆ¶çš„çª—å£ä½ç½®
+//	¹¦ÄÜ£ºÔØÈëÅäÖÃ¼ÍÂ¼£¬Èç¶¨ÖÆµÄ´°¿ÚÎ»ÖÃ
 //--------------------------------------------------------------------------
 void CreateBlackListUnit();
 void KUiBase::LoadPrivateConfig()
@@ -238,25 +238,25 @@ void KUiBase::LoadPrivateConfig()
 
 	if (pConfigFile)
 	{
-		//----è·å–çª—å£æ–¹æ¡ˆè®¾å®š----
+		//----»ñÈ¡´°¿Ú·½°¸Éè¶¨----
 		char	SchemeName[32];
-		pConfigFile->GetString("Main", "Scheme", "Mï¿½c ï¿½ï¿½nh", SchemeName, 32);
+		pConfigFile->GetString("Main", "Scheme", "MÆc ®Şnh", SchemeName, 32);
 		if (SchemeName[0] && LoadScheme(SchemeName))
 		{
-		//----é€ä¸ªçª—å£è½½å…¥é…ç½®è®¾å®š----
+		//----Öğ¸ö´°¿ÚÔØÈëÅäÖÃÉè¶¨----
 			KUiPlayerBar::LoadPrivateSetting(pConfigFile);
 			KUiSkillTree::LoadConfig(pConfigFile);
 			KUiAutoPlay::LoadPrivateSetting(pConfigFile);
 			KShortcutKeyCentre::LoadPrivateSetting(pConfigFile);
-			KUiChatCentre::LoadPrivateSetting(pConfigFile);	//åœ¨KShortcutKeyCentreä¹‹å,å› ä¸ºä¼šæœ‰è„šæœ¬ç”ŸæˆUnit
-		//----é€ä¸ªçª—å£è½½å…¥é…ç½®è®¾å®šç»“æŸ----
+			KUiChatCentre::LoadPrivateSetting(pConfigFile);	//ÔÚKShortcutKeyCentreÖ®ºó,ÒòÎª»áÓĞ½Å±¾Éú³ÉUnit
+		//----Öğ¸ö´°¿ÚÔØÈëÅäÖÃÉè¶¨½áÊø----
 		}
 		ClosePrivateSettingFile(false);
 	}
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå­˜å‚¨é…ç½®çºªå½•
+//	¹¦ÄÜ£º´æ´¢ÅäÖÃ¼ÍÂ¼
 //--------------------------------------------------------------------------
 #include "../Login/Login.h"
 int KUiBase::SavePrivateConfig()
@@ -271,13 +271,13 @@ int KUiBase::SavePrivateConfig()
 
 		pConfigFile->WriteInteger("Main", "Version", KPROTOCOL_VERSION);
 		pConfigFile->WriteString("Main", "Scheme", m_CurScheme);
-		//----é€ä¸ªçª—å£ä¿å­˜é…ç½®è®¾å®š----
+		//----Öğ¸ö´°¿Ú±£´æÅäÖÃÉè¶¨----
 		KUiSkillTree::SaveConfig(pConfigFile);
 		KUiPlayerBar::SavePrivateSetting(pConfigFile);
 		KUiAutoPlay::SavePrivateSetting(pConfigFile);
 		KUiChatCentre::SavePrivateSetting(pConfigFile);
 		KShortcutKeyCentre::SavePrivateSetting(pConfigFile);
-		//----é€ä¸ªçª—å£ä¿å­˜é…ç½®è®¾å®šç»“æŸ----
+		//----Öğ¸ö´°¿Ú±£´æÅäÖÃÉè¶¨½áÊø----
 		ClosePrivateSettingFile(true);
 		return true;
 	}
@@ -285,7 +285,7 @@ int KUiBase::SavePrivateConfig()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å½“å‰ç©å®¶è´¦å·åœ¨ç•Œé¢ç³»ç»Ÿä¸­çš„id
+//	¹¦ÄÜ£º»ñµÃµ±Ç°Íæ¼ÒÕËºÅÔÚ½çÃæÏµÍ³ÖĞµÄid
 //--------------------------------------------------------------------------
 int KUiBase::GetUserPrivateDataFolder(char* pszFilePath, int nSize)
 {
@@ -311,7 +311,7 @@ static int _KSG_GetWindowVersion()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæŒ‰ç…§æŸç§æ–¹æ¡ˆè½½å…¥ç•Œé¢(Skin)
+//	¹¦ÄÜ£º°´ÕÕÄ³ÖÖ·½°¸ÔØÈë½çÃæ(Skin)
 //--------------------------------------------------------------------------
 int KUiBase::LoadScheme(const char* pScheme)
 {
@@ -332,7 +332,7 @@ int KUiBase::LoadScheme(const char* pScheme)
 		KIniFile	Ini;
 
 		char		Section[8];
-		//----å¸è½½å­—ä½“----
+		//----Ğ¶ÔØ×ÖÌå----
 		if (g_pRepresentShell && Ini.Load(Buffer) &&
 			Ini.GetInteger(FONT_SECTION, "Count", 0, &nCount))
 		{
@@ -347,7 +347,7 @@ int KUiBase::LoadScheme(const char* pScheme)
 		sprintf(Buffer, "%s\\" UI_PUBLIC_SETTING, m_CurSchemePath);
 		Ini.Load(Buffer);
 
-		//----è½½å…¥å­—ä½“----
+		//----ÔØÈë×ÖÌå----
 		if (g_pRepresentShell && Ini.GetInteger(FONT_SECTION, "Count", 0, &nCount))
 		{
 			for (i = 0; i < nCount; i++)
@@ -364,7 +364,7 @@ int KUiBase::LoadScheme(const char* pScheme)
 				}
 			}			
 		}
-		//----è½½å…¥å­—ä½“ç»“æŸ----
+		//----ÔØÈë×ÖÌå½áÊø----
 		WndObjContainerInit(&Ini);
 
 		for (i = CURSOR_NORMAL; i < CURSOR_INDEX_COUNT; i++)
@@ -375,7 +375,7 @@ int KUiBase::LoadScheme(const char* pScheme)
             else    // Win9x
 			    Ini.GetString("CursorList98", Section, "", Buffer, sizeof(Buffer));
 
-			Wnd_LoadCursor(i, Buffer);//è½½å…¥é¼ æ ‡æŒ‡é’ˆèµ„æº
+			Wnd_LoadCursor(i, Buffer);//ÔØÈëÊó±êÖ¸Õë×ÊÔ´
 		}
 		
 		LoadSchemeForEachWnd();
@@ -387,7 +387,7 @@ int KUiBase::LoadScheme(const char* pScheme)
 
 void KUiBase::LoadSchemeForEachWnd()
 {
-	//----é€ä¸ªçª—å£ç•Œé¢æ–¹æ¡ˆ----
+	//----Öğ¸ö´°¿Ú½çÃæ·½°¸----
 	KUiPlayerBar::LoadScheme(m_CurSchemePath);
 	KUiMsgCentrePad::LoadScheme(m_CurSchemePath);
 	KUiOptions::LoadScheme(m_CurSchemePath);
@@ -410,13 +410,13 @@ void KUiBase::LoadSchemeForEachWnd()
 	g_UiInformation2.LoadScheme(m_CurSchemePath);
 	KPopupMenu::LoadTheme(m_CurSchemePath);
 	KUiSelColor::LoadScheme(m_CurSchemePath);
-	//----é€ä¸ªçª—å£ç•Œé¢æ–¹æ¡ˆç»“æŸ----
+	//----Öğ¸ö´°¿Ú½çÃæ·½°¸½áÊø----
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å½“å‰æŒ‡å®šç•Œé¢æ–¹æ¡ˆçš„ç›®å½•åï¼Œå¦‚æœæœªèƒ½æ‰¾åˆ°æŒ‡å®šçš„æ–¹æ¡ˆï¼Œåˆ™å–ç¬¬ä¸€ä¸ª
-//		ã€€æ–¹æ¡ˆï¼ˆé»˜è®¤æ–¹æ¡ˆï¼‰ä½œä¸ºå½“å‰æ–¹æ¡ˆ
-//	å‚æ•°ï¼špScheme --> æŒ‡å®šç•Œé¢æ–¹æ¡ˆåç§°
+//	¹¦ÄÜ£º»ñµÃµ±Ç°Ö¸¶¨½çÃæ·½°¸µÄÄ¿Â¼Ãû£¬Èç¹ûÎ´ÄÜÕÒµ½Ö¸¶¨µÄ·½°¸£¬ÔòÈ¡µÚÒ»¸ö
+//		¡¡·½°¸£¨Ä¬ÈÏ·½°¸£©×÷Îªµ±Ç°·½°¸
+//	²ÎÊı£ºpScheme --> Ö¸¶¨½çÃæ·½°¸Ãû³Æ
 //--------------------------------------------------------------------------
 int KUiBase::GetSchemePath(const char* pScheme)
 {
@@ -459,7 +459,7 @@ int KUiBase::GetSchemePath(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—ç•Œé¢æ–¹æ¡ˆçš„æ•°ç›®
+//	¹¦ÄÜ£º»ñµÃ½çÃæ·½°¸µÄÊıÄ¿
 //--------------------------------------------------------------------------
 int KUiBase::SchemeCount()
 {
@@ -476,9 +476,9 @@ int KUiBase::SchemeCount()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—æŸä¸ªç•Œé¢æ–¹æ¡ˆçš„åç§°ä¸è·¯å¾„
-//	å‚æ•°ï¼špName --> ç”¨äºè·å–æ–¹æ¡ˆçš„åç§°ï¼Œä¸ºæŒ‡å‘ä¸€ä¸ªé•¿åº¦ä¸å°äºçš„32çš„ç¼“å†²åŒºçš„æŒ‡é’ˆï¼Œæˆ–è€…ç©ºæŒ‡é’ˆã€‚
-//		  pPath --> ç”¨äºè·å–æ–¹æ¡ˆçš„è·¯å¾„ï¼Œä¸ºæŒ‡å‘ä¸€ä¸ªé•¿åº¦ä¸å°äºçš„32çš„ç¼“å†²åŒºçš„æŒ‡é’ˆï¼Œæˆ–è€…ç©ºæŒ‡é’ˆã€‚
+//	¹¦ÄÜ£º»ñµÃÄ³¸ö½çÃæ·½°¸µÄÃû³ÆÓëÂ·¾¶
+//	²ÎÊı£ºpName --> ÓÃÓÚ»ñÈ¡·½°¸µÄÃû³Æ£¬ÎªÖ¸ÏòÒ»¸ö³¤¶È²»Ğ¡ÓÚµÄ32µÄ»º³åÇøµÄÖ¸Õë£¬»òÕß¿ÕÖ¸Õë¡£
+//		  pPath --> ÓÃÓÚ»ñÈ¡·½°¸µÄÂ·¾¶£¬ÎªÖ¸ÏòÒ»¸ö³¤¶È²»Ğ¡ÓÚµÄ32µÄ»º³åÇøµÄÖ¸Õë£¬»òÕß¿ÕÖ¸Õë¡£
 //--------------------------------------------------------------------------
 int KUiBase::GetScheme(int nIndex, char* pName, char* pPath)
 {
@@ -504,7 +504,7 @@ int KUiBase::GetScheme(int nIndex, char* pName, char* pPath)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè·å¾—å½“å‰ç•Œé¢æ–¹æ¡ˆçš„è·¯å¾„
+//	¹¦ÄÜ£º»ñµÃµ±Ç°½çÃæ·½°¸µÄÂ·¾¶
 //--------------------------------------------------------------------------
 int KUiBase::GetCurSchemePath(char* pBuffer, int nSize)
 {
@@ -517,7 +517,7 @@ int KUiBase::GetCurSchemePath(char* pBuffer, int nSize)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€ä¿å­˜ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
+//	¹¦ÄÜ£º´ò¿ª±£´æ½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
 //--------------------------------------------------------------------------
 KIniFile*	KUiBase::GetCommSettingFile()
 {
@@ -531,7 +531,7 @@ KIniFile*	KUiBase::GetCommSettingFile()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå…³é—­ä¿å­˜ç•Œé¢å…¬å…±è®¾ç½®çš„æ–‡ä»¶
+//	¹¦ÄÜ£º¹Ø±Õ±£´æ½çÃæ¹«¹²ÉèÖÃµÄÎÄ¼ş
 //--------------------------------------------------------------------------
 void KUiBase::CloseCommSettingFile(bool bSave)
 {
@@ -569,7 +569,7 @@ void KUiBase::CloseCommConfigFile()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€æ‰“å¼€å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+//	¹¦ÄÜ£º´ò¿ª´ò¿ªµ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 //--------------------------------------------------------------------------
 KIniFile*	KUiBase::GetPrivateSettingFile()
 {	
@@ -587,7 +587,7 @@ KIniFile*	KUiBase::GetPrivateSettingFile()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå…³é—­æ‰“å¼€å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+//	¹¦ÄÜ£º¹Ø±Õ´ò¿ªµ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 //--------------------------------------------------------------------------
 void KUiBase::ClosePrivateSettingFile(bool bSave)
 {
@@ -607,7 +607,7 @@ void KUiBase::ClosePrivateSettingFile(bool bSave)
 	}
 }
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€æ‰“å¼€å½“å‰è´¦å·çš„è®¾ç½®æ–‡ä»¶
+//	¹¦ÄÜ£º´ò¿ª´ò¿ªµ±Ç°ÕËºÅµÄÉèÖÃÎÄ¼ş
 //--------------------------------------------------------------------------
 
 void KUiBase::SetStatus(UISYS_STATUS eStatus)
@@ -630,23 +630,23 @@ void KUiBase::RestoreStatus()
 	SetCurrentCursor();
 }
 
-//æ ¹æ®å½“å‰çŠ¶æ€è®¾ç½®é¼ æ ‡æŒ‡é’ˆå›¾å½¢
+//¸ù¾İµ±Ç°×´Ì¬ÉèÖÃÊó±êÖ¸ÕëÍ¼ĞÎ
 void KUiBase::SetCurrentCursor()
 {
 	int	nCursorIndex;
 	switch(m_Status)
 	{
-	case UIS_S_TRADE_PLAYER:	//ï¼ˆä¸Playerï¼‰äº¤æ˜“
-	case UIS_S_TRADE_NPC:		//ï¼ˆä¸npcï¼‰äº¤æ˜“
+	case UIS_S_TRADE_PLAYER:	//£¨ÓëPlayer£©½»Ò×
+	case UIS_S_TRADE_NPC:		//£¨Óënpc£©½»Ò×
 		nCursorIndex = CURSOR_NORMAL;
 		break;
-	case UIS_S_TRADE_SALE:		//ï¼ˆä¸npcï¼‰äº¤æ˜“ å–
+	case UIS_S_TRADE_SALE:		//£¨Óënpc£©½»Ò× Âô
 		nCursorIndex = CURSOR_SELL;
 		break;
-	case UIS_S_TRADE_BUY:		//ï¼ˆä¸npcï¼‰äº¤æ˜“ ä¹°
+	case UIS_S_TRADE_BUY:		//£¨Óënpc£©½»Ò× Âò
 		nCursorIndex = CURSOR_BUY;
 		break;
-	case UIS_S_TRADE_REPAIR:	//ï¼ˆä¸npcï¼‰äº¤æ˜“ ä¿®ç†
+	case UIS_S_TRADE_REPAIR:	//£¨Óënpc£©½»Ò× ĞŞÀí
 		nCursorIndex = CURSOR_REPAIR;
 		break;
 	case UIS_S_LOCK_ITEM:	
@@ -713,7 +713,7 @@ void KUiBase::UnregisterEvent(const char* szName, HANDLE hWnd)
 	}
 }
 
-int KUiBase::NotifyOneEvent(const char* szName, const char* szEvent)		//0ä¸ºå·²ç»å¤„ç†, ä¸è¦å†å¤„ç†äº†, é0ä¸ºæœªå¤„ç†æˆ–é”™è¯¯
+int KUiBase::NotifyOneEvent(const char* szName, const char* szEvent)		//0ÎªÒÑ¾­´¦Àí, ²»ÒªÔÙ´¦ÀíÁË, ·Ç0ÎªÎ´´¦Àí»ò´íÎó
 {
 	if (szEvent == NULL || szEvent[0] == 0)
 		return -1;
@@ -737,7 +737,7 @@ int KUiBase::NotifyOneEvent(const char* szName, const char* szEvent)		//0ä¸ºå·²ç
 	return nRet;
 }
 
-int KUiBase::NotifyEvent(const char* szEvent)		//0ä¸ºå·²ç»å¤„ç†, ä¸è¦å†å¤„ç†äº†, é0ä¸ºæœªå¤„ç†æˆ–é”™è¯¯
+int KUiBase::NotifyEvent(const char* szEvent)		//0ÎªÒÑ¾­´¦Àí, ²»ÒªÔÙ´¦ÀíÁË, ·Ç0ÎªÎ´´¦Àí»ò´íÎó
 {
 	if (szEvent == NULL || szEvent[0] == 0)
 		return -1;

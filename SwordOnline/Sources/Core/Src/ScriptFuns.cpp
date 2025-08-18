@@ -2,7 +2,7 @@
 // FileName			:	ScriptFuns.cpp
 // FileAuthor		:	RomanDou
 // FileCreateDate	:	2002-11-19 15:58:20
-// FileDescription	:	è„šæœ¬æŒ‡ä»¤é›†
+// FileDescription	:	½Å±¾Ö¸Áî¼¯
 // Revision Count	:	
 *******************************************************************************/
 #ifndef WIN32
@@ -219,14 +219,14 @@ lab_subworldid2idx:
 Say(sMainInfo, nSelCount, sSel1, sSel2, sSel3, .....,sSeln) 
 Say(nMainInfo, nSelCount, sSel1, sSel2, sSel3, .....,sSeln) 
 Say(nMainInfo, nSelCount, SelTab)
-å¦‚æœæ˜¯å®¢æˆ·ç«¯çš„åˆ™ä¸ä¼šå‘æœåŠ¡å™¨ç«¯å‘é€ä»»ä½•æ“ä½œ
+Èç¹ûÊÇ¿Í»§¶ËµÄÔò²»»áÏò·şÎñÆ÷¶Ë·¢ËÍÈÎºÎ²Ù×÷
 
   Say(100, 3, 10, 23,43)
-  Say("é€‰æ‹©ä»€ä¹ˆï¼Ÿ", 2, "æ˜¯/yes", "å¦/no");
-  Say("é€‰ä»€ä¹ˆå‘€", 2, SelTab);
+  Say("Ñ¡ÔñÊ²Ã´£¿", 2, "ÊÇ/yes", "·ñ/no");
+  Say("Ñ¡Ê²Ã´Ñ½", 2, SelTab);
 */
 //**************************************************************************************************************************************************************
-//												ç•Œé¢è„šæœ¬
+//												½çÃæ½Å±¾
 //**************************************************************************************************************************************************************
 int LuaSelectUI(Lua_State * L)
 {
@@ -266,7 +266,7 @@ int LuaSelectUI(Lua_State * L)
 		nMainInfo = (int)Lua_ValueToNumber(L,1+nReduceVal);
 		nDataType = 1 ;
 	}
-	else if (Lua_IsString(L, 1+nReduceVal)) 	//æ£€æŸ¥ä¸»ä¿¡æ¯æ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦ä¸²æ ‡è¯†å·
+	else if (Lua_IsString(L, 1+nReduceVal)) 	//¼ì²éÖ÷ĞÅÏ¢ÊÇ×Ö·û´®»¹ÊÇ×Ö·û´®±êÊ¶ºÅ
 	{
 		strMain = (char *)Lua_ValueToString(L, 1+nReduceVal);
 		nDataType = 0 ;
@@ -274,7 +274,7 @@ int LuaSelectUI(Lua_State * L)
 	else
 		return 0;
 	
-	BOOL bStringTab = FALSE;//æ ‡è¯†ä¼ è¿›æ¥çš„é€‰é¡¹æ•°æ®å­˜æ”¾åœ¨ä¸€ä¸ªæ•°ç»„ä¸­ï¼Œè¿˜æ˜¯è®¸å¤šå­—ç¬¦ä¸²é‡Œ
+	BOOL bStringTab = FALSE;//±êÊ¶´«½øÀ´µÄÑ¡ÏîÊı¾İ´æ·ÅÔÚÒ»¸öÊı×éÖĞ£¬»¹ÊÇĞí¶à×Ö·û´®Àï
 	
 	if (Lua_IsString(L,3+nReduceVal))
 		bStringTab = FALSE;
@@ -289,7 +289,7 @@ int LuaSelectUI(Lua_State * L)
 	
 	if (bStringTab == FALSE)
 	{
-		//è·å¾—å®é™…ä¼ å…¥çš„é€‰é¡¹çš„ä¸ªæ•°
+		//»ñµÃÊµ¼Ê´«ÈëµÄÑ¡ÏîµÄ¸öÊı
 		if (nOptionNum > nParamNum - 2+nReduceVal) nOptionNum = nParamNum - 2+nReduceVal;
 	}
 	
@@ -297,7 +297,7 @@ int LuaSelectUI(Lua_State * L)
 	
 	PLAYER_SCRIPTACTION_SYNC UiInfo;
 	UiInfo.m_bUIId = UI_SELECTDIALOG;
-	UiInfo.m_bParam1 = nDataType;//ä¸»ä¿¡æ¯çš„ç±»å‹ï¼Œå­—ç¬¦ä¸²(0)æˆ–æ•°å­—(1)
+	UiInfo.m_bParam1 = nDataType;//Ö÷ĞÅÏ¢µÄÀàĞÍ£¬×Ö·û´®(0)»òÊı×Ö(1)
 	UiInfo.m_bParam = (BOOL)nReduceVal;
 	if (UiInfo.m_bParam)
 	{
@@ -310,14 +310,14 @@ int LuaSelectUI(Lua_State * L)
 		UiInfo.m_nParam1 = 0;
 	}
 	
-	//ä¸»ä¿¡æ¯ä¸ºå­—ç¬¦ä¸²
+	//Ö÷ĞÅÏ¢Îª×Ö·û´®
 	if (nDataType == 0)
 	{
 		if (strMain)
 			sprintf(UiInfo.m_pContent, "%s", strMain);
 		pContent = UiInfo.m_pContent;
 	}
-	else if (nDataType == 1) //ä¸»ä¿¡æ¯ä¸ºæ•°å­—æ ‡è¯†
+	else if (nDataType == 1) //Ö÷ĞÅÏ¢ÎªÊı×Ö±êÊ¶
 	{
 		*(int *)UiInfo.m_pContent = nMainInfo;
 		pContent = UiInfo.m_pContent + sizeof(int);
@@ -891,7 +891,7 @@ int LuaAddNote(Lua_State * L)
 	
 	PLAYER_SCRIPTACTION_SYNC UiInfo;
 	UiInfo.m_bUIId = UI_NOTEINFO;
-	UiInfo.m_bParam1 = 0;//nDataType;//ä¸»ä¿¡æ¯çš„ç±»å‹ï¼Œå­—ç¬¦ä¸²(0)æˆ–æ•°å­—(1)
+	UiInfo.m_bParam1 = 0;//nDataType;//Ö÷ĞÅÏ¢µÄÀàĞÍ£¬×Ö·û´®(0)»òÊı×Ö(1)
 #ifndef _SERVER
 	UiInfo.m_bParam2 = 0;
 #else
@@ -944,7 +944,7 @@ int LuaAddMissionNote(Lua_State * L)
 	
 	PLAYER_SCRIPTACTION_SYNC UiInfo;
 	UiInfo.m_bUIId = UI_NOTEINFO;
-	UiInfo.m_bParam1 = 0;//nDataType;//ä¸»ä¿¡æ¯çš„ç±»å‹ï¼Œå­—ç¬¦ä¸²(0)æˆ–æ•°å­—(1)
+	UiInfo.m_bParam1 = 0;//nDataType;//Ö÷ĞÅÏ¢µÄÀàĞÍ£¬×Ö·û´®(0)»òÊı×Ö(1)
 #ifndef _SERVER
 	UiInfo.m_bParam2 = 0;
 #else
@@ -984,10 +984,10 @@ int LuaAddMissionNote(Lua_State * L)
 }
 /*
 **
-**æ ¼å¼1:Talk(SentenceNum, CallBack-Fun(ç»“æŸåçš„å›è°ƒå‡½æ•°), sTalk1, sTalk2, sTalk3, sTalk4,...sTalkN);  
-Talk(SentenceNum, CallBack-Fun(ç»“æŸåçš„å›è°ƒå‡½æ•°), nTalk1, nTalk2,nTalk3,nTalk4,...nTalkN);  
-**æ ¼å¼2:Talk(SentenceNum, CallBack-Fun, SentenceTab);
-**ä¾‹å­:Talk(3,"EndTalk", "ç©å®¶ï¼šè¯·é—®ç°åœ¨å‡ ç‚¹é’Ÿäº†ï¼Ÿ", "é›‡å‘˜ï¼šç°åœ¨5ç‚¹é’Ÿäº†","å¤ªè°¢è°¢ä½ äº†ï¼");
+**¸ñÊ½1:Talk(SentenceNum, CallBack-Fun(½áÊøºóµÄ»Øµ÷º¯Êı), sTalk1, sTalk2, sTalk3, sTalk4,...sTalkN);  
+Talk(SentenceNum, CallBack-Fun(½áÊøºóµÄ»Øµ÷º¯Êı), nTalk1, nTalk2,nTalk3,nTalk4,...nTalkN);  
+**¸ñÊ½2:Talk(SentenceNum, CallBack-Fun, SentenceTab);
+**Àı×Ó:Talk(3,"EndTalk", "Íæ¼Ò£ºÇëÎÊÏÖÔÚ¼¸µãÖÓÁË£¿", "¹ÍÔ±£ºÏÖÔÚ5µãÖÓÁË","Ì«Ğ»Ğ»ÄãÁË£¡");
 **
 */
 
@@ -1018,7 +1018,7 @@ int LuaTalkUI(Lua_State * L)
 	
 	const char * pCallBackFun = Lua_ValueToString(L,2);
 	
-	//æ£€æŸ¥ä¸»ä¿¡æ¯æ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦ä¸²æ ‡è¯†å·
+	//¼ì²éÖ÷ĞÅÏ¢ÊÇ×Ö·û´®»¹ÊÇ×Ö·û´®±êÊ¶ºÅ
 	
 	if  (Lua_IsNumber(L,3))
 	{
@@ -1032,13 +1032,13 @@ int LuaTalkUI(Lua_State * L)
 		return 0;
 	
 	
-	//è·å¾—å®é™…ä¼ å…¥çš„é€‰é¡¹çš„ä¸ªæ•°
+	//»ñµÃÊµ¼Ê´«ÈëµÄÑ¡ÏîµÄ¸öÊı
 	if (nOptionNum > nParamNum - 2) 
 		nOptionNum = nParamNum - 2;
 	
 	PLAYER_SCRIPTACTION_SYNC UiInfo;
 	UiInfo.m_bUIId = UI_TALKDIALOG;
-	UiInfo.m_bParam1 = nDataType;//ä¸»ä¿¡æ¯çš„ç±»å‹ï¼Œå­—ç¬¦ä¸²(0)æˆ–æ•°å­—(1)
+	UiInfo.m_bParam1 = nDataType;//Ö÷ĞÅÏ¢µÄÀàĞÍ£¬×Ö·û´®(0)»òÊı×Ö(1)
 	UiInfo.m_bOptionNum = nOptionNum;
 	UiInfo.m_nOperateType = SCRIPTACTION_UISHOW;
 	UiInfo.m_bParam = FALSE;
@@ -1112,7 +1112,7 @@ int LuaSelUI(Lua_State * L)
 
 	const char * pCallBackFun = Lua_ValueToString(L,1);
 	
-	//æ£€æŸ¥ä¸»ä¿¡æ¯æ˜¯å­—ç¬¦ä¸²è¿˜æ˜¯å­—ç¬¦ä¸²æ ‡è¯†å·
+	//¼ì²éÖ÷ĞÅÏ¢ÊÇ×Ö·û´®»¹ÊÇ×Ö·û´®±êÊ¶ºÅ
 	
 	if  (Lua_IsNumber(L,2))
 	{
@@ -1128,7 +1128,7 @@ int LuaSelUI(Lua_State * L)
 	
 	PLAYER_SCRIPTACTION_SYNC UiInfo;
 	UiInfo.m_bUIId = UI_TALKDIALOG;
-	UiInfo.m_bParam1 = nDataType;//ä¸»ä¿¡æ¯çš„ç±»å‹ï¼Œå­—ç¬¦ä¸²(0)æˆ–æ•°å­—(1)
+	UiInfo.m_bParam1 = nDataType;//Ö÷ĞÅÏ¢µÄÀàĞÍ£¬×Ö·û´®(0)»òÊı×Ö(1)
 	UiInfo.m_bOptionNum = nOptionNum;
 	UiInfo.m_nOperateType = SCRIPTACTION_UISHOW;
 	UiInfo.m_bParam = TRUE;
@@ -1246,7 +1246,7 @@ int LuaIncludeFile(Lua_State * L)
 }
 
 //**************************************************************************************************************************************************************
-//												ä»»åŠ¡è„šæœ¬
+//												ÈÎÎñ½Å±¾
 //**************************************************************************************************************************************************************
 int LuaGetTaskValue(Lua_State * L)
 {
@@ -1389,7 +1389,7 @@ int LuaSetTempTaskValue(Lua_State * L)
 }
 
 #ifdef _SERVER
-//---------------------------------äº¤æ˜“ã€ä¹°å–ã€æ‰“å¼€å‚¨è—ç®±-----------------------
+//---------------------------------½»Ò×¡¢ÂòÂô¡¢´ò¿ª´¢²ØÏä-----------------------
 //Sale(id)
 //------------------------------------------------------------------------------
 int LuaSale(Lua_State * L)
@@ -1401,7 +1401,7 @@ int LuaSale(Lua_State * L)
 	{
 		int nShopId = (int)Lua_ValueToNumber(L,1);
 		int nShopMoneyUnit = moneyunit_money;
-		//----åœ¨ä»¥ä¸‹åŠ å…¥ä¹°å–çš„å®é™…ä»£ç !
+		//----ÔÚÒÔÏÂ¼ÓÈëÂòÂôµÄÊµ¼Ê´úÂë!
 		if (Lua_GetTopIndex(L) > 2)
 			nShopMoneyUnit = (int)Lua_ValueToNumber(L,2);
 		BuySell.OpenSale(nPlayerIndex, nShopId - 1, nShopMoneyUnit);
@@ -1463,7 +1463,7 @@ int LuaOpenEquipEx(Lua_State * L)
 	return 0;
 }
 
-//---------------------------------æ—¶é—´ä»»åŠ¡-------------------------------------
+//---------------------------------Ê±¼äÈÎÎñ-------------------------------------
 //SetTimer(Time, TimerTaskId)
 int LuaSetTimer(Lua_State  * L)
 {
@@ -1545,7 +1545,7 @@ lab_getmissionresttime:
 
 
 //**************************************************************************************************************************************************************
-//												ç»„é˜Ÿè„šæœ¬
+//												×é¶Ó½Å±¾
 //**************************************************************************************************************************************************************
 int LuaIsLeader(Lua_State * L)
 {
@@ -1710,7 +1710,7 @@ int LuaSetFreezeTeamOption(Lua_State * L)
 	return 0;
 }
 //**************************************************************************************************************************************************************
-//												èŠå¤©æ¶ˆæ¯è„šæœ¬
+//												ÁÄÌìÏûÏ¢½Å±¾
 //**************************************************************************************************************************************************************
 extern TLua_Funcs GameScriptFuns[];
 extern TLua_Funcs WorldScriptFuns[];
@@ -1718,7 +1718,7 @@ extern TLua_Funcs WorldScriptFuns[];
 int g_GetGameScriptFunNum();
 int g_GetWorldScriptFunNum();
 //**************************************************************************************************************************************************************
-//												èŠå¤©æ¶ˆæ¯è„šæœ¬
+//												ÁÄÌìÏûÏ¢½Å±¾
 //**************************************************************************************************************************************************************
 
 int	LuaMsgToPlayer(Lua_State * L)
@@ -1861,16 +1861,16 @@ int LuaMsgToAroundRegion(Lua_State * L)
 }
 
 //**************************************************************************************************************************************************************
-//												ä¸»è§’è„šæœ¬
+//												Ö÷½Ç½Å±¾
 //**************************************************************************************************************************************************************
 
 //**************************************************************************************************************************************************************
-//												ä¸»è§’è„šæœ¬
+//												Ö÷½Ç½Å±¾
 //**************************************************************************************************************************************************************
 
-/*åŠŸèƒ½ï¼šè®©ç©å®¶è¿›å…¥æ–°çš„ä¸€ä¸ªæ¸¸æˆä¸–ç•Œ
-nPlayerIndex:ä¸»è§’çš„Index
-nSubWorldIndex:æ¸¸æˆä¸–ç•Œid
+/*¹¦ÄÜ£ºÈÃÍæ¼Ò½øÈëĞÂµÄÒ»¸öÓÎÏ·ÊÀ½ç
+nPlayerIndex:Ö÷½ÇµÄIndex
+nSubWorldIndex:ÓÎÏ·ÊÀ½çid
 nPosX:
 nPosY:
 */
@@ -2853,12 +2853,12 @@ if (nParamCount < 1) return 0;
 	  }
 */
 //**************************************************************************************************************************************************************
-//												NPCæ“ä½œè„šæœ¬
+//												NPC²Ù×÷½Å±¾
 //**************************************************************************************************************************************************************
 /*nNpcTemplateId GetNpcTmpId(sName)
-åŠŸèƒ½ä»Npcæ¨¡æ¿ä¸­è·å¾—åç§°ä¸ºsNameçš„Npcåœ¨æ¨¡æ¿ä¸­çš„Id
-sName:Npcåç§°
-nNpcTemplateID:æ¨¡æ¿ä¸­Id
+¹¦ÄÜ´ÓNpcÄ£°åÖĞ»ñµÃÃû³ÆÎªsNameµÄNpcÔÚÄ£°åÖĞµÄId
+sName:NpcÃû³Æ
+nNpcTemplateID:Ä£°åÖĞId
 */
 
 int LuaGetNpcTemplateID(Lua_State * L)
@@ -2897,14 +2897,14 @@ int LuaGetNpcTempTypeName(Lua_State * L)
 /*
 nNpcIndex AddNpc(nNpcTemplateId,nLevel, nSubWorldIndex, nPosX, nPosY )
 
-  åŠŸèƒ½ï¼šå¢åŠ ä¸€ä¸ªç‰¹å®šçš„NPC
-  å‚æ•°ï¼š
-  nNpcTemplateId: NPCåœ¨NPCæ¨¡æ¿ä¸­çš„id
-  nLevel:Npcçš„ç­‰çº§
-  nSubWorldIndex:æ‰€å¤„çš„ä¸–ç•Œid
-  nPosXï¼šX (ç‚¹åæ ‡)
-  nPosYï¼šY (ç‚¹åæ ‡)
-  nNpcIndex:å¢åŠ åï¼Œå°†è¿”å›è¯¥Npcåœ¨æ¸¸æˆä¸–ç•Œçš„Indexï¼Œå¦‚æœä¸æˆåŠŸè¿”å›nil 
+  ¹¦ÄÜ£ºÔö¼ÓÒ»¸öÌØ¶¨µÄNPC
+  ²ÎÊı£º
+  nNpcTemplateId: NPCÔÚNPCÄ£°åÖĞµÄid
+  nLevel:NpcµÄµÈ¼¶
+  nSubWorldIndex:Ëù´¦µÄÊÀ½çid
+  nPosX£ºX (µã×ø±ê)
+  nPosY£ºY (µã×ø±ê)
+  nNpcIndex:Ôö¼Óºó£¬½«·µ»Ø¸ÃNpcÔÚÓÎÏ·ÊÀ½çµÄIndex£¬Èç¹û²»³É¹¦·µ»Ønil 
 */
 
 int LuaAddNpc(Lua_State * L)
@@ -2943,8 +2943,8 @@ int LuaAddNpc(Lua_State * L)
 }
 
 /*nResult DelNpc (nNpcIndex)
-åŠŸèƒ½ï¼šåˆ é™¤ä¸€ä¸ªç‰¹å®šçš„NPC
-nResult:è¿”å›æˆåŠŸä¸å¦,1ä¸ºæˆåŠŸ,0ä¸ºå¤±è´¥
+¹¦ÄÜ£ºÉ¾³ıÒ»¸öÌØ¶¨µÄNPC
+nResult:·µ»Ø³É¹¦Óë·ñ,1Îª³É¹¦,0ÎªÊ§°Ü
 */
 int LuaDelNpc(Lua_State * L)
 {
@@ -3029,8 +3029,8 @@ int LuaClearMapNpcWithName(Lua_State * L)
 
 /*
 nDelCount DelNpcsInRgn(nSubWorld,nRegionId, nKind) 
-åŠŸèƒ½ï¼šåˆ é™¤æŸä¸ªæ¸¸æˆä¸–ç•Œä¸­æŸä¸ªRegionå†…çš„æ‰€æœ‰æŸç±»çš„NPC
-è¿”å›:åˆ é™¤çš„Npcä¸ªæ•°
+¹¦ÄÜ£ºÉ¾³ıÄ³¸öÓÎÏ·ÊÀ½çÖĞÄ³¸öRegionÄÚµÄËùÓĞÄ³ÀàµÄNPC
+·µ»Ø:É¾³ıµÄNpc¸öÊı
 */
 
 int LuaDelNpcsInRgn(Lua_State * L)
@@ -3040,7 +3040,7 @@ int LuaDelNpcsInRgn(Lua_State * L)
 }
 /*
 nDelCount DelNpcsInWld(nSubWorldId, nKind)
-åŠŸèƒ½ï¼šåˆ é™¤æŸä¸ªæ¸¸æˆä¸–ç•Œä¸­çš„æ‰€æœ‰Npc
+¹¦ÄÜ£ºÉ¾³ıÄ³¸öÓÎÏ·ÊÀ½çÖĞµÄËùÓĞNpc
 */
 int LuaDelNpcsInWld(Lua_State * L)
 {
@@ -3793,11 +3793,11 @@ int LuaGetPlayerRevivalID(Lua_State * L)
 	return 1;
 }
 //**************************************************************************************************************************************************************
-//												èŠå¤©æ¶ˆæ¯è„šæœ¬
+//												ÁÄÌìÏûÏ¢½Å±¾
 //**************************************************************************************************************************************************************
 
 //**********************************************************************************************
-//							ä¸»è§’å±æ€§è·å¾—
+//							Ö÷½ÇÊôĞÔ»ñµÃ
 //**********************************************************************************************
 
 
@@ -3807,7 +3807,7 @@ int LuaGetPlayerRevivalID(Lua_State * L)
 	else Lua_PushNil(L);\
 return 1;}														
 
-//é˜µè¥
+//ÕóÓª
 int LuaGetPlayerCurrentCamp(Lua_State * L)
 {
 	MacroFun_GetPlayerInfoInt(L, m_CurrentCamp);
@@ -4252,7 +4252,7 @@ int LuaSetTongParam(Lua_State * L)
 	return 0;
 }
 
-//é—¨æ´¾
+//ÃÅÅÉ
 int LuaGetPlayerFaction(Lua_State * L)
 {
 	int nPlayerIndex = GetPlayerIndex(L);				
@@ -4328,8 +4328,8 @@ int LuaChangePlayerFaction(Lua_State * L)
 	return 1;
 }
 
-//æŠ—æ€§ *************************************************************************************
-//0è¡¨ç¤ºå½“å‰,1è¡¨ç¤ºåŸå§‹çš„,2è¡¨ç¤ºæœ€å¤§çš„
+//¿¹ĞÔ *************************************************************************************
+//0±íÊ¾µ±Ç°,1±íÊ¾Ô­Ê¼µÄ,2±íÊ¾×î´óµÄ
 int LuaGetPlayerColdResist(Lua_State * L)
 {
 	int nPlayerIndex = GetPlayerIndex(L);
@@ -4624,7 +4624,7 @@ int LuaGetNextExp(Lua_State *L)
 	return 1;
 }
 
-//ç»éªŒå€¼*********************************************************************
+//¾­ÑéÖµ*********************************************************************
 int LuaGetPlayerExp(Lua_State *L)
 {
 	int nPlayerIndex = GetPlayerIndex(L);
@@ -5092,7 +5092,7 @@ int nDValue = (int)Lua_ValueToNumber(L, 1);
 	  }
 */
 
-//åŸºæœ¬å±æ€§
+//»ù±¾ÊôĞÔ
 int LuaGetPlayerLucky(Lua_State * L)
 {
     int nPlayerIndex = GetPlayerIndex(L);
@@ -5778,7 +5778,7 @@ int LuaGetPlayerStationCount(Lua_State *L)
 	return 1;
 }
 
-//è·å¾—å½“å‰ç©å®¶æœ‰æ•ˆåŸå¸‚åˆ—è¡¨ä¸­çš„ç¬¬nä¸ªï¼ˆé™¤å»å½“å‰æ‰€åœ¨åŸå¸‚ï¼‰
+//»ñµÃµ±Ç°Íæ¼ÒÓĞĞ§³ÇÊĞÁĞ±íÖĞµÄµÚn¸ö£¨³ıÈ¥µ±Ç°ËùÔÚ³ÇÊĞ£©
 int LuaGetPlayerStation(Lua_State * L)
 {
 	int nPlayerIndex = GetPlayerIndex(L);
@@ -5850,7 +5850,7 @@ int LuaGetPlayerWayPoint(Lua_State * L)
 	
 	return 1;
 }
-//æ ¹æ®ä¼ å…¥çš„åŸå¸‚å”¯ä¸€idè·å¾—å…¶åç§°
+//¸ù¾İ´«ÈëµÄ³ÇÊĞÎ¨Ò»id»ñµÃÆäÃû³Æ
 int LuaGetStationName(Lua_State * L)
 {
 	int nPlayerIndex = GetPlayerIndex(L);
@@ -6204,11 +6204,11 @@ int LuaGetDockName(Lua_State * L)
 	
 	if (nDock > g_DockPriceTabFile.GetHeight() - 1)
 	{
-		strcpy(szName, "æœªçŸ¥ç å¤´");
+		strcpy(szName, "Î´ÖªÂëÍ·");
 		goto DockName;
 	}
 	
-	g_DockTabFile.GetString(nDock + 1, "DESC", "æœªçŸ¥ç å¤´", szName, 100);
+	g_DockTabFile.GetString(nDock + 1, "DESC", "Î´ÖªÂëÍ·", szName, 100);
 	
 DockName:
 	Lua_PushString (L, szName);
@@ -10249,33 +10249,33 @@ TLua_Funcs GameScriptFuns[] =
 	{"GetRespect",LuaGetPlayerRespectValue},
 	{"GetNpcIdx", LuaGetCurNpcIndex},
 	
-	{"SetTimer",		LuaSetTimer},		//SetTimer(æ—¶é—´é‡, æ—¶é—´TaskId):ç»™ç©å®¶æ‰“å¼€è®¡æ—¶å™¨,æ—¶é—´åˆ°æ—¶å°†è‡ªåŠ¨è°ƒç”¨OnTimerå‡½æ•°
-	{"StopTimer",		LuaStopTimer},		//StopTimer()ï¼šå…³é—­å½“å‰ç©å®¶çš„è®¡æ—¶å™¨
-	{"GetRestTime",		LuaGetRestTime},	//GetRestTime:è·å¾—è®¡æ—¶å™¨å°†è§¦å‘çš„å‰©äºæ—¶é—´	
-	{"GetTimerId",		LuaGetCurTimerId},	//CurTimerId = GetTimerId():è·å¾—å½“å‰æ‰§è¡Œçš„è®¡æ—¶å™¨çš„id,å¦‚æœæ²¡æœ‰åˆ™è¿”å›0
-	{"GetTask",			LuaGetTaskValue},	//GetTask(ä»»åŠ¡å·):è·å¾—å½“å‰ç©å®¶è¯¥ä»»åŠ¡å·çš„å€¼
-	{"GetTaskS",		LuaGetTaskString},	//GetTask(ä»»åŠ¡å·):è·å¾—å½“å‰ç©å®¶è¯¥ä»»åŠ¡å·çš„å€¼
-	{"SetTask",			LuaSetTaskValue},	//SetTask(ä»»åŠ¡å·,å€¼):è®¾ç½®ä»»åŠ¡å€¼
-	{"SyncTaskValue",	LuaSyncTaskValue},	//SetTask(ä»»åŠ¡å·,å€¼):è®¾ç½®ä»»åŠ¡å€¼
-	{"IsCaptain",		LuaIsLeader},		//IsCaptain()æ˜¯å¦ä¸ºé˜Ÿé•¿
-	{"GetTeam",			LuaGetTeamId},		//GetTeam()è¿”å›ç©å®¶é˜Ÿä¼ID
+	{"SetTimer",		LuaSetTimer},		//SetTimer(Ê±¼äÁ¿, Ê±¼äTaskId):¸øÍæ¼Ò´ò¿ª¼ÆÊ±Æ÷,Ê±¼äµ½Ê±½«×Ô¶¯µ÷ÓÃOnTimerº¯Êı
+	{"StopTimer",		LuaStopTimer},		//StopTimer()£º¹Ø±Õµ±Ç°Íæ¼ÒµÄ¼ÆÊ±Æ÷
+	{"GetRestTime",		LuaGetRestTime},	//GetRestTime:»ñµÃ¼ÆÊ±Æ÷½«´¥·¢µÄÊ£ÓÚÊ±¼ä	
+	{"GetTimerId",		LuaGetCurTimerId},	//CurTimerId = GetTimerId():»ñµÃµ±Ç°Ö´ĞĞµÄ¼ÆÊ±Æ÷µÄid,Èç¹ûÃ»ÓĞÔò·µ»Ø0
+	{"GetTask",			LuaGetTaskValue},	//GetTask(ÈÎÎñºÅ):»ñµÃµ±Ç°Íæ¼Ò¸ÃÈÎÎñºÅµÄÖµ
+	{"GetTaskS",		LuaGetTaskString},	//GetTask(ÈÎÎñºÅ):»ñµÃµ±Ç°Íæ¼Ò¸ÃÈÎÎñºÅµÄÖµ
+	{"SetTask",			LuaSetTaskValue},	//SetTask(ÈÎÎñºÅ,Öµ):ÉèÖÃÈÎÎñÖµ
+	{"SyncTaskValue",	LuaSyncTaskValue},	//SetTask(ÈÎÎñºÅ,Öµ):ÉèÖÃÈÎÎñÖµ
+	{"IsCaptain",		LuaIsLeader},		//IsCaptain()ÊÇ·ñÎª¶Ó³¤
+	{"GetTeam",			LuaGetTeamId},		//GetTeam()·µ»ØÍæ¼Ò¶ÓÎéID
 	{"GetTeamSize",		LuaGetTeamSize},	//GetTeamSize()
 	{"GetTeamMem",		LuaGetTeamMem},
-	{"LeaveTeam",		LuaLeaveTeam},		//LeaveTeam()è®©ç©å®¶ç¦»å¼€è‡ªèº«é˜Ÿä¼
+	{"LeaveTeam",		LuaLeaveTeam},		//LeaveTeam()ÈÃÍæ¼ÒÀë¿ª×ÔÉí¶ÓÎé
 	{"TeamDoScript",	LuaTeamDoScript},	//TeamDoScript(links,func) return number player has set
-	{"Msg2Player",		LuaMsgToPlayer	},	//Msg2Player(æ¶ˆæ¯)
-	{"Msg2Team",		LuaMsgToTeam},		//Msg2Team(æ¶ˆæ¯)é€šçŸ¥ç©å®¶çš„ç»„
-	{"Msg2SubWorld",	LuaMsgToSubWorld},	//Msg2SubWorld(æ¶ˆæ¯)é€šçŸ¥ä¸–ç•Œ
+	{"Msg2Player",		LuaMsgToPlayer	},	//Msg2Player(ÏûÏ¢)
+	{"Msg2Team",		LuaMsgToTeam},		//Msg2Team(ÏûÏ¢)Í¨ÖªÍæ¼ÒµÄ×é
+	{"Msg2SubWorld",	LuaMsgToSubWorld},	//Msg2SubWorld(ÏûÏ¢)Í¨ÖªÊÀ½ç
 	{"Msg2Faction",		LuaMsgToFaction},
 	{"Msg2Tong",		LuaMsgToTong},
 	{"Msg2Room",		LuaMsgToChatRoom},
-	{"Msg2Region",		LuaMsgToAroundRegion},//Msg2Region(æ¶ˆæ¯)é€šçŸ¥å‘¨å›´Region
+	{"Msg2Region",		LuaMsgToAroundRegion},//Msg2Region(ÏûÏ¢)Í¨ÖªÖÜÎ§Region
 	{"Msg2GM",			LuaMsgToGameMaster}, //Msg2GM(StrInfo)
 	{"Msg2IP",			LuaMsgToIP}, //Msg2IP(IP, ID, StrInfo)
 	{"GetIP",			LuaGetIP},
-	{"SetPos",			LuaSetPos},			//SetPos(x,y)è¿›å…¥æŸç‚¹	
+	{"SetPos",			LuaSetPos},			//SetPos(x,y)½øÈëÄ³µã	
 	{"GetPos",			LuaGetPos},			//GetPos() return x,y,subworldindex
-	{"GetWorldPos",		LuaGetNewWorldPos},	//W,X,Y = GetWorldPos()è¿”å›äºNewWorldé…é™ªçš„åæ ‡
+	{"GetWorldPos",		LuaGetNewWorldPos},	//W,X,Y = GetWorldPos()·µ»ØÓÚNewWorldÅäÅãµÄ×ø±ê
 	{"GetWorldName",	LuaGetNewWorldName},
 	{"GetWorldKind",	LuaGetNewWorldKind},
 	{"GetFreePos",		LuaGetFreeObjPos},
@@ -10300,13 +10300,13 @@ TLua_Funcs GameScriptFuns[] =
 	{"GetMagicAttrib",		LuaGetMagicAttrib},
 	{"SetMagicAttrib",		LuaSetMagicAttrib},
 
-	{"AddMagic",		LuaAddMagic},		//AddMagic(é­”æ³•idæˆ–é­”æ³•å)ç»™ç©å®¶åŠ æŸä¸ªé­”æ³•
-	{"DelMagic",		LuaDelMagic},		//DelMagic(é­”æ³•idæˆ–é­”æ³•å)
-	{"DelAllMagic",		LuaDelAllMagic},		//DelMagic(é­”æ³•idæˆ–é­”æ³•å)
-	{"HaveMagic",		LuaHaveMagic},		//HaveMagic(é­”æ³•idæˆ–é­”æ³•å)è¿”å›0æˆ–1
+	{"AddMagic",		LuaAddMagic},		//AddMagic(Ä§·¨id»òÄ§·¨Ãû)¸øÍæ¼Ò¼ÓÄ³¸öÄ§·¨
+	{"DelMagic",		LuaDelMagic},		//DelMagic(Ä§·¨id»òÄ§·¨Ãû)
+	{"DelAllMagic",		LuaDelAllMagic},		//DelMagic(Ä§·¨id»òÄ§·¨Ãû)
+	{"HaveMagic",		LuaHaveMagic},		//HaveMagic(Ä§·¨id»òÄ§·¨Ãû)·µ»Ø0»ò1
 	{"IncSkill",		LuaIncSkill},
 	{"IncSkillExp",		LuaIncSkillExp},
-	{"GetMagicLevel",	LuaGetMagicLevel},	//GetMagicLevel(é­”æ³•idæˆ–é­”æ³•å)è¿”å›ç­‰çº§
+	{"GetMagicLevel",	LuaGetMagicLevel},	//GetMagicLevel(Ä§·¨id»òÄ§·¨Ãû)·µ»ØµÈ¼¶
 	{"AddMagicPoint",	LuaAddMagicPoint},
 	{"GetMagicPoint",	LuaGetMagicPoint},
 	
@@ -10325,7 +10325,7 @@ TLua_Funcs GameScriptFuns[] =
 	{"GetNpcSettingIdx",LuaGetNpcTemplateID},
 	{"GetNpcTempName",	LuaGetNpcTempName},
 	{"GetNpcTempTypeName",	LuaGetNpcTempTypeName},
-	{"AddNpc",			LuaAddNpc},			//AddNpc(äººç‰©æ¨¡æ¿idæˆ–äººç‰©æ¨¡æ¿å,æ‰€å¤„ä¸–ç•Œidï¼Œç‚¹åæ ‡x,ç‚¹åæ ‡y),è¿”å›npcidå€¼
+	{"AddNpc",			LuaAddNpc},			//AddNpc(ÈËÎïÄ£°åid»òÈËÎïÄ£°åÃû,Ëù´¦ÊÀ½çid£¬µã×ø±êx,µã×ø±êy),·µ»ØnpcidÖµ
 	{"DelNpc",			LuaDelNpc},			//DelNpc(Npcid)
 	{"ClearMapNpc",		LuaClearMapNpc}, 
 	{"ClearMapNpcWithName",		LuaClearMapNpcWithName}, 
@@ -10352,7 +10352,7 @@ TLua_Funcs GameScriptFuns[] =
 	{"IsRideHorse",		LuaIsRideHorse},
 	{"SyncNpc",			LuaSyncNpc},
 	{"SetNpcPos",		LuaSetNpcPos},
-	{"SetNpcScript",	LuaSetNpcActionScript},	//SetNpcScript(npcid, è„šæœ¬æ–‡ä»¶å)è®¾ç½®npcå½“å‰çš„è„šæœ¬
+	{"SetNpcScript",	LuaSetNpcActionScript},	//SetNpcScript(npcid, ½Å±¾ÎÄ¼şÃû)ÉèÖÃnpcµ±Ç°µÄ½Å±¾
 	{"SetNpcName",		LuaSetNpcName},
 	{"GetNpcName",		LuaGetNpcName},
 	{"GetNpcID",		LuaGetNpcID},
@@ -10369,22 +10369,22 @@ TLua_Funcs GameScriptFuns[] =
 	{"GetNpcOwner",		LuaGetNpcOwner},
 	{"SetNpcFindPathTime",LuaSetNpcFindPathTime}, 
 	{"SetNpcCurCamp",	LuaSetNpcCurCamp},
-	{"SetRevPos",		LuaSetPlayerRevivalPos},//SetRevPos(ç‚¹ä½ç½®Xï¼Œç‚¹ä½ç½®Y)è®¾ç½®ç©å®¶çš„å½“å‰ä¸–ç•Œçš„ç­‰å…¥ç‚¹ä½ç½®
-	{"Rev2Pos",			LuaGetPlayerRevivalPos},//SetRevPos(ç‚¹ä½ç½®Xï¼Œç‚¹ä½ç½®Y)è®¾ç½®ç©å®¶çš„å½“å‰ä¸–ç•Œçš„ç­‰å…¥ç‚¹ä½ç½®
+	{"SetRevPos",		LuaSetPlayerRevivalPos},//SetRevPos(µãÎ»ÖÃX£¬µãÎ»ÖÃY)ÉèÖÃÍæ¼ÒµÄµ±Ç°ÊÀ½çµÄµÈÈëµãÎ»ÖÃ
+	{"Rev2Pos",			LuaGetPlayerRevivalPos},//SetRevPos(µãÎ»ÖÃX£¬µãÎ»ÖÃY)ÉèÖÃÍæ¼ÒµÄµ±Ç°ÊÀ½çµÄµÈÈëµãÎ»ÖÃ
 	{"GetCurRev",		LuaGetPlayerRevival},
 	{"GetCurRevID",		LuaGetPlayerRevivalID},
 	{"SetTempRevPos",	LuaSetDeathRevivalPos}, //SetTempRevPos(subworldid, x, y ) or SetTempRevPos(id);
 	{"Revive",			LuaPlayerExecuteRevive}, //SetTempRevPos(subworldid, x, y ) or SetTempRevPos(id);
-	{"GetCurCamp",		LuaGetPlayerCurrentCamp},//GetCurCamp()è·å¾—ç©å®¶çš„å½“å‰é˜µè¥
-	{"GetCamp",			LuaGetPlayerCamp},//GetCamp()è·å¾—ç©å®¶é˜µè¥
-	{"SetCurCamp",		LuaSetPlayerCurrentCamp},//SetCurCamp(é˜µè¥å·):è®¾ç½®ç©å®¶å½“å‰é˜µè¥
-	{"SetCamp",			LuaSetPlayerCamp},		  //SetCamp(é˜µè¥å·):è®¾ç½®é˜µè¥	
-	{"RestoreCamp",		LuaRestorePlayerCamp},//RestoreCamp()æ¢å¤é˜µè¥
-	{"GetFaction",		LuaGetPlayerFaction,},//GetFaction()è·å¾—ç©å®¶çš„é—¨æ´¾å 
+	{"GetCurCamp",		LuaGetPlayerCurrentCamp},//GetCurCamp()»ñµÃÍæ¼ÒµÄµ±Ç°ÕóÓª
+	{"GetCamp",			LuaGetPlayerCamp},//GetCamp()»ñµÃÍæ¼ÒÕóÓª
+	{"SetCurCamp",		LuaSetPlayerCurrentCamp},//SetCurCamp(ÕóÓªºÅ):ÉèÖÃÍæ¼Òµ±Ç°ÕóÓª
+	{"SetCamp",			LuaSetPlayerCamp},		  //SetCamp(ÕóÓªºÅ):ÉèÖÃÕóÓª	
+	{"RestoreCamp",		LuaRestorePlayerCamp},//RestoreCamp()»Ö¸´ÕóÓª
+	{"GetFaction",		LuaGetPlayerFaction,},//GetFaction()»ñµÃÍæ¼ÒµÄÃÅÅÉÃû 
 	{"GetFactionName",	LuaGetPlayerFactionName,},
 	{"GetFactionCamp",	LuaGetPlayerFactionCamp,},
 	{"GetFactionNo",	LuaGetPlayerFactionNo},
-	{"SetFaction",		LuaChangePlayerFaction},  //SetFaction(é—¨æ´¾å):è®¾ç½®ç©å®¶é—¨æ´¾å
+	{"SetFaction",		LuaChangePlayerFaction},  //SetFaction(ÃÅÅÉÃû):ÉèÖÃÍæ¼ÒÃÅÅÉÃû
 	{"GetColdR",		LuaGetPlayerColdResist},	
 	{"SetColdR",		LuaSetPlayerColdResist},
 	{"GetFireR",		LuaGetPlayerFireResist},
@@ -10395,56 +10395,56 @@ TLua_Funcs GameScriptFuns[] =
 	{"SetPoisonR",		LuaSetPlayerPoisonResist},
 	{"GetPhyR",			LuaGetPlayerPhysicsResist},
 	{"SetPhyR",			LuaSetPlayerPhysicsResist},
-	{"GetNextExp",		LuaGetNextExp},			//GetExp():è·å¾—ç©å®¶çš„å½“å‰ç»éªŒå€¼
-	{"GetExp",			LuaGetPlayerExp	},			//GetExp():è·å¾—ç©å®¶çš„å½“å‰ç»éªŒå€¼
-	{"AddExp",			LuaModifyPlayerExp},		//AddExp(ç»éªŒå€¼ï¼Œå¯¹æ–¹ç­‰çº§ï¼Œæ˜¯å¦ç»„é˜Ÿå…±äº«ç»éªŒå€¼)
-	{"AddOwnExp",		LuaAddOwnExp},				//AddOwnExp(Exp)ï¼Œç»™ç©å®¶ç›´æ¥åŠ ç»éªŒ
-	{"AddStackExp",		LuaAddStackExp},				//AddSumExp(Exp)ï¼Œç»™ç©å®¶ç›´æ¥åŠ ç»éªŒ
-	{"GetLife",			LuaGetPlayerLife},			//GetLife()è·å¾—ç©å®¶çš„ç”Ÿå‘½å€¼
-	{"RestoreLife",		LuaRestorePlayerLife},		//RestoreLife()æ¢å¤ç©å®¶çš„ç”Ÿå‘½
-	{"GetMana",			LuaGetPlayerMana},			//GetMana()è·å¾—ç©å®¶çš„Mana
-	{"RestoreMana",		LuaRestorePlayerMana},		//RestoreMana()æ¢å¤ç©å®¶çš„Mana
-	{"GetStamina",		LuaGetPlayerStamina},		//GetStamina()è·å¾—ç©å®¶Stamina
-	{"RestoreStamina",	LuaRestorePlayerStamina},	//RestoreMana()æ¢å¤ç©å®¶çš„Stamina
-	{"GetDefend",		LuaGetPlayerDefend},		//GetDefend()è·å¾—ç©å®¶çš„é˜²å¾¡åŠ›
-	{"GetSex",			LuaGetPlayerSex},			//GetSex()è·å¾—ç©å®¶çš„æ€§åˆ«
-	{"GetSeries",		LuaGetPlayerSeries},		//GetSeries()è·å¾—ç©å®¶çš„ç³»0man/1woman
-	{"SetSeries",		LuaSetPlayerSeries},		//SetSeries(æ€§åˆ«å·)
-	{"GetName",			LuaGetPlayerName},			//GetName()è·å¾—ç©å®¶çš„å§“å
+	{"GetNextExp",		LuaGetNextExp},			//GetExp():»ñµÃÍæ¼ÒµÄµ±Ç°¾­ÑéÖµ
+	{"GetExp",			LuaGetPlayerExp	},			//GetExp():»ñµÃÍæ¼ÒµÄµ±Ç°¾­ÑéÖµ
+	{"AddExp",			LuaModifyPlayerExp},		//AddExp(¾­ÑéÖµ£¬¶Ô·½µÈ¼¶£¬ÊÇ·ñ×é¶Ó¹²Ïí¾­ÑéÖµ)
+	{"AddOwnExp",		LuaAddOwnExp},				//AddOwnExp(Exp)£¬¸øÍæ¼ÒÖ±½Ó¼Ó¾­Ñé
+	{"AddStackExp",		LuaAddStackExp},				//AddSumExp(Exp)£¬¸øÍæ¼ÒÖ±½Ó¼Ó¾­Ñé
+	{"GetLife",			LuaGetPlayerLife},			//GetLife()»ñµÃÍæ¼ÒµÄÉúÃüÖµ
+	{"RestoreLife",		LuaRestorePlayerLife},		//RestoreLife()»Ö¸´Íæ¼ÒµÄÉúÃü
+	{"GetMana",			LuaGetPlayerMana},			//GetMana()»ñµÃÍæ¼ÒµÄMana
+	{"RestoreMana",		LuaRestorePlayerMana},		//RestoreMana()»Ö¸´Íæ¼ÒµÄMana
+	{"GetStamina",		LuaGetPlayerStamina},		//GetStamina()»ñµÃÍæ¼ÒStamina
+	{"RestoreStamina",	LuaRestorePlayerStamina},	//RestoreMana()»Ö¸´Íæ¼ÒµÄStamina
+	{"GetDefend",		LuaGetPlayerDefend},		//GetDefend()»ñµÃÍæ¼ÒµÄ·ÀÓùÁ¦
+	{"GetSex",			LuaGetPlayerSex},			//GetSex()»ñµÃÍæ¼ÒµÄĞÔ±ğ
+	{"GetSeries",		LuaGetPlayerSeries},		//GetSeries()»ñµÃÍæ¼ÒµÄÏµ0man/1woman
+	{"SetSeries",		LuaSetPlayerSeries},		//SetSeries(ĞÔ±ğºÅ)
+	{"GetName",			LuaGetPlayerName},			//GetName()»ñµÃÍæ¼ÒµÄĞÕÃû
 	{"GetPlayerNpcIdx",	LuaGetPlayerNpcIdx},
 	{"GetMateName",		LuaGetMateName},
 	{"GetAccount",		LuaGetPlayerAccount},
-	{"GetUUID",			LuaGetPlayerID},			//GetUUID()è·å¾—ç©å®¶çš„å”¯ä¸€ID
-	{"FindPlayer",		LuaFindPlayer},			//GetUUID()è·å¾—ç©å®¶çš„å”¯ä¸€ID
+	{"GetUUID",			LuaGetPlayerID},			//GetUUID()»ñµÃÍæ¼ÒµÄÎ¨Ò»ID
+	{"FindPlayer",		LuaFindPlayer},			//GetUUID()»ñµÃÍæ¼ÒµÄÎ¨Ò»ID
 	{"FindNearNpc",		LuaFindNearNpc},
 	{"FindAroundNpc",	LuaFindAroundNpc},
-	{"GetLeadExp",		LuaGetPlayerLeadExp},		//GetLeadExp()è·å¾—ç©å®¶çš„ç»Ÿç‡ç»éªŒå€¼
-	{"GetLeadLevel",	LuaGetPlayerLeadLevel},		//GetLeadLevel()è·å¾—ç©å®¶çš„ç»Ÿç‡ç­‰çº§
+	{"GetLeadExp",		LuaGetPlayerLeadExp},		//GetLeadExp()»ñµÃÍæ¼ÒµÄÍ³ÂÊ¾­ÑéÖµ
+	{"GetLeadLevel",	LuaGetPlayerLeadLevel},		//GetLeadLevel()»ñµÃÍæ¼ÒµÄÍ³ÂÊµÈ¼¶
 	{"SetLevel",		LuaSetLevel},
 	{"GetLevel",		LuaGetLevel},				//GetLevel()GetPlayers Level
 	{"GetPlayerLevel",	LuaGetLevel},				//GetLevel()GetPlayers Level
-	{"GetRestAP",		LuaGetPlayerRestAttributePoint},//GetRestAP()è·å¾—ç©å®¶çš„å‰©äºå±æ€§ç‚¹æ•°
-	{"GetRestSP",		LuaGetPlayerRestSkillPoint},	//GetRestSP()è·å¾—ç©å®¶çš„å‰©äºæŠ€èƒ½ç‚¹æ•°	
-	{"GetLucky",		LuaGetPlayerLucky},			//GetLucky()è·å¾—ç©å®¶çš„å¹¸è¿å€¼
-	{"GetEng",			LuaGetPlayerEngergy},		//GetEng()è·å¾—ç©å®¶çš„åŠ›é‡å€¼Eng
-	{"AddEng",			LuaSetPlayerEngergy},		//AddEng(Value)è·å¾—ç©å®¶çš„åŠ›é‡å€¼Eng
-	{"GetDex",			LuaGetPlayerDexterity},		//GetDex()è·å¾—ç©å®¶çš„Dex
-	{"AddDex",			LuaSetPlayerDexterity},		//AddDex(Value)è·å¾—ç©å®¶çš„åŠ›é‡å€¼Eng
+	{"GetRestAP",		LuaGetPlayerRestAttributePoint},//GetRestAP()»ñµÃÍæ¼ÒµÄÊ£ÓÚÊôĞÔµãÊı
+	{"GetRestSP",		LuaGetPlayerRestSkillPoint},	//GetRestSP()»ñµÃÍæ¼ÒµÄÊ£ÓÚ¼¼ÄÜµãÊı	
+	{"GetLucky",		LuaGetPlayerLucky},			//GetLucky()»ñµÃÍæ¼ÒµÄĞÒÔËÖµ
+	{"GetEng",			LuaGetPlayerEngergy},		//GetEng()»ñµÃÍæ¼ÒµÄÁ¦Á¿ÖµEng
+	{"AddEng",			LuaSetPlayerEngergy},		//AddEng(Value)»ñµÃÍæ¼ÒµÄÁ¦Á¿ÖµEng
+	{"GetDex",			LuaGetPlayerDexterity},		//GetDex()»ñµÃÍæ¼ÒµÄDex
+	{"AddDex",			LuaSetPlayerDexterity},		//AddDex(Value)»ñµÃÍæ¼ÒµÄÁ¦Á¿ÖµEng
 	{"GetStrg",			LuaGetPlayerStrength},		//GetStrg()
-	{"AddStrg",			LuaSetPlayerStrength},		//AddStrg(Value)è·å¾—ç©å®¶çš„åŠ›é‡å€¼Eng
+	{"AddStrg",			LuaSetPlayerStrength},		//AddStrg(Value)»ñµÃÍæ¼ÒµÄÁ¦Á¿ÖµEng
 	{"GetVit",			LuaGetPlayerVitality},		//GetVit()
-	{"AddVit",			LuaSetPlayerVitality},		//AddVit(Value)è·å¾—ç©å®¶çš„åŠ›é‡å€¼Eng
-	{"ResetBaseAttrib",	LuaResetBaseAttribute},		// è®¾ç½®åŸºæœ¬å±æ€§
+	{"AddVit",			LuaSetPlayerVitality},		//AddVit(Value)»ñµÃÍæ¼ÒµÄÁ¦Á¿ÖµEng
+	{"ResetBaseAttrib",	LuaResetBaseAttribute},		// ÉèÖÃ»ù±¾ÊôĞÔ
 	{"ResetProp",		LuaResetProp},
-	{"GetCash",			LuaGetPlayerCashMoney},		//GetCash()è·å¾—ç©å®¶çš„ç°é‡‘
-	{"Pay",				LuaPlayerPayMoney},			//Pay(é‡‘é¢æ•°)æ‰£é™¤ç©å®¶é‡‘é’±æˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
-	{"Earn",			LuaPlayerEarnMoney},		//Earn(é‡‘é¢æ•°)å¢åŠ ç©å®¶é‡‘é’±
-	{"PrePay",			LuaPlayerPrePayMoney},		//ä»˜å®šé‡‘ï¼ŒæˆåŠŸè¿”å›1ï¼Œå¤±è´¥è¿”å›0
-	{"GetPlayerFortune",LuaGetPlayerFortune},		//GetCash()è·å¾—ç©å®¶çš„ç°é‡‘
-	{"AttackNpc",		LuaAttackNpc},				//AttackNpc(NpcDwid,ç‰©ç†ä¼¤å®³å€¼ï¼Œå†°ï¼Œç«ï¼Œç”µï¼Œæ¯’ï¼‰
+	{"GetCash",			LuaGetPlayerCashMoney},		//GetCash()»ñµÃÍæ¼ÒµÄÏÖ½ğ
+	{"Pay",				LuaPlayerPayMoney},			//Pay(½ğ¶îÊı)¿Û³ıÍæ¼Ò½ğÇ®³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
+	{"Earn",			LuaPlayerEarnMoney},		//Earn(½ğ¶îÊı)Ôö¼ÓÍæ¼Ò½ğÇ®
+	{"PrePay",			LuaPlayerPrePayMoney},		//¸¶¶¨½ğ£¬³É¹¦·µ»Ø1£¬Ê§°Ü·µ»Ø0
+	{"GetPlayerFortune",LuaGetPlayerFortune},		//GetCash()»ñµÃÍæ¼ÒµÄÏÖ½ğ
+	{"AttackNpc",		LuaAttackNpc},				//AttackNpc(NpcDwid,ÎïÀíÉËº¦Öµ£¬±ù£¬»ğ£¬µç£¬¶¾£©
 	{"KillNpc",			LuaKillNpc},				//KillNpc(NpcDWID)
 	{"KillPlayer",		LuaKillPlayer},				//KillPlayer();
-	{"Sale",			LuaSale},					//Sale(SaleId)ä¹°å–ï¼ŒSaleIdä¸ºä¾¿å–çš„ç‰©å“ä¿¡æ¯åˆ—è¡¨id
+	{"Sale",			LuaSale},					//Sale(SaleId)ÂòÂô£¬SaleIdÎª±ãÂôµÄÎïÆ·ĞÅÏ¢ÁĞ±íid
 	{"NewSale",			LuaNewSale},							
 	{"UseTownPortal",	LuaUseTownPortal},
 	{"ReturnFromPortal",LuaReturnFromTownPortal},
@@ -10546,14 +10546,14 @@ TLua_Funcs GameScriptFuns[] =
 	{"GetPK", LuaGetPlayerPKValue},  //pkValue = GetPK() 
 	{"SetPK", LuaSetPlayerPKValue}, //SetPK(pkValue)
 	//------------------------------------------------
-	//æ’åç›¸å…³å‡½æ•°
+	//ÅÅÃûÏà¹Øº¯Êı
 	{"ShowLadder", LuaShowLadder}, //ShowLadder(LadderCount, LadderId1,LadderId2,...);
 	{"GetLadder",  LuaGetLadder},
 	//------------------------------------------------
 
-	{"OpenTong",			LuaOpenTong},	//OpenTong()é€šçŸ¥ç©å®¶æ‰“å¼€å¸®ä¼šç•Œé¢
+	{"OpenTong",			LuaOpenTong},	//OpenTong()Í¨ÖªÍæ¼Ò´ò¿ª°ï»á½çÃæ
 	{"CreateTong",			LuaCreateTong},
-	{"JoinTong",			LuaJoinTong},	//OpenTong()é€šçŸ¥ç©å®¶æ‰“å¼€å¸®ä¼šç•Œé¢
+	{"JoinTong",			LuaJoinTong},	//OpenTong()Í¨ÖªÍæ¼Ò´ò¿ª°ï»á½çÃæ
 	{"CommendMaster",		LuaCommendMaster},
 	{"GetTongFlag",			LuaGetTongFlag},
 	{"GetTongName",			LuaGetTongName},
@@ -10576,16 +10576,16 @@ TLua_Funcs GameScriptFuns[] =
 	{"SetPunish",			LuaSetDeathPunish},// SetPunish(0/1)
 	{"SetReviveNow",		LuaSetReviveNow},
 	//-------------------------------------------------
-	//ç»“æ‹œ
+	//½á°İ
 	//{"SwearBrother", LuaSwearBrother}, // ret = SwearBrother(TeamId);
-	//{"MakeEnemy",	LuaMakeEnemy}, //ç»“ä»‡ MakeEnemy(enemyname)
+	//{"MakeEnemy",	LuaMakeEnemy}, //½á³ğ MakeEnemy(enemyname)
 	{"MakeMate", LuaMakeMate}, // ret = MakeMate(matename);
 	//{"UnMarry", LuaDeleteMate}, // ret = DeleteMate(matename);
 	{"RollbackSkill", LuaRollBackSkills},
 	//-------------------------------------------------
 
-	{"AddProp",		LuaAddPropPoint},//åŠ ç©å®¶å±æ€§ç‚¹
-	{"AddPropPoint",LuaAddPropPoint},//åŠ ç©å®¶å±æ€§ç‚¹
+	{"AddProp",		LuaAddPropPoint},//¼ÓÍæ¼ÒÊôĞÔµã
+	{"AddPropPoint",LuaAddPropPoint},//¼ÓÍæ¼ÒÊôĞÔµã
 	{"GetProp",		LuaGetRestPropPoint},
 	
 	{"SetExtPoint",	LuaSetExtPoint},
@@ -10722,16 +10722,16 @@ TLua_Funcs GameScriptFuns[] =
 };
 
 
-TLua_Funcs WorldScriptFuns[] =// éæŒ‡å¯¹ç©å®¶çš„è„šæœ¬æŒ‡ä»¤é›†
+TLua_Funcs WorldScriptFuns[] =// ·ÇÖ¸¶ÔÍæ¼ÒµÄ½Å±¾Ö¸Áî¼¯
 {
-	//é€šç”¨æŒ‡ä»¤
+	//Í¨ÓÃÖ¸Áî
 
 	{"AddLocalNews",LuaAddLocalNews},
 	{"AddLoaclTimeNews",LuaAddLocalTimeNews},
 	{"AddLocalCountNews",LuaAddLocalCountNews	},
-	//æœåŠ¡å™¨ç«¯è„šæœ¬æŒ‡ä»¤
+	//·şÎñÆ÷¶Ë½Å±¾Ö¸Áî
 #ifdef _SERVER
-	{"Msg2SubWorld",	LuaMsgToSubWorld},	//Msg2SubWorld(æ¶ˆæ¯)é€šçŸ¥ä¸–ç•Œ
+	{"Msg2SubWorld",	LuaMsgToSubWorld},	//Msg2SubWorld(ÏûÏ¢)Í¨ÖªÊÀ½ç
 	{"Msg2IP",			LuaMsgToIP}, //Msg2IP(IP, ID, StrInfo)	
 	{"SubWorldID2Idx",	LuaSubWorldIDToIndex}, //SubWorldID2Idx
 	{"GetServerName",	LuaGetServerName},

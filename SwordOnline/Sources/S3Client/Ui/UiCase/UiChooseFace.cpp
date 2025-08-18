@@ -367,7 +367,7 @@ void KUiChooseFace::OnOK()
 		Msg.byPriority = 0;
 		Msg.eType = SMT_NORMAL;
 		Msg.uReservedForUi = 0;
-		strcpy(Msg.szMessage, "BÂ¹n chÂ­a chÃ¤n chÂ©n dung!");
+		strcpy(Msg.szMessage, "B¹n ch­a chän ch©n dung!");
 		KUiSysMsgCentre::AMessageArrival(&Msg, NULL);
 	}
 	else

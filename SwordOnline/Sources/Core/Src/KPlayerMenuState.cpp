@@ -3,7 +3,7 @@
 //
 // File:	KPlayerMenuState.cpp
 // Date:	2002.12.10
-// Code:	杈瑰煄娴瓙
+// Code:	边城浪子
 // Desc:	PlayerMenuState Class
 //---------------------------------------------------------------------------
 
@@ -134,7 +134,7 @@ void	KPlayerMenuState::SetState(int nPlayerIdx, int nState, char *lpszSentence/*
 		break;
 	case PLAYER_MENU_STATE_TRADING:
 		{
-			// 缁欒嚜宸卞彂娑堟伅
+			// 给自己发消息
 			TRADE_CHANGE_STATE_SYNC	sState;
 			sState.ProtocolType = s2c_tradechangestate;
 			sState.m_btState = 2;
@@ -142,7 +142,7 @@ void	KPlayerMenuState::SetState(int nPlayerIdx, int nState, char *lpszSentence/*
 			sState.m_bFolkGame = Player[nPlayerIdx].m_cTrade.m_bTradeFolkGame;
 			g_pServer->PackDataToClient(Player[nPlayerIdx].m_nNetConnectIdx, (BYTE*)&sState, sizeof(TRADE_CHANGE_STATE_SYNC));
 
-			// 缁欓檮杩戠帺瀹跺彂娑堟伅
+			// 给附近玩家发消息
 			NPC_SET_MENU_STATE_SYNC	sSync;
 			sSync.ProtocolType = s2c_npcsetmenustate;
 			sSync.m_btState = PLAYER_MENU_STATE_TRADING;

@@ -25,7 +25,7 @@ KNpcAttribModify::KNpcAttribModify()
 	ProcessFunc[magic_rangedamagereturn_v] = &KNpcAttribModify::RangeDamageReturnV;
 	ProcessFunc[magic_rangedamagereturn_p] = &KNpcAttribModify::RangeDamageReturnP;
 	ProcessFunc[magic_damage2addmana_p] = &KNpcAttribModify::Damage2AddManaP;
-	ProcessFunc[magic_adddefense_v] = &KNpcAttribModify::ArmorDefenseV;			// 涓庤澶囧姞闃插尽缁熶竴澶勭悊
+	ProcessFunc[magic_adddefense_v] = &KNpcAttribModify::ArmorDefenseV;			// 与装备加防御统一处理
 	ProcessFunc[magic_poisonenhance_p] = &KNpcAttribModify::PoisonEnhanceP;
 	ProcessFunc[magic_lightingenhance_p] = &KNpcAttribModify::LightingEnhanceP;
 	ProcessFunc[magic_fireenhance_p] = &KNpcAttribModify::FireEnhanceP;

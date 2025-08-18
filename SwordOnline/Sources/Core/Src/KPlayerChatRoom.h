@@ -4,16 +4,16 @@
 #include	"KPlayerDef.h"
 
 #define		MAX_CHATROOM			20
-#define		MAX_CHATROOM_MEMBER		50		// æœ€å¤§é˜Ÿå‘˜æ•°é‡(ä¸åŒ…æ‹¬é˜Ÿé•¿)
+#define		MAX_CHATROOM_MEMBER		50		// ×î´ó¶ÓÔ±ÊıÁ¿(²»°üÀ¨¶Ó³¤)
 
 #ifdef _SERVER
-class KPlayerChatRoom	// æœåŠ¡å™¨ç«¯ç©å®¶çš„ç»„é˜Ÿä¿¡æ¯
+class KPlayerChatRoom	// ·şÎñÆ÷¶ËÍæ¼ÒµÄ×é¶ÓĞÅÏ¢
 {
 	friend class KPlayer;
 public:
-	int		m_nID;				// å¦‚æœå·²ç»ç»„é˜Ÿï¼Œé˜Ÿä¼çš„ id
+	int		m_nID;				// Èç¹ûÒÑ¾­×é¶Ó£¬¶ÓÎéµÄ id
 	int		m_nFlag;
-	int		m_nFigure;			// å¦‚æœå·²ç»ç»„é˜Ÿï¼Œplayer çš„èº«ä»½ï¼šTEAM_CAPTAIN TEAM_MEMBER
+	int		m_nFigure;			// Èç¹ûÒÑ¾­×é¶Ó£¬player µÄÉí·İ£ºTEAM_CAPTAIN TEAM_MEMBER
 
 private:
 	int		m_nPlayerIndex;
@@ -34,7 +34,7 @@ public:
 #endif
 
 #ifndef _SERVER
-class KPlayerChatRoom	// å®¢æˆ·ç«¯ç©å®¶çš„ç»„é˜Ÿä¿¡æ¯
+class KPlayerChatRoom	// ¿Í»§¶ËÍæ¼ÒµÄ×é¶ÓĞÅÏ¢
 {
 public:
 	char	m_szRoomName[10];
@@ -46,16 +46,16 @@ public:
 	KPlayerChatRoom();
 	void	Release();
 
-	void	JoinRoom(const char* szRoomName, int nId, CHATROOM_FIGURE eFigure);								// æ›´æ–°ç•Œé¢æ˜¾ç¤º
+	void	JoinRoom(const char* szRoomName, int nId, CHATROOM_FIGURE eFigure);								// ¸üĞÂ½çÃæÏÔÊ¾
 };
 #endif
 
-// æ­¤é˜Ÿä¼æ˜¯å¦ä¸ºç©ºé€šè¿‡åˆ¤æ–­é˜Ÿé•¿ id æ¥å†³å®šï¼Œå½“ä¸º -1 æ—¶ä¸ºç©ºï¼ˆæ¯ä¸ªé˜Ÿä¼å¿…å®šæœ‰ä¸€ä¸ªé˜Ÿé•¿ï¼‰
+// ´Ë¶ÓÎéÊÇ·ñÎª¿ÕÍ¨¹ıÅĞ¶Ï¶Ó³¤ id À´¾ö¶¨£¬µ±Îª -1 Ê±Îª¿Õ£¨Ã¿¸ö¶ÓÎé±Ø¶¨ÓĞÒ»¸ö¶Ó³¤£©
 #ifdef _SERVER
 class KChatRoom
 {
 private:
-	int		m_nIndex;									// æœ¬ Team åœ¨ g_ChatRoom ä¸­çš„ä½ç½®
+	int		m_nIndex;									// ±¾ Team ÔÚ g_ChatRoom ÖĞµÄÎ»ÖÃ
 public:
 	BOOL	m_bIsGmRoom;
 	char	m_szRoomHost[16];
@@ -65,24 +65,24 @@ public:
 	int		m_nRoomDiceTime;
 	int		m_nRoomDiceMax;
 	int		m_nRoomPw;
-	int		m_nMember[MAX_CHATROOM_MEMBER];					// æ‰€æœ‰é˜Ÿå‘˜ id ï¼ŒæœåŠ¡å™¨ç«¯ç”¨ player index ï¼Œå®¢æˆ·ç«¯ç”¨ npc id ï¼Œ-1 ä¸ºç©º
+	int		m_nMember[MAX_CHATROOM_MEMBER];					// ËùÓĞ¶ÓÔ± id £¬·şÎñÆ÷¶ËÓÃ player index £¬¿Í»§¶ËÓÃ npc id £¬-1 Îª¿Õ
 	int		m_nMemParam[MAX_CHATROOM_MEMBER];
-	int		m_nMemNum;									// å·²æœ‰é˜Ÿå‘˜æ•°é‡(ä¸åŒ…æ‹¬é˜Ÿé•¿)
+	int		m_nMemNum;									// ÒÑÓĞ¶ÓÔ±ÊıÁ¿(²»°üÀ¨¶Ó³¤)
 	char	m_szBlackName[MAX_CHATROOM_MEMBER][16];
 
 public:
-	KChatRoom();											// æ„é€ å‡½æ•°
-	void	Release();									// æ¸…ç©º
-	void	RemoveLeftRoom();									// æ¸…ç©º
-	void	DeleteRoom();									// æ¸…ç©º
-	void	SetIndex(int nIndex);						// è®¾å®š Team åœ¨ g_ChatRoom ä¸­çš„ä½ç½®
-	int		FindFree();									// å¯»æ‰¾é˜Ÿå‘˜ç©ºä½
-	int		FindFreeBlackList();									// å¯»æ‰¾é˜Ÿå‘˜ç©ºä½
+	KChatRoom();											// ¹¹Ôìº¯Êı
+	void	Release();									// Çå¿Õ
+	void	RemoveLeftRoom();									// Çå¿Õ
+	void	DeleteRoom();									// Çå¿Õ
+	void	SetIndex(int nIndex);						// Éè¶¨ Team ÔÚ g_ChatRoom ÖĞµÄÎ»ÖÃ
+	int		FindFree();									// Ñ°ÕÒ¶ÓÔ±¿ÕÎ»
+	int		FindFreeBlackList();									// Ñ°ÕÒ¶ÓÔ±¿ÕÎ»
 	BOOL	OpenGame(int ntype, int n);
 	BOOL	AddParam(const char* lpszName, int ntype, int n);
-	BOOL	CheckMemberName(const char *lpszName);				// å¯»æ‰¾å…·æœ‰æŒ‡å®šnpc idçš„é˜Ÿå‘˜ï¼ˆä¸åŒ…æ‹¬é˜Ÿé•¿ï¼‰
+	BOOL	CheckMemberName(const char *lpszName);				// Ñ°ÕÒ¾ßÓĞÖ¸¶¨npc idµÄ¶ÓÔ±£¨²»°üÀ¨¶Ó³¤£©
 	BOOL	CheckBlackList(const char *lpszName);
-	BOOL	CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom);// åˆ›å»ºä¸€æ”¯é˜Ÿä¼
+	BOOL	CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom);// ´´½¨Ò»Ö§¶ÓÎé
 	void	MsgAll(const char* szMsg);
 	void	Dice(int nIsHight);
 };
@@ -93,8 +93,8 @@ extern	KChatRoom	g_ChatRoom[MAX_CHATROOM];
 class KChatRoomSet
 {
 public:
-	void	Init();										// åˆå§‹åŒ–
-	int		CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom);	// åˆ›å»ºä¸€æ”¯é˜Ÿä¼
+	void	Init();										// ³õÊ¼»¯
+	int		CreateChatRoom(int nIdx, const char* szRoomName, int nRoomPw, int nLefttime,BOOL bIsGmRoom);	// ´´½¨Ò»Ö§¶ÓÎé
 	BOOL	AddTime(const char* lpszName, int nLefttime);
 	BOOL	RequestRoomList(int nPlayerIndex);
 	BOOL	RequestList(int nPlayerIndex, int nRoomID);
@@ -110,8 +110,8 @@ public:
 	BOOL	Low(int nPlayerIndex, int nRoomID, int n);
 private:
 	int		FindFree();
-	BOOL	CheckHost(const char *lpszHost);					// åˆ¤æ–­é˜Ÿåæ˜¯å¦å¯ç”¨
-	int		FindName(const char *lpszName);					// åˆ¤æ–­é˜Ÿåæ˜¯å¦å¯ç”¨
+	BOOL	CheckHost(const char *lpszHost);					// ÅĞ¶Ï¶ÓÃûÊÇ·ñ¿ÉÓÃ
+	int		FindName(const char *lpszName);					// ÅĞ¶Ï¶ÓÃûÊÇ·ñ¿ÉÓÃ
 };
 
 extern	KChatRoomSet	g_ChatRoomSet;

@@ -64,13 +64,13 @@ void KItemSet::Init()
 #endif
 	KIniFile	IniFile;
 	IniFile.Load(ITEM_ABRADE_FILE);
-//	ç»´ä¿®ä»·æ ¼
+//	Î¬ĞŞ¼Û¸ñ
 	IniFile.GetInteger("Repair", "ItemPriceScale", 100, &m_sRepairParam.nPriceScale);
 	IniFile.GetInteger("Repair", "MagicPriceScale", 10, &m_sRepairParam.nMagicScale);
 	IniFile.GetInteger("Repair", "GoldPriceScale", 10, &m_sRepairParam.nGoldScale);
 	IniFile.GetInteger("Repair", "PlatinaPriceScale", 10, &m_sRepairParam.nPlatinaScale);
 	IniFile.GetInteger("Repair", "WarningBaseline", 10, &m_sRepairParam.nWarningBaseline);
-//	æ”»å‡»ç£¨æŸ
+//	¹¥»÷Ä¥Ëğ
 	IniFile.GetInteger("Attack", "Weapon", 256, &m_nItemAbradeRate[enumAbradeAttack][itempart_weapon]);
 	IniFile.GetInteger("Attack", "Head", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_head]);
 	IniFile.GetInteger("Attack", "Body", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_body]);
@@ -83,7 +83,7 @@ void KItemSet::Init()
 	IniFile.GetInteger("Attack", "Pendant", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_pendant]);
 	IniFile.GetInteger("Attack", "Horse", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_horse]);
 	IniFile.GetInteger("Attack", "Mask", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_mask]);
-// é˜²å¾¡ç£¨æŸ
+// ·ÀÓùÄ¥Ëğ
 	IniFile.GetInteger("Defend", "Weapon", 0, &m_nItemAbradeRate[enumAbradeDefend][itempart_weapon]);
 	IniFile.GetInteger("Defend", "Head", 64, &m_nItemAbradeRate[enumAbradeDefend][itempart_head]);
 	IniFile.GetInteger("Defend", "Body", 64, &m_nItemAbradeRate[enumAbradeDefend][itempart_body]);
@@ -96,7 +96,7 @@ void KItemSet::Init()
 	IniFile.GetInteger("Defend", "Pendant", 0, &m_nItemAbradeRate[enumAbradeDefend][itempart_pendant]);
 	IniFile.GetInteger("Defend", "Horse", 0, &m_nItemAbradeRate[enumAbradeDefend][itempart_horse]);
 	IniFile.GetInteger("Attack", "Mask", 0, &m_nItemAbradeRate[enumAbradeAttack][itempart_mask]);
-// ç§»åŠ¨ç£¨æŸ
+// ÒÆ¶¯Ä¥Ëğ
 	IniFile.GetInteger("Move", "Weapon", 0, &m_nItemAbradeRate[enumAbradeMove][itempart_weapon]);
 	IniFile.GetInteger("Move", "Head", 0, &m_nItemAbradeRate[enumAbradeMove][itempart_head]);
 	IniFile.GetInteger("Move", "Body", 0, &m_nItemAbradeRate[enumAbradeMove][itempart_body]);
@@ -158,12 +158,12 @@ int KItemSet::Add(KItem* pItem)
 /*!*****************************************************************************
 // Function		: KItemSet::Add
 // Purpose		: 
-// Return		: int æ•°ç»„ç¼–å·
-// Argumant		: int é“å…·ç±»å‹ï¼ˆè£…å¤‡ï¼Ÿè¯å“ï¼ŸçŸ¿çŸ³ï¼Ÿâ€¦â€¦ï¼‰
-// Argumant		: int é­”æ³•ç­‰çº§ï¼ˆå¦‚å¯¹åº”äºè£…å¤‡ï¼Œå°±æ˜¯ä¸€èˆ¬è£…å¤‡ï¼Œè“è‰²è£…å¤‡ï¼Œäº®é‡‘ç­‰â€¦â€¦ï¼‰
-// Argumant		: int äº”è¡Œå±æ€§
-// Argumant		: int ç­‰çº§
-// Argumant		: int å¹¸è¿å€¼
+// Return		: int Êı×é±àºÅ
+// Argumant		: int µÀ¾ßÀàĞÍ£¨×°±¸£¿Ò©Æ·£¿¿óÊ¯£¿¡­¡­£©
+// Argumant		: int Ä§·¨µÈ¼¶£¨Èç¶ÔÓ¦ÓÚ×°±¸£¬¾ÍÊÇÒ»°ã×°±¸£¬À¶É«×°±¸£¬ÁÁ½ğµÈ¡­¡­£©
+// Argumant		: int ÎåĞĞÊôĞÔ
+// Argumant		: int µÈ¼¶
+// Argumant		: int ĞÒÔËÖµ
 // Comments		:
 // Author		: Spe
 *****************************************************************************/
@@ -182,18 +182,18 @@ int KItemSet::Add(IN int nItemNature, int nItemGenre, int nSeries,
 
 	switch(nItemGenre)
 	{
-	case item_equip:			// è£…å¤‡ç±»
+	case item_equip:			// ×°±¸Àà
 		ItemGen.Gen_Equipment(nItemNature, nDetailType, nParticularType, nSeries, nLevel, pnMagicLevel, nLuck, nVersion, pItem);
 		break;
-	case item_medicine:			// è¯å“ç±»
+	case item_medicine:			// Ò©Æ·Àà
 		ItemGen.Gen_Medicine(nDetailType, nLevel, nVersion, pItem);
 		break;
-	case item_event:				// çŸ¿çŸ³ç±»
+	case item_event:				// ¿óÊ¯Àà
 		ItemGen.Gen_Event(nDetailType, pItem);
 		break;
-	case item_materials:				// çŸ¿çŸ³ç±»
+	case item_materials:				// ¿óÊ¯Àà
 		break;
-	case item_task:				// é»˜è®¤æ˜¯ä»»åŠ¡ç±»
+	case item_task:				// Ä¬ÈÏÊÇÈÎÎñÀà
 		ItemGen.Gen_Quest(nDetailType, pItem);
 		break;
 	case item_magicscript:
@@ -243,7 +243,7 @@ void KItemSet::SetID(IN int nIdx)
 
 #ifdef _SERVER
 //---------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šcopy m_psItemInfo to m_psBackItemInfo
+//	¹¦ÄÜ£ºcopy m_psItemInfo to m_psBackItemInfo
 //---------------------------------------------------------------------------
 void	KItemSet::BackItemInfo()
 {

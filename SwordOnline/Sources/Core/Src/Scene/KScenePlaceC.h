@@ -290,9 +290,6 @@ class KScenePlaceC
     void DirectFindPos(int nX, int nY, BOOL bSync, BOOL bPaintLine);
     void LoadIni(KIniFile *pIni);
 
-    //TamLTM check hover mouse
-    void CheckHoverMouseMiniMap(BOOL hover);
-
     BOOL PaintBackGround();
     void PaintOverCloud();
     void PaintBackGroundCloud();

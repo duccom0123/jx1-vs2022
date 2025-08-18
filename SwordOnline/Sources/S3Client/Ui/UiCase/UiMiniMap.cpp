@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢--å°åœ°å›¾
+//	½çÃæ--Ğ¡µØÍ¼
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-21
@@ -33,9 +33,9 @@ extern IInlinePicEngineSink *g_pIInlinePicSink;
 #define	SCHEME_INI_BIG				"UiMiniMapBig.ini"
 #define	SCHEME_INI_BIGEX			"UiMiniMapBigEX.ini"
 #define	defMSG_FORMAT_SCENEPOS 		"%d/%d"
-#define	defMSG_FORMAT_SCENEPOSF 	"%d/%d tï¿½m"
+#define	defMSG_FORMAT_SCENEPOSF 	"%d/%d t×m"
 
-//åœ°å›¾æ‹–åŠ¨åè¿˜åŸçš„æ—¶é—´(ç§’)
+//µØÍ¼ÍÏ¶¯ºó»¹Ô­µÄÊ±¼ä(Ãë)
 #define MAP_RECOVER_TIME		3000
 #define	NOT_DRAGING_MAP			-1
 #define	WAIT_TO_BE_SET_BACK		-2
@@ -52,7 +52,7 @@ KUiMiniMap::KUiMiniMap()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiMiniMap* KUiMiniMap::OpenWindow()
 {
@@ -72,7 +72,7 @@ KUiMiniMap* KUiMiniMap::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 //--------------------------------------------------------------------------
 KUiMiniMap* KUiMiniMap::GetIfVisible()
 {
@@ -82,7 +82,7 @@ KUiMiniMap* KUiMiniMap::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 void KUiMiniMap::Initialize()
 {
@@ -102,7 +102,7 @@ void KUiMiniMap::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå…³é—­çª—å£
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
 //--------------------------------------------------------------------------
 void KUiMiniMap::CloseWindow(bool bDestory)
 {
@@ -122,7 +122,7 @@ void KUiMiniMap::CloseWindow(bool bDestory)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè½½å…¥çª—å£çš„ç•Œé¢æ–¹æ¡ˆ
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiMiniMap::LoadScheme(const char* pScheme)
 {
@@ -171,7 +171,7 @@ void KUiMiniMap::LoadScheme(KIniFile* pIni)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KUiMiniMap::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -193,7 +193,7 @@ int KUiMiniMap::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 		}
 		else if (uParam == (unsigned int)(KWndWindow*)&m_ScenePos)
 		{
-			KUiGetString::OpenWindow(GSA_NORMAL, "Xin nhï¿½p tï¿½a ï¿½ï¿½ mï¿½c tiï¿½u", "",
+			KUiGetString::OpenWindow(GSA_NORMAL, "Xin nhËp täa ®é môc tiªu", "",
 				(KWndWindow*)this, 0, 0,5, 9);
 		}
 		break;
@@ -236,7 +236,7 @@ int KUiMiniMap::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 			pWnd->GetPosition(&x, &y);
 			x -= nMoveOffsetX;
 			y -= nMoveOffsetY;
-			pWnd->SetPosition(x, y);	//æŒ‰é’®è·Ÿç€çª—å£å˜åŒ–ï¼Œæ‰€ä»¥è¦å…ˆå˜å›åŸæ ·
+			pWnd->SetPosition(x, y);	//°´Å¥¸ú×Å´°¿Ú±ä»¯£¬ËùÒÔÒªÏÈ±ä»ØÔ­Ñù
 			GetPosition(&x, &y);
 			x += nMoveOffsetX;
 			y += nMoveOffsetY;
@@ -303,7 +303,7 @@ int KUiMiniMap::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 	return nRet;
 }
 
-//åœæ­¢æ‹–åŠ¨åœ°å›¾
+//Í£Ö¹ÍÏ¶¯µØÍ¼
 void KUiMiniMap::StopScrollMap()
 {
 	if (IS_DRAGING_MAP)
@@ -314,7 +314,7 @@ void KUiMiniMap::StopScrollMap()
 	}
 }
 
-//åœ°å›¾è¿˜åŸåŸå§‹åç§»
+//µØÍ¼»¹Ô­Ô­Ê¼Æ«ÒÆ
 void KUiMiniMap::MapMoveBack()
 {
 	m_OldPos.x = NOT_DRAGING_MAP;
@@ -366,7 +366,7 @@ void KUiMiniMap::Breathe()
 	}
 }
 
-//æ´»åŠ¨å‡½æ•°
+//»î¶¯º¯Êı
 void KUiMiniMap::UpdateSceneTimeInfo(KUiSceneTimeInfo* pInfo)
 {
 	if (ms_pSelf && pInfo)
@@ -395,7 +395,7 @@ void KUiMiniMap::UpdateSceneTimeInfo(KUiSceneTimeInfo* pInfo)
 	}
 }
 
-//æ˜¾ç¤ºçª—å£
+//ÏÔÊ¾´°¿Ú
 void KUiMiniMap::Show()
 {
 	KWndImage::Show();
@@ -407,7 +407,7 @@ void KUiMiniMap::Show()
 	}
 }
 
-//éšè—çª—å£
+//Òş²Ø´°¿Ú
 void KUiMiniMap::Hide()
 {
 	KWndImage::Hide();
@@ -415,7 +415,7 @@ void KUiMiniMap::Hide()
 		g_pCoreShell->SceneMapOperation(GSMOI_IS_SCENE_MAP_SHOWING, SCENE_PLACE_MAP_ELEM_NONE, 0);
 }
 
-//åœ°å›¾å·åŠ¨
+//µØÍ¼¾í¶¯
 void KUiMiniMap::MapScroll(int nbScrollScene)
 {
 	KSceneMapInfo MapInfo;
@@ -469,7 +469,7 @@ MINIMAP_MODE MapGetMode()
 {
 	return s_eMapMode;
 }
-//è®¾ç½®æ˜¾ç¤ºå†…å®¹æ¨¡å¼
+//ÉèÖÃÏÔÊ¾ÄÚÈİÄ£Ê½
 void MapSetMode(MINIMAP_MODE eMode)
 {
 	//if (eMode == s_eMapMode && (eMode < MINIMAP_M_NONE || eMode > MINIMAP_M_CAVELIST_MAP))
@@ -485,14 +485,14 @@ void MapSetMode(MINIMAP_MODE eMode)
 		s_eMapOldMode = s_eMapMode;
 	switch(s_eMapMode = eMode)
 	{
-	case MINIMAP_M_NONE:			//æ²¡æœ‰æ˜¾ç¤ºåœ°å›¾
+	case MINIMAP_M_NONE:			//Ã»ÓĞÏÔÊ¾µØÍ¼
 		KUiMiniMap::CloseWindow();
 		KUiWorldmap::CloseWindow();
 		KUiCaveList::CloseWindow();
 		break;
 	case MINIMAP_M_BRIEF_NOT_PIC:
-	case MINIMAP_M_BRIEF_PIC:		//ç¼©ç•¥å›¾
-	case MINIMAP_M_BRIEF_PIC_BROWSE://ç¼©ç•¥å›¾æµè§ˆ/æ”¾å¤§æ¨¡å¼
+	case MINIMAP_M_BRIEF_PIC:		//ËõÂÔÍ¼
+	case MINIMAP_M_BRIEF_PIC_BROWSE://ËõÂÔÍ¼ä¯ÀÀ/·Å´óÄ£Ê½
 	case MINIMAP_M_BRIEF_PIC_BROWSEEX:
 		KUiWorldmap::CloseWindow();
 		KUiCaveList::CloseWindow();
@@ -505,7 +505,7 @@ void MapSetMode(MINIMAP_MODE eMode)
 			KUiMiniMap::LoadScheme(Scheme);
 		}
 		break;
-	case MINIMAP_M_WORLD_MAP:		//ä¸–ç•Œåœ°å›¾
+	case MINIMAP_M_WORLD_MAP:		//ÊÀ½çµØÍ¼
 		KUiMiniMap::CloseWindow();
 		KUiWorldmap::OpenWindow();
 		break;

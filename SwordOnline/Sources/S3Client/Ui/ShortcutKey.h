@@ -1,11 +1,11 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	å¿«æ·é”®ç³»ç»Ÿ
+//	¿ì½İ¼üÏµÍ³
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-1-13
 ------------------------------------------------------------------------------------------
-	ç”¨äºè®¾ç½®ï¼Œè·å–ï¼Œæ£€æŸ¥å„ç§æ§åˆ¶å¿«æ·é”®ï¼›è¯»å–ï¼Œä¿å­˜å¿«æ·é”®è®¾ç½®ã€‚
-	å½“å‰æ”¯æŒçš„å¿«æ·é”®ä¸ºï¼šå­—æ¯é”®Aè‡³Z;æ•°å­—é”®0è‡³9;åŠŸèƒ½é”®F1è‡³F11ã€‚
+	ÓÃÓÚÉèÖÃ£¬»ñÈ¡£¬¼ì²é¸÷ÖÖ¿ØÖÆ¿ì½İ¼ü£»¶ÁÈ¡£¬±£´æ¿ì½İ¼üÉèÖÃ¡£
+	µ±Ç°Ö§³ÖµÄ¿ì½İ¼üÎª£º×ÖÄ¸¼üAÖÁZ;Êı×Ö¼ü0ÖÁ9;¹¦ÄÜ¼üF1ÖÁF11¡£
 *****************************************************************************************/
 #pragma once
 
@@ -38,8 +38,8 @@
 
 struct COMMAND_SETTING
 {
-	DWORD uKey;				//ç¬¬ä¸€å…³é”®å­—
-	char szCommand[32];		//ç¬¬äºŒå…³é”®å­—,å½“ç¬¬ä¸€å…³é”®å­—ä¸º0æ—¶æœ‰æ•ˆ
+	DWORD uKey;				//µÚÒ»¹Ø¼ü×Ö
+	char szCommand[32];		//µÚ¶ş¹Ø¼ü×Ö,µ±µÚÒ»¹Ø¼ü×ÖÎª0Ê±ÓĞĞ§
 	char szDo[128];
 };
 
@@ -103,8 +103,8 @@ public:
 	static BOOL			LoadPrivateSetting(KIniFile* pFile);
 	static int			SavePrivateSetting(KIniFile* pFile);
 	static BOOL			ExcuteScript(const char * ScriptCommand);
-	static int			AddCommand(COMMAND_SETTING* pAdd);	//å¤åˆ¶Addæ•°æ®å¹¶å¢åŠ åˆ°Commandsä¸­ï¼Œå¦‚æœuKey!=0åˆ™è¦†ç›–åŸuKeyï¼Œå¦åˆ™å¦‚szCommand[0]!=0åˆ™è¦†ç›–szCommandç›¸åŒè€…
-	static int			RemoveCommand(int nIndex);	//è¿”å›å‰©ä½™Commandçš„æ€»æ•°
+	static int			AddCommand(COMMAND_SETTING* pAdd);	//¸´ÖÆAddÊı¾İ²¢Ôö¼Óµ½CommandsÖĞ£¬Èç¹ûuKey!=0Ôò¸²¸ÇÔ­uKey£¬·ñÔòÈçszCommand[0]!=0Ôò¸²¸ÇszCommandÏàÍ¬Õß
+	static int			RemoveCommand(int nIndex);	//·µ»ØÊ£ÓàCommandµÄ×ÜÊı
 	static int			FindCommand(DWORD uKey);
 	static int			FindCommand(const char* szCommand);
 	static int			FindCommandByScript(const char* szScript);

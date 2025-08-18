@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--å®¹çº³æ¸¸æˆå¯¹è±¡çš„çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÈİÄÉÓÎÏ·¶ÔÏóµÄ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-25
@@ -12,53 +12,53 @@
 
 #define	OBJCONT_S_ENABLE_CLICK_EMPTY	0x00008000
 #define	OBJCONT_S_ACCEPT_FREE			0x00004000
-#define	OBJCONT_S_HAVEOBJBGCOLOR		0x00002000	//æ”¾æœ‰ç‰©å“æ—¶æ˜¯å¦æœ‰èƒŒæ™¯è‰²
+#define	OBJCONT_S_HAVEOBJBGCOLOR		0x00002000	//·ÅÓĞÎïÆ·Ê±ÊÇ·ñÓĞ±³¾°É«
 #define	OBJCONT_S_TRACE_PUT_POS			0x00001000
-#define	OBJCONT_S_DISABLE_PICKPUT		0x00000800	//ä¸å…è®¸æ‹¿èµ·ä¸œè¥¿
+#define	OBJCONT_S_DISABLE_PICKPUT		0x00000800	//²»ÔÊĞíÄÃÆğ¶«Î÷
 #define	OBJCONT_F_MOUSE_HOVER			0x00000400
-#define	OBJCONT_F_DISABLE_MOUSE_HOVER	0x00000200	//ä¸å…è®¸æ‹¿èµ·ä¸œè¥¿
+#define	OBJCONT_F_DISABLE_MOUSE_HOVER	0x00000200	//²»ÔÊĞíÄÃÆğ¶«Î÷
 
 //============================
-//	å•ä¸ªå¯¹è±¡çš„å®¹å™¨çª—å£
+//	µ¥¸ö¶ÔÏóµÄÈİÆ÷´°¿Ú
 //============================
 class KWndObjectBox : public KWndWindow
 {
 public:
 	KWndObjectBox();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);			///è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	Celar();									//æ¸…é™¤å¯¹è±¡ç‰©å“
-	void	SetObjectGenre(unsigned int uGenre);		//è®¾ç½®å¯ä»¥å®¹çº³çš„å¯¹è±¡çš„ç±»å‹
-	int		GetObject(KUiDraggedObject& Obj) const;		//è·å–å®¹çº³çš„å¯¹è±¡ä¿¡æ¯
-	void	HoldObject(unsigned int uGenre, unsigned int uId, int nDataW, int nDataH);//è®¾ç½®å®¹çº³çš„å¯¹è±¡
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);			///ÔØÈë½çÃæ·½°¸
+	void	Celar();									//Çå³ı¶ÔÏóÎïÆ·
+	void	SetObjectGenre(unsigned int uGenre);		//ÉèÖÃ¿ÉÒÔÈİÄÉµÄ¶ÔÏóµÄÀàĞÍ
+	int		GetObject(KUiDraggedObject& Obj) const;		//»ñÈ¡ÈİÄÉµÄ¶ÔÏóĞÅÏ¢
+	void	HoldObject(unsigned int uGenre, unsigned int uId, int nDataW, int nDataH);//ÉèÖÃÈİÄÉµÄ¶ÔÏó
 	void	Clone(KWndObjectBox* pCopy);
 	void	SetContainerId(int nId);
 	void	EnablePickPut(bool bEnable);
 	void	EnableMouseHover(bool bEnable);
 
 protected:
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
-	int		DropObject(bool bTestOnly);				//æ”¾ç½®ç‰©å“
-	void	PaintWindow();							//çª—ä½“ç»˜åˆ¶
-	unsigned int		m_uAcceptableGenre;			//å¯æ¥çº³çš„å¯¹è±¡ç±»å‹
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	int		DropObject(bool bTestOnly);				//·ÅÖÃÎïÆ·
+	void	PaintWindow();							//´°Ìå»æÖÆ
+	unsigned int		m_uAcceptableGenre;			//¿É½ÓÄÉµÄ¶ÔÏóÀàĞÍ
 	KUiDraggedObject	m_Object;
 	int					m_nContainerId;
 };
 
 //============================
-//	å®¹çº³å¤šä¸ªå¯¹è±¡çš„å®¹å™¨çª—å£
+//	ÈİÄÉ¶à¸ö¶ÔÏóµÄÈİÆ÷´°¿Ú
 //============================
 class KWndObjectMatrix : public KWndWindow
 {
 public:
 	KWndObjectMatrix();
 	virtual ~KWndObjectMatrix();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	void			Clear();									//æ¸…é™¤å…¨éƒ¨çš„å¯¹è±¡ç‰©å“
-	int				AddObject(KUiDraggedObject* pObject, int nCount);	//å¢åŠ å¯¹è±¡ç‰©å“
-	int				RemoveObject(KUiDraggedObject* pOjbect);			//å‡å°‘ä¸€ä¸ªå¯¹è±¡ç‰©å“
-	int				GetObject(KUiDraggedObject& Obj, int x, int y) const;//è·å–å®¹çº³çš„æŸä¸ªå¯¹è±¡ä¿¡æ¯
-//	int				GetObjects(KUiDraggedObject* pObjects, int nCount) const;//è·å–å®¹çº³çš„å¯¹è±¡ä¿¡æ¯
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	void			Clear();									//Çå³ıÈ«²¿µÄ¶ÔÏóÎïÆ·
+	int				AddObject(KUiDraggedObject* pObject, int nCount);	//Ôö¼Ó¶ÔÏóÎïÆ·
+	int				RemoveObject(KUiDraggedObject* pOjbect);			//¼õÉÙÒ»¸ö¶ÔÏóÎïÆ·
+	int				GetObject(KUiDraggedObject& Obj, int x, int y) const;//»ñÈ¡ÈİÄÉµÄÄ³¸ö¶ÔÏóĞÅÏ¢
+//	int				GetObjects(KUiDraggedObject* pObjects, int nCount) const;//»ñÈ¡ÈİÄÉµÄ¶ÔÏóĞÅÏ¢
 	void			EnableTracePutPos(bool bEnable);
 	void			SetContainerId(int nId);
 	void			EnablePickPut(bool bEnable);
@@ -70,22 +70,22 @@ public:
 protected:
 	void			Clone(KWndObjectMatrix* pCopy);
 private:
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
-	void	PaintWindow();										//çª—ä½“ç»˜åˆ¶
-	int		GetObjectAt(int x, int y);							//è·å¾—æŸä¸ªä½ç½®ä¸Šçš„ç‰©å“çš„ç´¢å¼•
-	int		PickUpObjectAt(int x, int y);						//æ¡èµ·æŸä¸ªä½ç½®ä¸Šçš„å¯¹è±¡
-	int		DropObject(int x, int y, bool bTestOnly);			//æ”¾ç½®ç‰©å“
-	int		TryDropObjAtPos(const RECT& dor, KUiDraggedObject*& pOverlaped);//å°è¯•æ”¾ç½®ç‰©å“
-	void	DropObject(int x, int y, KUiDraggedObject* pToPickUpObj);		//æ”¾ä¸‹ç‰©å“
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
+	void	PaintWindow();										//´°Ìå»æÖÆ
+	int		GetObjectAt(int x, int y);							//»ñµÃÄ³¸öÎ»ÖÃÉÏµÄÎïÆ·µÄË÷Òı
+	int		PickUpObjectAt(int x, int y);						//¼ñÆğÄ³¸öÎ»ÖÃÉÏµÄ¶ÔÏó
+	int		DropObject(int x, int y, bool bTestOnly);			//·ÅÖÃÎïÆ·
+	int		TryDropObjAtPos(const RECT& dor, KUiDraggedObject*& pOverlaped);//³¢ÊÔ·ÅÖÃÎïÆ·
+	void	DropObject(int x, int y, KUiDraggedObject* pToPickUpObj);		//·ÅÏÂÎïÆ·
 
 protected:
-	int				m_nNumUnitHori;		//æ¨ªå‘æ ¼æ•°
-	int				m_nNUmUnitVert;		//çºµå‘æ ¼æ•°
-	int				m_nUnitWidth;		//æ¨ªå‘æ ¼å®½
-	int				m_nUnitBorder;		//æ ¼å­çš„è¾¹æ¡†çš„å®½é«˜åº¦
-	int				m_nUnitHeight;		//çºµå‘æ ¼å®½
-	int				m_nNumObjects;		//å®¹çº³çš„å¯¹è±¡çš„æ•°ç›®9
-	KUiDraggedObject* m_pObjects;		//å®¹çº³çš„å¯¹è±¡åˆ—è¡¨
+	int				m_nNumUnitHori;		//ºáÏò¸ñÊı
+	int				m_nNUmUnitVert;		//×İÏò¸ñÊı
+	int				m_nUnitWidth;		//ºáÏò¸ñ¿í
+	int				m_nUnitBorder;		//¸ñ×ÓµÄ±ß¿òµÄ¿í¸ß¶È
+	int				m_nUnitHeight;		//×İÏò¸ñ¿í
+	int				m_nNumObjects;		//ÈİÄÉµÄ¶ÔÏóµÄÊıÄ¿9
+	KUiDraggedObject* m_pObjects;		//ÈİÄÉµÄ¶ÔÏóÁĞ±í
 	int				m_nMouseOverObj;
 
 	int				m_nPutPosX;

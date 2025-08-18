@@ -111,11 +111,11 @@ TCollisionMatrix g_CollisionMatrix[64] =
 
 KMissle g_MisslesLib[MAX_MISSLESTYLE];
 
-//æ¯ä¸ªæ ¼å­çš„åƒç´ é•¿å®½
+//Ã¿¸ö¸ñ×ÓµÄÏñËØ³¤¿í
 #define CellWidth		(SubWorld[m_nSubWorldId].m_nCellWidth << 10)
 #define CellHeight		(SubWorld[m_nSubWorldId].m_nCellHeight << 10)
 
-//æ¯ä¸ªregionæ ¼ç‚¹é•¿å®½
+//Ã¿¸öregion¸ñµã³¤¿í
 #define RegionWidth		(SubWorld[m_nSubWorldId].m_nRegionWidth)
 #define RegionHeight	(SubWorld[m_nSubWorldId].m_nRegionHeight)
 
@@ -127,7 +127,7 @@ KMissle g_MisslesLib[MAX_MISSLESTYLE];
 #define UpRegion(nRegionId)		SubWorld[m_nSubWorldId].m_Region[nRegionId].m_nConnectRegion[4]
 #define DownRegion(nRegionId)		SubWorld[m_nSubWorldId].m_Region[nRegionId].m_nConnectRegion[0]
 
-//éšæœºç§»åŠ¨é­”æ³•çš„å·¦å³åç§»è¡¨
+//Ëæ»úÒÆ¶¯Ä§·¨µÄ×óÓÒÆ«ÒÆ±í
 int g_nRandMissleTab[100] = {0	};
 
 CORE_API KMissle Missle[MAX_MISSLE];
@@ -160,7 +160,7 @@ KMissle::KMissle()
 
 void KMissle::Release()
 {
-///#pragma	message(ATTENTION("å­å¼¹æ¶ˆäº¡æ—¶ï¼Œéœ€æ›´æ–°å‘é€è€…ä½¿ç”¨è¯¥æŠ€èƒ½æ—¶çš„å½“å‰ä½¿ç”¨æ¬¡æ•°ï¼Œä½¿ä¹‹å‡ä¸€"))
+///#pragma	message(ATTENTION("×Óµ¯ÏûÍöÊ±£¬Ğè¸üĞÂ·¢ËÍÕßÊ¹ÓÃ¸Ã¼¼ÄÜÊ±µÄµ±Ç°Ê¹ÓÃ´ÎÊı£¬Ê¹Ö®¼õÒ»"))
 #ifndef _SERVER	
 	g_ScenePlace.RemoveObject(CGOG_MISSLE, m_nMissleId, m_SceneID);
 	m_MissleRes.Clear();
@@ -182,7 +182,7 @@ KMissle::~KMissle()
 }
 /*!*****************************************************************************
 // Function		: KMissle::GetInfoFromTabFile
-// Purpose		: è·å¾—TabFileæœ‰å…³å­å¼¹çš„åŸºæœ¬ä¿¡æ¯
+// Purpose		: »ñµÃTabFileÓĞ¹Ø×Óµ¯µÄ»ù±¾ĞÅÏ¢
 // Return		: BOOL 
 // Argumant		: int nMissleId
 // Comments		:
@@ -338,7 +338,7 @@ int KMissle::Activate()
 	if (m_nLauncher <= 0)
 		return 0;
 	
-	//å­å¼¹çš„ä¸»äººå·²ç»ç¦»å¼€ï¼ŒSo å­å¼¹æ¶ˆäº¡
+	//×Óµ¯µÄÖ÷ÈËÒÑ¾­Àë¿ª£¬So ×Óµ¯ÏûÍö
 	if (!Npc[m_nLauncher].IsMatch(m_dwLauncherId) || 
 		/*(Npc[m_nLauncher].m_Doing == do_death) ||*/
 		(Npc[m_nLauncher].m_SubWorldIndex != m_nSubWorldId) || 
@@ -354,7 +354,7 @@ int KMissle::Activate()
 		return 0;	
 	}
 	
-	//è·Ÿè¸ªçš„ç›®æ ‡äººç‰©å·²ç»ä¸åœ¨è¯¥åœ°å›¾ä¸Šæ—¶ï¼Œè‡ªåŠ¨æ¸…ç©º
+	//¸ú×ÙµÄÄ¿±êÈËÎïÒÑ¾­²»ÔÚ¸ÃµØÍ¼ÉÏÊ±£¬×Ô¶¯Çå¿Õ
 	if (m_nFollowNpcIdx > 0)	// fix by Choi Huyn Woo
 	{
 		if ((!Npc[m_nFollowNpcIdx].IsMatch(m_dwFollowNpcID)) || 
@@ -367,7 +367,7 @@ int KMissle::Activate()
 	
 	eMissleStatus eLastStatus = m_eMissleStatus;
 	
-	//å¦‚æœå½“å‰çŠ¶æ€æ˜¯å­å¼¹ç”Ÿå‘½æ­£å¸¸ç»“æŸæ­£å‡†å¤‡æ¶ˆäº¡çŠ¶æ€æ—¶ï¼Œè€Œä¸æ˜¯æ¶ˆäº¡ä¸­æˆ–è€…å·²ç¢°æ’ä¸­
+	//Èç¹ûµ±Ç°×´Ì¬ÊÇ×Óµ¯ÉúÃüÕı³£½áÊøÕı×¼±¸ÏûÍö×´Ì¬Ê±£¬¶ø²»ÊÇÏûÍöÖĞ»òÕßÒÑÅö×²ÖĞ
 	if (
 		m_nCurrentLife >= m_nLifeTime 
 		&& m_eMissleStatus != MS_DoVanish 
@@ -376,7 +376,7 @@ int KMissle::Activate()
 	{
 		if (m_bAutoExplode)
 		{
-			ProcessCollision();//å¤„ç†ç¢°æ’
+			ProcessCollision();//´¦ÀíÅö×²
 			if (m_bCollideEvent)	
 			{
 				_ASSERT(m_nSkillId < MAX_SKILL && m_nLevel < MAX_SKILLLEVEL);
@@ -452,7 +452,7 @@ int KMissle::Activate()
 	}
 	
 #ifndef _SERVER
-	//å­å¼¹æœªæ¶ˆäº¡æ‰
+	//×Óµ¯Î´ÏûÍöµô
 	if (m_nMissleId > 0)
 	{
 		int nSrcX;
@@ -493,7 +493,7 @@ void KMissle::OnCollision()
 	return;	
 }
 
-// 1è¡¨ç¤ºæ­£å¸¸ç¢°æ’åˆ°ç‰©ä½“ï¼Œ0è¡¨ç¤ºæœªç¢°æ’åˆ°ä»»ä½•ç‰©ä½“, -1è¡¨ç¤ºè½åœ°
+// 1±íÊ¾Õı³£Åö×²µ½ÎïÌå£¬0±íÊ¾Î´Åö×²µ½ÈÎºÎÎïÌå, -1±íÊ¾ÂäµØ
 int KMissle::CheckCollision()
 {
 #ifdef TOOLVERSION
@@ -505,7 +505,7 @@ int KMissle::CheckCollision()
 		return -1;
 	}
 	
-	//å­å¼¹åœ¨é«˜äºä¸€å®šé«˜åº¦æ—¶ï¼Œä¸å¤„ç†è¶Šç•Œç¢°æ’é—®é¢˜
+	//×Óµ¯ÔÚ¸ßÓÚÒ»¶¨¸ß¶ÈÊ±£¬²»´¦ÀíÔ½½çÅö×²ÎÊÌâ
 	if (m_nCurrentMapZ > MISSLE_MAX_COLLISION_ZHEIGHT) return 0;
 	
 	if (m_nRegionId < 0) 
@@ -551,10 +551,10 @@ int KMissle::CheckCollision()
 			nNpcIdx = 	CheckNearestCollision();
 		if (nNpcIdx > 0)
 		{
-			if (m_nDamageRange == 1)//åœ¨ç›®æ ‡Npcå¤„ç¢°æ’
+			if (m_nDamageRange == 1)//ÔÚÄ¿±êNpc´¦Åö×²
 				ProcessCollision(m_nLauncher, Npc[nNpcIdx].m_RegionIndex , Npc[nNpcIdx].m_MapX, Npc[nNpcIdx].m_MapY, m_nDamageRange , m_eRelation);
 			else
-				ProcessCollision();//åœ¨å­å¼¹ä½ç½®å¤„ç†ç¢°æ’
+				ProcessCollision();//ÔÚ×Óµ¯Î»ÖÃ´¦ÀíÅö×²
 			if(m_nLastDoCollisionIdx == nNpcIdx)
 			{
 				//to do
@@ -563,7 +563,7 @@ int KMissle::CheckCollision()
 			{
 				if(this->m_eMoveKind == MISSLE_MMK_Line)
 					m_nLastDoCollisionIdx = nNpcIdx;
-				DoCollision();//å­å¼¹ä½œç¢°æ’åçš„æ•ˆæœ
+				DoCollision();//×Óµ¯×÷Åö×²ºóµÄĞ§¹û
 			}
 			return 1;
 		}
@@ -580,8 +580,8 @@ int KMissle::CheckCollision()
 				nNpcIdx = SubWorld[m_nSubWorldId].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, m_nLauncher, m_eRelation);
 				if (nNpcIdx > 0)
 				{
-					ProcessCollision();//å¤„ç†ç¢°æ’
-					DoCollision();//å­å¼¹ä½œç¢°æ’åçš„æ•ˆæœ
+					ProcessCollision();//´¦ÀíÅö×²
+					DoCollision();//×Óµ¯×÷Åö×²ºóµÄĞ§¹û
 					return 1;
 				}
 			}
@@ -599,8 +599,8 @@ void KMissle::OnFly()
 {
 	if (m_nInteruptTypeWhenMove)
 	{
-		//å½“å‘é€è€…ä½ç½®ç§»åŠ¨äº†ï¼Œä¸ä»…æ­£ä»do_waitçŠ¶æ€åˆ°do_flyçŠ¶æ€çš„æ–°å­å¼¹è¢«æ¶ˆå¤±æ‰
-		//è€Œä¸”å·²è¿›å…¥doflyçŠ¶æ€çš„æ—§çš„æ‰€å±å­å¼¹ä¹Ÿè¦å¼ºåˆ¶æ¶ˆå¤±æ‰
+		//µ±·¢ËÍÕßÎ»ÖÃÒÆ¶¯ÁË£¬²»½öÕı´Ódo_wait×´Ì¬µ½do_fly×´Ì¬µÄĞÂ×Óµ¯±»ÏûÊ§µô
+		//¶øÇÒÒÑ½øÈëdofly×´Ì¬µÄ¾ÉµÄËùÊô×Óµ¯Ò²ÒªÇ¿ÖÆÏûÊ§µô
 		if (m_nInteruptTypeWhenMove == Interupt_EndOldMissleLifeWhenMove)
 		{
 			int nPX, nPY;
@@ -620,7 +620,7 @@ void KMissle::OnFly()
 		}
 	}
 	
-	//æ£€æµ‹å½“å‰ä½ç½®æ˜¯å¦æœ‰éšœç¢
+	//¼ì²âµ±Ç°Î»ÖÃÊÇ·ñÓĞÕÏ°­
 	if (TestBarrier()) 
 	{
 #ifndef _SERVER 
@@ -639,12 +639,12 @@ void KMissle::OnFly()
 	ZAxisMove();			
 	switch(this->m_eMoveKind)
 	{
-	case	MISSLE_MMK_Stand:							//	åŸåœ°
+	case	MISSLE_MMK_Stand:							//	Ô­µØ
 		{
 		}
 		break;
-	case	MISSLE_MMK_Parabola:						//	æŠ›ç‰©çº¿
-	case	MISSLE_MMK_Line:							//	ç›´çº¿é£è¡Œ
+	case	MISSLE_MMK_Parabola:						//	Å×ÎïÏß
+	case	MISSLE_MMK_Line:							//	Ö±Ïß·ÉĞĞ
 		{
 			nDOffsetX    = (m_nSpeed * m_nXFactor);
 			nDOffsetY	 = (m_nSpeed * m_nYFactor);
@@ -667,16 +667,16 @@ void KMissle::OnFly()
 			nDOffsetX = (m_nSpeed * m_nXFactor);
 			nDOffsetY = (m_nSpeed * m_nYFactor);
 		}break;
-		//æŒ‰ç…§è®¾è®¡æ–¹æ¡ˆï¼Œéšæœºé£è¡Œæ— æ³•è¾¾åˆ°å®¢æœä¸¤ç«¯çš„åŒæ­¥
-	case	MISSLE_MMK_Random:							//	éšæœºé£è¡Œï¼ˆæš—é»‘äºŒå¥³å·«çš„Charged Boltï¼‰
+		//°´ÕÕÉè¼Æ·½°¸£¬Ëæ»ú·ÉĞĞÎŞ·¨´ïµ½¿Í·şÁ½¶ËµÄÍ¬²½
+	case	MISSLE_MMK_Random:							//	Ëæ»ú·ÉĞĞ£¨°µºÚ¶şÅ®Î×µÄCharged Bolt£©
 		{
 			
 		}break;
-		//å‚æ•°ä¸€è¡¨ç¤ºé¡ºæ—¶é’ˆè¿˜æ˜¯é€†æ—¶é’ˆè½¬åŠ¨
-		//å‚æ•°äºŒè¡¨ç¤ºå›ºå®šåŸå¿ƒè¿˜æ˜¯å›´é¥¶å‘åŠ¨è€…
+		//²ÎÊıÒ»±íÊ¾Ë³Ê±Õë»¹ÊÇÄæÊ±Õë×ª¶¯
+		//²ÎÊı¶ş±íÊ¾¹Ì¶¨Ô­ĞÄ»¹ÊÇÎ§ÈÄ·¢¶¯Õß
 		//dx = SinA * R
 		//dy = Ctg(90-A/2).R = SinA*SinA / (1 + CosA) * R
-	case	MISSLE_MMK_Circle:							//	ç¯è¡Œé£è¡Œï¼ˆå›´ç»•åœ¨èº«è¾¹ï¼Œæš—é»‘äºŒåˆºå®¢çš„é›†æ°”ï¼‰
+	case	MISSLE_MMK_Circle:							//	»·ĞĞ·ÉĞĞ£¨Î§ÈÆÔÚÉí±ß£¬°µºÚ¶ş´Ì¿ÍµÄ¼¯Æø£©
 		{
 			int nPreAngle = m_nAngle - 1;
 			if (nPreAngle < 0) nPreAngle = MaxMissleDir - 1;
@@ -685,12 +685,12 @@ void KMissle::OnFly()
 			int dx = (m_nSpeed + 30)  * (g_DirCos(m_nAngle,MaxMissleDir) - g_DirCos(nPreAngle,MaxMissleDir)) ;
 			int dy = (m_nSpeed + 30)  * (g_DirSin(m_nAngle,MaxMissleDir) - g_DirSin(nPreAngle, MaxMissleDir)) ; 
 			
-			if (m_nParam2) //åŸåœ°è½¬
+			if (m_nParam2) //Ô­µØ×ª
 			{
 				nDOffsetX = dx;
 				nDOffsetY = dy;
 			}
-			else			// å›´ç»•ç€å‘é€è€…è½¬
+			else			// Î§ÈÆ×Å·¢ËÍÕß×ª
 			{
 				int nOldRegion = m_nRegionId;
 				CurRegion.DecRef(m_nCurrentMapX, m_nCurrentMapY, obj_missle);
@@ -710,7 +710,7 @@ void KMissle::OnFly()
 				nDOffsetY = dy;
 			}
 			
-			//é¡ºæ—¶é’ˆè¿˜æ˜¯é€†æ—¶é’ˆ
+			//Ë³Ê±Õë»¹ÊÇÄæÊ±Õë
 			if (m_nParam1)
 			{
 				m_nAngle ++;
@@ -727,9 +727,9 @@ void KMissle::OnFly()
 		}
 		break;	
 		
-		//å‚æ•°ä¸€è¡¨ç¤ºé¡ºæ—¶é’ˆè¿˜æ˜¯é€†æ—¶é’ˆè½¬åŠ¨
-		//å‚æ•°äºŒè¡¨ç¤ºå›ºå®šåŸå¿ƒè¿˜æ˜¯å›´é¥¶å‘åŠ¨è€…
-	case	MISSLE_MMK_Helix:							//	é˜¿åŸºç±³å¾·èºæ—‹çº¿ï¼ˆæš—é»‘äºŒæ¸¸ä¾ çš„Bless Hammerï¼‰
+		//²ÎÊıÒ»±íÊ¾Ë³Ê±Õë»¹ÊÇÄæÊ±Õë×ª¶¯
+		//²ÎÊı¶ş±íÊ¾¹Ì¶¨Ô­ĞÄ»¹ÊÇÎ§ÈÄ·¢¶¯Õß
+	case	MISSLE_MMK_Helix:							//	°¢»ùÃ×µÂÂİĞıÏß£¨°µºÚ¶şÓÎÏÀµÄBless Hammer£©
 		{
 			int nPreAngle = m_nAngle - 1;
 			if (nPreAngle < 0) 
@@ -742,12 +742,12 @@ void KMissle::OnFly()
 			int dx = (m_nSpeed + m_nCurrentLife + 50)  * (g_DirCos(m_nAngle,MaxMissleDir) - g_DirCos(nPreAngle, MaxMissleDir)) ;
 			int dy = (m_nSpeed + m_nCurrentLife + 50)  * (g_DirSin(m_nAngle,MaxMissleDir) - g_DirSin(nPreAngle,MaxMissleDir)) ; 
 			
-			if (m_nParam2) //åŸåœ°è½¬
+			if (m_nParam2) //Ô­µØ×ª
 			{
 				nDOffsetX = dx;
 				nDOffsetY = dy;
 			}
-			else			// å›´ç»•ç€å‘é€è€…è½¬
+			else			// Î§ÈÆ×Å·¢ËÍÕß×ª
 			{
 				int nOldRegion = m_nRegionId;
 				CurRegion.DecRef(m_nCurrentMapX, m_nCurrentMapY, obj_missle);
@@ -781,7 +781,7 @@ void KMissle::OnFly()
 			}
 		}
 		break; 
-	case	MISSLE_MMK_Follow:							//	è·Ÿè¸ªç›®æ ‡é£è¡Œ
+	case	MISSLE_MMK_Follow:							//	¸ú×ÙÄ¿±ê·ÉĞĞ
 		{
 			if(this->m_nFollowNpcIdx > 0)
 			{
@@ -816,14 +816,14 @@ void KMissle::OnFly()
 			nDOffsetY	 = m_nYFactor * m_nSpeed;
 		}break;
 
-	case	MISSLE_MMK_Motion:							//	ç©å®¶åŠ¨ä½œç±»
+	case	MISSLE_MMK_Motion:							//	Íæ¼Ò¶¯×÷Àà
 		{
 			
 		}break;
 		
-	case MISSLE_MMK_SingleLine:						//	å¿…ä¸­çš„å•ä¸€ç›´çº¿é£è¡Œé­”æ³•
+	case MISSLE_MMK_SingleLine:						//	±ØÖĞµÄµ¥Ò»Ö±Ïß·ÉĞĞÄ§·¨
 		{
-			//å•ä¸€å¿…ä¸­ç±»å­å¼¹ï¼Œç±»å¼äºä¼ å¥‡ä»¥åŠå…¶å®ƒçš„åŒç±»ç½‘ç»œæ¸¸æˆä¸­çš„åŸºæœ¬ç›´çº¿é­”æ³•			
+			//µ¥Ò»±ØÖĞÀà×Óµ¯£¬ÀàÊ½ÓÚ´«ÆæÒÔ¼°ÆäËüµÄÍ¬ÀàÍøÂçÓÎÏ·ÖĞµÄ»ù±¾Ö±ÏßÄ§·¨			
 #ifdef _SERVER
 			
 #else
@@ -849,7 +849,7 @@ void KMissle::OnFly()
 		{
 			if (m_bAutoExplode)
 			{
-				ProcessCollision();//å¤„ç†ç¢°æ’
+				ProcessCollision();//´¦ÀíÅö×²
 			}
 #ifndef _SERVER 
 			int nSrcX4 = 0 ;
@@ -861,7 +861,7 @@ void KMissle::OnFly()
 			return;
 		}
 	}
-	else//å¦‚æœå­å¼¹é£è¡Œè¿‡ç¨‹ä¸­è¿›å…¥äº†ä¸€ä¸ªæ— æ•ˆçš„Regionåˆ™å­å¼¹è‡ªåŠ¨æ¶ˆäº¡
+	else//Èç¹û×Óµ¯·ÉĞĞ¹ı³ÌÖĞ½øÈëÁËÒ»¸öÎŞĞ§µÄRegionÔò×Óµ¯×Ô¶¯ÏûÍö
 	{
 		DoVanish();
 	}
@@ -897,7 +897,7 @@ void KMissle::Paint()
 		m_MissleRes.Draw(m_eMissleStatus, nSrcX, nSrcY, m_nCurrentMapZ, nDir,m_nLifeTime - m_nStartLifeTime,  m_nCurrentLife - m_nStartLifeTime );
 	}
 	
-	//å¯¹äºå®¢æˆ·ç«¯ï¼Œç›´åˆ°å­å¼¹åŠå…¶äº§ç”Ÿçš„æ•ˆæœå…¨éƒ¨æ’­æ”¾å®Œæ‰ç»ˆæ­¢å¹¶åˆ é™¤æ‰!
+	//¶ÔÓÚ¿Í»§¶Ë£¬Ö±µ½×Óµ¯¼°Æä²úÉúµÄĞ§¹ûÈ«²¿²¥·ÅÍê²ÅÖÕÖ¹²¢É¾³ıµô!
 	if (m_MissleRes.m_bHaveEnd && (m_MissleRes.SpecialMovieIsAllEnd()))
 		SubWorld[m_nSubWorldId].m_WorldMessage.Send(GWM_MISSLE_DEL, m_nMissleId);
 }
@@ -908,7 +908,7 @@ BOOL	KMissle::CheckBeyondRegion(int nDOffsetX, int nDOffsetY)
 {
 	if (m_nRegionId < 0) 
 		return FALSE;
-	//æœªåŠ¨
+	//Î´¶¯
 	if (nDOffsetX == 0 && nDOffsetY == 0) return TRUE;
 
 	if ( abs(nDOffsetX) >= (REGION_PIXEL_WIDTH << 10) ) 
@@ -936,8 +936,8 @@ BOOL	KMissle::CheckBeyondRegion(int nDOffsetX, int nDOffsetY)
 	_ASSERT(abs(nNewXOffset) <= CellWidth * 2);
 	_ASSERT(abs(nNewYOffset) <= CellHeight * 2);
 	
-	//	å¤„ç†NPCçš„åæ ‡å˜å¹»
-	//	CELLWIDTHã€CELLHEIGHTã€OffXã€OffYå‡æ˜¯æ”¾å¤§äº†1024å€
+	//	´¦ÀíNPCµÄ×ø±ê±ä»Ã
+	//	CELLWIDTH¡¢CELLHEIGHT¡¢OffX¡¢OffY¾ùÊÇ·Å´óÁË1024±¶
 	
 	if (nNewXOffset < 0)
 	{
@@ -988,7 +988,7 @@ BOOL	KMissle::CheckBeyondRegion(int nDOffsetX, int nDOffsetY)
 		nNewMapY -= nRegionHeight;
 	}
 	
-	//ä¸‹ä¸€ä¸ªä½ç½®ä¸ºä¸åˆæ³•ä½ç½®ï¼Œåˆ™æ¶ˆäº¡
+	//ÏÂÒ»¸öÎ»ÖÃÎª²»ºÏ·¨Î»ÖÃ£¬ÔòÏûÍö
 	if (nNewRegion < 0) 
 	{
 		return FALSE; 
@@ -1064,7 +1064,7 @@ KMissle&	KMissle::operator=(KMissle& Missle)
 	Missle.m_usLightRadius	= m_usLightRadius;
 	int nOffset = 0;
 	
-	//å¦‚æœæ˜¯ç›¸åŒçš„å­å¼¹å¯ä»¥ä»¥ä¸åŒæ–¹å¼æ˜¾ç¤ºæ—¶ï¼Œåˆ™éšæœºäº§ç”Ÿ
+	//Èç¹ûÊÇÏàÍ¬µÄ×Óµ¯¿ÉÒÔÒÔ²»Í¬·½Ê½ÏÔÊ¾Ê±£¬ÔòËæ»ú²úÉú
 	if (m_bMultiShow)		
 	{
 		if (g_Random(2) == 0)
@@ -1191,7 +1191,7 @@ void KMissle::DoVanish()
 			pOrdinSkill->Vanish(this);
         }
 	}
-#ifdef _SERVER	//æœåŠ¡å™¨ç«¯æ—¶å­å¼¹ä¸€æ—¦è¿›å…¥æ¶ˆäº¡æœŸåˆ™ç›´æ¥åˆ é™¤æ‰
+#ifdef _SERVER	//·şÎñÆ÷¶ËÊ±×Óµ¯Ò»µ©½øÈëÏûÍöÆÚÔòÖ±½ÓÉ¾³ıµô
 	SubWorld[m_nSubWorldId].m_WorldMessage.Send(GWM_MISSLE_DEL, m_nMissleId);
 	m_eMissleStatus = MS_DoVanish;
 	return ;
@@ -1245,7 +1245,7 @@ void KMissle::DoCollision()
 	else 
 	{
 #ifndef _SERVER		
-		//å¢åŠ æ’åçš„æ•ˆæœ	
+		//Ôö¼Ó×²ºóµÄĞ§¹û	
 		if (m_MissleRes.SpecialMovieIsAllEnd())
 			CreateSpecialEffect(MS_DoCollision, nSrcX, nSrcY, m_nCurrentMapZ);
 #endif
@@ -1256,7 +1256,7 @@ void KMissle::DoCollision()
 void KMissle::DoFly()
 {
 	if (m_eMissleStatus == MS_DoFly) return ;
-	//åˆå§‹åŒ–è´´å›¾
+	//³õÊ¼»¯ÌùÍ¼
 	m_eMissleStatus = MS_DoFly;
 }
 
@@ -1265,7 +1265,7 @@ BOOL KMissle::GetOffsetAxis(int nSubWorld, int nSrcRegionId, int nSrcMapX, int n
 							int &nDesRegionId, int &nDesMapX, int &nDesMapY)
 {
 	nDesRegionId = -1;
-	// ç¡®å®šç›®æ ‡æ ¼å­å®é™…çš„REGIONå’Œåæ ‡ç¡®å®š
+	// È·¶¨Ä¿±ê¸ñ×ÓÊµ¼ÊµÄREGIONºÍ×ø±êÈ·¶¨
 	nDesMapX = nSrcMapX + nOffsetMapX;
 	nDesMapY = nSrcMapY + nOffsetMapY;
 	
@@ -1301,7 +1301,7 @@ BOOL KMissle::GetOffsetAxis(int nSubWorld, int nSrcRegionId, int nSrcMapX, int n
 		return FALSE;
 	nDesRegionId = nSearchRegion;
 	return TRUE;
-	// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC		
+	// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC		
 	//int nNpcIdx = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nDesMapX, nDesMapY, nLauncherIdx, relation_all);
 }
 
@@ -1351,12 +1351,12 @@ int KMissle::ProcessCollision(int nLauncherIdx, int nRegionId, int nMapX, int nM
 	int	nRet = 0;
 	int	nRMx, nRMy, nSearchRegion;
 
-	// æ£€æŸ¥èŒƒå›´å†…çš„æ ¼å­é‡Œçš„NPC
+	// ¼ì²é·¶Î§ÄÚµÄ¸ñ×ÓÀïµÄNPC
 	for (int i = -nRangeX; i <= nRangeX; i++)
 	{
 		for (int j = -nRangeY; j <= nRangeY; j++)
 		{
-			// å»æ‰è¾¹è§’å‡ ä¸ªæ ¼å­ï¼Œä¿è¯è§†é‡æ˜¯æ¤­åœ†å½¢
+			// È¥µô±ß½Ç¼¸¸ö¸ñ×Ó£¬±£Ö¤ÊÓÒ°ÊÇÍÖÔ²ĞÎ
 			//if ((i * i + j * j ) > nRangeX * nRangeX)
 			//continue;
 			if (!GetOffsetAxis(nSubWorld, nRegionId, nMapX, nMapY, i , j , nSearchRegion, nRMx, nRMy))
@@ -1364,7 +1364,7 @@ int KMissle::ProcessCollision(int nLauncherIdx, int nRegionId, int nMapX, int nM
 
 			_ASSERT(nSearchRegion >= 0);
 
-			// ä»REGIONçš„NPCåˆ—è¡¨ä¸­æŸ¥æ‰¾æ»¡è¶³æ¡ä»¶çš„NPC	
+			// ´ÓREGIONµÄNPCÁĞ±íÖĞ²éÕÒÂú×ãÌõ¼şµÄNPC	
 			int nNpcIdx = SubWorld[nSubWorld].m_Region[nSearchRegion].FindNpc(nRMx, nRMy, nLauncherIdx, eRelation);
 			if (nNpcIdx > 0)	
 			{
@@ -1402,13 +1402,13 @@ int KMissle::ProcessCollision()
 }
 
 #ifndef _SERVER 
-//ç”ŸæˆæŸä¸ªç‰¹æ•ˆç»“ç‚¹
+//Éú³ÉÄ³¸öÌØĞ§½áµã
 #define MISSLE_Y_OFFSET 1
 BOOL KMissle::CreateSpecialEffect(eMissleStatus eStatus, int nPX, int nPY, int nPZ, int nNpcIndex)
 {
 	
 	KSkillSpecialNode * pNode = NULL;
-	//åŒä¸€é¢—å­ç¢Ÿä¸èƒ½æœ‰å‡ ä¸ªçˆ†ç‚¸æ•ˆæœåœ¨ä¸€ä¸ªNpcèº«ä¸Š
+	//Í¬Ò»¿Å×Óµú²»ÄÜÓĞ¼¸¸ö±¬Õ¨Ğ§¹ûÔÚÒ»¸öNpcÉíÉÏ
 	if (nNpcIndex > 0)
 	{
 		pNode = (KSkillSpecialNode*)m_MissleRes.m_SkillSpecialList.GetHead();
@@ -1543,13 +1543,13 @@ void KMissle::DoWait()
 #endif
 	
 }
-//å½“å­ç¢Ÿè¿›å…¥flyçŠ¶æ€æ—¶ï¼Œéœ€è¦æ ¹æ®æƒ…å†µå˜åŠ¨
+//µ±×Óµú½øÈëfly×´Ì¬Ê±£¬ĞèÒª¸ù¾İÇé¿ö±ä¶¯
 BOOL	KMissle::PrePareFly()
 {
 	if (m_eMoveKind == MISSLE_MMK_RollBack)
 		m_nTempParam2 =  m_nStartLifeTime + (m_nLifeTime - m_nStartLifeTime ) / 2;
 
-	//æ˜¯å¦ä¼šéšå‘é€è€…çš„ç§»åŠ¨è€Œä¸­æ–­ï¼Œç±»å¼é­”å…½3ä¸­å¤§å‹æ³•æœ¯
+	//ÊÇ·ñ»áËæ·¢ËÍÕßµÄÒÆ¶¯¶øÖĞ¶Ï£¬ÀàÊ½Ä§ÊŞ3ÖĞ´óĞÍ·¨Êõ
 	if (m_nInteruptTypeWhenMove)
 	{
 		int nPX, nPY;
@@ -1560,13 +1560,13 @@ BOOL	KMissle::PrePareFly()
 		}
 	}
 	
-	//å­ç¢Ÿä½ç½®éœ€è¦æ›´æ­£ä¸ºåˆ°é€‚å½“çš„ä½ç½®ï¼ˆå­å¼¹çš„å‡ºç°æ€»æ˜¯ä»¥æŸä¸ªå¯èƒ½ä½ç½®åœ¨ä¸æ–­å˜åŒ–çš„ç‰©ä½“ä¸ºå‚ç…§ç‰©ï¼‰
+	//×ÓµúÎ»ÖÃĞèÒª¸üÕıÎªµ½ÊÊµ±µÄÎ»ÖÃ£¨×Óµ¯µÄ³öÏÖ×ÜÊÇÒÔÄ³¸ö¿ÉÄÜÎ»ÖÃÔÚ²»¶Ï±ä»¯µÄÎïÌåÎª²ÎÕÕÎï£©
 	if (m_bHeelAtParent)
 	{
 		int nNewPX = 0;
 		int nNewPY = 0;
 		
-		if (m_nParentMissleIndex) // å‚è€ƒç‚¹ä¸ºæ¯å­å¼¹
+		if (m_nParentMissleIndex) // ²Î¿¼µãÎªÄ¸×Óµ¯
 		{
 			if (Missle[m_nParentMissleIndex].m_dwLauncherId != m_dwLauncherId)
 			{
@@ -1583,7 +1583,7 @@ BOOL	KMissle::PrePareFly()
 			}
 		}
 		else
-			//å‚è€ƒç‚¹ä¸ºå‘é€è€…
+			//²Î¿¼µãÎª·¢ËÍÕß
 		{
 			_ASSERT(m_nLauncher > 0);
 			int nParentPX, nParentPY;

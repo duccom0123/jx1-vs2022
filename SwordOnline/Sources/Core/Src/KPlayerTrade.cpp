@@ -3,7 +3,7 @@
 //
 // File:	KPlayerTrade.cpp
 // Date:	2003.02.17
-// Code:	边城浪子
+// Code:	�߳�����
 // Desc:	Trade Class
 //---------------------------------------------------------------------------
 
@@ -122,7 +122,7 @@ void	KTrade::SetTradeState(TRADE_STATE_SYNC *pPress)
 	this->m_nTradeDestLock = (pPress->m_btDestLock != 0);
 	this->m_nTradeState = (pPress->m_btSelfOk != 0);
 	this->m_nTradeDestState = (pPress->m_btDestOk != 0);
-	// 通知界面按钮状态改变
+	// ֪ͨ���水ť״̬�ı�
 	CoreDataChanged(GDCNI_TRADE_OPER_DATA, pPress->m_bSelfAskFolkGame, pPress->m_bDestReplyFolkGame);
 }
 #endif

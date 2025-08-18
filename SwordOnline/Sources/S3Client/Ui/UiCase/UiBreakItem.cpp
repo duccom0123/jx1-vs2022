@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------
-//	ÃÃ„Â¼Ã¾ÃƒÃ»		Â£Âº	Â½Â»Ã’Ã—ÃˆÂ·ÃˆÃÂ¿Ã²
-//	Â´Â´Â½Â¨Ã•ÃŸ		Â£Âº	Wooy(Wu yue)
-//	Â´Â´Â½Â¨ÃŠÂ±Â¼Ã¤	Â£Âº	2003-5-28
+//	ÎÄ¼şÃû		£º	½»Ò×È·ÈÏ¿ò
+//	´´½¨Õß		£º	Wooy(Wu yue)
+//	´´½¨Ê±¼ä	£º	2003-5-28
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -19,7 +19,7 @@ extern iCoreShell*		g_pCoreShell;
 KUiBreakItem* KUiBreakItem::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiBreakItem* KUiBreakItem::OpenWindow(KUiObjAtContRegion* pObj, KUiItemBuySelInfo* pPriceInfo, int nStackNum)
 {
@@ -33,7 +33,7 @@ KUiBreakItem* KUiBreakItem::OpenWindow(KUiObjAtContRegion* pObj, KUiItemBuySelIn
 	}
 	if (m_pSelf)
 	{
-		m_pSelf->m_Title.SetText("NhÃ‹p sÃ¨ lÂ­Ã®ng");
+		m_pSelf->m_Title.SetText("NhËp sè l­îng");
 		if (nStackNum > 0)
 			m_pSelf->m_nMaxNum = nStackNum - 1;
 		else
@@ -57,7 +57,7 @@ KUiBreakItem::KUiBreakItem()
 	m_ItemInfo.Obj.uGenre = CGOG_NOTHING;
 }
 
-//ÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
+//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 KUiBreakItem* KUiBreakItem::GetIfVisible()
 {
 	if (m_pSelf && m_pSelf->IsVisible())
@@ -66,7 +66,7 @@ KUiBreakItem* KUiBreakItem::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•ÃÃºÂ»Ã™Â´Â°Â¿Ãš
+//	¹¦ÄÜ£º¹Ø±ÕÏú»Ù´°¿Ú
 //--------------------------------------------------------------------------
 void KUiBreakItem::CloseWindow(bool bDestroy)
 {
@@ -83,7 +83,7 @@ void KUiBreakItem::CloseWindow(bool bDestroy)
 }
 
 
-//ÃÃ”ÃŠÂ¾Â´Â°Â¿Ãš
+//ÏÔÊ¾´°¿Ú
 void KUiBreakItem::Show()
 {
 	m_Number.SetIntText(1);
@@ -96,7 +96,7 @@ void KUiBreakItem::Show()
 	Wnd_SetExclusive((KWndWindow*)this);
 }
 
-//Ã’Ã¾Â²Ã˜Â´Â°Â¿Ãš
+//Òş²Ø´°¿Ú
 void KUiBreakItem::Hide()
 {
 	Wnd_ReleaseExclusive((KWndWindow*)this);
@@ -104,7 +104,7 @@ void KUiBreakItem::Hide()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 int KUiBreakItem::Initialize()
 {
@@ -127,7 +127,7 @@ int KUiBreakItem::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiBreakItem::LoadScheme(const char* pScheme)
 {
@@ -151,7 +151,7 @@ void KUiBreakItem::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÃÃ»ÃÂ¢ÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º´°¿ÚÏûÏ¢º¯Êı
 //--------------------------------------------------------------------------
 int KUiBreakItem::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {

@@ -3,7 +3,7 @@
 //
 // File:	KViewItem.h
 // Date:	2003.07.28
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 // Desc:	KViewItem Class
 //---------------------------------------------------------------------------
 
@@ -15,16 +15,16 @@
 class KViewItem
 {
 private:
-	DWORD		m_dwNpcID;				// å¯¹æ–¹ç©å®¶çš„ npc çš„ id
-	int			m_nLevel;				// å¯¹æ–¹ç©å®¶çš„ç­‰çº§
-	char		m_szName[32];			// å¯¹æ–¹ç©å®¶çš„åå­—
+	DWORD		m_dwNpcID;				// ¶Ô·½Íæ¼ÒµÄ npc µÄ id
+	int			m_nLevel;				// ¶Ô·½Íæ¼ÒµÄµÈ¼¶
+	char		m_szName[32];			// ¶Ô·½Íæ¼ÒµÄÃû×Ö
 
 public:
-	PlayerItem	m_sItem[itempart_num];	// å¯¹æ–¹ç©å®¶ç©¿åœ¨èº«ä¸Šçš„è£…å¤‡åœ¨å®¢æˆ·ç«¯ Item æ•°ç»„ä¸­çš„ä½ç½®ä¿¡æ¯
+	PlayerItem	m_sItem[itempart_num];	// ¶Ô·½Íæ¼Ò´©ÔÚÉíÉÏµÄ×°±¸ÔÚ¿Í»§¶Ë Item Êı×éÖĞµÄÎ»ÖÃĞÅÏ¢
 
 public:
-	KViewItem();						// æ„é€ 
-	void		Init();					// åˆå§‹åŒ–
+	KViewItem();						// ¹¹Ôì
+	void		Init();					// ³õÊ¼»¯
 	void		ApplyViewEquip(DWORD dwNpcID);
 	void		DeleteAll();
 	void		GetData(BYTE* pMsg);

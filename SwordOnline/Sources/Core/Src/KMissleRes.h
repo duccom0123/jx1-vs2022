@@ -3,10 +3,10 @@
 // FileAuthor		:	RomanDou
 // FileCreateDate	:	2002-7-8 16:21:51
 // FileDescription	:	
-è¯¥ç±»ä¸»è¦çš„åŠŸèƒ½æ˜¯
-ä¸€ã€ç»´æŠ¤å­å¼¹çš„èµ„æºï¼ŒåŒ…æ‹¬å›¾åƒã€å£°éŸ³ç­‰èµ„æºçš„åŠ è½½ã€åˆ é™¤
-äºŒã€ç»´æŠ¤å­å¼¹çš„æ¢å¸§ã€è·³å¸§ï¼ŒåŒæ­¥é—®é¢˜
-ä¸‰ã€å¤„ç†å­å¼¹çš„å›¾åƒæ˜¾ç¤ºã€å£°éŸ³æ’­æ”¾ç­‰é—®é¢˜
+¸ÃÀàÖ÷ÒªµÄ¹¦ÄÜÊÇ
+Ò»¡¢Î¬»¤×Óµ¯µÄ×ÊÔ´£¬°üÀ¨Í¼Ïñ¡¢ÉùÒôµÈ×ÊÔ´µÄ¼ÓÔØ¡¢É¾³ı
+¶ş¡¢Î¬»¤×Óµ¯µÄ»»Ö¡¡¢ÌøÖ¡£¬Í¬²½ÎÊÌâ
+Èı¡¢´¦Àí×Óµ¯µÄÍ¼ÏñÏÔÊ¾¡¢ÉùÒô²¥·ÅµÈÎÊÌâ
 // Revision Count	:	
 *******************************************************************************/
 
@@ -30,11 +30,11 @@ public:
 
 typedef struct
 {
-	char	AnimFileName[100];							// å›¾åƒspr æ–‡ä»¶å
+	char	AnimFileName[100];							// Í¼Ïñspr ÎÄ¼şÃû
 	int		nTotalFrame;
 	int		nInterval;
 	int		nDir;
-	char	SndFileName[100];							// å£°éŸ³wav æ–‡ä»¶å
+	char	SndFileName[100];							// ÉùÒôwav ÎÄ¼şÃû
 } TMissleRes;
 
 
@@ -47,24 +47,24 @@ class CORE_API KMissleRes
 public:
 	KMissleRes(	);
 	~KMissleRes();
-	KList		m_SkillSpecialList;		//	å­å¼¹é™„åŠ æ•ˆæœåˆ—è¡¨
+	KList		m_SkillSpecialList;		//	×Óµ¯¸½¼ÓĞ§¹ûÁĞ±í
 
 	BOOL		m_bHaveEnd;
-	BOOL		m_bLoopAnim;											//æ˜¯å¦å¾ªç¯æ’­æ”¾åŠ¨ç”»
-	TMissleRes	m_MissleRes[MAX_MISSLE_STATUS * 2];							//å‡ ç§çŠ¶æ€ä¸‹çš„èµ„æºæƒ…å†µ	
+	BOOL		m_bLoopAnim;											//ÊÇ·ñÑ­»·²¥·Å¶¯»­
+	TMissleRes	m_MissleRes[MAX_MISSLE_STATUS * 2];							//¼¸ÖÖ×´Ì¬ÏÂµÄ×ÊÔ´Çé¿ö	
 	KCacheNode  * m_pSndNode ;
 	int			m_nLastSndIndex;
 	int			m_nMissleId;
 	KList		m_ShadowList;
-	int			m_nMaxShadowNum;		//	æœ€å¤§ä¿ç•™çš„æ®‹å½±é‡
+	int			m_nMaxShadowNum;		//	×î´ó±£ÁôµÄ²ĞÓ°Á¿
 	BOOL		m_bNeedShadow;
 	int			m_nLastShadowLifeTime;
-	int			m_nLifePerFrame;		//	æ¯å¸§æ’­æ”¾æ—¶é—´
+	int			m_nLifePerFrame;		//	Ã¿Ö¡²¥·ÅÊ±¼ä
 	
 	BOOL		m_bSubLoop;
-	int			m_nSubStart;			//	å­å¾ªç¯çš„èµ·å§‹å¸§
-	int			m_nSubStop;			//	å­å¾ªç¯çš„ç»“æŸå¸§
-	KRUImage	m_RUImage[MAX_MISSLE_STATUS];			//	å›¾
+	int			m_nSubStart;			//	×ÓÑ­»·µÄÆğÊ¼Ö¡
+	int			m_nSubStop;			//	×ÓÑ­»·µÄ½áÊøÖ¡
+	KRUImage	m_RUImage[MAX_MISSLE_STATUS];			//	Í¼
 	int			m_SceneID;
 #ifdef TOOLVERSION
 	KCacheNode * m_pSprNode;

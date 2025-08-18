@@ -37,15 +37,15 @@ typedef struct
 
 enum ePartnerType
 {
-	//å¬å”¤ç±»
+	//ÕÙ»½Àà
 	partnercount,
 };
 
 typedef struct 
 {
-	unsigned long m_ulTimeOutVanish;//æ˜¯å¦æœ‰å­˜æ´»æ—¶é—´ï¼Œå¦‚æœæ—¶é—´åˆ°äº†å°±æ¶ˆäº¡.0è¡¨ç¤ºæ²¡æœ‰ï¼Œ å¤§äº0è¡¨ç¤ºå­˜æ´»æ—¶é—´
-	BOOL m_bDeathVanish;//æ˜¯å¦æ­»äº¡ä¹‹åå°±æ¶ˆäº¡.
-	BOOL m_bDeathRevive;//æ˜¯å¦æ­»äº¡åèƒ½é‡ç”Ÿ
+	unsigned long m_ulTimeOutVanish;//ÊÇ·ñÓĞ´æ»îÊ±¼ä£¬Èç¹ûÊ±¼äµ½ÁË¾ÍÏûÍö.0±íÊ¾Ã»ÓĞ£¬ ´óÓÚ0±íÊ¾´æ»îÊ±¼ä
+	BOOL m_bDeathVanish;//ÊÇ·ñËÀÍöÖ®ºó¾ÍÏûÍö.
+	BOOL m_bDeathRevive;//ÊÇ·ñËÀÍöºóÄÜÖØÉú
 	unsigned long m_ulOwnerNpcIndex;
 }
 tPartnerProp;
@@ -58,13 +58,13 @@ struct TPartnerParam
 
 class KPlayerPartner
 {
-private://æˆå‘˜å˜é‡
+private://³ÉÔ±±äÁ¿
 	ePartnerType m_ePartnerType;
 	unsigned long m_ulNpcIndex;
 	unsigned long m_ulCurLifeTime;
 	tPartnerProp m_Prop;
 
-private://æˆå‘˜å‡½æ•°
+private://³ÉÔ±º¯Êı
 	void SetType(ePartnerType eType)
 	{
 		m_ePartnerType = eType;
@@ -90,10 +90,10 @@ private://æˆå‘˜å‡½æ•°
 	int SendCommand(ePartnerType eType, TPartnerParam *pParam);
 	BOOL InitData();
 //---------------------------------------------------------------	
-public://æˆå‘˜å˜é‡
+public://³ÉÔ±±äÁ¿
 	
 
-public://æˆå‘˜å‡½æ•°
+public://³ÉÔ±º¯Êı
 	KPlayerPartner();
 	BOOL Create();
 	

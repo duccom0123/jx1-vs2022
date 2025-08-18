@@ -3,19 +3,19 @@
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-25
 ------------------------------------------------------------------------------------------
-	æä¾›å¯¹å›¾å½¢èµ„æºå¼•ç”¨çš„ç»´æŠ¤æ“ä½œã€‚
+	Ìá¹©¶ÔÍ¼ĞÎ×ÊÔ´ÒıÓÃµÄÎ¬»¤²Ù×÷¡£
 *****************************************************************************************/
 #pragma once
 #include "../../../Represent/iRepresent/KRepresentUnit.h"
 
 //======================================
-//		å›¾å½¢å¯¹è±¡çš„å¼•ç”¨ç»“æ„
+//		Í¼ĞÎ¶ÔÏóµÄÒıÓÃ½á¹¹
 //======================================
 struct KUiImageRef : public KRUImage
 {
-	int			nNumFrames;		//å›¾å½¢å¯¹è±¡çš„å›¾å½¢å¸§æ•°ç›®
-	int			nInterval;		//å¸§é—´éš”
-	int			nFlipTime;		//å½“å‰å¸§åˆ‡æ¢å‡ºæ¥çš„æ—¶é—´
+	int			nNumFrames;		//Í¼ĞÎ¶ÔÏóµÄÍ¼ĞÎÖ¡ÊıÄ¿
+	int			nInterval;		//Ö¡¼ä¸ô
+	int			nFlipTime;		//µ±Ç°Ö¡ÇĞ»»³öÀ´µÄÊ±¼ä
 };
 
 #define	IDF_LEFT_TO_RIGHT	0
@@ -25,21 +25,21 @@ struct KUiImageRef : public KRUImage
 
 
 //======================================
-//		å›¾å½¢å¯¹è±¡çš„å¼•ç”¨ç»“æ„
+//		Í¼ĞÎ¶ÔÏóµÄÒıÓÃ½á¹¹
 //======================================
 struct KUiImagePartRef : public KRUImagePart
 {
-	int			Width;			//å›¾æ¨ªå®½
-	int			Height;			//å›¾çºµå®½
-	int			nDivideFashion;	//åˆ†å‰²æ–¹å¼,å–å€¼ä¸ºIDF_*ä¹‹ä¸€
+	int			Width;			//Í¼ºá¿í
+	int			Height;			//Í¼×İ¿í
+	int			nDivideFashion;	//·Ö¸î·½Ê½,È¡ÖµÎªIDF_*Ö®Ò»
 };
 
 void	IR_InitUiImageRef(KUiImageRef& Img);
 void	IR_InitUiImagePartRef(KUiImagePartRef& Img);
-void	IR_UpdateTime();										//æ›´æ–°å›¾å½¢æ¢å¸§è®¡ç®—ç”¨æ—¶é’Ÿ
-int		IR_NextFrame(KUiImageRef& Img, bool bReverse = false);							//æ¢å¸§è®¡ç®—
-void	IR_GetReferenceSpot(KUiImageRef& Img, int& h, int& v);	//è·å¾—å›¾åƒå‚è€ƒç‚¹ï¼ˆä¸€èˆ¬æ‰€è¯´ä¸ºé‡å¿ƒï¼‰
-void	IR_UpdateImagePart(KUiImagePartRef& Img, int nPartValue, int nFullValue);	//è®¾ç½®ç»˜åˆ¶å›¾çš„å±€éƒ¨
-int		IR_IsTimePassed(unsigned int uInterval, unsigned int& uLastTimer);			//åˆ¤æ–­æ—¶é—´æ˜¯å¦å·²ç»åˆ°äº†
-unsigned int IR_GetRemainTime(unsigned int uInterval, unsigned int uLastTimer);		//è·å–å‰©ä½™æ—¶é—´ï¼Œå¦‚æœæ—¶é—´å·²ç»åˆ°äº†/è¿‡äº†ï¼Œè¿”å›å€¼éƒ½ä¸º0
-unsigned int IR_GetCurrentTime();													//è·å–å½“å‰çš„æ—¶é—´
+void	IR_UpdateTime();										//¸üĞÂÍ¼ĞÎ»»Ö¡¼ÆËãÓÃÊ±ÖÓ
+int		IR_NextFrame(KUiImageRef& Img, bool bReverse = false);							//»»Ö¡¼ÆËã
+void	IR_GetReferenceSpot(KUiImageRef& Img, int& h, int& v);	//»ñµÃÍ¼Ïñ²Î¿¼µã£¨Ò»°ãËùËµÎªÖØĞÄ£©
+void	IR_UpdateImagePart(KUiImagePartRef& Img, int nPartValue, int nFullValue);	//ÉèÖÃ»æÖÆÍ¼µÄ¾Ö²¿
+int		IR_IsTimePassed(unsigned int uInterval, unsigned int& uLastTimer);			//ÅĞ¶ÏÊ±¼äÊÇ·ñÒÑ¾­µ½ÁË
+unsigned int IR_GetRemainTime(unsigned int uInterval, unsigned int uLastTimer);		//»ñÈ¡Ê£ÓàÊ±¼ä£¬Èç¹ûÊ±¼äÒÑ¾­µ½ÁË/¹ıÁË£¬·µ»ØÖµ¶¼Îª0
+unsigned int IR_GetCurrentTime();													//»ñÈ¡µ±Ç°µÄÊ±¼ä

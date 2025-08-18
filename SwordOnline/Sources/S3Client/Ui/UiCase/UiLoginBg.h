@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--loginè¿‡ç¨‹èƒŒæ™¯çª—å£
+//	½çÃæ--login¹ı³Ì±³¾°´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-16
@@ -13,20 +13,20 @@
 class KUiLoginBackGround : protected KWndImage
 {
 public:
-	static KUiLoginBackGround*	OpenWindow(const char* pszConfig);	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void					CloseWindow(bool bDestroy);			//å…³é—­çª—å£
-	static void					SetConfig(const char* pszConfig);	//è®¾ç½®å›¾å½¢
+	static KUiLoginBackGround*	OpenWindow(const char* pszConfig);	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void					CloseWindow(bool bDestroy);			//¹Ø±Õ´°¿Ú
+	static void					SetConfig(const char* pszConfig);	//ÉèÖÃÍ¼ĞÎ
 private:
 	KUiLoginBackGround() {}
 	~KUiLoginBackGround() {}
-	void	Initialize();					//åˆå§‹åŒ–
-	void	LoadScheme(KIniFile* pIni);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	Breathe();						//æ´»åŠ¨å‡½æ•°
+	void	Initialize();					//³õÊ¼»¯
+	void	LoadScheme(KIniFile* pIni);		//ÔØÈë½çÃæ·½°¸
+	void	Breathe();						//»î¶¯º¯Êı
 private:
 	static 	KUiLoginBackGround* m_pSelf;
 #define	MAX_NUM_BUTTERFLY	3
 	KWndImage		m_Butterflys[MAX_NUM_BUTTERFLY];
-	KWndImage	 	m_KingSoft;					//è‡ªåŠ¨ç™»é™†
+	KWndImage	 	m_KingSoft;					//×Ô¶¯µÇÂ½
 	unsigned int	m_uAdviceIntervalMin[MAX_NUM_BUTTERFLY];
 	unsigned int	m_uAdviceIntervalMax[MAX_NUM_BUTTERFLY];
 	unsigned int	m_uInterval[MAX_NUM_BUTTERFLY];

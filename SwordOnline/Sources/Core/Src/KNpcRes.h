@@ -16,12 +16,12 @@ class KStateSpr
 {
 
 public:
-	int				m_nID;						// åœ¨è¡¨æ ¼æ–‡ä»¶ä¸­çš„ä½ç½®ï¼ˆä» 1 å¼€å§‹ï¼Œ0ä¸ºç©ºï¼‰
-	int				m_nType;					// ç±»å‹ï¼šå¤´é¡¶ã€è„šåº•ã€èº«ä¸Š
-	int				m_nPlayType;				// æ’­æ”¾ç±»å‹
-	int				m_nBackStart;				// èº«ä¸Šç±»å‹ èƒŒåå¼€å§‹å¸§
-	int				m_nBackEnd;					// èº«ä¸Šç±»å‹ èƒŒåç»“æŸå¸§
-	KSprControl		m_SprContrul;				// spr æ§åˆ¶
+	int				m_nID;						// ÔÚ±í¸ñÎÄ¼şÖĞµÄÎ»ÖÃ£¨´Ó 1 ¿ªÊ¼£¬0Îª¿Õ£©
+	int				m_nType;					// ÀàĞÍ£ºÍ·¶¥¡¢½Åµ×¡¢ÉíÉÏ
+	int				m_nPlayType;				// ²¥·ÅÀàĞÍ
+	int				m_nBackStart;				// ÉíÉÏÀàĞÍ ±³ºó¿ªÊ¼Ö¡
+	int				m_nBackEnd;					// ÉíÉÏÀàĞÍ ±³ºó½áÊøÖ¡
+	KSprControl		m_SprContrul;				// spr ¿ØÖÆ
 public:
 	KStateSpr();
 	void			Release();
@@ -34,17 +34,17 @@ public:
 class KNpcBlur
 {
 public:
-	int				m_nActive;							// å½“å‰æ®‹å½±å¤„ç†æ˜¯å¦å¤„äºæ¿€æ´»çŠ¶æ€
+	int				m_nActive;							// µ±Ç°²ĞÓ°´¦ÀíÊÇ·ñ´¦ÓÚ¼¤»î×´Ì¬
 	int				m_nBlurFrame;
-	int				m_nCurNo;							// å½“å‰å¸§æŒ‡é’ˆ
-	DWORD			m_dwTimer;							// æ—¶é—´è®¡æ•°å™¨
-	DWORD			m_dwInterval;						// å¤šå°‘å¸§å–ä¸€æ¬¡æ®‹å½±
-	int				m_nMapXpos[MAX_BLUR_FRAME];			// å¯¹åº”çš„åœ°å›¾åæ ‡ x
-	int				m_nMapYpos[MAX_BLUR_FRAME];			// å¯¹åº”çš„åœ°å›¾åæ ‡ y
-	int				m_nMapZpos[MAX_BLUR_FRAME];			// å¯¹åº”çš„åœ°å›¾åæ ‡ z
+	int				m_nCurNo;							// µ±Ç°Ö¡Ö¸Õë
+	DWORD			m_dwTimer;							// Ê±¼ä¼ÆÊıÆ÷
+	DWORD			m_dwInterval;						// ¶àÉÙÖ¡È¡Ò»´Î²ĞÓ°
+	int				m_nMapXpos[MAX_BLUR_FRAME];			// ¶ÔÓ¦µÄµØÍ¼×ø±ê x
+	int				m_nMapYpos[MAX_BLUR_FRAME];			// ¶ÔÓ¦µÄµØÍ¼×ø±ê y
+	int				m_nMapZpos[MAX_BLUR_FRAME];			// ¶ÔÓ¦µÄµØÍ¼×ø±ê z
 	unsigned int	m_SceneIDNpcIdx[MAX_BLUR_FRAME];
 	unsigned int	m_SceneID[MAX_BLUR_FRAME];			// 
-	KRUImage		m_Blur[MAX_BLUR_FRAME][MAX_PART];	// æ®‹å½±ç»˜åˆ¶åˆ—è¡¨
+	KRUImage		m_Blur[MAX_BLUR_FRAME][MAX_PART];	// ²ĞÓ°»æÖÆÁĞ±í
 public:
 	KNpcBlur();
 	~KNpcBlur();
@@ -75,49 +75,49 @@ class KNpcRes
 		MENUSTATE_BEGIN = 1 + MAX_PART + 6 + 1,
 	};
 public:
-	int				m_nXpos;							// åæ ‡ x
-	int				m_nYpos;							// åæ ‡ y
-	int				m_nZpos;							// åæ ‡ z
-	int				m_nXposNew;							// åæ ‡ x
-	int				m_nYposNew;							// åæ ‡ y
-	int				m_nZposNew;							// åæ ‡ z
-	int				m_nXposOld;							// åæ ‡ x
-	int				m_nYposOld;							// åæ ‡ y
-	int				m_nZposOld;							// åæ ‡ z
+	int				m_nXpos;							// ×ø±ê x
+	int				m_nYpos;							// ×ø±ê y
+	int				m_nZpos;							// ×ø±ê z
+	int				m_nXposNew;							// ×ø±ê x
+	int				m_nYposNew;							// ×ø±ê y
+	int				m_nZposNew;							// ×ø±ê z
+	int				m_nXposOld;							// ×ø±ê x
+	int				m_nYposOld;							// ×ø±ê y
+	int				m_nZposOld;							// ×ø±ê z
 private:
-	int				m_nDoing;							// Npcçš„åŠ¨ä½œ
-	int				m_nAction;							// Npcçš„å®é™…åŠ¨ä½œï¼ˆä¸æ­¦å™¨ã€éª‘é©¬æœ‰å…³ï¼‰
-	int				m_nNpcKind;							// ç‰¹æ®Š æ™®é€š
-	// int				m_nXpos;							// åæ ‡ x
-	// int				m_nYpos;							// åæ ‡ y
-	// int				m_nZpos;							// åæ ‡ z
-	unsigned int 	m_SceneID_NPCIdx;                   // åœ¨åœºæ™¯ä¸­çš„ID å¯¹åº”çš„NPCidx
-	unsigned int	m_SceneID;							// åœ¨åœºæ™¯ä¸­çš„ID
-	int				m_nHelmType;						// å½“å‰å¤´éƒ¨ç±»å‹
-	int				m_nArmorType;						// å½“å‰èº«ä½“ç±»å‹
-	int				m_nWeaponType;						// å½“å‰æ­¦å™¨ç±»å‹
-	int				m_nHorseType;						// å½“å‰é©¬åŒ¹ç±»å‹
-	int				m_nMantleType;						// å½“å‰é©¬åŒ¹ç±»å‹
-	BOOL			m_bRideHorse;						// å½“å‰æ˜¯å¦éª‘é©¬
+	int				m_nDoing;							// NpcµÄ¶¯×÷
+	int				m_nAction;							// NpcµÄÊµ¼Ê¶¯×÷£¨ÓëÎäÆ÷¡¢ÆïÂíÓĞ¹Ø£©
+	int				m_nNpcKind;							// ÌØÊâ ÆÕÍ¨
+	// int				m_nXpos;							// ×ø±ê x
+	// int				m_nYpos;							// ×ø±ê y
+	// int				m_nZpos;							// ×ø±ê z
+	unsigned int 	m_SceneID_NPCIdx;                   // ÔÚ³¡¾°ÖĞµÄID ¶ÔÓ¦µÄNPCidx
+	unsigned int	m_SceneID;							// ÔÚ³¡¾°ÖĞµÄID
+	int				m_nHelmType;						// µ±Ç°Í·²¿ÀàĞÍ
+	int				m_nArmorType;						// µ±Ç°ÉíÌåÀàĞÍ
+	int				m_nWeaponType;						// µ±Ç°ÎäÆ÷ÀàĞÍ
+	int				m_nHorseType;						// µ±Ç°ÂíÆ¥ÀàĞÍ
+	int				m_nMantleType;						// µ±Ç°ÂíÆ¥ÀàĞÍ
+	BOOL			m_bRideHorse;						// µ±Ç°ÊÇ·ñÆïÂí
 	int				m_nBlurState;
-	char			m_szSoundName[80];					// å½“å‰éŸ³æ•ˆæ–‡ä»¶å
-	KCacheNode		*m_pSoundNode;						// å£°æ•ˆæŒ‡é’ˆ
-	KWavSound		*m_pWave;							// å£°æ•ˆwavæŒ‡é’ˆ
+	char			m_szSoundName[80];					// µ±Ç°ÒôĞ§ÎÄ¼şÃû
+	KCacheNode		*m_pSoundNode;						// ÉùĞ§Ö¸Õë
+	KWavSound		*m_pWave;							// ÉùĞ§wavÖ¸Õë
 public:
 	enum
 	{
-		adjustcolor_physics = 0,		// ç‰©ç†ä¼¤å®³
+		adjustcolor_physics = 0,		// ÎïÀíÉËº¦
 		adjustcolor_poison, 
-		adjustcolor_freeze,			// ç«ç„°ä¼¤å®³
-		adjustcolor_burn,			// å†°å†»ä¼¤å®³
-		adjustcolor_confuse,			// é—ªç”µä¼¤å®³
-		adjustcolor_stun,			// æ¯’ç´ ä¼¤å®³
+		adjustcolor_freeze,			// »ğÑæÉËº¦
+		adjustcolor_burn,			// ±ù¶³ÉËº¦
+		adjustcolor_confuse,			// ÉÁµçÉËº¦
+		adjustcolor_stun,			// ¶¾ËØÉËº¦
 	};
-	KSprControl		m_cNpcImage[MAX_PART];				// æ‰€æœ‰åŠ¨ä½œçš„æ‰€æœ‰spræ–‡ä»¶å
-	KSprControl		m_cNpcEffectImage[MAX_PART];				// æ‰€æœ‰åŠ¨ä½œçš„æ‰€æœ‰spræ–‡ä»¶å
-	KSprControl		m_cNpcShadow;						// npcé˜´å½±
-	KStateSpr		m_cStateSpr[MAX_SKILL_STATE];						// çŠ¶æ€ç‰¹æ•ˆï¼Œ0 1 ä¸ºå¤´é¡¶ 2 3 ä¸ºè„šåº• 4 5 ä¸ºèº«ä¸Š
-	KSprControl		m_cSpecialSpr;						// ç‰¹æ®Šçš„åªæ’­æ”¾ä¸€éçš„éšèº«spræ–‡ä»¶
+	KSprControl		m_cNpcImage[MAX_PART];				// ËùÓĞ¶¯×÷µÄËùÓĞsprÎÄ¼şÃû
+	KSprControl		m_cNpcEffectImage[MAX_PART];				// ËùÓĞ¶¯×÷µÄËùÓĞsprÎÄ¼şÃû
+	KSprControl		m_cNpcShadow;						// npcÒõÓ°
+	KStateSpr		m_cStateSpr[MAX_SKILL_STATE];						// ×´Ì¬ÌØĞ§£¬0 1 ÎªÍ·¶¥ 2 3 Îª½Åµ× 4 5 ÎªÉíÉÏ
+	KSprControl		m_cSpecialSpr;						// ÌØÊâµÄÖ»²¥·ÅÒ»±éµÄËæÉísprÎÄ¼ş
 	unsigned int	m_ulAdjustColorId;
 
 	KSprControl		m_cMenuStateSpr;
@@ -125,53 +125,53 @@ public:
 	int				m_nBackMenuState;
 	int				m_nSleepState;
 
-	int				m_nSortTable[MAX_PART];				// æ’åºè¡¨
+	int				m_nSortTable[MAX_PART];				// ÅÅĞò±í
 
-	KRUImage		m_cDrawFile[MAX_NPC_IMAGE_NUM];// ç»˜åˆ¶åˆ—è¡¨ èº«ä½“éƒ¨ä»¶ + é˜´å½± + é­”æ³•çŠ¶æ€ + ç‰¹æ®ŠåŠ¨ç”» + å¤´é¡¶çŠ¶æ€
-	KNpcBlur		m_cNpcBlur;							// npc æ®‹å½±
+	KRUImage		m_cDrawFile[MAX_NPC_IMAGE_NUM];// »æÖÆÁĞ±í ÉíÌå²¿¼ş + ÒõÓ° + Ä§·¨×´Ì¬ + ÌØÊâ¶¯»­ + Í·¶¥×´Ì¬
+	KNpcBlur		m_cNpcBlur;							// npc ²ĞÓ°
 
-	KNpcResNode		*m_pcResNode;						// npc èµ„æº
-	KNpcResNode		*m_pcResTemp;						// npc èµ„æº
+	KNpcResNode		*m_pcResNode;						// npc ×ÊÔ´
+	KNpcResNode		*m_pcResTemp;						// npc ×ÊÔ´
 
 private:
-	// ç”±ä¸€ä¸ªå›¾åƒèµ„æºæ–‡ä»¶åå¾—åˆ°ä»–çš„é˜´å½±å›¾åƒæ–‡ä»¶å
-	void			GetSoundName();						// è·å¾—å½“å‰åŠ¨ä½œçš„éŸ³æ•ˆæ–‡ä»¶å
-	void			PlaySound(int nX, int nY);			// æ’­æ”¾å½“å‰åŠ¨ä½œçš„éŸ³æ•ˆ
+	// ÓÉÒ»¸öÍ¼Ïñ×ÊÔ´ÎÄ¼şÃûµÃµ½ËûµÄÒõÓ°Í¼ÏñÎÄ¼şÃû
+	void			GetSoundName();						// »ñµÃµ±Ç°¶¯×÷µÄÒôĞ§ÎÄ¼şÃû
+	void			PlaySound(int nX, int nY);			// ²¥·Åµ±Ç°¶¯×÷µÄÒôĞ§
 	void			SetMenuStateSpr(int nMenuState);					// set menu state spr
 public:
 	KNpcRes();
 	~KNpcRes();
-	BOOL			Init(char *lpszNpcName, KNpcResList *pNpcResList);	// åˆå§‹åŒ–
-	void			_Init(char *lpszNpcName, KNpcResList *pNpcResList);	// åˆå§‹åŒ–
-	void			Remove(int nNpcIdx);								// æ¸…é™¤
-	void			Draw(int nNpcIdx, int nDir, int nAllFrame, int nCurFrame, BOOL bInMenu = FALSE, BOOL bPaintBody = TRUE);		// ç»˜åˆ¶
+	BOOL			Init(char *lpszNpcName, KNpcResList *pNpcResList);	// ³õÊ¼»¯
+	void			_Init(char *lpszNpcName, KNpcResList *pNpcResList);	// ³õÊ¼»¯
+	void			Remove(int nNpcIdx);								// Çå³ı
+	void			Draw(int nNpcIdx, int nDir, int nAllFrame, int nCurFrame, BOOL bInMenu = FALSE, BOOL bPaintBody = TRUE);		// »æÖÆ
 	void			DrawBorder();
 	int				DrawMenuState(int nHeightOffset);
 	void			GetResFile(int nActionNo, char *lpszSprName);
-	BOOL			SetHelm(int nHelmType);								// è®¾å®šå¤´ç›”ç±»å‹
-	BOOL			SetArmor(int nArmorType, int nMantleType);							// è®¾å®šç›”ç”²ç±»å‹
-	BOOL			SetWeapon(int nWeaponType);							// è®¾å®šæ­¦å™¨ç±»å‹
-	BOOL			SetHorse(int nHorseType);							// è®¾å®šé©¬åŒ¹ç±»å‹
-	BOOL			SetAction(int nDoing);								// è®¾å®šåŠ¨ä½œç±»å‹
+	BOOL			SetHelm(int nHelmType);								// Éè¶¨Í·¿øÀàĞÍ
+	BOOL			SetArmor(int nArmorType, int nMantleType);							// Éè¶¨¿ø¼×ÀàĞÍ
+	BOOL			SetWeapon(int nWeaponType);							// Éè¶¨ÎäÆ÷ÀàĞÍ
+	BOOL			SetHorse(int nHorseType);							// Éè¶¨ÂíÆ¥ÀàĞÍ
+	BOOL			SetAction(int nDoing);								// Éè¶¨¶¯×÷ÀàĞÍ
 	int				GetHelm(){return m_nHelmType;};
 	int				GetArmor(){return m_nArmorType;	};
 	int				GetWeapon(){return m_nWeaponType;};
-	BOOL			SetRideHorse(BOOL bRideHorse);						// è®¾å®šæ˜¯å¦éª‘é©¬
+	BOOL			SetRideHorse(BOOL bRideHorse);						// Éè¶¨ÊÇ·ñÆïÂí
 	BOOL			IgnoreShowRes();
-	void			SetPos(int nNpcIdx, int x, int y, int z = 0, BOOL bFocus = FALSE, BOOL bMenu = FALSE);// è®¾å®š npc ä½ç½®
-	void			SetState(BYTE *pNpcStateList, KNpcResList *pNpcResList);	// è®¾å®šçŠ¶æ€ç‰¹æ•ˆ
-	void			SetSpecialSpr(char *lpszSprName);					// è®¾å®šç‰¹æ®Šçš„åªæ’­æ”¾ä¸€éçš„éšèº«spræ–‡ä»¶
-	void			SetBlur(BOOL bBlur);								// æ®‹å½±æ‰“å¼€å…³é—­
+	void			SetPos(int nNpcIdx, int x, int y, int z = 0, BOOL bFocus = FALSE, BOOL bMenu = FALSE);// Éè¶¨ npc Î»ÖÃ
+	void			SetState(BYTE *pNpcStateList, KNpcResList *pNpcResList);	// Éè¶¨×´Ì¬ÌØĞ§
+	void			SetSpecialSpr(char *lpszSprName);					// Éè¶¨ÌØÊâµÄÖ»²¥·ÅÒ»±éµÄËæÉísprÎÄ¼ş
+	void			SetBlur(BOOL bBlur);								// ²ĞÓ°´ò¿ª¹Ø±Õ
 	void			CreateBlur(int nNpcIdx, int nRange, int nDir);
-	void			SetAdjustColorId(unsigned long ulColorId){m_ulAdjustColorId = ulColorId;};			// è®¾ç½®åè‰²æƒ…å†µï¼Œå¦‚æœä¸º0è¡¨ç¤ºä¸åè‰².
+	void			SetAdjustColorId(unsigned long ulColorId){m_ulAdjustColorId = ulColorId;};			// ÉèÖÃÆ«É«Çé¿ö£¬Èç¹ûÎª0±íÊ¾²»Æ«É«.
 	int				GetAction(){return m_nAction;};
-	void			SetMenuState(int nState, char *lpszSentence = NULL, int nSentenceLength = 0);	// è®¾å®šå¤´é¡¶çŠ¶æ€
-	int				GetMenuState();						// è·å¾—å¤´é¡¶çŠ¶æ€
-	void			SetSleepState(BOOL bFlag);			// è®¾å®šç¡çœ çŠ¶æ€
-	BOOL			GetSleepState();						// è·å¾—ç¡çœ çŠ¶æ€
+	void			SetMenuState(int nState, char *lpszSentence = NULL, int nSentenceLength = 0);	// Éè¶¨Í·¶¥×´Ì¬
+	int				GetMenuState();						// »ñµÃÍ·¶¥×´Ì¬
+	void			SetSleepState(BOOL bFlag);			// Éè¶¨Ë¯Ãß×´Ì¬
+	BOOL			GetSleepState();						// »ñµÃË¯Ãß×´Ì¬
 	void			StopSound();
 	int				GetSndVolume(int nVol);
 	static void		GetShadowName(char *lpszShadow, char *lpszSprName);
-	int				GetNormalNpcStandDir(int nFrame);	// åŠ¨ç”»å¸§æ•°è½¬æ¢æˆé€»è¾‘æ–¹å‘(0 - 63)
+	int				GetNormalNpcStandDir(int nFrame);	// ¶¯»­Ö¡Êı×ª»»³ÉÂß¼­·½Ïò(0 - 63)
 };
 #endif

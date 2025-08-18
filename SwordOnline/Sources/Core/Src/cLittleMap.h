@@ -35,7 +35,7 @@ struct stLittemap
 	unsigned int cx,cy;							//region size,	32*32 or 64*64
 	unsigned int left,top,right,bottom;			//map size,		100,189,200,330
 	int xTo,yTo,zTo;							//camera to,	100,2000,0
-	char szJpgFile[MAX_PATH];					//jpg file		³É¶¼.jpg
+	char szJpgFile[MAX_PATH];					//jpg file		�ɶ�.jpg
 };
 
 struct iRepresentShell;

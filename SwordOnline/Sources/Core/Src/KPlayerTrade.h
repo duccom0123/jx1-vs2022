@@ -3,7 +3,7 @@
 //
 // File:	KPlayerTrade.h
 // Date:	2003.02.17
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 // Desc:	Trade Class
 //---------------------------------------------------------------------------
 
@@ -18,11 +18,11 @@ class KTrade
 {
 	friend class KPlayer;
 public:
-	int			m_nIsTrading;						// æ˜¯å¦æ­£åœ¨äº¤æ˜“ 0 æ²¡æœ‰ 1 æ­£åœ¨äº¤æ˜“
-	int			m_nTradeDest;						// æœåŠ¡å™¨ç«¯è®°çš„æ˜¯ player index å®¢æˆ·ç«¯è®°çš„æ˜¯ npc id
-	int			m_nTradeState;						// æ˜¯å¦å·²ç»ç‚¹äº†ok 0 æ²¡æœ‰ 1 ç‚¹äº†
-	int			m_nTradeLock;						// æ˜¯å¦é”å®š 0 æ²¡æœ‰ 1 å·²ç»é”å®š
-	BOOL		m_bTradeFolkGame;						// æ˜¯å¦é”å®š 0 æ²¡æœ‰ 1 å·²ç»é”å®š
+	int			m_nIsTrading;						// ÊÇ·ñÕıÔÚ½»Ò× 0 Ã»ÓĞ 1 ÕıÔÚ½»Ò×
+	int			m_nTradeDest;						// ·şÎñÆ÷¶Ë¼ÇµÄÊÇ player index ¿Í»§¶Ë¼ÇµÄÊÇ npc id
+	int			m_nTradeState;						// ÊÇ·ñÒÑ¾­µãÁËok 0 Ã»ÓĞ 1 µãÁË
+	int			m_nTradeLock;						// ÊÇ·ñËø¶¨ 0 Ã»ÓĞ 1 ÒÑ¾­Ëø¶¨
+	BOOL		m_bTradeFolkGame;						// ÊÇ·ñËø¶¨ 0 Ã»ÓĞ 1 ÒÑ¾­Ëø¶¨
 
 #ifdef _SERVER
 	int			m_nApplyIdx;
@@ -31,11 +31,11 @@ public:
 #endif
 
 #ifndef _SERVER
-	int			m_nBackEquipMoney;					// äº¤æ˜“å¼€å§‹æ—¶å¤‡ä»½ç‰©å“æ money
-	int			m_nBackRepositoryMoney;				// äº¤æ˜“å¼€å§‹æ—¶å¤‡ä»½å‚¨ç‰©ç®±money
-	int			m_nTradeDestState;					// å®¢æˆ·ç«¯è®°å½•å¯¹æ–¹æ˜¯å¦ok
-	int			m_nTradeDestLock;					// å®¢æˆ·ç«¯è®°å½•å¯¹æ–¹æ˜¯å¦é”å®š
-	char		m_szDestName[32];					// å¯¹æ–¹åå­—
+	int			m_nBackEquipMoney;					// ½»Ò×¿ªÊ¼Ê±±¸·İÎïÆ·À¸money
+	int			m_nBackRepositoryMoney;				// ½»Ò×¿ªÊ¼Ê±±¸·İ´¢ÎïÏämoney
+	int			m_nTradeDestState;					// ¿Í»§¶Ë¼ÇÂ¼¶Ô·½ÊÇ·ñok
+	int			m_nTradeDestLock;					// ¿Í»§¶Ë¼ÇÂ¼¶Ô·½ÊÇ·ñËø¶¨
+	char		m_szDestName[32];					// ¶Ô·½Ãû×Ö
 #endif
 
 public:

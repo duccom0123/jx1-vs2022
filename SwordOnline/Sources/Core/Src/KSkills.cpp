@@ -30,7 +30,7 @@
 #include "KOption.h"
 #endif
 
-#define	 NPCINDEXOFOBJECT 0 //ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Npcï¿½ï¿½ï¿½
+#define	 NPCINDEXOFOBJECT 0 //Îï¼þ·¢Ä§·¨Ê±Ëù¶ÔÓ¦µÄNpc±àºÅ
 const char * g_MagicID2String(int nAttrib);
 extern  const KScript * g_GetScript(DWORD dwScriptId);
 //////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ inline int	KSkill::Param2PCoordinate(int nLauncher, int nParam1, int nParam2 , i
 	
 	switch(nParam1)
 	{
-	case -1://nParam2 ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ä³ï¿½ï¿½Npcï¿½ï¿½ï¿½ï¿½Objï¿½ï¿½Index
+	case -1://nParam2 ²ÎÊýÖ¸ÏòÄ³¸öNpc£¬»òObjµÄIndex
 		nTargetId		= nParam2;
 		nRegionId		= Npc[nParam2].m_RegionIndex;
 		nDesMapX		= Npc[nParam2].m_MapX;
@@ -115,10 +115,10 @@ inline int	KSkill::Param2PCoordinate(int nLauncher, int nParam1, int nParam2 , i
 		else;
 		break;
 		
-	case -2://nParam ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case -2://nParam ²ÎÊýÖ¸ÏòÄ³¸ö·½Ïò
 		
 		break;
-	default://Ä¬ï¿½ï¿½Ê±, nParam1 ï¿½ï¿½nParam2 ÎªÊµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½
+	default://Ä¬ÈÏÊ±, nParam1 ÓënParam2 ÎªÊµ¼Êµã×ø±ê
 		*npPX = nParam1;
 		*npPY = nParam2;
 		break;
@@ -132,7 +132,7 @@ inline int	KSkill::Param2PCoordinate(int nLauncher, int nParam1, int nParam2 , i
 
 int KSkill::CanCastSkill(int nLauncher, int &nParam1, int &nParam2)  const 
 {
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¶Ô×ÔÒÑµÄÖ÷¶¯¸¨Öú¼¼ÄÜ
 	if (m_bTargetSelf && (nParam1 != -1)) 
 	{
 		nParam1 = -1;
@@ -171,10 +171,10 @@ relationisvalid:
 
 	if (Npc[nLauncher].IsPlayer())
 	{
-		//-2ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ü²ï¿½ï¿½Üµï¿½Ç°×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
-		//-1ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		//0-99ï¿½ï¿½Ä³ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¡ÖµÎªï¿½ï¿½×°ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		//100-199ï¿½ï¿½Ä³ï¿½ï¿½Ô¶ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¡ÖµÎªï¿½ï¿½×°ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½100
+		//-2±íÊ¾¼¼ÄÜ²»ÊÜµ±Ç°×°±¸µÄÏÞÖÆ,
+		//-1±íÊ¾¿ÕÊÖÏÞÖÆ
+		//0-99ÊÜÄ³ÖÖ½üÉí¹¥»÷ÀàµÄ×°±¸ÏÞÖÆ È¡ÖµÎª¸Ã×°±¸µÄ¾ßÌåÀà±ðºÅ
+		//100-199ÊÜÄ³ÖÖÔ¶³Ì¹¥»÷ÀàµÄ×°±¸ÏÞÖÆ È¡ÖµÎª¸Ã×°±¸µÄ¾ßÌåÀà±ðºÅ ¼Ó100
 		if (Npc[nLauncher].m_SilentState.nTime > 0)
 		{
 #ifndef _SERVER
@@ -199,15 +199,15 @@ relationisvalid:
 			int nDetailType		= Player[nPlayerIdx].m_ItemList.GetWeaponType();
 			int nParticularType = Player[nPlayerIdx].m_ItemList.GetWeaponParticular();
 			
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//½üÉíÎäÆ÷
 			if (nDetailType == 0)
 			{
 				
-			}//Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			}//Ô¶³ÌÎäÆ÷
 			else if (nDetailType == 1)
 			{
 				nParticularType += MAX_MELEEWEAPON_PARTICULARTYPE_NUM;
-			}//ï¿½ï¿½ï¿½ï¿½
+			}//¿ÕÊÖ
 			else if (nDetailType == -1)
 			{
 				nParticularType = -1;
@@ -239,9 +239,9 @@ relationisvalid:
 					return 0;
 			}
 		}		
-		//0ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		//1ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
-		//2ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½
+		//0±íÊ¾²»ÏÞÖÆ
+		//1±íÊ¾²»¿ÉÒÔÆïÂí·¢¸Ã¼¼ÄÜ
+		//2±íÊ¾±ØÐëÆïÂí·¢¸Ã¼¼ÄÜ
 		if (m_nHorseLimited)
 		{
 			switch(m_nHorseLimited)
@@ -319,41 +319,41 @@ relationisvalid:
 	return 1;
 }
 
-//		ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ [5/28/2002]
-//		ï¿½Í»ï¿½ï¿½ËºÍ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ÜµÄµï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½Í¬
-//		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Õµï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½
-//		ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½ï¿½ï¿½Ë¶ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ò²ï¿½ï¿½Í³Ò»ï¿½ï¿½ï¿½Ý½Ó¿ï¿½
-//		ï¿½Í»ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ë½«ï¿½ï¿½×ªï¿½ï¿½ÎªÊµï¿½Êµï¿½ï¿½ï¿½Ï¢
-//		ï¿½ï¿½Ö´ï¿½Ð¡ï¿½Í¬Ê±ï¿½ï¿½Ó¦ï¿½ï¿½×ªï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//		µ±Íæ¼Òµ÷ÓÃÄ³¸ö¼¼ÄÜÊ±·¢Éú [5/28/2002]
+//		¿Í»§¶ËºÍ·þÎñÆ÷¶ËÔÚ¼¼ÄÜµÄµ÷ÓÃ·½ÃæÓÐÒ»Ð©²»Í¬
+//		·þÎñÆ÷¶ËÒ»°ãÊÕµ½µÄ¾­¹ý¿Í»§¶Ë´¦ÀíÍêµÄ²ÎÊý
+//		ÓÎÏ·ÊÀ½çÒÔÏûÏ¢ÃüÁî»úÖÆÖ´ÐÐÃ¿¸ö±ä»¯£¬Òò´Ë¶ÔÓÚ·¢¼¼ÄÜÓ¦¸ÃÒ²ÊÇÍ³Ò»Êý¾Ý½Ó¿Ú
+//		¿Í»§¶ËÊ±£¬Èç¹û¸ÃÏûÏ¢ÊÇÀ´×Ô±¾»úÍæ¼ÒµÄÊäÈë£¬Ôò±ØÐë½«Æä×ª»»ÎªÊµ¼ÊµÄÏûÏ¢
+//		À´Ö´ÐÐ¡£Í¬Ê±»¹Ó¦½«×ª»»ºÃµÄÏûÏ¢´«¸ø·þÎñÆ÷¶Ë
 /*
-ï¿½Ð¹Ø´ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½MapXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PointXï¿½ï¿½ï¿½Ý¾ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ÎªMapï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ÎªPointï¿½ï¿½ï¿½ï¿½
+ÓÐ¹Ø´«µÄ²ÎÊýÊÇMapX£¬»¹ÊÇPointX¸ù¾Ý¾ßÌåµÄÄ§·¨¼¼ÄÜ¶ø¶¨
+±ÈÈçÒ»°ã·ÉÐÐÄ§·¨ÎªMap×ø±ê£¬¶ø¶¨µãÄ§·¨ÎªPoint×ø±ê
 */
 /*
-×¢ï¿½âµ±ï¿½ï¿½ï¿½ï¿½CastÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½nLauncherIndexï¿½ï¿½Socketï¿½ï¿½ï¿½Ó¦ï¿½ï¿½dwIdÒ»ï¿½Â£ï¿½ï¿½ï¿½IsMatch()Í¨ï¿½ï¿½ï¿½ï¿½
+×¢Òâµ±µ÷ÓÃCastÊ±£¬±ØÐëÒÑÈ·±£µ±Ç°µÄnLauncherIndexÓëSocketÏà¶ÔÓ¦µÄdwIdÒ»ÖÂ£¬¼´IsMatch()Í¨¹ý¡£
 */
 
 /*!*****************************************************************************
 // Function		: KSkill::Cast
-// Purpose		: ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½Í³Ò»ï¿½Ó¿ï¿½
+// Purpose		: ·¢¼¼ÄÜµÄÍ³Ò»½Ó¿Ú
 // Return		: 
-// Argumant		: int nLauncher ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Id
+// Argumant		: int nLauncher ·¢ËÍÕßId
 // Argumant		: int nParam1   
 // Argumant		: int nParam2
-// Argumant		: int nWaitTime ï¿½ï¿½ï¿½Íµï¿½ï¿½Ó³ï¿½Ê±ï¿½ï¿½
-// Argumant		: eSkillLauncherType eLauncherType ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Argumant		: int nWaitTime ·¢ËÍµÄÑÓ³ÙÊ±¼ä
+// Argumant		: eSkillLauncherType eLauncherType ·¢ËÍÕßÀàÐÍ
 // Comments		:
 // Author		: RomanDou
 *****************************************************************************/
 BOOL	KSkill::Cast(int nLauncher, int nParam1, int nParam2, int nWaitTime, eSkillLauncherType eLauncherType)  const 
 {
-	//-----------------ï¿½Ó¿Úºï¿½ï¿½ï¿½ï¿½ï¿½Úµã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½-------------------------------
+	//-----------------½Ó¿Úº¯ÊýÈë¿Úµã£¬¼ì²â²ÎÊýºÏ·¨ÐÔ-------------------------------
 	if (nLauncher < 0 )
 	{
 		g_DebugLog("Skill::Cast(), nLauncher < 0 , Return False;"); 
 		return FALSE; 
 	}
-	//ï¿½ï¿½é·¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½
+	//¼ì²é·¢ËÍÕßÊÇ·ñ·ûºÏÒªÇó
 
 	switch(eLauncherType)
 	{
@@ -423,7 +423,7 @@ BOOL	KSkill::Cast(int nLauncher, int nParam1, int nParam2, int nWaitTime, eSkill
 	switch(m_eSkillStyle)
 	{
 		
-	case	SKILL_SS_Missles:				//ï¿½ï¿½ï¿½Óµï¿½
+	case	SKILL_SS_Missles:				//·¢×Óµ¯
 		{
 			CastMissles(nLauncher, nParam1, nParam2, nWaitTime, eLauncherType);
 		}
@@ -435,67 +435,67 @@ BOOL	KSkill::Cast(int nLauncher, int nParam1, int nParam2, int nWaitTime, eSkill
 			
 		}break;
 		
-	case	SKILL_SS_InitiativeNpcState:	//ï¿½Ä±ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+	case	SKILL_SS_InitiativeNpcState:	//¸Ä±ä½ÇÉ«µÄÖ÷¶¯×´Ì¬
 		{
 			CastInitiativeSkill(nLauncher, nParam1, nParam2, nWaitTime);
 		}
 		break;
 		
-	case	SKILL_SS_PassivityNpcState:	//ï¿½Ä±ï¿½ï¿½É«ï¿½Ä±ï¿½ï¿½ï¿½×´Ì¬	
+	case	SKILL_SS_PassivityNpcState:	//¸Ä±ä½ÇÉ«µÄ±»¶¯×´Ì¬	
 		{
 			CastPassivitySkill(nLauncher, nParam1, nParam2, nWaitTime);
 		}
 		break;
 		
-	case	SKILL_SS_CreateNpc:			//ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Npcï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	case	SKILL_SS_CreateNpc:			//²úÉúÐÂµÄNpc¡¢¹ÖÎï 
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_BuildPoison:			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case	SKILL_SS_BuildPoison:			//Á¶¶¾Êõ
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_AddPoison:			//ï¿½Ó¶ï¿½ï¿½ï¿½
+	case	SKILL_SS_AddPoison:			//¼Ó¶¾Êõ
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_GetObjDirectly:		//ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½	
+	case	SKILL_SS_GetObjDirectly:		//¸ô¿ÕÈ¡Îï	
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_StrideObstacle:		//ï¿½ï¿½Ô½ï¿½Ï°ï¿½
+	case	SKILL_SS_StrideObstacle:		//¿çÔ½ÕÏ°­
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_BodyToObject:		//Ê¬ï¿½ï¿½
+	case	SKILL_SS_BodyToObject:		//Ê¬±ä
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_Mining:				//ï¿½É¿ï¿½
+	case	SKILL_SS_Mining:				//²É¿ó
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_RepairWeapon:		//ï¿½Þ¸ï¿½ï¿½ï¿½
+	case	SKILL_SS_RepairWeapon:		//ÐÞ¸´Êõ
 		{
 			
 		}
 		break;
 		
-	case	SKILL_SS_Capture:				//ï¿½ï¿½×½ï¿½ï¿½ 
+	case	SKILL_SS_Capture:				//²¶×½Êõ 
 		{
 			
 		}
@@ -514,7 +514,7 @@ BOOL	KSkill::Cast(int nLauncher, int nParam1, int nParam2, int nWaitTime, eSkill
 
 /*!*****************************************************************************
 // Function		: KSkill::Vanish
-// Purpose		: ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Øµï¿½
+// Purpose		: ×Óµ¯ÉúÃü½áÊøÊ±»Øµ÷
 // Return		: 
 // Argumant		: KMissle* Missle
 // Comments		:
@@ -636,7 +636,7 @@ void KSkill::FlyEvent(KMissle * pMissle)  const
 
 /*!*****************************************************************************
 // Function		: KSkill::Collidsion
-// Purpose		: ï¿½Óµï¿½ï¿½ï¿½×²Ê±ï¿½Øµï¿½
+// Purpose		: ×Óµ¯±»×²Ê±»Øµ÷
 // Return		: 
 // Argumant		: KMissle* Missle
 // Comments		:
@@ -649,26 +649,26 @@ void	KSkill::Collidsion(KMissle * pMissle)  const
 
 /*!*****************************************************************************
 // Function		: KSkill::CastMissles
-// Purpose		: ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
+// Purpose		: ·¢ËÍ×Óµ¯¼¼ÄÜ
 // Return		: 
-// Argumant		: int nLauncher  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
+// Argumant		: int nLauncher  ·¢ËÍÕßid
 // Argumant		: int nParam1
 // Argumant		: int nParam2
-// Argumant		: int nWaitTime  ï¿½Ó³ï¿½Ê±ï¿½ï¿½
-// Argumant		: eSkillLauncherType eLauncherType ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Argumant		: int nWaitTime  ÑÓ³¤Ê±¼ä
+// Argumant		: eSkillLauncherType eLauncherType ·¢ËÍÕßÀàÐÍ
 // Comments		:
 // Author		: RomanDou
 *****************************************************************************/
 BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime  , eSkillLauncherType eLauncherType )  const 
 {
 	int nRegionId		=	0;
-	int	nDesMapX		=	0;//ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
+	int	nDesMapX		=	0;//µØÍ¼×ø±ê
 	int nDesMapY		=	0;
 	int nDesOffX		=	0;
 	int nDesOffY		=	0;
 	int nSrcOffX		=	0;
 	int nSrcOffY		=	0;
-	int nSrcPX			=	0;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int nSrcPX			=	0;//µã×ø±ê
 	int nSrcPY			=	0;
 	int nDesPX			=	0;
 	int nDesPY			=	0;
@@ -689,14 +689,14 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 	switch(m_eMisslesForm)
 	{
 	/*
-	ï¿½ï¿½Ç½Ê±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Óµï¿½Ö®ï¿½ï¿½Ä³ï¿½ï¿½È¼ï¿½ï¿½
+	»ðÇ½Ê±£¬µÚÒ»Êý×Ö²ÎÊý±íÊ¾×Óµ¯Ö®¼äµÄ³¤¶È¼ä¸ô
 	X2  = X1 + N * SinA
 	Y2  = Y2 - N * CosA
 	*/
 		
-	case	SKILL_MF_Wall:			//Ç½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ê´ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ç½×´
+	case	SKILL_MF_Wall:			//Ç½ÐÎ	¶à¸ö×Óµ¯³Ê´¹Ö±·½ÏòÅÅÁÐ£¬ÀàÊ½»ðÇ½×´
 		{
-			//Ç½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//Ç½ÐÎÄ§·¨²»¿ÉÒÔÖ»´«·½Ïò
 			if (nParam1 == SKILL_SPT_Direction) return FALSE;
 			
 			switch(eLauncherType)
@@ -746,7 +746,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 		}break;
 		
 		
-	case	SKILL_MF_Line:				//ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	case	SKILL_MF_Line:				//ÏßÐÎ	¶à¸ö×Óµ¯³ÊÆ½ÐÐÓÚÍæ¼Ò·½ÏòÅÅÁÐ
 		{
 			
 			if (nParam1 == SKILL_SPT_Direction)
@@ -804,7 +804,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 							if (nDistance == 0 ) return FALSE;
 							int		nYLength = nDesPY - nSrcPY;
 							int		nXLength = nDesPX - nSrcPX;
-							int		nSin = (nYLength << 10) / nDistance;	// ï¿½Å´ï¿½1024ï¿½ï¿½
+							int		nSin = (nYLength << 10) / nDistance;	// ·Å´ó1024±¶
 							int		nCos = (nXLength << 10) / nDistance;
 							
 							if (abs(nSin) > 1024) 
@@ -838,10 +838,10 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 		}
 		break;
 		
-		//  ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¾ï¿½Óµï¿½Ö®ï¿½ï¿½Ä½Ç¶È²î£¬ï¿½ï¿½64ï¿½ï¿½ï¿½ï¿½Îª×¼
-		//  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½X/Yï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//  Êý×Ö²ÎÊýÒ»±íÊ¾×Óµ¯Ö®¼äµÄ½Ç¶È²î£¬ÒÔ64·½ÏòÎª×¼
+		//  ´«À´µÄX/Y²ÎÊýÎª¸ñ×Ó×ø±ê
 		
-	case	SKILL_MF_Spread:				//É¢ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä½Ç¶ÈµÄ·ï¿½É¢×´	
+	case	SKILL_MF_Spread:				//É¢ÐÎ	¶à¸ö×Óµ¯³ÊÒ»¶¨µÄ½Ç¶ÈµÄ·¢É¢×´	
 		{
 			if (nParam1 == SKILL_SPT_Direction)
 			{
@@ -897,7 +897,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 							if (nDistance == 0 ) return FALSE;
 							int		nYLength = nDesPY - nSrcPY;
 							int		nXLength = nDesPX - nSrcPX;
-							int		nSin = (nYLength << 10) / nDistance;	// ï¿½Å´ï¿½1024ï¿½ï¿½
+							int		nSin = (nYLength << 10) / nDistance;	// ·Å´ó1024±¶
 							int		nCos = (nXLength << 10) / nDistance;
 
 							if (abs(nSin) > 1024) 
@@ -932,11 +932,11 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 		}break;
 		
 		
-		//ï¿½Ôµï¿½Ç°ï¿½ï¿½ÎªÔ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½Åµï¿½ï¿½Óµï¿½
-		//ï¿½Ö³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îªï¿½ï¿½Ô­ï¿½ï¿½ÎªÔ­ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îªï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ÎªÔ­ï¿½Ä·ï¿½ï¿½ï¿½
-		// ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¾ ï¿½Ç·ï¿½ÎªÔ­ï¿½Ø·ï¿½ï¿½ï¿½
+		//ÒÔµ±Ç°µãÎªÔ²µã²úÉú¶à¸öÎ§ÈÅµÄ×Óµ¯
+		//·Ö³ÉÁ½ÖÖÇé¿ö£¬Ò»ÖÖÎªÒÔÔ­µØÎªÔ­ÐÄ·¢³ö£¬ÁíÒ»ÖÖÎªÒÔÄ¿±êµãÎªÔ­ÐÄ·¢³ö
+		// Êý×Ö²ÎÊýÒ»±íÊ¾ ÊÇ·ñÎªÔ­µØ·¢³ö
 		
-	case	SKILL_MF_Circle:				//Ô²ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½Î§ï¿½ï¿½Ò»ï¿½ï¿½È¦
+	case	SKILL_MF_Circle:				//Ô²ÐÎ	¶à¸ö×Óµ¯Î§³ÉÒ»¸öÈ¦
 		{
 			if (nParam1 == SKILL_SPT_Direction) return FALSE;
 			
@@ -976,7 +976,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 			
 		}break;
 		
-	case	SKILL_MF_Random:				//ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½
+	case	SKILL_MF_Random:				//Ëæ»ú	¶à¸ö×Óµ¯Ëæ»úÅÅ·Å
 		{
 			switch(eLauncherType)
 			{
@@ -996,7 +996,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 		}
 		break;
 		
-	case	SKILL_MF_AtTarget:				//ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½
+	case	SKILL_MF_AtTarget:				//¶¨µã	¶à¸ö×Óµ¯¸ù¾Ý
 		{
 			if (nParam1 == SKILL_SPT_Direction) return FALSE;	
 			
@@ -1030,7 +1030,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 			}
 		}break;
 		
-	case	SKILL_MF_AtFirer:				//ï¿½ï¿½ï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½Óµï¿½Í£ï¿½ï¿½ï¿½ï¿½Òµï¿½Ç°Î»ï¿½ï¿½
+	case	SKILL_MF_AtFirer:				//±¾Éí	¶à¸ö×Óµ¯Í£ÔÚÍæ¼Òµ±Ç°Î»ÖÃ
 		{
 			if (nParam1 == SKILL_SPT_Direction) return FALSE;
 			switch(eLauncherType)
@@ -1116,7 +1116,7 @@ BOOL	KSkill::CastMissles(int nLauncher, int nParam1, int nParam2, int nWaitTime 
 // Comments		:
 // Author		: RomanDou
 *****************************************************************************/
-//nValue1 = 0 ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  nValue1 = 1 ï¿½ï¿½Ê¾Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//nValue1 = 0 ±íÊ¾¾ØÐÎÇøÓò  nValue1 = 1 ±íÊ¾Ô²ÐÎÇøÓò
 //nValue2 = 0 
 int KSkill::CastZone(TOrdinSkillParam * pSkillParam , int nDir, int nRefPX, int nRefPY)  const 
 {
@@ -1237,7 +1237,7 @@ exit:
 // Comments		:
 // Author		: RomanDou
 *****************************************************************************/
-// Value1 ï¿½Óµï¿½Ö®ï¿½ï¿½Ä¼ï¿½ï¿½
+// Value1 ×Óµ¯Ö®¼äµÄ¼ä¾à
 // Value2 
 int		KSkill::CastLine(TOrdinSkillParam *pSkillParam, int nDir, int nRefPX, int nRefPY)  const 
 {
@@ -1249,7 +1249,7 @@ int		KSkill::CastLine(TOrdinSkillParam *pSkillParam, int nDir, int nRefPX, int n
 	int nDesSubY		= 0;
 	int nCastMissleNum	= 0;
 	
-	//ï¿½Óµï¿½Ö®ï¿½ï¿½Ä¼ï¿½ï¿½
+	//×Óµ¯Ö®¼äµÄ¼ä¾à
 	int nMSDistanceEach = m_nValue1;
 	
 #ifdef _SERVER
@@ -1257,7 +1257,7 @@ int		KSkill::CastLine(TOrdinSkillParam *pSkillParam, int nDir, int nRefPX, int n
 #endif //_SERVER
 	
 	int nNum = 0;
-	//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½Óµï¿½
+	//·Ö±ðÉú³É¶àÉÙ×Óµ¯
 	for(int i = 0; i < m_nChildSkillNum; i++)
 	{
 		if (m_nValue2)
@@ -1369,14 +1369,14 @@ int		KSkill::CastExtractiveLineMissle(TOrdinSkillParam* pSkillParam,  int nDir,i
 	int nDesSubY		= 0;
 	int nCastMissleNum	= 0;
 	
-	//ï¿½Óµï¿½Ö®ï¿½ï¿½Ä¼ï¿½ï¿½
+	//×Óµ¯Ö®¼äµÄ¼ä¾à
 	
 	
 #ifdef _SERVER
 	KMissleMagicAttribsData * pNewMagicAttribsData = CreateMissleMagicAttribsData(nLauncher);
 #endif //_SERVER
 	
-	//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½Óµï¿½
+	//·Ö±ðÉú³É¶àÉÙ×Óµ¯
 	{
 		
 		if (m_bBaseSkill)
@@ -1492,7 +1492,7 @@ exit:
 // Author		: RomanDou
 *****************************************************************************/
 /*
-m_nValue1 ï¿½ï¿½Ê¾ï¿½Óµï¿½Ö®ï¿½ï¿½Ä¾ï¿½ï¿½ë£¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½Øµï¿½
+m_nValue1 ±íÊ¾×Óµ¯Ö®¼äµÄ¾àÀë£¬µ¥Î»ÏñËØµã
 */
 int KSkill::CastWall(TOrdinSkillParam * pSkillParam,  int nDir , int nRefPX , int nRefPY)  const 
 {
@@ -1506,7 +1506,7 @@ int KSkill::CastWall(TOrdinSkillParam * pSkillParam,  int nDir , int nRefPX , in
 	int nCastMissleNum	= 0;
 	
 	
-	//ï¿½Óµï¿½Ö®ï¿½ï¿½Ä¼ï¿½ï¿½
+	//×Óµ¯Ö®¼äµÄ¼ä¾à
 	int nMSDistanceEach = m_nValue1;
 	int nCurMSDistance	= -1 * nMSDistanceEach * m_nChildSkillNum / 2;
 	
@@ -1514,7 +1514,7 @@ int KSkill::CastWall(TOrdinSkillParam * pSkillParam,  int nDir , int nRefPX , in
 	KMissleMagicAttribsData * pNewMagicAttribsData = CreateMissleMagicAttribsData(nLauncher);
 #endif //_SERVER
 	
-	//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½Óµï¿½
+	//·Ö±ðÉú³É¶àÉÙ×Óµ¯
 	for(int i = 0; i < m_nChildSkillNum; i++)
 	{
 		nDesSubX	= nRefPX + ((nCurMSDistance * g_DirCos(nDirIndex, MaxMissleDir)) >>10);
@@ -1630,7 +1630,7 @@ exit:
 // Comments		:
 // Author		: RomanDou
 *****************************************************************************/
-// Value1  == 0 ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÔ²ï¿½Ä²ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ÎªÔ²ï¿½Ä²ï¿½ï¿½ï¿½Ô²
+// Value1  == 0 ±íÊ¾·¢ËÍÕßÎªÔ²ÐÄ²úÉúÔ²£¬·ñÔòÒÔÄ¿±êµãÎªÔ²ÐÄ²úÉúÔ²
 int		KSkill::CastCircle(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, int nRefPY)  const 
 {
 	int nLauncher = pSkillParam->nLauncher;
@@ -1638,7 +1638,7 @@ int		KSkill::CastCircle(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, in
 	if (eLauncherType != SKILL_SLT_Npc) return 0;	
 	int nDesSubPX	= 0;
 	int nDesSubPY	= 0;
-	int nFirstStep	= m_nValue2;			//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½Óµï¿½ï¿½Ú¸Õ·ï¿½ï¿½ï¿½È¥Ê±ï¿½ï¿½ï¿½ï¿½ÒµÄ¾ï¿½ï¿½ï¿½
+	int nFirstStep	= m_nValue2;			//µÚÒ»²½µÄ³¤¶È£¬×Óµ¯ÔÚ¸Õ·¢³öÈ¥Ê±ÀëÍæ¼ÒµÄ¾àÀë
 	int nCurSubDir	= 0;
 	int nDirPerNum  = 	MaxMissleDir / m_nChildSkillNum  ;
 	int nCastMissleNum = 0;
@@ -1646,7 +1646,7 @@ int		KSkill::CastCircle(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, in
 	KMissleMagicAttribsData * pNewMagicAttribsData = CreateMissleMagicAttribsData(nLauncher);
 #endif //_SERVER
 	
-	//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½Óµï¿½
+	//·Ö±ðÉú³É¶à¸ö×Óµ¯
 	for(int i = 0; i < m_nChildSkillNum; i++)
 	{
 		int nCurSubDir	= nDir + nDirPerNum * i ;
@@ -1764,8 +1764,8 @@ exit:
 // Author		: RomanDou
 *****************************************************************************/
 /*
-Value1 Ã¿ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ä½Ç¶Èµï¿½Î»
-Value2 Ã¿Ò»ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½Óµï¿½ï¿½Ú¸Õ·ï¿½ï¿½ï¿½È¥Ê±ï¿½ï¿½ï¿½ï¿½ÒµÄ¾ï¿½ï¿½ï¿½
+Value1 Ã¿¸ö×Óµ¯Ïà²îµÄ½Ç¶Èµ¥Î»
+Value2 Ã¿Ò»²½µÄ³¤¶È£¬µÚÒ»²½µÄ³¤¶È£¬×Óµ¯ÔÚ¸Õ·¢³öÈ¥Ê±ÀëÍæ¼ÒµÄ¾àÀë
 */
 int		KSkill::CastSpread(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, int nRefPY)  const 
 {
@@ -1774,10 +1774,10 @@ int		KSkill::CastSpread(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, in
 	if (eLauncherType != SKILL_SLT_Npc) return 0;
 	int nDesSubMapX		= 0;
 	int nDesSubMapY		= 0;
-	int nFirstStep		= m_nValue2;			//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½ï¿½Óµï¿½ï¿½Ú¸Õ·ï¿½ï¿½ï¿½È¥Ê±ï¿½ï¿½ï¿½ï¿½ÒµÄ¾ï¿½ï¿½ï¿½
+	int nFirstStep		= m_nValue2;			//µÚÒ»²½µÄ³¤¶È£¬×Óµ¯ÔÚ¸Õ·¢³öÈ¥Ê±ÀëÍæ¼ÒµÄ¾àÀë
 	int nCurMSRadius	= m_nChildSkillNum / 2 ; 
 	int nCurSubDir		= 0;
-	int	nCastMissleNum  = 0;			//Êµï¿½Ê·ï¿½ï¿½Íµï¿½Missleï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int	nCastMissleNum  = 0;			//Êµ¼Ê·¢ËÍµÄMissleµÄÊýÁ¿
 	
 	// Sin A+B = SinA*CosB + CosA*SinB
 	// Cos A+B = CosA*CosB - SinA*SinB
@@ -1813,7 +1813,7 @@ int		KSkill::CastSpread(TOrdinSkillParam * pSkillParam, int nDir, int nRefPX, in
 	
 	int nTargetId = pSkillParam->nTargetId;
 	
-	//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½Óµï¿½
+	//·Ö±ðÉú³É¶à¸ö×Óµ¯
 	for(int i = 0; i < m_nChildSkillNum; i++)
 	{
 		int nDSubDir	= m_nValue1 * nCurMSRadius; 
@@ -1924,7 +1924,7 @@ exit:
 
 /*!*****************************************************************************
 // Function		: KSkill::GetChildSkillNum
-// Purpose		: ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½Ä³Ð©ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½ÜµÈ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Êµï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+// Purpose		: ÓÉÓÚ¿ÉÄÜÄ³Ð©¼¼ÄÜÖÐ£¬Ëæ×Å¼¼ÄÜµÈ¼¶µÄÉý¼¶£¬×Óµ¯µÄÊýÄ¿Ò²»áÒò´ËÔö¼Ó£¬ËùÒÔÍ¨¹ý¸Ãº¯Êý»ñµÃÊµ¼ÊµÄ×Ó¼¼ÄÜÊýÄ¿
 // Return		: 
 // Argumant		: int nLevel
 // Comments		:
@@ -1936,8 +1936,8 @@ int 	KSkill::GetChildSkillNum(int nLevel)  const
 };
 /*!*****************************************************************************
 // Function		: KSkill::CreateMissle
-// Purpose		: ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½Ô¼ï¿½ï¿½Ã¼ï¿½ï¿½Ü¸ÃµÈ¼ï¿½ï¿½ÂµÄ¶ï¿½ï¿½Óµï¿½ï¿½ï¿½Ï¢ï¿½Ä±ä¶¯ï¿½ï¿½ï¿½ï¿½
-//					ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+// Purpose		: ÉèÖÃ×Óµ¯µÄ»ù±¾Êý¾Ý£¬ÒÔ¼°¸Ã¼¼ÄÜ¸ÃµÈ¼¶ÏÂµÄ¶Ô×Óµ¯ÐÅÏ¢µÄ±ä¶¯Êý¾Ý
+//					ÉèÖÃÓÃÓÚÊýÖµ¼ÆËãµÄÖ¸Õë
 // Return		: 
 // Argumant		: int nChildSkillId
 // Argumant		: int nMissleIndex
@@ -1955,7 +1955,7 @@ void	KSkill::CreateMissle(int nLauncher, int nChildSkillId, int nMissleIndex)  c
 	
 	KMissle * pMissle = &Missle[nMissleIndex];
 	
-	g_MisslesLib[nChildSkillId] = *pMissle;//ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	g_MisslesLib[nChildSkillId] = *pMissle;//¸´ÖÆ¿½±´¶ÔÏó
 	
 	pMissle->m_nLevel			= m_ulLevel;
 	pMissle->m_bCollideEvent	= m_bCollideEvent;
@@ -2075,7 +2075,7 @@ void	KSkill::CreateMissle(int nLauncher, int nChildSkillId, int nMissleIndex)  c
 
 /*!*****************************************************************************
 // Function		: KSkill::GetInfoFromTabFile
-// Purpose		: ï¿½ï¿½TabFileï¿½Ð»ï¿½Ã¸Ã¼ï¿½ï¿½ÜµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Purpose		: ´ÓTabFileÖÐ»ñµÃ¸Ã¼¼ÄÜµÄ³£¹æÊôÐÔ
 // Return		: 
 // Argumant		: int nCol
 // Comments		:
@@ -2150,7 +2150,7 @@ BOOL	KSkill::GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow)
 	pSkillsSettingFile->GetInteger(nRow, "StopWhenMove",	0, &m_nInteruptTypeWhenMove, TRUE);
 	pSkillsSettingFile->GetInteger(nRow, "HeelAtParent",  0, (int *)&m_bHeelAtParent, TRUE );
 	pSkillsSettingFile->GetInteger(nRow, "ShowEvent",  0, (int *)&m_nShowEvent, TRUE );
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ã²ï¿½Í¨Öªï¿½Í»ï¿½ï¿½ï¿½
+	//·þÎñÆ÷¶ËÐèÒª»ñµÃ²¢Í¨Öª¿Í»§¶Ë
 	pSkillsSettingFile->GetInteger(nRow, "StateSpecialId",  0, &m_nStateSpecialId, TRUE);
 	pSkillsSettingFile->GetInteger(nRow, "IsExpSkill",		0, (int *)&m_nIsExpSkill, TRUE);
 	pSkillsSettingFile->GetInteger(nRow, "Series",		-1, (int *)&m_nSeries, TRUE);
@@ -2169,8 +2169,8 @@ BOOL	KSkill::GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow)
 #ifndef _SERVER
 	pSkillsSettingFile->GetString(nRow, "SkillDesc", "", m_szSkillDesc, sizeof(m_szSkillDesc));
 	pSkillsSettingFile->GetInteger(nRow, "NeedShadow",		0, &m_bNeedShadow, TRUE);
-	pSkillsSettingFile->GetString(nRow, "SkillIcon","\\spr\\skill\\Í¼ï¿½ï¿½\\Í¨ï¿½ï¿½.spr",	m_szSkillIcon, 80);
-	if (!m_szSkillIcon[0])	strcpy(m_szSkillIcon, "\\spr\\skill\\Í¼ï¿½ï¿½\\Í¨ï¿½ï¿½.spr");
+	pSkillsSettingFile->GetString(nRow, "SkillIcon","\\spr\\skill\\Í¼±ê\\Í¨ÓÃ.spr",	m_szSkillIcon, 80);
+	if (!m_szSkillIcon[0])	strcpy(m_szSkillIcon, "\\spr\\skill\\Í¼±ê\\Í¨ÓÃ.spr");
 		KImageParam sImage;
 	if (g_pRepresent->GetImageParam(m_szSkillIcon, &sImage, ISI_T_SPR) == false)
 	{
@@ -2183,7 +2183,7 @@ BOOL	KSkill::GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow)
 #else
 	char szLevelScript[MAX_PATH];
 	
-	//ï¿½ï¿½È¡ï¿½è¶¨ï¿½Å±ï¿½1ï¿½ï¿½ï¿½ï¿½Â¼Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½Ô±ä»¯ï¿½ï¿½ï¿½ï¿½Öµï¿½è¶¨ï¿½ï¿½
+	//¶ÁÈ¡Éè¶¨½Å±¾1£¬¼ÇÂ¼Ã¿Ò»¼¶¼¼ÄÜµÄÊôÐÔ±ä»¯£¬ÊýÖµÉè¶¨µÄ
 	pSkillsSettingFile->GetString(nRow, "LvlSetScript", "", szLevelScript, MAX_PATH);
 	if (szLevelScript[0])
 	{
@@ -2191,7 +2191,7 @@ BOOL	KSkill::GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow)
 		m_dwSkillLevelDataScriptId = g_FileName2Id(szLevelScript);
 	}
 	
-	//ï¿½ï¿½È¡ï¿½è¶¨ï¿½Å±ï¿½2ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	//¶ÁÈ¡Éè¶¨½Å±¾2£¬¼ÇÂ¼¼¼ÄÜÏÞÖÆÐÅÏ¢
 	pSkillsSettingFile->GetString(nRow, "LevelUpScript","",szLevelScript, MAX_PATH);
 	if (szLevelScript[0])
 	{
@@ -2204,7 +2204,7 @@ BOOL	KSkill::GetInfoFromTabFile(KITabFile *pSkillsSettingFile, int nRow)
 
 /*!*****************************************************************************
 // Function		: KSkill::LoadSkillLevelData
-// Purpose		: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ç°ï¿½È¼ï¿½ï¿½Âµï¿½Ç°ï¿½ï¿½ï¿½ÜµÄ¼ï¿½ï¿½Ü¡ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ÖµÓ°ï¿½ï¿½
+// Purpose		: ¶Á±í»ñµÃµ±Ç°µÈ¼¶ÏÂµ±Ç°¼¼ÄÜµÄ¼¼ÄÜ¡¢×Óµ¯¡¢Åö×²ÊýÖµÓ°Ïì
 // Return		: 
 // Argumant		: int nLevel
 // Comments		:
@@ -2216,7 +2216,7 @@ void		KSkill::LoadSkillLevelData(unsigned long  nLevel /* =0*/, int nParam)
 	m_nDamageAttribsNum = 0;
 	m_nAddSkillDamageNum = 0;
 	m_nImmediateAttribsNum = 0;
-	m_nStateAttribsNum	= 0;		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10
+	m_nStateAttribsNum	= 0;		//¸öÊý£¬×î´ó10
 		
 	char szSettingScriptName[MAX_PATH];
 	char szSettingNameValue[100];
@@ -2224,13 +2224,13 @@ void		KSkill::LoadSkillLevelData(unsigned long  nLevel /* =0*/, int nParam)
 	char szResult[300];
 	int nRowId = nParam;
 	if (nRowId < 2) return ;
-	//Question ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Question ±ØÐëË³ÐòÒ»ÖÁ²ÅÐÐ
 	KLuaScript * pScript = NULL;
 #ifndef _SERVER
 	g_OrdinSkillsSetting.GetString(nRowId,  "LvlSetScript", "", szSettingScriptName, MAX_PATH );
 	if (!szSettingScriptName[0]) return;
 	g_SetFilePath("\\");
-	//ï¿½ï¿½ï¿½ï¿½Luaï¿½Å±ï¿½
+	//¼ÓÔØLua½Å±¾
 	KLuaScript Script;
 	Script.Init();
 	if (!Script.Load(szSettingScriptName)) 
@@ -2322,7 +2322,7 @@ KMissleMagicAttribsData* KSkill::CreateMissleMagicAttribsData(int nLauncher)  co
 	KMagicAttrib * pDamageAttribs =  new KMagicAttrib[MAX_MISSLE_DAMAGEATTRIB];
 	pMissleMagicAttribsData->m_nDamageMagicAttribsNum = m_nDamageAttribsNum;
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½È·ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ëºï¿½
+	//¸ù¾ÝÍæ¼ÒµÄ»ù±¾ÊôÐÔ£¬È·¶¨×Óµ¯µÄÉËº¦
 	if (nLauncher)
 	{
 		Npc[nLauncher].AppendSkillEffect(m_nId, m_bIsPhysical, m_bIsMelee, (KMagicAttrib *)m_DamageAttribs, pDamageAttribs);
@@ -2338,7 +2338,7 @@ KMissleMagicAttribsData* KSkill::CreateMissleMagicAttribsData(int nLauncher)  co
 #endif
 /*!*****************************************************************************
 // Function		: KSkill::SetMissleGenerateTime
-// Purpose		: ï¿½ï¿½Ãµï¿½Ç°ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Êµï¿½Ê²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+// Purpose		: »ñµÃµ±Ç°µÄ×Óµ¯µÄÊµ¼Ê²úÉúÊ±¼ä
 // Return		: void 
 // Argumant		: Missle * pMissle
 // Argumant		: int nNo
@@ -2412,7 +2412,7 @@ int KSkill::GetSkillIdFromName(char * szSkillName)
 
 /*!*****************************************************************************
 // Function		: KSkill::CastInitiativeSkill
-// Purpose		: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Purpose		: Ö÷¶¯¸¨Öú¼¼ÄÜ
 // Return		: BOOL 
 // Argumant		: int nLauncher
 // Argumant		: int nParam1
@@ -2424,7 +2424,7 @@ int KSkill::GetSkillIdFromName(char * szSkillName)
 BOOL KSkill::CastInitiativeSkill(int nLauncher, int nParam1, int nParam2, int nWaitTime)  const 
 {
 #ifdef _SERVER
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//¶Ô×ÔÒÑµÄÖ÷¶¯¸¨Öú¼¼ÄÜ
 	if (nParam1 != -1 && m_bTargetSelf) 
 	{
 		nParam1 = -1;
@@ -2480,7 +2480,7 @@ lab_processdamage:
 
 /*!*****************************************************************************
 // Function		: KSkill::CastPassivitySkill
-// Purpose		: ï¿½ï¿½ï¿½ï¿½
+// Purpose		: ±»¶¯
 // Return		: BOOL 
 // Argumant		: int nLauncher
 // Argumant		: int nParam1
@@ -2492,7 +2492,7 @@ lab_processdamage:
 BOOL KSkill::CastPassivitySkill(int nLauncher, int nParam1, int nParam2, int nWaitTime)  const 
 {
 #ifdef _SERVER
-	//ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½MissleMagicAttribs?
+	//ÊÇ±»¶¯¼¼ÄÜÊ±£¬ÊÇ·ñ»¹ÐèÒªÉú³ÉMissleMagicAttribs?
 	KMissleMagicAttribsData * pAttribsData = (KMissleMagicAttribsData*)m_StateAttribs;//CreateMissleMagicAttribsData(nLauncher);
 	if (m_nStateAttribsNum > 0)
 	{
@@ -2504,7 +2504,7 @@ BOOL KSkill::CastPassivitySkill(int nLauncher, int nParam1, int nParam2, int nWa
 
 /*!*****************************************************************************
 // Function		: KSkill::ParseString2MagicAttrib
-// Purpose		: ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// Purpose		: ½âÎöÍ¨¹ý½Å±¾ÔËËã»ñµÃµÄ¼¼ÄÜÊý¾Ý
 // Return		: 
 // Argumant		: char * szMagicAttribName
 // Argumant		: char * szValue
@@ -2518,8 +2518,8 @@ BOOL	KSkill::ParseString2MagicAttrib(unsigned long ulLevel, char * szMagicAttrib
 	int nValue3 = 0;
     const char *pcszTemp = NULL;
 	if ((!szMagicAttribName) || (!szMagicAttribName[0])) return FALSE;
-	//nValue2 ï¿½ï¿½ÖµÎª-1Ê±Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½0Îªï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎªï¿½ï¿½Ê±Ð§ï¿½ï¿½×´Ì¬Ä§ï¿½ï¿½Ð§ï¿½ï¿½
-	//ï¿½ï¿½Òªï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//nValue2 µ±ÖµÎª-1Ê±ÎªÓÀ¾ÃÐÔ×´Ì¬£¬0Îª·Ç×´Ì¬£¬ÆäËüÖµÎªÓÐÊ±Ð§ÐÔ×´Ì¬Ä§·¨Ð§¹û
+	//ÐèÒª½«×´Ì¬Êý¾ÝÓë·Ç×´Ì¬Êý¾Ý·ÖÀë³öÀ´£¬·ÅÈëÏàÓ¦µÄÊý×éÄÚ£¬²¢¼ÇÂ¼×ÜÊýÁ¿
 	for (int i  = 0 ; i <= magic_normal_end; i ++)
 	{
 	
@@ -2554,7 +2554,7 @@ BOOL	KSkill::ParseString2MagicAttrib(unsigned long ulLevel, char * szMagicAttrib
 			{
 				switch(i)
 				{
-				case magic_skill_cost_v:				// ï¿½ï¿½ï¿½ï¿½MANA
+				case magic_skill_cost_v:				// ÏûºÄMANA
 					{
 						m_nCost = nValue1;
 					}
@@ -2566,7 +2566,7 @@ BOOL	KSkill::ParseString2MagicAttrib(unsigned long ulLevel, char * szMagicAttrib
 					}
 					break;
 					
-				case magic_skill_mintimepercast_v: 		// Ã¿ï¿½Î·ï¿½Ä§ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ê±ï¿½ï¿½
+				case magic_skill_mintimepercast_v: 		// Ã¿´Î·¢Ä§·¨µÄ¼ä¸ôÊ±¼ä
 					{
 						m_nMinTimePerCast = nValue1;
 					}
@@ -2871,25 +2871,25 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 	switch(pTempSkill->m_nSeries)
 	{
 	case series_metal:
-		strcat(pszMsg, "(hï¿½ Kim)");
+		strcat(pszMsg, "(hÖ Kim)");
 		break;
 	case series_wood:
-		strcat(pszMsg, "(hï¿½ Mï¿½c)");
+		strcat(pszMsg, "(hÖ Méc)");
 		break;
 	case series_water:
-		strcat(pszMsg, "(hï¿½ Thï¿½y)");
+		strcat(pszMsg, "(hÖ Thñy)");
 		break;
 	case series_fire:
-		strcat(pszMsg, "(hï¿½ Hï¿½a)");
+		strcat(pszMsg, "(hÖ Háa)");
 		break;
 	case series_earth:
-		strcat(pszMsg, "(hï¿½ Thï¿½)");
+		strcat(pszMsg, "(hÖ Thæ)");
 		break;
 	}
 	strcat(pszMsg, "\n");
 	if (Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_Level < pTempSkill->GetSkillReqLevel())
 	{
-		sprintf(szTemp, "<color=255,255,255>ï¿½ï¿½ng cï¿½p yï¿½u cï¿½u: %d", pTempSkill->GetSkillReqLevel());
+		sprintf(szTemp, "<color=255,255,255>§¼ng cÊp yªu cÇu: %d", pTempSkill->GetSkillReqLevel());
 		strcat(pszMsg, szTemp);
 	}
 	strcat (pszMsg, "\n<color=255,255,255>");	
@@ -2918,7 +2918,7 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 					nL -= 6;
 				else
 				{
-					int k = 0;
+					int k;
 					for(k = 0; k<12; k++)
 					{
 						if(szTemp[offset+6+k] == '>') 
@@ -2938,7 +2938,7 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 				{
 					if (szTemp[offset+5] == '=')
 					{
-						int k = 0;
+						int k;
 						for(k = 0; k<12; k++)
 						{
 							if(szTemp[offset+5+k] == '>') 
@@ -2988,19 +2988,19 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 		if (nAddLevel > 0)
 		{
 			if (ulCurLevel)
-				sprintf(szTemp, "<color=100,100,255>ï¿½ï¿½ng cï¿½p hiï¿½n thï¿½i: %d (%d+%d)<color>\n" ,ulCurLevel, nLevel, nAddLevel);
+				sprintf(szTemp, "<color=100,100,255>§¼ng cÊp hiÖn thêi: %d (%d+%d)<color>\n" ,ulCurLevel, nLevel, nAddLevel);
 			else
-				sprintf(szTemp, "ï¿½ï¿½ng cï¿½p hiï¿½n thï¿½i: %d\n", ulCurLevel);
+				sprintf(szTemp, "§¼ng cÊp hiÖn thêi: %d\n", ulCurLevel);
 		}
 		else
-			sprintf(szTemp, "ï¿½ï¿½ng cï¿½p hiï¿½n thï¿½i: %d\n", ulCurLevel);
+			sprintf(szTemp, "§¼ng cÊp hiÖn thêi: %d\n", ulCurLevel);
 		strcat(pszMsg, szTemp);
 	}
 
     int nAddSkillDamage = Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_SkillList.GetAddSkillDamage(ulSkillId); 
     if (nAddSkillDamage) 
     { 
-        sprintf(szTemp, "Hï¿½ trï¿½ tï¿½ cï¿½c kï¿½ nï¿½ng khï¿½c: %d%%", nAddSkillDamage); 
+        sprintf(szTemp, "Hç trî tõ c¸c kü n¨ng kh¸c: %d%%", nAddSkillDamage); 
         strcat(pszMsg, szTemp); 
         strcat(pszMsg, "\n"); 
     }
@@ -3012,7 +3012,7 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 		pTempSkill->IsTargetEnemy() && 
 		!pTempSkill->IsBase()) 
     { 
-        sprintf(szTemp, "Trang bï¿½ gï¿½m cï¿½: %d%%", nSkillEnhance); 
+        sprintf(szTemp, "Trang bÞ gåm cã: %d%%", nSkillEnhance); 
         strcat(pszMsg, szTemp); 
         strcat(pszMsg, "\n"); 
     }
@@ -3107,7 +3107,7 @@ void	KSkill::GetDesc(unsigned long ulSkillId, unsigned long ulCurLevel, char * p
 	{
 		if (pNextSkill)
 		{
-			strcat(pszMsg, "\n<color=255,0,0>ï¿½ï¿½ng cï¿½p kï¿½ tiï¿½p\n\n");
+			strcat(pszMsg, "\n<color=255,0,0>§¼ng cÊp kÕ tiÕp\n\n");
 			pNextSkill->GetDescAboutLevel(ulSkillId, pszMsg, bNextLevelDesc);
 		}
 		else
@@ -3134,17 +3134,17 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 				if (nNextExp)
 				{
 					float fPer = (float)(nExp * MAX_PERCENT / nNextExp);
-					sprintf(pszInfo, "Mï¿½c ï¿½ï¿½ luyï¿½n: %0.2f%%", fPer); 
+					sprintf(pszInfo, "Møc ®é luyÖn: %0.2f%%", fPer); 
 					strcat(pszMsg, pszInfo); 
 					strcat(pszMsg, "\n");
 				}
 			} 
 		}
 	}
-	//ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½Ëºï¿½
+	//×Óµ¯ËæÍæ¼ÒÊôÐÔ¼ÆËã¶ø³ÉµÄÉËº¦
 	//KMagicAttrib *DamageAttribs[MAX_MISSLE_DAMAGEATTRIB];
 	KMagicAttrib *DamageAttribs = m_DamageAttribs;
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½È·ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Ëºï¿½
+	//¸ù¾ÝÍæ¼ÒµÄ»ù±¾ÊôÐÔ£¬È·¶¨×Óµ¯µÄÉËº¦
 
 	if (!bNextLevel && !bAddSkillDamage && !IsBase())
 		strcat(pszMsg, "\n");
@@ -3154,7 +3154,7 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 		if (!(DamageAttribs + i)->nAttribType) continue; 
 		if ((DamageAttribs + i)->nAttribType == magic_seriesdamage_p && !bEventSkill) 
 		{ 
-			sprintf(pszInfo, "Ngï¿½ hï¿½nh tï¿½ï¿½ng khï¿½c: %d%%", (DamageAttribs + i)->nValue[0]); 
+			sprintf(pszInfo, "Ngò hµnh t­¬ng kh¾c: %d%%", (DamageAttribs + i)->nValue[0]); 
 			strcat(pszMsg, pszInfo); 
 			strcat(pszMsg, "\n");
 		} 
@@ -3166,25 +3166,25 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 		switch(m_nSkillCostType)
 		{
 		case attrib_mana_v:
-			sprintf(pszInfo, "Tiï¿½u hao nï¿½i lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao néi lùc: %d\n", nGetCost);
 			break;
 		case attrib_mana_p:
 			nGetCost = Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_CurrentManaMax * GetSkillCost(NULL) / MAX_PERCENT;
-			sprintf(pszInfo, "Tiï¿½u hao nï¿½i lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao néi lùc: %d\n", nGetCost);
 			break;
 		case attrib_stamina_v:
-			sprintf(pszInfo, "Tiï¿½u hao thï¿½ lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao thÓ lùc: %d\n", nGetCost);
 			break;
 		case attrib_stamina_p:
 			nGetCost = Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_CurrentStaminaMax * GetSkillCost(NULL) / MAX_PERCENT;
-			sprintf(pszInfo, "Tiï¿½u hao thï¿½ lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao thÓ lùc: %d\n", nGetCost);
 			break;
 		case attrib_life_v:
-			sprintf(pszInfo, "Tiï¿½u hao sinh lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao sinh lùc: %d\n", nGetCost);
 			break;
 		case attrib_life_p:
 			nGetCost = Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_CurrentLifeMax * GetSkillCost(NULL) / MAX_PERCENT;
-			sprintf(pszInfo, "Tiï¿½u hao sinh lï¿½c: %d\n", nGetCost);
+			sprintf(pszInfo, "Tiªu hao sinh lùc: %d\n", nGetCost);
 			break;
 		}
 		strcat(pszMsg,pszInfo);
@@ -3193,22 +3193,9 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 	int nAttackRadius = GetAttackRadius();
 	if (nAttackRadius && !bAddSkillDamage)
 	{
-		sprintf(pszInfo,"Phï¿½m vi hiï¿½u quï¿½: %d\n", nAttackRadius);
+		sprintf(pszInfo,"Ph¹m vi hiÖu qu¶: %d\n", nAttackRadius);
 		strcat(pszMsg,pszInfo);
 	}
-
-	//ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ä»¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½
-	/*for (i  = 0; i < m_nImmediateAttribsNum; i ++)
-	{
-		if (!m_ImmediateAttribs[i].nAttribType || 
-			(m_ImmediateAttribs[i].nAttribType > magic_damage_begin && 
-			m_ImmediateAttribs[i].nAttribType < magic_damage_end)) continue;
-		char * pszInfo = (char *)g_MagicDesc.GetDesc(&m_ImmediateAttribs[i]);
-		if (!pszInfo) continue;
-		strcat(pszMsg, pszInfo);
-		strcat(pszMsg, "\n");
-	}*/
-
 	if (m_szMagicSkillDesc[0])
 		strcat(pszMsg, m_szMagicSkillDesc);	
 
@@ -3225,7 +3212,7 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 			strcat(pszMsg, "\n"); 
 		}
 	}
-	//×´Ì¬ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+	//×´Ì¬¼¼ÄÜÐ§¹û
 
 	if(m_nAppendSkillNum)
 	{
@@ -3242,7 +3229,7 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 				pTempSkill = (KSkill *) g_SkillManager.GetSkill(m_nAppendSkillId[i], nSkillLevel);
 				if(pTempSkill)
 				{
-					sprintf(pszInfo, "<color=100,100,255>Tï¿½ng %d:<color><color=255,255,0> ", i+2);
+					sprintf(pszInfo, "<color=100,100,255>TÇng %d:<color><color=255,255,0> ", i+2);
 					strcat(pszMsg, pszInfo);
 					strcat(pszMsg, pTempSkill->GetSkillName());
 					strcat(pszMsg, "<color>\n");
@@ -3274,9 +3261,9 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 			{
 				KSkill * pTempSkill = (KSkill *) g_SkillManager.GetSkill(m_ImmediateAttribs[i].nValue[2], m_nEventSkillLevel);
 				if(bEventSkill)
-					sprintf(pszInfo, "\n<color=100,100,255>Tï¿½ng phï¿½ %d:<color><color=255,255,0> ", nNum+2);
+					sprintf(pszInfo, "\n<color=100,100,255>TÇng phô %d:<color><color=255,255,0> ", nNum+2);
 				else
-					sprintf(pszInfo, "\n<color=100,100,255>Tï¿½ng %d:<color><color=255,255,0> ", nNum+2);
+					sprintf(pszInfo, "\n<color=100,100,255>TÇng %d:<color><color=255,255,0> ", nNum+2);
 				strcat(pszMsg,pszInfo);
 				strcat(pszMsg, pTempSkill->GetSkillName());
 				strcat(pszMsg, "<color>\n");
@@ -3294,9 +3281,9 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 			{
 				KSkill * pTempSkill = (KSkill *) g_SkillManager.GetSkill(m_nStartSkillId, m_nEventSkillLevel);
 				if(bEventSkill)
-					sprintf(pszInfo, "\n<color=100,100,255>Tï¿½ng phï¿½ %d:<color><color=255,255,0> ", nNum+2);
+					sprintf(pszInfo, "\n<color=100,100,255>TÇng phô %d:<color><color=255,255,0> ", nNum+2);
 				else
-					sprintf(pszInfo, "\n<color=100,100,255>Tï¿½ng %d:<color><color=255,255,0> ", nNum+2);
+					sprintf(pszInfo, "\n<color=100,100,255>TÇng %d:<color><color=255,255,0> ", nNum+2);
 				strcat(pszMsg,pszInfo);
 				strcat(pszMsg, pTempSkill->GetSkillName());
 				strcat(pszMsg, "<color>\n");
@@ -3322,7 +3309,7 @@ void KSkill::GetDescAboutLevel(unsigned long ulSkillId, char * pszMsg, BOOL bNex
 						strcat(pszMsg, "\n"); 
 						nNum++;
 					}
-					sprintf(pszInfo, "Kï¿½ nï¿½ng %s: +%d%%", pTempSkill->GetSkillName(), m_AddSkillDamage[i].nValue[2]);
+					sprintf(pszInfo, "Kü n¨ng %s: +%d%%", pTempSkill->GetSkillName(), m_AddSkillDamage[i].nValue[2]);
 					strcat(pszMsg, pszInfo); 
 					strcat(pszMsg, "\n"); 
 				}
@@ -3342,7 +3329,7 @@ void KSkill::PlayPreCastSound(BOOL bIsFeMale, int nX, int nY)  const
 	
 	int		nCenterX = 0, nCenterY = 0, nCenterZ = 0;
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½Äµï¿½Äµï¿½Í¼ï¿½ï¿½ï¿½ï¿½ not end
+	// »ñµÃÆÁÄ»ÖÐÐÄµãµÄµØÍ¼×ø±ê not end
 	g_ScenePlace.GetFocusPosition(nCenterX, nCenterY, nCenterZ);
 	KCacheNode * pSoundNode = NULL;
 	pSoundNode = (KCacheNode*) g_SoundCache.GetNode(pSoundFile, (KCacheNode*)pSoundNode);
@@ -3358,7 +3345,7 @@ void KSkill::PlayPreCastSound(BOOL bIsFeMale, int nX, int nY)  const
 BOOL KSkill::CastStateSkill( int nLauncher, int nParam1, int nParam2, int nWaitTime, BOOL bOverLook) const
 {
 #ifdef _SERVER
-	//ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½MissleMagicAttribs?
+	//ÊÇ±»¶¯¼¼ÄÜÊ±£¬ÊÇ·ñ»¹ÐèÒªÉú³ÉMissleMagicAttribs?
 	KMissleMagicAttribsData * pAttribsData = (KMissleMagicAttribsData*)m_StateAttribs;//CreateMissleMagicAttribsData(nLauncher);
 	if (m_nStateAttribsNum > 0)
 	{

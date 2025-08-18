@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	√é√Ñ¬º√æ√É√ª		¬£¬∫	UiTrade.cpp
-//	¬¥¬¥¬Ω¬®√ï√ü		¬£¬∫	√Ç√Ä¬π√∞¬ª¬™, Wooy(Wu yue)
-//	¬¥¬¥¬Ω¬®√ä¬±¬º√§	¬£¬∫	2002-9-16 11:58:57
-//	¬π¬¶√Ñ√ú√É√®√ä√∂	¬£¬∫	
+//	Œƒº˛√˚		£∫	UiTrade.cpp
+//	¥¥Ω®’ﬂ		£∫	¬¿πª™, Wooy(Wu yue)
+//	¥¥Ω® ±º‰	£∫	2002-9-16 11:58:57
+//	π¶ƒ‹√Ë ˆ	£∫	
 // -------------------------------------------------------------------------
 #include "KWin32.h"
 #include "KIniFile.h"
@@ -25,17 +25,17 @@
 extern iCoreShell*		g_pCoreShell;
 
 #define SCHEME_INI_TRADE		"UiTrade.ini"
-#define	STR_WAIT_TRADING		"Ch√™ x¬∏c nh√ãn"
-#define	STR_OTHER_OK			"¬ß√®i ph¬≠¬¨ng ¬Æ¬∑ kh√£a giao d√ûch"
-#define	STR_OTHER_NOT_OK		"Ch√™ ¬Æ√®i ph¬≠¬¨ng kh√£a giao d√ûch"
-#define	STR_OTHER_TRADING		"¬ß√®i ph¬≠¬¨ng ¬Æ¬∑ x¬∏c nh√ãn"
-#define	STR_OTHER_FOLKING		"¬ß√®i ph¬≠¬¨ng ¬Æang ra s√®"
+#define	STR_WAIT_TRADING		"ChÍ x∏c nhÀn"
+#define	STR_OTHER_OK			"ßËi ph≠¨ng Æ∑ kh„a giao dﬁch"
+#define	STR_OTHER_NOT_OK		"ChÍ ÆËi ph≠¨ng kh„a giao dﬁch"
+#define	STR_OTHER_TRADING		"ßËi ph≠¨ng Æ∑ x∏c nhÀn"
+#define	STR_OTHER_FOLKING		"ßËi ph≠¨ng Æang ra sË"
 
 KUiTrade* KUiTrade::m_pSelf = NULL;
 #define	SEND_MONEY_CHANGE_MSG_DELAY		16
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬¥√≤¬ø¬™¬¥¬∞¬ø√ö¬£¬¨¬∑¬µ¬ª√ò√é¬®√í¬ª¬µ√Ñ√í¬ª¬∏√∂√Ä√†¬∂√î√è√≥√ä¬µ√Ä√Ω
+//	π¶ƒ‹£∫¥Úø™¥∞ø⁄£¨∑µªÿŒ®“ªµƒ“ª∏ˆ¿‡∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 KUiTrade* KUiTrade::OpenWindow(KUiPlayerItem* pOther, BOOL bFolkGame)
 {
@@ -64,7 +64,7 @@ KUiTrade* KUiTrade::OpenWindow(KUiPlayerItem* pOther, BOOL bFolkGame)
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫√à√ß¬π√ª¬¥¬∞¬ø√ö√ï√Ω¬±¬ª√è√î√ä¬æ¬£¬¨√î√≤¬∑¬µ¬ª√ò√ä¬µ√Ä√Ω√ñ¬∏√ï√´
+//	π¶ƒ‹£∫»Áπ˚¥∞ø⁄’˝±ªœ‘ æ£¨‘Ú∑µªÿ µ¿˝÷∏’Î
 //--------------------------------------------------------------------------
 KUiTrade* KUiTrade::GetIfVisible()
 {
@@ -72,7 +72,7 @@ KUiTrade* KUiTrade::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫¬π√ò¬±√ï¬¥¬∞¬ø√ö¬£¬¨√ç¬¨√ä¬±¬ø√â√í√î√ë¬°√î√±√ä√á¬∑√±√â¬æ¬≥√Ω¬∂√î√è√≥√ä¬µ√Ä√Ω
+//	π¶ƒ‹£∫πÿ±’¥∞ø⁄£¨Õ¨ ±ø…“‘—°‘Ò «∑Ò…æ≥˝∂‘œÛ µ¿˝
 //--------------------------------------------------------------------------
 void KUiTrade::CloseWindow()
 {
@@ -102,7 +102,7 @@ KUiTrade::~KUiTrade()
 {
 }
 
-//¬≥√µ√ä¬º¬ª¬Ø
+//≥ı ºªØ
 void KUiTrade::Initialize()
 {
 	AddChild(&m_TakewithMoney);
@@ -138,7 +138,7 @@ void KUiTrade::Initialize()
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫√î√ò√à√´¬Ω√ß√É√¶¬∑¬Ω¬∞¬∏
+//	π¶ƒ‹£∫‘ÿ»ÎΩÁ√Ê∑Ω∞∏
 //--------------------------------------------------------------------------
 void KUiTrade::LoadScheme(const char* pScheme)
 {
@@ -155,7 +155,7 @@ void KUiTrade::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	¬π¬¶√Ñ√ú¬£¬∫√î√ò√à√´¬Ω√ß√É√¶¬∑¬Ω¬∞¬∏
+//	π¶ƒ‹£∫‘ÿ»ÎΩÁ√Ê∑Ω∞∏
 //--------------------------------------------------------------------------
 void KUiTrade::LoadScheme(KIniFile* pIni)
 {
@@ -202,7 +202,7 @@ void KUiTrade::UpdateTakewithItems()
 
 	if (pObjs = (KUiObjAtRegion*)malloc(sizeof(KUiObjAtRegion) * nCount))
 	{
-		g_pCoreShell->GetGameData(GDI_ITEM_TAKEN_WITH, (unsigned int)pObjs, nCount);//¬µ¬•√è√ü¬≥√å√ñ¬¥√ê√ê¬£¬¨nCount√ñ¬µ¬≤¬ª¬±√§
+		g_pCoreShell->GetGameData(GDI_ITEM_TAKEN_WITH, (unsigned int)pObjs, nCount);//µ•œﬂ≥Ã÷¥––£¨nCount÷µ≤ª±‰
 		for (int i = 0; i < nCount; i++)
 		{
 			KUiDraggedObject no;
@@ -219,7 +219,7 @@ void KUiTrade::UpdateTakewithItems()
 	}
 }
 
-//¬∂√î¬∑¬Ω¬±√§¬∏√º√ã√¶√â√≠√é√Ø√Ü¬∑
+//∂‘∑Ω±‰∏¸ÀÊ…ÌŒÔ∆∑
 void KUiTrade::OnChangedTakewithItem(KUiObjAtRegion* pObj, int bAdd)
 {
 	if (pObj)
@@ -241,7 +241,7 @@ void KUiTrade::OnChangedTakewithItem(KUiObjAtRegion* pObj, int bAdd)
 		UpdateTakewithItems();
 }
 
-//¬±√§¬∏√º¬Ω¬ª√í√ó√é√Ø√Ü¬∑
+//±‰∏¸Ωª“◊ŒÔ∆∑
 void KUiTrade::OnSelfChangedItem(KUiObjAtRegion* pObj, int bAdd)
 {
 	_ASSERT(pObj);
@@ -268,7 +268,7 @@ void KUiTrade::OnSelfChangedItem(KUiObjAtRegion* pObj, int bAdd)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬∂√î¬∑¬Ω¬±√§¬∏√º¬Ω¬ª√í√ó√é√Ø√Ü¬∑
+// π¶ƒ‹	: ∂‘∑Ω±‰∏¸Ωª“◊ŒÔ∆∑
 // -------------------------------------------------------------------------
 void KUiTrade::OnOppositeChangedItem(KUiObjAtRegion* pObj, int bAdd)
 {
@@ -303,7 +303,7 @@ void KUiTrade::OnOppositeChangedItem(KUiObjAtRegion* pObj, int bAdd)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬∂√î¬∑¬Ω√ç¬¨√í√¢¬Ω¬ª√í√ó
+// π¶ƒ‹	: ∂‘∑ΩÕ¨“‚Ωª“◊
 // -------------------------------------------------------------------------
 void KUiTrade::UpdateOperData(BOOL bSelfAsk, BOOL bDestReply)
 {
@@ -315,7 +315,7 @@ void KUiTrade::UpdateOperData(BOOL bSelfAsk, BOOL bDestReply)
 	if(bDestReply && bLock && bOtherLock && m_bTradeFolkGame)
 	{
 		if(bOtherTrading)
-			KUiGetString::OpenWindow(GSA_FOLK, "M√™i ¬Æ√®i s√®", "", this, 0, 1);
+			KUiGetString::OpenWindow(GSA_FOLK, "MÍi ÆËi sË", "", this, 0, 1);
 	}
 	if (bTrading)
 	{
@@ -325,7 +325,7 @@ void KUiTrade::UpdateOperData(BOOL bSelfAsk, BOOL bDestReply)
 		m_Info.SetTextColor(m_uWaitTradeMsgColor);
 
 		if(bSelfAsk && bLock && bOtherLock && m_bTradeFolkGame)
-			KUiGetString::OpenWindow(GSA_FOLK, "M√™i ra s√®", "", this, 0, 1);
+			KUiGetString::OpenWindow(GSA_FOLK, "MÍi ra sË", "", this, 0, 1);
 	}
 	else
 	{
@@ -344,7 +344,7 @@ void KUiTrade::UpdateOperData(BOOL bSelfAsk, BOOL bDestReply)
 }
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬¥¬∞¬ø√ö¬∫¬Ø√ä√Ω
+// π¶ƒ‹	: ¥∞ø⁄∫Ø ˝
 // -------------------------------------------------------------------------
 int	KUiTrade::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -515,7 +515,7 @@ void KUiTrade::OnModififyMoney()
 	m_TakewithMoney.Set3IntText(m_nTakewithMoney);
 }
 
-//√è√¨√ì¬¶¬µ√£¬ª√∑¬ø¬™√ä¬º¬Ω¬ª√í√ó
+//œÏ”¶µ„ª˜ø™ ºΩª“◊
 void KUiTrade::OnTrade()
 {
 	if (m_nAdjustingMoney)
@@ -525,7 +525,7 @@ void KUiTrade::OnTrade()
 	UpdateOperData();
 }
 
-//√è√¨√ì¬¶¬µ√£¬ª√∑√ì√ê¬Ω¬ª√í√ó√í√¢√è√≤
+//œÏ”¶µ„ª˜”–Ωª“◊“‚œÚ
 void KUiTrade::OnOk(int bChecked)
 {
 	if (m_nAdjustingMoney)
@@ -544,8 +544,8 @@ void KUiTrade::OnCancelTrade()
 }	
 
 // -------------------------------------------------------------------------
-// ¬π¬¶√Ñ√ú	: ¬Ω¬ª√í√ó¬Ω√°√ä√∏
-// ¬≤√é√ä√Ω : bTraded¬±√≠√ä¬æ√ä√á¬∑√±¬Ω√∏√ê√ê√Å√ã¬Ω¬ª√í√ó¬£¬¨√à√ß¬π√ª√à¬°0√ñ¬µ¬±√≠√ä¬æ¬∂√î¬∑¬Ω√Ä√´¬ø¬™¬Ω¬ª√í√ó¬£¬®¬Ω¬ª√í√ó¬±¬ª√à¬°√è√ª¬£¬©
+// π¶ƒ‹	: Ωª“◊Ω· ¯
+// ≤Œ ˝ : bTraded±Ì æ «∑ÒΩ¯––¡ÀΩª“◊£¨»Áπ˚»°0÷µ±Ì æ∂‘∑Ω¿Îø™Ωª“◊£®Ωª“◊±ª»°œ˚£©
 // -------------------------------------------------------------------------
 void KUiTrade::UpdateTradeEnd(int bTraded)
 {

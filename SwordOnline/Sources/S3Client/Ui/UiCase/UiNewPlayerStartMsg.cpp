@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢--æ–°æ‰‹è¿›å…¥çš„æç¤ºç•Œé¢
+//	½çÃæ--ĞÂÊÖ½øÈëµÄÌáÊ¾½çÃæ
 //	Copyright : Kingsoft 2003
 //	Author	:   Freeway Chen
 //	CreateTime:	2003-7-8
@@ -17,13 +17,13 @@
 //#include "../UiSoundSetting.h"
 #include <crtdbg.h>
 
-#define	SCHEME_INI_NEWENTERINFO			"æ–°æ‰‹è¿›å…¥çš„åˆå§‹ç•Œé¢.ini"
+#define	SCHEME_INI_NEWENTERINFO			"ĞÂÊÖ½øÈëµÄ³õÊ¼½çÃæ.ini"
 #define	NEWENTERINFO_INI				"\\Ui\\NewEnterInfo.ini"
 
 KUiNewPlayerStartMsg* KUiNewPlayerStartMsg::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êı
 //--------------------------------------------------------------------------
 KUiNewPlayerStartMsg::KUiNewPlayerStartMsg()
 {
@@ -35,7 +35,7 @@ KUiNewPlayerStartMsg::~KUiNewPlayerStartMsg()
 
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiNewPlayerStartMsg* KUiNewPlayerStartMsg::OpenWindow()
 {
@@ -55,7 +55,7 @@ KUiNewPlayerStartMsg* KUiNewPlayerStartMsg::OpenWindow()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå…³é—­çª—å£
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú
 //--------------------------------------------------------------------------
 void KUiNewPlayerStartMsg::CloseWindow(bool bDestroy)
 {
@@ -75,7 +75,7 @@ void KUiNewPlayerStartMsg::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 void KUiNewPlayerStartMsg::Initialize()
 {
@@ -109,7 +109,7 @@ void KUiNewPlayerStartMsg::LoadList()
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè½½å…¥çª—å£çš„ç•Œé¢æ–¹æ¡ˆ
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiNewPlayerStartMsg::LoadScheme(const char* pScheme)
 {
@@ -128,7 +128,7 @@ void KUiNewPlayerStartMsg::LoadScheme(const char* pScheme)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KUiNewPlayerStartMsg::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -203,7 +203,7 @@ void KUiNewPlayerStartMsg::OnClickButton(KWndButton* pBtn)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå–æ¶ˆ
+//	¹¦ÄÜ£ºÈ¡Ïû
 //--------------------------------------------------------------------------
 void KUiNewPlayerStartMsg::OnOk()
 {

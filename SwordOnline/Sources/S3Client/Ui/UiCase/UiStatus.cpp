@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	Â½Ã§ÃƒÃ¦--Ã—Â´ÃŒÂ¬Â½Ã§ÃƒÃ¦
+//	½çÃæ--×´Ì¬½çÃæ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
@@ -45,7 +45,7 @@ enum WAIT_OTHER_WND_OPER_PARAM
 
 KUiStatus* KUiStatus::m_pSelf = NULL;
 // -------------------------------------------------------------------------
-// ---> Â½Â¨ÃÂ¢Â¿Ã˜Â¼Ã¾Ã“Ã«UIEP_*Ã’Ã”Â¼Â°Â¿Ã‰Â½Ã“Ã„Ã‰ÃÃ¯Ã†Â·ÂµÃ„Ã€Ã ÃÃÂµÃ„Â¶Ã”Ã“Â¦Â¹Ã˜ÃÂµ
+// ---> ½¨Á¢¿Ø¼şÓëUIEP_*ÒÔ¼°¿É½ÓÄÉÎïÆ·µÄÀàĞÍµÄ¶ÔÓ¦¹ØÏµ
 static struct UE_CTRL_MAP
 {
 	int				nPosition;
@@ -64,17 +64,17 @@ static struct UE_CTRL_MAP
 	{ UIEP_FOOT,		"Shoes"		},
 	{ UIEP_HORSE,		"Horse"		},
 	{ UIEP_MASK,		"Mask"		},
-	{ UIEP_MANTLE,		"Mantle"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_SIGNET,		"Signet"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_SHIPIN,		"Shipin"	},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_HOODS,		"Hoods"		},	//Ã—Â°Â±Â¸-Ã‚Ã­
-	{ UIEP_CLOAK,		"Cloak"		},	//Ã—Â°Â±Â¸-Ã‚Ã­
+	{ UIEP_MANTLE,		"Mantle"	},	//×°±¸-Âí
+	{ UIEP_SIGNET,		"Signet"	},	//×°±¸-Âí
+	{ UIEP_SHIPIN,		"Shipin"	},	//×°±¸-Âí
+	{ UIEP_HOODS,		"Hoods"		},	//×°±¸-Âí
+	{ UIEP_CLOAK,		"Cloak"		},	//×°±¸-Âí
 };
 
 
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃˆÃ§Â¹Ã»Â´Â°Â¿ÃšÃ•Ã½Â±Â»ÃÃ”ÃŠÂ¾Â£Â¬Ã”Ã²Â·ÂµÂ»Ã˜ÃŠÂµÃ€Ã½Ã–Â¸Ã•Ã«
+//	¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 //--------------------------------------------------------------------------
 KUiStatus* KUiStatus::GetIfVisible()
 {
@@ -84,7 +84,7 @@ KUiStatus* KUiStatus::GetIfVisible()
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Ã²Â¿ÂªÂ´Â°Â¿ÃšÂ£Â¬Â·ÂµÂ»Ã˜ÃÂ¨Ã’Â»ÂµÃ„Ã’Â»Â¸Ã¶Ã€Ã Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiStatus* KUiStatus::OpenWindow(bool bShow)
 {
@@ -105,7 +105,7 @@ KUiStatus* KUiStatus::OpenWindow(bool bShow)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¹Ã˜Â±Ã•Â´Â°Â¿ÃšÂ£Â¬ÃÂ¬ÃŠÂ±Â¿Ã‰Ã’Ã”Ã‘Â¡Ã”Ã²ÃŠÃ‡Â·Ã±Ã‰Â¾Â³Ã½Â¶Ã”ÃÃ³ÃŠÂµÃ€Ã½
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 void KUiStatus::CloseWindow(bool bDestroy)
 {
@@ -122,7 +122,7 @@ void KUiStatus::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ³ÃµÃŠÂ¼Â»Â¯
+//	¹¦ÄÜ£º³õÊ¼»¯
 //--------------------------------------------------------------------------
 void KUiStatus::Initialize()
 {
@@ -208,7 +208,7 @@ void KUiStatus::SwitchExpand(BOOL bShow)
 			bShow?m_EquipBox[i].Show():m_EquipBox[i].Hide();
 }
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ”Ã˜ÃˆÃ«Â´Â°Â¿ÃšÂµÃ„Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//	¹¦ÄÜ£ºÔØÈë´°¿ÚµÄ½çÃæ·½°¸
 //--------------------------------------------------------------------------
 void KUiStatus::LoadScheme(const char* pScheme)
 {
@@ -222,7 +222,7 @@ void KUiStatus::LoadScheme(const char* pScheme)
 	}
 }
 
-//Ã”Ã˜ÃˆÃ«Â½Ã§ÃƒÃ¦Â·Â½Â°Â¸
+//ÔØÈë½çÃæ·½°¸
 void KUiStatus::LoadScheme(class KIniFile* pIni)
 {
 	if (g_pCoreShell->GetGameData(GDI_PLAYER_IS_MALE, 0, 0))
@@ -298,7 +298,7 @@ void KUiStatus::LoadScheme(class KIniFile* pIni)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ´Â°Â¿ÃšÂºÂ¯ÃŠÃ½
+//	¹¦ÄÜ£º´°¿Úº¯Êı
 //--------------------------------------------------------------------------
 int KUiStatus::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -349,7 +349,7 @@ int KUiStatus::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 		else if (uParam == (unsigned int)(KWndWindow*)&m_UnlockBtn)
 		{
 			if (g_pCoreShell->GetLockState())
-				KUiGetString::OpenWindow(GSA_PW, "NhÃ‹p mÃ‹t khÃˆu", "", this, 0, 0, 1,16);
+				KUiGetString::OpenWindow(GSA_PW, "NhËp mËt khÈu", "", this, 0, 0, 1,16);
 			else
 				g_pCoreShell->OperationRequest(GOI_LOCKSTATE, 0, 0);
 		}
@@ -358,28 +358,28 @@ int KUiStatus::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 			if (uParam == (unsigned int)(KWndWindow*)&m_AddStrength)
 			{
 				if (GetKeyState(VK_CONTROL) & 0x8000)
-					KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p SÃ¨ Â®iÃ“m", "", this, UIITEM_WAIT_GETSTR, m_nRemainPoint);
+					KUiGetString::OpenWindow(GSA_NORMAL, "NhËp Sè ®iÓm", "", this, UIITEM_WAIT_GETSTR, m_nRemainPoint);
 				else
 					UseRemainPoint(0, 1);
 			}
 			else if (uParam == (unsigned int)(KWndWindow*)&m_AddDexterity)
 			{
 				if (GetKeyState(VK_CONTROL) & 0x8000)
-					KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p SÃ¨ Â®iÃ“m", "", this, UIITEM_WAIT_GETDEX, m_nRemainPoint);
+					KUiGetString::OpenWindow(GSA_NORMAL, "NhËp Sè ®iÓm", "", this, UIITEM_WAIT_GETDEX, m_nRemainPoint);
 				else
 					UseRemainPoint(1, 1);
 			}
 			else if (uParam == (unsigned int)(KWndWindow*)&m_AddVitality)
 			{
 				if (GetKeyState(VK_CONTROL) & 0x8000)
-					KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p SÃ¨ Â®iÃ“m", "", this, UIITEM_WAIT_GETVIT, m_nRemainPoint);
+					KUiGetString::OpenWindow(GSA_NORMAL, "NhËp Sè ®iÓm", "", this, UIITEM_WAIT_GETVIT, m_nRemainPoint);
 				else
 					UseRemainPoint(2, 1);
 			}
 			else if (uParam == (unsigned int)(KWndWindow*)&m_AddEnergy)
 			{
 				if (GetKeyState(VK_CONTROL) & 0x8000)
-					KUiGetString::OpenWindow(GSA_NORMAL, "NhÃ‹p SÃ¨ Â®iÃ“m", "", this, UIITEM_WAIT_GETENE, m_nRemainPoint);
+					KUiGetString::OpenWindow(GSA_NORMAL, "NhËp Sè ®iÓm", "", this, UIITEM_WAIT_GETENE, m_nRemainPoint);
 				else
 					UseRemainPoint(3, 1);
 			}
@@ -410,7 +410,7 @@ int KUiStatus::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ‰Ã½Â¼Â¶Ã„Â³ÃÃ®ÃŠÃ´ÃÃ”
+//	¹¦ÄÜ£ºÉı¼¶Ä³ÏîÊôĞÔ
 //--------------------------------------------------------------------------
 void KUiStatus::UseRemainPoint(int ntype, int nPoint)
 {
@@ -424,7 +424,7 @@ void KUiStatus::UseRemainPoint(int ntype, int nPoint)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚Â»Ã¹Â±Â¾ÃŠÃ½Â¾ÃÂ£Â¨ÃˆÃ‹ÃƒÃ»ÂµÃˆÂ²Â»Ã’Ã—Â±Ã¤ÃŠÃ½Â¾ÃÂ£Â©
+//	¹¦ÄÜ£º¸üĞÂ»ù±¾Êı¾İ£¨ÈËÃûµÈ²»Ò×±äÊı¾İ£©
 //--------------------------------------------------------------------------
 void KUiStatus::UpdateBaseData()
 {
@@ -620,7 +620,7 @@ void KUiStatus::UpdateRuntimeInfo(KUiPlayerRuntimeInfo* pInfo)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÂ¸Ã¼ÃÃ‚ÃŠÃ½Â¾Ã
+//	¹¦ÄÜ£º¸üĞÂÊı¾İ
 //--------------------------------------------------------------------------
 void KUiStatus::UpdateData()
 {
@@ -692,7 +692,7 @@ void KUiStatus::UpdateRuntimeAttribute(KUiPlayerAttribute* pInfo)
 			m_PoisonDefPlus.SetResistPlus(pInfo->nPoisonDefPlus, '+');
 		else
 			m_PoisonDefPlus.Clear();
-		m_Level.SetIntText(pInfo->nLevel);			//ÂµÃˆÂ¼Â¶
+		m_Level.SetIntText(pInfo->nLevel);			//µÈ¼¶
 		m_StatusDesc.SetText(pInfo->StatusDesc);
 
 		m_PKValue.SetIntText(pInfo->nPKValue);
@@ -704,7 +704,7 @@ void KUiStatus::UpdateRuntimeAttribute(KUiPlayerAttribute* pInfo)
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃÃ¬Ã“Â¦Â½Ã§ÃƒÃ¦Â²Ã™Ã—Ã·Ã’Ã½Ã†Ã°Ã—Â°Â±Â¸ÂµÃ„Â¸Ã„Â±Ã¤
+//	¹¦ÄÜ£ºÏìÓ¦½çÃæ²Ù×÷ÒıÆğ×°±¸µÄ¸Ä±ä
 //--------------------------------------------------------------------------
 void KUiStatus::OnEquiptChanged(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos)
 {
@@ -779,7 +779,7 @@ void KUiStatus::OnEquiptChanged(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLA
 }
 
 //--------------------------------------------------------------------------
-//	Â¹Â¦Ã„ÃœÂ£ÂºÃ—Â°Â±Â¸Â±Ã¤Â»Â¯Â¸Ã¼ÃÃ‚
+//	¹¦ÄÜ£º×°±¸±ä»¯¸üĞÂ
 //--------------------------------------------------------------------------
 void KUiStatus::UpdateEquip(KUiObjAtRegion* pEquip, int bAdd)
 {

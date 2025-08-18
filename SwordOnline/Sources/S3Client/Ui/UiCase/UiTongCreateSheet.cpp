@@ -2,7 +2,7 @@
 File        : UiTongCreateSheet.cpp
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : åˆ›å»ºå¸®ä¼šçš„è¡¨å•
+Description : ´´½¨°ï»áµÄ±íµ¥
 *********************************************************************/
 
 #include "KWin32.h"
@@ -45,7 +45,7 @@ KUiTongCreateSheet::~KUiTongCreateSheet()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šæ‰“å¼€çª—å£
+* ¹¦ÄÜ£º´ò¿ª´°¿Ú
 **********************************************************************/
 KUiTongCreateSheet* KUiTongCreateSheet::OpenWindow()
 {
@@ -67,7 +67,7 @@ KUiTongCreateSheet* KUiTongCreateSheet::OpenWindow()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
+* ¹¦ÄÜ£ºÈç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
 **********************************************************************/
 KUiTongCreateSheet* KUiTongCreateSheet::GetIfVisible()
 {
@@ -78,7 +78,7 @@ KUiTongCreateSheet* KUiTongCreateSheet::GetIfVisible()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+* ¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 **********************************************************************/
 void KUiTongCreateSheet::CloseWindow(bool bDestory)
 {
@@ -96,7 +96,7 @@ void KUiTongCreateSheet::CloseWindow(bool bDestory)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šåˆå§‹åŒ–
+* ¹¦ÄÜ£º³õÊ¼»¯
 **********************************************************************/
 void KUiTongCreateSheet::Initialize()
 {
@@ -120,7 +120,7 @@ void KUiTongCreateSheet::Initialize()
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šè½½å…¥ç•Œé¢æ–¹æ¡ˆ
+* ¹¦ÄÜ£ºÔØÈë½çÃæ·½°¸
 **********************************************************************/
 void KUiTongCreateSheet::LoadScheme(const char* pScheme)
 {
@@ -163,7 +163,7 @@ void KUiTongCreateSheet::LoadScheme(const char* pScheme)
 }
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå»ºç«‹è¿™ä¸ªç•Œé¢å’Œä¸»ç•Œé¢çš„å…³è”
+* ¹¦ÄÜ£º½¨Á¢Õâ¸ö½çÃæºÍÖ÷½çÃæµÄ¹ØÁª
 **********************************************************************/
 void KUiTongCreateSheet::LinkToMainWindow(KWndWindow *pMain)
 {
@@ -176,7 +176,7 @@ void KUiTongCreateSheet::LinkToMainWindow(KWndWindow *pMain)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šä¸ºä»»å‘½æ¡ˆçš„ä¹¦å†™å®‰æ’æ•°æ®
+* ¹¦ÄÜ£ºÎªÈÎÃü°¸µÄÊéĞ´°²ÅÅÊı¾İ
 **********************************************************************/
 void KUiTongCreateSheet::ArrangeData(const char* szTongName, int nCurCamp, unsigned int uHandleID)
 {
@@ -205,7 +205,7 @@ void KUiTongCreateSheet::ArrangeData(const char* szTongName, int nCurCamp, unsig
 	}
 }
 /*********************************************************************
-* åŠŸèƒ½ï¼šçª—å£å‡½æ•°
+* ¹¦ÄÜ£º´°¿Úº¯Êı
 **********************************************************************/
 int KUiTongCreateSheet::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
@@ -249,7 +249,7 @@ int KUiTongCreateSheet::WndProc(unsigned int uMsg, unsigned int uParam, int nPar
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šæ­£ä¸­é‚ªCheckBoxçš„ç®¡ç†å‡½æ•°
+* ¹¦ÄÜ£ºÕıÖĞĞ°CheckBoxµÄ¹ÜÀíº¯Êı
 **********************************************************************/
 void KUiTongCreateSheet::AlignmentButtonCheck(int eSide)
 {
@@ -276,7 +276,7 @@ void KUiTongCreateSheet::AlignmentButtonCheck(int eSide)
 
 
 /*********************************************************************
-* åŠŸèƒ½ï¼šå“åº”ç¡®è®¤æŒ‰é’®è¢«æŒ‰ä¸‹
+* ¹¦ÄÜ£ºÏìÓ¦È·ÈÏ°´Å¥±»°´ÏÂ
 **********************************************************************/
 #include "../ChatFilter.h"
 extern CChatFilter g_ChatFilter;

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	鐣岄潰--login杩囩▼鑳屾櫙绐楀彛
+//	界面--login过程背景窗口
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-16
@@ -16,7 +16,7 @@
 KUiLoginBackGround* KUiLoginBackGround::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	鍔熻兘锛氭墦寮�绐楀彛锛岃繑鍥炲敮涓�鐨勪竴涓被瀵硅薄瀹炰緥
+//	功能：打开窗口，返回唯一的一个类对象实例
 //--------------------------------------------------------------------------
 KUiLoginBackGround* KUiLoginBackGround::OpenWindow(const char* pszConfig)
 {
@@ -35,7 +35,7 @@ KUiLoginBackGround* KUiLoginBackGround::OpenWindow(const char* pszConfig)
 }
 
 //--------------------------------------------------------------------------
-//	鍔熻兘锛氬叧闂獥鍙ｏ紝鍚屾椂鍙互閫夊垯鏄惁鍒犻櫎瀵硅薄瀹炰緥
+//	功能：关闭窗口，同时可以选则是否删除对象实例
 //--------------------------------------------------------------------------
 void KUiLoginBackGround::CloseWindow(bool bDestroy)
 {
@@ -54,7 +54,7 @@ void KUiLoginBackGround::CloseWindow(bool bDestroy)
 }
 
 //--------------------------------------------------------------------------
-//	鍔熻兘锛氬垵濮嬪寲
+//	功能：初始化
 //--------------------------------------------------------------------------
 void KUiLoginBackGround::Initialize()
 {
@@ -71,7 +71,7 @@ void KUiLoginBackGround::Initialize()
 	Wnd_AddWindow(this, WL_LOWEST);
 }
 
-//璁剧疆鍥惧舰
+//设置图形
 void KUiLoginBackGround::SetConfig(const char* pszConfig)
 {
 	if (m_pSelf == NULL || pszConfig == NULL || pszConfig[0] == 0 ||
@@ -91,7 +91,7 @@ void KUiLoginBackGround::SetConfig(const char* pszConfig)
 		m_pSelf->LoadScheme(&Ini);
 }
 
-//杞藉叆鐣岄潰鏂规
+//载入界面方案
 void KUiLoginBackGround::LoadScheme(KIniFile* pIni)
 {
 	if (pIni)
@@ -117,7 +117,7 @@ void KUiLoginBackGround::LoadScheme(KIniFile* pIni)
 	}
 }
 
-//娲诲姩鍑芥暟
+//活动函数
 void KUiLoginBackGround::Breathe()
 {
 	for (int i = 0; i < MAX_NUM_BUTTERFLY; i++)

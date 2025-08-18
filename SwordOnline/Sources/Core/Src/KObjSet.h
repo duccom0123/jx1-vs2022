@@ -3,7 +3,7 @@
 //
 // File:	KObjSet.h
 // Date:	2002.01.06
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 // Desc:	Obj Class
 //---------------------------------------------------------------------------
 #ifndef	KObjSetH
@@ -65,21 +65,21 @@ public:
 	int		GetID();
 	void	Remove(int nIdx);
 #ifdef _SERVER
-	// æ·»åŠ ä¸€ä¸ªobjï¼Œè¿”å›åœ¨objæ•°ç»„ä¸­çš„ä½ç½®ç¼–å·ï¼ˆå¦‚æœ < 0 ï¼Œå¤±è´¥ï¼‰
+	// Ìí¼ÓÒ»¸öobj£¬·µ»ØÔÚobjÊı×éÖĞµÄÎ»ÖÃ±àºÅ£¨Èç¹û < 0 £¬Ê§°Ü£©
 	int		Add(int nDataID, KMapPos MapPos, KObjItemInfo sItemInfo);
 
-	// ä»objæ•°æ®æ–‡ä»¶ä¸­è½½å…¥ç›¸åº”æ•°æ®
+	// ´ÓobjÊı¾İÎÄ¼şÖĞÔØÈëÏàÓ¦Êı¾İ
 	int		AddData(int nDataID, KMapPos MapPos, int nMoneyNum = 0, int nItemID = 0, int nItemWidth = 0, int nItemHeight = 0);
 
 	int		AddMoneyObj(KMapPos MapPos, int nMoneyNum);
 
-	// æœåŠ¡å™¨ç«¯è½½å…¥ä¸€ä¸ªRegionçš„æ‰€æœ‰Obj
+	// ·şÎñÆ÷¶ËÔØÈëÒ»¸öRegionµÄËùÓĞObj
 	BOOL	ServerLoadRegionObj(char *lpszMapPath, int nRegionX, int nRegionY, int nSubWorld);
 
-	// æœåŠ¡å™¨ç«¯è½½å…¥ä¸€ä¸ªRegionçš„æ‰€æœ‰Obj
+	// ·şÎñÆ÷¶ËÔØÈëÒ»¸öRegionµÄËùÓĞObj
 	BOOL	ServerLoadRegionObj(int nSubWorld, KFile*pFile, DWORD dwDataSize);
 
-	// è®¾å®šobjæ‰€å¸¦çš„ç‰©ä»¶ä¿¡æ¯ï¼ŒåŒ…æ‹¬ç‰©ä»¶idï¼Œç‰©ä»¶åœ¨è£…å¤‡æ ä¸­çš„é•¿ã€å®½
+	// Éè¶¨objËù´øµÄÎï¼şĞÅÏ¢£¬°üÀ¨Îï¼şid£¬Îï¼şÔÚ×°±¸À¸ÖĞµÄ³¤¡¢¿í
 	BOOL	SetObjItem(int nObjIndex, int nItemID, int nItemWidth, int nItemHeight);
 
 	BOOL	SyncAdd(int nID, int nClient);

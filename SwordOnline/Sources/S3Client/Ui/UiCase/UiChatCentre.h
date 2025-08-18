@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--èŠå¤©ä¸»ç•Œé¢
+//	½çÃæ--ÁÄÌìÖ÷½çÃæ
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-3-10
@@ -23,9 +23,9 @@
 using namespace std;
 
 #define	MAX_UNIT_NUM	10
-#define	MAX_GROUP_NUM	10		//æœ€å¤šå…è®¸çš„å¥½å‹åˆ†ç»„çš„æ•°ç›®
+#define	MAX_GROUP_NUM	10		//×î¶àÔÊĞíµÄºÃÓÑ·Ö×éµÄÊıÄ¿
 
-#define DEFAULT_GROUPNAME	"Nhï¿½m "
+#define DEFAULT_GROUPNAME	"Nhãm "
 
 enum UICHATCENTRE_UPDATE
 {
@@ -84,11 +84,11 @@ struct KUiPlayerItem;
 class KUiChatCentre : public KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiChatCentre*	OpenWindow(bool bShow);		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiChatCentre*	GetIfVisible();		//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void				CloseWindow(bool bDestroy);	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ	
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiChatCentre*	OpenWindow(bool bShow);		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiChatCentre*	GetIfVisible();		//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void				CloseWindow(bool bDestroy);	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸	
 
 	static void				CreateSeverUnit();
 	static BOOL				LoadPrivateSetting(KIniFile* pFile);
@@ -116,9 +116,9 @@ private:
 
 	KUiChatCentre();
 	~KUiChatCentre() {}
-	void	Initialize();							//åˆå§‹åŒ–
+	void	Initialize();							//³õÊ¼»¯
 	void	LoadScheme(class KIniFile* pIni);
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 	
 	void	CancelMenu();
 	void	ClearInterface();
@@ -145,11 +145,11 @@ private:
 	void	UpdateFriend(KUiPlayerItem* pFriend, int nGroupIndex);
 	void	UpdateInterface();
 	
-	void	PaintWindow();							//ç»˜åˆ¶çª—å£
+	void	PaintWindow();							//»æÖÆ´°¿Ú
 
 	void	DragWndSize(int nMoveOffset);
 	void	AdjustSize(int nNumLine);
-	int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
+	int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
 	
 private:
 	typedef std::map<std::string, std::string> FRIENDINFOLIST;
@@ -208,7 +208,7 @@ private:
 	int					m_nNumVisibleLine;
 	int					m_nTailImgDragOffsetY;
 
-	//å¥½å‹åˆ—è¡¨èƒŒæ™¯å›¾
+	//ºÃÓÑÁĞ±í±³¾°Í¼
 	KRUImage			m_ListBgImage;
 	int					m_ListBgImgLeft;
 	int					m_ListBgImgTop;
@@ -217,7 +217,7 @@ private:
 
 #define	GROUP_MENU_ITEM_COUNT	3
 #define	FRIEND_MENU_ITEM_COUNT	3
-	//å¼¹å‡ºèœå•çš„å†…å®¹
+	//µ¯³ö²Ëµ¥µÄÄÚÈİ
 	char	m_GroupMenuData[MENU_DATA_SIZE(GROUP_MENU_ITEM_COUNT)];
 	char	m_FriendMenuData[MENU_DATA_SIZE(FRIEND_MENU_ITEM_COUNT)];
 	struct KPopupMenuData*	m_pSelGrupMenu;

@@ -25,9 +25,9 @@ BOOL KPlayerPartner::Init(int nNpcIndex, tPartnerProp Prop)
 
 BOOL KPlayerPartner::InitData()
 {
-	//å¦‚æžœå½“å‰ä¸ºæ­»äº¡åˆ™è¦æ±‚ä»–å¤æ´»
+	//Èç¹ûµ±Ç°ÎªËÀÍöÔòÒªÇóËû¸´»î
 	
-	//æ¢å¤å…¨éƒ¨çš„æ•°å€¼
+	//»Ö¸´È«²¿µÄÊýÖµ
 	m_ulCurLifeTime = 0;	
 	KNpc * pNpc = GetNpc();
 	pNpc->ClearNpcState();

@@ -1,37 +1,37 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	å‰‘ä¾ åº”ç”¨ç•Œé¢ç³»ç»Ÿçš„å…¬å…±æ¥å£
+//	½£ÏÀÓ¦ÓÃ½çÃæÏµÍ³µÄ¹«¹²½Ó¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-17
 ------------------------------------------------------------------------------------------
-	çª—å£é¢æ¿çš„åŸºç±»ï¼Œæ­¤çª—å£é¢æ¿åŠå…¶æ´¾ç”Ÿç±»ï¼Œæ¯ä¸ªç±»éƒ½åªèƒ½åˆ›å»ºä¸€ä¸ªå®ä¾‹ã€‚
+	´°¿ÚÃæ°åµÄ»ùÀà£¬´Ë´°¿ÚÃæ°å¼°ÆäÅÉÉúÀà£¬Ã¿¸öÀà¶¼Ö»ÄÜ´´½¨Ò»¸öÊµÀı¡£
 *****************************************************************************************/
 #pragma once
 
 
-void		UiPostQuitMsg();						//å‘é€é€€å‡ºæ¶ˆæ¯
-bool		UiIsAlreadyQuit();						//æ˜¯å¦å·²ç»é€‰æ‹©é€€å‡ºç¨‹åº
-int			UiInit();								//ç•Œé¢ç³»ç»Ÿåˆå§‹åŒ–
-int			UiStart();								//ï¿½_å§‹ç•Œé¢æ§åˆ¶æµç¨‹
-void		UiExit();								//ç•Œé¢ç³»ç»Ÿé€€å‡º
-void		UiPaint(int nGameLoop);					//ç»˜åˆ¶ç•Œé¢
-void		UiSetScreenSize(int nWidth, int nHeight);//è®¾ç½®å±å¹•èŒƒå›´å¤§å°
-int			UiHeartBeat();							//ç•Œé¢æ´»åŠ¨
-void		UiProcessInput(unsigned int uMsg, unsigned int uParam, int nParam);//å¤„ç†è¾“å…¥
-void		UiSetGraphicDevice(void* pDevice);		//è®¾ç½®ç»˜å›¾è®¾å¤‡
+void		UiPostQuitMsg();						//·¢ËÍÍË³öÏûÏ¢
+bool		UiIsAlreadyQuit();						//ÊÇ·ñÒÑ¾­Ñ¡ÔñÍË³ö³ÌĞò
+int			UiInit();								//½çÃæÏµÍ³³õÊ¼»¯
+int			UiStart();								//é_Ê¼½çÃæ¿ØÖÆÁ÷³Ì
+void		UiExit();								//½çÃæÏµÍ³ÍË³ö
+void		UiPaint(int nGameLoop);					//»æÖÆ½çÃæ
+void		UiSetScreenSize(int nWidth, int nHeight);//ÉèÖÃÆÁÄ»·¶Î§´óĞ¡
+int			UiHeartBeat();							//½çÃæ»î¶¯
+void		UiProcessInput(unsigned int uMsg, unsigned int uParam, int nParam);//´¦ÀíÊäÈë
+void		UiSetGraphicDevice(void* pDevice);		//ÉèÖÃ»æÍ¼Éè±¸
 
-void		UiStartGame();							//è¿›å…¥æ¸¸æˆè¿è¡Œæ—¶
-void		UiOnGameServerConnected();				//ä¸ä¸€ä¸ªæ–°çš„GameServerå»ºç«‹è¿æ¥å®Œæ¯•
-void		UiOnGameServerStartSyncEnd();			//ä¸ä¸€ä¸ªæ–°çš„GameServerå»ºç«‹è¿æ¥ï¼Œå¯åŠ¨åŒæ­¥å®Œæ¯•
-void		UiResumeGame();							//æ¸¸æˆï¼ˆæ–­çº¿åï¼‰ç»§ç»­
-void		UiEndGame();							//ç¦»å¼€æ¸¸æˆè¿è¡Œæ—¶
-void		UiSetSwitchSceneStatus(int bSwitching);//åˆ‡æ¢åŠ è½½åœ°å›¾çŠ¶æ€
+void		UiStartGame();							//½øÈëÓÎÏ·ÔËĞĞÊ±
+void		UiOnGameServerConnected();				//ÓëÒ»¸öĞÂµÄGameServer½¨Á¢Á¬½ÓÍê±Ï
+void		UiOnGameServerStartSyncEnd();			//ÓëÒ»¸öĞÂµÄGameServer½¨Á¢Á¬½Ó£¬Æô¶¯Í¬²½Íê±Ï
+void		UiResumeGame();							//ÓÎÏ·£¨¶ÏÏßºó£©¼ÌĞø
+void		UiEndGame();							//Àë¿ªÓÎÏ·ÔËĞĞÊ±
+void		UiSetSwitchSceneStatus(int bSwitching);//ÇĞ»»¼ÓÔØµØÍ¼×´Ì¬
 
 
 #include "Elem/ComWindow.h"
 #include "Elem/WndButton.h"
 
-//ç”Ÿå‘½
+//ÉúÃü
 class Player_Life : public KWndImageTextButton
 {
 public:
@@ -41,7 +41,7 @@ public:
 	static bool m_bText;
 };
 
-//é­”æ³•
+//Ä§·¨
 class Player_Mana : public KWndImageTextButton
 {
 public:
@@ -51,7 +51,7 @@ public:
 	static bool m_bText;
 };
 
-//ä½“åŠ›
+//ÌåÁ¦
 class Player_Stamina : public KWndImageTextButton
 {
 public:
@@ -61,7 +61,7 @@ public:
 	static bool m_bText;
 };
 
-//ç»éªŒ
+//¾­Ñé
 class Player_Exp : public KWndImageTextButton
 {
 public:
@@ -72,7 +72,7 @@ public:
 	static bool m_bText;
 };
 
-//ç­‰çº§
+//µÈ¼¶
 class Player_Level : public KWndImageTextButton
 {
 public:
@@ -88,7 +88,7 @@ public:
 	void UpdateData();
 };
 
-//ä¸–ç•Œæ’å
+//ÊÀ½çÅÅÃû
 class Player_WorldSort : public KWndImageTextButton
 {
 public:
@@ -97,7 +97,7 @@ public:
 	void UpdateData();
 };
 
-//çŠ¶æ€
+//×´Ì¬
 class Player_Status : public KWndButton
 {
 public:
@@ -106,7 +106,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//ç‰©å“
+//ÎïÆ·
 class Player_Items : public KWndButton
 {
 public:
@@ -123,7 +123,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//æ­¦åŠŸ
+//Îä¹¦
 class Player_Skills : public KWndButton
 {
 public:
@@ -132,7 +132,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//é˜Ÿä¼
+//¶ÓÎé
 class Player_Team : public KWndButton
 {
 public:
@@ -141,7 +141,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//é—¨æ´¾
+//ÃÅÅÉ
 class Player_Faction : public KWndButton
 {
 public:
@@ -151,7 +151,7 @@ public:
 };
 
 
-//æ‰“å
+//´ò×ø
 class Player_Sit : public KWndButton
 {
 public:
@@ -161,7 +161,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//è·‘æ­¥
+//ÅÜ²½
 class Player_Run : public KWndButton
 {
 public:
@@ -171,7 +171,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//ä¸Šé©¬
+//ÉÏÂí
 class Player_Horse : public KWndButton
 {
 public:
@@ -181,7 +181,7 @@ public:
 	const char*	GetShortKey();
 };
 
-//äº¤æ˜“
+//½»Ò×
 class Player_Exchange : public KWndButton
 {
 public:
@@ -192,7 +192,7 @@ public:
 };
 
 
-//PKå¼€å…³
+//PK¿ª¹Ø
 class Player_PK : public KWndButton
 {
 public:

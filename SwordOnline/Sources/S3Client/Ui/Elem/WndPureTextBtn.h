@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„-çº¯æ–‡å­—æŒ‰é’®
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹-´¿ÎÄ×Ö°´Å¥
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-1-19
@@ -21,18 +21,18 @@ class KWndPureTextBtn : public KWndWindow
 {
 public:
 	KWndPureTextBtn();
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	virtual void	PaintWindow();									//ç»˜åˆ¶çª—å£
-	void			SetText(const char* pText, int nLen = -1);		//è®¾ç½®æ–‡æœ¬æ–‡å­—
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	virtual void	PaintWindow();									//»æÖÆ´°¿Ú
+	void			SetText(const char* pText, int nLen = -1);		//ÉèÖÃÎÄ±¾ÎÄ×Ö
 	int				GetTextLen();
-	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	virtual int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 	void			CheckButton(int bChecked);
 	void			Clone(KWndPureTextBtn* pCopy);
 	BOOL            IsChecked();
 	void			Set3IntText(int nNumber1, int nNumber2, char Separator, char* Find);
 	virtual int		GetToolTipInfo(char* szTip, int nMax);
 	int				SetToolTipInfo(char* szTip, int nMax);	
-	virtual const char*	GetShortKey() {return NULL;}	//å–å¿«æ·é”®,ç”¨äºTipæ˜¾ç¤º
+	virtual const char*	GetShortKey() {return NULL;}	//È¡¿ì½İ¼ü,ÓÃÓÚTipÏÔÊ¾
 	void SetTextColor(unsigned int Color)
 	{
 		m_NormalColor = Color;
@@ -48,7 +48,7 @@ private:
 private:
 	unsigned int	m_Flag;
 	char			m_sText[WNDPTB_MAX_TEXT_LEN];
-	int				m_nTextLen;			//å­—ç¬¦ä¸²çš„å­˜å‚¨é•¿åº¦
+	int				m_nTextLen;			//×Ö·û´®µÄ´æ´¢³¤¶È
 	unsigned int	m_NormalColor;
 	unsigned int	m_OverColor;
 	unsigned int	m_PressedColor;
@@ -58,7 +58,7 @@ private:
 	int				m_nFontSize;
 	char			m_szTip[256];
 	int				m_nTipLen;
-	static unsigned int	ms_uBtnTipTextColor;	//æŒ‰é’®æç¤ºåç§°æ–‡å­—çš„é¢œè‰²
+	static unsigned int	ms_uBtnTipTextColor;	//°´Å¥ÌáÊ¾Ãû³ÆÎÄ×ÖµÄÑÕÉ«
 public:
 	char			m_pItem[MAX_SENTENCE_LENGTH];
 	int				m_X;

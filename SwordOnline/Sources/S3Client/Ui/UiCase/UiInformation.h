@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--æ¶ˆæ¯çª—å£
+//	½çÃæ--ÏûÏ¢´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-14
@@ -14,21 +14,21 @@
 class KUiInformation : protected KWndShowAnimate
 {
 public:
-	void	Initialize();							//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);		//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void	Initialize();							//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);		//ÔØÈë½çÃæ·½°¸
 	void	Show(const char* pInformation,
-				const char* pszFirstBtnText = "Xï¿½c nhï¿½n",
+				const char* pszFirstBtnText = "X¸c nhËn",
 				const char* pszSecondBtnText = 0,
 				KWndWindow* pCallerWnd = 0,
 				unsigned int uParam = 0,
                 int nInformationLen = -1,
-				int nLeftTime = -1);			//æ˜¾ç¤ºçª—å£
-	void	Close();								//å…³é—­çª—å£ï¼Œä¸é€šçŸ¥è°ƒç”¨çª—å£
+				int nLeftTime = -1);			//ÏÔÊ¾´°¿Ú
+	void	Close();								//¹Ø±Õ´°¿Ú£¬²»Í¨Öªµ÷ÓÃ´°¿Ú
 	KUiInformation();
 
 private:
-	void	Hide(int nBtnIndex);					//éšè—çª—å£
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
+	void	Hide(int nBtnIndex);					//Òş²Ø´°¿Ú
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
 	void	Breathe();
 private:
 	KWndText256			m_Information;
@@ -45,7 +45,7 @@ private:
 };
 
 void UIMessageBox(const char* pMsg, KWndWindow* pCaller = 0, 
-				  const char* pszFirstBtnText = "Xï¿½c nhï¿½n",
+				  const char* pszFirstBtnText = "X¸c nhËn",
 				  const char* pszSecondBtnText = 0,
 				  unsigned int uParam = 0,
 				  int nLeftTime = -1);

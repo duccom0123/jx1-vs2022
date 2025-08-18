@@ -66,7 +66,7 @@ int		KThiefSkill::DoSkill(KNpc * pNpc, int nX, int nY)
 		TMissleForShow Show;
 		Show.nLauncherIndex = pNpc->m_Index;
 		Show.nNpcIndex = nY;
-		//KMissle::CreateMissleForShow("\\spr\\skill\\NPC\\mag_npc_Â¶Â¾Ã‹Â®ÃÃ»ÃŠÂ§.spr", "30,1,1", "\\sound\\skill\\Â¿Ã±Ã€Ã—Ã•Ã°ÂµÃ˜.wav", &Show);
+		//KMissle::CreateMissleForShow("\\spr\\skill\\NPC\\mag_npc_¶¾Ë®ÏûÊ§.spr", "30,1,1", "\\sound\\skill\\¿ñÀ×ÕðµØ.wav", &Show);
 		KMissle::CreateMissleForShow(m_szTargetMovie, m_szTargetMovieParam, m_szSkillSound, &Show);
 #endif
 	pNpc->m_Doing = do_special2;
@@ -90,19 +90,19 @@ int KThiefSkill::Cast_Redress(KPlayer * pLaucherPlayer, KPlayer * pTargetPlayer)
 		int nThiefMoney = nTotalMoney * m_nThiefPercent / 100 ;
 		pTargetPlayer->Pay(nThiefMoney);
 		
-		sprintf(szMsg, "LÃŠy cÂ¾p ngÂ©n lÂ­Ã®ng trong ngÂ­Ãªi cÃ±a %s vÂµ Ã±ng hÃ© %d lÂ­Ã®ng cho tiÃ’n phÂ­Â¬ng", Npc[pLaucherPlayer->m_nIndex].Name, nThiefMoney );
-		KPlayerChat::SendSystemInfo(1, pTargetPlayer->GetPlayerIndex(), "LÃŠy cÂ¾p thÂµnh cÂ«ng", (char *) szMsg, strlen(szMsg) );
+		sprintf(szMsg, "LÊy c¾p ng©n l­îng trong ng­êi cña %s vµ ñng hé %d l­îng cho tiÒn ph­¬ng", Npc[pLaucherPlayer->m_nIndex].Name, nThiefMoney );
+		KPlayerChat::SendSystemInfo(1, pTargetPlayer->GetPlayerIndex(), "LÊy c¾p thµnh c«ng", (char *) szMsg, strlen(szMsg) );
 		
-		sprintf(szMsg, "LÃŠy cÂ¾p thÂµnh cÂ«ng ngÂ©n lÂ­Ã®ng cÃ±a %s, Ã±ng hÃ© %d lÂ­Ã®ng cho tiÃ’n phÂ­Â¬ng! ", Npc[pTargetPlayer->m_nIndex].Name, nThiefMoney);
-		KPlayerChat::SendSystemInfo(1, pLaucherPlayer->GetPlayerIndex(), "LÃŠy cÂ¾p thÂµnh cÂ«ng", (char *) szMsg, strlen(szMsg) );
+		sprintf(szMsg, "LÊy c¾p thµnh c«ng ng©n l­îng cña %s, ñng hé %d l­îng cho tiÒn ph­¬ng! ", Npc[pTargetPlayer->m_nIndex].Name, nThiefMoney);
+		KPlayerChat::SendSystemInfo(1, pLaucherPlayer->GetPlayerIndex(), "LÊy c¾p thµnh c«ng", (char *) szMsg, strlen(szMsg) );
 		return TRUE;
 	}
 	
-	sprintf(szMsg, "%s cÃ¨ lÃŠy cÂ¾p tiÃ’n cÃ±a bÂ¹n, nhÂ­ng khÂ«ng thÂµnh cÂ«ng!", Npc[pLaucherPlayer->m_nIndex].Name);
-	KPlayerChat::SendSystemInfo(1, pTargetPlayer->GetPlayerIndex(), "ChÂ­a lÃŠy cÂ¾p Â®Â­Ã®c", (char *) szMsg, strlen(szMsg) );
+	sprintf(szMsg, "%s cè lÊy c¾p tiÒn cña b¹n, nh­ng kh«ng thµnh c«ng!", Npc[pLaucherPlayer->m_nIndex].Name);
+	KPlayerChat::SendSystemInfo(1, pTargetPlayer->GetPlayerIndex(), "Ch­a lÊy c¾p ®­îc", (char *) szMsg, strlen(szMsg) );
 	
-	sprintf(szMsg, "BÂ¹n khÂ«ng lÃŠy Â®Â­Ã®c ngÂ©n lÂ­Ã®ng cÃ±a %s!", Npc[pTargetPlayer->m_nIndex].Name);
-	KPlayerChat::SendSystemInfo(1, pLaucherPlayer->GetPlayerIndex(), "ChÂ­a lÃŠy cÂ¾p Â®Â­Ã®c", (char *) szMsg, strlen(szMsg) );
+	sprintf(szMsg, "B¹n kh«ng lÊy ®­îc ng©n l­îng cña %s!", Npc[pTargetPlayer->m_nIndex].Name);
+	KPlayerChat::SendSystemInfo(1, pLaucherPlayer->GetPlayerIndex(), "Ch­a lÊy c¾p ®­îc", (char *) szMsg, strlen(szMsg) );
 	return TRUE;
 }
 
@@ -110,8 +110,8 @@ int KThiefSkill::Cast_ShowLife(KPlayer * pLauncherPlayer, KPlayer * pTargetPlaye
 {
 	_ASSERT(pLauncherPlayer && pTargetPlayer);
 	char szMsg[200];
-	sprintf(szMsg, "ChÃ˜ sÃ¨ sinh mÂ¹ng hiÃ–n tÂ¹i cÃ±a %s lÂµ: %d / %d ", Npc[pTargetPlayer->m_nIndex].Name, Npc[pTargetPlayer->m_nIndex].m_CurrentLife, Npc[pTargetPlayer->m_nIndex].m_CurrentLifeMax);
-	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "TÃ—nh bÂ¸o Â®Ã¨i phÂ­Â¬ng", (char *) szMsg, strlen(szMsg) );
+	sprintf(szMsg, "ChØ sè sinh m¹ng hiÖn t¹i cña %s lµ: %d / %d ", Npc[pTargetPlayer->m_nIndex].Name, Npc[pTargetPlayer->m_nIndex].m_CurrentLife, Npc[pTargetPlayer->m_nIndex].m_CurrentLifeMax);
+	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "T×nh b¸o ®èi ph­¬ng", (char *) szMsg, strlen(szMsg) );
 	return TRUE;
 }
 
@@ -119,8 +119,8 @@ int KThiefSkill::Cast_ShowMana(KPlayer * pLauncherPlayer, KPlayer * pTargetPlaye
 {
 	_ASSERT(pLauncherPlayer && pTargetPlayer);
 	char szMsg[200];
-	sprintf(szMsg, "ChÃ˜ sÃ¨ nÃ©i lÃ¹c hiÃ–n tÂ¹i cÃ±a %s lÂµ: %d / %d ", Npc[pTargetPlayer->m_nIndex].Name, Npc[pTargetPlayer->m_nIndex].m_CurrentMana, Npc[pTargetPlayer->m_nIndex].m_CurrentManaMax);
-	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "TÃ—nh bÂ¸o Â®Ã¨i phÂ­Â¬ng", (char *) szMsg, strlen(szMsg) );
+	sprintf(szMsg, "ChØ sè néi lùc hiÖn t¹i cña %s lµ: %d / %d ", Npc[pTargetPlayer->m_nIndex].Name, Npc[pTargetPlayer->m_nIndex].m_CurrentMana, Npc[pTargetPlayer->m_nIndex].m_CurrentManaMax);
+	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "T×nh b¸o ®èi ph­¬ng", (char *) szMsg, strlen(szMsg) );
 	return TRUE;
 }
 
@@ -128,8 +128,8 @@ int KThiefSkill::Cast_ShowMoney(KPlayer * pLauncherPlayer, KPlayer * pTargetPlay
 {
 	_ASSERT(pLauncherPlayer && pTargetPlayer);
 	char szMsg[200];
-	sprintf(szMsg, "SÃ¨ tiÃ’n %s hiÃ–n cÃ£: %d lÂ­Ã®ng ", Npc[pTargetPlayer->m_nIndex].Name, pTargetPlayer->m_ItemList.GetMoney(room_equipment));
-	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "TÃ—nh bÂ¸o Â®Ã¨i phÂ­Â¬ng", (char *) szMsg, strlen(szMsg) );
+	sprintf(szMsg, "Sè tiÒn %s hiÖn cã: %d l­îng ", Npc[pTargetPlayer->m_nIndex].Name, pTargetPlayer->m_ItemList.GetMoney(room_equipment));
+	KPlayerChat::SendSystemInfo(1, pLauncherPlayer->GetPlayerIndex(), "T×nh b¸o ®èi ph­¬ng", (char *) szMsg, strlen(szMsg) );
 	return TRUE;
 }
 
@@ -199,7 +199,7 @@ int KThiefSkill::OnSkill(KNpc * pNpc)
 		if (pNpc->m_DesY <= 0) 
 			goto Label_ProcessAI1;
 		
-		//Â´Ã‹ÃŠÂ±Â¸ÃƒÂ½Ã‡Ã‰Â«Ã’Ã‘Â¾Â­ÃŽÃžÃÂ§ÃŠÂ±
+		//´ËÊ±¸Ã½ÇÉ«ÒÑ¾­ÎÞÐ§Ê±
 		if (Npc[pNpc->m_DesY].m_RegionIndex < 0) 
 			goto Label_ProcessAI1;
 	}
@@ -301,7 +301,7 @@ BOOL	KThiefSkill::LoadSetting(char * szSettingFile)
 
 #ifndef _SERVER
 	TabFile.GetString(2, "Desc", "", m_szSkillDesc, sizeof(m_szSkillDesc));
-	TabFile.GetString(2, "SkillIcon", "\\spr\\skill\\ÃÂ¼Â±Ãª\\ÃÂ¨Ã“Ãƒ.spr", m_szSkillIcon, sizeof(m_szSkillIcon));
+	TabFile.GetString(2, "SkillIcon", "\\spr\\skill\\Í¼±ê\\Í¨ÓÃ.spr", m_szSkillIcon, sizeof(m_szSkillIcon));
 	TabFile.GetString(2, "Movie", "", m_szSkillSpecialFile, sizeof(m_szSkillSpecialFile));
 	TabFile.GetString(2, "TargetMovie", "", m_szTargetMovie, sizeof(m_szTargetMovie));
 	TabFile.GetString(2, "TargetMovieInfo", "1,1,1", m_szTargetMovieParam, sizeof(m_szTargetMovieParam));

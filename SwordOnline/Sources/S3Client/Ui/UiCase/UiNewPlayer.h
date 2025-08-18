@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiNewPlayer.h
-//	åˆ›å»ºè€…		ï¼š	å½­å»ºæ³¢
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-10 14:25:21
-//	åŠŸèƒ½æè¿°	ï¼š	è§’è‰²æ–°å»ºç•Œé¢ï¼1
+//	ÎÄ¼şÃû		£º	UiNewPlayer.h
+//	´´½¨Õß		£º	Åí½¨²¨
+//	´´½¨Ê±¼ä	£º	2002-9-10 14:25:21
+//	¹¦ÄÜÃèÊö	£º	½ÇÉ«ĞÂ½¨½çÃæ£­1
 //
 // -------------------------------------------------------------------------
 #ifndef __UINEWPLAYER_H__
@@ -18,37 +18,37 @@
 class KUiNewPlayer : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiNewPlayer* OpenWindow(int nNativePlaceId);//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiNewPlayer* OpenWindow(int nNativePlaceId);//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 
 private:
 	KUiNewPlayer();
 	~KUiNewPlayer();
-	void	Initialize();						//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	void	Initialize();						//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void	OnClickButton(KWndWindow* pWnd);	//å“åº”ç‚¹å‡»æŒ‰é’®
+	void	OnClickButton(KWndWindow* pWnd);	//ÏìÓ¦µã»÷°´Å¥
 	int		GetInputInfo();
-	void	OnOk();								//å®Œæˆè§’è‰²é€‰æ‹©ç•Œé¢
-	void	OnCancel();							//è¿”å›â€œè§’è‰²é€‰æ‹©ç•Œé¢â€
+	void	OnOk();								//Íê³É½ÇÉ«Ñ¡Ôñ½çÃæ
+	void	OnCancel();							//·µ»Ø¡°½ÇÉ«Ñ¡Ôñ½çÃæ¡±
 	void	SelGender();
 private:
 	static KUiNewPlayer* m_pSelf;
-	void	UpdateProperty();				//æ›´æ–°å±æ€§è¯´æ˜
+	void	UpdateProperty();				//¸üĞÂÊôĞÔËµÃ÷
 	void	Breathe();
 private:
-	KWndEdit32	m_Name;						// å§“å
-	KWndButton	m_OK;						// ç¡®å®š
-	KWndButton  m_Cancel;					// å–æ¶ˆ
-	KWndButton	m_Male, m_Female;			// æ€§åˆ«æŒ‰é’®
+	KWndEdit32	m_Name;						// ĞÕÃû
+	KWndButton	m_OK;						// È·¶¨
+	KWndButton  m_Cancel;					// È¡Ïû
+	KWndButton	m_Male, m_Female;			// ĞÔ±ğ°´Å¥
 	
-	KWndText256	m_PropertyShow;				// å±æ€§è¯´æ˜
-	KWndButton	m_Gold;						// é‡‘
-	KWndButton	m_Wood;						// æœ¨
-	KWndButton	m_Water;					// æ°´
-	KWndButton	m_Fire;						// ç«
-	KWndButton	m_Earth;					// åœŸ
+	KWndText256	m_PropertyShow;				// ÊôĞÔËµÃ÷
+	KWndButton	m_Gold;						// ½ğ
+	KWndButton	m_Wood;						// Ä¾
+	KWndButton	m_Water;					// Ë®
+	KWndButton	m_Fire;						// »ğ
+	KWndButton	m_Earth;					// ÍÁ
 	KWndButton	m_Container;	
 	KWndButton	m_Series;
 	KRoleChiefInfo		m_Info;
@@ -59,7 +59,7 @@ private:
 	{
 		KWndWindow*			pBtn;
 		int					nShowTextLen;
-		char				propertyShow[256];		//å±æ€§è¯´æ˜
+		char				propertyShow[256];		//ÊôĞÔËµÃ÷
 		char				szMaleImg[128];
 		char				szFemaleImg[128];
 		char				szMaleSound[128];

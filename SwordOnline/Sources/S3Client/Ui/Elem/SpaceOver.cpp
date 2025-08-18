@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	æµ®åŠ¨æç¤ºçª—å£
+//	¸¡¶¯ÌáÊ¾´°¿Ú
 //	Copyright : Kingsoft 2002-2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-23
@@ -23,12 +23,12 @@ extern iRepresentShell*	g_pRepresentShell;
 extern iCoreShell*	g_pCoreShell;
 
 KSpaceOver	g_SpaceOver;
-#define	SCHEME_INI				"å¼¹å‡ºè¯´æ˜æ–‡å­—.ini"
+#define	SCHEME_INI				"µ¯³öËµÃ÷ÎÄ×Ö.ini"
 #define	INFO_MIN_LEN			26
 #define FOLLOW_CURSOR_OFFSET_X	16
 #define FOLLOW_CURSOR_OFFSET_Y	8
 
-static unsigned int	s_uHoverObjDestTextColor = 0xffffffff;	//å¯¹è±¡æç¤ºæ–‡å­—çš„é¢œè‰²
+static unsigned int	s_uHoverObjDestTextColor = 0xffffffff;	//¶ÔÏóÌáÊ¾ÎÄ×ÖµÄÑÕÉ«
 
 void SetSpaceOverObjDescColor(unsigned int uColor)
 {
@@ -91,7 +91,7 @@ KSpaceOver::KSpaceOver()
 	m_uTitleColor  = 0;
 	m_uTitleBgColor= 0;
 	//////////////////
-	m_uBoderShadowColor = 0;      //å±æ€§æ–‡å­—é¢œè‰²
+	m_uBoderShadowColor = 0;      //ÊôĞÔÎÄ×ÖÑÕÉ«
 	//////////////////
 	memset(&m_Image, 0, sizeof(KRUImage));
 	IR_InitUiImageRef(m_HoverImage);
@@ -120,7 +120,7 @@ void KSpaceOver::CancelSpaceOverInfo()
 }
 
 /***********************************************************************
-*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„åŸºæœ¬ä¿¡æ¯
+*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄ»ù±¾ĞÅÏ¢
 ************************************************************************/
 void KSpaceOver::SetSpaceOverInfo(void* pWnd, int nObj, int x, int y, unsigned int uHoverTime, bool LAlign, bool bFollowCursor)
 {
@@ -173,7 +173,7 @@ void KSpaceOver::SetSpaceOverImage(bool bAdd)
 }
 
 /***********************************************************************
-*åŠŸèƒ½ï¼šè®¾ç½®é¼ æ ‡æç¤ºçª—å£çš„æ ‡é¢˜(ç‰©ä»¶çš„åå­—)
+*¹¦ÄÜ£ºÉèÖÃÊó±êÌáÊ¾´°¿ÚµÄ±êÌâ(Îï¼şµÄÃû×Ö)
 ************************************************************************/
 void KSpaceOver::SetSpaceOverTitle(const char *pTitleText, int nTitleTextLen, UINT uColor)
 {
@@ -242,12 +242,12 @@ void KSpaceOver::Update(int nX, int nY)
 		m_nTop = nY;
 	}
 
-	//å¯ä»¥æ˜¾ç¤ºæµ®åŠ¨çª—å£å•¦!
+	//¿ÉÒÔÏÔÊ¾¸¡¶¯´°¿ÚÀ²!
 	m_bShow = true;
 }
 
 
-//é¼ æ ‡çš„ä½ç½®æ›´æ–°äº†
+//Êó±êµÄÎ»ÖÃ¸üĞÂÁË
 void KSpaceOver::UpdateCursorPos(int nX, int nY)
 {
 	if (m_bFollowCursor && m_bShow)
@@ -264,7 +264,7 @@ void KSpaceOver::OnWndClosed(void* pWnd)
 		CancelSpaceOverInfo();
 }
 
-//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+//ÔØÈë½çÃæ·½°¸
 void KSpaceOver::LoadScheme(const char* pScheme)
 {
 	if (pScheme == NULL)
@@ -318,14 +318,14 @@ void KSpaceOver::PaintSpaceOverInfo()
 
 	if (m_uHoverTime > 0 && IR_IsTimePassed(m_uHoverTime, m_uLastHoverTime))
 		m_bShow = false;
-	//ç”»èƒŒæ™¯é˜´å½±å’Œè¾¹æ¡†
+	//»­±³¾°ÒõÓ°ºÍ±ß¿ò
 	KRUShadow Shadow;
-	//å†™æ–‡å­—åˆå§‹åŒ–
+	//Ğ´ÎÄ×Ö³õÊ¼»¯
 	KOutputTextParam	Param;
 	Param.BorderColor = 0;
 	Param.nZ = TEXT_IN_SINGLE_PLANE_COORD;
 
-	//====æ ‡é¢˜(åå­—)éƒ¨åˆ†====
+	//====±êÌâ(Ãû×Ö)²¿·Ö====
 	if (m_nLeft + m_nWndWidth <= RESOLUTION_WIDTH)
 		Shadow.oPosition.nX = m_nLeft;
 	else

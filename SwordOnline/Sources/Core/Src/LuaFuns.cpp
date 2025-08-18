@@ -155,7 +155,7 @@ int LuaGetScriptState(Lua_State * L)
 
 	pScript = LuaGetScript(L);
 	
-	//ä¸å­˜åœ¨
+	//²»´æÔÚ
 	if(pScript == NULL)
 	{
 		Lua_PushNumber(L, -1);
@@ -181,7 +181,7 @@ int LuaSendScriptMessage(Lua_State * L)
 	
 	if (pSendedScript == NULL)
 	{
-		g_DebugLog("æ— æ³•æ‰¾åˆ°æŒ‡å®šçš„è„šæœ¬å¯¹è±¡");
+		g_DebugLog("ÎŞ·¨ÕÒµ½Ö¸¶¨µÄ½Å±¾¶ÔÏó");
 		return 0;
 	}
 	

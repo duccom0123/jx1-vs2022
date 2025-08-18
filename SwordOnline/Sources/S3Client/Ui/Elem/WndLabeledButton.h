@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--å¸¦æ–‡å­—æŒ‰é”®çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--´øÎÄ×Ö°´¼ü´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-10-4
 ------------------------------------------------------------------------------------------
-	å¸¦æ–‡å­—æŒ‰é’®çª—å£ã€‚
+	´øÎÄ×Ö°´Å¥´°¿Ú¡£
 *****************************************************************************************/
 #pragma once
 #include "WndButton.h"
@@ -12,35 +12,35 @@
 #include "WndImage.h"
 
 //===========================================
-//	ç®€å•çš„å¸¦æ–‡å­—æŒ‰é’®çª—å£ã€‚
-//	æ–‡å­—å•è¡Œï¼Œå±…ä¸­å¤„ç†ï¼Œæ–‡å­—ä¸­ä¸åŒ…å«æ§åˆ¶ç¬¦ã€‚
+//	¼òµ¥µÄ´øÎÄ×Ö°´Å¥´°¿Ú¡£
+//	ÎÄ×Öµ¥ĞĞ£¬¾ÓÖĞ´¦Àí£¬ÎÄ×ÖÖĞ²»°üº¬¿ØÖÆ·û¡£
 //===========================================
 class KWndLabeledButton : public KWndButton
 {
 public:
 	KWndLabeledButton();
-	void			SetLabel(const char* pLabel);		//è®¾ç½®æŒ‰é’®æ ‡é¢˜æ–‡å­—
+	void			SetLabel(const char* pLabel);		//ÉèÖÃ°´Å¥±êÌâÎÄ×Ö
 	void			Set3IntLabel(int nNumber, char Separator = 0);
 	int				GetLabel(char* pLabel, int nSize);
-	void			SetLabelColor(unsigned int Color);	//è®¾ç½®æŒ‰é’®æ ‡é¢˜æ–‡å­—é¢œè‰²
-	void			SetLabelBorderColor(unsigned int Color);	//è®¾ç½®æŒ‰é’®æ ‡é¢˜æ–‡å­—é¢œè‰²
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	virtual void	PaintWindow();									//çª—ä½“ç»˜åˆ¶
+	void			SetLabelColor(unsigned int Color);	//ÉèÖÃ°´Å¥±êÌâÎÄ×ÖÑÕÉ«
+	void			SetLabelBorderColor(unsigned int Color);	//ÉèÖÃ°´Å¥±êÌâÎÄ×ÖÑÕÉ«
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	virtual void	PaintWindow();									//´°Ìå»æÖÆ
 	void			Clone(KWndLabeledButton* pCopy);
 	void			Enable(int bEnable);
 
 private:
-	char	m_Label[32];		//æ ‡é¢˜æ–‡å­—
-	int		m_nLabelLen;		//æ ‡é¢˜æ–‡å­—ä¸²çš„é•¿åº¦ï¼Œä¸åŒ…æ‹¬ç»“æŸç¬¦å·
-	int		m_nFontSize;		//æ ‡é¢˜æ–‡å­—çš„å¤§å°
-	int		m_nLabelXOffset;	//æ ‡é¢˜æ–‡å­—å‘ä¸‹åç§»çš„é‡
-	int		m_nLabelYOffset;	//æ ‡é¢˜æ–‡å­—å‘ä¸‹åç§»çš„é‡
-	unsigned int m_FontColor;	//æ ‡é¢˜æ–‡å­—çš„é¢œè‰²
-	unsigned int m_FontBorderColor;	//æ ‡é¢˜æ–‡å­—çš„è¾¹ç¼˜é¢œè‰²
-	unsigned int m_OverColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—é¢œè‰²
-	unsigned int m_OverBorderColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
-	unsigned int m_EnableColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
-	unsigned int m_EnableBdColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
-	unsigned int m_DisableColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
-	unsigned int m_DisableBdColor;	//é¼ æ ‡ç§»åŠ¨åˆ°ä¸Šé¢æ—¶å€™çš„æ–‡å­—è¾¹ç¼˜é¢œè‰²
+	char	m_Label[32];		//±êÌâÎÄ×Ö
+	int		m_nLabelLen;		//±êÌâÎÄ×Ö´®µÄ³¤¶È£¬²»°üÀ¨½áÊø·ûºÅ
+	int		m_nFontSize;		//±êÌâÎÄ×ÖµÄ´óĞ¡
+	int		m_nLabelXOffset;	//±êÌâÎÄ×ÖÏòÏÂÆ«ÒÆµÄÁ¿
+	int		m_nLabelYOffset;	//±êÌâÎÄ×ÖÏòÏÂÆ«ÒÆµÄÁ¿
+	unsigned int m_FontColor;	//±êÌâÎÄ×ÖµÄÑÕÉ«
+	unsigned int m_FontBorderColor;	//±êÌâÎÄ×ÖµÄ±ßÔµÑÕÉ«
+	unsigned int m_OverColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×ÖÑÕÉ«
+	unsigned int m_OverBorderColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×Ö±ßÔµÑÕÉ«
+	unsigned int m_EnableColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×Ö±ßÔµÑÕÉ«
+	unsigned int m_EnableBdColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×Ö±ßÔµÑÕÉ«
+	unsigned int m_DisableColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×Ö±ßÔµÑÕÉ«
+	unsigned int m_DisableBdColor;	//Êó±êÒÆ¶¯µ½ÉÏÃæÊ±ºòµÄÎÄ×Ö±ßÔµÑÕÉ«
 };

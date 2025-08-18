@@ -15,7 +15,7 @@ typedef struct tagNpcSkill
 	BOOL	TempSkill;
 	int		MaxTimes;
 	int		RemainTimes;
-	DWORD	NextCastTime;		//ä¸‹æ¬¡å¯å‘é€æ—¶çš„æœ€å°æ—¶é—´
+	DWORD	NextCastTime;		//ÏÂ´Î¿É·¢ËÍÊ±µÄ×îĞ¡Ê±¼ä
 	int		WaitCastTime;
 #ifndef _SERVER
 	DWORD	TotalTime;//tong thoi gian
@@ -29,7 +29,7 @@ class CORE_API KSkillList
 #endif
 {
 public:
-	NPCSKILL	m_Skills[MAX_NPCSKILL];//ä¸‹æ ‡ä»1å¼€å§‹ï¼Œ0ä¸ºæ— æ•ˆindex
+	NPCSKILL	m_Skills[MAX_NPCSKILL];//ÏÂ±ê´Ó1¿ªÊ¼£¬0ÎªÎŞĞ§index
 	int			m_nAllSkillV;
 	int			m_nNpcIndex;
 public:
@@ -56,7 +56,7 @@ public:
 			m_Skills[i].WaitCastTime = 0;
 		}
 
-	};//Question :éœ€è¦åŠ ï¼
+	};//Question :ĞèÒª¼Ó£¡
 	void		RemoveIdx(int nIdx)
 	{
 		if (nIdx <= 0 || nIdx >= MAX_NPCSKILL) 
@@ -74,7 +74,7 @@ public:
 		m_Skills[nIdx].NextCastTime = 0;
 		m_Skills[nIdx].WaitCastTime = 0;
 
-	};//Question :éœ€è¦åŠ ï¼
+	};//Question :ĞèÒª¼Ó£¡
 	int			GetSkillId(unsigned long ulSkillIdx) const
 	{
 		if (ulSkillIdx >= MAX_NPCSKILL || ulSkillIdx <= 0) 
@@ -84,7 +84,7 @@ public:
 	};
 
 
-	int	SetSkillLevelDirectlyUsingIndex(unsigned long ulSkillIdx, unsigned long ulLevel)/*è¯·æ…ç”¨è¯¥å‡½æ•°ï¼Œå› ä¸ºç›®å‰æœªåŠ ä»»ä½•è¢«åŠ¨æŠ€èƒ½é™çº§å¯¹æ•°å€¼çš„å½±å“*/
+	int	SetSkillLevelDirectlyUsingIndex(unsigned long ulSkillIdx, unsigned long ulLevel)/*ÇëÉ÷ÓÃ¸Ãº¯Êı£¬ÒòÎªÄ¿Ç°Î´¼ÓÈÎºÎ±»¶¯¼¼ÄÜ½µ¼¶¶ÔÊıÖµµÄÓ°Ïì*/
 	{
 		if (ulSkillIdx >= MAX_NPCSKILL ||  ulSkillIdx == 0 || ulLevel >= MAX_SKILLLEVEL)
 			return 0;
@@ -98,7 +98,7 @@ public:
 		return 0;
 	}
 
-	int	SetSkillLevelDirectlyUsingId(unsigned long ulSkillId, unsigned long ulLevel)/*è¯·æ…ç”¨è¯¥å‡½æ•°ï¼Œå› ä¸ºç›®å‰æœªåŠ ä»»ä½•è¢«åŠ¨æŠ€èƒ½é™çº§å¯¹æ•°å€¼çš„å½±å“*/
+	int	SetSkillLevelDirectlyUsingId(unsigned long ulSkillId, unsigned long ulLevel)/*ÇëÉ÷ÓÃ¸Ãº¯Êı£¬ÒòÎªÄ¿Ç°Î´¼ÓÈÎºÎ±»¶¯¼¼ÄÜ½µ¼¶¶ÔÊıÖµµÄÓ°Ïì*/
 	{
 		if (ulSkillId >= MAX_SKILL || ulSkillId <= 0 ||  ulLevel >= MAX_SKILLLEVEL)
 			return 0;
@@ -118,14 +118,14 @@ public:
 	void		Clear(){memset(m_Skills, 0, sizeof(m_Skills));};
 #ifndef _SERVER
 	void		SetSkillLevel(int nId, int nLevel);
-	BOOL		SetLevel(int nIndex, int nLevel);		// æŠŠæŸä¸ªç¼–å·æŠ€èƒ½è®¾ä¸ºæŸä¸€çº§
+	BOOL		SetLevel(int nIndex, int nLevel);		// °ÑÄ³¸ö±àºÅ¼¼ÄÜÉèÎªÄ³Ò»¼¶
 	void		SetAddLevel( int nId, int nAdd);
 	void		SetCurLevel( int nId, int nAdd);
-	BOOL		SetExp(int nIndex, int nExp);		// æŠŠæŸä¸ªç¼–å·æŠ€èƒ½è®¾ä¸ºæŸä¸€çº§
-	int			GetSkillSortList(KUiSkillData *);		// è·å¾—è§’è‰²å½“å‰æ‰€æœ‰æŠ€èƒ½æ’åºåˆ—è¡¨
+	BOOL		SetExp(int nIndex, int nExp);		// °ÑÄ³¸ö±àºÅ¼¼ÄÜÉèÎªÄ³Ò»¼¶
+	int			GetSkillSortList(KUiSkillData *);		// »ñµÃ½ÇÉ«µ±Ç°ËùÓĞ¼¼ÄÜÅÅĞòÁĞ±í
 	int			GetSkillPosition(int nSkillId);
-	int			GetLeftSkillSortList(KUiSkillData*);	// è·å¾—è§’è‰²å½“å‰å·¦é”®æŠ€èƒ½æ’åºåˆ—è¡¨
-	int			GetRightSkillSortList(KUiSkillData*);	// è·å¾—è§’è‰²å½“å‰å³é”®æŠ€èƒ½æ’åºåˆ—è¡¨
+	int			GetLeftSkillSortList(KUiSkillData*);	// »ñµÃ½ÇÉ«µ±Ç°×ó¼ü¼¼ÄÜÅÅĞòÁĞ±í
+	int			GetRightSkillSortList(KUiSkillData*);	// »ñµÃ½ÇÉ«µ±Ç°ÓÒ¼ü¼¼ÄÜÅÅĞòÁĞ±í
 	int			GetNextSkillState(int nIndex = 0);
 	int			GetNextSkillFight(int nIndex = 0);
 	int			GetNextSkillAura(int nIndex = 0);

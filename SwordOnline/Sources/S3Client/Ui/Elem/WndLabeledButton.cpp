@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æž„--å¸¦æ–‡å­—æŒ‰é”®çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--´øÎÄ×Ö°´¼ü´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-10-4
@@ -15,12 +15,12 @@
 extern iRepresentShell*	g_pRepresentShell;
 
 //===========================================
-//	ç®€å•çš„å¸¦æ–‡å­—æŒ‰é’®çª—å£ã€‚
-//	æ–‡å­—å•è¡Œï¼Œå±…ä¸­å¤„ç†ï¼Œæ–‡å­—ä¸­ä¸åŒ…å«æŽ§åˆ¶ç¬¦ã€‚
+//	¼òµ¥µÄ´øÎÄ×Ö°´Å¥´°¿Ú¡£
+//	ÎÄ×Öµ¥ÐÐ£¬¾ÓÖÐ´¦Àí£¬ÎÄ×ÖÖÐ²»°üº¬¿ØÖÆ·û¡£
 //===========================================
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæž„é€ å‡½æ•°
+//	¹¦ÄÜ£º¹¹Ôìº¯Êý
 //--------------------------------------------------------------------------
 KWndLabeledButton::KWndLabeledButton()
 {
@@ -59,7 +59,7 @@ void KWndLabeledButton::Clone(KWndLabeledButton* pCopy)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šåˆå§‹åŒ–çª—å£
+//	¹¦ÄÜ£º³õÊ¼»¯´°¿Ú
 //--------------------------------------------------------------------------
 int KWndLabeledButton::Init(KIniFile* pIniFile, const char* pSection)
 {
@@ -70,7 +70,7 @@ int KWndLabeledButton::Init(KIniFile* pIniFile, const char* pSection)
 		pIniFile->GetInteger(pSection, "LabelYOffset", 0, &m_nLabelYOffset);
 		if (m_nFontSize < 12)
 			m_nFontSize = 16;
-		//===è¯»å–æ–‡å­—====
+		//===¶ÁÈ¡ÎÄ×Ö====
 		char	Buff[32];
 		pIniFile->GetString(pSection, "Color", "", Buff, sizeof(Buff));
 		m_FontColor = GetColor(Buff);
@@ -94,7 +94,7 @@ int KWndLabeledButton::Init(KIniFile* pIniFile, const char* pSection)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æŒ‰é’®æ ‡é¢˜æ–‡å­—
+//	¹¦ÄÜ£ºÉèÖÃ°´Å¥±êÌâÎÄ×Ö
 //--------------------------------------------------------------------------
 void KWndLabeledButton::SetLabel(const char* pLabel)
 {
@@ -119,13 +119,13 @@ void KWndLabeledButton::Set3IntLabel(int nNumber, char Separator)
 		int vNumber = nNumber / MONEY_FLOOR;
 		int lNumber = nNumber % MONEY_FLOOR;
 		if (nNumber < MONEY_FLOOR)
-			nLen = sprintf(Buff, "%d lï¿½ï¿½ng", nNumber);
+			nLen = sprintf(Buff, "%d l­îng", nNumber);
 		else
 		{
 			if(lNumber == 0)
-				nLen = sprintf(Buff, "%d vï¿½n lï¿½ï¿½ng", vNumber);
+				nLen = sprintf(Buff, "%d v¹n l­îng", vNumber);
 			else
-				nLen = sprintf(Buff, "%d vï¿½n %d lï¿½ï¿½ng", vNumber, lNumber);
+				nLen = sprintf(Buff, "%d v¹n %d l­îng", vNumber, lNumber);
 		}
 	}
 	SetLabel(Buff);
@@ -171,7 +171,7 @@ int KWndLabeledButton::GetLabel(char* pLabel, int nSize)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šè®¾ç½®æŒ‰é’®æ ‡é¢˜æ–‡å­—é¢œè‰²
+//	¹¦ÄÜ£ºÉèÖÃ°´Å¥±êÌâÎÄ×ÖÑÕÉ«
 //--------------------------------------------------------------------------
 void KWndLabeledButton::SetLabelColor(unsigned int Color)
 {
@@ -185,7 +185,7 @@ void KWndLabeledButton::SetLabelBorderColor(unsigned int Color)
 
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šçª—ä½“ç»˜åˆ¶
+//	¹¦ÄÜ£º´°Ìå»æÖÆ
 //--------------------------------------------------------------------------
 void KWndLabeledButton::PaintWindow()
 {

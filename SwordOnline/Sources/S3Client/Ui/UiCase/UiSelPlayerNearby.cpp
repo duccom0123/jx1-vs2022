@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢--é€‰æ‹©é™„è¿‘çš„æŸä¸ªç©å®¶
+//	½çÃæ--Ñ¡Ôñ¸½½üµÄÄ³¸öÍæ¼Ò
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-2-26
@@ -24,7 +24,7 @@ extern iCoreShell*		g_pCoreShell;
 KUiSelPlayerNearby* KUiSelPlayerNearby::m_pSelf = NULL;
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šæ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+//	¹¦ÄÜ£º´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 KUiSelPlayerNearby* KUiSelPlayerNearby::OpenWindow()
 {
@@ -58,7 +58,7 @@ BOOL KUiSelPlayerNearby::DoesHaveVisibleWnd()
 	return FALSE;
 }
 
-//åˆå§‹åŒ–
+//³õÊ¼»¯
 void KUiSelPlayerNearby::Initialize()
 {
 	AddChild(&m_PlayerList);
@@ -113,7 +113,7 @@ void KUiSelPlayerNearby::LoadActionList(KIniFile* pSetting)
 }
 
 //--------------------------------------------------------------------------
-//	åŠŸèƒ½ï¼šå…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+//	¹¦ÄÜ£º¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 //--------------------------------------------------------------------------
 void KUiSelPlayerNearby::CloseWindow(bool bDestroy)
 {
@@ -167,7 +167,7 @@ void KUiSelPlayerNearby::LoadScheme(KIniFile* pIni)
 	}
 }
 
-//çª—å£å‡½æ•°
+//´°¿Úº¯Êı
 int KUiSelPlayerNearby::WndProc(unsigned int uMsg, unsigned int uParam, int nParam)
 {
 	int nRet = 0;

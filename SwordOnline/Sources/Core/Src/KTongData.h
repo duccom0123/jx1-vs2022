@@ -10,15 +10,15 @@ struct KTongMap
 class KTongLevelAdd
 {
 private:
-	int		m_nExpVal[MAX_TONG_LEVEL];				// å‡çº§ç»éªŒ
-	int		m_nEffVal[MAX_TONG_LEVEL];			// æ¯ä¸ªç³»å‡çº§åŠ ç”Ÿå‘½ç‚¹
-	int		m_nMemberNum[MAX_TONG_LEVEL];			// æ¯ä¸ªç³»å‡çº§åŠ ç”Ÿå‘½ç‚¹
+	int		m_nExpVal[MAX_TONG_LEVEL];				// Éı¼¶¾­Ñé
+	int		m_nEffVal[MAX_TONG_LEVEL];			// Ã¿¸öÏµÉı¼¶¼ÓÉúÃüµã
+	int		m_nMemberNum[MAX_TONG_LEVEL];			// Ã¿¸öÏµÉı¼¶¼ÓÉúÃüµã
 public:
 	KTongLevelAdd();
 	BOOL		Init();
 	int			GetExp(int nLevel);	
-	int			GetEff(int nLevel);			// ä¼ å…¥ç­‰çº§è·å¾—å¯å¸¦é˜Ÿå‘˜æ•°
-	int			GetMemNum(int nLevel);			// ä¼ å…¥ç»éªŒè·å¾—å¯å¸¦é˜Ÿå‘˜æ•°
+	int			GetEff(int nLevel);			// ´«ÈëµÈ¼¶»ñµÃ¿É´ø¶ÓÔ±Êı
+	int			GetMemNum(int nLevel);			// ´«Èë¾­Ñé»ñµÃ¿É´ø¶ÓÔ±Êı
 };
 
 class KOneTong

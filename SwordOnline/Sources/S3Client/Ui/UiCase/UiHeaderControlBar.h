@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--å±å¹•é¡¶æ§åˆ¶æ“ä½œæ¡
+//	½çÃæ--ÆÁÄ»¶¥¿ØÖÆ²Ù×÷Ìõ
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-4-22
@@ -12,15 +12,15 @@
 class KUiHeaderControlBar : public KWndToolBar
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiHeaderControlBar* OpenWindow();	//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static void				CloseWindow();		//å…³é—­çª—å£
-	static void				LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	static void				DefaultScheme(const char* pScheme);//é‡æ–°åˆå§‹åŒ–ç•Œé¢
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiHeaderControlBar* OpenWindow();	//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static void				CloseWindow();		//¹Ø±Õ´°¿Ú
+	static void				LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
+	static void				DefaultScheme(const char* pScheme);//ÖØĞÂ³õÊ¼»¯½çÃæ
 	static KUiHeaderControlBar* GetSelf()	{return m_pSelf;}
 private:
 	~KUiHeaderControlBar() {}
-	void	Initialize();							//åˆå§‹åŒ–
+	void	Initialize();							//³õÊ¼»¯
 	void	Breathe();
 private:
 	static KUiHeaderControlBar*	m_pSelf;

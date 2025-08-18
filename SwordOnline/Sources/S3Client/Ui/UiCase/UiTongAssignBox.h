@@ -2,7 +2,7 @@
 File        : UiTongAssignBox.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : ä»»å‘½å¸®ä¼šèŒä½çš„ç•Œé¢
+Description : ÈÎÃü°ï»áÖ°Î»µÄ½çÃæ
 ********************************************************************************/
 
 #if !defined(AFX_UITONGASSIGNBOX_H__1D36E55C_C9D4_44AF_8E20_0FF51BDB2BE0__INCLUDED_)
@@ -23,16 +23,16 @@ public:
 	KUiTongAssignBox();
 	virtual ~KUiTongAssignBox();
 
-	static        KUiTongAssignBox* OpenWindow();   //æ‰“å¼€çª—å£
-	static        KUiTongAssignBox* GetIfVisible(); //å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void   CloseWindow(bool bDestory = TRUE);//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void   LoadScheme(const char* pScheme);  //è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static        KUiTongAssignBox* OpenWindow();   //´ò¿ª´°¿Ú
+	static        KUiTongAssignBox* GetIfVisible(); //Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void   CloseWindow(bool bDestory = TRUE);//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void   LoadScheme(const char* pScheme);  //ÔØÈë½çÃæ·½°¸
 
 public:
-	static void   LinkToMainWindow(                 //å»ºç«‹è¿™ä¸ªç•Œé¢å’Œä¸»ç•Œé¢çš„å…³è”
+	static void   LinkToMainWindow(                 //½¨Á¢Õâ¸ö½çÃæºÍÖ÷½çÃæµÄ¹ØÁª
 		                      KWndWindow *pMain);
 
-	static void   ArrangeData(                      //ä¸ºä»»å‘½æ¡ˆçš„ä¹¦å†™å®‰æ’æ•°æ®
+	static void   ArrangeData(                      //ÎªÈÎÃü°¸µÄÊéĞ´°²ÅÅÊı¾İ
 		                      int nType, char* szTarName, char* szTarAgName, int nCurrentFigure, int nCurrentPosition = 0);
 
 	virtual int   WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
@@ -41,12 +41,12 @@ private:
 	static        KUiTongAssignBox* ms_pSelf;
 
 private:
-	void          PopupConfirmWindow(               //å¼¹å‡ºç¡®è®¤çª—å£
+	void          PopupConfirmWindow(               //µ¯³öÈ·ÈÏ´°¿Ú
 		                        const char* pszInfo, unsigned int uHandleID);
 
-	void          UpdateCheckButton(int nFigure);   //Checkç®¡ç†å‡½æ•°
+	void          UpdateCheckButton(int nFigure);   //Check¹ÜÀíº¯Êı
 	void          Initialize();
-	void          OnConfirm();                      //å“åº”ç¡®è®¤æ“ä½œ
+	void          OnConfirm();                      //ÏìÓ¦È·ÈÏ²Ù×÷
 
 private:
 	enum RESULT_TYPE

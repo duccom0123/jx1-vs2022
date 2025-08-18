@@ -1,6 +1,6 @@
 /* 
  * File:     KUiHelper.h
- * Desc:     ç®€å•å¸®åŠ©ç•Œé¢
+ * Desc:     ¼òµ¥°ïÖú½çÃæ
  * Author:   flying
  * Creation: 2003/7/16
  */
@@ -79,7 +79,7 @@ KUiHelper* KUiHelper::GetIfVisible()
 		return NULL;
 }
 
-//åˆå§‹åŒ–
+//³õÊ¼»¯
 void KUiHelper::Initialize()
 {
 	char Scheme[256];

@@ -1,11 +1,11 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢--çŠ¶æ€ç•Œé¢
+//	½çÃæ--×´Ì¬½çÃæ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-2
 ------------------------------------------------------------------------------------------
-	å…±æœ‰11ä¸ªè£…å¤‡æ‘†æ”¾ä½ç½®ï¼Œæ­¦å™¨2Ã—4ï¼Œè¡£æœ2Ã—3ï¼Œå¤´éƒ¨2Ã—2ï¼Œè…°å¸¦2Ã—1ï¼Œ
-	æ‰‹é•¯1Ã—1ï¼Œé‹å­2Ã—2ï¼Œæˆ’æŒ‡1Ã—1ï¼Œè…°å 1Ã—2ï¼Œé¡¹é“¾1Ã—1ï¼Œé©¬2Ã—3ã€‚
+	¹²ÓĞ11¸ö×°±¸°Ú·ÅÎ»ÖÃ£¬ÎäÆ÷2¡Á4£¬ÒÂ·ş2¡Á3£¬Í·²¿2¡Á2£¬Ñü´ø2¡Á1£¬
+	ÊÖïí1¡Á1£¬Ğ¬×Ó2¡Á2£¬½äÖ¸1¡Á1£¬Ñü×¹1¡Á2£¬ÏîÁ´1¡Á1£¬Âí2¡Á3¡£
 *****************************************************************************************/
 #pragma once
 
@@ -27,30 +27,30 @@ struct KPopupMenuData;
 class KUiStatus : public KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiStatus*	OpenWindow(bool bShow = true);					//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
-	static KUiStatus*	GetIfVisible();					//å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-//	static void			LoadConfig(KIniFile* pIni);		//è½½å…¥è‡ªå®šä¹‰é…ç½®
-	static void			LoadScheme(const char* pScheme);//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiStatus*	OpenWindow(bool bShow = true);					//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
+	static KUiStatus*	GetIfVisible();					//Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+//	static void			LoadConfig(KIniFile* pIni);		//ÔØÈë×Ô¶¨ÒåÅäÖÃ
+	static void			LoadScheme(const char* pScheme);//ÔØÈë½çÃæ·½°¸
 	
-	void	UpdateBaseData();							//æ›´æ–°åŸºæœ¬æ•°æ®ï¼ˆäººåç­‰ä¸æ˜“å˜æ•°æ®ï¼‰
+	void	UpdateBaseData();							//¸üĞÂ»ù±¾Êı¾İ£¨ÈËÃûµÈ²»Ò×±äÊı¾İ£©
 	void	UpdateData();
 	void	Breathe();
 	void	UpdateRuntimeInfo(KUiPlayerRuntimeInfo* pInfo);
 	void	UpdateAllEquips();
 	void	UpdateRuntimeAttribute(KUiPlayerAttribute* pInfo);
-	void	UpdateEquip(KUiObjAtRegion* pEquip, int bAdd);	//è£…å¤‡å˜åŒ–æ›´æ–°
+	void	UpdateEquip(KUiObjAtRegion* pEquip, int bAdd);	//×°±¸±ä»¯¸üĞÂ
 	void	SwitchExpand(BOOL bShow);
 
 private:
 	KUiStatus() {}
 	~KUiStatus() {}
-	void	Initialize();								//åˆå§‹åŒ–	
-	void	UseRemainPoint(int ntype, int nPoint);	//å‡çº§æŸé¡¹å±æ€§
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//çª—å£å‡½æ•°
-	void	LoadScheme(class KIniFile* pIni);			//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	void	OnEquiptChanged(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);//å“åº”ç•Œé¢æ“ä½œå¼•èµ·è£…å¤‡çš„æ”¹å˜
+	void	Initialize();								//³õÊ¼»¯	
+	void	UseRemainPoint(int ntype, int nPoint);	//Éı¼¶Ä³ÏîÊôĞÔ
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);	//´°¿Úº¯Êı
+	void	LoadScheme(class KIniFile* pIni);			//ÔØÈë½çÃæ·½°¸
+	void	OnEquiptChanged(ITEM_PICKDROP_PLACE* pPickPos, ITEM_PICKDROP_PLACE* pDropPos);//ÏìÓ¦½çÃæ²Ù×÷ÒıÆğ×°±¸µÄ¸Ä±ä
 
 private:
 	static KUiStatus*	m_pSelf;
@@ -97,6 +97,6 @@ private:
 	KWndButton  m_Avatar;
 //	int 		m_nNumicon;
 	int			nNumIcon;
-	//è£…å¤‡ç‰©å“
+	//×°±¸ÎïÆ·
 	KWndObjectBox	m_EquipBox[_ITEM_COUNT];
 };

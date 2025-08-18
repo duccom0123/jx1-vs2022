@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	Coreéœ€è¦è¢«å¤–å¼•ç”¨çš„ç‰©å“çš„ç±»å±å®šä¹‰
+//	CoreĞèÒª±»ÍâÒıÓÃµÄÎïÆ·µÄÀàÊô¶¨Òå
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-9-17
@@ -9,41 +9,41 @@
 #ifndef COREOBJGENREDEF_H
 #define COREOBJGENREDEF_H
 
-//ä½åå…­ä½ä¸ºç²—åˆ†ç±»å‹
-#define	CGOG_NOTHING			 0	//å•¥éƒ½ä¸æ˜¯
-#define	CGOG_MONEY				 1	//é’±ï¼ï¼ï¼
-#define	CGOG_OBJECT				 2	//åœ°é¢ç‰©å“
-#define	CGOG_SKILL				 3	//æŠ€èƒ½
-#define	CGOG_ITEM				 4	//ç‰©å“
+//µÍÊ®ÁùÎ»Îª´Ö·ÖÀàĞÍ
+#define	CGOG_NOTHING			 0	//É¶¶¼²»ÊÇ
+#define	CGOG_MONEY				 1	//Ç®£¡£¡£¡
+#define	CGOG_OBJECT				 2	//µØÃæÎïÆ·
+#define	CGOG_SKILL				 3	//¼¼ÄÜ
+#define	CGOG_ITEM				 4	//ÎïÆ·
 #define	CGOG_NPC				 5	//NPC
-#define	CGOG_NPC_BLUR			 6	//äººç‰©æ®‹å½±
-#define	CGOG_MISSLE				 7	//å­å¼¹èµ„æº
-#define	CGOG_EQUIP				 8 // æ²¡ç”¨äº†
-#define	CGOG_NPCSELLITEM		 9	// Npcä¹°å–çš„ä¸œè¥¿
+#define	CGOG_NPC_BLUR			 6	//ÈËÎï²ĞÓ°
+#define	CGOG_MISSLE				 7	//×Óµ¯×ÊÔ´
+#define	CGOG_EQUIP				 8 // Ã»ÓÃÁË
+#define	CGOG_NPCSELLITEM		 9	// NpcÂòÂôµÄ¶«Î÷
 #define CGOG_IME_ITEM			 10
 #define CGOG_PLAYERSELLITEM		 11
 #define CGOG_PLAYERVIEWITEM		 12
 
-//é«˜16ä½ä¸ºç±»å‹ç»†åˆ†æ•°å€¼ï¼Œæœ‰çš„å¯¹è±¡æ²¡æœ‰ç»†åˆ†ç±»å‹
-//ç±»å‹ç»†åˆ†çš„å–å€¼è§„å®šéƒ½ä¸ºé0
+//¸ß16Î»ÎªÀàĞÍÏ¸·ÖÊıÖµ£¬ÓĞµÄ¶ÔÏóÃ»ÓĞÏ¸·ÖÀàĞÍ
+//ÀàĞÍÏ¸·ÖµÄÈ¡Öµ¹æ¶¨¶¼Îª·Ç0
 #define	CGOG_MAKE_DETAIL(_base, _detail)		(((_detail) << 16) + (_base))
-//--è£…å¤‡ç»†åˆ†--
-#define	CGOG_EQUIP_CAP			CGOG_MAKE_DETAIL(CGOG_EQUIP, 1)	//è£…å¤‡-å¸½å­
-#define	CGOG_EQUIP_WEAPON		CGOG_MAKE_DETAIL(CGOG_EQUIP, 2)	//è£…å¤‡-æ­¦å™¨
-#define	CGOG_EQUIP_NECKLACE		CGOG_MAKE_DETAIL(CGOG_EQUIP, 3)	//è£…å¤‡-é¡¹é“¾
-#define	CGOG_EQUIP_BANGLE		CGOG_MAKE_DETAIL(CGOG_EQUIP, 4)	//è£…å¤‡-æ‰‹é•¯
-#define	CGOG_EQUIP_CLOTHING		CGOG_MAKE_DETAIL(CGOG_EQUIP, 5)	//è£…å¤‡-è¡£æœ
-#define	CGOG_EQUIP_CAESTUS		CGOG_MAKE_DETAIL(CGOG_EQUIP, 6)	//è£…å¤‡-è…°å¸¦
-#define	CGOG_EQUIP_RING			CGOG_MAKE_DETAIL(CGOG_EQUIP, 7)	//è£…å¤‡-æˆ’æŒ‡
-#define	CGOG_EQUIP_WAISTDECOR	CGOG_MAKE_DETAIL(CGOG_EQUIP, 8)	//è£…å¤‡-è…°ç¼€
-#define	CGOG_EQUIP_SHOE			CGOG_MAKE_DETAIL(CGOG_EQUIP, 9)	//è£…å¤‡-é‹å­
-//--æŠ€èƒ½ç»†åˆ†--
-#define	CGOG_SKILL_FIGHT		CGOG_MAKE_DETAIL(CGOG_SKILL, 1)	//æˆ˜æ–—æŠ€èƒ½
-#define	CGOG_SKILL_CUSTOM		CGOG_MAKE_DETAIL(CGOG_SKILL, 2)	//è‡ªåˆ›æ­¦åŠŸ
-#define CGOG_SKILL_SHORTCUT		CGOG_MAKE_DETAIL(CGOG_SKILL, 3)	//å¿«æ·æ­¦åŠŸ
-//--ç‰©å“ç»†åˆ†--
-#define	CGOG_ITEM_CORDIAL		CGOG_MAKE_DETAIL(CGOG_ITEM, 1)	//ç‰©å“-æ»‹è¡¥è¯å“
-//#define	CGOG_ITEM_OTHER			CGOG_MAKE_DETAIL(CGOG_ITEM, 2)	//ç‰©å“-å…¶å®ƒ
-//--äººç‰©æ®‹å½±ç»†åˆ†--
+//--×°±¸Ï¸·Ö--
+#define	CGOG_EQUIP_CAP			CGOG_MAKE_DETAIL(CGOG_EQUIP, 1)	//×°±¸-Ã±×Ó
+#define	CGOG_EQUIP_WEAPON		CGOG_MAKE_DETAIL(CGOG_EQUIP, 2)	//×°±¸-ÎäÆ÷
+#define	CGOG_EQUIP_NECKLACE		CGOG_MAKE_DETAIL(CGOG_EQUIP, 3)	//×°±¸-ÏîÁ´
+#define	CGOG_EQUIP_BANGLE		CGOG_MAKE_DETAIL(CGOG_EQUIP, 4)	//×°±¸-ÊÖïí
+#define	CGOG_EQUIP_CLOTHING		CGOG_MAKE_DETAIL(CGOG_EQUIP, 5)	//×°±¸-ÒÂ·ş
+#define	CGOG_EQUIP_CAESTUS		CGOG_MAKE_DETAIL(CGOG_EQUIP, 6)	//×°±¸-Ñü´ø
+#define	CGOG_EQUIP_RING			CGOG_MAKE_DETAIL(CGOG_EQUIP, 7)	//×°±¸-½äÖ¸
+#define	CGOG_EQUIP_WAISTDECOR	CGOG_MAKE_DETAIL(CGOG_EQUIP, 8)	//×°±¸-Ñü×º
+#define	CGOG_EQUIP_SHOE			CGOG_MAKE_DETAIL(CGOG_EQUIP, 9)	//×°±¸-Ğ¬×Ó
+//--¼¼ÄÜÏ¸·Ö--
+#define	CGOG_SKILL_FIGHT		CGOG_MAKE_DETAIL(CGOG_SKILL, 1)	//Õ½¶·¼¼ÄÜ
+#define	CGOG_SKILL_CUSTOM		CGOG_MAKE_DETAIL(CGOG_SKILL, 2)	//×Ô´´Îä¹¦
+#define CGOG_SKILL_SHORTCUT		CGOG_MAKE_DETAIL(CGOG_SKILL, 3)	//¿ì½İÎä¹¦
+//--ÎïÆ·Ï¸·Ö--
+#define	CGOG_ITEM_CORDIAL		CGOG_MAKE_DETAIL(CGOG_ITEM, 1)	//ÎïÆ·-×Ì²¹Ò©Æ·
+//#define	CGOG_ITEM_OTHER			CGOG_MAKE_DETAIL(CGOG_ITEM, 2)	//ÎïÆ·-ÆäËü
+//--ÈËÎï²ĞÓ°Ï¸·Ö--
 #define	CGOG_NPC_BLUR_DETAIL(x)	CGOG_MAKE_DETAIL(CGOG_NPC_BLUR, x)
 #endif

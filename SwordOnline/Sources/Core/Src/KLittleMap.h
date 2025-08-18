@@ -3,7 +3,7 @@
 //
 // File:	KLittleMap.h
 // Date:	2003.05.08
-// Code:	è¾¹åŸæµªå­
+// Code:	±ß³ÇÀË×Ó
 //---------------------------------------------------------------------------
 
 #ifndef KLITTLEMAP_H
@@ -20,49 +20,49 @@
 class	KLittleMap
 {
 private:
-	RECT		m_sMapRect;				// æœ¬åœ°å›¾çš„regionèŒƒå›´(å·¦ä¸Šã€å³ä¸‹)
-	int			m_nMapWidth;			// åœ°å›¾é•¿(region, m_sMapRect.right - m_sMapRect.left + 1)
-	int			m_nMapHeight;			// åœ°å›¾å®½(region, m_sMapRect.bottom - m_sMapRect.top + 1)
-	BYTE		*m_pbyLoadFlag;			// æŸä¸ªregionçš„éšœç¢æ•°æ®è½½å…¥ä¸å¦
-	BYTE		**m_ppbtBarrier;		// æ‰€æœ‰regionçš„éšœç¢æ•°æ®
+	RECT		m_sMapRect;				// ±¾µØÍ¼µÄregion·¶Î§(×óÉÏ¡¢ÓÒÏÂ)
+	int			m_nMapWidth;			// µØÍ¼³¤(region, m_sMapRect.right - m_sMapRect.left + 1)
+	int			m_nMapHeight;			// µØÍ¼¿í(region, m_sMapRect.bottom - m_sMapRect.top + 1)
+	BYTE		*m_pbyLoadFlag;			// Ä³¸öregionµÄÕÏ°­Êı¾İÔØÈëÓë·ñ
+	BYTE		**m_ppbtBarrier;		// ËùÓĞregionµÄÕÏ°­Êı¾İ
 
-	int			m_nScreenX;				// å±å¹•æ˜¾ç¤ºå·¦ä¸Šè§’åæ ‡
-	int			m_nScreenY;				// å±å¹•æ˜¾ç¤ºå·¦ä¸Šè§’åæ ‡
-	int			m_nShowWidth;			// æ˜¾ç¤ºå®½å¤šå°‘ä¸ªregionçš„éšœç¢
-	int			m_nShowHeight;			// æ˜¾ç¤ºé«˜å¤šå°‘ä¸ªregionçš„éšœç¢
+	int			m_nScreenX;				// ÆÁÄ»ÏÔÊ¾×óÉÏ½Ç×ø±ê
+	int			m_nScreenY;				// ÆÁÄ»ÏÔÊ¾×óÉÏ½Ç×ø±ê
+	int			m_nShowWidth;			// ÏÔÊ¾¿í¶àÉÙ¸öregionµÄÕÏ°­
+	int			m_nShowHeight;			// ÏÔÊ¾¸ß¶àÉÙ¸öregionµÄÕÏ°­
 
-	KRColor		m_sBarrierColor;		// éšœç¢é¢œè‰²
-	KRColor		m_sSelfColor;			// ä¸»è§’é¢œè‰²
-	KRColor		m_sTeammateColor;		// é˜Ÿå‹é¢œè‰²
-	KRColor		m_sPlayerColor;			// å…¶ä»–ç©å®¶é¢œè‰²
-	KRColor		m_sFightNpcColor;		// æˆ˜æ–—npcé¢œè‰²
-	KRColor		m_sNormalNpcColor;		// æ™®é€šnpcé¢œè‰²
-	BOOL		m_bColorLoadFlag;		// é¢œè‰²è®¾å®šæ–‡ä»¶æ˜¯å¦å·²ç»è½½å…¥
-	BOOL		m_bTeammateShowFlag;	// æ˜¯å¦æ˜¾ç¤ºé˜Ÿå‹
-	BOOL		m_bPlayerShowFlag;		// æ˜¯å¦æ˜¾ç¤ºå…¶ä»–ç©å®¶
-	BOOL		m_bFightNpcShowFlag;	// æ˜¯å¦æ˜¾ç¤ºæˆ˜æ–—npc
-	BOOL		m_bNormalNpcShowFlag;	// æ˜¯å¦æ˜¾ç¤ºæ™®é€šnpc
+	KRColor		m_sBarrierColor;		// ÕÏ°­ÑÕÉ«
+	KRColor		m_sSelfColor;			// Ö÷½ÇÑÕÉ«
+	KRColor		m_sTeammateColor;		// ¶ÓÓÑÑÕÉ«
+	KRColor		m_sPlayerColor;			// ÆäËûÍæ¼ÒÑÕÉ«
+	KRColor		m_sFightNpcColor;		// Õ½¶·npcÑÕÉ«
+	KRColor		m_sNormalNpcColor;		// ÆÕÍ¨npcÑÕÉ«
+	BOOL		m_bColorLoadFlag;		// ÑÕÉ«Éè¶¨ÎÄ¼şÊÇ·ñÒÑ¾­ÔØÈë
+	BOOL		m_bTeammateShowFlag;	// ÊÇ·ñÏÔÊ¾¶ÓÓÑ
+	BOOL		m_bPlayerShowFlag;		// ÊÇ·ñÏÔÊ¾ÆäËûÍæ¼Ò
+	BOOL		m_bFightNpcShowFlag;	// ÊÇ·ñÏÔÊ¾Õ½¶·npc
+	BOOL		m_bNormalNpcShowFlag;	// ÊÇ·ñÏÔÊ¾ÆÕÍ¨npc
 
-	KRUPoint	m_sPoint[LITTLE_MAP_POINT_NUM];	// ç”¨äºç»˜åˆ¶
-	int			m_nPointPos;		// ç”¨äºç»˜åˆ¶
+	KRUPoint	m_sPoint[LITTLE_MAP_POINT_NUM];	// ÓÃÓÚ»æÖÆ
+	int			m_nPointPos;		// ÓÃÓÚ»æÖÆ
 	KRUShadow	m_sBigPoint;
 public:
-	int			m_nShowFlag;		// æ˜¯å¦æ˜¾ç¤ºå°åœ°å›¾
+	int			m_nShowFlag;		// ÊÇ·ñÏÔÊ¾Ğ¡µØÍ¼
 public:
 	KLittleMap();
 	~KLittleMap();
 	void	Release();
-	void	Init(int nLeft, int nTop, int nRight, int nBottom);	// åˆå§‹åŒ–ï¼Œåˆ†é…å†…å­˜ç©ºé—´
-	BYTE	*GetBarrierBuf(int nX, int nY);	// è·å¾—æŸä¸ªregionçš„éšœç¢æ•°æ®çš„å­˜å‚¨åœ°å€
-	void	SetHaveLoad(int nX, int nY);	// è®¾å®šå·²è½½å…¥æŸä¸ªregionçš„éšœç¢æ•°æ®
-	void	Draw(int nX, int nY);			// ç»˜åˆ¶
-	void	SetTeammateShow(BOOL bFlag);	// é˜Ÿå‹æ˜¾ç¤ºå¼€å…³
-	void	SetPlayerShow(BOOL bFlag);		// å…¶å®ƒç©å®¶æ˜¾ç¤ºå¼€å…³
-	void	SetFightNpcShow(BOOL bFlag);	// æˆ˜æ–—npcæ˜¾ç¤ºå¼€å…³
-	void	SetNormalNpcShow(BOOL bFlag);	// æ™®é€šnpcæ˜¾ç¤ºå¼€å…³
-	void	SetScreenPos(int nX, int nY);	// è®¾å®šå°åœ°å›¾åœ¨å±å¹•ä¸Šçš„æ˜¾ç¤ºä½ç½®
-	void	Show(int nFlag);				// å°åœ°å›¾æ˜¾ç¤ºå¼€å…³
-	void	SetShowSize(int nWidth, int nHeight);// è®¾å®šæ˜¾ç¤ºå†…å®¹çš„å¤§å°
+	void	Init(int nLeft, int nTop, int nRight, int nBottom);	// ³õÊ¼»¯£¬·ÖÅäÄÚ´æ¿Õ¼ä
+	BYTE	*GetBarrierBuf(int nX, int nY);	// »ñµÃÄ³¸öregionµÄÕÏ°­Êı¾İµÄ´æ´¢µØÖ·
+	void	SetHaveLoad(int nX, int nY);	// Éè¶¨ÒÑÔØÈëÄ³¸öregionµÄÕÏ°­Êı¾İ
+	void	Draw(int nX, int nY);			// »æÖÆ
+	void	SetTeammateShow(BOOL bFlag);	// ¶ÓÓÑÏÔÊ¾¿ª¹Ø
+	void	SetPlayerShow(BOOL bFlag);		// ÆäËüÍæ¼ÒÏÔÊ¾¿ª¹Ø
+	void	SetFightNpcShow(BOOL bFlag);	// Õ½¶·npcÏÔÊ¾¿ª¹Ø
+	void	SetNormalNpcShow(BOOL bFlag);	// ÆÕÍ¨npcÏÔÊ¾¿ª¹Ø
+	void	SetScreenPos(int nX, int nY);	// Éè¶¨Ğ¡µØÍ¼ÔÚÆÁÄ»ÉÏµÄÏÔÊ¾Î»ÖÃ
+	void	Show(int nFlag);				// Ğ¡µØÍ¼ÏÔÊ¾¿ª¹Ø
+	void	SetShowSize(int nWidth, int nHeight);// Éè¶¨ÏÔÊ¾ÄÚÈİµÄ´óĞ¡
 };
 
 

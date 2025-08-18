@@ -1,10 +1,10 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--æ˜¾ç¤ºå›¾å½¢å±€éƒ¨çš„çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÏÔÊ¾Í¼ĞÎ¾Ö²¿µÄ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-7-25
 ------------------------------------------------------------------------------------------
-	æ˜¾ç¤º(spr)å›¾å½¢çš„çª—å£ã€‚
+	ÏÔÊ¾(spr)Í¼ĞÎµÄ´°¿Ú¡£
 *****************************************************************************************/
 #pragma once
 #include "WndWindow.h"
@@ -17,9 +17,9 @@ public:
 protected:
 	void			Clone(KWndImagePart* pCopy);
 public:
-	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//åˆå§‹åŒ–
-	virtual void	PaintWindow();								//çª—ä½“ç»˜åˆ¶
-	void			SetPart(int nPartValue, int nFullValue);	//æ ¹æ®éƒ¨åˆ†å€¼ä¸å…¨å€¼çš„æ¯”ä¾‹å…³ç³»è®¾ç½®ç»˜åˆ¶å›¾çš„å“ªéƒ¨åˆ†åŒºåŸŸ
+	virtual int		Init(KIniFile* pIniFile, const char* pSection);	//³õÊ¼»¯
+	virtual void	PaintWindow();								//´°Ìå»æÖÆ
+	void			SetPart(int nPartValue, int nFullValue);	//¸ù¾İ²¿·ÖÖµÓëÈ«ÖµµÄ±ÈÀı¹ØÏµÉèÖÃ»æÖÆÍ¼µÄÄÄ²¿·ÖÇøÓò
 	void			SetImage(short nType, const char* pszImgName, bool bAdjustWndSize = false);
 	KWndImagePart();
 private:

@@ -39,7 +39,7 @@ void * DBThreadFun(void * pParam)
 				if (nPlayerIndex > 0 && pParam1)
 				{			
 					BYTE * pBuffer = (BYTE *)((KMemClass * )pParam1)->GetMemPtr();
-					if (*(int *)pParam2 == 1)//ÐÂ½¨½ÇÉ«
+					if (*(int *)pParam2 == 1)//�½���ɫ
 					{
 #ifndef REMOTE_DBSERVER
 						nResult = S3DBI_SaveRoleInfo((BYTE *) pBuffer, "", 1);

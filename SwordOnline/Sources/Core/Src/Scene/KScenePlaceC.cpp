@@ -1837,12 +1837,6 @@ void KScenePlaceC::DirectFindPos(int nX, int nY, BOOL bSync, BOOL bPaintLine)
     m_Map.DirectFindPos(nX, nY, bSync, bPaintLine);
 }
 
-//TamLTM check hover mouse
-void KScenePlaceC::CheckHoverMouseMiniMap(BOOL hoverM)
-{
-    m_Map.CheckHoverMoveMouse(hoverM);
-}
-//end code
 
 void KScenePlaceC::LoadIni(KIniFile *pIni)
 {

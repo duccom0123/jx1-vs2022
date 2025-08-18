@@ -275,7 +275,7 @@ void KUiEnchase::Breathe()
 }
 
 
-#define 	SCHEME_INI_UPGRADE		"¬∑√ñ√í¬≥√ç¬º√Ü√ó.ini"
+#define 	SCHEME_INI_UPGRADE		"∑÷“≥Õº∆◊.ini"
 
 
 KUiEnchase_Upgrade* KUiEnchase_Upgrade::ms_pSelf = NULL;
@@ -346,9 +346,9 @@ void KUiEnchase_Upgrade::Hide()
 void KUiEnchase_Upgrade::Initialize()
 {
 	AddChild(&m_EquipPos);
-	m_EquipPos.SetText("Trang b√û");
+	m_EquipPos.SetText("Trang bﬁ");
 	AddChild(&m_CryolitePos);
-	m_CryolitePos.SetText("Huy√ín tinh");
+	m_CryolitePos.SetText("Huy“n tinh");
 	AddChild(&m_ConsumeEffect);
 	m_ConsumeEffect.Hide();
 	for (int i = 0; i < MAX_COMPOUND_ITEM; i ++)
@@ -599,13 +599,13 @@ int KGetFarmImage_Upgrade::GetCurrentFrame()
 	return m_Image.nFrame;
 }
 
-#define 	SCHEME_INI_COMPOUND		"¬∑√ñ√í¬≥¬∫√è¬≥√â.ini"
+#define 	SCHEME_INI_COMPOUND		"∑÷“≥∫œ≥….ini"
 
 char szArray_Compound[][64] = 
 {
-	"Luy√ñn ch√ï Huy√ín tinh kho¬∏ng th¬πch",
-	"Th¬®ng c√äp Huy√ín tinh kho¬∏ng th¬πch",
-	"Th¬®ng c√äp Kho¬∏ng th¬πch thu√©c t√ùnh",
+	"Luy÷n ch’ Huy“n tinh kho∏ng thπch",
+	"Th®ng c p Huy“n tinh kho∏ng thπch",
+	"Th®ng c p Kho∏ng thπch thuÈc t›nh",
 };
 
 KUiEnchase_Compound* KUiEnchase_Compound::ms_pSelf = NULL;
@@ -673,13 +673,13 @@ void KUiEnchase_Compound::Hide()
 void KUiEnchase_Compound::Initialize()
 {
 	AddChild(&m_Box_0);
-	m_Box_0.SetText("Nh√ân");
+	m_Box_0.SetText("Nh…n");
 
 	AddChild(&m_Box_1);
-	m_Box_1.SetText("D¬©y chuy√ín/h√© th¬©n ph√Ø");
+	m_Box_1.SetText("D©y chuy“n/hÈ th©n phÔ");
 
 	AddChild(&m_Box_2);
-	m_Box_2.SetText("Ng√§c b√©i/h¬≠¬¨ng nang");
+	m_Box_2.SetText("Ng‰c bÈi/h≠¨ng nang");
 	
 	AddChild(&m_Effect_0);
 	m_Effect_0.Hide();
@@ -931,13 +931,13 @@ void KUiEnchase_Compound::ApplyShow(int nAction)
 	{
 	case CPA_FUSION:
 		{
-			m_Box_0.SetText("Nh√ân");
+			m_Box_0.SetText("Nh…n");
 			m_Box_0.SetPosition(105,44);
 			
-			m_Box_1.SetText("D¬©y chuy√ín/h√© th¬©n ph√Ø");
+			m_Box_1.SetText("D©y chuy“n/hÈ th©n phÔ");
 			m_Box_1.SetPosition(110,154);
 			
-			m_Box_2.SetText("Ng√§c b√©i/h¬≠¬¨ng nang");
+			m_Box_2.SetText("Ng‰c bÈi/h≠¨ng nang");
 			m_Box_2.SetPosition(-8,154);
 			m_GuideList.Clear();
 			int nLength = TEncodeText(m_szTip[CPA_FUSION], strlen(m_szTip[CPA_FUSION]));
@@ -946,13 +946,13 @@ void KUiEnchase_Compound::ApplyShow(int nAction)
 		break;
 	case CPA_CRYOLITE:
 		{
-			m_Box_0.SetText("Huy√ín tinh 1");
+			m_Box_0.SetText("Huy“n tinh 1");
 			m_Box_0.SetPosition(80,44);
 			
-			m_Box_1.SetText("Huy√ín tinh 2");
+			m_Box_1.SetText("Huy“n tinh 2");
 			m_Box_1.SetPosition(146,154);
 			
-			m_Box_2.SetText("Huy√ín tinh 3");
+			m_Box_2.SetText("Huy“n tinh 3");
 			m_Box_2.SetPosition(18,154);
 			m_GuideList.Clear();
 			int nLength = TEncodeText(m_szTip[CPA_CRYOLITE], strlen(m_szTip[CPA_CRYOLITE]));
@@ -961,13 +961,13 @@ void KUiEnchase_Compound::ApplyShow(int nAction)
 		break;
 	case CPA_PROPMINE:
 		{
-			m_Box_0.SetText("Kho¬∏ng th¬πch 1");
+			m_Box_0.SetText("Kho∏ng thπch 1");
 			m_Box_0.SetPosition(71,44);
 			
-			m_Box_1.SetText("Kho¬∏ng th¬πch 2");
+			m_Box_1.SetText("Kho∏ng thπch 2");
 			m_Box_1.SetPosition(137,154);
 			
-			m_Box_2.SetText("Kho¬∏ng th¬πch 3");
+			m_Box_2.SetText("Kho∏ng thπch 3");
 			m_Box_2.SetPosition(9,154);
 			m_GuideList.Clear();
 			int nLength = TEncodeText(m_szTip[CPA_PROPMINE], strlen(m_szTip[CPA_PROPMINE]));
@@ -1056,7 +1056,7 @@ int KGetFrameImage_Compound::GetCurrentFrame()
 	return m_Image.nFrame;
 }
 
-#define 	SCHEME_INI_DISTILL		"¬∑√ñ√í¬≥√å√°√à¬°.ini"
+#define 	SCHEME_INI_DISTILL		"∑÷“≥Ã·»°.ini"
 
 
 KUiEnchase_Distill* KUiEnchase_Distill::ms_pSelf = NULL;
@@ -1130,13 +1130,13 @@ void KUiEnchase_Distill::Initialize()
 {
 	//UpdateAllData();
 	AddChild(&m_EquipPos);
-	m_EquipPos.SetText("Trang b√û m¬µu xanh");
+	m_EquipPos.SetText("Trang bﬁ mµu xanh");
 	AddChild(&m_CryolitePos);
-	m_CryolitePos.SetText("Huy√ín tinh");
+	m_CryolitePos.SetText("Huy“n tinh");
 	AddChild(&m_PropMinePos);
-	m_PropMinePos.SetText("Nguy¬™n kho¬∏ng");
+	m_PropMinePos.SetText("Nguy™n kho∏ng");
 	AddChild(&m_ConsumePos);
-	m_ConsumePos.SetText("C√£ th√ì ch√§n nguy¬™n li√ñu");
+	m_ConsumePos.SetText("C„ th” ch‰n nguy™n li÷u");
 	AddChild(&m_EquipEffect);
 	m_EquipEffect.Hide();
 	AddChild(&m_ConsumeEffect);
@@ -1490,7 +1490,7 @@ int KGetFarmImage_Distill::GetCurrentFrame()
 	return m_Image.nFrame;
 }
 
-#define 	SCHEME_INI_FORGE		"¬∑√ñ√í¬≥¬¥√≤√î√¨.ini"
+#define 	SCHEME_INI_FORGE		"∑÷“≥¥Ú‘Ï.ini"
 
 KUiEnchase_Forge*	KUiEnchase_Forge::ms_pSelf = NULL;
 
@@ -1560,9 +1560,9 @@ void KUiEnchase_Forge::Hide()
 void KUiEnchase_Forge::Initialize()
 {
 	AddChild(&m_EquipPos);
-	m_EquipPos.SetText("Trang b√û xanh tr¬æng");
+	m_EquipPos.SetText("Trang bﬁ xanh træng");
 	AddChild(&m_CryolitePos);
-	m_CryolitePos.SetText("Huy√ín tinh");
+	m_CryolitePos.SetText("Huy“n tinh");
 	AddChild(&m_EquipEffect);
 	m_EquipEffect.Hide();	
 	for (int i = 0; i < MAX_COMPOUND_ITEM; i ++)
@@ -1809,7 +1809,7 @@ int KGetFarmImage_Forge::GetCurrentFrame()
 	return m_Image.nFrame;
 }
 
-#define 	SCHEME_INI_ENCHASE		"¬∑√ñ√í¬≥√è√¢√á¬∂.ini"
+#define 	SCHEME_INI_ENCHASE		"∑÷“≥œ‚«∂.ini"
 
 KUiEnchase_Enchase*	KUiEnchase_Enchase::ms_pSelf = NULL;
 
@@ -1880,13 +1880,13 @@ void KUiEnchase_Enchase::Hide()
 void KUiEnchase_Enchase::Initialize()
 {
 	AddChild(&m_PurpleEquipPos);
-	m_PurpleEquipPos.SetText("Trang b√û Huy√ín Tinh");
+	m_PurpleEquipPos.SetText("Trang bﬁ Huy“n Tinh");
 	AddChild(&m_CryolitePos);
-	m_CryolitePos.SetText("Huy√ín tinh");
+	m_CryolitePos.SetText("Huy“n tinh");
 	AddChild(&m_PropMinePos);
-	m_PropMinePos.SetText("Nguy¬™n kho¬∏ng");
+	m_PropMinePos.SetText("Nguy™n kho∏ng");
 	AddChild(&m_ConsumePos);
-	m_ConsumePos.SetText("C√£ th√ì ch√§n nguy¬™n li√ñu");
+	m_ConsumePos.SetText("C„ th” ch‰n nguy™n li÷u");
 	AddChild(&m_EquipEffect);
 	m_EquipEffect.Hide();
 	AddChild(&m_ConsumeEffect);

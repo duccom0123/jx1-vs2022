@@ -1,9 +1,9 @@
 /* 
  * File:     UiTaskNote.h
- * Desc:     ä»»åŠ¡è®°äº‹çª—å£
+ * Desc:     ÈÎÎñ¼ÇÊÂ´°¿Ú
  * Author:   flying
  * Creation: 2003/7/18
- * å³å°†ç¬¬äºŒæ¬¡å‚åŠ æ–°äººåŸ¹è®­
+ * ¼´½«µÚ¶ş´Î²Î¼ÓĞÂÈËÅàÑµ
  */
 //-----------------------------------------------------------------------------
 #pragma once
@@ -44,12 +44,12 @@ class KUiTaskNote : public KWndShowAnimate
 {
 public:
 	static KUiTaskNote*		OpenWindow();
-	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 	static void				CloseWindow(bool bDestroy);
 	static KUiTaskNote*		GetIfVisible();
-	// ç”±æ¸¸æˆå¾ªç¯å”¤é†’
+	// ÓÉÓÎÏ·Ñ­»·»½ĞÑ
 	static void				WakeUp(KMissionRecord* pRecord);
-	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//ÔØÈë½çÃæ·½°¸
 	static void				LoadScheme(const char* pScheme);
 private:
 	KUiTaskNote();
@@ -57,8 +57,8 @@ private:
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	Initialize();
 	void	OnClose();
-	void	InitData();		//åˆå§‹åŒ–ç›¸å…³å­˜æ¡£æ•°æ®
-	void	SaveData();		//ä¿å­˜æ•°æ®
+	void	InitData();		//³õÊ¼»¯Ïà¹Ø´æµµÊı¾İ
+	void	SaveData();		//±£´æÊı¾İ
 	void	UpdateData(int nSel);
 	void	UpdateList(int nId);
 	void	OnDelete(int nIndex);
@@ -84,17 +84,17 @@ class KUiMissionNote : public KWndShadow
 {
 public:
 	static KUiMissionNote*		OpenWindow(KMissionRecord* pRecord);
-	//å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
+	//¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
 	static void				CloseWindow(bool bDestroy);
 	static KUiMissionNote*		GetIfVisible();
-	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	//ÔØÈë½çÃæ·½°¸
 	static void				LoadScheme(const char* pScheme);
 private:
 	KUiMissionNote();
 	virtual ~KUiMissionNote();
 	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
 	void	Initialize();
-	int		PtInWindow(int x, int y);				//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
+	int		PtInWindow(int x, int y);				//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
 private:
 	// here goes data.
 	static KUiMissionNote*		m_pSelf;

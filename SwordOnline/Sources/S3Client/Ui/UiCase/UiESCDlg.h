@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	æ–‡ä»¶å		ï¼š	UiESCDlg.h
-//	åˆ›å»ºè€…		ï¼š	å½­å»ºæ³¢
-//	åˆ›å»ºæ—¶é—´	ï¼š	2002-9-16 10:32:22
-//	åŠŸèƒ½æè¿°	ï¼š	
+//	ÎÄ¼şÃû		£º	UiESCDlg.h
+//	´´½¨Õß		£º	Åí½¨²¨
+//	´´½¨Ê±¼ä	£º	2002-9-16 10:32:22
+//	¹¦ÄÜÃèÊö	£º	
 //
 // -------------------------------------------------------------------------
 #ifndef __UIESCDLG_H__
@@ -14,30 +14,30 @@
 class KUiESCDlg : protected KWndShowAnimate
 {
 public:
-	//----ç•Œé¢é¢æ¿ç»Ÿä¸€çš„æ¥å£å‡½æ•°----
-	static KUiESCDlg*	OpenWindow();		//æ‰“å¼€çª—å£ï¼Œè¿”å›å”¯ä¸€çš„ä¸€ä¸ªç±»å¯¹è±¡å®ä¾‹
+	//----½çÃæÃæ°åÍ³Ò»µÄ½Ó¿Úº¯Êı----
+	static KUiESCDlg*	OpenWindow();		//´ò¿ª´°¿Ú£¬·µ»ØÎ¨Ò»µÄÒ»¸öÀà¶ÔÏóÊµÀı
 	static KUiESCDlg*	GetIfVisible();
-	static void			CloseWindow(bool bDestroy);		//å…³é—­çª—å£
+	static void			CloseWindow(bool bDestroy);		//¹Ø±Õ´°¿Ú
 private:
 	KUiESCDlg() {}
 	~KUiESCDlg();
 	void	Show();
 	void	Hide();
-	int		Initialize();						//åˆå§‹åŒ–
-	void	LoadScheme(const char* pScheme);	//è½½å…¥ç•Œé¢æ–¹æ¡ˆ
-	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//çª—å£å‡½æ•°
-	void	OnClickButton(KWndWindow* pWnd);	//å“åº”ç‚¹å‡»æŒ‰é’®
+	int		Initialize();						//³õÊ¼»¯
+	void	LoadScheme(const char* pScheme);	//ÔØÈë½çÃæ·½°¸
+	int		WndProc(unsigned int uMsg, unsigned int uParam, int nParam);//´°¿Úº¯Êı
+	void	OnClickButton(KWndWindow* pWnd);	//ÏìÓ¦µã»÷°´Å¥
 	int		OnKeyDown(unsigned int uKey);
 	KWndButton*	GetActiveBtn();
 private:
 	static KUiESCDlg*	m_pSelf;
-	KWndButton	m_ExitGameBtn;			// é€€å‡ºæ¸¸æˆ
-	//KWndButton	m_ExitBtn;				// é€€å‡ºç¨‹åº
+	KWndButton	m_ExitGameBtn;			// ÍË³öÓÎÏ·
+	//KWndButton	m_ExitBtn;				// ÍË³ö³ÌĞò
 	KWndButton	m_HelpBtn;
 	//KWndButton	m_TaskBtn;
 	KWndButton	m_OfflineBtn;
 	KWndButton	m_OptionsBtn;
-	KWndButton	m_ContinueGameBtn;		// ç»§ç»­æ¸¸æˆ
+	KWndButton	m_ContinueGameBtn;		// ¼ÌĞøÓÎÏ·
 	KWndButton	m_ESCBg;
 };
 

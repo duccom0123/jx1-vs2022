@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//	ç•Œé¢çª—å£ä½“ç³»ç»“æ„--åˆ‡æ¢æ˜¾ç¤ºçŠ¶æ€æ—¶å¸¦ç§»åŠ¨æ§åˆ¶çš„å›¾å½¢çš„çª—å£
+//	½çÃæ´°¿ÚÌåÏµ½á¹¹--ÇĞ»»ÏÔÊ¾×´Ì¬Ê±´øÒÆ¶¯¿ØÖÆµÄÍ¼ĞÎµÄ´°¿Ú
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-12-17
@@ -20,7 +20,7 @@ void KWndShadow::Clone(KWndShadow* pCopy)
 	}
 }
 
-//åˆå§‹åŒ–
+//³õÊ¼»¯
 int KWndShadow::Init(KIniFile* pIniFile, const char* pSection)
 {
 	if (KWndWindow::Init(pIniFile, pSection))
@@ -39,7 +39,7 @@ int KWndShadow::Init(KIniFile* pIniFile, const char* pSection)
 	return false;
 }
 
-//çª—ä½“ç»˜åˆ¶
+//´°Ìå»æÖÆ
 void KWndShadow::PaintWindow()
 {
 	KWndWindow::PaintWindow();
@@ -55,7 +55,7 @@ void KWndShadow::PaintWindow()
 	}
 }
 
-//åˆ¤æ–­ä¸€ä¸ªç‚¹æ˜¯å¦åœ¨çª—å£èŒƒå›´å†…,ä¼ å…¥çš„æ˜¯ç»å¯¹åæ ‡
+//ÅĞ¶ÏÒ»¸öµãÊÇ·ñÔÚ´°¿Ú·¶Î§ÄÚ,´«ÈëµÄÊÇ¾ø¶Ô×ø±ê
 int KWndShadow::PtInWindow(int x, int y)
 {
 	return 0;

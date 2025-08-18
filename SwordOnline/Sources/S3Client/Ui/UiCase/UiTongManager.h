@@ -2,7 +2,7 @@
 File        : UiTongManager.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : 08-29-2003(mm-dd-yyyy)
-Description : ç®¡ç†å¸®ä¼šçš„ç•Œé¢
+Description : ¹ÜÀí°ï»áµÄ½çÃæ
 ********************************************************************************/
 
 #if !defined(AFX_UITONGMANAGER_H__13BA213D_11EC_4F24_BF98_F51C3F414D6D__INCLUDED_)
@@ -39,86 +39,86 @@ public:
 	KUiTongManager();
 	virtual ~KUiTongManager();
 
-	static        KUiTongManager* OpenWindow();      //æ‰“å¼€çª—å£
-	static        KUiTongManager* OpenWindow(        //æ‰“å¼€çª—å£ï¼ŒåŒæ—¶å®‰æ’ç•Œé¢å¸ƒå±€
+	static        KUiTongManager* OpenWindow();      //´ò¿ª´°¿Ú
+	static        KUiTongManager* OpenWindow(        //´ò¿ª´°¿Ú£¬Í¬Ê±°²ÅÅ½çÃæ²¼¾Ö
 		                                     char* pszPlayerName);
-	static        KUiTongManager* GetIfVisible();    //å¦‚æœçª—å£æ­£è¢«æ˜¾ç¤ºï¼Œåˆ™è¿”å›å®ä¾‹æŒ‡é’ˆ
-	static void   CloseWindow(bool bDestory = true); //å…³é—­çª—å£ï¼ŒåŒæ—¶å¯ä»¥é€‰åˆ™æ˜¯å¦åˆ é™¤å¯¹è±¡å®ä¾‹
-	static void   LoadScheme(const char* pScheme);   //è½½å…¥ç•Œé¢æ–¹æ¡ˆ
+	static        KUiTongManager* GetIfVisible();    //Èç¹û´°¿ÚÕı±»ÏÔÊ¾£¬Ôò·µ»ØÊµÀıÖ¸Õë
+	static void   CloseWindow(bool bDestory = true); //¹Ø±Õ´°¿Ú£¬Í¬Ê±¿ÉÒÔÑ¡ÔòÊÇ·ñÉ¾³ı¶ÔÏóÊµÀı
+	static void   LoadScheme(const char* pScheme);   //ÔØÈë½çÃæ·½°¸
 
-	                                                 //æ¥å—æ–°çš„æ•°æ®
+	                                                 //½ÓÊÜĞÂµÄÊı¾İ
 	static void   NewDataArrive(KUiGameObjectWithName *ParamInfo, KTongMemberItem *pIncome);
 
-	                                                 //æ¥å—å¸®ä¼šä¿¡æ¯
+	                                                 //½ÓÊÜ°ï»áĞÅÏ¢
 	static void   TongInfoArrive(KUiPlayerRelationWithOther* Relation, KTongInfo *pTongInfo);
-	static int    RemoveTempFile();                  //åˆ é™¤ä¸´æ—¶æ–‡ä»¶
+	static int    RemoveTempFile();                  //É¾³ıÁÙÊ±ÎÄ¼ş
 
-	static void   ResponseResult(                    //å¯¹ç»“æœçš„å“åº”å…¥å£
+	static void   ResponseResult(                    //¶Ô½á¹ûµÄÏìÓ¦Èë¿Ú
 		                         KUiGameObjectWithName *pResult, int nbIsSucceed);
 public:
 	virtual int   WndProc(unsigned int uMsg, unsigned int uParam, int nParam);
-	void          ArrangeComposition(                //æ ¹æ®ä¼ å…¥çš„ç©å®¶åå­—ï¼Œå®‰æ’ç•Œé¢å¸ƒå±€
+	void          ArrangeComposition(                //¸ù¾İ´«ÈëµÄÍæ¼ÒÃû×Ö£¬°²ÅÅ½çÃæ²¼¾Ö
 		                             char* pszPlayerName);
 
 
 private:
 	void          Initialize();
 
-	void          PopupConfirmWindow(                //å¼¹å‡ºç¡®è®¤çª—å£
+	void          PopupConfirmWindow(                //µ¯³öÈ·ÈÏ´°¿Ú
 		                        const char* pszInfo, unsigned int uHandleID);
 
-	static void   RequestData(int nType, int nIndex);//å‘Coreå‘å‡ºæ•°æ®è¯·æ±‚
-	static void   SaveNewData(                       //æŠŠæ–°åˆ°çš„åˆ—è¡¨ä¿¡æ¯å­˜åˆ°ä¸´æ—¶æ–‡ä»¶
+	static void   RequestData(int nType, int nIndex);//ÏòCore·¢³öÊı¾İÇëÇó
+	static void   SaveNewData(                       //°ÑĞÂµ½µÄÁĞ±íĞÅÏ¢´æµ½ÁÙÊ±ÎÄ¼ş
 		                        KUiGameObjectWithName *ParamInfo, KTongMemberItem *pIncome);
 
-	static void   SaveWholeData(int nType);          //æŠŠæŒ‡å®šç±»å‹çš„åˆ—è¡¨æ•°æ®æ•´ä¸ªå­˜å‚¨èµ·æ¥
+	static void   SaveWholeData(int nType);          //°ÑÖ¸¶¨ÀàĞÍµÄÁĞ±íÊı¾İÕû¸ö´æ´¢ÆğÀ´
 
-	static int    IsPlayerExist(                     //æŸ¥è¯¢ç‰¹å®šåå­—çš„ç©å®¶æ˜¯å¦å·²ç»å­˜åœ¨
+	static int    IsPlayerExist(                     //²éÑ¯ÌØ¶¨Ãû×ÖµÄÍæ¼ÒÊÇ·ñÒÑ¾­´æÔÚ
 		                        KPilgarlicItem *MeToCmp, KLinkStruct<KPilgarlicItem> *pData);
 
-	KLinkStruct<KPilgarlicItem>*                     //æŸ¥è¯¢ç‰¹å®šåå­—çš„ç©å®¶çš„æ•°æ®ä½ç½®
+	KLinkStruct<KPilgarlicItem>*                     //²éÑ¯ÌØ¶¨Ãû×ÖµÄÍæ¼ÒµÄÊı¾İÎ»ÖÃ
 		          FindPlayer(char *pszName);
 
-	KLinkStruct<KPilgarlicItem>*                     //æŸ¥æ‰¾ç©å®¶å¤„ç†å‡½æ•°
+	KLinkStruct<KPilgarlicItem>*                     //²éÕÒÍæ¼Ò´¦Àíº¯Êı
 		          HandleFind(KLinkStruct<KPilgarlicItem> *pData, char *pszName);
 
-	void          LoadData(int nType);               //è½½å…¥èµ„æ–™
-	int           LoadDataHandler(                   //è½½å…¥èµ„æ–™çš„å¤„ç†å‡½æ•°
+	void          LoadData(int nType);               //ÔØÈë×ÊÁÏ
+	int           LoadDataHandler(                   //ÔØÈë×ÊÁÏµÄ´¦Àíº¯Êı
 		                        KLinkStruct<KPilgarlicItem> *pData,
 							    const char* szSection);
 
-	void          UpdateBtnTheme(                    //æ›´æ–°æŒ‰é’®é…ç½®æ–¹æ¡ˆ
+	void          UpdateBtnTheme(                    //¸üĞÂ°´Å¥ÅäÖÃ·½°¸
 		                        int nType, BOOL bDissable = FALSE);
 
-	KLinkStruct<KPilgarlicItem>*                     //è¿”å›å½“å‰æ‰€é€‰æ‹©çš„åˆ—è¡¨ç±»å‹æ‰€å¯¹åº”çš„æ•°æ®é›†
+	KLinkStruct<KPilgarlicItem>*                     //·µ»Øµ±Ç°ËùÑ¡ÔñµÄÁĞ±íÀàĞÍËù¶ÔÓ¦µÄÊı¾İ¼¯
 		          GetCurrentSelectedData();
 
-	KPilgarlicItem*                                  //è¿”å›æ‰€é€‰æ‹©çš„ä¼šå‘˜
+	KPilgarlicItem*                                  //·µ»ØËùÑ¡ÔñµÄ»áÔ±
 		          GetSelectedPlayer();
 
-	void          UpdateTongInfoView();              //æ›´æ–°å¸®ä¼šè®¯æ¯çš„æ˜¾ç¤º
-	void          UpdateTongListView();              //æ›´æ–°åˆ—è¡¨æ 
+	void          UpdateTongInfoView();              //¸üĞÂ°ï»áÑ¶Ï¢µÄÏÔÊ¾
+	void          UpdateTongListView();              //¸üĞÂÁĞ±íÀ¸
 
-	void          ClearTongData();                   //æŠŠå¸®ä¼šä¿¡æ¯æ æ¸…ç©º
+	void          ClearTongData();                   //°Ñ°ï»áĞÅÏ¢À¸Çå¿Õ
 	void		  OpenJiyuPopup(int nIndex);
-	void          UpdateListCheckButton(int nType);  //ä¸‰ä¸ªåˆ—è¡¨CheckBoxçš„ç®¡ç†
-	void          OnAction(int nType);               //å„ç§å¸®ä¼šæ“ä½œçš„å¤„ç†å‡½æ•°
+	void          UpdateListCheckButton(int nType);  //Èı¸öÁĞ±íCheckBoxµÄ¹ÜÀí
+	void          OnAction(int nType);               //¸÷ÖÖ°ï»á²Ù×÷µÄ´¦Àíº¯Êı
 	void		  OnMoney(int ntype,int nMoney, int nSelect = -1);
-	void          OnRefresh();                       //å“åº”åˆ·æ–°æŒ‰é’®çš„æ“ä½œå‡½æ•°
+	void          OnRefresh();                       //ÏìÓ¦Ë¢ĞÂ°´Å¥µÄ²Ù×÷º¯Êı
 
-	void          ResponseLeave(                     //å“åº”ç¦»å¸®åçš„æ“ä½œ
+	void          ResponseLeave(                     //ÏìÓ¦Àë°ïºóµÄ²Ù×÷
 		                        KUiGameObjectWithName *pResult, int nbIsSucceed);
 
-	void          ResponseDismiss(                   //å“åº”è¸¢äººåçš„æ“ä½œ
+	void          ResponseDismiss(                   //ÏìÓ¦ÌßÈËºóµÄ²Ù×÷
 		                        KUiGameObjectWithName *pResult, int nbIsSucceed);
 
-	void          ResponseDemise(                    //å“åº”ä¼ ä½åçš„æ“ä½œ
+	void          ResponseDemise(                    //ÏìÓ¦´«Î»ºóµÄ²Ù×÷
 		                        KUiGameObjectWithName *pResult, int nbIsSucceed);
 	
-	void          ResponseAssign(                    //å“åº”ä»»å‘½åçš„æ“ä½œ
+	void          ResponseAssign(                    //ÏìÓ¦ÈÎÃüºóµÄ²Ù×÷
 		                        KUiGameObjectWithName *pResult, int nbIsSucceed);
 
-	void          ResponseApply(                     //å“åº”ç”³è¯·åçš„æ“ä½œ
+	void          ResponseApply(                     //ÏìÓ¦ÉêÇëºóµÄ²Ù×÷
 		                        KUiGameObjectWithName *pResult, int nbIsSucceed);
 	
 	void		  UpdatePageofList();
@@ -144,28 +144,28 @@ private:
 	};
 
 private:
-	KWndLabeledButton                                //è¸¢äººï¼Œä»»å‘½ï¼Œä¼ ä½æŒ‰é’®
+	KWndLabeledButton                                //ÌßÈË£¬ÈÎÃü£¬´«Î»°´Å¥
 		          m_BtnDismiss, m_BtnAssign, m_BtnDemise, m_BtnPrev, m_BtnNext;
 
 	KWndLabeledButton
-		          m_BtnLeave, m_BtnRecruit;          //ç¦»å¸®ï¼Œæ‹›äººæŒ‰é’®
+		          m_BtnLeave, m_BtnRecruit;          //Àë°ï£¬ÕĞÈË°´Å¥
 
 	KWndLabeledButton
-		          m_BtnApply, m_BtnCancel;           //ç”³è¯·ï¼Œå–æ¶ˆæŒ‰é’®
+		          m_BtnApply, m_BtnCancel;           //ÉêÇë£¬È¡Ïû°´Å¥
 
-	KWndButton                                //é•¿è€ã€é˜Ÿé•¿ã€æˆå‘˜åˆ—è¡¨
+	KWndButton                                //³¤ÀÏ¡¢¶Ó³¤¡¢³ÉÔ±ÁĞ±í
 		          m_BtnElderList, m_BtnCaptainList, m_BtnMemberList, m_BtnLeagueList;
 
 	KWndButton    m_BtnChangeCamp, m_BtnClose, m_BtnRefresh, m_BtnDepositMoney, m_BtnTakeMoney;
-	KWndText32    m_TitleTongInfo, m_TitleTongNotify, m_TongName, m_MasterName;          //å¸®ä¼šåå­—ï¼Œè€å¤§åå­—(äº”æœˆ)
-	KWndText32    m_Alignment;                       //é˜µè¥åå­—
-	KWndText32    m_MemberCount, m_Money, m_TongLevel, m_TotalEff;            //äººæ•°ï¼Œèµ„é‡‘
+	KWndText32    m_TitleTongInfo, m_TitleTongNotify, m_TongName, m_MasterName;          //°ï»áÃû×Ö£¬ÀÏ´óÃû×Ö(ÎåÔÂ)
+	KWndText32    m_Alignment;                       //ÕóÓªÃû×Ö
+	KWndText32    m_MemberCount, m_Money, m_TongLevel, m_TotalEff;            //ÈËÊı£¬×Ê½ğ
 
-	KWndList2     m_List;                            //ä¸­é—´çš„åˆ—è¡¨æ§ä»¶
+	KWndList2     m_List;                            //ÖĞ¼äµÄÁĞ±í¿Ø¼ş
 
 #define MAX_TONGJIYU 5
 	TONG_MEMBER_FIGURE
-		          m_Relation;                        //æ‰“å¼€è¿™ä¸ªç•Œé¢çš„äººä¸ç›®æ ‡å¸®ä¼šçš„å…³ç³»
+		          m_Relation;                        //´ò¿ªÕâ¸ö½çÃæµÄÈËÓëÄ¿±ê°ï»áµÄ¹ØÏµ
 	KWndLabeledButton m_Save;
 	KWndText32	m_QingXiangTitle, m_JiyuTitle, m_AutoAcceptTitle;
 	KWndText32	m_QingXiangText, m_JiyuText[MAX_TONGJIYU];
@@ -177,48 +177,48 @@ private:
 
 private:
 	KLinkStruct<KPilgarlicItem>
-		          m_MemberData, m_CaptainData;       //æˆå‘˜åˆ—è¡¨å’Œé˜Ÿé•¿åˆ—è¡¨çš„æ•°æ®
+		          m_MemberData, m_CaptainData;       //³ÉÔ±ÁĞ±íºÍ¶Ó³¤ÁĞ±íµÄÊı¾İ
 
-	KLinkStruct<KPilgarlicItem> m_ElderData;         //é•¿è€åˆ—è¡¨
-	static KTongInfo            m_TongData;          //å¸®ä¼šçš„èµ„æ–™æ•°æ®
+	KLinkStruct<KPilgarlicItem> m_ElderData;         //³¤ÀÏÁĞ±í
+	static KTongInfo            m_TongData;          //°ï»áµÄ×ÊÁÏÊı¾İ
 	static KTongParam			m_TongParam;
 
 
 private:
-	unsigned int  m_uLastRequestTongDataTime;        //ä¸Šä¸€æ¬¡è¯·æ±‚å¸®ä¼šèµ„æ–™çš„æ—¶é—´
-	unsigned int  m_uLastRequestElderListTime;       //ä¸Šä¸€æ¬¡è¯·æ±‚é•¿è€åˆ—è¡¨çš„æ—¶é—´
-	unsigned int  m_uLastRequestMemberListTime;      //ä¸Šä¸€æ¬¡è¯·æ±‚å¸®ä¼—åˆ—è¡¨çš„æ—¶é—´
-	unsigned int  m_uLastRequestCaptainListTime;     //ä¸Šä¸€æ¬¡è¯·æ±‚é˜Ÿé•¿åˆ—è¡¨çš„æ—¶é—´
+	unsigned int  m_uLastRequestTongDataTime;        //ÉÏÒ»´ÎÇëÇó°ï»á×ÊÁÏµÄÊ±¼ä
+	unsigned int  m_uLastRequestElderListTime;       //ÉÏÒ»´ÎÇëÇó³¤ÀÏÁĞ±íµÄÊ±¼ä
+	unsigned int  m_uLastRequestMemberListTime;      //ÉÏÒ»´ÎÇëÇó°ïÖÚÁĞ±íµÄÊ±¼ä
+	unsigned int  m_uLastRequestCaptainListTime;     //ÉÏÒ»´ÎÇëÇó¶Ó³¤ÁĞ±íµÄÊ±¼ä
 
 	int			  m_nItemLen;
 	int			  m_nNameLen;
 	int			  m_nAgnameLen;
-	int           m_nFontSize;          //å­—ä½“å¤§å°
-	int           m_nLineLen;           //è®¡ç®—å‡ºæ¥çš„è¡Œé•¿åº¦
+	int           m_nFontSize;          //×ÖÌå´óĞ¡
+	int           m_nLineLen;           //¼ÆËã³öÀ´µÄĞĞ³¤¶È
 	int			  m_nTongJiyuParam;
 	int			  m_nMoney;
 	int			  nViewCount;
 	int			  nDataCount;
 	int			  m_nCurrentPage;
 	BOOL		  m_bValue;
-	int           m_nRelation;                       //ä¸‹é¢é‚£ä¸ªç©å®¶ä¸æ‰€æ‰“å¼€çš„å¸®ä¼šçš„å…³ç³»
-	int           m_nIndex;                          //ä¸ä¸‹é¢é‚£ä¸ªå¯¹åº”çš„ç©å®¶çš„Index
-	char          m_szPlayerName[32];                //å¸®ä¼šç•Œé¢æ‰“å¼€ï¼Œéƒ½æœ‰ä¸€ä¸ªç»‘å®šçš„ç©å®¶ï¼Œ
-	                                                 //æˆ–åˆ«äººï¼Œæˆ–è‡ªå·±ï¼Œè¿™å°±æ˜¯ä»–(å¥¹)çš„
-	                                                 //åå­—ã€‚å¦ä¸€ä¸ªè§’åº¦è¯´ï¼Œæ¯ä¸€æ¬¡æ‰“å¼€ç•Œé¢
-	                                                 //éƒ½ç»‘å®šä¸€ä¸ªå¸®ä¼šï¼Œè€Œå¸®ä¼šç»‘å®šåˆ°äºº
+	int           m_nRelation;                       //ÏÂÃæÄÇ¸öÍæ¼ÒÓëËù´ò¿ªµÄ°ï»áµÄ¹ØÏµ
+	int           m_nIndex;                          //ÓëÏÂÃæÄÇ¸ö¶ÔÓ¦µÄÍæ¼ÒµÄIndex
+	char          m_szPlayerName[32];                //°ï»á½çÃæ´ò¿ª£¬¶¼ÓĞÒ»¸ö°ó¶¨µÄÍæ¼Ò£¬
+	                                                 //»ò±ğÈË£¬»ò×Ô¼º£¬Õâ¾ÍÊÇËû(Ëı)µÄ
+	                                                 //Ãû×Ö¡£ÁíÒ»¸ö½Ç¶ÈËµ£¬Ã¿Ò»´Î´ò¿ª½çÃæ
+	                                                 //¶¼°ó¶¨Ò»¸ö°ï»á£¬¶ø°ï»á°ó¶¨µ½ÈË
 	char		  m_szNotify[defTONG_NOTIFY_LENGTH];
-	int           m_nSelectIndex;                    //åœ¨åˆ—è¡¨ä¸Šé€‰æ‹©çš„é¡¹çš„ä¸‹æ ‡
-	int           m_nCurrentCheckBox;                //æ­£åœ¨é€‰æ‹©çš„CheckBox
+	int           m_nSelectIndex;                    //ÔÚÁĞ±íÉÏÑ¡ÔñµÄÏîµÄÏÂ±ê
+	int           m_nCurrentCheckBox;                //ÕıÔÚÑ¡ÔñµÄCheckBox
 
-	char          m_szDismiss[64], m_szAssign[128];   //è¸¢äººå’Œä»»å‘½çš„ç¡®è®¤æ¡†çš„å­—ç¬¦ä¸²
-	char          m_szDemise[64], m_szLeave[256], m_szSaveJiyu[128];     //ä¼ ä½å’Œç¦»å¼€çš„ç¡®è®¤æ¡†çš„å­—ç¬¦ä¸²
-	char          m_szJustice[16], m_szBalance[16];  //æ­£å’Œä¸­çš„æè¿°ä¸²
-	char          m_szEvil[16];                      //é‚ªçš„æè¿°ä¸²
-	char          m_szConfirm[16], m_szCancel[16];   //ç¡®è®¤çª—å£ä¸Šï¼Œç¡®è®¤å’Œå–æ¶ˆçš„æ–‡å­—
+	char          m_szDismiss[64], m_szAssign[128];   //ÌßÈËºÍÈÎÃüµÄÈ·ÈÏ¿òµÄ×Ö·û´®
+	char          m_szDemise[64], m_szLeave[256], m_szSaveJiyu[128];     //´«Î»ºÍÀë¿ªµÄÈ·ÈÏ¿òµÄ×Ö·û´®
+	char          m_szJustice[16], m_szBalance[16];  //ÕıºÍÖĞµÄÃèÊö´®
+	char          m_szEvil[16];                      //Ğ°µÄÃèÊö´®
+	char          m_szConfirm[16], m_szCancel[16];   //È·ÈÏ´°¿ÚÉÏ£¬È·ÈÏºÍÈ¡ÏûµÄÎÄ×Ö
 
-	char          m_szData[32];                  //MD5ç¼–ç ä¹‹åçš„å¯†ç ä¸²
-	char          m_szTargetPlayerName[32];          //æ“ä½œå¯¹è±¡ç©å®¶çš„åå­—
+	char          m_szData[32];                  //MD5±àÂëÖ®ºóµÄÃÜÂë´®
+	char          m_szTargetPlayerName[32];          //²Ù×÷¶ÔÏóÍæ¼ÒµÄÃû×Ö
 	bool		  m_bOtherTong;
 };
 

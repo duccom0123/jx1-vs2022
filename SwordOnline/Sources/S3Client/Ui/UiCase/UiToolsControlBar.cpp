@@ -19,10 +19,10 @@ extern iCoreShell*		g_pCoreShell;
 
 char szArray_NormalPK[][64] = 
 {
-	"LuyÃ–n cÂ«ng",
-	"ChiÃ•n Â®ÃŠu",
-	"Â§Ã¥ sÂ¸t",
-//	"Bang chiÃ•n"
+	"LuyÖn c«ng",
+	"ChiÕn ®Êu",
+	"§å s¸t",
+//	"Bang chiÕn"
 };
 
 KUiToolsControlBar* KUiToolsControlBar::m_pSelf = NULL;

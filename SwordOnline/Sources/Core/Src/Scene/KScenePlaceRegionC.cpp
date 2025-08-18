@@ -513,13 +513,6 @@ void KScenePlaceRegionC::LoadObstacle(KPakFile *pDataFile, unsigned int uSize)
     }
 }
 
-void KScenePlaceRegionC::RelaxPoint(int x, int y)
-{
-    double kc;
-    kc = sqrt(double(x - x) * (x - x) + (y - y) * (y - y));
-
-    //	g_DebugLog("kc %d", kc);
-}
 
 void KScenePlaceRegionC::LoadTrap(KPakFile *pDataFile, unsigned int uSize)
 {
@@ -1054,7 +1047,6 @@ void KScenePlaceRegionC::EnterProcessArea(KRUImage *pImage)
             pLeaf->oPosition.y += POINT_LEAF_Y_ADJUST_VALUE;
     }
 }
-
 long KScenePlaceRegionC::GetObstacleInfo(int nX, int nY)
 {
     int nMpsX, nMpsY, nMapX, nMapY;
@@ -1065,81 +1057,37 @@ long KScenePlaceRegionC::GetObstacleInfo(int nX, int nY)
     nMapX = nMpsX / RWP_OBSTACLE_WIDTH;
     nMapY = nMpsY / RWP_OBSTACLE_HEIGHT;
 
-    _ASSERT(nMapX >= 0 && nMapX < RWP_NUM_GROUND_CELL_H && nMapY >= 0 && nMapY < RWP_NUM_GROUND_CELL_V * 2);
+    //_ASSERT(nMapX >= 0 && nMapX < RWP_NUM_GROUND_CELL_H && nMapY >= 0 && nMapY < RWP_NUM_GROUND_CELL_V * 2);
     lInfo = m_ObstacleInfo[nMapX][nMapY];
     nMpsX -= nMapX * RWP_OBSTACLE_WIDTH;
     nMpsY -= nMapY * RWP_OBSTACLE_HEIGHT;
-    lRet = lInfo & 0x0000000f & 0x0000000f;
+    lRet = lInfo & 0x0000000f;
 
-    lType = (lInfo >> 4) & 0x0000000f & 0x0000000f;
-
-    //TamLTM check cac huong map trong game cua player
-
+    lType = (lInfo >> 4) & 0x0000000f;
     switch (lType)
     {
     case Obstacle_LT:
-        if (nMpsX + nMpsY > RWP_OBSTACLE_WIDTH >> 10)
-        {
+        if (nMpsX + nMpsY > RWP_OBSTACLE_WIDTH)
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Obstacle_LT 1");
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].CheckMoveBarrier();
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier1 = TRUE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier2 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier3 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier4 = FALSE;
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(1);
-        }
         break;
     case Obstacle_RT:
         if (nMpsX < nMpsY)
-        {
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Obstacle_RT 2");
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].CheckMoveBarrier();
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier1 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier2 = TRUE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier3 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier4 = FALSE;
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(2);
-        }
         break;
     case Obstacle_LB:
         if (nMpsX > nMpsY)
-        {
             lRet = Obstacle_NULL;
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Obstacle_LB 3");
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].CheckMoveBarrier();
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier1 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier2 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier3 = TRUE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier4 = FALSE;
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(3);
-        }
         break;
     case Obstacle_RB:
-        if (nMpsX + nMpsY < RWP_OBSTACLE_WIDTH >> 10)
-        {
+        if (nMpsX + nMpsY < RWP_OBSTACLE_WIDTH)
             lRet = Obstacle_NULL;
-            //TamLTM Check huong map va cham
-            //		g_DebugLog("TamLTM Debug Check Move Barrier Obstacle_RB 4");
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].CheckMoveBarrier();
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier1 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier2 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier3 = FALSE;
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].m_bActivateAutoMoveBarrier4 = TRUE;
-            //	Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(4);
-        }
         break;
     default:
         break;
     }
     return lRet;
 }
+
 
 long KScenePlaceRegionC::GetObstacleInfoMin(int nX, int nY, int nOffX, int nOffY)
 {
@@ -1155,7 +1103,7 @@ long KScenePlaceRegionC::GetObstacleInfoMin(int nX, int nY, int nOffX, int nOffY
     nMpsY = ((nMpsY - nMapY * RWP_OBSTACLE_HEIGHT) << 10) + nOffY;
 
     _ASSERT(nMapX >= 0 && nMapX < RWP_NUM_GROUND_CELL_H && nMapY >= 0 && nMapY < RWP_NUM_GROUND_CELL_V * 2);
-    //	_ASSERT(nOffX >= 0 && nOffX < 1024 && nOffY >= 0 && nOffY < 1024);
+    //_ASSERT(nOffX >= 0 && nOffX < 1024 && nOffY >= 0 && nOffY < 1024);
 
     lRet = m_ObstacleInfo[nMapX][nMapY] & 0x0000000f;
     lType = (m_ObstacleInfo[nMapX][nMapY] >> 4) & 0x0000000f;
@@ -1164,52 +1112,26 @@ long KScenePlaceRegionC::GetObstacleInfoMin(int nX, int nY, int nOffX, int nOffY
     {
     case Obstacle_LT:
         if (nMpsX + nMpsY > RWP_OBSTACLE_WIDTH << 10)
-        {
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Min Obstacle_LT 1");
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(1);
-        }
-
         break;
     case Obstacle_RT:
         if (nMpsX < nMpsY)
-        {
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Min Obstacle_RT 2");
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(2);
-        }
-
         break;
     case Obstacle_LB:
         if (nMpsX > nMpsY)
-        {
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Min Obstacle_LB 3");
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(3);
-        }
         break;
     case Obstacle_RB:
         if (nMpsX + nMpsY < RWP_OBSTACLE_WIDTH << 10)
-        {
             lRet = Obstacle_NULL;
-
-            //TamLTM Check huong map va cham
-            //	g_DebugLog("TamLTM Debug Check Move Barrier Min Obstacle_RB 4");
-            Npc[Player[CLIENT_PLAYER_INDEX].m_nIndex].DoAutoMoveBarrier(4);
-        }
-
         break;
     default:
         break;
     }
     return lRet;
 }
+
 
 void KScenePlaceRegionC::SetHightLightSpecialObject(unsigned int uBioIndex)
 {

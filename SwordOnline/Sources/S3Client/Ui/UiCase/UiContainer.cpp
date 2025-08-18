@@ -1,6 +1,6 @@
 /* 
  * File:     UiContainer.cpp
- * Desc:     ç”¨æˆ·é¢æ¿å®¹å™¨ç±»
+ * Desc:     ÓÃ»§Ãæ°åÈİÆ÷Àà
  * Author:   flying
  * Creation: 2003/7/4
  */
