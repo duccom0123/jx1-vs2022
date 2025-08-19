@@ -6,64 +6,38 @@
 	
 	purpose:	
 *********************************************************************/
-#ifndef __INCLUDE_THREAD_H__
-#define __INCLUDE_THREAD_H__
-
-#if defined (_MSC_VER) && (_MSC_VER >= 1020)
-	#pragma once
-#endif
-
-#ifndef _WINDOWS_
-	#define WIN32_LEAN_AND_MEAN
-		#include <windows.h>
-	#undef WIN32_LEAN_AND_MEAN
-#endif
-
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
+#pragma once
 
 /*
  * CThread
  */
-class CThread 
+class CThread
 {
-public:
-   
-	CThread();
-      
-	virtual ~CThread();
+  public:
+    CThread();
 
-	HANDLE GetHandle() const;
+    virtual ~CThread();
 
-	void Wait() const;
+    HANDLE GetHandle() const;
 
-	bool Wait(DWORD timeoutMillis) const;
+    void Wait() const;
 
-	void Start();
+    bool Wait(DWORD timeoutMillis) const;
 
-	void Terminate( DWORD exitCode = 0 );
+    void Start();
 
-private:
+    void Terminate(DWORD exitCode = 0);
 
-	virtual int Run() = 0;
+  private:
+    virtual int Run() = 0;
 
-	static unsigned int __stdcall ThreadFunction( void *pV );
+    static unsigned int __stdcall ThreadFunction(void *pV);
 
-	HANDLE m_hThread;
+    HANDLE m_hThread;
 
-	/*
+    /*
 	 * No copies do not implement
 	 */
-	CThread( const CThread &rhs );
-	CThread &operator=( const CThread &rhs );
-
+    CThread(const CThread &rhs);
+    CThread &operator=(const CThread &rhs);
 };
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
-
-#endif //__INCLUDE_THREAD_H__

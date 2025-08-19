@@ -6,13 +6,6 @@
 
 #include "Win32Exception.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
-
 CThread::CThread()
 	: m_hThread( NULL )
 {
@@ -118,6 +111,3 @@ void CThread::Terminate( DWORD exitCode /* = 0 */ )
 
 	SAFE_CLOSEHANDLE( m_hThread );
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

@@ -15,12 +15,6 @@
 
 #include "Exception.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 /*
  * CWin32Exception
@@ -37,8 +31,6 @@ protected:
 	DWORD m_error;
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 
 #endif //__INCLUDE_WIN32EXCEPTION_H__

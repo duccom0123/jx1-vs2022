@@ -3,12 +3,6 @@
 #include "Macro.h"
 
 /*
- * namespace OnlineGameLib
- */
-
-namespace OnlineGameLib {
-
-/*
  * CNodeList
  */
 CNodeList::CNodeList()
@@ -113,5 +107,3 @@ void CNodeList::Node::Unlink()
 
 	m_pList = 0;
 }
-
-} // End of namespace OnlineGameLib

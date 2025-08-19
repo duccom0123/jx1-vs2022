@@ -21,12 +21,6 @@
 
 #include "Utils.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 /*
  * CCriticalSection
@@ -120,7 +114,5 @@ inline CCriticalSection::Owner::~Owner()
 	m_crit.Leave();
 }
 
-} // End of namespace Win32 	
-} // End of namespace OnlineGameLib
 
 #endif //__INCLUDE_CRITICALSECTION_H__

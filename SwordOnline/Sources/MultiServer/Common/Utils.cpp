@@ -25,12 +25,6 @@
 using std::auto_ptr;
 using std::endl;
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 CCriticalSection s_criticalSection;
 
@@ -760,6 +754,3 @@ bool GetLocalAddress( LPTSTR strAddress, UINT nSize, int nAdapter /* 0 */ )
 
 	return false;
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

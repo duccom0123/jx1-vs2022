@@ -7,12 +7,6 @@
 #define TCS_KEYBUFFER		256		// This buffer length for store key value
 #define TCS_INTBUFFER		16		// This buffer length for store integer value
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 CIniFile::CIniFile()
 {
@@ -162,7 +156,3 @@ BOOL CIniFile::ReadSection( LPCTSTR lpSection, _VETSTR& stdKey )
 
 	return ( BOOL )( stdKey.size() > 0 );
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32	
-	

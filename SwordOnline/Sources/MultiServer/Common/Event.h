@@ -19,12 +19,6 @@
 	#undef WIN32_LEAN_AND_MEAN
 #endif
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 /*
  * CEvent
@@ -65,7 +59,5 @@ private:
 	CEvent &operator=( const CEvent &rhs );
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif //__INCLUDE_EVENT_H__

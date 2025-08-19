@@ -2,12 +2,6 @@
 #include "Mutex.h"
 #include "Win32Exception.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 static HANDLE Create(
 				LPSECURITY_ATTRIBUTES lpMutexAttributes,
@@ -84,6 +78,3 @@ CMutex::~CMutex()
 {
 	::CloseHandle( m_hMutex );
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

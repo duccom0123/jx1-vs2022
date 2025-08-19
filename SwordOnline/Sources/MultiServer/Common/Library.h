@@ -21,12 +21,6 @@
 
 #include "tstring.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 class CLibrary
 {
@@ -49,7 +43,5 @@ private:
 	HMODULE	m_hInst;
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif // __INCLUDE_LIBRARY_H__

@@ -37,12 +37,6 @@
 
 #pragma warning(default: 4201)
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 /*
  * Debugging defines...
@@ -160,7 +154,5 @@ _tstring StripLeading( const _tstring &source, const char toStrip );
 
 _tstring StripTrailing( const _tstring &source, const char toStrip );
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif //__INCLUDE_UTILS_H__

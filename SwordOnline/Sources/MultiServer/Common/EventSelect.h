@@ -23,12 +23,6 @@
 
 #include "Win32Exception.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 class CEventSelect
 {
@@ -192,8 +186,6 @@ inline int CEventSelect::Close()
 
 	return enumFail;
 }
-	
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
+
 
 #endif //__INCLUDE_EVENTSELECT_H__

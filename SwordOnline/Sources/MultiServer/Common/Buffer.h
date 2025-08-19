@@ -41,13 +41,6 @@
 #pragma warning(disable: 4200)
 
 /*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
-
-/*
  * CBuffer class
  */
 class CBuffer : public CNodeList::Node, public COpaqueUserData
@@ -267,7 +260,5 @@ inline void CBuffer::Allocator::DestroyBuffer( CBuffer *pBuffer )
 	SAFE_DELETE( pBuffer );
 }
 	
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif //__INCLUDE_ONLINEGAMELIB_WIN32_BUFFER_H__

@@ -24,12 +24,6 @@
 #include <vector>
 #include <string>
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 /*
  * CIniFile
@@ -66,7 +60,5 @@ private:
 
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32	
 
 #endif // __INCLUDE_INIFILE_H__

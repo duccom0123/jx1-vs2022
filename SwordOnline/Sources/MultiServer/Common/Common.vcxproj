@@ -58,7 +58,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WIN32_WINNT=0x0400;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
       <PrecompiledHeaderOutputFile>.\Debug\Common.pch</PrecompiledHeaderOutputFile>
@@ -68,6 +68,8 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>..\..\..\3rd\yasio;..\..\..\3rd\yasio\3rdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
       <Command>md ..\..\..\lib\debug
@@ -133,19 +135,12 @@ copy release\common.lib ..\..\..\lib\release\common.lib</Command>
     <ClCompile Include="EventSelect.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="IniFile.cpp" />
-    <ClCompile Include="IOBuffer.cpp" />
-    <ClCompile Include="IOCompletionPort.cpp" />
     <ClCompile Include="KSG_EncodeDecode.cpp" />
-    <ClCompile Include="KSocketClient2.cpp" />
     <ClCompile Include="Library.cpp" />
     <ClCompile Include="Macro.cpp" />
     <ClCompile Include="ManualResetEvent.cpp" />
     <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="NodeList.cpp" />
-    <ClCompile Include="Socket.cpp" />
-    <ClCompile Include="SocketAddress.cpp" />
-    <ClCompile Include="SocketClient.cpp" />
-    <ClCompile Include="SocketServer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
@@ -153,9 +148,12 @@ copy release\common.lib ..\..\..\lib\release\common.lib</Command>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Thread.cpp" />
-    <ClCompile Include="UsesWinsock.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Win32Exception.cpp" />
+    <ClCompile Include="YasioClient.cpp" />
+    <ClCompile Include="YasioClientStage.cpp" />
+    <ClCompile Include="YasioServer.cpp" />
+    <ClCompile Include="YasioServerStage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Buffer.h" />
@@ -167,27 +165,24 @@ copy release\common.lib ..\..\..\lib\release\common.lib</Command>
     <ClInclude Include="EventSelect.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="IniFile.h" />
-    <ClInclude Include="IOBuffer.h" />
-    <ClInclude Include="IOCompletionPort.h" />
     <ClInclude Include="KSG_EncodeDecode.h" />
-    <ClInclude Include="KSocketClient2.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="ManualResetEvent.h" />
     <ClInclude Include="Mutex.h" />
+    <ClInclude Include="NetworkAdapter.h" />
     <ClInclude Include="NodeList.h" />
     <ClInclude Include="OpaqueUserData.h" />
-    <ClInclude Include="Socket.h" />
-    <ClInclude Include="SocketAddress.h" />
-    <ClInclude Include="SocketClient.h" />
-    <ClInclude Include="SocketServer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SystemInfo.h" />
     <ClInclude Include="Thread.h" />
     <ClInclude Include="tstring.h" />
-    <ClInclude Include="UsesWinsock.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Win32Exception.h" />
+    <ClInclude Include="YasioClient.h" />
+    <ClInclude Include="YasioClientStage.h" />
+    <ClInclude Include="YasioServer.h" />
+    <ClInclude Include="YasioServerStage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

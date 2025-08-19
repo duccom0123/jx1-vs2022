@@ -16,12 +16,6 @@
 #include <wtypes.h>
 
 /*
- * namespace OnlineGameLib
- */
-
-namespace OnlineGameLib {
-
-/*
  * CNodeList
  */
 class CNodeList
@@ -123,6 +117,5 @@ T *TNodeList<T>::Next( const T *pNode )
 	return static_cast< T* >( pNode->Next() );
 }
 
-} // End of namespace OnlineGameLib	
 
 #endif // __INCLUDE_NODELIST_H__

@@ -21,13 +21,6 @@
 #endif
 
 /*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
-
-/*
  * CSystemInfo
  */
 class CSystemInfo : public SYSTEM_INFO 
@@ -40,7 +33,5 @@ public:
 	}
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif

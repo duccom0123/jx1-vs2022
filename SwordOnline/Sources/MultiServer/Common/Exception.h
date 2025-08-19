@@ -26,13 +26,6 @@
 #pragma warning(disable: 4201)
 
 /*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
-
-/*
  * CException
 	*/
 class CException
@@ -55,8 +48,5 @@ protected:
 	const _tstring m_message;
 
 };
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32	
 
 #endif //__INCLUDE_EXCEPTION_H__

@@ -1,12 +1,6 @@
 #include "stdafx.h"
 #include "EventSelect.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 CEventSelect::CEventSelect()
 		: m_event( WSA_INVALID_EVENT )
@@ -45,6 +39,3 @@ void CEventSelect::DissociateEvent()
 		m_event = WSA_INVALID_EVENT;
 	}
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

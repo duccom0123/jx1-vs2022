@@ -25,11 +25,6 @@
 		(PVOID)InterlockedExchange((PLONG)(Target), (LONG)(Value))
 #endif 
 
-/*
- * namespace OnlineGameLib
- */
-
-namespace OnlineGameLib {
 
 class COpaqueUserData 
 {
@@ -83,7 +78,5 @@ private:
 	COpaqueUserData( const COpaqueUserData &rhs );
 	COpaqueUserData &operator=( const COpaqueUserData &rhs );
 };
-
-} // End of namespace OnlineGameLib
 
 #endif //__INCLUDE_OPAQUEUSERDATA_H__

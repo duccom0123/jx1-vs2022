@@ -25,6 +25,7 @@
 
 #include "IServer.h"
 #include "HeavenInterface.h"
+#include "NetworkAdapter.h"
 
 #include "ClientNode.h"
 
@@ -32,6 +33,7 @@
 #include <strstream>
 #include <string>
 #include <list>
+#include <memory>
 #include <time.h>
 
 #include "../../Engine/Src/KGLog.h"
@@ -44,15 +46,6 @@ const size_t log_threshold = 1024 * 1024;
 
 using namespace std;
 
-using OnlineGameLib::Win32::_tstring;
-using OnlineGameLib::Win32::CBuffer;
-using OnlineGameLib::Win32::CCriticalSection;
-using OnlineGameLib::Win32::CEvent;
-using OnlineGameLib::Win32::CIniFile;
-using OnlineGameLib::Win32::CLibrary;
-using OnlineGameLib::Win32::CPackager;
-using OnlineGameLib::Win32::GetAppFullPath;
-using OnlineGameLib::Win32::ToString;
 using OnlineGameLib::Win32::Console::clrscr;
 using OnlineGameLib::Win32::Console::setcolor;
 
@@ -60,7 +53,8 @@ using OnlineGameLib::Win32::Console::setcolor;
  * User data
  */
 
-static CLibrary g_theHeavenLibrary("heaven.dll");
+// Thay thế IOCP server bằng yasio server
+static std::unique_ptr<CGameServer> g_pYasioServer = nullptr;
 
 static CEvent g_hQuitEvent(NULL, true, false);
 static CEvent g_hStartWorkEvent(NULL, true, false);
@@ -68,7 +62,6 @@ static CEvent g_hStartWorkEvent(NULL, true, false);
 static size_t g_nMaxRoleCount = 3;
 
 static unsigned short g_nServerPort = 5001;
-static IServer *g_pServer = NULL;
 
 static HANDLE g_hThread = NULL;
 
@@ -115,100 +108,26 @@ DWORD WINAPI MonitorProc(LPVOID lpParameter)
     return 0;
 }
 
-/*
- * Callback function
- */
-typedef HRESULT(__stdcall *pfnCreateServerInterface)(REFIID riid, void **ppv);
-
-void __stdcall ServerEventNotify(LPVOID lpParam, const unsigned long &ulnID, const unsigned long &ulnEventType)
-{
-    HWND hwnd = (HWND)lpParam;
-
-    switch (ulnEventType)
-    {
-    case enumClientConnectCreate:
-    {
-        CClientNode *pNode = CClientNode::AddNode(g_pServer, ulnID);
-
-        if (pNode)
-        {
-            CCriticalSection::Owner lock(g_csPlayer);
-
-            g_thePlayer.insert(stdPlayerMap::value_type(ulnID, pNode));
-
-            ::PostMessage(hwnd, WM_ADD_CLIENT, ulnID, 0);
-        }
-    }
-    break;
-
-    case enumClientConnectClose:
-    {
-        {
-            CCriticalSection::Owner lock(g_csPlayer);
-
-            stdPlayerMap::iterator it;
-            if (g_thePlayer.end() != (it = g_thePlayer.find(ulnID)))
-            {
-                g_thePlayer.erase(ulnID);
-
-                ::PostMessage(hwnd, WM_DEL_CLIENT, ulnID, 0);
-            }
-        }
-
-        CClientNode::DelNode(ulnID);
-    }
-    break;
-    }
-}
-
 DWORD WINAPI ThreadProcess(void *pParam)
 {
-    IServer *pServer = (IServer *)pParam;
-
-    ASSERT(pServer);
+    // Với yasio server, logic processing được handle internally
+    // Thread này có thể được simplified hoặc removed
+    // Yasio sử dụng event-driven architecture thay vì polling
 
     g_hStartWorkEvent.Wait();
 
-    //try
-    //{
     while (!g_hQuitEvent.Wait(0))
     {
-        {
-            CCriticalSection::Owner lock(g_csPlayer);
-
-            stdPlayerMap::iterator it;
-            for (it = g_thePlayer.begin(); it != g_thePlayer.end(); it++)
-            {
-                UINT index = (*it).first;
-                CClientNode *pClientNode = (*it).second;
-
-                size_t datalength = 0;
-                const char *pData = (const char *)pServer->GetPackFromClient(index, datalength);
-
-                while (pClientNode && pData && datalength)
-                {
-                    pClientNode->AppendData(pData, datalength);
-
-                    pData = (const char *)pServer->GetPackFromClient(index, datalength);
-                }
-            }
-        }
-
+        // Yasio server tự động handle connections và messages
+        // Chỉ cần maintain service loop counter
         if (++g_nServiceLoop & 0x80000000)
         {
             g_nServiceLoop = 0;
         }
 
-        if (g_nServiceLoop & 0x1)
-        {
-            ::Sleep(1);
-        }
+        // Yasio handles I/O internally, chỉ cần sleep nhẹ
+        ::Sleep(10);
     }
-    //}
-    //catch(...)
-    //{
-    //	::MessageBox( NULL, "ThreadProcess was error!", "Warning", MB_OK );
-    //}
 
     return 0L;
 }
@@ -242,16 +161,6 @@ static int _SetWin32ConsoleProperty()
 
     hStdount = ::GetStdHandle(STD_OUTPUT_HANDLE);
     LOG_PROCESS_ERROR(hStdount != INVALID_HANDLE_VALUE);
-
-    // disable quick edit mode of console.
-    // because quick edit maybe lock stdout
-    nRetCode = ::GetConsoleMode(hStdin, &dwMode);
-    LOG_PROCESS_ERROR(nRetCode);
-
-    dwMode &= ~ENABLE_QUICK_EDIT_MODE;   //disable QUICK_EDIT MODE
-
-    nRetCode = ::SetConsoleMode(hStdin, dwMode);
-    LOG_PROCESS_ERROR(nRetCode);
 
     // set window size
     nRetCode = ::SetConsoleScreenBufferSize(hStdount, BufferSize);
@@ -385,263 +294,6 @@ int main(int argc, char *argv[])
     return 1;
 }
 
-/*
- *
- * MainWndProc() - Main window callback procedure.
- *  
- */
-
-BOOL CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-    static const UINT g_nIDEvent = 0x100;
-    static const UINT g_nElapse = 500;
-
-    static const char g_szBaseInfo[] = "....................";
-    static const int g_nDots = sizeof(g_szBaseInfo) - 1;
-
-    static UINT g_nLastServiceLoop = g_nServiceLoop;
-    static int g_nServiceStep = g_nDots;
-    static UINT g_nLastDBEngineLoop = g_nDBEngineLoop;
-    static int g_nDBEngineStep = g_nDots;
-
-    BOOL bTranslated = TRUE;
-
-    switch (msg)
-    {
-    case WM_TIMER:
-    {
-        if (g_nLastServiceLoop != g_nServiceLoop)
-        {
-            g_nServiceStep = (--g_nServiceStep > 0) ? g_nServiceStep : g_nDots;
-
-            ::SetDlgItemText(hwnd, IDC_STATIC_SERVICE, (const char *)g_szBaseInfo + g_nServiceStep);
-
-            g_nLastServiceLoop = g_nServiceLoop;
-        }
-
-        if (g_nLastDBEngineLoop != g_nDBEngineLoop)
-        {
-            g_nDBEngineStep = (--g_nDBEngineStep > 0) ? g_nDBEngineStep : g_nDots;
-
-            ::SetDlgItemText(hwnd, IDC_STATIC_DATABASE, (const char *)g_szBaseInfo + g_nDBEngineStep);
-
-            g_nLastDBEngineLoop = g_nDBEngineLoop;
-        }
-
-        if (IsBackupThreadWorking())
-        {
-            ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), TRUE);
-            ::SetWindowText(GetDlgItem(hwnd, IDC_LAB_BACKUP_STATUS), "Backup thread status: Sleeping");
-            ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_MANUAL), TRUE);
-            if (IsBackupWorking())
-            {
-                ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), FALSE);
-                ::SetWindowText(GetDlgItem(hwnd, IDC_LAB_BACKUP_STATUS), "Backup thread status: Running");
-                ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_MANUAL), FALSE);
-            }
-            else if (g_IsBackupSuspend)
-            {
-                ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), TRUE);
-                ::SetWindowText(GetDlgItem(hwnd, IDC_LAB_BACKUP_STATUS), "Backup thread status: Suspended");
-                ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_MANUAL), TRUE);
-            }
-        }
-        else
-        {
-            ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), FALSE);
-            ::SetWindowText(GetDlgItem(hwnd, IDC_LAB_BACKUP_STATUS), "Backup thread status: Stop");
-            ::EnableWindow(GetDlgItem(hwnd, IDC_BTN_BACKUP_MANUAL), FALSE);
-        }
-    }
-    break;
-
-    case WM_INITDIALOG:
-
-        LoadSetting();
-
-        ::SetDlgItemInt(hwnd, IDC_EDIT_PORT, g_nServerPort, FALSE);
-        ::SetDlgItemInt(hwnd, IDC_EDIT_MAXNUM_ROLE, g_nMaxRoleCount, FALSE);
-        ::SetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SLEEP_TIME, g_BackupSleepTime, FALSE);
-        ::SetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SPACE_TIME, g_BackupSpaceTime, FALSE);
-        ::SetDlgItemInt(hwnd, IDC_EDIT_BACKUP_BEGIN_TIME, g_BackupBeginTime, FALSE);
-
-        ::SetTimer(hwnd, g_nIDEvent, g_nElapse, NULL);
-
-        return TRUE;
-        break;
-
-    case WM_CLOSE:
-    {
-        if (IDYES == ::MessageBox(hwnd, "Are you sure quit?", "Info", MB_YESNO | MB_ICONQUESTION))
-        {
-
-            DestroyDatabaseEngine();
-
-            ::KillTimer(hwnd, g_nIDEvent);
-
-            g_nServerPort = ::GetDlgItemInt(hwnd, IDC_EDIT_PORT, &bTranslated, FALSE);
-            g_nMaxRoleCount = ::GetDlgItemInt(hwnd, IDC_EDIT_MAXNUM_ROLE, &bTranslated, FALSE);
-            g_BackupSleepTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SLEEP_TIME, &bTranslated, FALSE);
-            g_BackupSpaceTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SPACE_TIME, &bTranslated, FALSE);
-            g_BackupBeginTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_BEGIN_TIME, &bTranslated, FALSE);
-
-            SaveSetting();
-
-            ::DestroyWindow(hwnd);
-            ::PostQuitMessage(0);
-        }
-    }
-
-        return TRUE;
-        break;
-
-    case WM_COMMAND:
-
-        switch (wParam)
-        {
-        case IDOK:
-            ::EnableWindow(GetDlgItem(hwnd, IDOK), FALSE);
-            ::EnableWindow(GetDlgItem(hwnd, IDC_EDIT_PORT), FALSE);
-            ::EnableWindow(GetDlgItem(hwnd, IDC_EDIT_MAXNUM_ROLE), FALSE);
-            ::EnableWindow(GetDlgItem(hwnd, IDC_EDIT_BACKUP_SLEEP_TIME), FALSE);
-            ::EnableWindow(GetDlgItem(hwnd, IDC_EDIT_BACKUP_SPACE_TIME), FALSE);
-            ::EnableWindow(GetDlgItem(hwnd, IDC_EDIT_BACKUP_BEGIN_TIME), FALSE);
-
-            ::SetWindowText(hwnd, "Goddess - [Start up...]");
-
-            ::PostMessage(hwnd, WM_CREATE_ENGINE, 0L, 0L);
-
-            break;
-
-        case IDCANCEL:
-
-            ::PostMessage(hwnd, WM_CLOSE, 0L, 0L);
-            break;
-
-        case IDC_BTN_BACKUP_MANUAL:
-
-            if (!IsBackupThreadWorking())
-                MessageBox(hwnd, "Backup thread is not started yet.", "Information", MB_OK | MB_ICONEXCLAMATION);
-            if (!DoManualBackup())
-                MessageBox(hwnd, "Unable to start manual backup.\nPlease try later.", "Information", MB_OK | MB_ICONEXCLAMATION);
-
-            break;
-        case IDC_RESTART:
-            CClientNode::End();
-            ReleaseDBInterface();
-            InitDBInterface(g_nMaxRoleCount);
-            CClientNode::Start(g_pServer);
-            break;
-        case IDC_BTN_BACKUP_SUS_RES:
-
-            if (!IsBackupThreadWorking())
-                MessageBox(hwnd, "Backup thread is not started yet.", "Information", MB_OK | MB_ICONEXCLAMATION);
-            else if (g_IsBackupSuspend)
-            {
-                if (ResumeBackupTimer())
-                {
-                    g_IsBackupSuspend = false;
-                    ::SetWindowText(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), "Suspend");
-                }
-                else
-                    MessageBox(hwnd, "Unable to resume backup thread.\nPlease try later.", "Information", MB_OK | MB_ICONEXCLAMATION);
-            }
-            else
-            {
-                if (SuspendBackupTimer())
-                {
-                    g_IsBackupSuspend = true;
-                    ::SetWindowText(GetDlgItem(hwnd, IDC_BTN_BACKUP_SUS_RES), "Resume");
-                }
-                else
-                    MessageBox(hwnd, "Unable to suspend backup thread.\nPlease try later.", "Information", MB_OK | MB_ICONEXCLAMATION);
-            }
-            break;
-        }
-
-        break;
-
-    case WM_CREATE_ENGINE:
-    {
-        time_t rawtime;
-        struct tm *timeinfo;
-
-        time(&rawtime);
-        timeinfo = localtime(&rawtime);
-
-        char szText[64];
-        sprintf(szText, "%04d%02d%02d", timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday);
-        if ((int)(atoi(szText)) > KPROTOCOL_EXPIRATION_DATE)
-        {
-            MessageBox(hwnd, "Protocol Version is illegal", "Information", MB_OK | MB_ICONERROR);
-            break;
-        }
-
-        g_nServerPort = ::GetDlgItemInt(hwnd, IDC_EDIT_PORT, &bTranslated, FALSE);
-        g_nMaxRoleCount = ::GetDlgItemInt(hwnd, IDC_EDIT_MAXNUM_ROLE, &bTranslated, FALSE);
-        g_BackupSleepTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SLEEP_TIME, &bTranslated, FALSE);
-        g_BackupSpaceTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_SPACE_TIME, &bTranslated, FALSE);
-        g_BackupBeginTime = ::GetDlgItemInt(hwnd, IDC_EDIT_BACKUP_BEGIN_TIME, &bTranslated, FALSE);
-        CreateDatabaseEngine(hwnd);
-
-        ::SetWindowText(hwnd, "Goddess - [Enable]");
-    }
-    break;
-
-    case WM_ADD_CLIENT:
-    {
-        const char *pText = g_pServer->GetClientInfo(wParam);
-
-        if (pText && pText[0])
-        {
-            HWND hCtrl = ::GetDlgItem(hwnd, IDC_LIST_CLIENT);
-
-            if (hCtrl && ::IsWindow(hCtrl))
-            {
-                int nIndex = ::SendMessage(hCtrl, LB_ADDSTRING, 0, (LPARAM)pText);
-
-                if (LB_ERR != nIndex)
-                {
-                    ::SendMessage(hCtrl, LB_SETITEMDATA, nIndex, wParam);
-                }
-            }
-        }
-    }
-    break;
-
-    case WM_DEL_CLIENT:
-    {
-        HWND hCtrl = ::GetDlgItem(hwnd, IDC_LIST_CLIENT);
-
-        if (hCtrl && ::IsWindow(hCtrl))
-        {
-            int nCount = ::SendMessage(hCtrl, LB_GETCOUNT, 0, 0);
-
-            for (int i = 0; i < nCount, LB_ERR != nCount; i++)
-            {
-                UINT nSearchID = 0;
-
-                if (wParam == (nSearchID = ::SendMessage(hCtrl, LB_GETITEMDATA, i, 0)))
-                {
-                    ::SendMessage(hCtrl, LB_DELETESTRING, i, 0);
-
-                    return TRUE;
-                }
-            }
-        }
-    }
-    break;
-
-    default:
-        break;
-    }
-
-    /*
-	 * Clean up any unused messages by calling DefWindowProc
-	 */
-    return FALSE;
-}
-
 bool CreateDatabaseEngine(HWND hwnd)
 {
     if (!InitDBInterface(g_nMaxRoleCount))
@@ -653,51 +305,110 @@ bool CreateDatabaseEngine(HWND hwnd)
 
     StartBackupTimer(g_BackupSleepTime, g_BackupBeginTime);   //开始运行备份线程
     ::SetWindowText(GetDlgItem(hwnd, IDC_LAB_BACKUP_STATUS), "Backup thread status: Running");
+
     /*
-	 * Open this server to client
-	 */
-    pfnCreateServerInterface pFactroyFun = (pfnCreateServerInterface)(g_theHeavenLibrary.GetProcAddress("CreateInterface"));
+     * Migration sang yasio server thay vì IOCP
+     */
+    // Tạo yasio game server với các tham số phù hợp
+    g_pYasioServer = CreateGameServer(1024, 20, 8192, 1024);
 
-    IServerFactory *pServerFactory = NULL;
-
-    if (pFactroyFun && SUCCEEDED(pFactroyFun(IID_IServerFactory, reinterpret_cast<void **>(&pServerFactory))))
+    if (!g_pYasioServer)
     {
-        pServerFactory->SetEnvironment(10, 10, 20, 4 * 1024 * 1024);
-
-        pServerFactory->CreateServerInterface(IID_IIOCPServer, reinterpret_cast<void **>(&g_pServer));
-
-        pServerFactory->Release();
-    }
-
-    if (!g_pServer)
-    {
-        ::MessageBox(NULL, "Initialization failed! Don't find a correct heaven.dll", "Warning", MB_OK | MB_ICONSTOP);
-
+        ::MessageBox(NULL, "Initialization failed! Cannot create yasio server", "Warning", MB_OK | MB_ICONSTOP);
         return false;
     }
 
-    g_pServer->Startup();
+    // Setup server handlers cho yasio
+    SetupServerHandlers(
+        g_pYasioServer.get(),
+        [](CGameConnection *conn)
+        {
+            // Player connect handler - LUỒNG BẮT ĐẦU KHI CÓ KẾT NỐI MỚI
+            if (conn)
+            {
+                // Tương tự ServerEventNotify với enumClientConnectCreate
+                // 1. Tạo hoặc setup client data
+                // 2. Add vào player management
+                // 3. Log connection
+                KGLogPrintf(LOG_INFO, "[Yasio] New connection established\n");
 
-    g_pServer->RegisterMsgFilter((void *)hwnd, ServerEventNotify);
+                // TODO: Thêm vào player map tương tự IOCP
+                // CClientNode *pNode = CClientNode::AddNode(...)
+                // g_thePlayer.insert(...)
+                CClientNode *pNode = CClientNode::AddNode(conn, conn->GetConnectionId());
 
-    if (FAILED(g_pServer->OpenService(INADDR_ANY, g_nServerPort)))
+                if (pNode)
+                {
+                    CCriticalSection::Owner lock(g_csPlayer);
+
+                    g_thePlayer.insert(stdPlayerMap::value_type(conn->GetConnectionId(), pNode));
+                }
+            }
+        },
+        [](CGameConnection *conn)
+        {
+            // Player disconnect handler - KHI NGẮT KẾT NỐI
+            if (conn)
+            {
+                // Tương tự ServerEventNotify với enumClientConnectClose
+                // 1. Remove from player map
+                // 2. Cleanup resources
+                // 3. Log disconnection
+                KGLogPrintf(LOG_INFO, "[Yasio] Connection closed\n");
+                CCriticalSection::Owner lock(g_csPlayer);
+                stdPlayerMap::iterator it;
+                if (g_thePlayer.end() != (it = g_thePlayer.find(conn->GetConnectionId())))
+                {
+                    g_thePlayer.erase(conn->GetConnectionId());
+                }
+            }
+        },
+        [](CGameConnection *conn, const void *data, unsigned int length)
+        {
+            // Player message handler - KHI NHẬN DATA
+            if (conn && data && length > 0)
+            {
+                // Tương tự ThreadProcess loop
+                // 1. Parse message protocol
+                // 2. Route to appropriate handler
+                // 3. Process game logic
+                // 4. Send response if needed
+                KGLogPrintf(LOG_INFO, "[Yasio] Received %d bytes\n", length);
+
+                // Tìm CClientNode tương ứng với connection và gọi AppendData
+                {
+                    CCriticalSection::Owner lock(g_csPlayer);
+                    stdPlayerMap::iterator it = g_thePlayer.find(conn->GetConnectionId());
+                    if (it != g_thePlayer.end())
+                    {
+                        CClientNode *pNode = it->second;
+                        if (pNode)
+                        {
+                            pNode->AppendData(data, length);
+                        }
+                    }
+                }
+            }
+        });
+
+    // Khởi động yasio server
+    if (!StartGameServer(g_pYasioServer.get(), "0.0.0.0", g_nServerPort))
     {
+        ::MessageBox(NULL, "Failed to start yasio server", "Warning", MB_OK | MB_ICONSTOP);
         return false;
     }
 
     DWORD dwThreadID = 0L;
 
-    IServer *pCloneServer = NULL;
-    g_pServer->QueryInterface(IID_IIOCPServer, (void **)&pCloneServer);
-
-    g_hThread = ::CreateThread(NULL, 0, ThreadProcess, (void *)pCloneServer, 0, &dwThreadID);
+    // Tạo thread cho yasio server processing
+    g_hThread = ::CreateThread(NULL, 0, ThreadProcess, nullptr, 0, &dwThreadID);
 
     if (!g_hThread)
     {
         return false;
     }
 
-    CClientNode::Start(g_pServer);
+    CClientNode::Start(nullptr);   // Yasio server tự quản lý connections, không cần pass server instance
 
     g_hStartWorkEvent.Set();
 
@@ -710,22 +421,23 @@ void DestroyDatabaseEngine()
 
     g_hQuitEvent.Set();
 
-    DWORD result = ::WaitForSingleObject(g_hThread, 50000);
-
-    if (result == WAIT_TIMEOUT)
+    // Wait for thread to finish
+    if (g_hThread)
     {
-        ::TerminateThread(g_hThread, (DWORD)(-1));
+        DWORD result = ::WaitForSingleObject(g_hThread, 5000);
+        if (result == WAIT_TIMEOUT)
+        {
+            ::TerminateThread(g_hThread, (DWORD)(-1));
+        }
+        SAFE_CLOSEHANDLE(g_hThread);
     }
 
-    SAFE_CLOSEHANDLE(g_hThread);
-
-    if (g_pServer)
+    // Yasio server cleanup - đơn giản hơn IOCP
+    if (g_pYasioServer)
     {
-        g_pServer->CloseService();
-        g_pServer = NULL;
+        StopGameServer(g_pYasioServer.get());
+        g_pYasioServer.reset();   // Smart pointer tự động cleanup
     }
-
-    SAFE_RELEASE(g_pServer);
 
     ReleaseDBInterface();
 }

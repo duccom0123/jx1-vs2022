@@ -15,12 +15,6 @@
 
 #include "Event.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 class CManualResetEvent : public CEvent
 {
@@ -38,7 +32,5 @@ private:
 	CManualResetEvent &operator=( const CManualResetEvent &rhs );
 };
 
-} // End of namespace OnlineGameLib
-} // End of namespace Win32
 
 #endif //__INCLUDE_MANUALRESETEVENT_H__

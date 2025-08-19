@@ -3,13 +3,6 @@
 #include "Win32Exception.h"
 
 /*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
-
-/*
  * Static helper methods
  */
 static HANDLE Create(
@@ -111,6 +104,3 @@ void CEvent::Pulse()
 		throw CWin32Exception( _T("CEvent::Pulse()"), ::GetLastError() );
 	}
 }
-	
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

@@ -2,12 +2,6 @@
 #include "library.h"
 #include "Macro.h"
 
-/*
- * namespace OnlineGameLib::Win32
- */
-
-namespace OnlineGameLib {
-namespace Win32 {
 
 CLibrary::CLibrary( const char * const lpFileName )
 {
@@ -47,6 +41,3 @@ bool CLibrary::Free()
 
 	return true;
 }
-
-} // End of namespace OnlineGameLib
-} // End of namespace Win32

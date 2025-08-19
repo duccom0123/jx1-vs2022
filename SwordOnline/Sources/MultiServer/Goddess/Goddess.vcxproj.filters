@@ -85,6 +85,9 @@
     <Library Include="..\..\..\Lib\debug\engine.lib">
       <Filter>lib\debug</Filter>
     </Library>
+    <Library Include="..\..\..\3rd\yasio\build_x86_mtd_fixed\Debug\yasio.lib">
+      <Filter>lib\debug</Filter>
+    </Library>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="res\goddess.ico">
