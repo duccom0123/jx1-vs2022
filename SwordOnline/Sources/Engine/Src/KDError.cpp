@@ -15,10 +15,10 @@ typedef struct {
 	char*	szMsg;
 } ERRORS;
 //---------------------------------------------------------------------------
-// 函数:	DDError
-// 功能:	DirectDraw错误信息
-// 参数:	nErrorCode	错误代号
-// 返回:	void
+// 鍑芥暟:	DDError
+// 鍔熻兘:	DirectDraw閿欒淇℃伅
+// 鍙傛暟:	nErrorCode	閿欒浠ｅ彿
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_DDError(int nErrorCode)
 {
@@ -62,10 +62,10 @@ ENGINE_API void g_DDError(int nErrorCode)
 	g_MessageBox("Unknown DirectDraw Errors !");
 }
 //---------------------------------------------------------------------------
-// 函数:	DSError
-// 功能:	DirectSound错误信息
-// 参数:	nErrorCode	错误代号
-// 返回:	void
+// 鍑芥暟:	DSError
+// 鍔熻兘:	DirectSound閿欒淇℃伅
+// 鍙傛暟:	nErrorCode	閿欒浠ｅ彿
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_DSError(int nErrorCode)
 {
@@ -101,10 +101,10 @@ ENGINE_API void g_DSError(int nErrorCode)
 	g_MessageBox("Unknown DirectSound Errors !");
 }
 //---------------------------------------------------------------------------
-// 函数:	DIError
-// 功能:	DirectInput出错信息
-// 参数:	nErrorCode	错误代号
-// 返回:	void
+// 鍑芥暟:	DIError
+// 鍔熻兘:	DirectInput鍑洪敊淇℃伅
+// 鍙傛暟:	nErrorCode	閿欒浠ｅ彿
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_DIError(int nErrorCode)
 {

@@ -9,7 +9,9 @@
 #include "Macro.h"
 
 #include "../../../../Headers/KGmProtocol.h"
-#include "RoleNameFilter.h"
+#include "../../Engine/Src/KGLog.h"
+#include "../../Engine/Src/FilterText.h"
+extern ITextFilter *g_fltRoleName;
 
 using OnlineGameLib::Win32::CCriticalSection;
 using OnlineGameLib::Win32::CPackager;
@@ -346,6 +348,9 @@ void CClientNode::_QueryRoleList( const void *pData, size_t dataLength )
 	cout << "_QueryRoleList::end" << endl;
 #endif
 }
+
+
+
 void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 {
 	ASSERT( m_pServer && pData && dataLength );
@@ -359,7 +364,6 @@ void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 	int nResult = 0;
 
 	{{
-	extern CRoleNameFilter g_fltRoleName;
 
 	TRoleData* pRoleData = (TRoleData*)(pPD->pDataBuffer + 1);
 
@@ -373,7 +377,7 @@ void CClientNode::_CreateRole( const void *pData, size_t dataLength )
 		}
 		if (pos >= 1)
 		{
-			if (g_fltRoleName.IsTextPass(pRoleData->BaseInfo.szName))
+			if (g_fltRoleName->IsTextPass(pRoleData->BaseInfo.szName))
 				nResult = SaveRoleInfo( &pPD->pDataBuffer[1], NULL, TRUE, FALSE);
 			else
 				nResult = -1;
@@ -657,18 +661,18 @@ void CClientNode::_GetRoleInfo( const void *pData, size_t dataLength )
 }
 
 void CClientNode::_GetGameStat( const void *pData, size_t dataLength )
-{//·¢ËÍÓÎÏ·Í³¼ÆÊı¾İ(By Fellow,2003.7.22)
+{//å‘é€æ¸¸æˆç»Ÿè®¡æ•°æ®(By Fellow,2003.7.22)
 	ASSERT( m_pServer && pData && dataLength );
 
 #ifdef CONSOLE_DEBUG
 	cout << "_GetGameStat::Begin" << endl;
 #endif
 
-	//ÊÕµ½µÄÊı¾İ°ü£¬Ö»ÓĞ¿ØÖÆ×ÖÃ»ÓĞÊı¾İ
+	//æ”¶åˆ°çš„æ•°æ®åŒ…ï¼Œåªæœ‰æ§åˆ¶å­—æ²¡æœ‰æ•°æ®
 	TProcessData *pProData = ( TProcessData * )pData;
 	size_t nIdentity = pProData->ulIdentity;
 
-	//ĞèÒª·¢ËÍµÄÊı¾İ°ü
+	//éœ€è¦å‘é€çš„æ•°æ®åŒ…
 	CBuffer *pBuffer = m_theAllocator.Allocate();
 	TProcessData *pStatData = 
 		reinterpret_cast< TProcessData * >( const_cast< BYTE * >( pBuffer->GetBuffer() ) );
@@ -679,13 +683,13 @@ void CClientNode::_GetGameStat( const void *pData, size_t dataLength )
 	pStatData->ulIdentity = nIdentity;
 
 	pStatData->nDataLen = nDataLen;
-		//È¡µÃÍ³¼ÆÊı¾İ
+		//å–å¾—ç»Ÿè®¡æ•°æ®
 	TGAME_STAT_DATA* myGameStatData = (TGAME_STAT_DATA*)pStatData->pDataBuffer;
 	GetGameStat(myGameStatData);
 
 	int nUsedLen = sizeof( TProcessData ) - 1 + nDataLen;
 	pBuffer->Use( nUsedLen );
-	//·¢ËÍ
+	//å‘é€
 	
 	m_theSend.AddData( s2c_gamestatistic_bigpackage, pBuffer->GetBuffer(), nUsedLen );
 
@@ -716,7 +720,7 @@ void CClientNode::_GetGameStat( const void *pData, size_t dataLength )
 CClientNode::stdRoleLockMap CClientNode::m_csRoleLock;
 CCriticalSection	CClientNode::m_csCR;
 
-void CClientNode::_LockOrUnlockRole( const void *pData, size_t dataLength )	//Ç¿ĞĞ¼Ó½âËø
+void CClientNode::_LockOrUnlockRole( const void *pData, size_t dataLength )	//å¼ºè¡ŒåŠ è§£é”
 {
 	CCriticalSection::Owner lock( CClientNode::m_csCR );
 	if (pData && dataLength == sizeof(tagRoleEnterGame))

@@ -8,9 +8,9 @@
 //---------------------------------------------------------------------------
 #ifndef	KPolyRelation_H
 #define	KPolyRelation_H
-BOOL	ENGINE_API g_ColliSion(KPolygon Poly1, KPolygon Poly2);			//	ÊÇ·ñÅö×²
-int		ENGINE_API g_SpaceRelation(KPolygon Poly1, KPolygon Poly2);		//	-1£ºPoly1±»Poly2ÕÚµ²
-																		//	0£º	Ã»ÓĞ¹ØÏµ
-																		//	1£º	Poly1ÕÚµ²Poly2
+BOOL	ENGINE_API g_ColliSion(KPolygon Poly1, KPolygon Poly2);			//	æ˜¯å¦ç¢°æ’
+int		ENGINE_API g_SpaceRelation(KPolygon Poly1, KPolygon Poly2);		//	-1ï¼šPoly1è¢«Poly2é®æŒ¡
+																		//	0ï¼š	æ²¡æœ‰å…³ç³»
+																		//	1ï¼š	Poly1é®æŒ¡Poly2
 BOOL	IntersectionX2Y(POINT p1, POINT p2, int x, int *y);
 #endif

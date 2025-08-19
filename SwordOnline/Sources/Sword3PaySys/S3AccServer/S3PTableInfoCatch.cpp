@@ -84,7 +84,7 @@ std::map<std::string, std::string> *
 		}
 		else
 		{
-			//ʧ��
+			//Ê§°Ü
 			return NULL;
 		}
 	}
@@ -144,7 +144,7 @@ std::map<std::string, std::string> *
 		}
 		else
 		{
-			//ʧ��
+			//Ê§°Ü
 			return NULL;
 		}
 	}

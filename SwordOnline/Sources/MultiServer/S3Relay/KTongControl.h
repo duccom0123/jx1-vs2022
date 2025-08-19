@@ -21,30 +21,30 @@ struct STONG_MEMBER
 
 typedef struct
 {
-	char		szName[defTONG_NAME_LENGTH_32];			// °ï»áÃû
-	int			MemberCount;						//Ò»°ã°ïÖÚÊı
-}TTongList;	//ÓÃ×÷°ï»áÁĞ±í
+	char		szName[defTONG_NAME_LENGTH_32];			// å¸®ä¼šå
+	int			MemberCount;						//ä¸€èˆ¬å¸®ä¼—æ•°
+}TTongList;	//ç”¨ä½œå¸®ä¼šåˆ—è¡¨
 
 class CTongControl
 {
 	friend class CTongSet;
 	friend class CTongDB;
 public:
-	// ÓÃÓÚ´´½¨°ï»á
+	// ç”¨äºåˆ›å»ºå¸®ä¼š
 	CTongControl(int nCamp, BYTE btLevel, char *lpszPlayerName, char *lpszTongName, int nMasterSex, int nMasterJoinTm, int nMasterSaveEff, int nTongJiyuParam, char *szTongJiyuNotify);
-	// ÓÃÓÚÊı¾İ¿âÔØÈë°ï»áÊı¾İ
+	// ç”¨äºæ•°æ®åº“è½½å…¥å¸®ä¼šæ•°æ®
 	CTongControl(TTongList sList);
 	virtual ~CTongControl();
 
 private:
 
-	int			m_nCamp;								// °ï»áÕóÓª
-	DWORD		m_dwMoney;								// °ï»á×Ê½ğ
-	int			m_nCredit;								// °ï»áÉùÍû
-	BYTE		m_btLevel;								// °ï»áµÈ¼¶
-	int			m_nDirectorNum;							// ³¤ÀÏÈËÊı
-	int			m_nManagerNum;							// ¶Ó³¤ÈËÊı
-	int			m_nMemberNum;							// °ïÖÚÈËÊı
+	int			m_nCamp;								// å¸®ä¼šé˜µè¥
+	DWORD		m_dwMoney;								// å¸®ä¼šèµ„é‡‘
+	int			m_nCredit;								// å¸®ä¼šå£°æœ›
+	BYTE		m_btLevel;								// å¸®ä¼šç­‰çº§
+	int			m_nDirectorNum;							// é•¿è€äººæ•°
+	int			m_nManagerNum;							// é˜Ÿé•¿äººæ•°
+	int			m_nMemberNum;							// å¸®ä¼—äººæ•°
 	DWORD		m_dwTotalEff;
 	int			m_nTongJiyuParam;
 	char 		m_szTongJiyuNotify[defTONG_NOTIFY_LENGTH];
@@ -52,28 +52,28 @@ private:
 	BOOL		m_bRecruit;
 	int 		m_nTongParam;
 
-	DWORD		m_dwNameID;								// °ï»áÃûID
-	char		m_szName[defTONG_NAME_LENGTH_32];			// °ï»áÃû
+	DWORD		m_dwNameID;								// å¸®ä¼šåID
+	char		m_szName[defTONG_NAME_LENGTH_32];			// å¸®ä¼šå
 
-	char		m_szMasterAgname[defTONG_NAME_LENGTH_32];	// °ïÖ÷³ÆºÅ
-	char		m_szDirectorAgname[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];// ¸÷³¤ÀÏ³ÆºÅ
-	char		m_szManagerAgname[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// ¸÷¶Ó³¤³ÆºÅ
-	char		m_szNormalAgname[defTONG_NAME_LENGTH_32];	// °ï»á°ïÖÚ³ÆºÅ
+	char		m_szMasterAgname[defTONG_NAME_LENGTH_32];	// å¸®ä¸»ç§°å·
+	char		m_szDirectorAgname[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];// å„é•¿è€ç§°å·
+	char		m_szManagerAgname[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// å„é˜Ÿé•¿ç§°å·
+	char		m_szNormalAgname[defTONG_NAME_LENGTH_32];	// å¸®ä¼šå¸®ä¼—ç§°å·
 
-	DWORD		m_dwMasterID;							// °ïÖ÷ÃûID
-	char		m_szMasterName[defTONG_NAME_LENGTH_32];		// °ïÖ÷Ãû
+	DWORD		m_dwMasterID;							// å¸®ä¸»åID
+	char		m_szMasterName[defTONG_NAME_LENGTH_32];		// å¸®ä¸»å
 	int			m_nMasterSex;
 	int			m_nMasterJoinTm;
 	int 		m_nMasterSaveEff;
 
-	DWORD		m_dwDirectorID[defTONG_MAX_DIRECTOR];	// ¸÷³¤ÀÏÃûID
-	char		m_szDirectorName[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];	// ¸÷³¤ÀÏÃû
+	DWORD		m_dwDirectorID[defTONG_MAX_DIRECTOR];	// å„é•¿è€åID
+	char		m_szDirectorName[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];	// å„é•¿è€å
 	int			m_nDirectorSex[defTONG_MAX_DIRECTOR];
 	int 		m_nDirectorJoinTm[defTONG_MAX_DIRECTOR];
 	int 		m_nDirectorSaveEff[defTONG_MAX_DIRECTOR];
 
-	DWORD		m_dwManagerID[defTONG_MAX_MANAGER];		// ¸÷¶Ó³¤ÃûID
-	char		m_szManagerName[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// ¸÷¶Ó³¤Ãû
+	DWORD		m_dwManagerID[defTONG_MAX_MANAGER];		// å„é˜Ÿé•¿åID
+	char		m_szManagerName[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// å„é˜Ÿé•¿å
 	int			m_nManagerSex[defTONG_MAX_DIRECTOR];
 	int 		m_nManagerJoinTm[defTONG_MAX_MANAGER];
 	int 		m_nManagerSaveEff[defTONG_MAX_MANAGER];
@@ -86,9 +86,9 @@ private:
 public:
 	BOOL		SearchOne(char *lpszName, STONG_ONE_LEADER_INFO *pInfo);
 
-	BOOL		AddMember(char *lpszPlayerName, int nSex = 0, int nJoinTm = 0, int nSaveEff = 0);		// Ìí¼ÓÒ»¸ö³ÉÔ±
+	BOOL		AddMember(char *lpszPlayerName, int nSex = 0, int nJoinTm = 0, int nSaveEff = 0);		// æ·»åŠ ä¸€ä¸ªæˆå‘˜
 
-	BOOL		GetTongHeadInfo(STONG_HEAD_INFO_SYNC *pInfo);	// °ï»áĞÅÏ¢
+	BOOL		GetTongHeadInfo(STONG_HEAD_INFO_SYNC *pInfo);	// å¸®ä¼šä¿¡æ¯
 
 	BOOL		GetTongManagerInfo(STONG_GET_MANAGER_INFO_COMMAND *pApply, STONG_MANAGER_INFO_SYNC *pInfo);
 

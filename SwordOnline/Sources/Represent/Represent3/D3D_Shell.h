@@ -1,6 +1,6 @@
 // D3D_Shell.h
-// °üÀ¨ Direct3D ¶ÔÏóºÍÏà¹ØĞÅÏ¢.
-// ÔÚäÖÈ¾Ä£¿éÖĞCD3D_Shell¶ÔÏóÖ»ÓĞÒ»¸ö. 
+// åŒ…æ‹¬ Direct3D å¯¹è±¡å’Œç›¸å…³ä¿¡æ¯.
+// åœ¨æ¸²æŸ“æ¨¡å—ä¸­CD3D_Shellå¯¹è±¡åªæœ‰ä¸€ä¸ª. 
 
 #ifndef __D3D_SHELL_H__
 #define __D3D_SHELL_H__
@@ -12,8 +12,8 @@ using namespace std;
 struct D3DDeviceInfo;
 struct D3DModeInfo;
 
-// °üº¬Ò»¸öÏÔÊ¾ÊÊÅäÆ÷ĞÅÏ¢µÄ½á¹¹, °üÀ¨´ËÊÊÅäÆ÷ÉÏ¿ÉÓÃµÄÉè±¸ÁĞ±í
-// ³ı·ÇÄãÓĞÁ½¿éÊÊÅäÆ÷£¬·ñÔòÖ»»áÓĞÒ»¸öÊÊÅäÆ÷¶ÔÏó
+// åŒ…å«ä¸€ä¸ªæ˜¾ç¤ºé€‚é…å™¨ä¿¡æ¯çš„ç»“æ„, åŒ…æ‹¬æ­¤é€‚é…å™¨ä¸Šå¯ç”¨çš„è®¾å¤‡åˆ—è¡¨
+// é™¤éä½ æœ‰ä¸¤å—é€‚é…å™¨ï¼Œå¦åˆ™åªä¼šæœ‰ä¸€ä¸ªé€‚é…å™¨å¯¹è±¡
 struct D3DAdapterInfo
 {
 	uint32					iAdapterNum;	// This is D3D's adapter count number (e.g. 2nd adapter)
@@ -23,7 +23,7 @@ struct D3DAdapterInfo
     vector<D3DDeviceInfo>	Devices;
 };
 
-// ±£´æDirect3DÉè±¸ĞÅÏ¢µÄ½á¹¹, °üÀ¨Ò»¸ö´ËÉè±¸¼æÈİµÄÏÔÊ¾Ä£Ê½µÄÁĞ±í
+// ä¿å­˜Direct3Dè®¾å¤‡ä¿¡æ¯çš„ç»“æ„, åŒ…æ‹¬ä¸€ä¸ªæ­¤è®¾å¤‡å…¼å®¹çš„æ˜¾ç¤ºæ¨¡å¼çš„åˆ—è¡¨
 struct D3DDeviceInfo
 {
     // Device data
@@ -40,7 +40,7 @@ struct D3DDeviceInfo
     vector<D3DModeInfo>		Modes;
 };
 
-// °üº¬ÏÔÊ¾Ä£Ê½ĞÅÏ¢µÄ½á¹¹
+// åŒ…å«æ˜¾ç¤ºæ¨¡å¼ä¿¡æ¯çš„ç»“æ„
 struct D3DModeInfo
 {
     uint32					Width;			// Screen width in this mode

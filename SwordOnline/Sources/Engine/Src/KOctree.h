@@ -13,13 +13,13 @@
 class ENGINE_API KOctree  
 {
 public:
-	int				m_nColors;	// ×Ü¹²ÓĞ¼¸ÖÖÉ«ÁË
-	KOctreeNode		RootNode;	// Ê÷µÄ¸ù½Úµã
+	int				m_nColors;	// æ€»å…±æœ‰å‡ ç§è‰²äº†
+	KOctreeNode		RootNode;	// æ ‘çš„æ ¹èŠ‚ç‚¹
 	KPAL24			*m_Palette;
 private:
-	int				m_nMinRef;	// ×îĞ¡ÒıÓÃ´ÎÊı
-	int				m_nPalOff;	// µ÷É«°åÆ«ÒÆ
-	KOctreeNode*	m_pMinNode;	// ×îĞ¡ÒıÓÃ×ÜÊıµÄ¸¸½Úµã	
+	int				m_nMinRef;	// æœ€å°å¼•ç”¨æ¬¡æ•°
+	int				m_nPalOff;	// è°ƒè‰²æ¿åç§»
+	KOctreeNode*	m_pMinNode;	// æœ€å°å¼•ç”¨æ€»æ•°çš„çˆ¶èŠ‚ç‚¹	
 public:
 	void			Insert(BYTE r, BYTE g, BYTE b);
 	void			ReduceNode();

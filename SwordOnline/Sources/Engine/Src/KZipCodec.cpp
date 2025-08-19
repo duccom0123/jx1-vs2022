@@ -85,10 +85,10 @@ static UINT cde[] =
 	11, 11, 12, 12, 13, 13
 };
 //---------------------------------------------------------------------------
-// º¯Êı:	KZipCodec
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KZipCodec
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KZipCodec::KZipCodec()
 {
@@ -104,12 +104,12 @@ KZipCodec::KZipCodec()
 	g_MemZero(&m_Lf, sizeof(m_Lf));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Decode
-// ¹¦ÄÜ:	Decode a sub file in zip
-// ²ÎÊı:	pBuffer 		Output buffer
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	Decode a sub file in zip
+// å‚æ•°:	pBuffer 		Output buffer
 //			dwSize			Size of output buffer 
 //			Offset			sub file offset
-// ·µ»Ø:	TRUE			Success
+// è¿”å›:	TRUE			Success
 //			FALSE			Fail
 //---------------------------------------------------------------------------
 BOOL KZipCodec::Decode(PVOID pInBuf, PVOID pOutBuf, LF* pLf)
@@ -129,10 +129,10 @@ BOOL KZipCodec::Decode(PVOID pInBuf, PVOID pOutBuf, LF* pLf)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_init
-// ¹¦ÄÜ:	extract initialize
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_init
+// åŠŸèƒ½:	extract initialize
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_init()
 {
@@ -147,10 +147,10 @@ void KZipCodec::extract_init()
 	sbe = &sb[sb_size];
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_file
-// ¹¦ÄÜ:	extract file from a ZIP file
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_file
+// åŠŸèƒ½:	extract file from a ZIP file
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_file()
 {
@@ -184,10 +184,10 @@ void KZipCodec::extract_file()
 	extract_flush();				// else .. flush our output buffer
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_exit
-// ¹¦ÄÜ:	extract exit
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_exit
+// åŠŸèƒ½:	extract exit
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_exit()
 {
@@ -198,10 +198,10 @@ void KZipCodec::extract_exit()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_flush
-// ¹¦ÄÜ:	write output buffer as needed
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_flush
+// åŠŸèƒ½:	write output buffer as needed
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_flush()
 {
@@ -213,10 +213,10 @@ void KZipCodec::extract_flush()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	store_char
-// ¹¦ÄÜ:	store character in output file
-// ²ÎÊı:	c		character to store
-// ·µ»Ø:	void
+// å‡½æ•°:	store_char
+// åŠŸèƒ½:	store character in output file
+// å‚æ•°:	c		character to store
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::store_char(char c)
 {
@@ -230,10 +230,10 @@ void KZipCodec::store_char(char c)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	lookat_code
-// ¹¦ÄÜ:	look at the next code from input file
-// ²ÎÊı:	bits		number of bits
-// ·µ»Ø:	UINT
+// å‡½æ•°:	lookat_code
+// åŠŸèƒ½:	look at the next code from input file
+// å‚æ•°:	bits		number of bits
+// è¿”å›:	UINT
 //---------------------------------------------------------------------------
 UINT KZipCodec::lookat_code(int bits)
 {
@@ -278,10 +278,10 @@ UINT KZipCodec::lookat_code(int bits)
 	return (((UINT)bhold) & bit_mask[bits]);		// return just enough bits
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	get_code
-// ¹¦ÄÜ:	get next code from input file
-// ²ÎÊı:	bits		number of bits in this code
-// ·µ»Ø:	UINT
+// å‡½æ•°:	get_code
+// åŠŸèƒ½:	get next code from input file
+// å‚æ•°:	bits		number of bits in this code
+// è¿”å›:	UINT
 //---------------------------------------------------------------------------
 UINT KZipCodec::get_code(int bits)
 {
@@ -293,10 +293,10 @@ UINT KZipCodec::get_code(int bits)
 	return(a);					// ..and return value
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_copy()
-// ¹¦ÄÜ:	copy stored data to output stream
-// ²ÎÊı:	len 		length to copy
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_copy()
+// åŠŸèƒ½:	copy stored data to output stream
+// å‚æ•°:	len 		length to copy
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_copy(UINT len)
 {
@@ -323,20 +323,20 @@ void KZipCodec::extract_copy(UINT len)
 	free(b);									// ..and release file buffer
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_stored()
-// ¹¦ÄÜ:	extract a stored file
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_stored()
+// åŠŸèƒ½:	extract a stored file
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_stored(void)
 {
 	extract_copy(rsize);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	extract_inflate()
-// ¹¦ÄÜ:	extract a inflate file
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	extract_inflate()
+// åŠŸèƒ½:	extract a inflate file
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KZipCodec::extract_inflate()
 {

@@ -46,7 +46,7 @@ void KScriptList::Activate()
 	}
 
 }
-//SendMessage  ÏòËùÓÐµÄ½Å±¾¶ÔÏó·¢ËÍÏûÏ¢
+//SendMessage  å‘æ‰€æœ‰çš„è„šæœ¬å¯¹è±¡å‘é€æ¶ˆæ¯
 void KScriptList::SendMessage(char * szMessageName, char * szData)
 {
 	KNode * pNode;
@@ -60,7 +60,7 @@ void KScriptList::SendMessage(char * szMessageName, char * szData)
 		KScriptNode * pScriptNode;
 		pScriptNode = (KScriptNode *)pNode;
 		pScript = (KStepLuaScript * )pScriptNode->pScript;
-	//È«¾Ö·¢ËÍÊ±£¬¶ÔÏóÎª0
+	//å…¨å±€å‘é€æ—¶ï¼Œå¯¹è±¡ä¸º0
 		pScript->AddMessage(0,szMessageName, szData);
 		pNode = pNode->GetNext();
 	}

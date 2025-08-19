@@ -19,9 +19,9 @@ unsigned long FileNameHash(const char *file_name)
 	return (id ^ 0x12345678);
 }
 
-//Ê¹ÓÃindex_lowµÄ¸ßÎ»×Ö×÷ÎªÒıÓÃ¼ÆÊı
+//ä½¿ç”¨index_lowçš„é«˜ä½å­—ä½œä¸ºå¼•ç”¨è®¡æ•°
 ZCache::ZCache(long size) {
-	long align = size % 0x10000;				//±ØĞëÊÇ64k¶ÔÆëµÄ£¬²»È»»á½µµÍĞ§ÂÊ
+	long align = size % 0x10000;				//å¿…é¡»æ˜¯64kå¯¹é½çš„ï¼Œä¸ç„¶ä¼šé™ä½æ•ˆç‡
 	if(align) size += 0x10000 - align;
 	buffer = new char[size];
 	cache_size = size;
@@ -43,17 +43,17 @@ ZCache::~ZCache() {
     }
 }
 
-void ZCache::completeNode(char *node) {																	//½«½Úµã×´Ì¬ÉèÖÃÎª×¼±¸ºÃ
+void ZCache::completeNode(char *node) {																	//å°†èŠ‚ç‚¹çŠ¶æ€è®¾ç½®ä¸ºå‡†å¤‡å¥½
 	if(!node) return;
 	EnterCriticalSection(&mutex);
 	item_info *current = (item_info *)(node - sizeof(item_info));
-	current->index_low = current->index_low & 0x0000FFFF;									//ÒıÓÃ¼ÆÊıÎª1 
+	current->index_low = current->index_low & 0x0000FFFF;									//å¼•ç”¨è®¡æ•°ä¸º1 
 	last_items[last] = (char *)current - buffer;
 	if(++last == MAX_LAST) last = 0;
 	LeaveCriticalSection(&mutex);
 }
 
-char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long size) {			//µÃµ½Ò»¸ö»º³åÇøÊı¾İ¿é
+char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long size) {			//å¾—åˆ°ä¸€ä¸ªç¼“å†²åŒºæ•°æ®å—
 	size += sizeof(item_info);
 	unsigned long align = size % MINIMIZE_BLOCK_SIZE;
 	if(align) size += MINIMIZE_BLOCK_SIZE - align;
@@ -61,9 +61,9 @@ char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long si
 	if(size > cache_size) return 0;
 	item_info *next;
 	EnterCriticalSection(&mutex);
-	while(free_items->size < size) {										//É¾³ıºóÃæµÄÏîÄ¿Ö±µ½ÓĞ×ã¹»µÄ¿Õ¼äÎªÖ¹
-		next = (item_info *)((char *)free_items + free_items->size);		//ÏÂÒ»¸ö½Úµã
-		if((char *)next - buffer >= cache_size) {							//ÒÑ¾­µ½ÁË½áÊøµÄÎ»ÖÃ£¬»ØµÚÒ»¸ö
+	while(free_items->size < size) {										//åˆ é™¤åé¢çš„é¡¹ç›®ç›´åˆ°æœ‰è¶³å¤Ÿçš„ç©ºé—´ä¸ºæ­¢
+		next = (item_info *)((char *)free_items + free_items->size);		//ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+		if((char *)next - buffer >= cache_size) {							//å·²ç»åˆ°äº†ç»“æŸçš„ä½ç½®ï¼Œå›ç¬¬ä¸€ä¸ª
 			free_items = (item_info *)buffer;
 			free_items->index_high = 0;
 		}
@@ -72,12 +72,12 @@ char *ZCache::getNode(unsigned long index_high, unsigned long index_low, long si
 				next = (item_info *)((char *)next + next->size);
 				if((char *)next - buffer >= cache_size) {
 					LeaveCriticalSection(&mutex);
-					return 0;														//ÓĞÊı¾İ²¢ÇÒÒıÓÃ¼ÆÊı²»Îª0(»òÕßÎªµÈ´ı×´Ì¬)
+					return 0;														//æœ‰æ•°æ®å¹¶ä¸”å¼•ç”¨è®¡æ•°ä¸ä¸º0(æˆ–è€…ä¸ºç­‰å¾…çŠ¶æ€)
 				}
 			}*/
-/*			if(next->index_high && (next->index_low & 0xFFFF0000ul)) {			//»¹ÓĞÊı¾İ²¢ÇÒÕıÔÚÊ¹ÓÃ
+/*			if(next->index_high && (next->index_low & 0xFFFF0000ul)) {			//è¿˜æœ‰æ•°æ®å¹¶ä¸”æ­£åœ¨ä½¿ç”¨
 				LeaveCriticalSection(&mutex);
-				return 0;														//ÓĞÊı¾İ²¢ÇÒÒıÓÃ¼ÆÊı²»Îª0(»òÕßÎªµÈ´ı×´Ì¬)
+				return 0;														//æœ‰æ•°æ®å¹¶ä¸”å¼•ç”¨è®¡æ•°ä¸ä¸º0(æˆ–è€…ä¸ºç­‰å¾…çŠ¶æ€)
 			}
 			else*/
 			free_items->size += next->size;
@@ -164,7 +164,7 @@ int ZFile::read(char *buffer, unsigned long offset, int size) {
 	return read_size;
 }
 
-//×¢Òâ£¬Ê¹ÓÃÕâ¸öº¯ÊıµÄµØ·½ĞèÒªµ÷ÓÃrelease·½·¨ÊÍ·ÅµÃµ½µÄ»º³åÇø
+//æ³¨æ„ï¼Œä½¿ç”¨è¿™ä¸ªå‡½æ•°çš„åœ°æ–¹éœ€è¦è°ƒç”¨releaseæ–¹æ³•é‡Šæ”¾å¾—åˆ°çš„ç¼“å†²åŒº
 char *ZFile::read(unsigned long offset, int size) {
 	char *node = m_Cache->getNode(0, 0, size);
 	if(!node) return 0;
@@ -188,7 +188,7 @@ bool ZPackFile::_readData(int node_index, char *node) {
     unsigned int dest_length;
 	unsigned long compress_type = index_list[node_index].compress_size >> 24;
 	int r = 1;
-	if((compress_type == TYPE_UCL) | (compress_type == TYPE_BZIP2)) {									//ÕûÌåÑ¹Ëõ
+	if((compress_type == TYPE_UCL) | (compress_type == TYPE_BZIP2)) {									//æ•´ä½“å‹ç¼©
 		if(compress_type == TYPE_UCL) {
 			r = ucl_nrv2b_decompress_8((BYTE *)source, index_list[node_index].compress_size & 0x00FFFFFF, (BYTE *)node, &dest_length, NULL);
 		}
@@ -217,7 +217,7 @@ ZPackFile::~ZPackFile() {
 }
 
 int ZPackFile::getNodeIndex(unsigned long id)
-{								//¶ş·Ö·¨ÕÒµ½Ö¸¶¨µÄË÷Òı
+{								//äºŒåˆ†æ³•æ‰¾åˆ°æŒ‡å®šçš„ç´¢å¼•
 	int nBegin, nEnd, nMid;
 	nBegin = 0;
 	nEnd = header.count;
@@ -227,7 +227,7 @@ int ZPackFile::getNodeIndex(unsigned long id)
 		if (id < index_list[nMid].id) nEnd = nMid - 1;
 		else nBegin = nMid + 1;
 	}
-	if(id != index_list[nMid].id) return -1;								//Êı¾İÎÄ¼şÀïÃæÒ²Ã»ÓĞ
+	if(id != index_list[nMid].id) return -1;								//æ•°æ®æ–‡ä»¶é‡Œé¢ä¹Ÿæ²¡æœ‰
 	return nMid;
 }
 
@@ -246,7 +246,7 @@ char *ZPackFile::getData(unsigned long id) {
 	else return 0;
 }
 
-char *ZPackFile::getData(const char *name) {											//»ñÈ¡Ö¸¶¨µÄÎÄ¼şÊı¾İ
+char *ZPackFile::getData(const char *name) {											//è·å–æŒ‡å®šçš„æ–‡ä»¶æ•°æ®
 	unsigned long id = FileNameHash(name);
 	return getData(id);
 }
@@ -273,7 +273,7 @@ SPRHEAD* ZSPRPackFile::SprGetHeader(unsigned long uNameId, SPROFFS*& pOffsetTabl
 	pOffsetTable = NULL;
 	if(nNodeIndex >= 0)
 	{
-		//Ê×ÏÈ¼ì²éÕâ¸öidÊÇÊ²Ã´ÀàĞÍÑ¹Ëõ·½Ê½
+		//é¦–å…ˆæ£€æŸ¥è¿™ä¸ªidæ˜¯ä»€ä¹ˆç±»å‹å‹ç¼©æ–¹å¼
 		if ((index_list[nNodeIndex].compress_size & (TYPE_FRAME << 24)) == 0)
 		{
 			pSpr = (SPRHEAD*)malloc(index_list[nNodeIndex].size);
@@ -341,7 +341,7 @@ SPRFRAME* ZSPRPackFile::SprGetFrame(SPRHEAD* pSprHeader, int nFrame)
 				bool bOk = false;
 				uCompressType &= 0x0F;
 				long	lTempValue = sizeof(SPRHEAD) + pSprHeader->Colors * 3;
-				//¶Á³öÖ¸¶¨Ö¡µÄĞÅÏ¢
+				//è¯»å‡ºæŒ‡å®šå¸§çš„ä¿¡æ¯
 				frame_info* pFrameList = (frame_info *)((char*)pSprHeader + lTempValue);
 				unsigned long	uSrcOffset = index_list[nNodeIndex].offset + lTempValue +pSprHeader->Frames * sizeof(frame_info);
 			    while(nFrame > 0)
@@ -350,7 +350,7 @@ SPRFRAME* ZSPRPackFile::SprGetFrame(SPRHEAD* pSprHeader, int nFrame)
 					nFrame--;
 				};
 				lTempValue = pFrameList->size;
-				if (lTempValue < 0)								//frame_info::sizeº¬Òå¹æ·¶È¡·´£¬¸ü....
+				if (lTempValue < 0)								//frame_info::sizeå«ä¹‰è§„èŒƒå–åï¼Œæ›´....
 				{
 					lTempValue = -lTempValue;
 					if (pFrame = (SPRFRAME*)malloc(lTempValue))

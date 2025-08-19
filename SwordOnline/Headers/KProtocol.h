@@ -96,22 +96,22 @@ typedef struct
 {
 	BYTE	ProtocolType;
 	WORD	m_wLength;
-	BYTE	Camp;				// ÕóÓª
-	BYTE	CurrentCamp;		// µ±Ç°ÕóÓª
-	BYTE	m_bySeries;			// ÎåĞĞÏµ
+	BYTE	Camp;				// é˜µè¥
+	BYTE	CurrentCamp;		// å½“å‰é˜µè¥
+	BYTE	m_bySeries;			// äº”è¡Œç³»
 	int		CurrentLife;
 	int		CurrentLifeMax;
-	BYTE	m_btMenuState;		// ×é¶Ó¡¢½»Ò×µÈ×´Ì¬
-	BYTE	m_Doing;			// ĞĞÎª
-	BYTE	m_btKind;			// npcÀàĞÍ
-	BYTE	Special;			// ¼ÓÇ¿µÄNPC£¨ºóÃæµÄbit±íÊ¾¼ÓÇ¿ÀàĞÍ£¬Ãû×ÖÊÇ·ñ½ğÉ«Ö®ÀàµÄÓÉ¼ÓÇ¿µÄÊıÄ¿ÔÚ¿Í»§¶ËÈ·¶¨£©
+	BYTE	m_btMenuState;		// ç»„é˜Ÿã€äº¤æ˜“ç­‰çŠ¶æ€
+	BYTE	m_Doing;			// è¡Œä¸º
+	BYTE	m_btKind;			// npcç±»å‹
+	BYTE	Special;			// åŠ å¼ºçš„NPCï¼ˆåé¢çš„bitè¡¨ç¤ºåŠ å¼ºç±»å‹ï¼Œåå­—æ˜¯å¦é‡‘è‰²ä¹‹ç±»çš„ç”±åŠ å¼ºçš„æ•°ç›®åœ¨å®¢æˆ·ç«¯ç¡®å®šï¼‰
 	int		MissionGroup;
 	int		Dir;
-	DWORD	MapX;				// Î»ÖÃĞÅÏ¢
-	DWORD	MapY;				// Î»ÖÃĞÅÏ¢
-	DWORD	ID;					// NpcµÄÎ¨Ò»ID
-	int		NpcSettingIdx;		// ¿Í»§¶ËÓÃÓÚ¼ÓÔØÍæ¼Ò×ÊÔ´¼°»ù´¡ÊıÖµÉè¶¨
-	char	m_szName[64];		// Ãû×Ö
+	DWORD	MapX;				// ä½ç½®ä¿¡æ¯
+	DWORD	MapY;				// ä½ç½®ä¿¡æ¯
+	DWORD	ID;					// Npcçš„å”¯ä¸€ID
+	int		NpcSettingIdx;		// å®¢æˆ·ç«¯ç”¨äºåŠ è½½ç©å®¶èµ„æºåŠåŸºç¡€æ•°å€¼è®¾å®š
+	char	m_szName[64];		// åå­—
 } NPC_SYNC;
 
 typedef struct
@@ -271,155 +271,155 @@ typedef struct
 {
 	BYTE	ProtocolType;
 	int		nNpcId;
-} PLAYER_DIALOG_NPC_COMMAND; //Ö÷½ÇÓënNpcId¶Ô»°µÄÇëÇó
+} PLAYER_DIALOG_NPC_COMMAND; //ä¸»è§’ä¸nNpcIdå¯¹è¯çš„è¯·æ±‚
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nExp;				// µ±Ç°¾­Ñé
-} PLAYER_EXP_SYNC;				// Íæ¼ÒÍ¬²½¾­Ñé
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nExp;				// å½“å‰ç»éªŒ
+} PLAYER_EXP_SYNC;				// ç©å®¶åŒæ­¥ç»éªŒ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-} PLAYER_APPLY_CREATE_TEAM;		// ¿Í»§¶ËÍæ¼Ò´´½¨¶ÓÎé£¬Ïò·şÎñÆ÷·¢ÇëÇó
+	BYTE	ProtocolType;		// åè®®åç§°
+} PLAYER_APPLY_CREATE_TEAM;		// å®¢æˆ·ç«¯ç©å®¶åˆ›å»ºé˜Ÿä¼ï¼Œå‘æœåŠ¡å™¨å‘è¯·æ±‚
 
 struct PLAYER_SEND_CREATE_TEAM_SUCCESS
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	nTeamServerID;		// ¶ÓÎéÔÚ·şÎñÆ÷ÉÏµÄÎ¨Ò»±êÊ¶
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	nTeamServerID;		// é˜Ÿä¼åœ¨æœåŠ¡å™¨ä¸Šçš„å”¯ä¸€æ ‡è¯†
 	PLAYER_SEND_CREATE_TEAM_SUCCESS() {nTeamServerID = -1;}
-};	// ·şÎñÆ÷Í¨ÖªÍæ¼Ò¶ÓÎé´´½¨³É¹¦
+};	// æœåŠ¡å™¨é€šçŸ¥ç©å®¶é˜Ÿä¼åˆ›å»ºæˆåŠŸ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btErrorID;		// ¶ÓÎé´´½¨²»³É¹¦Ô­Òò£º0 Í¬Ãû 1 Íæ¼Ò±¾ÉíÒÑ¾­ÊôÓÚÄ³Ò»Ö§¶ÓÎé 3 µ±Ç°´¦ÓÚ²»ÄÜ×é¶Ó×´Ì¬
-} PLAYER_SEND_CREATE_TEAM_FALSE;// ·şÎñÆ÷Í¨Öª¿Í»§¶Ë¶ÓÎé´´½¨²»³É¹¦
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btErrorID;		// é˜Ÿä¼åˆ›å»ºä¸æˆåŠŸåŸå› ï¼š0 åŒå 1 ç©å®¶æœ¬èº«å·²ç»å±äºæŸä¸€æ”¯é˜Ÿä¼ 3 å½“å‰å¤„äºä¸èƒ½ç»„é˜ŸçŠ¶æ€
+} PLAYER_SEND_CREATE_TEAM_FALSE;// æœåŠ¡å™¨é€šçŸ¥å®¢æˆ·ç«¯é˜Ÿä¼åˆ›å»ºä¸æˆåŠŸ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwTarNpcID;		// ²éÑ¯Ä¿±ê npc id
-} PLAYER_APPLY_TEAM_INFO;		// ¿Í»§¶ËÏò·şÎñÆ÷ÉêÇë²éÑ¯Ä³¸önpcµÄ×é¶ÓÇé¿ö
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwTarNpcID;		// æŸ¥è¯¢ç›®æ ‡ npc id
+} PLAYER_APPLY_TEAM_INFO;		// å®¢æˆ·ç«¯å‘æœåŠ¡å™¨ç”³è¯·æŸ¥è¯¢æŸä¸ªnpcçš„ç»„é˜Ÿæƒ…å†µ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-} PLAYER_APPLY_TEAM_INFO_FALSE;	// ·şÎñÆ÷¸æÖª¿Í»§¶ËÉêÇë²éÑ¯Ä³¸önpcµÄ×é¶ÓÇé¿öÊ§°Ü
+	BYTE	ProtocolType;		// åè®®åç§°
+} PLAYER_APPLY_TEAM_INFO_FALSE;	// æœåŠ¡å™¨å‘ŠçŸ¥å®¢æˆ·ç«¯ç”³è¯·æŸ¥è¯¢æŸä¸ªnpcçš„ç»„é˜Ÿæƒ…å†µå¤±è´¥
 
 typedef struct PLAYER_SEND_TEAM_INFO_DATA
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nCaptain;			// ¶Ó³¤ npc id
-	int		m_nMember[MAX_TEAM_MEMBER];	// ËùÓĞ¶ÓÔ± npc id
-	DWORD	nTeamServerID;		// ¶ÓÎéÔÚ·şÎñÆ÷ÉÏµÄÎ¨Ò»±êÊ¶
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nCaptain;			// é˜Ÿé•¿ npc id
+	int		m_nMember[MAX_TEAM_MEMBER];	// æ‰€æœ‰é˜Ÿå‘˜ npc id
+	DWORD	nTeamServerID;		// é˜Ÿä¼åœ¨æœåŠ¡å™¨ä¸Šçš„å”¯ä¸€æ ‡è¯†
 	PLAYER_SEND_TEAM_INFO_DATA() {nTeamServerID = -1;};
-} PLAYER_SEND_TEAM_INFO;		// ·şÎñÆ÷Ïò¿Í»§¶Ë·¢ËÍÄ³¸ö¶ÓÎéµÄĞÅÏ¢Êı¾İ
+} PLAYER_SEND_TEAM_INFO;		// æœåŠ¡å™¨å‘å®¢æˆ·ç«¯å‘é€æŸä¸ªé˜Ÿä¼çš„ä¿¡æ¯æ•°æ®
 
 typedef struct PLAYER_SEND_SELF_TEAM_INFO_DATA
 {
-	BYTE	ProtocolType;							// Ğ­ÒéÃû³Æ
-	BYTE	m_btState;								// ¶ÓÎé×´Ì¬
-	DWORD	m_dwNpcID[MAX_TEAM_MEMBER + 1];			// Ã¿Ãû³ÉÔ±µÄnpc id £¨¶Ó³¤·ÅÔÚµÚÒ»Î»£©
-	char	m_szNpcName[MAX_TEAM_MEMBER + 1][32];	// Ã¿Ãû³ÉÔ±µÄÃû×Ö£¨¶Ó³¤·ÅÔÚµÚÒ»Î»£©
-	DWORD	nTeamServerID;							// ¶ÓÎéÔÚ·şÎñÆ÷ÉÏµÄÎ¨Ò»±êÊ¶
-	DWORD	m_nLeadExp;							// Íæ¼ÒµÄÍ³ÂÊÁ¦¾­Ñé
-	BYTE	m_btLevel[MAX_TEAM_MEMBER + 1];			// Ã¿Ãû³ÉÔ±µÄµÈ¼¶£¨¶Ó³¤·ÅÔÚµÚÒ»Î»£©
+	BYTE	ProtocolType;							// åè®®åç§°
+	BYTE	m_btState;								// é˜Ÿä¼çŠ¶æ€
+	DWORD	m_dwNpcID[MAX_TEAM_MEMBER + 1];			// æ¯åæˆå‘˜çš„npc id ï¼ˆé˜Ÿé•¿æ”¾åœ¨ç¬¬ä¸€ä½ï¼‰
+	char	m_szNpcName[MAX_TEAM_MEMBER + 1][32];	// æ¯åæˆå‘˜çš„åå­—ï¼ˆé˜Ÿé•¿æ”¾åœ¨ç¬¬ä¸€ä½ï¼‰
+	DWORD	nTeamServerID;							// é˜Ÿä¼åœ¨æœåŠ¡å™¨ä¸Šçš„å”¯ä¸€æ ‡è¯†
+	DWORD	m_nLeadExp;							// ç©å®¶çš„ç»Ÿç‡åŠ›ç»éªŒ
+	BYTE	m_btLevel[MAX_TEAM_MEMBER + 1];			// æ¯åæˆå‘˜çš„ç­‰çº§ï¼ˆé˜Ÿé•¿æ”¾åœ¨ç¬¬ä¸€ä½ï¼‰
 	PLAYER_SEND_SELF_TEAM_INFO_DATA() {memset(m_szNpcName, 0, 32 * (MAX_TEAM_MEMBER + 1)); nTeamServerID = -1;};
-} PLAYER_SEND_SELF_TEAM_INFO;						// ·şÎñÆ÷Ïò¿Í»§¶Ë·¢ËÍ¿Í»§¶Ë×ÔÉí¶ÓÎéµÄĞÅÏ¢Êı¾İ
+} PLAYER_SEND_SELF_TEAM_INFO;						// æœåŠ¡å™¨å‘å®¢æˆ·ç«¯å‘é€å®¢æˆ·ç«¯è‡ªèº«é˜Ÿä¼çš„ä¿¡æ¯æ•°æ®
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	BYTE	m_btState;
-	BYTE	m_btFlag;		// ´ò¿ª»ò¹Ø±Õ
-} PLAYER_TEAM_CHANGE_STATE;		// ¶ÓÎé¶Ó³¤Ïò·şÎñÆ÷ÉêÇë¿ª·Å¡¢¹Ø±Õ¶ÓÎéÊÇ·ñÔÊĞí½ÓÊÕ³ÉÔ±×´Ì¬
+	BYTE	m_btFlag;		// æ‰“å¼€æˆ–å…³é—­
+} PLAYER_TEAM_CHANGE_STATE;		// é˜Ÿä¼é˜Ÿé•¿å‘æœåŠ¡å™¨ç”³è¯·å¼€æ”¾ã€å…³é—­é˜Ÿä¼æ˜¯å¦å…è®¸æ¥æ”¶æˆå‘˜çŠ¶æ€
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwTarNpcID;		// Ä¿±ê¶ÓÎé¶Ó³¤npc id »òÕß ÉêÇëÈË npc id
-} PLAYER_APPLY_ADD_TEAM;		// Íæ¼ÒÏò·şÎñÆ÷ÉêÇë¼ÓÈëÄ³¸ö¶ÓÎé»òÕß·şÎñÆ÷ÏòÄ³¸ö¶Ó³¤×ª·¢Ä³¸öÍæ¼ÒµÄ¼ÓÈëÉêÇë
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwTarNpcID;		// ç›®æ ‡é˜Ÿä¼é˜Ÿé•¿npc id æˆ–è€… ç”³è¯·äºº npc id
+} PLAYER_APPLY_ADD_TEAM;		// ç©å®¶å‘æœåŠ¡å™¨ç”³è¯·åŠ å…¥æŸä¸ªé˜Ÿä¼æˆ–è€…æœåŠ¡å™¨å‘æŸä¸ªé˜Ÿé•¿è½¬å‘æŸä¸ªç©å®¶çš„åŠ å…¥ç”³è¯·
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwNpcID;			// ±»½ÓÊÜÈë¶ÓÎéµÄnpc id
-} PLAYER_ACCEPT_TEAM_MEMBER;	// Íæ¼ÒÍ¨Öª·şÎñÆ÷½ÓÊÜÄ³¸öÍæ¼ÒÈë¶ÓÎé
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwNpcID;			// è¢«æ¥å—å…¥é˜Ÿä¼çš„npc id
+} PLAYER_ACCEPT_TEAM_MEMBER;	// ç©å®¶é€šçŸ¥æœåŠ¡å™¨æ¥å—æŸä¸ªç©å®¶å…¥é˜Ÿä¼
 
 typedef struct PLAYER_TEAM_ADD_MEMBER_DATA
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btLevel;			// ¼ÓÈëÕßµÈ¼¶
-	DWORD	m_dwNpcID;			// ¼ÓÈëÕßnpc id
-	char	m_szName[32];		// ¼ÓÈëÕßĞÕÃû
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btLevel;			// åŠ å…¥è€…ç­‰çº§
+	DWORD	m_dwNpcID;			// åŠ å…¥è€…npc id
+	char	m_szName[32];		// åŠ å…¥è€…å§“å
 	PLAYER_TEAM_ADD_MEMBER_DATA() {memset(m_szName, 0, 32);};
-} PLAYER_TEAM_ADD_MEMBER;		// ·şÎñÆ÷Í¨Öª¶ÓÎéÖĞµÄ¸÷¸öÍæ¼ÒÓĞĞÂ³ÉÔ±¼ÓÈë
+} PLAYER_TEAM_ADD_MEMBER;		// æœåŠ¡å™¨é€šçŸ¥é˜Ÿä¼ä¸­çš„å„ä¸ªç©å®¶æœ‰æ–°æˆå‘˜åŠ å…¥
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	BOOL	bMySelf;
-} PLAYER_APPLY_LEAVE_TEAM;		// ¿Í»§¶ËÍæ¼ÒÉêÇëÀë¶Ó
+} PLAYER_APPLY_LEAVE_TEAM;		// å®¢æˆ·ç«¯ç©å®¶ç”³è¯·ç¦»é˜Ÿ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwNpcID;			// Àë¶Ónpc id
-} PLAYER_LEAVE_TEAM;			// ·şÎñÆ÷Í¨Öª¸÷¶ÓÔ±Ä³ÈËÀë¶Ó
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwNpcID;			// ç¦»é˜Ÿnpc id
+} PLAYER_LEAVE_TEAM;			// æœåŠ¡å™¨é€šçŸ¥å„é˜Ÿå‘˜æŸäººç¦»é˜Ÿ
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwNpcID;			// Àë¶Ónpc id
-} PLAYER_TEAM_KICK_MEMBER;		// ¶Ó³¤Ìß³ıÄ³¸ö¶ÓÔ±
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwNpcID;			// ç¦»é˜Ÿnpc id
+} PLAYER_TEAM_KICK_MEMBER;		// é˜Ÿé•¿è¸¢é™¤æŸä¸ªé˜Ÿå‘˜
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwNpcID;			// Ä¿±ênpc id
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwNpcID;			// ç›®æ ‡npc id
 	BOOL	m_bMySelf;
-} PLAYER_APPLY_TEAM_CHANGE_CAPTAIN;// ¶Ó³¤Ïò·şÎñÆ÷ÉêÇë°Ñ×Ô¼ºµÄ¶Ó³¤Éí·İ½»¸ø±ğµÄ¶ÓÔ±
+} PLAYER_APPLY_TEAM_CHANGE_CAPTAIN;// é˜Ÿé•¿å‘æœåŠ¡å™¨ç”³è¯·æŠŠè‡ªå·±çš„é˜Ÿé•¿èº«ä»½äº¤ç»™åˆ«çš„é˜Ÿå‘˜
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	DWORD	m_dwCaptainID;		// ĞÂ¶Ó³¤npc id
-	DWORD	m_dwMemberID;		// ĞÂ¶ÓÔ±npc id
+	BYTE	ProtocolType;		// åè®®åç§°
+	DWORD	m_dwCaptainID;		// æ–°é˜Ÿé•¿npc id
+	DWORD	m_dwMemberID;		// æ–°é˜Ÿå‘˜npc id
 	BOOL	m_bMySelf;
-} PLAYER_TEAM_CHANGE_CAPTAIN;	// ·şÎñÆ÷Í¨Öª¸÷¶ÓÔ±¸ü»»¶Ó³¤
+} PLAYER_TEAM_CHANGE_CAPTAIN;	// æœåŠ¡å™¨é€šçŸ¥å„é˜Ÿå‘˜æ›´æ¢é˜Ÿé•¿
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-} PLAYER_APPLY_TEAM_DISMISS;	// Ïò·şÎñÆ÷ÉêÇë½âÉ¢¶ÓÎé
+	BYTE	ProtocolType;		// åè®®åç§°
+} PLAYER_APPLY_TEAM_DISMISS;	// å‘æœåŠ¡å™¨ç”³è¯·è§£æ•£é˜Ÿä¼
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btPKFlag;			// pk ¿ª¹Ø
-} PLAYER_SET_PK;				// Ïò·şÎñÆ÷ÉêÇë´ò¿ª¡¢¹Ø±ÕPK
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btPKFlag;			// pk å¼€å…³
+} PLAYER_SET_PK;				// å‘æœåŠ¡å™¨ç”³è¯·æ‰“å¼€ã€å…³é—­PK
 
 typedef struct
 {
-	BYTE	ProtocolType;			// Ğ­ÒéÃû³Æ
-	BYTE	m_btCamp;				// ĞÂÕóÓª
-	BYTE	m_btCurFaction;			// µ±Ç°ÃÅÅÉ
-	BYTE	m_btFirstFaction;		// Ê×´Î¼ÓÈëÃÅÅÉ
-	int		m_nAddTimes;			// ¼ÓÈëÃÅÅÉ´ÎÊı
-} PLAYER_FACTION_DATA;				// ·şÎñÆ÷·¢¸ø¿Í»§¶ËÃÅÅÉĞÅÏ¢
+	BYTE	ProtocolType;			// åè®®åç§°
+	BYTE	m_btCamp;				// æ–°é˜µè¥
+	BYTE	m_btCurFaction;			// å½“å‰é—¨æ´¾
+	BYTE	m_btFirstFaction;		// é¦–æ¬¡åŠ å…¥é—¨æ´¾
+	int		m_nAddTimes;			// åŠ å…¥é—¨æ´¾æ¬¡æ•°
+} PLAYER_FACTION_DATA;				// æœåŠ¡å™¨å‘ç»™å®¢æˆ·ç«¯é—¨æ´¾ä¿¡æ¯
 
 typedef struct
 {
-	BYTE	ProtocolType;			// Ğ­ÒéÃû³Æ
-} PLAYER_LEAVE_FACTION;				// ·şÎñÆ÷Í¨ÖªÍæ¼ÒÀë¿ªÃÅÅÉ
+	BYTE	ProtocolType;			// åè®®åç§°
+} PLAYER_LEAVE_FACTION;				// æœåŠ¡å™¨é€šçŸ¥ç©å®¶ç¦»å¼€é—¨æ´¾
 
 typedef struct
 {
-	BYTE	ProtocolType;			// Ğ­ÒéÃû³Æ
-	int		m_nMissionGroup;				// ĞÂÕóÓª
-} PLAYER_MISSION_DATA;				// ·şÎñÆ÷·¢¸ø¿Í»§¶ËÃÅÅÉĞÅÏ¢
+	BYTE	ProtocolType;			// åè®®åç§°
+	int		m_nMissionGroup;				// æ–°é˜µè¥
+} PLAYER_MISSION_DATA;				// æœåŠ¡å™¨å‘ç»™å®¢æˆ·ç«¯é—¨æ´¾ä¿¡æ¯
 
 typedef struct
 {
@@ -472,116 +472,116 @@ typedef struct
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nLeadLevel;		// Í³ÂÊÁ¦¾­ÑéÖµ
-	int		m_nLeadExp;		// Í³ÂÊÁ¦¾­ÑéÖµ
-} PLAYER_LEAD_EXP_SYNC;			// Í¬²½Í³ÂÊÁ¦¾­ÑéÖµ
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nLeadLevel;		// ç»Ÿç‡åŠ›ç»éªŒå€¼
+	int		m_nLeadExp;		// ç»Ÿç‡åŠ›ç»éªŒå€¼
+} PLAYER_LEAD_EXP_SYNC;			// åŒæ­¥ç»Ÿç‡åŠ›ç»éªŒå€¼
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	BOOL	m_bSetLevel;
-	BYTE	m_btLevel;			// µ±Ç°µÈ¼¶
-	int		m_nExp;				// µ±Ç°¾­Ñé
-	int		m_nAttributePoint;	// Ê£ÓàÊôĞÔµã
-	int		m_nSkillPoint;		// Ê£Óà¼¼ÄÜµã
-	int		m_nBaseLifeMax;		// µ±Ç°×î´óÉúÃüÖµ
-	int		m_nBaseStaminaMax;	// µ±Ç°×î´óÌåÁ¦Öµ
-	int		m_nBaseManaMax;		// µ±Ç°×î´óÄÚÁ¦Öµ
-} PLAYER_LEVEL_UP_SYNC;			// Íæ¼ÒÉı¼¶
+	BYTE	m_btLevel;			// å½“å‰ç­‰çº§
+	int		m_nExp;				// å½“å‰ç»éªŒ
+	int		m_nAttributePoint;	// å‰©ä½™å±æ€§ç‚¹
+	int		m_nSkillPoint;		// å‰©ä½™æŠ€èƒ½ç‚¹
+	int		m_nBaseLifeMax;		// å½“å‰æœ€å¤§ç”Ÿå‘½å€¼
+	int		m_nBaseStaminaMax;	// å½“å‰æœ€å¤§ä½“åŠ›å€¼
+	int		m_nBaseManaMax;		// å½“å‰æœ€å¤§å†…åŠ›å€¼
+} PLAYER_LEVEL_UP_SYNC;			// ç©å®¶å‡çº§
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btLevel;			// µ±Ç°µÈ¼¶
-	DWORD	m_dwTeammateID;		// ¶ÓÓÑ npc id
-} PLAYER_TEAMMATE_LEVEL_SYNC;	// Íæ¼ÒÉı¼¶µÄÊ±ºòÍ¨Öª¶ÓÓÑ
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btLevel;			// å½“å‰ç­‰çº§
+	DWORD	m_dwTeammateID;		// é˜Ÿå‹ npc id
+} PLAYER_TEAMMATE_LEVEL_SYNC;	// ç©å®¶å‡çº§çš„æ—¶å€™é€šçŸ¥é˜Ÿå‹
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btAttribute;		// ÊôĞÔ(0=Strength 1=Dexterity 2=Vitality 3=Engergy)
-	int		m_nAddNo;			// ¼ÓµÄµãÊı
-} PLAYER_ADD_BASE_ATTRIBUTE_COMMAND;	// Íæ¼ÒÌí¼Ó»ù±¾ÊôĞÔµã
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btAttribute;		// å±æ€§(0=Strength 1=Dexterity 2=Vitality 3=Engergy)
+	int		m_nAddNo;			// åŠ çš„ç‚¹æ•°
+} PLAYER_ADD_BASE_ATTRIBUTE_COMMAND;	// ç©å®¶æ·»åŠ åŸºæœ¬å±æ€§ç‚¹
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nSkillID;			// ¼¼ÄÜid
-	int		m_nAddPoint;		// Òª¼ÓµÄµãÊı
-} PLAYER_ADD_SKILL_POINT_COMMAND;// Íæ¼ÒÉêÇëÔö¼ÓÄ³¸ö¼¼ÄÜµÄµãÊı
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nSkillID;			// æŠ€èƒ½id
+	int		m_nAddPoint;		// è¦åŠ çš„ç‚¹æ•°
+} PLAYER_ADD_SKILL_POINT_COMMAND;// ç©å®¶ç”³è¯·å¢åŠ æŸä¸ªæŠ€èƒ½çš„ç‚¹æ•°
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btAttribute;		// ÊôĞÔ(0=Strength 1=Dexterity 2=Vitality 3=Engergy)
-	int		m_nBasePoint;		// »ù±¾µãÊı
-	int		m_nCurPoint;		// µ±Ç°µãÊı
-	int		m_nLeavePoint;		// Ê£ÓàÎ´·ÖÅäÊôĞÔµã
-} PLAYER_ATTRIBUTE_SYNC;		// Íæ¼ÒÍ¬²½ÊôĞÔµã
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btAttribute;		// å±æ€§(0=Strength 1=Dexterity 2=Vitality 3=Engergy)
+	int		m_nBasePoint;		// åŸºæœ¬ç‚¹æ•°
+	int		m_nCurPoint;		// å½“å‰ç‚¹æ•°
+	int		m_nLeavePoint;		// å‰©ä½™æœªåˆ†é…å±æ€§ç‚¹
+} PLAYER_ATTRIBUTE_SYNC;		// ç©å®¶åŒæ­¥å±æ€§ç‚¹
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nSkillID;			// ¼¼ÄÜid
-	int		m_nSkillLevel;		// ¼¼ÄÜµÈ¼¶
-	int		m_nAddLevel;		// ×°±¸Ìí¼ÓµÄ¼¼ÄÜµã
-	int		m_nSkillExp;		// ¼¼ÄÜµÈ¼¶
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nSkillID;			// æŠ€èƒ½id
+	int		m_nSkillLevel;		// æŠ€èƒ½ç­‰çº§
+	int		m_nAddLevel;		// è£…å¤‡æ·»åŠ çš„æŠ€èƒ½ç‚¹
+	int		m_nSkillExp;		// æŠ€èƒ½ç­‰çº§
 	BOOL	m_bTempSkill;
-	int		m_nLeavePoint;		// Ê£ÓàÎ´·ÖÅä¼¼ÄÜµã
-} PLAYER_SKILL_LEVEL_SYNC;		// Íæ¼ÒÍ¬²½¼¼ÄÜµã
+	int		m_nLeavePoint;		// å‰©ä½™æœªåˆ†é…æŠ€èƒ½ç‚¹
+} PLAYER_SKILL_LEVEL_SYNC;		// ç©å®¶åŒæ­¥æŠ€èƒ½ç‚¹
 
 //typedef struct
 //{
-//	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-//	int		m_nItemID;			// ÎïÆ·id
-//	int		m_nSourcePos;		// À´Ô´Î»ÖÃ
-//	int		m_nTargetPos;		// Ä¿µÄÎ»ÖÃ
-//} PLAYER_EQUIP_ITEM_COMMAND;	// Íæ¼ÒÊó±êÓÒ¼üµã»÷Ê¹ÓÃÎïÆ·(×°±¸)
+//	BYTE	ProtocolType;		// åè®®åç§°
+//	int		m_nItemID;			// ç‰©å“id
+//	int		m_nSourcePos;		// æ¥æºä½ç½®
+//	int		m_nTargetPos;		// ç›®çš„ä½ç½®
+//} PLAYER_EQUIP_ITEM_COMMAND;	// ç©å®¶é¼ æ ‡å³é”®ç‚¹å‡»ä½¿ç”¨ç‰©å“(è£…å¤‡)
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btPlace;			// Ò©Æ·Î»ÖÃ
-	BYTE	m_btX;				// Ò©Æ·Î»ÖÃ
-	BYTE	m_btY;				// Ò©Æ·Î»ÖÃ
-	int		m_nItemID;			// ÎïÆ·id
-} PLAYER_EAT_ITEM_COMMAND;		// Íæ¼ÒÊó±êÓÒ¼üµã»÷Ê¹ÓÃÎïÆ·(³ÔÒ©)
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btPlace;			// è¯å“ä½ç½®
+	BYTE	m_btX;				// è¯å“ä½ç½®
+	BYTE	m_btY;				// è¯å“ä½ç½®
+	int		m_nItemID;			// ç‰©å“id
+} PLAYER_EAT_ITEM_COMMAND;		// ç©å®¶é¼ æ ‡å³é”®ç‚¹å‡»ä½¿ç”¨ç‰©å“(åƒè¯)
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	int		m_nObjID;			// Êó±êµã»÷µÄobjµÄid
-	BYTE	m_btPosType;		// Î»ÖÃÀàĞÍ
-	BYTE	m_btPosX;			// ×ø±ê x
-	BYTE	m_btPosY;			// ×ø±ê y
-} PLAYER_PICKUP_ITEM_COMMAND;		// Íæ¼Ò»ñµÃÎïÆ·£¨Êó±êµã»÷µØÍ¼ÉÏµÄobj£©
+	BYTE	ProtocolType;		// åè®®åç§°
+	int		m_nObjID;			// é¼ æ ‡ç‚¹å‡»çš„objçš„id
+	BYTE	m_btPosType;		// ä½ç½®ç±»å‹
+	BYTE	m_btPosX;			// åæ ‡ x
+	BYTE	m_btPosY;			// åæ ‡ y
+} PLAYER_PICKUP_ITEM_COMMAND;		// ç©å®¶è·å¾—ç‰©å“ï¼ˆé¼ æ ‡ç‚¹å‡»åœ°å›¾ä¸Šçš„objï¼‰
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	BOOL			m_bIsNew;
 	BOOL			m_bTemp;
 	DWORD			m_dwOwner;
 	int				m_TradePrice;
-	int				m_ID;				// ÎïÆ·µÄID
+	int				m_ID;				// ç‰©å“çš„ID
 	BYTE			m_Nature;
-	BYTE			m_Genre;			// ÎïÆ·µÄÀàĞÍ
-	int				m_Detail;			// ÎïÆ·µÄÀà±ğ
-	int				m_Particur;			// ÎïÆ·µÄÏêÏ¸Àà±ğ
-	BYTE			m_Series;			// ÎïÆ·µÄÎåĞĞ
-	BYTE			m_Level;			// ÎïÆ·µÄµÈ¼¶
-	BYTE			m_btPlace;			// ×ø±ê
-	BYTE			m_btX;				// ×ø±ê
-	BYTE			m_btY;				// ×ø±ê
+	BYTE			m_Genre;			// ç‰©å“çš„ç±»å‹
+	int				m_Detail;			// ç‰©å“çš„ç±»åˆ«
+	int				m_Particur;			// ç‰©å“çš„è¯¦ç»†ç±»åˆ«
+	BYTE			m_Series;			// ç‰©å“çš„äº”è¡Œ
+	BYTE			m_Level;			// ç‰©å“çš„ç­‰çº§
+	BYTE			m_btPlace;			// åæ ‡
+	BYTE			m_btX;				// åæ ‡
+	BYTE			m_btY;				// åæ ‡
 	PlayerItem		m_BackLocal;
 	int				m_ItemX;
 	int				m_ItemY;
 	int				m_Luck;				// MF
-	int				m_MagicLevel[MAX_ITEM_MAGICLEVEL];	// Éú³É²ÎÊı
-	WORD			m_Version;			// ×°±¸°æ±¾
-	int				m_Durability;		// ÄÍ¾Ã¶È
-	UINT			m_RandomSeed;		// Ëæ»úÖÖ×Ó
+	int				m_MagicLevel[MAX_ITEM_MAGICLEVEL];	// ç”Ÿæˆå‚æ•°
+	WORD			m_Version;			// è£…å¤‡ç‰ˆæœ¬
+	int				m_Durability;		// è€ä¹…åº¦
+	UINT			m_RandomSeed;		// éšæœºç§å­
 	BYTE			m_bStack;
 	int				m_StackNum;
 	int				m_ExpireTime;
@@ -606,36 +606,36 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_ID;				// ÎïÆ·µÄID
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_ID;				// ç‰©å“çš„ID
 } ITEM_REMOVE_SYNC;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_ID;				// ÎïÆ·µÄID
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_ID;				// ç‰©å“çš„ID
 	BYTE			m_Number;			
 } PLAYER_SELL_ITEM_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_Shop;
-	BYTE			m_BuyIdx;			// ÂòµÚ¼¸¸ö¶«Î÷
+	BYTE			m_BuyIdx;			// ä¹°ç¬¬å‡ ä¸ªä¸œè¥¿
 	BYTE			m_Number;			// new add
 } PLAYER_BUY_ITEM_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_nMoney1;			// ×°±¸À¸
-	int				m_nMoney2;			// ÖüÎïÏä
-	int				m_nMoney3;			// ½»Ò×À¸
-} PLAYER_MONEY_SYNC;					// ·şÎñÆ÷Í¨Öª¿Í»§¶ËÇ®µÄÊıÁ¿
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_nMoney1;			// è£…å¤‡æ 
+	int				m_nMoney2;			// è´®ç‰©ç®±
+	int				m_nMoney3;			// äº¤æ˜“æ 
+} PLAYER_MONEY_SYNC;					// æœåŠ¡å™¨é€šçŸ¥å®¢æˆ·ç«¯é’±çš„æ•°é‡
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	BYTE			m_btDownPos;
 	BYTE			m_btDownX;
 	BYTE			m_btDownY;
@@ -646,7 +646,7 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	BYTE			m_btDownPos;
 	BYTE			m_btDownX;
 	BYTE			m_btDownY;
@@ -658,7 +658,7 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	BYTE			m_btSrcPos;
 	BYTE			m_btSrcX;
 	BYTE			m_btSrcY;
@@ -669,12 +669,12 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 } PLAYER_THROW_AWAY_ITEM_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int 			m_shLife;
 	int 			m_shStamina;
 	int 			m_shMana;
@@ -684,41 +684,41 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	// npc²¿·Ö
-	DWORD			m_dwID;				// NpcµÄID
-	BYTE			m_btLevel;			// NpcµÄµÈ¼¶
-	BYTE			m_btSex;			// ĞÔ±ğ
-	BYTE			m_btKind;			// NpcµÄÀàĞÍ
-	BYTE			m_btSeries;			// NpcµÄÎåĞĞÏµ
-	int 			m_wLifeMax;			// NpcµÄ×î´óÉúÃü
-	int 			m_wStaminaMax;		// NpcµÄ×î´óÌåÁ¦
-	int 			m_wManaMax;			// NpcµÄ×î´óÄÚÁ¦
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	// npcéƒ¨åˆ†
+	DWORD			m_dwID;				// Npcçš„ID
+	BYTE			m_btLevel;			// Npcçš„ç­‰çº§
+	BYTE			m_btSex;			// æ€§åˆ«
+	BYTE			m_btKind;			// Npcçš„ç±»å‹
+	BYTE			m_btSeries;			// Npcçš„äº”è¡Œç³»
+	int 			m_wLifeMax;			// Npcçš„æœ€å¤§ç”Ÿå‘½
+	int 			m_wStaminaMax;		// Npcçš„æœ€å¤§ä½“åŠ›
+	int 			m_wManaMax;			// Npcçš„æœ€å¤§å†…åŠ›
 	int				m_HeadImage;
-	// player ²¿·Ö
-	WORD			m_wAttributePoint;	// Î´·ÖÅäÊôĞÔµã
-	WORD			m_wSkillPoint;		// Î´·ÖÅä¼¼ÄÜµã
-	WORD			m_wStrength;		// Íæ¼ÒµÄ»ù±¾Á¦Á¿£¨¾ö¶¨»ù±¾ÉËº¦£©
-	WORD			m_wDexterity;		// Íæ¼ÒµÄ»ù±¾Ãô½İ£¨¾ö¶¨ÃüÖĞ¡¢ÌåÁ¦£©
-	WORD			m_wVitality;		// Íæ¼ÒµÄ»ù±¾»îÁ¦£¨¾ö¶¨ÉúÃü¡¢ÌåÁ¦£©
-	WORD			m_wEngergy;			// Íæ¼ÒµÄ»ù±¾¾«Á¦£¨¾ö¶¨ÄÚÁ¦£©
-	WORD			m_wLucky;			// Íæ¼ÒµÄ»ù±¾ĞÒÔËÖµ
-	int				m_nExp;				// µ±Ç°¾­ÑéÖµ(µ±Ç°µÈ¼¶ÔÚnpcÉíÉÏ)
+	// player éƒ¨åˆ†
+	WORD			m_wAttributePoint;	// æœªåˆ†é…å±æ€§ç‚¹
+	WORD			m_wSkillPoint;		// æœªåˆ†é…æŠ€èƒ½ç‚¹
+	WORD			m_wStrength;		// ç©å®¶çš„åŸºæœ¬åŠ›é‡ï¼ˆå†³å®šåŸºæœ¬ä¼¤å®³ï¼‰
+	WORD			m_wDexterity;		// ç©å®¶çš„åŸºæœ¬æ•æ·ï¼ˆå†³å®šå‘½ä¸­ã€ä½“åŠ›ï¼‰
+	WORD			m_wVitality;		// ç©å®¶çš„åŸºæœ¬æ´»åŠ›ï¼ˆå†³å®šç”Ÿå‘½ã€ä½“åŠ›ï¼‰
+	WORD			m_wEngergy;			// ç©å®¶çš„åŸºæœ¬ç²¾åŠ›ï¼ˆå†³å®šå†…åŠ›ï¼‰
+	WORD			m_wLucky;			// ç©å®¶çš„åŸºæœ¬å¹¸è¿å€¼
+	int				m_nExp;				// å½“å‰ç»éªŒå€¼(å½“å‰ç­‰çº§åœ¨npcèº«ä¸Š)
 	BYTE			m_byTranslife;
-	int				m_nLeadExp;		// Í³ÂÊÁ¦¾­ÑéÖµ
+	int				m_nLeadExp;		// ç»Ÿç‡åŠ›ç»éªŒå€¼
 
-	// ÃÅÅÉ
-	BYTE			m_btCurFaction;		// µ±Ç°ÃÅÅÉ
-	BYTE			m_btFirstFaction;	// µÚÒ»´Î¼ÓÈëµÄÊÇÄÄ¸öÃÅÅÉ
-	int				m_nFactionAddTimes;	// ¼ÓÈë¸÷ÖÖÃÅÅÉµÄ×Ü´ÎÊı
+	// é—¨æ´¾
+	BYTE			m_btCurFaction;		// å½“å‰é—¨æ´¾
+	BYTE			m_btFirstFaction;	// ç¬¬ä¸€æ¬¡åŠ å…¥çš„æ˜¯å“ªä¸ªé—¨æ´¾
+	int				m_nFactionAddTimes;	// åŠ å…¥å„ç§é—¨æ´¾çš„æ€»æ¬¡æ•°
 	
 	int				m_nMissionGroup;
 	int				m_nRoomId;
-	// ÅÅÃû
-	WORD			m_wWorldStat;		// ÊÀ½çÅÅÃû
-	WORD			m_wSectStat;		// ÃÅÅÉÅÅÃû
+	// æ’å
+	WORD			m_wWorldStat;		// ä¸–ç•Œæ’å
+	WORD			m_wSectStat;		// é—¨æ´¾æ’å
 	int				m_nKillPeopleNumber;
-	// Ç®
+	// é’±
 	int				m_nMoney1;
 	int				m_nMoney2;
 	DWORD			m_dwEquipExpandTime;
@@ -731,13 +731,13 @@ typedef struct
 {
 	BYTE	ProtocolType;
 	WORD	m_wProtocolLong;
-	BYTE	m_nOperateType;				//²Ù×÷ÀàĞÍ
-	BYTE	m_bUIId, m_bOptionNum, m_bParam1, m_bParam2;// m_bParam1,Ö÷ĞÅÏ¢ÊÇÊı×Ö±êÊ¶»¹ÊÇ×Ö·û´®±êÊ¶, m_bParam2,ÊÇ·ñÊÇÓë·şÎñÆ÷½»»¥µÄÑ¡Ôñ½çÃæ
+	BYTE	m_nOperateType;				//æ“ä½œç±»å‹
+	BYTE	m_bUIId, m_bOptionNum, m_bParam1, m_bParam2;// m_bParam1,ä¸»ä¿¡æ¯æ˜¯æ•°å­—æ ‡è¯†è¿˜æ˜¯å­—ç¬¦ä¸²æ ‡è¯†, m_bParam2,æ˜¯å¦æ˜¯ä¸æœåŠ¡å™¨äº¤äº’çš„é€‰æ‹©ç•Œé¢
 	BOOL	m_bParam;
 	int		m_nParam, m_nParam1;
 	int		m_nBufferLen;
 	char	m_szKey[MAX_PATH];
-	char	m_pContent[MAX_SCIRPTACTION_BUFFERNUM];				//´ø¿ØÖÆ·û
+	char	m_pContent[MAX_SCIRPTACTION_BUFFERNUM];				//å¸¦æ§åˆ¶ç¬¦
 } PLAYER_SCRIPTACTION_SYNC;
 
 typedef struct
@@ -788,10 +788,10 @@ typedef struct
 	DWORD			m_dwNpcID;
 } PLAYER_TRADE_VIEW_COMMAND;
 
-//´Ë½á¹¹ÒÑ¾­±»tagDBSelPlayer½á¹¹Ìæ»»
+//æ­¤ç»“æ„å·²ç»è¢«tagDBSelPlayerç»“æ„æ›¿æ¢
 /*typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_nSelect;			// 
 } DB_PLAYERSELECT_COMMAND;*/
 
@@ -810,7 +810,7 @@ typedef struct
 
 typedef struct tagKSG_PASSWORD
 {
-    char szPassword[KSG_PASSWORD_MAX_SIZE];    // ÏÖÔÚ²ÉÓÃMD5µÄ×Ö·û´®£¬ÓÉÓÚÊÇ32¸ö×Ö·û£¬¼ÓÉÏÄ©Î²'\0'£¬ĞèÒªÖÁÉÙ33¸ö¿Õ¼ä£¬Òò´ËÊ¹ÓÃ64
+    char szPassword[KSG_PASSWORD_MAX_SIZE];    // ç°åœ¨é‡‡ç”¨MD5çš„å­—ç¬¦ä¸²ï¼Œç”±äºæ˜¯32ä¸ªå­—ç¬¦ï¼ŒåŠ ä¸Šæœ«å°¾'\0'ï¼Œéœ€è¦è‡³å°‘33ä¸ªç©ºé—´ï¼Œå› æ­¤ä½¿ç”¨64
 } KSG_PASSWORD;
 
 #define _NAME_LEN	32
@@ -837,10 +837,10 @@ struct tagDBDelPlayer : public tagProtoHeader
 	char	        szRoleName[_NAME_LEN];
 };
 
-//É¾³ıÓëĞÂ½¨½ÇÉ«µÄ·µ»ØÏûÏ¢´øµÄÊı¾İ
+//åˆ é™¤ä¸æ–°å»ºè§’è‰²çš„è¿”å›æ¶ˆæ¯å¸¦çš„æ•°æ®
 struct tagNewDelRoleResponse : public tagDBSelPlayer
 {
-	bool	bSucceeded;		//ÊÇ·ñ³É¹¦
+	bool	bSucceeded;		//æ˜¯å¦æˆåŠŸ
 };
 
 // 2003.05.11
@@ -879,8 +879,8 @@ struct tagGatewayBroadCast : public tagProtoHeader
 struct tagGuidableInfo : public tagProtoHeader
 {
 	GUID guid;
-	WORD nExtPoint;			//¿ÉÓÃµÄ¸½ËÍµã
-	WORD nChangePoint;		//±ä»¯µÄ¸½ËÍµã
+	WORD nExtPoint;			//å¯ç”¨çš„é™„é€ç‚¹
+	WORD nChangePoint;		//å˜åŒ–çš„é™„é€ç‚¹
 	size_t	datalength;
 	char	szData[0];
 
@@ -1081,7 +1081,7 @@ struct tagEnterGame2 : public EXTEND_HEADER
 struct tagLeaveGame : public tagProtoHeader
 {
 	BYTE cCmdType;
-	WORD nExtPoint;        //½«Òª¿Û³ıµÄ¸½ËÍµã
+	WORD nExtPoint;        //å°†è¦æ‰£é™¤çš„é™„é€ç‚¹
 	/*
 	 * Succeeded : content is account name
 	 * Failed	 : content is null
@@ -1135,16 +1135,16 @@ typedef struct
 	RoleBaseInfo		m_RoleList[MAX_PLAYER_IN_ACCOUNT];
 } ROLE_LIST_SYNC;
 
-//ÒÆ×ÔRoleDBManager/kroledbheader.h
-//ÓÃÀ´Ìæ»»ÉÏÃæµÄROLE_LIST_SYNC,ROLE_LIST_SYNC½á¹¹²»ÔÙĞèÒªÁË
+//ç§»è‡ªRoleDBManager/kroledbheader.h
+//ç”¨æ¥æ›¿æ¢ä¸Šé¢çš„ROLE_LIST_SYNC,ROLE_LIST_SYNCç»“æ„ä¸å†éœ€è¦äº†
 struct TProcessData
 {
 	unsigned char	nProtoId;
-	size_t			nDataLen;//TRoleNetMsgÊ±±íÊ¾¸ÃBlockµÄÊµ¼ÊÊı¾İ³¤¶È,TProcessDataÊ±±íÊ¾StreamµÄÊµ¼ÊÊı¾İ³¤¶È
+	size_t			nDataLen;//TRoleNetMsgæ—¶è¡¨ç¤ºè¯¥Blockçš„å®é™…æ•°æ®é•¿åº¦,TProcessDataæ—¶è¡¨ç¤ºStreamçš„å®é™…æ•°æ®é•¿åº¦
 	unsigned long	ulIdentity;
 	bool			bLeave;
 	char			szName[32];
-	char			pDataBuffer[1];//Êµ¼ÊµÄÊı¾İ
+	char			pDataBuffer[1];//å®é™…çš„æ•°æ®
 };
 
 struct tagRoleEnterGame
@@ -1154,14 +1154,14 @@ struct tagRoleEnterGame
 	char			Name[_NAME_LEN];
 };
 
-//ĞÂ½¨½ÇÉ«µÄĞÅÏ¢½á¹¹
-//×¢ÊÍ£ºĞÂ½¨¾öÏûÏ¢c2s_newplayer£¬´«ËÍµÄ²ÎÊıÎªTProcessData½á¹¹ÃèÊöµÄÊı¾İ£¬ÆäÖĞTProcessData::pDataBufferÒªÀ©Õ¹ÎªNEW_PLAYER_COMMAND
+//æ–°å»ºè§’è‰²çš„ä¿¡æ¯ç»“æ„
+//æ³¨é‡Šï¼šæ–°å»ºå†³æ¶ˆæ¯c2s_newplayerï¼Œä¼ é€çš„å‚æ•°ä¸ºTProcessDataç»“æ„æè¿°çš„æ•°æ®ï¼Œå…¶ä¸­TProcessData::pDataBufferè¦æ‰©å±•ä¸ºNEW_PLAYER_COMMAND
 struct NEW_PLAYER_COMMAND
 {
-	BYTE			m_btRoleNo;			// ½ÇÉ«±àºÅ
-	BYTE			m_btSeries;			// ÎåĞĞÏµ
-	unsigned short	m_NativePlaceId;	//³öÉúµØID
-	char			m_szName[32];		// ĞÕÃû
+	BYTE			m_btRoleNo;			// è§’è‰²ç¼–å·
+	BYTE			m_btSeries;			// äº”è¡Œç³»
+	unsigned short	m_NativePlaceId;	//å‡ºç”Ÿåœ°ID
+	char			m_szName[32];		// å§“å
 };
 
 typedef struct 
@@ -1178,27 +1178,27 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	WORD			m_wLength;
 	char			m_szSentence[MAX_SENTENCE_LENGTH];
 } TRADE_APPLY_OPEN_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 } TRADE_APPLY_CLOSE_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	BYTE			m_btState;			// if == 0 close if == 1 open if == 2 trading
-	DWORD			m_dwNpcID;			// Èç¹ûÊÇ¿ªÊ¼½»Ò×£¬¶Ô·½µÄ npc id
+	DWORD			m_dwNpcID;			// å¦‚æœæ˜¯å¼€å§‹äº¤æ˜“ï¼Œå¯¹æ–¹çš„ npc id
 	BOOL			m_bFolkGame;
 } TRADE_CHANGE_STATE_SYNC;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	WORD			m_wLength;
 	DWORD			m_dwID;
 	BYTE			m_btState;
@@ -1207,71 +1207,71 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			m_dwID;
 	BOOL			m_bFolkGame;
 } TRADE_APPLY_START_COMMAND;
 
-// ·şÎñÆ÷×ª·¢½»Ò×ÉêÇë
+// æœåŠ¡å™¨è½¬å‘äº¤æ˜“ç”³è¯·
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_nDestIdx;			// ÉêÇëÕßÔÚ·şÎñÆ÷¶ËµÄplayer idx
-	DWORD			m_dwNpcId;			// ÉêÇëÕßµÄ npc id
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_nDestIdx;			// ç”³è¯·è€…åœ¨æœåŠ¡å™¨ç«¯çš„player idx
+	DWORD			m_dwNpcId;			// ç”³è¯·è€…çš„ npc id
 	BOOL			m_bFolkGame;
 } TRADE_APPLY_START_SYNC;
 
-// ½ÓÊÜ»ò¾Ü¾ø±ğÈËµÄ½»Ò×ÉêÇë
+// æ¥å—æˆ–æ‹’ç»åˆ«äººçš„äº¤æ˜“ç”³è¯·
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	BYTE			m_bDecision;		// Í¬Òâ 1 ²»Í¬Òâ 0
-	int				m_nDestIdx;			// ½»Ò×¶Ô·½ÔÚ·şÎñÆ÷¶ËµÄplayer idx
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	BYTE			m_bDecision;		// åŒæ„ 1 ä¸åŒæ„ 0
+	int				m_nDestIdx;			// äº¤æ˜“å¯¹æ–¹åœ¨æœåŠ¡å™¨ç«¯çš„player idx
 	BOOL			m_bFolkGame;
 } TRADE_REPLY_START_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_nMoney;
 } TRADE_MOVE_MONEY_COMMAND;		// c2s_trademovemoney
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_nMoney;
 } TRADE_MONEY_SYNC;				// s2c_trademoneysync
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	BYTE			m_btDecision;		// È·¶¨½»Ò× 1  ÍË³ö½»Ò× 0  È¡ÏûÈ·¶¨ 4  Ëø¶¨½»Ò× 2  È¡ÏûËø¶¨ 3
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	BYTE			m_btDecision;		// ç¡®å®šäº¤æ˜“ 1  é€€å‡ºäº¤æ˜“ 0  å–æ¶ˆç¡®å®š 4  é”å®šäº¤æ˜“ 2  å–æ¶ˆé”å®š 3
 	BYTE			m_btFolkGame;
-} TRADE_DECISION_COMMAND;				// ½»Ò×Ö´ĞĞ»òÈ¡Ïû c2s_tradedecision
+} TRADE_DECISION_COMMAND;				// äº¤æ˜“æ‰§è¡Œæˆ–å–æ¶ˆ c2s_tradedecision
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	BYTE			m_btDecision;		// ½»Ò×ok 1  ½»Ò×È¡Ïû 0  Ëø¶¨ 2  È¡ÏûËø¶¨ 3
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	BYTE			m_btDecision;		// äº¤æ˜“ok 1  äº¤æ˜“å–æ¶ˆ 0  é”å®š 2  å–æ¶ˆé”å®š 3
 } TRADE_DECISION_SYNC;					// s2c_tradedecision
 
 typedef struct
 {
 	BYTE			ProtocolType;		
-	BYTE			m_byDir;			// È¡Ç®µÄ·½Ïò£¨0´æ£¬1È¡£©
-	DWORD			m_dwMoney;			// Ç®Êı
+	BYTE			m_byDir;			// å–é’±çš„æ–¹å‘ï¼ˆ0å­˜ï¼Œ1å–ï¼‰
+	DWORD			m_dwMoney;			// é’±æ•°
 } STORE_MONEY_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			m_dwNpcID;
 } TEAM_INVITE_ADD_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	WORD			m_wLength;			// ³¤¶È
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	WORD			m_wLength;			// é•¿åº¦
 	int				m_nIdx;
 	char			m_szName[32];
 } TEAM_INVITE_ADD_SYNC;
@@ -1280,7 +1280,7 @@ typedef struct
 {
 	BYTE			ProtocolType;		//
 	int				m_nAuraSkill;
-} SKILL_CHANGEAURASKILL_COMMAND;		//¸ü»»¹â»·¼¼ÄÜ
+} SKILL_CHANGEAURASKILL_COMMAND;		//æ›´æ¢å…‰ç¯æŠ€èƒ½
 
 typedef struct
 {
@@ -1304,9 +1304,9 @@ typedef struct
 {
 	BYTE			ProtocolType;
 	WORD			m_wLength;
-	DWORD			m_dwSkillID;		// ¼¼ÄÜ
+	DWORD			m_dwSkillID;		// æŠ€èƒ½
 	int				m_nLevel;
-	int				m_nTime;			// Ê±¼ä
+	int				m_nTime;			// æ—¶é—´
 	BOOL			m_bOverLook;
 	KMagicAttrib	m_MagicAttrib[MAX_SKILL_STATE];
 } STATE_EFFECT_SYNC;
@@ -1434,15 +1434,15 @@ typedef struct
 {
 	int		m_nID;
 	BYTE	m_btNature;
-	BYTE	m_btGenre;			// ÎïÆ·µÄÀàĞÍ
-	int		m_btDetail;			// ÎïÆ·µÄÀà±ğ
-	int		m_btParticur;		// ÎïÆ·µÄÏêÏ¸Àà±ğ
-	BYTE	m_btSeries;			// ÎïÆ·µÄÎåĞĞ
-	BYTE	m_btLevel;			// ÎïÆ·µÄµÈ¼¶
+	BYTE	m_btGenre;			// ç‰©å“çš„ç±»å‹
+	int		m_btDetail;			// ç‰©å“çš„ç±»åˆ«
+	int		m_btParticur;		// ç‰©å“çš„è¯¦ç»†ç±»åˆ«
+	BYTE	m_btSeries;			// ç‰©å“çš„äº”è¡Œ
+	BYTE	m_btLevel;			// ç‰©å“çš„ç­‰çº§
 	BYTE	m_btLuck;			// MF
-	int		m_btMagicLevel[MAX_ITEM_MAGICLEVEL];	// Éú³É²ÎÊı
-	WORD	m_wVersion;			// ×°±¸°æ±¾
-	DWORD	m_dwRandomSeed;		// Ëæ»úÖÖ×Ó
+	int		m_btMagicLevel[MAX_ITEM_MAGICLEVEL];	// ç”Ÿæˆå‚æ•°
+	WORD	m_wVersion;			// è£…å¤‡ç‰ˆæœ¬
+	DWORD	m_dwRandomSeed;		// éšæœºç§å­
 } SViewItemInfo;
 
 typedef struct
@@ -1453,19 +1453,19 @@ typedef struct
 	SViewItemInfo	m_sInfo[itempart_num];
 } VIEW_EQUIP_SYNC;				// s2c_viewequip
 
-typedef struct//¸Ã½á¹¹ÊÇËùÍ³¼ÆµÄÍæ¼ÒµÄ»ù±¾Êı¾İ
+typedef struct//è¯¥ç»“æ„æ˜¯æ‰€ç»Ÿè®¡çš„ç©å®¶çš„åŸºæœ¬æ•°æ®
 {
 	char	Name[20];
 	int		nValue;
 	BYTE	bySort;
 }TRoleList;
 
-// ÓÎÏ·Í³¼Æ½á¹¹
+// æ¸¸æˆç»Ÿè®¡ç»“æ„
 typedef struct
 {
-	TRoleList MoneyStat[10];			//½ğÇ®×î¶àÅÅÃûÁĞ±í£¨Ê®¸öÍæ¼Ò£¬×î¶à¿É´ïµ½100¸ö£©
-	TRoleList LevelStat[10];			//¼¶±ğ×î¶àÅÅÃûÁĞ±í£¨Ê®¸öÍæ¼Ò£¬×î¶à¿É´ïµ½100¸ö£©
-	TRoleList KillerStat[10];			//É±ÈË×î¶àÅÅÃûÁĞ±í
+	TRoleList MoneyStat[10];			//é‡‘é’±æœ€å¤šæ’ååˆ—è¡¨ï¼ˆåä¸ªç©å®¶ï¼Œæœ€å¤šå¯è¾¾åˆ°100ä¸ªï¼‰
+	TRoleList LevelStat[10];			//çº§åˆ«æœ€å¤šæ’ååˆ—è¡¨ï¼ˆåä¸ªç©å®¶ï¼Œæœ€å¤šå¯è¾¾åˆ°100ä¸ªï¼‰
+	TRoleList KillerStat[10];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
 	TRoleList ReputeStat[10];
 	TRoleList FuYuanStat[10];
 	TRoleList AccumStat1[10];
@@ -1475,14 +1475,14 @@ typedef struct
 	TRoleList TongLvStat[10];
 	TRoleList TongMnStat[10];
 	TRoleList TongEffStat[10];
-	//[ÃÅÅÉºÅ][Íæ¼ÒÊı]£¬ÆäÖĞ[0]ÊÇÃ»ÓĞ¼ÓÈëÃÅÅÉµÄÍæ¼Ò
-	TRoleList MoneyStatBySect[MAX_FACTION+1][10];	//¸÷ÃÅÅÉ½ğÇ®×î¶àÅÅÃûÁĞ±í
-	TRoleList LevelStatBySect[MAX_FACTION+1][10];	//¸÷ÃÅÅÉ¼¶±ğ×î¶àÅÅÃûÁĞ±í
+	//[é—¨æ´¾å·][ç©å®¶æ•°]ï¼Œå…¶ä¸­[0]æ˜¯æ²¡æœ‰åŠ å…¥é—¨æ´¾çš„ç©å®¶
+	TRoleList MoneyStatBySect[MAX_FACTION+1][10];	//å„é—¨æ´¾é‡‘é’±æœ€å¤šæ’ååˆ—è¡¨
+	TRoleList LevelStatBySect[MAX_FACTION+1][10];	//å„é—¨æ´¾çº§åˆ«æœ€å¤šæ’ååˆ—è¡¨
 
-	//[ÃÅÅÉºÅ]£¬ÆäÖĞ[0]ÊÇÃ»ÓĞ¼ÓÈëÃÅÅÉµÄÍæ¼Ò
-	int SectPlayerNum[MAX_FACTION+1];				//¸÷¸öÃÅÅÉµÄÍæ¼ÒÊı
-	int SectMoneyMost[MAX_FACTION+1];				//²Æ¸»ÅÅÃûÇ°Ò»°ÙÍæ¼ÒÖĞ¸÷ÃÅÅÉËùÕ¼±ÈÀıÊı
-	int SectLevelMost[MAX_FACTION+1];				//¼¶±ğÅÅÃûÇ°Ò»°ÙÍæ¼ÒÖĞ¸÷ÃÅÅÉËùÕ¼±ÈÀıÊı
+	//[é—¨æ´¾å·]ï¼Œå…¶ä¸­[0]æ˜¯æ²¡æœ‰åŠ å…¥é—¨æ´¾çš„ç©å®¶
+	int SectPlayerNum[MAX_FACTION+1];				//å„ä¸ªé—¨æ´¾çš„ç©å®¶æ•°
+	int SectMoneyMost[MAX_FACTION+1];				//è´¢å¯Œæ’åå‰ä¸€ç™¾ç©å®¶ä¸­å„é—¨æ´¾æ‰€å æ¯”ä¾‹æ•°
+	int SectLevelMost[MAX_FACTION+1];				//çº§åˆ«æ’åå‰ä¸€ç™¾ç©å®¶ä¸­å„é—¨æ´¾æ‰€å æ¯”ä¾‹æ•°
 }  TGAME_STAT_DATA;
 
 typedef struct
@@ -1493,7 +1493,7 @@ typedef struct
 } NPC_SLEEP_SYNC;
 
 //////////////
-//ÅÅÃûÏà¹Ø
+//æ’åç›¸å…³
 typedef struct
 {
 	BYTE		ProtocolType;
@@ -1517,7 +1517,7 @@ typedef struct
 
 
 ///////////////////
-//chat Ïà¹Ø
+//chat ç›¸å…³
 
 typedef struct
 {
@@ -1536,7 +1536,7 @@ typedef struct
 	DWORD	packageID;
 	BYTE	filter;
 	DWORD	channelid;
-	BYTE	cost;	//0: ÎŞÏŞÖÆ£¬1: 10Ôª/¾ä£¬2: <10Lv ? ²»ÄÜËµ : MaxMana/2/¾ä, 3: MaxMana/10/¾ä,4: <20Lv ? ²»ÄÜËµ : MaxMana*4/5/¾ä
+	BYTE	cost;	//0: æ— é™åˆ¶ï¼Œ1: 10å…ƒ/å¥ï¼Œ2: <10Lv ? ä¸èƒ½è¯´ : MaxMana/2/å¥, 3: MaxMana/10/å¥,4: <20Lv ? ä¸èƒ½è¯´ : MaxMana*4/5/å¥
 	BYTE	sentlen;
 	char	item[MAX_SENTENCE_LENGTH];
 	BYTE	someflag;
@@ -1607,7 +1607,7 @@ typedef struct
 
 
 ///////////////////////////////////////
-// tong Ïà¹Ø
+// tong ç›¸å…³
 
 typedef struct
 {
@@ -1849,7 +1849,7 @@ typedef struct
 	char 	m_szTongJiyuNotify[defTONG_NOTIFY_LENGTH];
 } STONG_SERVER_TO_CORE_LOGIN;
 
-// Íæ¼ÒÉêÇë½¨Á¢°ï»á ÓÃÀ©Õ¹Ğ­Òé
+// ç©å®¶ç”³è¯·å»ºç«‹å¸®ä¼š ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1861,7 +1861,7 @@ typedef struct
 	char	m_szName[defTONG_NAME_LENGTH_32 + 1];
 } TONG_APPLY_CREATE_COMMAND;
 
-// Íæ¼ÒÉêÇë¼ÓÈë°ï»á ÓÃÀ©Õ¹Ğ­Òé
+// ç©å®¶ç”³è¯·åŠ å…¥å¸®ä¼š ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1870,7 +1870,7 @@ typedef struct
 	DWORD	m_dwNpcID;
 } TONG_APPLY_ADD_COMMAND;
 
-// Íæ¼ÒÉêÇë¼ÓÈë°ï»á ÓÃÀ©Õ¹Ğ­Òé
+// ç©å®¶ç”³è¯·åŠ å…¥å¸®ä¼š ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1884,7 +1884,7 @@ typedef struct
 	char	m_szName[defTONG_NAME_LENGTH_32];
 } TONG_APPLY_INSTATE_COMMAND;
 
-// °ï»á½¨Á¢Ê§°Ü À©Õ¹Ğ­Òé
+// å¸®ä¼šå»ºç«‹å¤±è´¥ æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1893,7 +1893,7 @@ typedef struct
 	BYTE	m_btFailId;
 } TONG_CREATE_FAIL_SYNC;
 
-// ×ª·¢¼ÓÈë°ï»áÉêÇë À©Õ¹Ğ­Òé
+// è½¬å‘åŠ å…¥å¸®ä¼šç”³è¯· æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1911,7 +1911,7 @@ typedef struct
 	char	m_cTongName[defTONG_NAME_LENGTH_32];
 } JOIN_TONG_SYNC;
 
-// Í¨ÖªÍæ¼Ò½¨Á¢°ï»á³É¹¦ ÓÃÆÕÍ¨Ğ­Òé
+// é€šçŸ¥ç©å®¶å»ºç«‹å¸®ä¼šæˆåŠŸ ç”¨æ™®é€šåè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1921,24 +1921,24 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			m_dwID;
 } TONG_JOIN_REPLY;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	char			m_cTongName[defTONG_NAME_LENGTH_32];
 } S2C_JOIN_TONG;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_Index;
 	DWORD			m_dwID;
 } S2C_TONG_JOIN_REPLY;
 
-// Í¨ÖªÍæ¼Ò¼ÓÈë°ï»á ÓÃÀ©Õ¹Ğ­Òé
+// é€šçŸ¥ç©å®¶åŠ å…¥å¸®ä¼š ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1950,7 +1950,7 @@ typedef struct
 	char	m_szMaster[defTONG_NAME_LENGTH_32];
 } TONG_ADD_SYNC;
 
-// Íæ¼ÒÉêÇë½âÉ¢°ï»á ÓÃÀ©Õ¹Ğ­Òé
+// ç©å®¶ç”³è¯·è§£æ•£å¸®ä¼š ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1958,7 +1958,7 @@ typedef struct
 	BYTE	m_btMsgId;
 } TONG_APPLY_DISMISS_COMMAND;
 
-// Íæ¼Ò°ï»á±»½âÉ¢ ÓÃÆÕÍ¨Ğ­Òé
+// ç©å®¶å¸®ä¼šè¢«è§£æ•£ ç”¨æ™®é€šåè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -1971,7 +1971,7 @@ typedef struct
 	BYTE	m_btMsgId;
 	int		m_nPlayerIdx;
 	DWORD	m_dwNameID;
-	BYTE	m_btFlag;			// ÊÇ·ñ½ÓÊÜ TRUE ½ÓÊÜ FALSE ²»½ÓÊÜ
+	BYTE	m_btFlag;			// æ˜¯å¦æ¥å— TRUE æ¥å— FALSE ä¸æ¥å—
 } TONG_ACCEPT_MEMBER_COMMAND;
 
 typedef struct
@@ -2072,7 +2072,7 @@ typedef struct
 	TONG_ONE_MEMBER_INFO	m_sMember[defTONG_ONE_PAGE_MAX_NUM];
 } TONG_MEMBER_INFO_SYNC;
 
-// Íæ¼Ò×ÔÉíÔÚ°ï»áÖĞµÄĞÅÏ¢ ÓÃÀ©Õ¹Ğ­Òé
+// ç©å®¶è‡ªèº«åœ¨å¸®ä¼šä¸­çš„ä¿¡æ¯ ç”¨æ‰©å±•åè®®
 typedef struct
 {
 	BYTE	ProtocolType;
@@ -2316,7 +2316,7 @@ typedef struct
 	char 	m_szTongJiyuNotify[defTONG_NOTIFY_LENGTH];
 } TONG_APPLY_CHANGE_INFO_COMMAND;
 
-// tong Ïà¹Ø end
+// tong ç›¸å…³ end
 
 typedef struct
 {
@@ -2405,17 +2405,17 @@ typedef struct
 
 typedef struct
 {
-	int		m_nID;				// ÎïÆ·µÄID
+	int		m_nID;				// ç‰©å“çš„ID
 	BYTE	m_btNature;
-	BYTE	m_btGenre;			// ÎïÆ·µÄÀàĞÍ
-	int		m_btDetail;			// ÎïÆ·µÄÀà±ğ
-	int		m_btParticur;		// ÎïÆ·µÄÏêÏ¸Àà±ğ
-	BYTE	m_btSeries;			// ÎïÆ·µÄÎåĞĞ
-	BYTE	m_btLevel;			// ÎïÆ·µÄµÈ¼¶
+	BYTE	m_btGenre;			// ç‰©å“çš„ç±»å‹
+	int		m_btDetail;			// ç‰©å“çš„ç±»åˆ«
+	int		m_btParticur;		// ç‰©å“çš„è¯¦ç»†ç±»åˆ«
+	BYTE	m_btSeries;			// ç‰©å“çš„äº”è¡Œ
+	BYTE	m_btLevel;			// ç‰©å“çš„ç­‰çº§
 	BYTE	m_btLuck;			// MF
-	int		m_btMagicLevel[MAX_ITEM_MAGICLEVEL];	// Éú³É²ÎÊı
-	WORD	m_wVersion;			// ×°±¸°æ±¾
-	DWORD	m_dwRandomSeed;		// Ëæ»úÖÖ×Ó
+	int		m_btMagicLevel[MAX_ITEM_MAGICLEVEL];	// ç”Ÿæˆå‚æ•°
+	WORD	m_wVersion;			// è£…å¤‡ç‰ˆæœ¬
+	DWORD	m_dwRandomSeed;		// éšæœºç§å­
 	int		m_nIdx;
 	UINT	m_uPrice;
 	int		m_bX;
@@ -2440,44 +2440,44 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			dwID;
 	int				nParam;
 }PLAYER_TRADE;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			dwID;
 	BOOL			bOpen;
 }PLAYER_TRADE_ACTION_SYNC;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_nIdx;			// ÂòµÚ¼¸¸ö¶«Î÷
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_nIdx;			// ä¹°ç¬¬å‡ ä¸ªä¸œè¥¿
 	DWORD			m_dwID;
-	BYTE			m_Place;			// ·ÅÔÚÉíÉÏÄÄ¸öµØ·½
-	BYTE			m_X;				// ×ø±êX
-	BYTE			m_Y;				// ×ø±êY
+	BYTE			m_Place;			// æ”¾åœ¨èº«ä¸Šå“ªä¸ªåœ°æ–¹
+	BYTE			m_X;				// åæ ‡X
+	BYTE			m_Y;				// åæ ‡Y
 } PLAYER_TRADE_BUY_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	DWORD			m_dwID;				// ÎïÆ·µÄID
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	DWORD			m_dwID;				// ç‰©å“çš„ID
 	int				m_nPrice;
 }PLAYER_TRADE_SET_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	char			Name[32];
 }PLAYER_TRADE_START_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 }PLAYER_TRADE_START_FAIL_SYNC;
 
 typedef struct
@@ -2537,59 +2537,59 @@ typedef struct
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	DWORD			m_dwID;
 } SPAR_APPLY_START_COMMAND;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
-	int				m_nDestIdx;			// ÉêÇëÕßÔÚ·şÎñÆ÷¶ËµÄplayer idx
-	DWORD			m_dwNpcId;			// ÉêÇëÕßµÄ npc id
+	BYTE			ProtocolType;		// åè®®ç±»å‹
+	int				m_nDestIdx;			// ç”³è¯·è€…åœ¨æœåŠ¡å™¨ç«¯çš„player idx
+	DWORD			m_dwNpcId;			// ç”³è¯·è€…çš„ npc id
 } SPAR_APPLY_START_SYNC;
 
 typedef struct
 {
-	BYTE			ProtocolType;		// Ğ­ÒéÀàĞÍ
+	BYTE			ProtocolType;		// åè®®ç±»å‹
 	int				m_nDecision;
 	BOOL			m_bRoomList;
 } PLAYER_CHATROOM_DECISION_COMMAND;
 
 typedef struct
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
-	BYTE	m_btErrorID;		// ¶ÓÎé´´½¨²»³É¹¦Ô­Òò£º0 Í¬Ãû 1 Íæ¼Ò±¾ÉíÒÑ¾­ÊôÓÚÄ³Ò»Ö§¶ÓÎé 3 µ±Ç°´¦ÓÚ²»ÄÜ×é¶Ó×´Ì¬
-} PLAYER_SEND_CREATE_CHATROOM_FALSE;// ·şÎñÆ÷Í¨Öª¿Í»§¶Ë¶ÓÎé´´½¨²»³É¹¦
+	BYTE	ProtocolType;		// åè®®åç§°
+	BYTE	m_btErrorID;		// é˜Ÿä¼åˆ›å»ºä¸æˆåŠŸåŸå› ï¼š0 åŒå 1 ç©å®¶æœ¬èº«å·²ç»å±äºæŸä¸€æ”¯é˜Ÿä¼ 3 å½“å‰å¤„äºä¸èƒ½ç»„é˜ŸçŠ¶æ€
+} PLAYER_SEND_CREATE_CHATROOM_FALSE;// æœåŠ¡å™¨é€šçŸ¥å®¢æˆ·ç«¯é˜Ÿä¼åˆ›å»ºä¸æˆåŠŸ
 
 struct PLAYER_SEND_CHATROOM_STATE
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	BYTE	m_btMsgId;
 	int		nId;
 	char	lpszName[16];
 	PLAYER_SEND_CHATROOM_STATE() {lpszName[0]=0;}
-};	// ·şÎñÆ÷Í¨ÖªÍæ¼Ò¶ÓÎé´´½¨³É¹¦
+};	// æœåŠ¡å™¨é€šçŸ¥ç©å®¶é˜Ÿä¼åˆ›å»ºæˆåŠŸ
 
 struct PLAYER_REQUEST_CHATROOM_LIST
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	char	lpszRoomHost[16];
 	char	lpszRoomName[10];
 	BYTE	byRoomMemNum;
 	int		nRoomLeftTime;
 	int		nRoomParam;
 	PLAYER_REQUEST_CHATROOM_LIST() {nRoomParam=0;}
-};	// ·şÎñÆ÷Í¨ÖªÍæ¼Ò¶ÓÎé´´½¨³É¹¦
+};	// æœåŠ¡å™¨é€šçŸ¥ç©å®¶é˜Ÿä¼åˆ›å»ºæˆåŠŸ
 
 struct PLAYER_REQUEST_LIST
 {
-	BYTE	ProtocolType;		// Ğ­ÒéÃû³Æ
+	BYTE	ProtocolType;		// åè®®åç§°
 	char	lpszName[_NAME_LEN];
 	int		nMemIndex;
 	int		nMemParam;
 	BOOL	bIsRoomHost;
 	PLAYER_REQUEST_LIST() {nMemParam=0;}
-};	// ·şÎñÆ÷Í¨ÖªÍæ¼Ò¶ÓÎé´´½¨³É¹¦
+};	// æœåŠ¡å™¨é€šçŸ¥ç©å®¶é˜Ÿä¼åˆ›å»ºæˆåŠŸ
 
 typedef struct	
 {
@@ -2597,15 +2597,15 @@ typedef struct
 	int		int_ID;
 } CP_DATAU;
 
-// ÔÚµ÷ÓÃÕâÖ§º¯ÊıÖ®Ç°±ØĞëÅĞ¶ÏÊÇ·ñ´¦ÓÚ½»Ò××´Ì¬£¬Èç¹ûÕıÔÚ½»Ò×£¬²»ÄÜµ÷ÓÃÕâÖ§º¯Êı
+// åœ¨è°ƒç”¨è¿™æ”¯å‡½æ•°ä¹‹å‰å¿…é¡»åˆ¤æ–­æ˜¯å¦å¤„äºäº¤æ˜“çŠ¶æ€ï¼Œå¦‚æœæ­£åœ¨äº¤æ˜“ï¼Œä¸èƒ½è°ƒç”¨è¿™æ”¯å‡½æ•°
 void SendClientCmdSell(int nID, int nNumber);
-// ÔÚµ÷ÓÃÕâÖ§º¯ÊıÖ®Ç°±ØĞëÅĞ¶ÏÊÇ·ñ´¦ÓÚ½»Ò××´Ì¬£¬Èç¹ûÕıÔÚ½»Ò×£¬²»ÄÜµ÷ÓÃÕâÖ§º¯Êı
+// åœ¨è°ƒç”¨è¿™æ”¯å‡½æ•°ä¹‹å‰å¿…é¡»åˆ¤æ–­æ˜¯å¦å¤„äºäº¤æ˜“çŠ¶æ€ï¼Œå¦‚æœæ­£åœ¨äº¤æ˜“ï¼Œä¸èƒ½è°ƒç”¨è¿™æ”¯å‡½æ•°
 void SendClientCmdBuy(int nShop, int nBuyIdx, BYTE nNumber);
-// ÔÚµ÷ÓÃÕâÖ§º¯ÊıÖ®Ç°±ØĞëÅĞ¶ÏÊÇ·ñ´¦ÓÚ½»Ò××´Ì¬£¬Èç¹ûÕıÔÚ½»Ò×£¬²»ÄÜµ÷ÓÃÕâÖ§º¯Êı
+// åœ¨è°ƒç”¨è¿™æ”¯å‡½æ•°ä¹‹å‰å¿…é¡»åˆ¤æ–­æ˜¯å¦å¤„äºäº¤æ˜“çŠ¶æ€ï¼Œå¦‚æœæ­£åœ¨äº¤æ˜“ï¼Œä¸èƒ½è°ƒç”¨è¿™æ”¯å‡½æ•°
 void SendClientCmdRun(int nX, int nY);
-// ÔÚµ÷ÓÃÕâÖ§º¯ÊıÖ®Ç°±ØĞëÅĞ¶ÏÊÇ·ñ´¦ÓÚ½»Ò××´Ì¬£¬Èç¹ûÕıÔÚ½»Ò×£¬²»ÄÜµ÷ÓÃÕâÖ§º¯Êı
+// åœ¨è°ƒç”¨è¿™æ”¯å‡½æ•°ä¹‹å‰å¿…é¡»åˆ¤æ–­æ˜¯å¦å¤„äºäº¤æ˜“çŠ¶æ€ï¼Œå¦‚æœæ­£åœ¨äº¤æ˜“ï¼Œä¸èƒ½è°ƒç”¨è¿™æ”¯å‡½æ•°
 void SendClientCmdWalk(int nX, int nY);
-// ÔÚµ÷ÓÃÕâÖ§º¯ÊıÖ®Ç°±ØĞëÅĞ¶ÏÊÇ·ñ´¦ÓÚ½»Ò××´Ì¬£¬Èç¹ûÕıÔÚ½»Ò×£¬²»ÄÜµ÷ÓÃÕâÖ§º¯Êı
+// åœ¨è°ƒç”¨è¿™æ”¯å‡½æ•°ä¹‹å‰å¿…é¡»åˆ¤æ–­æ˜¯å¦å¤„äºäº¤æ˜“çŠ¶æ€ï¼Œå¦‚æœæ­£åœ¨äº¤æ˜“ï¼Œä¸èƒ½è°ƒç”¨è¿™æ”¯å‡½æ•°
 void SendClientCmdSkill(int nSkillID, int nX, int nY);
 void SendClientCmdSit(bool bFlag);
 void SendClientCmdMoveItem(void* pDownPos, void* pUpPos);

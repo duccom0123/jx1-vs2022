@@ -37,7 +37,7 @@ public:
 	
 	KList m_DataServerList;
 	
-	CORBA::String_var m_Sior;//用一个字符串唯一的指向一个Corba Server
+	CORBA::String_var m_Sior;//鐢ㄤ竴涓瓧绗︿覆鍞竴鐨勬寚鍚戜竴涓狢orba Server
 	
 	
 };

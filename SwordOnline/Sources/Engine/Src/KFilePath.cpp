@@ -24,11 +24,11 @@
 #include <string.h>
 //---------------------------------------------------------------------------
 #ifdef WIN32
-static char szRootPath[MAXPATH] = "C:";		// Æô¶¯Â·¾¶
-static char szCurrPath[MAXPATH] = "\\";		// µ±Ç°Â·¾¶
+static char szRootPath[MAXPATH] = "C:";		// å¯åŠ¨è·¯å¾„
+static char szCurrPath[MAXPATH] = "\\";		// å½“å‰è·¯å¾„
 #else
-static char szRootPath[MAXPATH] = "/";		// Æô¶¯Â·¾¶
-static char szCurrPath[MAXPATH] = "/";		// µ±Ç°Â·¾¶
+static char szRootPath[MAXPATH] = "/";		// å¯åŠ¨è·¯å¾„
+static char szCurrPath[MAXPATH] = "/";		// å½“å‰è·¯å¾„
 #endif
 
 int RemoveTwoPointPath(LPTSTR szPath, int nLength)
@@ -85,10 +85,10 @@ int RemoveAllPointPath(LPTSTR szPath, int nLength)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SetRootPath
-// ¹¦ÄÜ:	ÉèÖÃ³ÌĞòµÄ¸ùÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	SetRootPath
+// åŠŸèƒ½:	è®¾ç½®ç¨‹åºçš„æ ¹è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_SetRootPath(LPSTR lpPathName)
 {
@@ -107,7 +107,7 @@ ENGINE_API void g_SetRootPath(LPSTR lpPathName)
 //#endif
 	}
 
-	// È¥µôÂ·¾¶Ä©Î²µÄ '\'
+	// å»æ‰è·¯å¾„æœ«å°¾çš„ '\'
 	int len = g_StrLen(szRootPath);
 	//g_DebugLog("set path %s(%d)\n", szRootPath, len);
 	if (szRootPath[len - 1] == '\\' || szRootPath[len - 1] == '/')
@@ -117,24 +117,24 @@ ENGINE_API void g_SetRootPath(LPSTR lpPathName)
 //	g_DebugLog("RootPath = %s", szRootPath);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetRootPath
-// ¹¦ÄÜ:	È¡µÃ³ÌĞòµÄ¸ùÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetRootPath
+// åŠŸèƒ½:	å–å¾—ç¨‹åºçš„æ ¹è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_GetRootPath(LPSTR lpPathName)
 {
 	g_StrCpy(lpPathName, szRootPath);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SetFilePath
-// ¹¦ÄÜ:	ÉèÖÃµ±Ç°ÎÄ¼şÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	SetFilePath
+// åŠŸèƒ½:	è®¾ç½®å½“å‰æ–‡ä»¶è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_SetFilePath(LPSTR lpPathName)
 {
-	// È¥µôÇ°ÃæµÄ "\\"
+	// å»æ‰å‰é¢çš„ "\\"
 	if (lpPathName[0] == '\\' ||lpPathName[0] == '/')
 	{
 		g_StrCpy(szCurrPath, lpPathName + 1);
@@ -144,7 +144,7 @@ ENGINE_API void g_SetFilePath(LPSTR lpPathName)
 		g_StrCpy(szCurrPath, lpPathName);
 	}
 
-	// Ä©Î²¼ÓÉÏ "\\"
+	// æœ«å°¾åŠ ä¸Š "\\"
 	int len = g_StrLen(szCurrPath);
 	if (len > 0 && szCurrPath[len - 1] != '\\' && szCurrPath[len - 1] != '/')
 	{
@@ -166,32 +166,32 @@ ENGINE_API void g_SetFilePath(LPSTR lpPathName)
 #endif
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFilePath
-// ¹¦ÄÜ:	È¡µÃµ±Ç°ÎÄ¼şÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetFilePath
+// åŠŸèƒ½:	å–å¾—å½“å‰æ–‡ä»¶è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API	void g_GetFilePath(LPSTR lpPathName)
 {
 	g_StrCpy(lpPathName, szCurrPath);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFullPath
-// ¹¦ÄÜ:	È¡µÃÎÄ¼şµÄÈ«Â·¾¶Ãû
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-//			lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetFullPath
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶çš„å…¨è·¯å¾„å
+// å‚æ•°:	lpPathName	è·¯å¾„å
+//			lpFileName	æ–‡ä»¶å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_GetFullPath(LPSTR lpPathName, LPSTR lpFileName)
 {
-	// ÎÄ¼ş´øÓĞÈ«Â·¾¶
+	// æ–‡ä»¶å¸¦æœ‰å…¨è·¯å¾„
 	if (lpFileName[1] == ':')
 	{
 		g_StrCpy(lpPathName, lpFileName);
 		return;
 	}
 
-	// ÎÄ¼ş´øÓĞ²¿·ÖÂ·¾¶
+	// æ–‡ä»¶å¸¦æœ‰éƒ¨åˆ†è·¯å¾„
 	if (lpFileName[0] == '\\' || lpFileName[0] == '/')
 	{
 		g_StrCpy(lpPathName, szRootPath);
@@ -199,7 +199,7 @@ ENGINE_API void g_GetFullPath(LPSTR lpPathName, LPSTR lpFileName)
 		return;
 	}
 	
-	// µ±Ç°Â·¾¶ÎªÈ«Â·¾¶
+	// å½“å‰è·¯å¾„ä¸ºå…¨è·¯å¾„
 #ifdef WIN32
 	if (szCurrPath[1] == ':')
 	{
@@ -208,7 +208,7 @@ ENGINE_API void g_GetFullPath(LPSTR lpPathName, LPSTR lpFileName)
 		return;
 	}
 #endif
-	// µ±Ç°Â·¾¶Îª²¿·ÖÂ·¾¶
+	// å½“å‰è·¯å¾„ä¸ºéƒ¨åˆ†è·¯å¾„
 	g_StrCpy(lpPathName, szRootPath);
         if(szCurrPath[0] != '\\' && szCurrPath[0] != '/') {
 #ifdef WIN32
@@ -225,15 +225,15 @@ ENGINE_API void g_GetFullPath(LPSTR lpPathName, LPSTR lpFileName)
 		g_StrCat(lpPathName, lpFileName);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetHalfPath
-// ¹¦ÄÜ:	È¡µÃÎÄ¼şµÄ°ëÂ·¾¶Ãû£¬²»´ø¸ùÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-//			lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetHalfPath
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶çš„åŠè·¯å¾„åï¼Œä¸å¸¦æ ¹è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+//			lpFileName	æ–‡ä»¶å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_GetHalfPath(LPSTR lpPathName, LPSTR lpFileName)
 {
-	// ÎÄ¼ş´øÓĞ²¿·ÖÂ·¾¶
+	// æ–‡ä»¶å¸¦æœ‰éƒ¨åˆ†è·¯å¾„
 	if (lpFileName[0] == '\\' || lpFileName[0] == '/')
 	{
 		g_StrCpy(lpPathName, lpFileName);
@@ -250,15 +250,15 @@ ENGINE_API void g_GetHalfPath(LPSTR lpPathName, LPSTR lpFileName)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetPackPath
-// ¹¦ÄÜ:	È¡µÃÎÄ¼şÔÚÑ¹Ëõ°üÖĞµÄÂ·¾¶Ãû
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-//			lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetPackPath
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶åœ¨å‹ç¼©åŒ…ä¸­çš„è·¯å¾„å
+// å‚æ•°:	lpPathName	è·¯å¾„å
+//			lpFileName	æ–‡ä»¶å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_GetPackPath(LPSTR lpPathName, LPSTR lpFileName)
 {
-	// ÎÄ¼ş´øÓĞ²¿·ÖÂ·¾¶
+	// æ–‡ä»¶å¸¦æœ‰éƒ¨åˆ†è·¯å¾„
 	if (lpFileName[0] == '\\' || lpFileName[0] == '/')
 	{
 		g_StrCpy(lpPathName, lpFileName + 1);
@@ -270,15 +270,15 @@ ENGINE_API void g_GetPackPath(LPSTR lpPathName, LPSTR lpFileName)
 	}
 	int len = g_StrLen(lpPathName);
 	RemoveAllPointPath(lpPathName, len + 1);
-	// È«²¿×ª»»ÎªĞ¡Ğ´×ÖÄ¸
+	// å…¨éƒ¨è½¬æ¢ä¸ºå°å†™å­—æ¯
 	g_StrLower(lpPathName);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetDiskPath
-// ¹¦ÄÜ:	È¡µÃCDROM¶ÔÓ¦µÄÎÄ¼şÂ·¾¶Ãû
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-//			lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	GetDiskPath
+// åŠŸèƒ½:	å–å¾—CDROMå¯¹åº”çš„æ–‡ä»¶è·¯å¾„å
+// å‚æ•°:	lpPathName	è·¯å¾„å
+//			lpFileName	æ–‡ä»¶å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_GetDiskPath(LPSTR lpPathName, LPSTR lpFileName)
 {
@@ -305,10 +305,10 @@ ENGINE_API void g_GetDiskPath(LPSTR lpPathName, LPSTR lpFileName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	CreatePath
-// ¹¦ÄÜ:	ÔÚÓÎÏ·¸úÄ¿Â¼ÏÂ½¨Á¢Ò»ÌõÂ·¾¶
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	CreatePath
+// åŠŸèƒ½:	åœ¨æ¸¸æˆè·Ÿç›®å½•ä¸‹å»ºç«‹ä¸€æ¡è·¯å¾„
+// å‚æ•°:	lpPathName	è·¯å¾„å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API	void	g_CreatePath(LPSTR lpPathName)
 {
@@ -317,7 +317,7 @@ ENGINE_API	void	g_CreatePath(LPSTR lpPathName)
 
 	char	szFullPath[MAXPATH];
 	int		i;
-	// ÎÄ¼ş´øÓĞÈ«Â·¾¶
+	// æ–‡ä»¶å¸¦æœ‰å…¨è·¯å¾„
 	if (lpPathName[1] == ':')
 	{
 		if (g_StrLen(lpPathName) < 4)
@@ -363,17 +363,17 @@ ENGINE_API	void	g_CreatePath(LPSTR lpPathName)
 	CreateDirectory(szFullPath, NULL);
 #else
 	// flying comment
-	// Öì´«¾¸ÊµÏÖÕâ¸öµ÷ÓÃ
+	// æœ±ä¼ é–å®ç°è¿™ä¸ªè°ƒç”¨
 	//mkdir();
 #endif
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	g_UnitePathAndName
-// ¹¦ÄÜ:	Ò»¸öÂ·¾¶ºÍÒ»¸öÎÄ¼şÃû£¬ºÏ²¢µ½lpGetÖĞĞÎ³ÉÒ»¸öÍêÕûµÄÂ·¾¶ÎÄ¼şÃû
-// ²ÎÊı:	lpPath ´«ÈëÂ·¾¶Ãû lpFile ´«ÈëÎÄ¼şÃû lpGet »ñµÃµÄ×îÖÕÍêÕûÎÄ¼şÃû
-// ·µ»Ø:	void
-// ×¢Òâ£º   ÕâÀïÃ»ÓĞ¿¼ÂÇ×Ö·û´®µÄ³¤¶È£¬Ê¹ÓÃµÄÊ±ºòÒª±£Ö¤×Ö·û´®µÄ³¤¶È×ã¹»
+// å‡½æ•°:	g_UnitePathAndName
+// åŠŸèƒ½:	ä¸€ä¸ªè·¯å¾„å’Œä¸€ä¸ªæ–‡ä»¶åï¼Œåˆå¹¶åˆ°lpGetä¸­å½¢æˆä¸€ä¸ªå®Œæ•´çš„è·¯å¾„æ–‡ä»¶å
+// å‚æ•°:	lpPath ä¼ å…¥è·¯å¾„å lpFile ä¼ å…¥æ–‡ä»¶å lpGet è·å¾—çš„æœ€ç»ˆå®Œæ•´æ–‡ä»¶å
+// è¿”å›:	void
+// æ³¨æ„ï¼š   è¿™é‡Œæ²¡æœ‰è€ƒè™‘å­—ç¬¦ä¸²çš„é•¿åº¦ï¼Œä½¿ç”¨çš„æ—¶å€™è¦ä¿è¯å­—ç¬¦ä¸²çš„é•¿åº¦è¶³å¤Ÿ
 //---------------------------------------------------------------------------
 ENGINE_API	void	g_UnitePathAndName(char *lpPath, char *lpFile, char *lpGet)
 {
@@ -398,10 +398,10 @@ ENGINE_API	void	g_UnitePathAndName(char *lpPath, char *lpFile, char *lpGet)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	find if file exists in pak or in hard disk
-// ¹¦ÄÜ:	·µ»ØÖ¸¶¨µÄÎÄ¼şÊÇ·ñ´æÔÚ
-// ²ÎÊı:	lpPathName	Â·¾¶Ãû£«ÎÄ¼şÃû
-// ·µ»Ø:	TRUE£­³É¹¦£¬FALSE£­Ê§°Ü¡£
+// å‡½æ•°:	find if file exists in pak or in hard disk
+// åŠŸèƒ½:	è¿”å›æŒ‡å®šçš„æ–‡ä»¶æ˜¯å¦å­˜åœ¨
+// å‚æ•°:	lpPathName	è·¯å¾„åï¼‹æ–‡ä»¶å
+// è¿”å›:	TRUEï¼æˆåŠŸï¼ŒFALSEï¼å¤±è´¥ã€‚
 //---------------------------------------------------------------------------
 ENGINE_API BOOL g_FileExists(LPSTR FileName)
 {
@@ -410,14 +410,14 @@ ENGINE_API BOOL g_FileExists(LPSTR FileName)
 	if (FileName && FileName[0])
 	{
 #ifndef _SERVER
-		//ÏÈ²éÊÇÊÇ·ñÔÚ´ò°üÎÄ¼şÖĞ
+		//å…ˆæŸ¥æ˜¯æ˜¯å¦åœ¨æ‰“åŒ…æ–‡ä»¶ä¸­
 		if (g_pPakList)
 		{
 			XPackElemFileRef	PackRef;
 			bExist = g_pPakList->FindElemFile(FileName, PackRef);
 		}
 #endif
-		//ÔÚ¼ì²éÊÇ·ñµ¥¶À´æÔÚÎÄ¼şÏµÍ³Àï
+		//åœ¨æ£€æŸ¥æ˜¯å¦å•ç‹¬å­˜åœ¨æ–‡ä»¶ç³»ç»Ÿé‡Œ
 		if (bExist == FALSE)
 		{
 			#ifdef	WIN32
@@ -429,15 +429,15 @@ ENGINE_API BOOL g_FileExists(LPSTR FileName)
 	return bExist;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	File Name to 32bit Id
-// ¹¦ÄÜ:	ÎÄ¼şÃû×ª»»³É Hash 32bit ID
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	FileName Hash 32bit ID
+// å‡½æ•°:	File Name to 32bit Id
+// åŠŸèƒ½:	æ–‡ä»¶åè½¬æ¢æˆ Hash 32bit ID
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+// è¿”å›:	FileName Hash 32bit ID
 // 
-// ×¢Òâ:	ÓÎÏ·ÊÀ½çºÍÖ÷Íø¹Ø½»»¥Êı¾İËùÓÃµÄ¹şÏ£²éÕÒË÷ÒıÒ²ÊÇÓÃ
-//			µÄÕâ¸öº¯Êı£¬ËùÒÔÇëĞŞ¸ÄÕâ¸öº¯ÊıÊ±Ò²¶ÔÓ¦ĞŞ¸ÄÖ÷Íø¹Ü
-//			ÖĞÏà¶ÔÓ¦µÄÄÇ¸öº¯Êı¡£Õâ¸öº¯Êı´æÔÚÓÚCommon.lib¹¤³ÌµÄUtils.h
-//			ÖĞ£¬º¯ÊıÉùÃ÷Îª DWORD HashStr2ID( const char * const pStr );
+// æ³¨æ„:	æ¸¸æˆä¸–ç•Œå’Œä¸»ç½‘å…³äº¤äº’æ•°æ®æ‰€ç”¨çš„å“ˆå¸ŒæŸ¥æ‰¾ç´¢å¼•ä¹Ÿæ˜¯ç”¨
+//			çš„è¿™ä¸ªå‡½æ•°ï¼Œæ‰€ä»¥è¯·ä¿®æ”¹è¿™ä¸ªå‡½æ•°æ—¶ä¹Ÿå¯¹åº”ä¿®æ”¹ä¸»ç½‘ç®¡
+//			ä¸­ç›¸å¯¹åº”çš„é‚£ä¸ªå‡½æ•°ã€‚è¿™ä¸ªå‡½æ•°å­˜åœ¨äºCommon.libå·¥ç¨‹çš„Utils.h
+//			ä¸­ï¼Œå‡½æ•°å£°æ˜ä¸º DWORD HashStr2ID( const char * const pStr );
 //---------------------------------------------------------------------------
 ENGINE_API DWORD g_FileName2Id(LPSTR lpFileName)
 {
@@ -461,11 +461,11 @@ ENGINE_API DWORD Name2ID(LPSTR lpFileName)
 	return g_FileName2Id(lpFileName);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	change file extention
-// ¹¦ÄÜ:	¸Ä±äÎÄ¼şµÄÀ©Õ¹Ãû
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-//			lpNewExt	ĞÂÀ©Õ¹Ãû£¬²»ÄÜÓĞ'.'
-// ·µ»Ø:	void
+// å‡½æ•°:	change file extention
+// åŠŸèƒ½:	æ”¹å˜æ–‡ä»¶çš„æ‰©å±•å
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+//			lpNewExt	æ–°æ‰©å±•åï¼Œä¸èƒ½æœ‰'.'
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_ChangeFileExt(LPSTR lpFileName, LPSTR lpNewExt)
 {
@@ -488,11 +488,11 @@ ENGINE_API void g_ChangeFileExt(LPSTR lpFileName, LPSTR lpNewExt)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Extract File Name from path name
-// ¹¦ÄÜ:	È¡µÃÎÄ¼şÃû£¨²»°üº¬Â·¾¶£©
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû£¨²»°üº¬Â·¾¶£©
-//			lpFilePath	ÎÄ¼şÃû£¨°üº¬Â·¾¶£©
-// ·µ»Ø:	void
+// å‡½æ•°:	Extract File Name from path name
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶åï¼ˆä¸åŒ…å«è·¯å¾„ï¼‰
+// å‚æ•°:	lpFileName	æ–‡ä»¶åï¼ˆä¸åŒ…å«è·¯å¾„ï¼‰
+//			lpFilePath	æ–‡ä»¶åï¼ˆåŒ…å«è·¯å¾„ï¼‰
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_ExtractFileName(LPSTR lpFileName, LPSTR lpFilePath)
 {
@@ -508,11 +508,11 @@ ENGINE_API void g_ExtractFileName(LPSTR lpFileName, LPSTR lpFilePath)
 	g_StrCpy(lpFileName, &lpFilePath[nPos + 1]);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Extract File Path from path name
-// ¹¦ÄÜ:	È¡µÃÂ·¾¶Ãû
-// ²ÎÊı:	lpFileName	Â·¾¶Ãû
-//			lpFilePath	Â·¾¶Ãû£«ÎÄ¼şÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	Extract File Path from path name
+// åŠŸèƒ½:	å–å¾—è·¯å¾„å
+// å‚æ•°:	lpFileName	è·¯å¾„å
+//			lpFilePath	è·¯å¾„åï¼‹æ–‡ä»¶å
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_ExtractFilePath(LPSTR lpPathName, LPSTR lpFilePath)
 {

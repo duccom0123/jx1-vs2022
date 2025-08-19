@@ -1,24 +1,24 @@
 #ifndef KObstacleH
 #define	KObstacleH
 
-enum Obstacle_Type			// Îï¼şµØÃæ¸ñ×ÓÕÏ°­ÀàĞÍ
+enum Obstacle_Type			// ç‰©ä»¶åœ°é¢æ ¼å­éšœç¢ç±»å‹
 {
-	Obstacle_Empty = 0,		// ¿Õ£¬ÎŞÕÏ°­
-	Obstacle_Full,			// ÍêÕûÕÏ°­
-	Obstacle_LT,			// ×óÉÏÇøÓòÎªÕÏ°­
-	Obstacle_RT,			// ÓÒÉÏÇøÓòÎªÕÏ°­
-	Obstacle_LB,			// ×óÏÂÇøÓòÎªÕÏ°­
-	Obstacle_RB,			// ÓÒÏÂÇøÓòÎªÕÏ°­
-	Obstacle_Type_Num,		// ÕÏ°­ÀàĞÍÊı
+	Obstacle_Empty = 0,		// ç©ºï¼Œæ— éšœç¢
+	Obstacle_Full,			// å®Œæ•´éšœç¢
+	Obstacle_LT,			// å·¦ä¸ŠåŒºåŸŸä¸ºéšœç¢
+	Obstacle_RT,			// å³ä¸ŠåŒºåŸŸä¸ºéšœç¢
+	Obstacle_LB,			// å·¦ä¸‹åŒºåŸŸä¸ºéšœç¢
+	Obstacle_RB,			// å³ä¸‹åŒºåŸŸä¸ºéšœç¢
+	Obstacle_Type_Num,		// éšœç¢ç±»å‹æ•°
 };
 
 enum Obstacle_Kind
 {
-	Obstacle_NULL = 0,		// Ã»ÓĞÕÏ°­
-	Obstacle_Normal,		// Ò»°ãÕÏ°­
-	Obstacle_Fly,			// ÕÏ°­µ«ÊÇ¿ÉÒÔ·É¹ı
-	Obstacle_Jump,			// ÕÏ°­µ«ÊÇ¿ÉÒÔÌø¹ı
-	Obstacle_JumpFly,		// ÕÏ°­µ«ÊÇ¿ÉÒÔÌø¹ı²¢ÇÒ·É¹ı
-	Obstacle_Kind_Num,		// ÕÏ°­ÖÖÀàÊı
+	Obstacle_NULL = 0,		// æ²¡æœ‰éšœç¢
+	Obstacle_Normal,		// ä¸€èˆ¬éšœç¢
+	Obstacle_Fly,			// éšœç¢ä½†æ˜¯å¯ä»¥é£è¿‡
+	Obstacle_Jump,			// éšœç¢ä½†æ˜¯å¯ä»¥è·³è¿‡
+	Obstacle_JumpFly,		// éšœç¢ä½†æ˜¯å¯ä»¥è·³è¿‡å¹¶ä¸”é£è¿‡
+	Obstacle_Kind_Num,		// éšœç¢ç§ç±»æ•°
 };
 #endif

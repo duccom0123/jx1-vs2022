@@ -1,5 +1,5 @@
 //*************************************************************************************
-// 表现模块的公用数据类型和函数
+// 琛ㄧ幇妯″潡鐨勫叕鐢ㄦ暟鎹被鍨嬪拰鍑芥暟
 //*************************************************************************************
 
 #ifndef __REPRESENTUTILITY_H__
@@ -10,16 +10,16 @@
 #define SAFE_DELETE(p)       { if(p) { delete (p);     (p)=NULL; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[] (p);   (p)=NULL; } }
 
-// 初始化Gdi+
+// 鍒濆鍖朑di+
 bool InitGdiplus();
-// 关闭Gdi+
+// 鍏抽棴Gdi+
 void ShutdownGdiplus();
 
-// 将argb缓冲区保存为jpg文件
+// 灏哸rgb缂撳啿鍖轰繚瀛樹负jpg鏂囦欢
 bool SaveBufferToJpgFile32(LPSTR lpFileName, PVOID pBitmap, int nPitch, 
 										   int nWidth, int nHeight, unsigned int nQuality);
 
-// 将rgb缓冲区保存为jpg文件
+// 灏唕gb缂撳啿鍖轰繚瀛樹负jpg鏂囦欢
 bool SaveBufferToJpgFile24(LPSTR lpFileName, PVOID pBitmap, int nPitch, 
 										   int nWidth, int nHeight, unsigned int nQuality);
 

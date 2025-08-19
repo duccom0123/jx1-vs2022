@@ -132,9 +132,9 @@ private:
 	void				PlayerExchangeServer();
 	BOOL				GetLocalIpAddress(DWORD *pIntranet, DWORD *pInternet);
 
-	// 帮会协议处理( relay 发过来的协议)
+	// 甯細鍗忚澶勭悊( relay 鍙戣繃鏉ョ殑鍗忚)
 	void				TongMessageProcess(const char *pChar, size_t nSize);
-	// 帮会协议处理(客户端通过帮会扩展协议发过来的协议)
+	// 甯細鍗忚澶勭悊(瀹㈡埛绔�氳繃甯細鎵╁睍鍗忚鍙戣繃鏉ョ殑鍗忚)
 	void				ProcessPlayerTongMsg(const unsigned long nPlayerIdx, const char* pData, size_t dataLength);
 
 	BOOL				CheckPlayerID(unsigned long netidx, DWORD nameid);

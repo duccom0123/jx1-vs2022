@@ -76,7 +76,7 @@ long KDataManage::SetData(CORBA::Long MapId, CORBA::Long StyleId, long id, const
 	return m_pCorbaDataSets->SetData(MapId,StyleId,id,data);
 	
 }
-//获得数据，并锁住数据
+//鑾峰緱鏁版嵁锛屽苟閿佷綇鏁版嵁
 CORBA::Any* KDataManage::GetDataWithLock(CORBA::Long MapId, CORBA::Long StyleId, long id) 
 {
 	

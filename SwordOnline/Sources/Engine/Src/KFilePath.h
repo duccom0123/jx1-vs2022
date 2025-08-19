@@ -26,7 +26,7 @@ ENGINE_API	void	g_GetHalfPath(LPSTR lpPathName, LPSTR lpFileName);
 ENGINE_API	void	g_GetPackPath(LPSTR lpPathName, LPSTR lpFileName);
 ENGINE_API	void	g_GetDiskPath(LPSTR lpPathName, LPSTR lpFileName);
 ENGINE_API	void	g_CreatePath(LPSTR lpPathName);
-// Ò»¸öÂ·¾¶ºÍÒ»¸öÎÄ¼şÃû£¬ºÏ²¢µ½lpGetÖĞĞÎ³ÉÒ»¸öÍêÕûµÄÂ·¾¶ÎÄ¼şÃû
+// ä¸€ä¸ªè·¯å¾„å’Œä¸€ä¸ªæ–‡ä»¶åï¼Œåˆå¹¶åˆ°lpGetä¸­å½¢æˆä¸€ä¸ªå®Œæ•´çš„è·¯å¾„æ–‡ä»¶å
 ENGINE_API	void	g_UnitePathAndName(char *lpPath, char *lpFile, char *lpGet);
 
 //---------------------------------------------------------------------------

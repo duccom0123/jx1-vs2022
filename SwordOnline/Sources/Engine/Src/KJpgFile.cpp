@@ -14,13 +14,13 @@
 #include "JpgLib.h"
 #include "KJpgFile.h"
 //---------------------------------------------------------------------------
-// ����:	Load
-// ����:	����һ��JPEG�ļ�
-// ����:	FileName	�ļ���
-//			lpBitmap	λͼָ��
-//          uRGBMask16  ָ�� 16 λɫ��MASKֵ�������-1, ��ʾʹ�ô�DirectDraw��ȡֵ
-// ����:	TRUE		�ɹ�
-//			FALSE		ʧ��
+// 函数:	Load
+// 功能:	载入一个JPEG文件
+// 参数:	FileName	文件名
+//			lpBitmap	位图指针
+//          uRGBMask16  指定 16 位色的MASK值，如果是-1, 表示使用从DirectDraw中取值
+// 返回:	TRUE		成功
+//			FALSE		失败
 //---------------------------------------------------------------------------
 BOOL KJpgFile::Load(LPSTR FileName, KBitmap16* lpBitmap, unsigned uRGBMask16)
 {

@@ -2,15 +2,15 @@
 // FileName			:	KCharSet.h
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-13 10:05:57
-// FileDescription	:	×Ö·û¼¯Àà
-// Revision Count	:	2002-9-4¸ÄĞ´£¬¸ÄÎª»ùÓÚd3d¡£Wooy
+// FileDescription	:	å­—ç¬¦é›†ç±»
+// Revision Count	:	2002-9-4æ”¹å†™ï¼Œæ”¹ä¸ºåŸºäºd3dã€‚Wooy
 *******************************************************************************/
 #pragma once
 
 #include "KFontRes.h"
 #include "KMru.h"
 
-//»æÖÆÎÄ×ÖµÄÈı±ßĞÎ¶¥µã½á¹¹
+//ç»˜åˆ¶æ–‡å­—çš„ä¸‰è¾¹å½¢é¡¶ç‚¹ç»“æ„
 struct	KFontVertex
 {
 	float			x, y, z, w;
@@ -19,34 +19,34 @@ struct	KFontVertex
 	//unsigned        uReserve;   // for Align
 };
 
-//Ò»´Î¿ÉÒÔÌá½»¸øKCharSetµÄ×Ö·ûµÄ×î´óÊıÄ¿
+//ä¸€æ¬¡å¯ä»¥æäº¤ç»™KCharSetçš„å­—ç¬¦çš„æœ€å¤§æ•°ç›®
 #define	KCS_CHAR_NUM_LIMIT	64
 
 class KCharSet
 {
 public:
-	//³õÊ¼»¯
+	//åˆå§‹åŒ–
 	bool	Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice);
-	//½áÊø£¬Çå³ı²Ù×÷
+	//ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 	void	Terminate();
-	//Ìá½»×Ö·û´®£¬¼ÆËã´®ÖĞ¸÷×Ö·ûÒıÓÃµÄ×ÖÌåÌùÍ¼×ø±ê£¬ÌîÈë¶à±ßĞÎÄÚ¡£
+	//æäº¤å­—ç¬¦ä¸²ï¼Œè®¡ç®—ä¸²ä¸­å„å­—ç¬¦å¼•ç”¨çš„å­—ä½“è´´å›¾åæ ‡ï¼Œå¡«å…¥å¤šè¾¹å½¢å†…ã€‚
 	void	CommitText(unsigned short* pString, int nNumChars, KFontVertex* pCharPolys);
-	//»ñÈ¡×ÖÌåĞÅÏ¢
+	//è·å–å­—ä½“ä¿¡æ¯
 	void	GetInfo(int& nFontW, int& nFontH);
-	//µÃµ½ÌùÍ¼¾ä±ú
+	//å¾—åˆ°è´´å›¾å¥æŸ„
 	LPDIRECT3DTEXTURE9 GetTexture() const;
 	
 	KCharSet();
 	virtual ~KCharSet();
 	
 private:
-	int			m_nFontW;			//×ÖÌå¿í£¨µ¥Î»£ºÏñËØ£©
-	int			m_nFontH;			//×ÖÌå¸ß
-	int			m_nNumCharH;		//×ÖÌåÌùÍ¼ÖĞÒ»ĞĞ×Ö·ûµÄÊıÄ¿
-	float		m_fFontW;			//×ÖÌåÔÚÌùÍ¼ÖĞ¿í£¨µ¥Î»£ºÌùÍ¼¸¡µã×ø±ê£©
-	float		m_fFontH;			//×ÖÌåÔÚÌùÍ¼ÖĞ¸ß
-	float		m_fCharHInterval;	//×Ö·ûÔÚÌùÍ¼ÖĞË®Æ½¾à£¨×Ö·û¼ä¿ÉÒÔÓĞ¼ä¸ô£¬ËùÒÔ×Ö·ûÔÚÌùÍ¼ÖĞË®Æ½¾àÓë¿í¿ÉÄÜ²»Í¬£©
-	float		m_fCharVInterval;	//×Ö·ûÔÚÌùÍ¼ÖĞ´¹Ö±¾à
-	KFontRes	m_Resource;			//×Ö¿â×ÊÔ´
-	KMRU		m_MruTable;			//»º³å×Ö·ûMRU±í
+	int			m_nFontW;			//å­—ä½“å®½ï¼ˆå•ä½ï¼šåƒç´ ï¼‰
+	int			m_nFontH;			//å­—ä½“é«˜
+	int			m_nNumCharH;		//å­—ä½“è´´å›¾ä¸­ä¸€è¡Œå­—ç¬¦çš„æ•°ç›®
+	float		m_fFontW;			//å­—ä½“åœ¨è´´å›¾ä¸­å®½ï¼ˆå•ä½ï¼šè´´å›¾æµ®ç‚¹åæ ‡ï¼‰
+	float		m_fFontH;			//å­—ä½“åœ¨è´´å›¾ä¸­é«˜
+	float		m_fCharHInterval;	//å­—ç¬¦åœ¨è´´å›¾ä¸­æ°´å¹³è·ï¼ˆå­—ç¬¦é—´å¯ä»¥æœ‰é—´éš”ï¼Œæ‰€ä»¥å­—ç¬¦åœ¨è´´å›¾ä¸­æ°´å¹³è·ä¸å®½å¯èƒ½ä¸åŒï¼‰
+	float		m_fCharVInterval;	//å­—ç¬¦åœ¨è´´å›¾ä¸­å‚ç›´è·
+	KFontRes	m_Resource;			//å­—åº“èµ„æº
+	KMRU		m_MruTable;			//ç¼“å†²å­—ç¬¦MRUè¡¨
 };

@@ -4,7 +4,7 @@
 // File:	LuaExtend.cpp
 // Date:	2001-9-27 15:46:40
 // Code:	Romandou
-// Desc:	À©Õ¹µÄLuaAPIº¯Êı
+// Desc:	æ‰©å±•çš„LuaAPIå‡½æ•°
 //---------------------------------------------------------------------------
 #include "Lua.h"
 #include "string.h"
@@ -12,21 +12,21 @@
 #include <stdarg.h>
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable
-// ¹¦ÄÜ:	ĞŞ¸ÄLua tableÖĞµÄÄ³¸ö³ÉÔ±µÄÖµ
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex Êı×éÔÚ¶ÑÖĞµÄindex
-// ²ÎÊı:	const char * szMemberName ÒÔ×Ö·û´®±íÊ¾³ÉÔ±µÄÃû³Æ
-// ²ÎÊı:	double Number ³ÉÔ±µÄÊıÖµ
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable
+// åŠŸèƒ½:	ä¿®æ”¹Lua tableä¸­çš„æŸä¸ªæˆå‘˜çš„å€¼
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex æ•°ç»„åœ¨å †ä¸­çš„index
+// å‚æ•°:	const char * szMemberName ä»¥å­—ç¬¦ä¸²è¡¨ç¤ºæˆå‘˜çš„åç§°
+// å‚æ•°:	double Number æˆå‘˜çš„æ•°å€¼
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 //                   Lua_SetTableMember
-//    ¸Ãº¯ÊıÌåÓÉÈô¸ÉµÄº¯Êı×é³É£¬ÒÔÊµÏÖ¸Ä±äLua TableÖĞµÄÄ³¸ö±äÁ¿µÄÖµ
-//    LuaµÄTableµÄ±íÏÖĞÎÊ½ÓĞÁ½ÖÖ£¬Ò»ÖÖÊÇÒÔÊı×ÖĞÎÊ½±íÊ¾Èç Table[1],¶øÁíÒ»
-//	  ÖÖÊÇÒÔ×Ö·û´®µÄĞÎÊ½±íÊ¾£¬ÈçTable.Member¡£	
-//	  Í¬Ê±£¬±äÁ¿Öµ»¹°üÀ¨Number¡¢String¡¢CFunµÈ
-//	 	  nIndexÎªÊı×éÔÚ¶ÑÕ»ÖĞµÄÎ»ÖÃ¡£
+//    è¯¥å‡½æ•°ä½“ç”±è‹¥å¹²çš„å‡½æ•°ç»„æˆï¼Œä»¥å®ç°æ”¹å˜Lua Tableä¸­çš„æŸä¸ªå˜é‡çš„å€¼
+//    Luaçš„Tableçš„è¡¨ç°å½¢å¼æœ‰ä¸¤ç§ï¼Œä¸€ç§æ˜¯ä»¥æ•°å­—å½¢å¼è¡¨ç¤ºå¦‚ Table[1],è€Œå¦ä¸€
+//	  ç§æ˜¯ä»¥å­—ç¬¦ä¸²çš„å½¢å¼è¡¨ç¤ºï¼Œå¦‚Table.Memberã€‚	
+//	  åŒæ—¶ï¼Œå˜é‡å€¼è¿˜åŒ…æ‹¬Numberã€Stringã€CFunç­‰
+//	 	  nIndexä¸ºæ•°ç»„åœ¨å †æ ˆä¸­çš„ä½ç½®ã€‚
 //---------------------------------------------------------------------------
 int Lua_SetTable_DoubleFromName(Lua_State * L, int nIndex, const char * szMemberName, double Number)
 {
@@ -42,13 +42,13 @@ int Lua_SetTable_DoubleFromName(Lua_State * L, int nIndex, const char * szMember
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_IntFromName
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	const char * szMemberName
-// ²ÎÊı:	int Number
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_IntFromName
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	const char * szMemberName
+// å‚æ•°:	int Number
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_IntFromName(Lua_State * L, int nIndex, const char * szMemberName, int Number)
 {
@@ -64,13 +64,13 @@ int Lua_SetTable_IntFromName(Lua_State * L, int nIndex, const char * szMemberNam
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_StringFromName
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	const char * szMemberName
-// ²ÎÊı:	char * szString
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_StringFromName
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	const char * szMemberName
+// å‚æ•°:	char * szString
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_StringFromName(Lua_State * L ,int nIndex, const char * szMemberName, char * szString)
 {
@@ -85,13 +85,13 @@ int Lua_SetTable_StringFromName(Lua_State * L ,int nIndex, const char * szMember
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_StringFromId
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	int Id
-// ²ÎÊı:	const char * szString
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_StringFromId
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	int Id
+// å‚æ•°:	const char * szString
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_StringFromId(Lua_State * L, int nIndex, int Id, const char * szString)
 {
@@ -105,13 +105,13 @@ int Lua_SetTable_StringFromId(Lua_State * L, int nIndex, int Id, const char * sz
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_DoubleFromId
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	int Id
-// ²ÎÊı:	double nNumber
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_DoubleFromId
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	int Id
+// å‚æ•°:	double nNumber
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_DoubleFromId(Lua_State * L , int nIndex, int Id, double nNumber)
 {
@@ -124,13 +124,13 @@ int Lua_SetTable_DoubleFromId(Lua_State * L , int nIndex, int Id, double nNumber
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_IntFromId
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	int Id
-// ²ÎÊı:	int nNumber
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_IntFromId
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	int Id
+// å‚æ•°:	int nNumber
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_IntFromId(Lua_State * L, int nIndex, int Id, int nNumber)
 {
@@ -143,13 +143,13 @@ int Lua_SetTable_IntFromId(Lua_State * L, int nIndex, int Id, int nNumber)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_CFunFromName
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	const char * szMemberName
-// ²ÎÊı:	Lua_CFunction CFun
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_CFunFromName
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	const char * szMemberName
+// å‚æ•°:	Lua_CFunction CFun
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_CFunFromName(Lua_State * L, int nIndex, const char * szMemberName, Lua_CFunction CFun)
 {
@@ -162,13 +162,13 @@ int Lua_SetTable_CFunFromName(Lua_State * L, int nIndex, const char * szMemberNa
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_SetTable_CFunFromId
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	int nIndex
-// ²ÎÊı:	int nId
-// ²ÎÊı:	Lua_CFunction CFun
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_SetTable_CFunFromId
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	int nIndex
+// å‚æ•°:	int nId
+// å‚æ•°:	Lua_CFunction CFun
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_SetTable_CFunFromId(Lua_State * L, int nIndex, int nId, Lua_CFunction CFun)
 {
@@ -182,12 +182,12 @@ int Lua_SetTable_CFunFromId(Lua_State * L, int nIndex, int nId, Lua_CFunction CF
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Lua_GetValuesFromStack
-// ¹¦ÄÜ:	
-// ²ÎÊı:	Lua_State * L
-// ²ÎÊı:	char * cFormat
-// ²ÎÊı:	...
-// ·µ»Ø:	int 
+// å‡½æ•°:	Lua_GetValuesFromStack
+// åŠŸèƒ½:	
+// å‚æ•°:	Lua_State * L
+// å‚æ•°:	char * cFormat
+// å‚æ•°:	...
+// è¿”å›:	int 
 //---------------------------------------------------------------------------
 int Lua_GetValuesFromStack(Lua_State * L, char * cFormat, ...)	
 {
@@ -200,7 +200,7 @@ int Lua_GetValuesFromStack(Lua_State * L, char * cFormat, ...)
 	int i = 0;
 	int nTopIndex = 0;
 	int nIndex = 0;
-	int nValueNum = 0;//cFormatµÄ×Ö·û³¤¶È£¬±íÊ¾ĞèÒªÈ¡µÄ²ÎÊıÊıÁ¿
+	int nValueNum = 0;//cFormatçš„å­—ç¬¦é•¿åº¦ï¼Œè¡¨ç¤ºéœ€è¦å–çš„å‚æ•°æ•°é‡
 	
 	
 	if (! L)
@@ -209,7 +209,7 @@ int Lua_GetValuesFromStack(Lua_State * L, char * cFormat, ...)
 	nTopIndex = Lua_GetTopIndex(L);	
 	nValueNum = strlen(cFormat);
 	
-	if (nTopIndex == 0 || nValueNum == 0)//µ±¶ÑÕ»ÖĞÎŞÊı¾İ»ò²»È¡²ÎÊıÊÇ·µ»ØFALSE
+	if (nTopIndex == 0 || nValueNum == 0)//å½“å †æ ˆä¸­æ— æ•°æ®æˆ–ä¸å–å‚æ•°æ˜¯è¿”å›FALSE
 		return 0;
 	
 	if (nTopIndex < nValueNum)
@@ -225,7 +225,7 @@ int Lua_GetValuesFromStack(Lua_State * L, char * cFormat, ...)
 			
 			switch(cFormat[i])
 			{
-			case 'n'://·µ»ØÖµÎªÊıÖµĞÎ,Number,´ËÊ±LuaÖ»´«µİdoubleĞÎµÄÖµ
+			case 'n'://è¿”å›å€¼ä¸ºæ•°å€¼å½¢,Number,æ­¤æ—¶Luaåªä¼ é€’doubleå½¢çš„å€¼
 				{
 					pNumber = va_arg(vlist, double *);
 					
@@ -247,7 +247,7 @@ int Lua_GetValuesFromStack(Lua_State * L, char * cFormat, ...)
 					
 				}
 				break;
-			case 's'://×Ö·û´®ĞÎ
+			case 's'://å­—ç¬¦ä¸²å½¢
 				{
 					pStrPoint = va_arg(vlist, const char **);
 					

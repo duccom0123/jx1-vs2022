@@ -15,10 +15,10 @@
 //---------------------------------------------------------------------------
 ENGINE_API KDirectInput* g_pDirectInput = NULL;
 //---------------------------------------------------------------------------
-// º¯Êı:	KDirectInput
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KDirectInput
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KDirectInput::KDirectInput()
 {
@@ -28,20 +28,20 @@ KDirectInput::KDirectInput()
 	m_pKeyboardDevice	= NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KDirectInput
-// ¹¦ÄÜ:	ÎöÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KDirectInput
+// åŠŸèƒ½:	æé€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KDirectInput::~KDirectInput()
 {
 	Exit();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Init
-// ¹¦ÄÜ:	³õÊ¼»¯DirectInput
-// ²ÎÊı:	void
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	Init
+// åŠŸèƒ½:	åˆå§‹åŒ–DirectInput
+// å‚æ•°:	void
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectInput::Init()
 {
@@ -73,10 +73,10 @@ BOOL KDirectInput::Init()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Exit
-// ¹¦ÄÜ:	ÊÍ·ÅDirectInput
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Exit
+// åŠŸèƒ½:	é‡Šæ”¾DirectInput
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KDirectInput::Exit()
 {
@@ -100,10 +100,10 @@ void KDirectInput::Exit()
 	g_DebugLog("DirectInput release ok");
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CreateDirectInput
-// ¹¦ÄÜ:	´´½¨DirectInput
-// ²ÎÊı:	void
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	CreateDirectInput
+// åŠŸèƒ½:	åˆ›å»ºDirectInput
+// å‚æ•°:	void
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectInput::CreateDirectInput()
 {
@@ -125,10 +125,10 @@ BOOL KDirectInput::CreateDirectInput()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CreateMouseDevice
-// ¹¦ÄÜ:	´´½¨ Mouse Device
-// ²ÎÊı:	void
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	CreateMouseDevice
+// åŠŸèƒ½:	åˆ›å»º Mouse Device
+// å‚æ•°:	void
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectInput::CreateMouseDevice()
 {
@@ -171,7 +171,7 @@ BOOL KDirectInput::CreateMouseDevice()
 #endif
 	// acquire obtains access to the input device
 	hres = m_pMouseDevice->Acquire();
-//Question ²»ÖªÎªÊ²Ã´ÓÃ_DEBUGÏµÍ³ÎªÎ´·¢ÏÖ_DEBUG£¬¹ÌÔÚ´ËÔÚÒ»ÏÂ
+//Question ä¸çŸ¥ä¸ºä»€ä¹ˆç”¨_DEBUGç³»ç»Ÿä¸ºæœªå‘ç°_DEBUGï¼Œå›ºåœ¨æ­¤åœ¨ä¸€ä¸‹
 
 #ifndef _DEBUG		
 	if (hres != DI_OK)
@@ -183,10 +183,10 @@ BOOL KDirectInput::CreateMouseDevice()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CreateKeyboardDevice
-// ¹¦ÄÜ:	´´½¨¼üÅÌÉè±¸
-// ²ÎÊı:	void
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	CreateKeyboardDevice
+// åŠŸèƒ½:	åˆ›å»ºé”®ç›˜è®¾å¤‡
+// å‚æ•°:	void
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectInput::CreateKeyboardDevice()
 {
@@ -241,10 +241,10 @@ BOOL KDirectInput::CreateKeyboardDevice()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SetMouseBehavior
-// ¹¦ÄÜ:	ÉèÖÃ Mouse Ğ­×÷Ä£Ê½
-// ²ÎÊı:	bExclusive £½ TRUE Îª¶ÀÕ¼Ä£Ê½
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	SetMouseBehavior
+// åŠŸèƒ½:	è®¾ç½® Mouse åä½œæ¨¡å¼
+// å‚æ•°:	bExclusive ï¼ TRUE ä¸ºç‹¬å æ¨¡å¼
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectInput::SetMouseBehavior(BOOL bExclusive)
 {
@@ -268,13 +268,13 @@ BOOL KDirectInput::SetMouseBehavior(BOOL bExclusive)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetMouseState
-// ¹¦ÄÜ:	È¡µÃÊó±ê×´Ì¬
-// ²ÎÊı:	pDx		Ë®Æ½Æ«ÒÆ
-//			pDy		´¹Ö±Æ«ÒÆ
-//			pLb		×ó¼ü×´Ì¬
-//			pRb		ÓÒ¼ü×´Ì¬
-// ·µ»Ø:	void
+// å‡½æ•°:	GetMouseState
+// åŠŸèƒ½:	å–å¾—é¼ æ ‡çŠ¶æ€
+// å‚æ•°:	pDx		æ°´å¹³åç§»
+//			pDy		å‚ç›´åç§»
+//			pLb		å·¦é”®çŠ¶æ€
+//			pRb		å³é”®çŠ¶æ€
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KDirectInput::GetMouseState(PINT pDx, PINT pDy, PBYTE pLb, PBYTE pRb)
 {
@@ -299,10 +299,10 @@ BOOL KDirectInput::GetMouseState(PINT pDx, PINT pDy, PBYTE pLb, PBYTE pRb)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetKeyboardState
-// ¹¦ÄÜ:	È¡µÃ¼üÅÌ×´Ì¬
-// ²ÎÊı:	KeyBuf	×´Ì¬»º´æ
-// ·µ»Ø:	void
+// å‡½æ•°:	GetKeyboardState
+// åŠŸèƒ½:	å–å¾—é”®ç›˜çŠ¶æ€
+// å‚æ•°:	KeyBuf	çŠ¶æ€ç¼“å­˜
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KDirectInput::GetKeyboardState(PBYTE KeyBuffer)
 {

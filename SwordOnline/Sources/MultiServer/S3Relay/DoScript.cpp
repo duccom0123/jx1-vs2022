@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	�ļ���		��	DoScript.cpp
-//	������		��	����
-//	����ʱ��	��	2003-9-16 21:07:01
-//	��������	��	
+//	文件名		：	DoScript.cpp
+//	创建者		：	万里
+//	创建时间	：	2003-9-16 21:07:01
+//	功能描述	：	
 //
 // -------------------------------------------------------------------------
 
@@ -271,9 +271,9 @@ int LuaGetIP(Lua_State * L)
 
 TLua_Funcs GameScriptFuns[] = 
 {
-	{"GlobalExecute", LuaGlobalExecute},		//GlobalExecute֪ͨ����������ִ��һ���ű�
-	{"GameExecute", LuaGameExecute},		//GameExecute֪ͨһ����Ϸ����ִ��һ���ű�
-	{"Msg2IP", LuaMsg2IP},		//Msg2IP���ؽ��ֵ������֪ͨ�ĵط�
+	{"GlobalExecute", LuaGlobalExecute},		//GlobalExecute通知整个服务组执行一个脚本
+	{"GameExecute", LuaGameExecute},		//GameExecute通知一个游戏世界执行一个脚本
+	{"Msg2IP", LuaMsg2IP},		//Msg2IP返回结果值到发出通知的地方
 	{"GetIP", LuaGetIP},		//GetIP(index)
 };
 

@@ -17,7 +17,7 @@ CTongDB		g_cTongDB;
 //////////////////////////////////////////////////////////////////////
 int get_TongName(DB *db, const DBT *pkey, const DBT *pdata, DBT *ikey) 
 {
-	//¸ø¶¨Ò»¸öÍêÕûµÄbuffer£¬µÃµ½account×÷ÎªË÷Òý
+	//ç»™å®šä¸€ä¸ªå®Œæ•´çš„bufferï¼Œå¾—åˆ°accountä½œä¸ºç´¢å¼•
 	memset( ikey, 0, sizeof( DBT ) );
 	//TRoleData *pRoleData = (TRoleData *)pdata->data;
 	//ikey->data = pRoleData->BaseInfo.caccname;
@@ -29,17 +29,17 @@ int get_TongName(DB *db, const DBT *pkey, const DBT *pdata, DBT *ikey)
 }
 
 CTongDB::CTongDB()
-{//³õÊ¼»¯±äÁ¿
+{//åˆå§‹åŒ–å˜é‡
 	m_TongListCount = 0;
 	memset(m_TongList,0,sizeof(TTongList) * MAX_TONG_COUNT);
 }
 
 bool CTongDB::Open()
 {
-	m_TongTable = new ZDBTable("TongDB","TongTable");		//´ò¿ª°ï»á±í
+	m_TongTable = new ZDBTable("TongDB","TongTable");		//æ‰“å¼€å¸®ä¼šè¡¨
 	if(!m_TongTable->open())return false;
 
-	m_MemberTable = new ZDBTable("TongMemberDB","MemberTable");	//°ïÖÚ±í
+	m_MemberTable = new ZDBTable("TongMemberDB","MemberTable");	//å¸®ä¼—è¡¨
 	m_MemberTable->addIndex(get_TongName);
 	if(!m_MemberTable->open())
 	{
@@ -53,10 +53,10 @@ bool CTongDB::OpenNew()
 {
 	DeleteFile("TongDB");
 	DeleteFile("TongMemberDB");
-	m_TongTable = new ZDBTable("TongDB","TongTable");		//´ò¿ª°ï»á±í
+	m_TongTable = new ZDBTable("TongDB","TongTable");		//æ‰“å¼€å¸®ä¼šè¡¨
 	if(!m_TongTable->open())return false;
 	
-	m_MemberTable = new ZDBTable("TongMemberDB","MemberTable");	//°ïÖÚ±í
+	m_MemberTable = new ZDBTable("TongMemberDB","MemberTable");	//å¸®ä¼—è¡¨
 	m_MemberTable->addIndex(get_TongName);
 	if(!m_MemberTable->open())
 	{
@@ -75,7 +75,7 @@ void CTongDB::Close()
 }
 
 bool CTongDB::ChangeTong(CTongControl& aTongControl)
-{//´´½¨ºÍ¸Ä±ä°ïÅÉ
+{//åˆ›å»ºå’Œæ”¹å˜å¸®æ´¾
 	bool aResult = true;
 	int aKeySize = strlen(aTongControl.m_szName) + 1;
 	int aSize = sizeof(TTongStruct);
@@ -108,7 +108,7 @@ bool CTongDB::ChangeTong(CTongControl& aTongControl)
 }
 
 bool CTongDB::DelTong(char* aTongName)
-{//É¾³ý°ïÅÉ
+{//åˆ é™¤å¸®æ´¾
 	bool aResult = true;
 	int aKeySize = strlen(aTongName) + 1;
 
@@ -121,12 +121,12 @@ bool CTongDB::DelTong(char* aTongName)
 }
 
 bool CTongDB::SearchTong(char* aTongName, CTongControl& aTongControl)
-{//´ÓÊý¾Ý¿âÖÐÈ¡µÃ°ïÅÉ
+{//ä»Žæ•°æ®åº“ä¸­å–å¾—å¸®æ´¾
 	bool aResult = true;
 	int aSize = sizeof(TTongStruct);
 	int aKeySize = strlen(aTongName) + 1;
 	char* aBuffer = m_TongTable->search(aTongName, aKeySize, aSize);
-	if(!aBuffer) return false;	//ÕÒ²»µ½°ïÅÉ
+	if(!aBuffer) return false;	//æ‰¾ä¸åˆ°å¸®æ´¾
 
 	TTongStruct* pTongStruct = (TTongStruct*)aBuffer;
 	aTongControl.m_nCamp = pTongStruct->nCamp;
@@ -204,7 +204,7 @@ bool CTongDB::SearchTong(char* aTongName, CTongControl& aTongControl)
 }
 
 int CTongDB::GetTongCount()
-{//È¡µÃÃÅÅÉÊý
+{//å–å¾—é—¨æ´¾æ•°
 	int aCount = 0;
 	int aTongSize;
 	int aTongKeySize;
@@ -221,7 +221,7 @@ int CTongDB::GetTongCount()
 }
 
 int CTongDB::GetTongList(TTongList* aTongList, int aMaxNum)
-{//È¡µÃ°ï»áÁÐ±í
+{//å–å¾—å¸®ä¼šåˆ—è¡¨
 		int aCount = 0;
 	int aTongSize;
 	int aTongKeySize;
@@ -257,13 +257,13 @@ int CTongDB::GetTongList(TTongList* aTongList, int aMaxNum)
 }
 
 bool CTongDB::ChangeMember(TMemberStruct aMember)
-{//Ôö¼Ó°ïÖÚ
+{//å¢žåŠ å¸®ä¼—
 	return m_MemberTable->add(aMember.szName, strlen(aMember.szName) + 1, (char*)(&aMember), sizeof(TMemberStruct));
 }
 
 
 bool CTongDB::DelMember(char* aMemberName)
-{//É¾³ý°ïÖÚ
+{//åˆ é™¤å¸®ä¼—
 	int aKeySize = strlen(aMemberName) + 1;
 
 	return m_MemberTable->remove(aMemberName, aKeySize);

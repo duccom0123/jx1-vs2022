@@ -70,7 +70,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <AdditionalIncludeDirectories>..\..\engine\include;..\..\..\..\dx9dsdk\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;REPRESENT3_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

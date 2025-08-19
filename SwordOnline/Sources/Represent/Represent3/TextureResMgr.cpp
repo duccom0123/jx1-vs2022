@@ -13,7 +13,7 @@ TextureResMgr::TextureResMgr()
 	m_uTexCacheMemUsed = 0;
     m_nMaxReleaseCount = 0;
 	
-	// ¸ù¾İÎïÀíÄÚ´æ´óĞ¡¾ö¶¨×ÊÔ´»º³åÇøµÄ´óĞ¡
+	// æ ¹æ®ç‰©ç†å†…å­˜å¤§å°å†³å®šèµ„æºç¼“å†²åŒºçš„å¤§å°
 	MEMORYSTATUS stat;
 	GlobalMemoryStatus (&stat);
 	if(stat.dwTotalPhys <= 134217728)
@@ -100,7 +100,7 @@ void TextureResMgr::CheckBalance()
 
 
 
-//	// Ñ¡Ôñ×î³¤Ê±¼äÃ»ÓĞÊ¹ÓÃµÄ×ÊÔ´£¬²¢ÊÍ·Å
+//	// é€‰æ‹©æœ€é•¿æ—¶é—´æ²¡æœ‰ä½¿ç”¨çš„èµ„æºï¼Œå¹¶é‡Šæ”¾
 //	m_tmLastCheckBalance = timeGetTime();
 //	for (i = m_TextureResList.size() -1; i >= 0; i--)
 //	{
@@ -142,14 +142,14 @@ uint32 TextureResMgr::CreateImage(const char* pszName, int32 nWidth, int32 nHeig
 	
     KAutoCriticalSection AutoLock(m_ImageProcessLock);
 
-	// ½«Ãû×ÖÓ³ÉäÎªID
+	// å°†åå­—æ˜ å°„ä¸ºID
 	uint32 uImage = g_FileName2Id((LPSTR)pszName);
-	// Èç¹û×ÊÔ´ÒÑ¾­´æÔÚÔò·µ»Ø
+	// å¦‚æœèµ„æºå·²ç»å­˜åœ¨åˆ™è¿”å›
 	int nIdx = FindImage(uImage, 0);
 	if (nIdx >= 0)
 		return 0;
 	
-	// ´´½¨ÌùÍ¼×ÊÔ´
+	// åˆ›å»ºè´´å›¾èµ„æº
 	TextureResBmp *pTexRes = new TextureResBmp;
 	if (pTexRes == NULL)
 		return 0;
@@ -166,7 +166,7 @@ uint32 TextureResMgr::CreateImage(const char* pszName, int32 nWidth, int32 nHeig
 	node.m_nID = uImage;
 	node.m_pTextureRes = pTexRes;
 
-	// ½«ÌùÍ¼×ÊÔ´¼ÓÈëÊı×é
+	// å°†è´´å›¾èµ„æºåŠ å…¥æ•°ç»„
 	nIdx = - nIdx - 1;
 	m_TextureResList.insert(m_TextureResList.begin() + nIdx, node);
 	
@@ -411,7 +411,7 @@ TextureRes* TextureResMgr::GetImage( const char* pszImage, unsigned int& uImage,
 		node.m_nType = nType;
 		node.m_nID = uImage;
 		node.m_pTextureRes = pObject;
-		nImagePosition = - nImagePosition - 1;	// FindImageÊ±ÒÑ¾­ÕÒºÃÎ»ÖÃÁË
+		nImagePosition = - nImagePosition - 1;	// FindImageæ—¶å·²ç»æ‰¾å¥½ä½ç½®äº†
 		m_TextureResList.insert(m_TextureResList.begin() + nImagePosition, node);
 
         
@@ -425,7 +425,7 @@ TextureRes* TextureResMgr::GetImage( const char* pszImage, unsigned int& uImage,
 	}
 
 	DWORD tmCur = timeGetTime();
-	//ÎªÁËÖ´ĞĞĞ§ÂÊËùÒÔÎ´°ÑÏÂÃæµÄÅĞ¶Ï·ÅÔÚCheckBalanceº¯ÊıÌåÀïÃæ¡£ÏÂÍ¬¡£
+	//ä¸ºäº†æ‰§è¡Œæ•ˆç‡æ‰€ä»¥æœªæŠŠä¸‹é¢çš„åˆ¤æ–­æ”¾åœ¨CheckBalanceå‡½æ•°ä½“é‡Œé¢ã€‚ä¸‹åŒã€‚
 	if (
         (m_uTexCacheMemUsed > m_nBalanceNum) && 
 		(
@@ -464,7 +464,7 @@ int32 TextureResMgr::GetImagePixelAlpha( const char* pszImage, int nFrame, int n
 		pTemp = GetImage(pszImage, uImage, nPos, nFrame, ISI_T_SPR);
 		if (!pTemp)
 			break;
-		nRet = ((TextureResSpr *)pTemp)->GetPixelAlpha(nFrame, nX, nY);	// ÔÚSprµÄ·½·¨ÀïÒÑ¾­´¦ÀíÁË·¶Î§
+		nRet = ((TextureResSpr *)pTemp)->GetPixelAlpha(nFrame, nX, nY);	// åœ¨Sprçš„æ–¹æ³•é‡Œå·²ç»å¤„ç†äº†èŒƒå›´
 		break;
 	case ISI_T_BITMAP16:
 		pTemp = GetImage(pszImage, uImage, nPos, nFrame, ISI_T_BITMAP16);

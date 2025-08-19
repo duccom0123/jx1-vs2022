@@ -10,8 +10,8 @@
 #define KMessage_H
 //---------------------------------------------------------------------------
 typedef struct {
-	int	nType;		// 消息类型
-	int	nParam[3];	// 消息参数
+	int	nType;		// 娑堟伅绫诲瀷
+	int	nParam[3];	// 娑堟伅鍙傛暟
 } KMessage;
 //---------------------------------------------------------------------------
 ENGINE_API void	g_SendMessage(int nType, int nP0=0, int nP1=0, int nP2=0);

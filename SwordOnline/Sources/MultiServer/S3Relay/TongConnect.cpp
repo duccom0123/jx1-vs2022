@@ -117,14 +117,14 @@ BOOL CTongConnect::PassToSomeone(DWORD ip, unsigned long id, DWORD nameid, const
 }
 
 //--------------------------------------------------------------------
-//	¹¦ÄÜ£º°ï»áĞ­Òé´¦Àí£¬ÊÕµ½ game server ·¢À´µÄÓë°ï»áÓĞ¹ØµÄĞ­Òé
+//	åŠŸèƒ½ï¼šå¸®ä¼šåè®®å¤„ç†ï¼Œæ”¶åˆ° game server å‘æ¥çš„ä¸å¸®ä¼šæœ‰å…³çš„åè®®
 //--------------------------------------------------------------------
 void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 {
 	if (!pData)
 		return;
 	
-	// Ğ­Òé³¤¶È¼ì²â
+	// åè®®é•¿åº¦æ£€æµ‹
 	if (size < sizeof(EXTEND_HEADER))
 		return;
 	EXTEND_HEADER* pHeader = (EXTEND_HEADER*)pData;
@@ -160,7 +160,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 			memcpy(szPlayerName, &pTongCreate->m_szBuffer[pTongCreate->m_btTongNameLength], pTongCreate->m_btPlayerNameLength);
 			szPlayerName[pTongCreate->m_btPlayerNameLength] = 0;
 
-			// ½¨Á¢°ï»á
+			// å»ºç«‹å¸®ä¼š
 			int nErrorID = g_cTongSet.Create(nCamp, btLevel, szPlayerName, szTongName, nSex, nJoinTm);
 			if (nErrorID == 0)
 			{
@@ -176,7 +176,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 
 				this->SendPackage((const void *)&sSync, sSync.m_wLength);
 			}
-			// ½¨Á¢Ê§°Ü
+			// å»ºç«‹å¤±è´¥
 			else
 			{
 				STONG_CREATE_FAIL_SYNC	sSync;
@@ -191,7 +191,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 		}
 		break;
 
-	// Ìí¼Ó³ÉÔ±
+	// æ·»åŠ æˆå‘˜
 	case enumC2S_TONG_ADD_MEMBER:
 		{
 			char	szPlayerName[64], szTongName[64];
@@ -202,7 +202,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 			memcpy(szPlayerName, &pAdd->m_szBuffer[pAdd->m_btTongNameLength], pAdd->m_btPlayerNameLength);
 			szPlayerName[pAdd->m_btPlayerNameLength] = 0;
 			int nRet = g_cTongSet.AddMember(szPlayerName, szTongName, pAdd->m_nSex, pAdd->m_nJoinTm, 0);
-			// ³ÉÔ±Ìí¼Ó³É¹¦
+			// æˆå‘˜æ·»åŠ æˆåŠŸ
 			if (nRet >= 0)
 			{
 				STONG_ADD_MEMBER_SUCCESS_SYNC	sSync;
@@ -224,7 +224,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 
 				this->SendPackage((const void *)&sSync, sizeof(sSync));
 			}
-			// ³ÉÔ±Ìí¼Ó²»³É¹¦
+			// æˆå‘˜æ·»åŠ ä¸æˆåŠŸ
 			else
 			{
 				STONG_ADD_MEMBER_FAIL_SYNC	sSync;
@@ -238,7 +238,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 			}
 		}
 		break;
-	// »ñµÃ°ï»áĞÅÏ¢
+	// è·å¾—å¸®ä¼šä¿¡æ¯
 	case enumC2S_TONG_GET_HEAD_INFO:
 		{
 			STONG_GET_TONG_HEAD_INFO_COMMAND	*pGet = (STONG_GET_TONG_HEAD_INFO_COMMAND*)pData;
@@ -359,7 +359,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 					break;
 				}
 
-				// ²»ÔÚÏß not find »òÕß tong is not connect µ±×÷²»ÔÚÏß
+				// ä¸åœ¨çº¿ not find æˆ–è€… tong is not connect å½“ä½œä¸åœ¨çº¿
 				STONG_CHANGE_MASTER_FAIL_SYNC	sFail;
 				sFail.ProtocolFamily	= pf_tong;
 				sFail.ProtocolID		= enumS2C_TONG_CHANGE_MASTER_FAIL;
@@ -437,7 +437,7 @@ void CTongConnect::Proc0_Tong(const void* pData, size_t size)
 					}
 					break;
 				}
-				// ²»ÔÚÏß not find »òÕß tong is not connect µ±×÷²»ÔÚÏß
+				// ä¸åœ¨çº¿ not find æˆ–è€… tong is not connect å½“ä½œä¸åœ¨çº¿
 				STONG_CHANGE_AGNAME_FAIL_SYNC	sFail;
 				sFail.ProtocolFamily	= pf_tong;
 				sFail.ProtocolID		= enumS2C_TONG_CHANGE_AGNAME_FAIL;
@@ -630,7 +630,7 @@ void CTongConnect::Proc1_Friend_AskAddFriend(const void* pData, size_t size)
 		{
 			g_FriendMgr.PlayerAddFriend(srcrole, dstrole);
 
-			promise = TRUE;	//Ä¬Ğí
+			promise = TRUE;	//é»˜è®¸
 		}
 		else
 		{

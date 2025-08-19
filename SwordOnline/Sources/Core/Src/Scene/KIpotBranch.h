@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ³¡¾°¶ÔÏóÊ÷ÉÏµÄÊ÷Ö¦
+// åœºæ™¯å¯¹è±¡æ ‘ä¸Šçš„æ ‘æ
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-19
@@ -15,7 +15,7 @@ struct KIpotBuildinObj;
 
 //##ModelId=3DD9DE49027E
 //##Documentation
-//## ÃèÊö¶ÔÏóÊ÷µÄÊ÷Ö¦µÄ½á¹¹¡£
+//## æè¿°å¯¹è±¡æ ‘çš„æ ‘æçš„ç»“æ„ã€‚
 class KIpotBranch
 {
   friend struct KIpotRuntimeObj;
@@ -29,83 +29,83 @@ class KIpotBranch
 	
 	//##ModelId=3DDACD580262
 	//##Documentation
-	//## Ìí¼ÓÊ÷Ö¦¡£
+	//## æ·»åŠ æ ‘æã€‚
 	void AddBranch(
 		//##Documentation
-		//## Ê÷Ö¦Ëù¹ØÁªµÄ¶ÔÏóµÄÖ¸Õë
+		//## æ ‘ææ‰€å…³è”çš„å¯¹è±¡çš„æŒ‡é’ˆ
 		KIpotBuildinObj* pBranchObj);
 
 	//##ModelId=3DDACA8B015D
 	//##Documentation
-	//## É¾³ıÊ÷Ö¦ÉÏËùÓĞ±íÊö³¡¾°ÖĞÔËĞĞÊ±¶ÔÏóµÄÊ÷Ò¶¡£
+	//## åˆ é™¤æ ‘æä¸Šæ‰€æœ‰è¡¨è¿°åœºæ™¯ä¸­è¿è¡Œæ—¶å¯¹è±¡çš„æ ‘å¶ã€‚
 	void RemoveAllRtoLeafs(
 		//##Documentation
-		//## ½ÓÊÜÕªÏÂÀ´µÄÒ¶×ÓµÄÊ÷Ö¦¡£
+		//## æ¥å—æ‘˜ä¸‹æ¥çš„å¶å­çš„æ ‘æã€‚
 		KIpotLeaf* pPermanentRto);
 
 	//##ModelId=3DDACA410279
 	//##Documentation
-	//## »æÖÆÊ÷Ö¦
+	//## ç»˜åˆ¶æ ‘æ
 	void PaintObjectLayer(RECT* pRepresentArea);
 	
-	//## Ã¶¾Ù°üº¬ÔÚÊ÷Ö¦ÖĞµÄ¶ÔÏó
+	//## æšä¸¾åŒ…å«åœ¨æ ‘æä¸­çš„å¯¹è±¡
 	void EnumerateObjects(void* p, ObjectsCallbackFn CallbackFn);
 
 	void PaintNoneObjectLayer(RECT* pRepresentArea, int eLayer);
 
 	//##ModelId=3DDC082502F0
 	//##Documentation
-	//## Çå¿ÕÊ÷Ö¦ÉÏËùÓĞµÄÄÚÈİ¡£
+	//## æ¸…ç©ºæ ‘æä¸Šæ‰€æœ‰çš„å†…å®¹ã€‚
 	void Clear();
 
 	//##ModelId=3DDC101202EE
 	//##Documentation
-	//## ÉèÖÃÊ÷Ö¦¶ÔÓ¦µÄ¶ÔÏóÒÔ¼°ÅÅĞòÓÃµÄÏß¶Î¡£
+	//## è®¾ç½®æ ‘æå¯¹åº”çš„å¯¹è±¡ä»¥åŠæ’åºç”¨çš„çº¿æ®µã€‚
 	void AddAObject(
 		//##Documentation
-		//## ´ËÊ÷Ö¦¹ØÁªµÄ³¡¾°ÄÚ½¨¶ÔÏó
+		//## æ­¤æ ‘æå…³è”çš„åœºæ™¯å†…å»ºå¯¹è±¡
 		KIpotBuildinObj* pBranchObj);
 
 	void SetLine(
 		//##Documentation
-		//## Ïß¶ÎµÄÆäÖĞÒ»µã
+		//## çº¿æ®µçš„å…¶ä¸­ä¸€ç‚¹
 		POINT* pPoint1,
 		//##Documentation
-		//## Ïß¶ÎµÄÁíÍâÒ»µã
+		//## çº¿æ®µçš„å¦å¤–ä¸€ç‚¹
 		POINT* pPoint2);
 
 	//##ModelId=3DE2A08602E2
 	//##Documentation
-	//## É¾³ıÈ«²¿³¬³ö·¶Î§µÄrtoÒ¶×Ó¡£
+	//## åˆ é™¤å…¨éƒ¨è¶…å‡ºèŒƒå›´çš„rtoå¶å­ã€‚
 /*	void RemoveOutsideRtoLeafs(
 		//##Documentation
-		//## Ö¸¶¨·¶Î§
+		//## æŒ‡å®šèŒƒå›´
 		RECT& rc);
 */
 	//##ModelId=3DE3CBBB03E7
 	//##Documentation
-	//## Ìí¼ÓÒÔÏß·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+	//## æ·»åŠ ä»¥çº¿æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 	void AddLeafLine(
 		//##Documentation
-		//## ÒÔÏß·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+		//## ä»¥çº¿æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 		KIpotBuildinObj* pLeaf);
 
 	//##ModelId=3DE3CC2401EA
 	//##Documentation
-	//## Ìí¼ÓÒÔµã·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+	//## æ·»åŠ ä»¥ç‚¹æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 	void AddLeafPoint(
 		//##Documentation
-		//## ÒÔµã·½Ê½ÅÅĞòµÄÄÚ½¨¶ÔÏó
+		//## ä»¥ç‚¹æ–¹å¼æ’åºçš„å†…å»ºå¯¹è±¡
 		KIpotLeaf* pLeaf);
 
   private:
 
 	//##Documentation
-	//## Ìí¼ÓÊ÷Ö¦¡£
+	//## æ·»åŠ æ ‘æã€‚
 	void AddSubBranch(
 		int nSubIndex, 
 		//##Documentation
-		//## Ê÷Ö¦½á¹¹µÄÖ¸Õë
+		//## æ ‘æç»“æ„çš„æŒ‡é’ˆ
 		KIpotBuildinObj* pBranchObj);
 
 	void AddLineLeafToList(KIpotLeaf*& pFirst, KIpotBuildinObj* pLeaf);
@@ -119,10 +119,10 @@ class KIpotBranch
 	enum IPOT_BRANCH_FLAG
 	{ 
 		//##Documentation
-		//## KIpotBranch½á¹¹ÊµÀı¶ÔÏóÖĞpLeftBranch³ÉÔ±ÓĞÒâÒåÇÒ·Ç0£¬pLeftLeafs³ÉÔ±ÎŞÒâÒå¡£
+		//## KIpotBranchç»“æ„å®ä¾‹å¯¹è±¡ä¸­pLeftBranchæˆå‘˜æœ‰æ„ä¹‰ä¸”é0ï¼ŒpLeftLeafsæˆå‘˜æ— æ„ä¹‰ã€‚
 		IPOT_BF_HAVE_LEFT_BRANCH = 1, 
 		//##Documentation
-		//## KIpotBranch½á¹¹ÊµÀı¶ÔÏóÖĞpRightBranch³ÉÔ±ÓĞÒâÒåÇÒ·Ç0£¬pRightLeafs³ÉÔ±ÎŞÒâÒå¡£
+		//## KIpotBranchç»“æ„å®ä¾‹å¯¹è±¡ä¸­pRightBranchæˆå‘˜æœ‰æ„ä¹‰ä¸”é0ï¼ŒpRightLeafsæˆå‘˜æ— æ„ä¹‰ã€‚
 		IPOT_BF_HAVE_RIGHT_BRANCH = 2
 	};
 
@@ -130,43 +130,43 @@ class KIpotBranch
 
 	//##ModelId=3DDA74570346
 	//##Documentation
-	//## ´ËÊ÷Ö¦½ÚµãµÄ±ê¼Ç
+	//## æ­¤æ ‘æèŠ‚ç‚¹çš„æ ‡è®°
 	unsigned int m_uFlag;
 
 	//##ModelId=3DD9DE7300C6
 	//##Documentation
-	//## ¸¸½áµã£¬Ê÷Ö¦Á¬½ÓµÄ´óÊ÷Ö¦¡£
+	//## çˆ¶ç»“ç‚¹ï¼Œæ ‘æè¿æ¥çš„å¤§æ ‘æã€‚
 	KIpotBranch* m_pParent;
 
 	union
 	{
 		//##ModelId=3DD9DEAF0307
 		//##Documentation
-		//## ·Ö²æÊ÷Ö¦¡£
-		//## ÓëpLeafsÎªunion¹ØÏµ£¬Á½ÕßÈ¡ÖµÍ¬Ò»Ê±¿ÌÖ»ÓĞÒ»¸öÓĞÒâÒå¡£
+		//## åˆ†å‰æ ‘æã€‚
+		//## ä¸pLeafsä¸ºunionå…³ç³»ï¼Œä¸¤è€…å–å€¼åŒä¸€æ—¶åˆ»åªæœ‰ä¸€ä¸ªæœ‰æ„ä¹‰ã€‚
 		KIpotBranch* m_pSubBranch[2];
 
 		//##ModelId=3DD9E03503E4
 		//##Documentation
-		//## ÉúÔÚÊ÷Ö¦µÄÒ¶×ÓÁĞ±í¡£
-		//## ÓëpSubBranchÎªunion¹ØÏµ£¬Á½ÕßÈ¡ÖµÍ¬Ò»Ê±¿ÌÖ»ÓĞÒ»¸öÓĞÒâÒå¡£
+		//## ç”Ÿåœ¨æ ‘æçš„å¶å­åˆ—è¡¨ã€‚
+		//## ä¸pSubBranchä¸ºunionå…³ç³»ï¼Œä¸¤è€…å–å€¼åŒä¸€æ—¶åˆ»åªæœ‰ä¸€ä¸ªæœ‰æ„ä¹‰ã€‚
 		KIpotLeaf* m_pLeafs[2];
 	};
 
 	//##ModelId=3DDAB05102A3
 	//##Documentation
-	//## Ê÷Ö¦µÄÉÏ²à¶ËµãµÄ×ø±ê
+	//## æ ‘æçš„ä¸Šä¾§ç«¯ç‚¹çš„åæ ‡
 	POINT m_oHeadPoint;
 
 	//##ModelId=3DDAB10F026A
 	//##Documentation
-	//## Ê÷Ö¦µÄÏÂ²à¶ËµãµÄ×ø±ê
+	//## æ ‘æçš„ä¸‹ä¾§ç«¯ç‚¹çš„åæ ‡
 	POINT m_oEndPoint;
 
 
 	//##ModelId=3DE3CB760294
 	//##Documentation
-	//## ´ËÊ÷Ö¦¹ØÁªµÄ³¡¾°ÄÚ½¨¶ÔÏó
+	//## æ­¤æ ‘æå…³è”çš„åœºæ™¯å†…å»ºå¯¹è±¡
 	KIpotBuildinObj*  m_pFirstObject;
 	KIpotBuildinObj** m_pObjectList;
 	int		m_nNumObjects;

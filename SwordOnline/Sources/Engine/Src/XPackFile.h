@@ -1,28 +1,28 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:44*********************
-//	°üÎÄ¼ş¶ÁÈ¡
+//	åŒ…æ–‡ä»¶è¯»å–
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-9-16
 ------------------------------------------------------------------------------------------
-	XPackFileÖ§³Ö¶àÏß³ÌµÄÍ¬Ê±·ÃÎÊ¡£
-	XPackFileÍâ²¿Í¨¹ıXPackElemFileRefÀ´ÃèÊöÆä»ñµÃµÄ¶Ô°üÄÚ×ÓÎÄ¼şµÄÒıÓÃ¡£
-	Íâ²¿Îğ×ÔĞĞËæÒâ¸Ä¶¯´ËÃèÊö½á¹¹ÄÚµÄÄÚÈİ£¬ÒÔ»ñµÃÕı³£µÄ°ü·ÃÎÊ¹¦ÄÜ¡£
+	XPackFileæ”¯æŒå¤šçº¿ç¨‹çš„åŒæ—¶è®¿é—®ã€‚
+	XPackFileå¤–éƒ¨é€šè¿‡XPackElemFileRefæ¥æè¿°å…¶è·å¾—çš„å¯¹åŒ…å†…å­æ–‡ä»¶çš„å¼•ç”¨ã€‚
+	å¤–éƒ¨å‹¿è‡ªè¡Œéšæ„æ”¹åŠ¨æ­¤æè¿°ç»“æ„å†…çš„å†…å®¹ï¼Œä»¥è·å¾—æ­£å¸¸çš„åŒ…è®¿é—®åŠŸèƒ½ã€‚
 *****************************************************************************************/
 #ifndef _XPACK_FILE_H_
 #define	_XPACK_FILE_H_
 #include "KSprite.h"
 
 //--------------------------------------------------
-//Ê¹ÓÃXPackFile¶Ô×ÓÎÄ¼ş½øĞĞ·ÃÎÊ²Ù×÷ËùÓÃµ½µÄ¸¨Öú½á¹¹
+//ä½¿ç”¨XPackFileå¯¹å­æ–‡ä»¶è¿›è¡Œè®¿é—®æ“ä½œæ‰€ç”¨åˆ°çš„è¾…åŠ©ç»“æ„
 //--------------------------------------------------
 struct	XPackElemFileRef
 {
-	unsigned long	uId;			//ÎÄ¼şid
-	int				nPackIndex;		//°üË÷Òı
-	int				nElemIndex;		//°üÄÚµÄ×ÓÎÄ¼şË÷Òı
-	int				nCacheIndex;	//»º³åË÷Òı
-	int				nOffset;		//×ÓÎÄ¼şµÄ²Ù×÷±ãÒÆ¶¯
-	int				nSize;			//×ÓÎÄ¼şµÄ´óĞ¡
+	unsigned long	uId;			//æ–‡ä»¶id
+	int				nPackIndex;		//åŒ…ç´¢å¼•
+	int				nElemIndex;		//åŒ…å†…çš„å­æ–‡ä»¶ç´¢å¼•
+	int				nCacheIndex;	//ç¼“å†²ç´¢å¼•
+	int				nOffset;		//å­æ–‡ä»¶çš„æ“ä½œä¾¿ç§»åŠ¨
+	int				nSize;			//å­æ–‡ä»¶çš„å¤§å°
 };
 
 class XPackFile
@@ -30,60 +30,60 @@ class XPackFile
 public:
 	XPackFile();
 	~XPackFile();
-	//´ò¿ª°üÎÄ¼ş
+	//æ‰“å¼€åŒ…æ–‡ä»¶
 	bool		Open(const char* pszPackFileName, int nSelfIndex);
-	//¹Ø±Õ°üÎÄ¼ş
+	//å…³é—­åŒ…æ–‡ä»¶
 	void		Close();
-	//²éÕÒ°üÄÚµÄ×ÓÎÄ¼ş
+	//æŸ¥æ‰¾åŒ…å†…çš„å­æ–‡ä»¶
 	bool		FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef);
-	//¶ÁÈ¡°üÄÚµÄ×ÓÎÄ¼ş
+	//è¯»å–åŒ…å†…çš„å­æ–‡ä»¶
 	int			ElemFileRead(XPackElemFileRef& ElemRef, void* pBuffer, unsigned uSize);
 
-	//¶ÁÈ¡sprÎÄ¼şÍ·²¿»òÕû¸öspr
+	//è¯»å–spræ–‡ä»¶å¤´éƒ¨æˆ–æ•´ä¸ªspr
 	SPRHEAD*	GetSprHeader(XPackElemFileRef& ElemRef, SPROFFS*& pOffsetTable);
-	//¶ÁÈ¡°´Ö¡Ñ¹ËõµÄsprµÄÒ»Ö¡µÄÊı¾İ
+	//è¯»å–æŒ‰å¸§å‹ç¼©çš„sprçš„ä¸€å¸§çš„æ•°æ®
 	SPRFRAME*	GetSprFrame(SPRHEAD* pSprHeader, int nFrame);
 
 private:
-	//Ö±½Ó¶ÁÈ¡°üÎÄ¼şÊı¾İÖĞµÄÊı¾İµ½»º³åÇø
+	//ç›´æ¥è¯»å–åŒ…æ–‡ä»¶æ•°æ®ä¸­çš„æ•°æ®åˆ°ç¼“å†²åŒº
 	bool		DirectRead(void* pBuffer, unsigned int uOffset, unsigned int uSize) const;
-	//´ø½âÑ¹µØ¶ÁÈ¡°üÎÄ¼şµ½»º³åÇø
+	//å¸¦è§£å‹åœ°è¯»å–åŒ…æ–‡ä»¶åˆ°ç¼“å†²åŒº
 	bool		ExtractRead(void* pBuffer, unsigned int uExtractSize,
 						long lCompressType, unsigned int uOffset, unsigned int uSize) const;
-	//ÔÚË÷Òı±íÖĞ²éÕÒ×ÓÎÄ¼şÏî
+	//åœ¨ç´¢å¼•è¡¨ä¸­æŸ¥æ‰¾å­æ–‡ä»¶é¡¹
 	int			FindElemFile(unsigned long ulId) const;
-	//ÔÚcacheÀï²éÕÒ×ÓÎÄ¼ş
+	//åœ¨cacheé‡ŒæŸ¥æ‰¾å­æ–‡ä»¶
 	int			FindElemFileInCache(unsigned int uId, int nDesireIndex);
-	//°Ñ×ÓÎÄ¼şÊı¾İÌí¼Óµ½cache
+	//æŠŠå­æ–‡ä»¶æ•°æ®æ·»åŠ åˆ°cache
 	int			AddElemFileToCache(void* pBuffer, int nElemIndex);
-	//·ÖÅäÒ»¸ö»º³åÇø£¬²¢°ÑÖ¸¶¨µÄ×ÓÎÄ¼şÊı¾İ¶ÁÈëÆäÖĞ
+	//åˆ†é…ä¸€ä¸ªç¼“å†²åŒºï¼Œå¹¶æŠŠæŒ‡å®šçš„å­æ–‡ä»¶æ•°æ®è¯»å…¥å…¶ä¸­
 	void*		ReadElemFile(int nElemIndex) const;
-	//ÊÍ·ÅÒ»¸öcache½áµãµÄÊı¾İ
+	//é‡Šæ”¾ä¸€ä¸ªcacheç»“ç‚¹çš„æ•°æ®
 	static void	FreeElemCache(int nCacheIndex);
 
 private:
-	HANDLE					m_hFile;			//°üÎÄ¼ş¾ä±ú
-	unsigned int			m_uFileSize;		//°üÎÄ¼ş´óĞ¡
-	int						m_nElemFileCount;	//×ÓÎÄ¼şµÄ¸öÊı
-	int						m_nSelfIndex;		//°üÎÄ¼ş×Ô¼ºÔÚ°üĞòÁĞÖĞµÄË÷Òı
-	struct XPackIndexInfo*	m_pIndexList;		//×ÓÎÄ¼şË÷ÒıÁĞ±í
-	CRITICAL_SECTION		m_ReadCritical;		//²Ù×÷°üÎÄ¼şÊ±µÄÁÙ½çÇø¿ØÖÆ
+	HANDLE					m_hFile;			//åŒ…æ–‡ä»¶å¥æŸ„
+	unsigned int			m_uFileSize;		//åŒ…æ–‡ä»¶å¤§å°
+	int						m_nElemFileCount;	//å­æ–‡ä»¶çš„ä¸ªæ•°
+	int						m_nSelfIndex;		//åŒ…æ–‡ä»¶è‡ªå·±åœ¨åŒ…åºåˆ—ä¸­çš„ç´¢å¼•
+	struct XPackIndexInfo*	m_pIndexList;		//å­æ–‡ä»¶ç´¢å¼•åˆ—è¡¨
+	CRITICAL_SECTION		m_ReadCritical;		//æ“ä½œåŒ…æ–‡ä»¶æ—¶çš„ä¸´ç•ŒåŒºæ§åˆ¶
 
-	//----×ÓÎÄ¼şÊı¾İcache----
+	//----å­æ–‡ä»¶æ•°æ®cache----
 	struct XPackElemFileCache
 	{
-		void*			pBuffer;			//±£´æ×ÓÎÄ¼şÊı¾İµÄ»º³åÇø
-		unsigned long	uId;				//×ÓÎÄ¼şid
-		long			lSize;				//×ÓÎÄ¼ş´óĞ¡
-		int				nPackIndex;			//À´×ÔÄÄ¸ö°üÎÄ¼ş
-		int				nElemIndex;			//×ÓÎÄ¼şÔÚË÷ÒıÁĞ±íÖĞµÄÎ»ÖÃ
-		unsigned int	uRefFlag;			//½üÆÚÒıÓÃ±ê¼Ç
+		void*			pBuffer;			//ä¿å­˜å­æ–‡ä»¶æ•°æ®çš„ç¼“å†²åŒº
+		unsigned long	uId;				//å­æ–‡ä»¶id
+		long			lSize;				//å­æ–‡ä»¶å¤§å°
+		int				nPackIndex;			//æ¥è‡ªå“ªä¸ªåŒ…æ–‡ä»¶
+		int				nElemIndex;			//å­æ–‡ä»¶åœ¨ç´¢å¼•åˆ—è¡¨ä¸­çš„ä½ç½®
+		unsigned int	uRefFlag;			//è¿‘æœŸå¼•ç”¨æ ‡è®°
 	};
 
 	#define	MAX_XPACKFILE_CACHE			10
-	//×ÓÎÄ¼şµÄcacheÊı¾İ
+	//å­æ–‡ä»¶çš„cacheæ•°æ®
 	static	XPackElemFileCache	ms_ElemFileCache[MAX_XPACKFILE_CACHE];
-	//×ÓÎÄ¼ş±»cacheµÄÊıÄ¿
+	//å­æ–‡ä»¶è¢«cacheçš„æ•°ç›®
 	static	int					ms_nNumElemFileCache;
 };
 

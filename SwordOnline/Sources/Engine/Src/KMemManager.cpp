@@ -13,23 +13,23 @@
 //---------------------------------------------------------------------------
 ENGINE_API KMemManager g_MemManager;
 //---------------------------------------------------------------------------
-// º¯Êı:	KMemManager
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KMemManager
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KMemManager::KMemManager()
 {
     int i;
     for (i = 0; i<NUM_BLOCK; i++)
-        m_block_size[i] = (1<<(i + MIN_BLOCK)); //¿éµÄ´óĞ¡
+        m_block_size[i] = (1<<(i + MIN_BLOCK)); //å—çš„å¤§å°
 	g_MemZero(m_blocks, sizeof(m_blocks));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KMemManager
-// ¹¦ÄÜ:	Îö¹ºº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KMemManager
+// åŠŸèƒ½:	æè´­å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KMemManager::~KMemManager()
 {
@@ -37,14 +37,14 @@ KMemManager::~KMemManager()
 	KBlockHeader* bh;
 	char* bp;
 	int i;
-	// ¼ì²âÄÚ´æĞ¹Â©
+	// æ£€æµ‹å†…å­˜æ³„æ¼
     while (ch = (KChunkHeader *)m_chunks.GetHead())
 	{
         bp = ((char *)ch) + sizeof(KChunkHeader);
         for (i = 0; i < ch->block_num; i++)
 		{
             bh = (KBlockHeader *)bp;
-            if (bh->size != 0)// ÓĞÃ»ÊÍ·ÅµÄÄÚ´æ¿é£¿
+            if (bh->size != 0)// æœ‰æ²¡é‡Šæ”¾çš„å†…å­˜å—ï¼Ÿ
 				g_DebugLog("KMemManager::Leak Detected, Size = %d", bh->size);
 			bp += ch->block_size;
         }
@@ -52,18 +52,18 @@ KMemManager::~KMemManager()
     }
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NewChunk()
-// ¹¦ÄÜ:	´´½¨ĞÂµÄÄÚ´æ·ÖÅä¿é£¬CHUNK_SIZEÎªµ¥Î»
-// ²ÎÊı:	block size, block number
-// ·µ»Ø:	block header
+// å‡½æ•°:	NewChunk()
+// åŠŸèƒ½:	åˆ›å»ºæ–°çš„å†…å­˜åˆ†é…å—ï¼ŒCHUNK_SIZEä¸ºå•ä½
+// å‚æ•°:	block size, block number
+// è¿”å›:	block header
 //---------------------------------------------------------------------------
 void* KMemManager::NewChunk(int block_size, int block_num)
 {
-	// ¿éµÄ´óĞ¡Òª¼ÓÉÏ¿éÍ·ºÍ¿éÎ²
+	// å—çš„å¤§å°è¦åŠ ä¸Šå—å¤´å’Œå—å°¾
     block_size = block_size + sizeof(KBlockHeader) + sizeof(KBlockTailer);
-	// chunkµÄ´óĞ¡Òª°üÀ¨chunk header
+	// chunkçš„å¤§å°è¦åŒ…æ‹¬chunk header
     int chunk_size = sizeof(KChunkHeader) + (block_size * block_num);
-    // ·ÖÅäÒ»´ó¿éÄÚ´æ
+    // åˆ†é…ä¸€å¤§å—å†…å­˜
 	char* c = (char*)g_MemAlloc(chunk_size);
     if (c)
 	{
@@ -93,10 +93,10 @@ void* KMemManager::NewChunk(int block_size, int block_num)
     return NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FreeChunk()
-// ¹¦ÄÜ:	´´½¨ĞÂµÄÄÚ´æ·ÖÅä¿é£¬CHUNK_SIZEÎªµ¥Î»
-// ²ÎÊı:	block size, block number,
-// ·µ»Ø:	block header
+// å‡½æ•°:	FreeChunk()
+// åŠŸèƒ½:	åˆ›å»ºæ–°çš„å†…å­˜åˆ†é…å—ï¼ŒCHUNK_SIZEä¸ºå•ä½
+// å‚æ•°:	block size, block number,
+// è¿”å›:	block header
 //---------------------------------------------------------------------------
 void KMemManager::FreeChunk(KChunkHeader *ch)
 {
@@ -104,10 +104,10 @@ void KMemManager::FreeChunk(KChunkHeader *ch)
 	g_MemFree((void *)ch);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Malloc()
-// ¹¦ÄÜ:	·ÖÅäÄÚ´æ
-// ²ÎÊı:	size in bytes
-// ·µ»Ø:	void*
+// å‡½æ•°:	Malloc()
+// åŠŸèƒ½:	åˆ†é…å†…å­˜
+// å‚æ•°:	size in bytes
+// è¿”å›:	void*
 //---------------------------------------------------------------------------
 void* KMemManager::Malloc(int size)
 {
@@ -120,7 +120,7 @@ void* KMemManager::Malloc(int size)
 		{
             KBlockHeader *bh = (KBlockHeader *)p;
             KBlockTailer *bp = (KBlockTailer *)(p + size + sizeof(KBlockHeader));
-            bh->next = (void *) -1L;// ±íÊ¾Ö»ÓĞÒ»¿é
+            bh->next = (void *) -1L;// è¡¨ç¤ºåªæœ‰ä¸€å—
             bh->size = size;
             bh->magic = HEAD_MAGIC;
             bp->magic = TAIL_MAGIC;
@@ -129,7 +129,7 @@ void* KMemManager::Malloc(int size)
     }
 	else
 	{
-        // ÕÒÒ»¸ö´óĞ¡ºÏÊÊµÄchunk
+        // æ‰¾ä¸€ä¸ªå¤§å°åˆé€‚çš„chunk
         int i, mask;
         for (i=0; i<NUM_BLOCK-1; i++)
 		{
@@ -155,10 +155,10 @@ void* KMemManager::Malloc(int size)
     return p;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Calloc()
-// ¹¦ÄÜ:	·ÖÅäÄÚ´æ£¬²¢ÓÃÁãÌî³ä
-// ²ÎÊı:	size in bytes
-// ·µ»Ø:	void*
+// å‡½æ•°:	Calloc()
+// åŠŸèƒ½:	åˆ†é…å†…å­˜ï¼Œå¹¶ç”¨é›¶å¡«å……
+// å‚æ•°:	size in bytes
+// è¿”å›:	void*
 //---------------------------------------------------------------------------
 void* KMemManager::Calloc(int size)
 {
@@ -167,10 +167,10 @@ void* KMemManager::Calloc(int size)
 	return p;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Free()
-// ¹¦ÄÜ:	ÊÍ·ÅÄÚ´æ
-// ²ÎÊı:	void*
-// ·µ»Ø:	void
+// å‡½æ•°:	Free()
+// åŠŸèƒ½:	é‡Šæ”¾å†…å­˜
+// å‚æ•°:	void*
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KMemManager::Free(void* p)
 {
@@ -183,11 +183,11 @@ void KMemManager::Free(void* p)
     KBlockHeader *bh = (KBlockHeader *)(pc - sizeof(KBlockHeader));
     KBlockTailer *bp = (KBlockTailer *)(pc + bh->size);
 
-    // ¼ì²âÊÇ·ñ´æÔÚÄÚ´æÔ½½ç·ÃÎÊ
+    // æ£€æµ‹æ˜¯å¦å­˜åœ¨å†…å­˜è¶Šç•Œè®¿é—®
     if ((bh->magic != HEAD_MAGIC) || (bp->magic != TAIL_MAGIC))
         g_MessageBox("Memory Corrupted : Size = %d", bh->size);
 
-	// µ¥¶À·ÖÅäµÄÄÚ´æ¿é
+	// å•ç‹¬åˆ†é…çš„å†…å­˜å—
     if (((int)bh->next) == -1L)
 	{
         KChunkHeader *ch = (KChunkHeader *)(((char *)bh) - sizeof(KChunkHeader));

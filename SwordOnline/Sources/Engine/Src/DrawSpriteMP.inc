@@ -1,5 +1,5 @@
 //=======================================
-//		»æÖÆspriteÓÃµ½µÄ»ã±à³ÌĞòÆ¬¶Ï
+//		ç»˜åˆ¶spriteç”¨åˆ°çš„æ±‡ç¼–ç¨‹åºç‰‡æ–­
 //=======================================
 
 //#define		read_alpha_2_ebx_run_length_2_eax		    \
@@ -17,7 +17,7 @@
 				{	add		esi, 2   			}
 
 
-#define		copy_pixel_use_eax	/*ebxÖ¸Ïòµ÷É«°å*/	\
+#define		copy_pixel_use_eax	/*ebxæŒ‡å‘è°ƒè‰²æ¿*/	\
 				{	xor	    eax, eax            }	\
 				{	mov	    al, byte ptr [esi]	}	\
 				{	add		esi, 1 				}	\
@@ -25,7 +25,7 @@
 				{	add		edi, 2				}   \
 				{	mov		[edi - 2], ax			}
 
-#define		copy_4pixel_use_eax	/*ebxÖ¸Ïòµ÷É«°å*/	\
+#define		copy_4pixel_use_eax	/*ebxæŒ‡å‘è°ƒè‰²æ¿*/	\
 				{	movd    mm4, [esi]	        } 	\
 				{	add		esi, 4 				}	\
                 {   movd    eax, mm4            }   \

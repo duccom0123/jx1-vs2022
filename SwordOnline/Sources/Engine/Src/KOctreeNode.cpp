@@ -49,7 +49,7 @@ BOOL KOctreeNode::Insert(BYTE r, BYTE g, BYTE b, int layer, int max_layer)
 		dwGreen	+= g;
 		dwBlue	+= b;
 		dwRef++;
-		if (dwRef == 1)	// µÚÒ»´Î¼Ó½øÀ´µÄÒ¶×Ó£¬ÊÇÒ»ÖÖĞÂµÄÑÕÉ«
+		if (dwRef == 1)	// ç¬¬ä¸€æ¬¡åŠ è¿›æ¥çš„å¶å­ï¼Œæ˜¯ä¸€ç§æ–°çš„é¢œè‰²
 			return TRUE;
 		else
 			return FALSE;

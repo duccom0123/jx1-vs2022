@@ -8,13 +8,13 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-long KSynLock::Lock()	 //¼ì²éÊÇ·ñÊý¾ÝÒÑ¾­±»Ëø¶¨£¬Èç¹ûÊÇµÄ»°·µ»Øµ±Ç°µÄÖµ
+long KSynLock::Lock()	 //æ£€æŸ¥æ˜¯å¦æ•°æ®å·²ç»è¢«é”å®šï¼Œå¦‚æžœæ˜¯çš„è¯è¿”å›žå½“å‰çš„å€¼
 {
 	if (m_bLock)
 		++m_nCount ;
 	else 
 	{
-		if (m_nCurId == 0)//Î´ÔøÊ¹ÓÃ
+		if (m_nCurId == 0)//æœªæ›¾ä½¿ç”¨
 		{
 			m_bLock = TRUE;
 			m_nCurId = 1;
@@ -30,7 +30,7 @@ long KSynLock::Lock()	 //¼ì²éÊÇ·ñÊý¾ÝÒÑ¾­±»Ëø¶¨£¬Èç¹ûÊÇµÄ»°·µ»Øµ±Ç°µÄÖµ
 
 BOOL  KSynLock::UnLock(long id)
 {
-	//ÒªÇó·´ËøÕßÎªµ±Ç°Ê¹ÓÃÕß£¬¿ÉÒÔ·´Ëø
+	//è¦æ±‚åé”è€…ä¸ºå½“å‰ä½¿ç”¨è€…ï¼Œå¯ä»¥åé”
 	if (id == m_nCurId)
 	{
 		m_bLock = FALSE;

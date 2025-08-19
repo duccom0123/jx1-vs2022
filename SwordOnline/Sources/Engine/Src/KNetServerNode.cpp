@@ -135,10 +135,10 @@ void n_miniserver_wakeup(KNetThread *t)
 }        
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KNetServerNode
-// ¹¦ÄÜ:	¹¹Ôì
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KNetServerNode
+// åŠŸèƒ½:	æ„é€ 
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetServerNode::KNetServerNode(KNetServer *server)
 {
@@ -152,10 +152,10 @@ KNetServerNode::KNetServerNode(KNetServer *server)
     m_Server->m_ServerList.Unlock();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KNetServerNode
-// ¹¦ÄÜ:	·Ö¹¹
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KNetServerNode
+// åŠŸèƒ½:	åˆ†æ„
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KNetServerNode::~KNetServerNode(void)
 {

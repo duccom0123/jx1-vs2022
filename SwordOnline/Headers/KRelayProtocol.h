@@ -28,43 +28,43 @@ enum PROTOCOL_FAMILY
 
 struct EXTEND_HEADER
 {
-	BYTE	ProtocolFamily;							//Э�������ļ���
-	BYTE	ProtocolID;								//Э������
+	BYTE	ProtocolFamily;							//协议所属的家族
+	BYTE	ProtocolID;								//协议名称
 };
 
-enum ROUTESERVER_METHOD			//����relay֮��ת��֮��
+enum ROUTESERVER_METHOD			//用于relay之间转换之用
 {
-	rm_account_id = 1,			//�����ʺ�ӳ��Ϊ��Ӧ��ʶ(tagEnterGame2, tagLeaveGame2ͬ��·������)
-	rm_map_id,					//���ݵ�ͼӳ��Ϊ��Ӧ��ʶ(ͨ��������ȡ��·������)
-	rm_role_id,					//���ݽ�ɫӳ��Ϊ��Ӧ��ʶ(tagEnterGame2, tagLeaveGame2ͬ��·������)
-	rm_gm,						//ֱ�ӷ���GM�Ķ���
+	rm_account_id = 1,			//根据帐号映射为相应标识(tagEnterGame2, tagLeaveGame2同步路由数据)
+	rm_map_id,					//根据地图映射为相应标识(通过网关来取得路由数据)
+	rm_role_id,					//根据角色映射为相应标识(tagEnterGame2, tagLeaveGame2同步路由数据)
+	rm_gm,						//直接发给GM的东东
 };
 
-// Э��id��relay_c2c_data  ���䳤Э�飩
-// Э��id��relay_s2c_loseway  ���䳤Э�飩			nToIP ���ܹ㲥
+// 协议id：relay_c2c_data  （变长协议）
+// 协议id：relay_s2c_loseway  （变长协议）			nToIP 不能广播
 struct RELAY_DATA : EXTEND_HEADER
 {
-	DWORD	nToIP;									//255.255.255.255�ǹ㲥, 0.0.0.0��Ŀ�ĵ��Ѿ�����
-	DWORD	nToRelayID;								//0�����ڹ㲥, -1������㲥
-	DWORD	nFromIP;								//0.0.0.0ʱ�����ս���Relay��ϵ��Relay����дnFromIP��nFromRelayID
+	DWORD	nToIP;									//255.255.255.255是广播, 0.0.0.0是目的地已经到达
+	DWORD	nToRelayID;								//0是网内广播, -1是网外广播
+	DWORD	nFromIP;								//0.0.0.0时表明刚进入Relay体系，Relay会填写nFromIP和nFromRelayID
 	DWORD	nFromRelayID;
-	WORD	routeDateLength;						//Ҫת�����ݳ��ȣ����ݴӽṹ��β����ʼ
-	//��ӦҪת����Э�������
+	WORD	routeDateLength;						//要转发数据长度，数据从结构结尾处开始
+	//对应要转发的协议包数据
 };
 
 
-// Э��id��relay_c2c_askwaydata  ���䳤Э�飩
+// 协议id：relay_c2c_askwaydata  （变长协议）
 
 struct RELAY_ASKWAY_DATA : EXTEND_HEADER
 {
-	DWORD	nFromIP;								//0.0.0.0ʱ�����ս���Relay��ϵ��Relay����дnFromIP��nFromRelayID
+	DWORD	nFromIP;								//0.0.0.0时表明刚进入Relay体系，Relay会填写nFromIP和nFromRelayID
 	DWORD	nFromRelayID;
-	DWORD	seekRelayCount;							//���Ҿ�����Relay�ĸ�������-1ʱΪ���ɴ�
-	WORD	seekMethod;								//ָ�����ҷ���	
-	WORD	wMethodDataLength;						//�����������ݳ��ȣ����ݴӽṹ��β����ʼ
-	WORD	routeDateLength;						//Ҫת�����ݳ��ȣ����ݴӷ����������ݽ�β����ʼ
-	//��Ӧ������������
-	//ת������
+	DWORD	seekRelayCount;							//查找经历的Relay的个数，到-1时为不可达
+	WORD	seekMethod;								//指定查找方法	
+	WORD	wMethodDataLength;						//方法所需数据长度，数据从结构结尾处开始
+	WORD	routeDateLength;						//要转发数据长度，数据从方法所需数据结尾处开始
+	//对应方法所需数据
+	//转发数据
 };
 
 
@@ -85,7 +85,7 @@ struct tagExtendProtoHeader
 #define __X_NAME_LEN_	32
 
 
-//c2s_extend ������GameSvrʱ��GameSvr��������Ӵ˽ṹ���Ա�������Դ
+//c2s_extend 包到达GameSvr时，GameSvr向包后添加此结构，以表明包来源
 struct tagPlusSrcInfo
 {
 	DWORD nameid;
@@ -93,11 +93,11 @@ struct tagPlusSrcInfo
 };
 
 //playercomm_c2s_querychannelid
-//��ͨChannel������'\'��ͷ������Ϊ��ͨChannel����
-//����Channel�������ִ�Сд��
-//���飺\Tnnnn������nnnnΪ����ID
-//���ɣ�\Fnnnn������nnnnΪ����ID
-//ͬ����\S
+//普通Channel：不以'\'开头的名称为普通Channel名称
+//特殊Channel：（区分大小写）
+//队伍：\Tnnnn，其中nnnn为队伍ID
+//门派：\Fnnnn，其中nnnn为门派ID
+//同屏：\S
 struct PLAYERCOMM_QUERYCHANNELID : EXTEND_HEADER
 {
 	char channel[__X_NAME_LEN_];
@@ -147,10 +147,10 @@ struct PLAYERCOMM_GMSUBSCRIBE : EXTEND_HEADER
 
 struct CHAT_MSG_EX : EXTEND_HEADER
 {
-	char	m_szSourceName[__X_NAME_LEN_];	// ��Դ��ҽ�ɫ����
-	char	m_szAccountName[__X_NAME_LEN_];	// ��Դ����˺�����
+	char	m_szSourceName[__X_NAME_LEN_];	// 来源玩家角色名字
+	char	m_szAccountName[__X_NAME_LEN_];	// 来源玩家账号名字
 	WORD SentenceLength;
-	//��˵����
+	//所说内容
 };
 
 

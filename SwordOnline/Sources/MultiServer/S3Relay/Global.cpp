@@ -327,7 +327,7 @@ BOOL gInitialize()
 		return FALSE;
 #endif
 
-	// °ï»áÊı¾İ³õÊ¼»¯
+	// å¸®ä¼šæ•°æ®åˆå§‹åŒ–
 	if (g_cTongDB.Open())
 	{
 		KGLogPrintf(LOG_INFO,"tong database open ok!\n");

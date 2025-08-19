@@ -2,7 +2,7 @@
 File        : LinkStruct.h
 Creator     : Fyt(Fan Zhanpeng)
 create data : ??-??-2002(mm-dd-yyyy)
-Description : Ò»Î¬Á´±íµÄÄ£°åÀà
+Description : ä¸€ç»´é“¾è¡¨çš„æ¨¡æ¿ç±»
 *********************************************************************/
 //////////////////////////////////////////////////////////////////////
 //By Fyt(Fan Zhanpeng)
@@ -12,7 +12,7 @@ Description : Ò»Î¬Á´±íµÄÄ£°åÀà
 //PrevItem() Reset()   Begin()   End()     Clear()
 //*****************************************************************************
 //Description  :
-//class T  ±ØĞëÓĞ×Ô¼ºÀàĞÍµÄprevious  ºÍ  next Ö¸Õë
+//class T  å¿…é¡»æœ‰è‡ªå·±ç±»å‹çš„previous  å’Œ  next æŒ‡é’ˆ
 
 #if !defined(AFX_LINKSTRUCT_H__76A129C2_C1B9_4556_90E9_11288646EF8C__INCLUDED_)
 #define AFX_LINKSTRUCT_H__76A129C2_C1B9_4556_90E9_11288646EF8C__INCLUDED_
@@ -43,7 +43,7 @@ public:
 		return count;
 	}
 
-        //ÔÚÁ´±íÖĞ¼ÓÈëÒ»¸öÔªËØ
+        //åœ¨é“¾è¡¨ä¸­åŠ å…¥ä¸€ä¸ªå…ƒç´ 
 	T*  AddItem(T it)
 	{
 		if( lp_beginitem == NULL )
@@ -81,7 +81,7 @@ public:
 		return lp_enditem;
 	}
 
-	//»ñÈ¡µÚwhich¸öÔªËØ
+	//è·å–ç¬¬whichä¸ªå…ƒç´ 
 	T*  GetItem(int which)
 	{
 		int i;
@@ -112,20 +112,20 @@ public:
 		}
 	}
 
-        //·µ»Øµ±Ç°½¹µãµÄÔªËØ
+        //è¿”å›å½“å‰ç„¦ç‚¹çš„å…ƒç´ 
 	T*  Current()
 	{
 		return lp_currentitem;
 	}
 
-        //ÔÚwhereÎ»ÖÃ²åÈëÒ»¸öitÔªËØ
+        //åœ¨whereä½ç½®æ’å…¥ä¸€ä¸ªitå…ƒç´ 
 	T*  InsertItem(int where,T it)
 	{
 		GetItem(where);
 		return InsertItem(it);
 	}
 
-        //ÔÚµ±Ç°½¹µãÔªËØÇ°²åÈëÒ»¸öitÔªËØ
+        //åœ¨å½“å‰ç„¦ç‚¹å…ƒç´ å‰æ’å…¥ä¸€ä¸ªitå…ƒç´ 
 	T*  InsertItem(T it)
 	{
 		T * temp,* tempnext;
@@ -156,14 +156,14 @@ public:
 		return lp_currentitem;
 	}
 
-        //É¾³ıµÚwhich¸öÔªËØ
+        //åˆ é™¤ç¬¬whichä¸ªå…ƒç´ 
 	int RemoveItem(int which)
 	{
 		GetItem(which);
 		RemoveItem();
 	}
 
-        //É¾³ıµ±Ç°½¹µãÔªËØ
+        //åˆ é™¤å½“å‰ç„¦ç‚¹å…ƒç´ 
 	int RemoveItem()
 	{
 		T * temp1,* temp2;
@@ -206,7 +206,7 @@ public:
 		return 1;
 	}
 
-        //°Ñ½¹µãÒÆµ½ÏÂÒ»¸öÔªËØ
+        //æŠŠç„¦ç‚¹ç§»åˆ°ä¸‹ä¸€ä¸ªå…ƒç´ 
 	T*  NextItem()
 	{
 		if( lp_currentitem == NULL )
@@ -215,7 +215,7 @@ public:
 		return lp_currentitem;
 	}
 
-        //°Ñ½¹µãÒÆµ½ÉÏÒ»¸öÔªËØ
+        //æŠŠç„¦ç‚¹ç§»åˆ°ä¸Šä¸€ä¸ªå…ƒç´ 
 	T*  PrevItem()
 	{
 		if( lp_currentitem == NULL )
@@ -224,27 +224,27 @@ public:
 		return lp_currentitem;
 	}
 
-        //°Ñ½¹µãÒÆµ½µÚÒ»¸öÔªËØ
+        //æŠŠç„¦ç‚¹ç§»åˆ°ç¬¬ä¸€ä¸ªå…ƒç´ 
 	T*  Reset()
 	{
 		lp_currentitem = lp_beginitem;
 		return lp_currentitem;
 	}
 
-        //°Ñ½¹µãÒÆµ½µÚÒ»¸öÔªËØ
+        //æŠŠç„¦ç‚¹ç§»åˆ°ç¬¬ä¸€ä¸ªå…ƒç´ 
 	T*  Begin()
 	{
 		return Reset();
 	}
 
-        //°Ñ½¹µãÒÆµ½×îºóÒ»¸öÔªËØ
+        //æŠŠç„¦ç‚¹ç§»åˆ°æœ€åä¸€ä¸ªå…ƒç´ 
 	T*  End()
 	{
 		lp_currentitem = lp_enditem;
 		return lp_currentitem;
 	}
 
-    //Çå³ıÕû¸öÁ´±í
+    //æ¸…é™¤æ•´ä¸ªé“¾è¡¨
     void Clear()
     {
         Reset();

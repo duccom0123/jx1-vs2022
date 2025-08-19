@@ -76,7 +76,7 @@ private:
 
 	HANDLE m_hWorkingThread;
 
-	bool m_bReLink;		//Ê¹ÓÃ±¾ÀàĞèÒª×Ô¶¯ÖØÁ¬¹¦ÄÜ
+	bool m_bReLink;		//ä½¿ç”¨æœ¬ç±»éœ€è¦è‡ªåŠ¨é‡è¿åŠŸèƒ½
 	
 	/*
 	 * Config
@@ -106,7 +106,7 @@ private:
 	bool IsVerifying();
 	bool IsError();
 
-	void SwitchToConnecting();		//ÇĞ»»×´Ì¬µ½ÖØÁ¬,ÈçÓĞ±ØÒª»áÆô¶¯ÖØÁ¬Ïß³Ì
+	void SwitchToConnecting();		//åˆ‡æ¢çŠ¶æ€åˆ°é‡è¿,å¦‚æœ‰å¿…è¦ä¼šå¯åŠ¨é‡è¿çº¿ç¨‹
 	bool SetClientStatus(enumClientStatus nNewS);
 };
 

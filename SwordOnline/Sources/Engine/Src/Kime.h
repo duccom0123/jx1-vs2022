@@ -3,7 +3,7 @@
 //
 // File:	KIme.h
 // Date:	2002.07.18
-// Code:	ÀîÑ§Îä
+// Code:	æå­¦æ­¦
 // Desc:	KIme Class
 //---------------------------------------------------------------------------
 
@@ -45,9 +45,9 @@ public:
 	void TurnOff();
 	void TurnOn();
 
-    void SetCaretPos(int X, int Y);     // ÎªÁËÖ§³Ö¹â±ê¸úËæ
+    void SetCaretPos(int X, int Y);     // ä¸ºäº†æ”¯æŒå…‰æ ‡è·Ÿéš
 
-	//ÏìÓ¦ÊäÈë´°¿ÚÏûÏ¢£¬Èç¹û·µ»ØÊÇtrue£¬Ôò´°¿Úº¯ÊıÓ¦Ö±½Ó·µ»Ø0£¬·ñÔòÓ¦´«µİ¸øDefWindowProc
+	//å“åº”è¾“å…¥çª—å£æ¶ˆæ¯ï¼Œå¦‚æœè¿”å›æ˜¯trueï¼Œåˆ™çª—å£å‡½æ•°åº”ç›´æ¥è¿”å›0ï¼Œå¦åˆ™åº”ä¼ é€’ç»™DefWindowProc
 	int	WndMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	
 };
 extern ENGINE_API KIme* g_pIme;

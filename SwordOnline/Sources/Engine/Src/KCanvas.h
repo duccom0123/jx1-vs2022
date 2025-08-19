@@ -30,43 +30,43 @@ public:
 };
 //---------------------------------------------------------------------------
 typedef struct {
-	long		x;			// ²Ã¼õºóµÄX×ø±ê
-	long		y;			// ²Ã¼õºóµÄY×ø±ê
-	long		width;		// ²Ã¼õºóµÄ¿í¶È
-	long		height;		// ²Ã¼õºóµÄ¸ß¶È
-	long		left;		// ÉÏ±ß½ç²Ã¼ôÁ¿
-	long		top;		// ×ó±ß½ç²Ã¼ôÁ¿
-	long		right;		// ÓÒ±ß½ç²Ã¼ôÁ¿
+	long		x;			// è£å‡åçš„Xåæ ‡
+	long		y;			// è£å‡åçš„Yåæ ‡
+	long		width;		// è£å‡åçš„å®½åº¦
+	long		height;		// è£å‡åçš„é«˜åº¦
+	long		left;		// ä¸Šè¾¹ç•Œè£å‰ªé‡
+	long		top;		// å·¦è¾¹ç•Œè£å‰ªé‡
+	long		right;		// å³è¾¹ç•Œè£å‰ªé‡
 } KClipper;
 /*/---------------------------------------------------------------------------
 typedef struct {
-	long		num;		// µ±Ç°µÄ¶ÔÏóÊı
-	long		changed;	// ÖØ»æ±êÖ¾
-	KDrawNode*	node[10];	// »æÖÆ¶ÔÏóÖ¸Õë
+	long		num;		// å½“å‰çš„å¯¹è±¡æ•°
+	long		changed;	// é‡ç»˜æ ‡å¿—
+	KDrawNode*	node[10];	// ç»˜åˆ¶å¯¹è±¡æŒ‡é’ˆ
 } KSubCanvas;*/
 //---------------------------------------------------------------------------
 class ENGINE_API KCanvas
 {
 private:
-//	KList		m_DrawList;// »æÖÆÁĞ±í
-//	KMemClass	m_Canvas;// »­²¼ÄÚ´æ¶ÔÏó
-//	KMemClass	m_SubCanvas;//»­²¼×ÓÇøÓò
+//	KList		m_DrawList;// ç»˜åˆ¶åˆ—è¡¨
+//	KMemClass	m_Canvas;// ç”»å¸ƒå†…å­˜å¯¹è±¡
+//	KMemClass	m_SubCanvas;//ç”»å¸ƒå­åŒºåŸŸ
 	LPDIRECTDRAWSURFACE	m_pSurface;
-	long		m_nWidth;// »­²¼¿í¶È
-	long		m_nHeight;// »­²¼¸ß¶È
+	long		m_nWidth;// ç”»å¸ƒå®½åº¦
+	long		m_nHeight;// ç”»å¸ƒé«˜åº¦
 
 public:
-//	void*		m_pCanvasAlloc;// ·ÖÅä»­²¼ÄÚ´æ
-//	void*		m_pCanvas;// »­²¼ÄÚ´æ   // ¶ÔÆë256×Ö½Ú
+//	void*		m_pCanvasAlloc;// åˆ†é…ç”»å¸ƒå†…å­˜
+//	void*		m_pCanvas;// ç”»å¸ƒå†…å­˜   // å¯¹é½256å­—èŠ‚
 	long		m_nMask16;// 16bit RGB Mask
 	long		m_nMask32;// 32bit RGB Mask
-	long		m_nScreenWidth;// ÆÁÄ»¿í¶È
-	long		m_nScreenHeight;// ÆÁÄ»¸ß¶È
-	long		m_nScreenPitch;// ÆÁÄ»¿ç¶È
-//	long		m_nSubRows;// ĞĞÊıÄ¿
-//	long		m_nSubCols;// ÁĞÊıÄ¿
-	RECT		m_ClipRect;// ²Ã¼õÇøÓò
-	BOOL		m_bChanged;// ¸Ä±ä±êÖ¾
+	long		m_nScreenWidth;// å±å¹•å®½åº¦
+	long		m_nScreenHeight;// å±å¹•é«˜åº¦
+	long		m_nScreenPitch;// å±å¹•è·¨åº¦
+//	long		m_nSubRows;// è¡Œæ•°ç›®
+//	long		m_nSubCols;// åˆ—æ•°ç›®
+	RECT		m_ClipRect;// è£å‡åŒºåŸŸ
+	BOOL		m_bChanged;// æ”¹å˜æ ‡å¿—
     BOOL        m_dwScreenMode;
 private:
 //	void		SubAddNode(int nX,int nY,int nW,int nH,KDrawNode* pNode);

@@ -24,8 +24,8 @@ public:
 
 	KScript * CreateScript(char * szKey, int StackSize);
 	KScript * CreateScript(DWORD nKey, int StackSize);
-	BOOL ClearUpSet(void);//½øĞĞ½Å±¾Á¿¼ì²â£¬Ò»µ©·¢ÏÖ³¬³öÔòÖ´ĞĞÇå³ı
-	DWORD ClearUpSet(DWORD);//Çå³ıÖ¸¶¨ÊıÁ¿µÄ½Å±¾
+	BOOL ClearUpSet(void);//è¿›è¡Œè„šæœ¬é‡æ£€æµ‹ï¼Œä¸€æ—¦å‘ç°è¶…å‡ºåˆ™æ‰§è¡Œæ¸…é™¤
+	DWORD ClearUpSet(DWORD);//æ¸…é™¤æŒ‡å®šæ•°é‡çš„è„šæœ¬
 	DWORD GetMaxScriptNum(){return m_nMaxScriptNum;	}
 	DWORD GetNumPerClear(){return m_nNumPerClear;	}
 	BOOL SetMaxScriptNum(DWORD nMaxCount = MAXLUASCRIPTNUM);
@@ -39,8 +39,8 @@ public:
 	
 
 private:
-	DWORD m_nMaxScriptNum;//×î´ó½Å±¾±£´æÁ¿
-	DWORD m_nNumPerClear;//Ã¿´ÎÕûÀí½Å±¾Á´±íÊ±µÄÇå¿ÕÁ¿
+	DWORD m_nMaxScriptNum;//æœ€å¤§è„šæœ¬ä¿å­˜é‡
+	DWORD m_nNumPerClear;//æ¯æ¬¡æ•´ç†è„šæœ¬é“¾è¡¨æ—¶çš„æ¸…ç©ºé‡
 };
 //---------------------------------------------------------------------------
 */

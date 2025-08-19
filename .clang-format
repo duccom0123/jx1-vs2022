@@ -1,0 +1,25 @@
+BasedOnStyle: Microsoft
+IndentWidth: 4
+TabWidth: 16
+UseTab: Never
+ColumnLimit: 400
+BreakBeforeBraces: Allman
+SpaceBeforeParens: ControlStatements
+BreakBeforeBinaryOperators: All
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignOperands: true
+MaxEmptyLinesToKeep: 1
+ReflowComments: false
+SpacesBeforeTrailingComments: 3
+
+# Tắt sắp xếp includes để giữ nguyên thứ tự
+SortIncludes: false
+IncludeBlocks: Preserve
+
+# Các thiết lập để tránh hang
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false

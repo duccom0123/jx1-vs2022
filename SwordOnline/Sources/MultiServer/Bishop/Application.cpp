@@ -33,12 +33,12 @@ using OnlineGameLib::Win32::CCriticalSection;
 
 using OnlineGameLib::Win32::CPackager;
 
-#define NOTIFY_MAINTENANCE_ANNOUNCE	"M¸y chñ sÏ b¶o tr× ®Şnh kú sau %d phót n÷a, thêi gian b¶o tr× dù kiÕn %d phót"
-#define MAINTENANCE_ANNOUNCE		"M¸y chñ b¶o tr×, hÑn gÆp l¹i"
+#define NOTIFY_MAINTENANCE_ANNOUNCE	"MÂ¸y chÃ± sÃ bÂ¶o trÃ— Â®Ãnh kÃº sau %d phÃ³t nÃ·a, thÃªi gian bÂ¶o trÃ— dÃ¹ kiÃ•n %d phÃ³t"
+#define MAINTENANCE_ANNOUNCE		"MÂ¸y chÃ± bÂ¶o trÃ—, hÃ‘n gÃ†p lÂ¹i"
 
 static const char szBishopClassName[] = "BishopClass";
 static char szGameServerFilePath[] = ".\\GameServer.exe";
-static size_t g_BackupSleepTime = 0;  //±¸·İÏß³Ì×Ô¶¯¹ÒÆğÊ±¼ä
+static size_t g_BackupSleepTime = 0;  //Â±Â¸Â·ÃÃÃŸÂ³ÃŒÃ—Ã”Â¶Â¯Â¹Ã’Ã†Ã°ÃŠÂ±Â¼Ã¤
 static DWORD g_BackupSpaceTime = 0;
 //static const DWORD g_dwServerIdentify = 0xAEFC07B5;
 

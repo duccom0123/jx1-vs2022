@@ -4,7 +4,7 @@
 // FileCreateDate	:	2002-7-23 10:25:56
 // FileDescription	:	
 // Revision Count	:	
-// Questions		:   ½Å±¾µÄCache£¬ÍøÂç°æÊ±ÊÇ·ñ²ÉÓÃCache»úÖÆÁË£¿CacheÍ¨¹ı¼ìË÷×Ö·û´®²Ù×÷Ğ§ÂÊ»á½µµÍÒ»Ğ©£¬ÓĞÓÅ»¯µÄÓàµØ
+// Questions		:   è„šæœ¬çš„Cacheï¼Œç½‘ç»œç‰ˆæ—¶æ˜¯å¦é‡‡ç”¨Cacheæœºåˆ¶äº†ï¼ŸCacheé€šè¿‡æ£€ç´¢å­—ç¬¦ä¸²æ“ä½œæ•ˆç‡ä¼šé™ä½ä¸€äº›ï¼Œæœ‰ä¼˜åŒ–çš„ä½™åœ°
 *******************************************************************************/
 
 #include "KWin32.h"
@@ -17,7 +17,7 @@ KScriptCache::KScriptCache()
 
 KScriptCache::~KScriptCache()
 {
-    Release();      // µ÷ÓÃ»ùÀàÖĞµÄº¯Êı,ÊÍ·ÅËùÓĞ½Úµã
+    Release();      // è°ƒç”¨åŸºç±»ä¸­çš„å‡½æ•°,é‡Šæ”¾æ‰€æœ‰èŠ‚ç‚¹
 }
 
 BOOL KScriptCache::LoadNode(KCacheNode* lpNode)
@@ -31,10 +31,10 @@ BOOL KScriptCache::LoadNode(KCacheNode* lpNode)
 	return lpNode->m_lpData != NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FreeNode
-// ¹¦ÄÜ:	
-// ²ÎÊı:	
-// ·µ»Ø:	void
+// å‡½æ•°:	FreeNode
+// åŠŸèƒ½:	
+// å‚æ•°:	
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KScriptCache::FreeNode(KCacheNode* lpNode)
 {

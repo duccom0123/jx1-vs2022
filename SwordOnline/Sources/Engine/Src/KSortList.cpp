@@ -11,10 +11,10 @@
 #include "KMemBase.h"
 #include "KSortList.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KSortList
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KSortList
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KSortList::KSortList()
 {
@@ -23,20 +23,20 @@ KSortList::KSortList()
 	m_nItemCount = 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KSortList
-// ¹¦ÄÜ:	Îö¹ºº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KSortList
+// åŠŸèƒ½:	æè´­å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KSortList::~KSortList()
 {
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Init
-// ¹¦ÄÜ:	³õÊ¼»¯
-// ²ÎÊı:	nItemSize		Size of Item
+// å‡½æ•°:	Init
+// åŠŸèƒ½:	åˆå§‹åŒ–
+// å‚æ•°:	nItemSize		Size of Item
 //			nItemCount		Count of Item
-// ·µ»Ø:	TRUE			Success
+// è¿”å›:	TRUE			Success
 //			FALSE			Fail
 //---------------------------------------------------------------------------
 BOOL KSortList::Init(int nItemSize, int nItemCount)
@@ -51,10 +51,10 @@ BOOL KSortList::Init(int nItemSize, int nItemCount)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Free
-// ¹¦ÄÜ:	ÊÍ·ÅÄÚ´æ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Free
+// åŠŸèƒ½:	é‡Šæ”¾å†…å­˜
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSortList::Free()
 {
@@ -65,11 +65,11 @@ void KSortList::Free()
 	m_SortMem.Free();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Insert
-// ¹¦ÄÜ:	²åÈë
-// ²ÎÊı:	dwHashCode		¹şÏ£Öµ
-//			pvItem			´ı²åÈëµÄÄÚ´æ¿é
-// ·µ»Ø:	TRUE			Success
+// å‡½æ•°:	Insert
+// åŠŸèƒ½:	æ’å…¥
+// å‚æ•°:	dwHashCode		å“ˆå¸Œå€¼
+//			pvItem			å¾…æ’å…¥çš„å†…å­˜å—
+// è¿”å›:	TRUE			Success
 //			FALSE			Fail
 //---------------------------------------------------------------------------
 BOOL KSortList::Insert(DWORD dwHashCode, PVOID pvItem)
@@ -107,11 +107,11 @@ BOOL KSortList::Insert(DWORD dwHashCode, PVOID pvItem)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Search
-// ¹¦ÄÜ:	ÔÚ±íÖĞËÑË÷Æ¥ÅäµÄÏî
-// ²ÎÊı:	dwHashCode		ËÑË÷ÏîµÄ¹şÏ£Öµ
-//			pvItem			ËÑË÷ÏîµÄÄÚ´æ¿é
-// ·µ»Ø:	TRUE			Success
+// å‡½æ•°:	Search
+// åŠŸèƒ½:	åœ¨è¡¨ä¸­æœç´¢åŒ¹é…çš„é¡¹
+// å‚æ•°:	dwHashCode		æœç´¢é¡¹çš„å“ˆå¸Œå€¼
+//			pvItem			æœç´¢é¡¹çš„å†…å­˜å—
+// è¿”å›:	TRUE			Success
 //			FALSE			Fail
 //---------------------------------------------------------------------------
 BOOL KSortList::Search(DWORD dwHashCode, PVOID pvItem)
@@ -126,7 +126,7 @@ BOOL KSortList::Search(DWORD dwHashCode, PVOID pvItem)
 	if (pSort == NULL)
 		return FALSE;
 
-	// ¶ş·Ö·¨²éÕÒÆ¥ÅäµÄHashCode
+	// äºŒåˆ†æ³•æŸ¥æ‰¾åŒ¹é…çš„HashCode
 	nBegin = 0;
 	nEnd = m_nItemNum - 1;
 	while (nBegin <= nEnd)

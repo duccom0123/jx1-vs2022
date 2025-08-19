@@ -835,8 +835,8 @@ void KUiPlayerBar::PopupPhraseMenu(int x, int y, bool bFirstItem)
 	KPopupMenu::Popup(pMenuData, (KWndWindow*)this, SEL_PHRASE_MENU);
 }
 
-#include "../ChatFilter.h"
-extern CChatFilter g_ChatFilter;
+#include "../../Engine/Src/FilterText.h"
+extern ITextFilter *g_ChatFilter;
 
 void KUiPlayerBar::OnSend(BOOL bDirectSend)
 {
@@ -942,7 +942,7 @@ void KUiPlayerBar::OnSend(BOOL bDirectSend)
 			(Buffer[nName + 2] == 'm' || Buffer[nName + 2] == 'M'))
 		return;
 	}
-	if (!g_ChatFilter.IsTextPass(Buffer + nName))
+	if (!g_ChatFilter->IsTextPass(Buffer + nName))
 	{
 		char szWarning[] = "Xin l­u ý khi sö dông tõ ng÷ trong giao tiÕp!"; 
 		KUiMsgCentrePad::SystemMessageArrival(szWarning, sizeof(szWarning));
@@ -994,7 +994,7 @@ BOOL KUiPlayerBar::IsCanSendMessage(const char* Buffer, int nLen, char* szDestNa
 {
 	if (m_pSelf)
 	{
-		if (Buffer && nLen > 0 && !g_ChatFilter.IsTextPass(Buffer))
+		if (Buffer && nLen > 0 && !g_ChatFilter->IsTextPass(Buffer))
 			return FALSE;
 
 		char szEvent[1024];

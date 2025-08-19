@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	KTongProtocol.h
-//	´´½¨Õß		£º	Ğ»Ã¯Åà (Hsie)
-//	´´½¨Ê±¼ä	£º	2003-08-13 15:12:19
-//	¹¦ÄÜÃèÊö	£º	
+//	æ–‡ä»¶å		ï¼š	KTongProtocol.h
+//	åˆ›å»ºè€…		ï¼š	è°¢èŒ‚åŸ¹ (Hsie)
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-08-13 15:12:19
+//	åŠŸèƒ½æè¿°	ï¼š	
 //
 // -------------------------------------------------------------------------
 #ifndef __KTONGPROTOCOL_H__
@@ -16,20 +16,20 @@
 
 
 //---------------------------- tong protocol ----------------------------
-// relay server ÊÕµ½µÄ game server µÄĞ­Òé
+// relay server æ”¶åˆ°çš„ game server çš„åè®®
 enum 
 {
-	enumC2S_TONG_CREATE = 0,			// ´´½¨°ï»á
-	enumC2S_TONG_ADD_MEMBER,			// Ìí¼Ó³ÉÔ±
-	enumC2S_TONG_GET_HEAD_INFO,			// »ñµÃ°ï»áĞÅÏ¢
-	enumC2S_TONG_GET_MANAGER_INFO,		// »ñµÃ°ï»á¶Ó³¤ĞÅÏ¢
-	enumC2S_TONG_GET_MEMBER_INFO,		// »ñµÃ°ï»á°ïÖÚĞÅÏ¢
-	enumC2S_TONG_INSTATE,				// ÈÎÃü
-	enumC2S_TONG_KICK,					// ÌßÈË
-	enumC2S_TONG_LEAVE,					// Àë°ï
-	enumC2S_TONG_CHANGE_MASTER,			// ´«Î»
-	enumC2S_TONG_ACCEPT_MASTER,			// ÊÇ·ñ½ÓÊÜ´«Î»
-	enumC2S_TONG_GET_LOGIN_DATA,		// Íæ¼ÒµÇÂ½Ê±ÉêÇë°ï»áÊı¾İ
+	enumC2S_TONG_CREATE = 0,			// åˆ›å»ºå¸®ä¼š
+	enumC2S_TONG_ADD_MEMBER,			// æ·»åŠ æˆå‘˜
+	enumC2S_TONG_GET_HEAD_INFO,			// è·å¾—å¸®ä¼šä¿¡æ¯
+	enumC2S_TONG_GET_MANAGER_INFO,		// è·å¾—å¸®ä¼šé˜Ÿé•¿ä¿¡æ¯
+	enumC2S_TONG_GET_MEMBER_INFO,		// è·å¾—å¸®ä¼šå¸®ä¼—ä¿¡æ¯
+	enumC2S_TONG_INSTATE,				// ä»»å‘½
+	enumC2S_TONG_KICK,					// è¸¢äºº
+	enumC2S_TONG_LEAVE,					// ç¦»å¸®
+	enumC2S_TONG_CHANGE_MASTER,			// ä¼ ä½
+	enumC2S_TONG_ACCEPT_MASTER,			// æ˜¯å¦æ¥å—ä¼ ä½
+	enumC2S_TONG_GET_LOGIN_DATA,		// ç©å®¶ç™»é™†æ—¶ç”³è¯·å¸®ä¼šæ•°æ®
 
 	enumC2S_TONG_MONEY_SAVE,
 	enumC2S_TONG_MONEY_GET,
@@ -49,29 +49,29 @@ enum
 	enumC2S_MESSAGE_TO_FACTION,
 	enumC2S_MESSAGE_TO_CHATROOM,
 	
-	enumC2S_TONG_NUM,					// ÊıÁ¿
+	enumC2S_TONG_NUM,					// æ•°é‡
 };
 
-// relay server ·¢¸ø game server µÄĞ­Òé
+// relay server å‘ç»™ game server çš„åè®®
 enum
 {
-	enumS2C_TONG_CREATE_SUCCESS = 0,		// °ï»á´´½¨³É¹¦
-	enumS2C_TONG_CREATE_FAIL,				// °ï»á´´½¨Ê§°Ü
-	enumS2C_TONG_ADD_MEMBER_SUCCESS,		// °ï»áÌí¼Ó³ÉÔ±³É¹¦
-	enumS2C_TONG_ADD_MEMBER_FAIL,			// °ï»áÌí¼Ó³ÉÔ±Ê§°Ü
-	enumS2C_TONG_HEAD_INFO,					// °ï»áĞÅÏ¢
-	enumS2C_TONG_MANAGER_INFO,				// °ï»á¶Ó³¤ĞÅÏ¢
-	enumS2C_TONG_MEMBER_INFO,				// °ï»á¶Ó³¤ĞÅÏ¢
-	enumS2C_TONG_BE_INSTATED,				// ±»ÈÎÃü
-	enumS2C_TONG_INSTATE,					// ÈÎÃü³É¹¦»òÊ§°Ü
-	enumS2C_TONG_KICK,						// ÌßÈË³É¹¦»òÊ§°Ü
-	enumS2C_TONG_BE_KICKED,					// ±»Ìß³ö°ï»á
-	enumS2C_TONG_LEAVE,						// Àë¿ª°ï»á³É¹¦»òÊ§°Ü
-	enumS2C_TONG_CHECK_CHANGE_MASTER_POWER,	// ÅĞ¶ÏÊÇ·ñÓĞµ±°ïÖ÷µÄÄÜÁ¦
-	enumS2C_TONG_CHANGE_MASTER_FAIL,		// ´«Î»Ê§°Ü
-	enumS2C_TONG_CHANGE_AS,					// ´«Î»³É¹¦£¬Éí·İ¸Ä±ä
-	enumS2C_TONG_CHANGE_MASTER,				// ¹ã²¥£¬¸ü»»°ïÖ÷
-	enumS2C_TONG_LOGIN_DATA,				// Íæ¼ÒµÇÂ½Ê±ºò»ñµÃ°ï»áÊı¾İ
+	enumS2C_TONG_CREATE_SUCCESS = 0,		// å¸®ä¼šåˆ›å»ºæˆåŠŸ
+	enumS2C_TONG_CREATE_FAIL,				// å¸®ä¼šåˆ›å»ºå¤±è´¥
+	enumS2C_TONG_ADD_MEMBER_SUCCESS,		// å¸®ä¼šæ·»åŠ æˆå‘˜æˆåŠŸ
+	enumS2C_TONG_ADD_MEMBER_FAIL,			// å¸®ä¼šæ·»åŠ æˆå‘˜å¤±è´¥
+	enumS2C_TONG_HEAD_INFO,					// å¸®ä¼šä¿¡æ¯
+	enumS2C_TONG_MANAGER_INFO,				// å¸®ä¼šé˜Ÿé•¿ä¿¡æ¯
+	enumS2C_TONG_MEMBER_INFO,				// å¸®ä¼šé˜Ÿé•¿ä¿¡æ¯
+	enumS2C_TONG_BE_INSTATED,				// è¢«ä»»å‘½
+	enumS2C_TONG_INSTATE,					// ä»»å‘½æˆåŠŸæˆ–å¤±è´¥
+	enumS2C_TONG_KICK,						// è¸¢äººæˆåŠŸæˆ–å¤±è´¥
+	enumS2C_TONG_BE_KICKED,					// è¢«è¸¢å‡ºå¸®ä¼š
+	enumS2C_TONG_LEAVE,						// ç¦»å¼€å¸®ä¼šæˆåŠŸæˆ–å¤±è´¥
+	enumS2C_TONG_CHECK_CHANGE_MASTER_POWER,	// åˆ¤æ–­æ˜¯å¦æœ‰å½“å¸®ä¸»çš„èƒ½åŠ›
+	enumS2C_TONG_CHANGE_MASTER_FAIL,		// ä¼ ä½å¤±è´¥
+	enumS2C_TONG_CHANGE_AS,					// ä¼ ä½æˆåŠŸï¼Œèº«ä»½æ”¹å˜
+	enumS2C_TONG_CHANGE_MASTER,				// å¹¿æ’­ï¼Œæ›´æ¢å¸®ä¸»
+	enumS2C_TONG_LOGIN_DATA,				// ç©å®¶ç™»é™†æ—¶å€™è·å¾—å¸®ä¼šæ•°æ®
 
 	enumS2C_TONG_MONEY_SAVE,
 	enumS2C_TONG_MONEY_GET,
@@ -89,26 +89,26 @@ enum
 	enumS2C_TONG_BE_CHANGED_JIYU,
 	enumS2C_TONG_BE_CHANGED_MEMBEREFF,
 
-	enumS2C_TONG_NUM,					// ÊıÁ¿
+	enumS2C_TONG_NUM,					// æ•°é‡
 };
 //-------------------------- tong protocol end --------------------------
 
 //friend protocol
 enum 
 {
-	friend_c2c_askaddfriend,	//ÇëÇó¼ÓÎªºÃÓÑ
-	friend_c2c_repaddfriend,	//Í¬Òâ/¾Ü¾ø¼ÓÎªºÃÓÑ
-	friend_c2s_groupfriend,		//½«ºÃÓÑ·Ö×é
-	friend_c2s_erasefriend,		//É¾³ıºÃÓÑ
+	friend_c2c_askaddfriend,	//è¯·æ±‚åŠ ä¸ºå¥½å‹
+	friend_c2c_repaddfriend,	//åŒæ„/æ‹’ç»åŠ ä¸ºå¥½å‹
+	friend_c2s_groupfriend,		//å°†å¥½å‹åˆ†ç»„
+	friend_c2s_erasefriend,		//åˆ é™¤å¥½å‹
 
-	friend_c2s_asksyncfriendlist,	//ÇëÇóÍ¬²½ºÃÓÑÁĞ±í
-	friend_s2c_repsyncfriendlist,	//Í¬²½ºÃÓÑÁĞ±í
+	friend_c2s_asksyncfriendlist,	//è¯·æ±‚åŒæ­¥å¥½å‹åˆ—è¡¨
+	friend_s2c_repsyncfriendlist,	//åŒæ­¥å¥½å‹åˆ—è¡¨
 
-	friend_s2c_friendstate,		//ºÃÓÑ×´Ì¬Í¨Öª
+	friend_s2c_friendstate,		//å¥½å‹çŠ¶æ€é€šçŸ¥
 
-	friend_c2s_associate,		//GSµ½Relay£¬×Ô¶¯×éºÏ2¸öÈË£¨ÓĞ·½Ïò£©
-	friend_c2s_associatebevy,	//GSµ½Relay£¬×Ô¶¯×éºÏn¸öÈË
-	friend_s2c_syncassociate,	//Relayµ½Client£¬Í¨Öª×éºÏ
+	friend_c2s_associate,		//GSåˆ°Relayï¼Œè‡ªåŠ¨ç»„åˆ2ä¸ªäººï¼ˆæœ‰æ–¹å‘ï¼‰
+	friend_c2s_associatebevy,	//GSåˆ°Relayï¼Œè‡ªåŠ¨ç»„åˆnä¸ªäºº
+	friend_s2c_syncassociate,	//Relayåˆ°Clientï¼Œé€šçŸ¥ç»„åˆ
 };
 
 //extend protocol
@@ -161,8 +161,8 @@ enum {specOver = 0x00, specGroup = 0x01, specRole = 0x02};
 struct GROUP_FRIEND : EXTEND_HEADER
 {
 	//format: char seq
-	//specGroup±ê¼Ç×é£¬Æäºó½Ó¸Ã×éºÃÓÑÁĞ±í£¬ÒÔ\0¼ä¸ô£¬specRole±ê¼Ç½ÇÉ«Ãû
-	//×îºóÒÔË«\0½áÊø
+	//specGroupæ ‡è®°ç»„ï¼Œå…¶åæ¥è¯¥ç»„å¥½å‹åˆ—è¡¨ï¼Œä»¥\0é—´éš”ï¼ŒspecRoleæ ‡è®°è§’è‰²å
+	//æœ€åä»¥åŒ\0ç»“æŸ
 };
 
 
@@ -184,8 +184,8 @@ struct REP_SYNCFRIENDLIST : EXTEND_HEADER
 {
 	BYTE pckgid;
 	//format: char seq (same as GROUP_FRIEND)
-	//specGroup±ê¼Ç×é£¬Æäºó½Ó¸Ã×éºÃÓÑÁĞ±í£¬ÒÔ\0¼ä¸ô£¬specRole±ê¼Ç½ÇÉ«Ãû
-	//×îºóÒÔË«\0½áÊø
+	//specGroupæ ‡è®°ç»„ï¼Œå…¶åæ¥è¯¥ç»„å¥½å‹åˆ—è¡¨ï¼Œä»¥\0é—´éš”ï¼ŒspecRoleæ ‡è®°è§’è‰²å
+	//æœ€åä»¥åŒ\0ç»“æŸ
 };
 
 
@@ -194,29 +194,29 @@ enum {stateOffline, stateOnline};
 struct FRIEND_STATE : EXTEND_HEADER
 {
 	BYTE state;
-	//format: char seq, \0¼ä¸ô£¬Ë«\0½áÊø
+	//format: char seq, \0é—´éš”ï¼ŒåŒ\0ç»“æŸ
 };
 
 struct FRIEND_ASSOCIATE : EXTEND_HEADER
 {
 	BYTE bidir;
 	//format: string * 3
-	//×éÃû
-	//½ÇÉ«Ãû * 2
+	//ç»„å
+	//è§’è‰²å * 2
 };
 
 struct FRIEND_ASSOCIATEBEVY : EXTEND_HEADER
 {
-	//format: char seq, \0¼ä¸ô£¬Ë«\0½áÊø
-	//×éÃû
-	//½ÇÉ«ÃûÁĞ±í
+	//format: char seq, \0é—´éš”ï¼ŒåŒ\0ç»“æŸ
+	//ç»„å
+	//è§’è‰²ååˆ—è¡¨
 };
 
 struct FRIEND_SYNCASSOCIATE : EXTEND_HEADER
 {
-	//format: char seq, \0¼ä¸ô£¬Ë«\0½áÊø
-	//×éÃû
-	//½ÇÉ«ÃûÁĞ±í
+	//format: char seq, \0é—´éš”ï¼ŒåŒ\0ç»“æŸ
+	//ç»„å
+	//è§’è‰²ååˆ—è¡¨
 };
 
 
@@ -426,7 +426,7 @@ struct STONG_INSTATE_COMMAND : EXTEND_HEADER
 
 struct STONG_BE_INSTATED_SYNC : EXTEND_HEADER
 {
-	DWORD	m_dwParam;			// ÍøÂçÁ¬½ÓºÅ
+	DWORD	m_dwParam;			// ç½‘ç»œè¿æ¥å·
 	BYTE	m_btFigure;
 	BYTE	m_btPos;
 	char	m_szAgname[defTONG_NAME_LENGTH_32];
@@ -437,7 +437,7 @@ struct STONG_BE_INSTATED_SYNC : EXTEND_HEADER
 
 struct STONG_BE_KICKED_SYNC : EXTEND_HEADER
 {
-	DWORD	m_dwParam;			// ÍøÂçÁ¬½ÓºÅ
+	DWORD	m_dwParam;			// ç½‘ç»œè¿æ¥å·
 	BYTE	m_btFigure;
 	BYTE	m_btPos;
 	char	m_szName[defTONG_NAME_LENGTH_32];
@@ -445,7 +445,7 @@ struct STONG_BE_KICKED_SYNC : EXTEND_HEADER
 
 struct STONG_BE_CHANGED_AGNAME_SYNC : EXTEND_HEADER
 {
-	DWORD	m_dwParam;			// ÍøÂçÁ¬½ÓºÅ
+	DWORD	m_dwParam;			// ç½‘ç»œè¿æ¥å·
 	BYTE	m_btFigure;
 	BYTE	m_btPos;
 	char	m_szName[defTONG_NAME_LENGTH_32];
@@ -454,7 +454,7 @@ struct STONG_BE_CHANGED_AGNAME_SYNC : EXTEND_HEADER
 
 struct STONG_BE_CHANGED_CAMP_SYNC : EXTEND_HEADER
 {
-	DWORD	m_dwParam;			// ÍøÂçÁ¬½ÓºÅ
+	DWORD	m_dwParam;			// ç½‘ç»œè¿æ¥å·
 	DWORD	m_dwTongNameID;
 	int		m_nMoney;
 	BYTE	m_btCamp;
@@ -633,8 +633,8 @@ struct STONG_CHANGE_AS_SYNC : EXTEND_HEADER
 	DWORD	m_dwTongNameID;
 	BYTE	m_btFigure;
 	BYTE	m_btPos;
-	char	m_szAgname[defTONG_NAME_LENGTH_32];		// ×Ô¼ºµÄĞÂÍ·ÏÎ
-	char	m_szName[defTONG_NAME_LENGTH_32];		// ĞÂ°ïÖ÷µÄÃû×Ö
+	char	m_szAgname[defTONG_NAME_LENGTH_32];		// è‡ªå·±çš„æ–°å¤´è¡”
+	char	m_szName[defTONG_NAME_LENGTH_32];		// æ–°å¸®ä¸»çš„åå­—
 };
 
 struct STONG_ACCEPT_MASTER_COMMAND : EXTEND_HEADER

@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	ÎÄ×Ö´®´¦Àí
+//	æ–‡å­—ä¸²å¤„ç†
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-31
@@ -12,1424 +12,1369 @@
 #ifndef __linux
 #include <crtdbg.h>
 #else
-#define HRESULT	long
+#define HRESULT long
 #define S_OK 0
 #endif
 
 #include "Text.h"
-#define		MAX_ENCODED_CTRL_LEN	4	//µ¥¸ö¿ØÖÆ·û£¨¿ØÖÆ±êÊ¶+¿ØÖÆ²ÎÊı£©µÄ×î´ó´æ´¢³¤¶È
+#define MAX_ENCODED_CTRL_LEN 4   //å•ä¸ªæ§åˆ¶ç¬¦ï¼ˆæ§åˆ¶æ ‡è¯†+æ§åˆ¶å‚æ•°ï¼‰çš„æœ€å¤§å­˜å‚¨é•¿åº¦
 
-
-IInlinePicEngineSink* g_pIInlinePicSink = NULL;	//Ç¶ÈëÊ½Í¼Æ¬µÄ´¦Àí½Ó¿Ú[wxb 2003-6-19]
-extern "C" ENGINE_API HRESULT 
-AdviseEngine(IInlinePicEngineSink* pSink)
+IInlinePicEngineSink *g_pIInlinePicSink = NULL;   //åµŒå…¥å¼å›¾ç‰‡çš„å¤„ç†æ¥å£[wxb 2003-6-19]
+extern "C" ENGINE_API HRESULT AdviseEngine(IInlinePicEngineSink *pSink)
 {
-	_ASSERT(NULL == g_pIInlinePicSink);	//Ò»°ã²»»á¹Ò½ÓÁ½´Î
-	g_pIInlinePicSink = pSink;
-	return S_OK;
+    _ASSERT(NULL == g_pIInlinePicSink);   //ä¸€èˆ¬ä¸ä¼šæŒ‚æ¥ä¸¤æ¬¡
+    g_pIInlinePicSink = pSink;
+    return S_OK;
 }
 
-extern "C" ENGINE_API HRESULT 
-UnAdviseEngine(IInlinePicEngineSink* pSink)
+extern "C" ENGINE_API HRESULT UnAdviseEngine(IInlinePicEngineSink *pSink)
 {
-	if (pSink == g_pIInlinePicSink)
-		g_pIInlinePicSink = NULL;
-	return S_OK;
+    if (pSink == g_pIInlinePicSink)
+        g_pIInlinePicSink = NULL;
+    return S_OK;
 }
 
-//¼ì²âÄ³¸ö×Ö·ûÊÇ·ñÎª²»Ğí·ÅÖÃĞĞÊ×µÄ×Ö·û
-#define	NUM_CHARACTER_IN_A1	11
-unsigned char	s_NotAllowAtLineHeadA1Characters[NUM_CHARACTER_IN_A1] = 
+//æ£€æµ‹æŸä¸ªå­—ç¬¦æ˜¯å¦ä¸ºä¸è®¸æ”¾ç½®è¡Œé¦–çš„å­—ç¬¦
+#define NUM_CHARACTER_IN_A1 11
+unsigned char s_NotAllowAtLineHeadA1Characters[NUM_CHARACTER_IN_A1] = {
+    //ã€ã€‚â€™ã€•ã€‰ã€‹ã€ã€ã€—ã€‘
+    0xa2, 0xa3, 0xaf, 0xb1, 0xb3, 0xb5, 0xb7, 0xb9, 0xbb, 0xbd, 0xbf};
+#define NUM_CHARACTER_IN_A3 10
+unsigned char s_NotAllowAtLineHeadA3Characters[NUM_CHARACTER_IN_A3] = {
+    //ï¼   ï¼‰    ï¼Œ   ï¼     ï¼š    ï¼›   ï¼    ï¼Ÿ    ï¼½    ï½
+    0xa1, 0xa9, 0xac, 0xae, 0xba, 0xbb, 0xbe, 0xbf, 0xdd, 0xfd};
+#define NUM_CHARACTER_IN_00 7
+unsigned char s_NotAllowAtLineHead00Characters[NUM_CHARACTER_IN_00] = {
+    //!),.:;>?
+    0x21, 0x29, 0x2c, /*0x2e,*/ 0x3a, 0x3b, 0x3e, 0x3f};
+extern "C" ENGINE_API void TReplaceText(char *pBuffer, const char *pszName1, const char *pszName2)
 {
-	 //¡¢¡£¡¯¡³¡µ¡·¡¹¡»¡½¡¿
-	0xa2, 0xa3, 0xaf, 0xb1, 0xb3, 0xb5, 0xb7, 0xb9, 0xbb, 0xbd, 0xbf
-};
-#define	NUM_CHARACTER_IN_A3	10
-unsigned char	s_NotAllowAtLineHeadA3Characters[NUM_CHARACTER_IN_A3] = 
-{
-	//£¡   £©    £¬   £®     £º    £»   £¾    £¿    £İ    £ı
-	0xa1, 0xa9, 0xac, 0xae, 0xba, 0xbb, 0xbe, 0xbf, 0xdd, 0xfd
-};
-#define	NUM_CHARACTER_IN_00	7
-unsigned char	s_NotAllowAtLineHead00Characters[NUM_CHARACTER_IN_00] =
-{
-	//!),.:;>?
-	0x21, 0x29, 0x2c, /*0x2e,*/ 0x3a, 0x3b, 0x3e, 0x3f
-};
-extern "C" ENGINE_API
-void TReplaceText(char* pBuffer, const char* pszName1, const char* pszName2)
-{
-	int nMsgLen=strlen(pBuffer);
-	int nMsgLen1=strlen(pszName1);
-	int nMsgLen2=strlen(pszName2);
-	int i=0,j=0,pst=0;
-	while(pBuffer[i])
-	{
-		pst=i;
-		j=0;
-		while (pszName1[j] && pBuffer[pst]==pszName1[j]) {pst++;j++;}
-		if (j==nMsgLen1)
-		{
-			memmove(pBuffer+i+nMsgLen2,pBuffer+i+nMsgLen1,nMsgLen-i-nMsgLen1+1);
-			if (nMsgLen2<nMsgLen1)
-			{
-				memcpy(pBuffer+i,pszName2,nMsgLen2);
-				nMsgLen-=nMsgLen1-nMsgLen2;
-				i+= nMsgLen2;
-			}
-			else
-			{
-				memcpy(pBuffer+i,pszName2,nMsgLen2);
-				nMsgLen+=nMsgLen2-nMsgLen1;
-				i+=nMsgLen2;
-			}
-		}
-		else i++;
-	}
+    int nMsgLen = strlen(pBuffer);
+    int nMsgLen1 = strlen(pszName1);
+    int nMsgLen2 = strlen(pszName2);
+    int i = 0, j = 0, pst = 0;
+    while (pBuffer[i])
+    {
+        pst = i;
+        j = 0;
+        while (pszName1[j] && pBuffer[pst] == pszName1[j])
+        {
+            pst++;
+            j++;
+        }
+        if (j == nMsgLen1)
+        {
+            memmove(pBuffer + i + nMsgLen2, pBuffer + i + nMsgLen1, nMsgLen - i - nMsgLen1 + 1);
+            if (nMsgLen2 < nMsgLen1)
+            {
+                memcpy(pBuffer + i, pszName2, nMsgLen2);
+                nMsgLen -= nMsgLen1 - nMsgLen2;
+                i += nMsgLen2;
+            }
+            else
+            {
+                memcpy(pBuffer + i, pszName2, nMsgLen2);
+                nMsgLen += nMsgLen2 - nMsgLen1;
+                i += nMsgLen2;
+            }
+        }
+        else
+            i++;
+    }
 }
 
-extern "C" ENGINE_API
-unsigned int TGetColor(const char* pColor)
+extern "C" ENGINE_API unsigned int TGetColor(const char *pColor)
 {
-	if (pColor == NULL)
-		return false;
+    if (pColor == NULL)
+        return false;
 
-	unsigned int Color = 0xFF000000;
+    unsigned int Color = 0xFF000000;
 
-	char Buf[16] = "";
-	int  i = 0;
-	int  n = 0;
-	while (pColor[i] != ',')
-	{
-		if (pColor[i] == 0 || n >= 15)
-			return atoi(pColor);
-		Buf[n++] = pColor[i++];
-	}
-	
-	Buf[n] = 0;
-	Color += ((atoi(Buf) & 0xFF) << 16);
-	n = 0;
-	i++;
-	while (pColor[i] != ',')
-	{
+    char Buf[16] = "";
+    int i = 0;
+    int n = 0;
+    while (pColor[i] != ',')
+    {
+        if (pColor[i] == 0 || n >= 15)
+            return atoi(pColor);
+        Buf[n++] = pColor[i++];
+    }
 
-		if (pColor[i] == 0 || n >= 15)
-			return Color;
-		Buf[n++] = pColor[i++];
-	}
-	Buf[n] = 0;
-	Color += ((atoi(Buf) & 0xFF) << 8);
-	n = 0;
-	i++;
-	while (pColor[i] != 0)
-	{
-		if (n >= 15)
-			return Color;
-		Buf[n++] = pColor[i++];
-	}
-	Buf[n] = 0;
-	Color += (atoi(Buf) & 0xFF);
-	return Color;
+    Buf[n] = 0;
+    Color += ((atoi(Buf) & 0xFF) << 16);
+    n = 0;
+    i++;
+    while (pColor[i] != ',')
+    {
+
+        if (pColor[i] == 0 || n >= 15)
+            return Color;
+        Buf[n++] = pColor[i++];
+    }
+    Buf[n] = 0;
+    Color += ((atoi(Buf) & 0xFF) << 8);
+    n = 0;
+    i++;
+    while (pColor[i] != 0)
+    {
+        if (n >= 15)
+            return Color;
+        Buf[n++] = pColor[i++];
+    }
+    Buf[n] = 0;
+    Color += (atoi(Buf) & 0xFF);
+    return Color;
 }
 
-//¼ì²âÄ³¸ö×Ö·ûÊÇ·ñÎª²»Ğí·ÅÖÃĞĞÊ×µÄ×Ö·û£¬²»ÊÇÏŞÖÆ×Ö·ûÔò·µ»Ø0£¬·ñÔò·µ»Ø×Ö·ûÕ¼µÄ×Ó½ÚÊı
-extern "C" ENGINE_API
-int TIsCharacterNotAlowAtLineHead(const char* pCharacter)
+//æ£€æµ‹æŸä¸ªå­—ç¬¦æ˜¯å¦ä¸ºä¸è®¸æ”¾ç½®è¡Œé¦–çš„å­—ç¬¦ï¼Œä¸æ˜¯é™åˆ¶å­—ç¬¦åˆ™è¿”å›0ï¼Œå¦åˆ™è¿”å›å­—ç¬¦å çš„å­èŠ‚æ•°
+extern "C" ENGINE_API int TIsCharacterNotAlowAtLineHead(const char *pCharacter)
 {
-	int				i;
-	unsigned char	cChar;
-	cChar = (unsigned char)(*pCharacter);
-	if (cChar == 0xa3)
-	{
-		cChar = (unsigned char)pCharacter[1];
-		if (cChar >= 0xa1 && cChar <= 0xfd)
-		{
-			for (i = 0; i < NUM_CHARACTER_IN_A3; i++)
-				if (s_NotAllowAtLineHeadA3Characters[i] == cChar)
-					return 2;
-		}
-	}
-	else if (cChar == 0xa1)
-	{
-		cChar = (unsigned char)pCharacter[1];
-		if (cChar >= 0xa2 && cChar <= 0xbf)
-		{
-			for (i = 0; i < NUM_CHARACTER_IN_A1; i++)
-				if (s_NotAllowAtLineHeadA1Characters[i] == cChar)
-					return 2;
-		}
-	}
-	else if (cChar >= 0x21 && cChar <= 0x3f)
-	{
-		for (i = 0; i < NUM_CHARACTER_IN_00; i++)
-			if (s_NotAllowAtLineHead00Characters[i] == cChar)
-				return 1;
-	}
-	return false;
+    int i;
+    unsigned char cChar;
+    cChar = (unsigned char)(*pCharacter);
+    if (cChar == 0xa3)
+    {
+        cChar = (unsigned char)pCharacter[1];
+        if (cChar >= 0xa1 && cChar <= 0xfd)
+        {
+            for (i = 0; i < NUM_CHARACTER_IN_A3; i++)
+                if (s_NotAllowAtLineHeadA3Characters[i] == cChar)
+                    return 2;
+        }
+    }
+    else if (cChar == 0xa1)
+    {
+        cChar = (unsigned char)pCharacter[1];
+        if (cChar >= 0xa2 && cChar <= 0xbf)
+        {
+            for (i = 0; i < NUM_CHARACTER_IN_A1; i++)
+                if (s_NotAllowAtLineHeadA1Characters[i] == cChar)
+                    return 2;
+        }
+    }
+    else if (cChar >= 0x21 && cChar <= 0x3f)
+    {
+        for (i = 0; i < NUM_CHARACTER_IN_00; i++)
+            if (s_NotAllowAtLineHead00Characters[i] == cChar)
+                return 1;
+    }
+    return false;
 }
 
-//»ñÈ¡±¾ĞĞµÄÏÂ¸öÏÔÊ¾×Ö·û
-extern "C" ENGINE_API
-const char* TGetSecondVisibleCharacterThisLine(const char* pCharacter, int nPos, int nLen)
+//è·å–æœ¬è¡Œçš„ä¸‹ä¸ªæ˜¾ç¤ºå­—ç¬¦
+extern "C" ENGINE_API const char *TGetSecondVisibleCharacterThisLine(const char *pCharacter, int nPos, int nLen)
 {
-	if (pCharacter && nLen > 0)
-	{
-		bool bFoundFirst = false;
-		while(nPos < nLen)
-		{
-			unsigned char cChar = (unsigned char)(pCharacter[nPos]);
-			if (cChar >= 0x20)
-			{
-				if (bFoundFirst)
-					return (pCharacter + nPos);
-				bFoundFirst = true;
-				if (cChar > 0x80)
-					nPos ++;
-				else
-					nPos ++;
-				continue;
-			}
-			if (cChar == KTC_COLOR || cChar == KTC_BORDER_COLOR)
-				nPos += 4;
-			else if (cChar == KTC_INLINE_PIC)
-				nPos += 1 + sizeof(WORD);
-			else if (cChar == KTC_COLOR_RESTORE || cChar == KTC_BORDER_RESTORE)
-				nPos++;
-			break;
-		};
-	}
-	return NULL;
-}
-
-
-//--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÑ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
-//	²ÎÊı£ºpString    --> ÏëÒª·Ö¸îµÄ×Ö·û´®
-//		¡¡nDesirePos --> ÆÚÍû·Ö¸îµÄÎ»ÖÃ£¨ÒÔ×Ö½ÚÎªµ¥Î»£©
-//		  bLess      --> Èç¹ûÆÚÍû·Ö¸îµÄÎ»ÖÃ´¦ÓÚÒ»¸ö×Ö·û±àÂëµÄÖĞ¼äÊ±£¬½á¹ûÎ»ÖÃ
-//					ÎªÇ°¿¿»¹ÊÇºó¿¿£¬0: Ïòºó¿¿; ·Ç0: ÏòÇ°¿¿¡£
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ×Ö·ûÈ«²¿ÊÓÎªÏÔÊ¾×Ö·û£¬²»°üº¬¿ØÖÆ×Ö·û
-//--------------------------------------------------------------------------
-extern "C" ENGINE_API
-int TSplitString(const char* pString, int nDesirePos, int bLess)
-{
-	register int	nPos = 0;
-	if (pString)
-	{
-		nDesirePos -= 2;
-		while(nPos < nDesirePos)
-		{
-			if ((unsigned char)pString[nPos] > 0x80)
-				nPos++;
-			else if (pString[nPos])
-				nPos++;
-			else
-				break;
-		};
-		nDesirePos += 2;
-		while(nPos < nDesirePos)
-		{
-			if ((unsigned char)pString[nPos] > 0x80)			
-				nPos ++;
-			else if (pString[nPos])
-				nPos ++;
-			else
-				break;
-		}
-	}
-	return nPos;
+    if (pCharacter && nLen > 0)
+    {
+        bool bFoundFirst = false;
+        while (nPos < nLen)
+        {
+            unsigned char cChar = (unsigned char)(pCharacter[nPos]);
+            if (cChar >= 0x20)
+            {
+                if (bFoundFirst)
+                    return (pCharacter + nPos);
+                bFoundFirst = true;
+                if (cChar > 0x80)
+                    nPos++;
+                else
+                    nPos++;
+                continue;
+            }
+            if (cChar == KTC_COLOR || cChar == KTC_BORDER_COLOR)
+                nPos += 4;
+            else if (cChar == KTC_INLINE_PIC)
+                nPos += 1 + sizeof(WORD);
+            else if (cChar == KTC_COLOR_RESTORE || cChar == KTC_BORDER_RESTORE)
+                nPos++;
+            break;
+        };
+    }
+    return NULL;
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔÚ±àÂë×Ö´®Ñ°ÕÒ·Ö¸î×Ö·û´®µÄºÏÊÊÎ»ÖÃ
-//	²ÎÊı£ºpString    --> ÏëÒª·Ö¸îµÄ×Ö·û´®
-//		  nCount	 -->×Ö·û´®ÄÚÈİµÄ³¤¶È£¨ÒÔ×Ö½ÚÎªµ¥Î»£©
-//		¡¡nDesirePos --> ÆÚÍû·Ö¸îµÄÎ»ÖÃ£¨ÒÔ»º³åÇı´æ´¢×Ö½ÚÎªµ¥Î»£©
-//		  bLess      --> Èç¹ûÆÚÍû·Ö¸îµÄÎ»ÖÃ´¦ÓÚÒ»¸öÖĞÎÄ×Ö·û±àÂëµÄÖĞ¼äÊ±£¬
-//						½á¹ûÎ»ÖÃÎªÇ°¿¿»¹ÊÇºó¿¿£¬0: Ïòºó¿¿; ·Ç0: ÏòÇ°¿¿¡£
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ¿É°üº¬ÒÑ¾­±àÂëµÄ¿ØÖÆ·û
+//	åŠŸèƒ½ï¼šå¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
+//	å‚æ•°ï¼špString    --> æƒ³è¦åˆ†å‰²çš„å­—ç¬¦ä¸²
+//		ã€€nDesirePos --> æœŸæœ›åˆ†å‰²çš„ä½ç½®ï¼ˆä»¥å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		  bLess      --> å¦‚æœæœŸæœ›åˆ†å‰²çš„ä½ç½®å¤„äºä¸€ä¸ªå­—ç¬¦ç¼–ç çš„ä¸­é—´æ—¶ï¼Œç»“æœä½ç½®
+//					ä¸ºå‰é è¿˜æ˜¯åé ï¼Œ0: å‘åé ; é0: å‘å‰é ã€‚
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å­—ç¬¦å…¨éƒ¨è§†ä¸ºæ˜¾ç¤ºå­—ç¬¦ï¼Œä¸åŒ…å«æ§åˆ¶å­—ç¬¦
 //--------------------------------------------------------------------------
-extern "C" ENGINE_API
-int	TSplitEncodedString(const char* pString, int nCount, int nDesirePos, int bLess)
+extern "C" ENGINE_API int TSplitString(const char *pString, int nDesirePos, int bLess)
 {
-	int	nPos = 0;
-	if (pString)
-	{
-		if (nDesirePos <= nCount)
-		{
-			register unsigned char cCharacter;
-			nDesirePos -= MAX_ENCODED_CTRL_LEN;
-			while (nPos < nDesirePos)
-			{
-				cCharacter = (unsigned char)pString[nPos];
-				if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-					nPos += 4;
-				else if (cCharacter == KTC_INLINE_PIC)
-					nPos += 3;//1 + sizeof(WORD);
-				else
-					nPos ++;
-			}
-			nPos += MAX_ENCODED_CTRL_LEN;
-			while(nPos < nDesirePos)
-			{
-				cCharacter = (unsigned char)pString[nPos];
-				if (cCharacter > 0x80)
-				{
-					nPos ++;
-				}				
-				else if (cCharacter == KTC_INLINE_PIC)
-				{
-					if (bLess && nPos + 3 > nDesirePos)
-						break;
-					if (nPos + 3 >= nCount)
-					{
-						nPos = nCount;
-						break;
-					}
-					nPos += 3;//1 + sizeof(WORD);
-				}
-				else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-				{
-					if (bLess && (nPos + 4 > nDesirePos))
-						break;
-					if (nPos + 4 >= nCount)
-					{
-						nPos = nCount;
-						break;
-					}
-					nPos += 4;
-				}
-				else
-					nPos ++;
-			}
-
-		}
-		else
-		{
-			nPos = nCount;
-		}
-	}
-	return nPos;
-	
+    register int nPos = 0;
+    if (pString)
+    {
+        nDesirePos -= 2;
+        while (nPos < nDesirePos)
+        {
+            if ((unsigned char)pString[nPos] > 0x80)
+                nPos++;
+            else if (pString[nPos])
+                nPos++;
+            else
+                break;
+        };
+        nDesirePos += 2;
+        while (nPos < nDesirePos)
+        {
+            if ((unsigned char)pString[nPos] > 0x80)
+                nPos++;
+            else if (pString[nPos])
+                nPos++;
+            else
+                break;
+        }
+    }
+    return nPos;
 }
 
+//--------------------------------------------------------------------------
+//	åŠŸèƒ½ï¼šåœ¨ç¼–ç å­—ä¸²å¯»æ‰¾åˆ†å‰²å­—ç¬¦ä¸²çš„åˆé€‚ä½ç½®
+//	å‚æ•°ï¼špString    --> æƒ³è¦åˆ†å‰²çš„å­—ç¬¦ä¸²
+//		  nCount	 -->å­—ç¬¦ä¸²å†…å®¹çš„é•¿åº¦ï¼ˆä»¥å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		ã€€nDesirePos --> æœŸæœ›åˆ†å‰²çš„ä½ç½®ï¼ˆä»¥ç¼“å†²é©±å­˜å‚¨å­—èŠ‚ä¸ºå•ä½ï¼‰
+//		  bLess      --> å¦‚æœæœŸæœ›åˆ†å‰²çš„ä½ç½®å¤„äºä¸€ä¸ªä¸­æ–‡å­—ç¬¦ç¼–ç çš„ä¸­é—´æ—¶ï¼Œ
+//						ç»“æœä½ç½®ä¸ºå‰é è¿˜æ˜¯åé ï¼Œ0: å‘åé ; é0: å‘å‰é ã€‚
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å¯åŒ…å«å·²ç»ç¼–ç çš„æ§åˆ¶ç¬¦
+//--------------------------------------------------------------------------
+extern "C" ENGINE_API int TSplitEncodedString(const char *pString, int nCount, int nDesirePos, int bLess)
+{
+    int nPos = 0;
+    if (pString)
+    {
+        if (nDesirePos <= nCount)
+        {
+            register unsigned char cCharacter;
+            nDesirePos -= MAX_ENCODED_CTRL_LEN;
+            while (nPos < nDesirePos)
+            {
+                cCharacter = (unsigned char)pString[nPos];
+                if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+                    nPos += 4;
+                else if (cCharacter == KTC_INLINE_PIC)
+                    nPos += 3;   //1 + sizeof(WORD);
+                else
+                    nPos++;
+            }
+            nPos += MAX_ENCODED_CTRL_LEN;
+            while (nPos < nDesirePos)
+            {
+                cCharacter = (unsigned char)pString[nPos];
+                if (cCharacter > 0x80)
+                {
+                    nPos++;
+                }
+                else if (cCharacter == KTC_INLINE_PIC)
+                {
+                    if (bLess && nPos + 3 > nDesirePos)
+                        break;
+                    if (nPos + 3 >= nCount)
+                    {
+                        nPos = nCount;
+                        break;
+                    }
+                    nPos += 3;   //1 + sizeof(WORD);
+                }
+                else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+                {
+                    if (bLess && (nPos + 4 > nDesirePos))
+                        break;
+                    if (nPos + 4 >= nCount)
+                    {
+                        nPos = nCount;
+                        break;
+                    }
+                    nPos += 4;
+                }
+                else
+                    nPos++;
+            }
+        }
+        else
+        {
+            nPos = nCount;
+        }
+    }
+    return nPos;
+}
 
-//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±ê¼Ç±íÊ¾ÓëÄÚ²¿±àÂëµÄ¶ÔÓ¦½á¹¹
-#define	KTC_CTRL_CODE_MAX_LEN	7
+//å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦æ ‡è®°è¡¨ç¤ºä¸å†…éƒ¨ç¼–ç çš„å¯¹åº”ç»“æ„
+#define KTC_CTRL_CODE_MAX_LEN 7
 typedef struct _KCtrlTable
 {
-	char    szCtrl[KTC_CTRL_CODE_MAX_LEN + 1];	//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±íÊ¾
-	short	nCtrlLen;							//×Ö·û»»¿ØÖÆÂëµÄ×Ö·û±íÊ¾µÄ³¤¶È
-	short   nCtrl;								//×Ö·û»»¿ØÖÆÂëµÄÄÚ²¿±àÂë
-}KCtrlTable;
+    char szCtrl[KTC_CTRL_CODE_MAX_LEN + 1];   //å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦è¡¨ç¤º
+    short nCtrlLen;                           //å­—ç¬¦æ¢æ§åˆ¶ç çš„å­—ç¬¦è¡¨ç¤ºçš„é•¿åº¦
+    short nCtrl;                              //å­—ç¬¦æ¢æ§åˆ¶ç çš„å†…éƒ¨ç¼–ç 
+} KCtrlTable;
 
-//ÑÕÉ«½á¹¹
+//é¢œè‰²ç»“æ„
 typedef struct _KColorTable
 {
-	char			Token[8];		//ÑÕÉ«µÄ×Ö·û±íÊ¾
-	unsigned char	Red;			//ÑÕÉ«µÄR·ÖÁ¿
-	unsigned char	Green;			//ÑÕÉ«µÄG·ÖÁ¿
-	unsigned char	Blue;			//ÑÕÉ«µÄB·ÖÁ¿
-}KColorTable;
+    char Token[8];         //é¢œè‰²çš„å­—ç¬¦è¡¨ç¤º
+    unsigned char Red;     //é¢œè‰²çš„Råˆ†é‡
+    unsigned char Green;   //é¢œè‰²çš„Gåˆ†é‡
+    unsigned char Blue;    //é¢œè‰²çš„Båˆ†é‡
+} KColorTable;
 
-//¿ØÖÆÂëÁĞ±í
-static	const KCtrlTable	s_CtrlTable[] =
-{	
-	{ "enter",	5, KTC_ENTER		},
-	{ "color",	5, KTC_COLOR		},
-	{ "bclr",	4, KTC_BORDER_COLOR	},
-	{ "pic",	3, KTC_INLINE_PIC	},
+//æ§åˆ¶ç åˆ—è¡¨
+static const KCtrlTable s_CtrlTable[] = {
+    {"enter", 5, KTC_ENTER},
+    {"color", 5, KTC_COLOR},
+    {"bclr", 4, KTC_BORDER_COLOR},
+    {"pic", 3, KTC_INLINE_PIC},
 };
 
-//¿ØÖÆÂëµÄÊıÄ¿
-static	const int	s_nCtrlCount = sizeof(s_CtrlTable)/sizeof(KCtrlTable);
+//æ§åˆ¶ç çš„æ•°ç›®
+static const int s_nCtrlCount = sizeof(s_CtrlTable) / sizeof(KCtrlTable);
 
-//ÑÕÉ«ÁĞ±í
-static	const KColorTable	s_ColorTable[] =
-{
-	{ "Black",	0,		0,		0	},
-	{ "White",	255,	255,	255	},
-	{ "Red",	255,	0,		0	},
-	{ "Green",	0,		255,	0	},
-	{ "Blue",	100,	100,	255 },
-	{ "Yellow",	255,	255,	0	},
-	{ "Orange",	252,	171,	58	},
-	{ "Pink",	181,	0,		181	},
-	{ "Violet", 170,	30,		255	},
-	{ "Cyan",	0,		255,	255	},
-	{ "Metal",	246,	255,	117	},
-	{ "Wood",	0,		255,	120	},
-	{ "Water",	78,		124,	255	},
-	{ "Fire",	255,	90,		0	},
-	{ "Earth",	254,	207,	179	},
-	{ "DBlue",	120,	120,	120 },
-	{ "HBlue",	100,	100,	255 },
-	{ "Gold",	222,	225, 	165	},
-	{ "Gray",	189,	190, 	189},
+//é¢œè‰²åˆ—è¡¨
+static const KColorTable s_ColorTable[] = {
+    {"Black", 0, 0, 0},       {"White", 255, 255, 255}, {"Red", 255, 0, 0},      {"Green", 0, 255, 0}, {"Blue", 100, 100, 255},  {"Yellow", 255, 255, 0},  {"Orange", 252, 171, 58}, {"Pink", 181, 0, 181},   {"Violet", 170, 30, 255}, {"Cyan", 0, 255, 255},
+    {"Metal", 246, 255, 117}, {"Wood", 0, 255, 120},    {"Water", 78, 124, 255}, {"Fire", 255, 90, 0}, {"Earth", 254, 207, 179}, {"DBlue", 120, 120, 120}, {"HBlue", 100, 100, 255}, {"Gold", 222, 225, 165}, {"Gray", 189, 190, 189},
 };
 
-//ÑÕÉ«µÄÊıÄ¿
-static	const int	s_nColorCount = sizeof(s_ColorTable)/sizeof(KColorTable);
+//é¢œè‰²çš„æ•°ç›®
+static const int s_nColorCount = sizeof(s_ColorTable) / sizeof(KColorTable);
 
-//Ç¶ÈëÍ¼Æ¬[wxb 2003-6-19]
-#define MAXPICTOKENLEN	16
+//åµŒå…¥å›¾ç‰‡[wxb 2003-6-19]
+#define MAXPICTOKENLEN 16
 
-
-static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCount);
-static int  TEncodeCtrl(int nCtrl, char* pParamBuffer, int nParamLen, char* pEncodedBuffer);
+static bool TEncodeCtrl(char *pBuffer, int nCount, int &nReadPos, int &nShortCount);
+static int TEncodeCtrl(int nCtrl, char *pParamBuffer, int nParamLen, char *pEncodedBuffer);
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+//	åŠŸèƒ½ï¼šå¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 //--------------------------------------------------------------------------
-extern "C" ENGINE_API
-int	TEncodeText(char* pBuffer, int nCount, int* nCurLen/* = 0*/)
+extern "C" ENGINE_API int TEncodeText(char *pBuffer, int nCount, int *nCurLen /* = 0*/)
 {
-	int nShortCount = 0;
-	int nPrefixSize = 0;
-	if (pBuffer)
-	{
-		unsigned char	cCharacter;
-		int		nReadPos = 0;		
-		while(nReadPos < nCount)
-		{
-			cCharacter = pBuffer[nReadPos];
-			if (cCharacter > 0x80)
-			{
-				pBuffer[nShortCount++] = cCharacter;
-				nReadPos ++;
-			}
-			else if (cCharacter == 0x0d)	//»»ĞĞ
-			{
-				if (nReadPos + 1 < nCount && pBuffer[nReadPos + 1] == 0x0a)
-					nReadPos += 2;
-				else
-					nReadPos ++;
-				pBuffer[nShortCount++] = 0x0a;
-			}
-			else if (pBuffer[nReadPos] == '<')
-			{
-				int nOldCount = nShortCount;
-				TEncodeCtrl(pBuffer, nCount, nReadPos, nShortCount);
-				nPrefixSize += nShortCount - nOldCount;
-			}
-			else if((cCharacter >= 0x20 && cCharacter < 0x7F) ||
-				cCharacter == 0x0a || cCharacter == 0x09)
-			{
-				pBuffer[nShortCount++] = cCharacter;
-				nReadPos++;
-			}
-			else if (cCharacter == KTC_INLINE_PIC)
-			{
-				memmove((pBuffer + nShortCount), (pBuffer + nReadPos), 3);
-				nShortCount += 3;
-				nReadPos += 3;
-			}
-			else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-			{
-				int nTemp = *(int*)(pBuffer + nReadPos);
-				*(int*)(pBuffer + nShortCount) = nTemp;
-				nShortCount += 4;
-				nReadPos += 4;
-			}
-			else
-				nReadPos++;
-		}
-		if (nShortCount <nCount)
-			pBuffer[nShortCount] = 0;
-		if (nCurLen)
-			*nCurLen = nShortCount - nPrefixSize;
-	}
-	return nShortCount;
+    int nShortCount = 0;
+    int nPrefixSize = 0;
+    if (pBuffer)
+    {
+        unsigned char cCharacter;
+        int nReadPos = 0;
+        while (nReadPos < nCount)
+        {
+            cCharacter = pBuffer[nReadPos];
+            if (cCharacter > 0x80)
+            {
+                pBuffer[nShortCount++] = cCharacter;
+                nReadPos++;
+            }
+            else if (cCharacter == 0x0d)   //æ¢è¡Œ
+            {
+                if (nReadPos + 1 < nCount && pBuffer[nReadPos + 1] == 0x0a)
+                    nReadPos += 2;
+                else
+                    nReadPos++;
+                pBuffer[nShortCount++] = 0x0a;
+            }
+            else if (pBuffer[nReadPos] == '<')
+            {
+                int nOldCount = nShortCount;
+                TEncodeCtrl(pBuffer, nCount, nReadPos, nShortCount);
+                nPrefixSize += nShortCount - nOldCount;
+            }
+            else if ((cCharacter >= 0x20 && cCharacter < 0x7F) || cCharacter == 0x0a || cCharacter == 0x09)
+            {
+                pBuffer[nShortCount++] = cCharacter;
+                nReadPos++;
+            }
+            else if (cCharacter == KTC_INLINE_PIC)
+            {
+                memmove((pBuffer + nShortCount), (pBuffer + nReadPos), 3);
+                nShortCount += 3;
+                nReadPos += 3;
+            }
+            else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+            {
+                int nTemp = *(int *)(pBuffer + nReadPos);
+                *(int *)(pBuffer + nShortCount) = nTemp;
+                nShortCount += 4;
+                nReadPos += 4;
+            }
+            else
+                nReadPos++;
+        }
+        if (nShortCount < nCount)
+            pBuffer[nShortCount] = 0;
+        if (nCurLen)
+            *nCurLen = nShortCount - nPrefixSize;
+    }
+    return nShortCount;
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¶ÔÎÄ±¾´®ÖĞµÄ¿ØÖÆ±ê¼Ç½øĞĞ×ª»»£¬È¥³ıÎŞĞ§×Ö·û£¬Ëõ¶ÌÎÄ±¾´®´æ´¢³¤¶È
+//	åŠŸèƒ½ï¼šå¯¹æ–‡æœ¬ä¸²ä¸­çš„æ§åˆ¶æ ‡è®°è¿›è¡Œè½¬æ¢ï¼Œå»é™¤æ— æ•ˆå­—ç¬¦ï¼Œç¼©çŸ­æ–‡æœ¬ä¸²å­˜å‚¨é•¿åº¦
 //--------------------------------------------------------------------------
-extern "C" ENGINE_API
-int TFilterEncodedText(char* pBuffer, int nCount)
+extern "C" ENGINE_API int TFilterEncodedText(char *pBuffer, int nCount)
 {
-	int nShortCount = 0;
-	if (pBuffer)
-	{
-		unsigned char	cCharacter;
-		int nReadPos = 0;
-		while(nReadPos < nCount)
-		{
-			cCharacter = pBuffer[nReadPos];
-			if (cCharacter > 0x80)
-			{
-				pBuffer[nShortCount++] = cCharacter;
-				nReadPos++;
-			}
-			else if ((cCharacter >= 0x20 && cCharacter < 0x7F) ||
-				cCharacter == 0x0a || cCharacter == 0x09)
-			{
-				pBuffer[nShortCount++] = cCharacter;
-				nReadPos++;
-			}
-			else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-			{
-				if (nReadPos + 4 < nCount)
-				{
-					*(int*)(pBuffer + nShortCount) = *(int*)(pBuffer + nReadPos);
-					nShortCount += 4;
-					nReadPos += 4;
-				}
-				else
-				{
-					nReadPos++;
-					break;
-				}
-			}
-			else if (cCharacter == KTC_INLINE_PIC)
-			{
-				if ((int)(nReadPos + 1 + sizeof(WORD)) < nCount)
-				{
-					memcpy(pBuffer + nShortCount, pBuffer + nReadPos, 1 + sizeof(WORD));;
-					nShortCount += 1 + sizeof(WORD);
-					nReadPos += 1 + sizeof(WORD);
-				}
-				else
-				{
-					nReadPos++;
-					break;
-				}
-			}
-			else
-				nReadPos ++;
-		}
-		if (nShortCount < nCount)
-			pBuffer[nShortCount] = 0;
-	}
+    int nShortCount = 0;
+    if (pBuffer)
+    {
+        unsigned char cCharacter;
+        int nReadPos = 0;
+        while (nReadPos < nCount)
+        {
+            cCharacter = pBuffer[nReadPos];
+            if (cCharacter > 0x80)
+            {
+                pBuffer[nShortCount++] = cCharacter;
+                nReadPos++;
+            }
+            else if ((cCharacter >= 0x20 && cCharacter < 0x7F) || cCharacter == 0x0a || cCharacter == 0x09)
+            {
+                pBuffer[nShortCount++] = cCharacter;
+                nReadPos++;
+            }
+            else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+            {
+                if (nReadPos + 4 < nCount)
+                {
+                    *(int *)(pBuffer + nShortCount) = *(int *)(pBuffer + nReadPos);
+                    nShortCount += 4;
+                    nReadPos += 4;
+                }
+                else
+                {
+                    nReadPos++;
+                    break;
+                }
+            }
+            else if (cCharacter == KTC_INLINE_PIC)
+            {
+                if ((int)(nReadPos + 1 + sizeof(WORD)) < nCount)
+                {
+                    memcpy(pBuffer + nShortCount, pBuffer + nReadPos, 1 + sizeof(WORD));
+                    ;
+                    nShortCount += 1 + sizeof(WORD);
+                    nReadPos += 1 + sizeof(WORD);
+                }
+                else
+                {
+                    nReadPos++;
+                    break;
+                }
+            }
+            else
+                nReadPos++;
+        }
+        if (nShortCount < nCount)
+            pBuffer[nShortCount] = 0;
+    }
 
-	return nShortCount;
+    return nShortCount;
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º·ÖÎö×ª»»¿ØÖÆ·û
+//	åŠŸèƒ½ï¼šåˆ†æè½¬æ¢æ§åˆ¶ç¬¦
 //--------------------------------------------------------------------------
-static bool TEncodeCtrl(char* pBuffer, int nCount, int& nReadPos, int& nShortCount)
+static bool TEncodeCtrl(char *pBuffer, int nCount, int &nReadPos, int &nShortCount)
 {
 
-	_ASSERT(pBuffer != NULL && nReadPos < nCount && nShortCount < nCount && nShortCount <= nReadPos);
-	
-	int nCtrlCodeSize, nEndPos, nCtrl;
+    _ASSERT(pBuffer != NULL && nReadPos < nCount && nShortCount < nCount && nShortCount <= nReadPos);
 
-	//Ñ°ÕÒ½áÊø·ûºÅ'='µÄÎ»ÖÃ»ò'>'µÄÎ»ÖÃ
-	int nEqualPos = nReadPos + 1;
-	for (; nEqualPos < nCount && nEqualPos <= nReadPos + KTC_CTRL_CODE_MAX_LEN; nEqualPos++)
-		if (pBuffer[nEqualPos] == '>' || pBuffer[nEqualPos] == '=')
-			break;	
+    int nCtrlCodeSize, nEndPos, nCtrl;
 
-	if(nEqualPos >= nCount || nEqualPos > nReadPos + KTC_CTRL_CODE_MAX_LEN)
-		goto NO_MATCHING_CTRL;	//Î´ÕÒµ½'='»òÕß'>'½áÊø·ûºÅ
+    //å¯»æ‰¾ç»“æŸç¬¦å·'='çš„ä½ç½®æˆ–'>'çš„ä½ç½®
+    int nEqualPos = nReadPos + 1;
+    for (; nEqualPos < nCount && nEqualPos <= nReadPos + KTC_CTRL_CODE_MAX_LEN; nEqualPos++)
+        if (pBuffer[nEqualPos] == '>' || pBuffer[nEqualPos] == '=')
+            break;
 
-	nCtrlCodeSize = nEqualPos - nReadPos - 1;	//¿ØÖÆÃüÁî·ûºÅµÄ³¤¶È
+    if (nEqualPos >= nCount || nEqualPos > nReadPos + KTC_CTRL_CODE_MAX_LEN)
+        goto NO_MATCHING_CTRL;   //æœªæ‰¾åˆ°'='æˆ–è€…'>'ç»“æŸç¬¦å·
 
-	for (nCtrl = 0; nCtrl < s_nCtrlCount; nCtrl++)
-	{
-		if (nCtrlCodeSize ==  s_CtrlTable[nCtrl].nCtrlLen &&
-			memcmp(pBuffer + nReadPos + 1, s_CtrlTable[nCtrl].szCtrl, nCtrlCodeSize) == 0)
-			break;
-	}
-	if (nCtrl >= s_nCtrlCount)		//Î´ÕÒµ½Æ¥ÅäÒ»ÖÂµÄ¿ØÖÆÃüÁî
-		goto NO_MATCHING_CTRL;
-	nCtrl = s_CtrlTable[nCtrl].nCtrl;
+    nCtrlCodeSize = nEqualPos - nReadPos - 1;   //æ§åˆ¶å‘½ä»¤ç¬¦å·çš„é•¿åº¦
 
-	nEndPos = nEqualPos;
-	if (pBuffer[nEqualPos] != '>')
-	{
-		for(nEndPos++; nEndPos < nCount; nEndPos++)
-			if (pBuffer[nEndPos] == '>')
-				break;
-		if (nEndPos >= nCount)
-			goto NO_MATCHING_CTRL;
-		nShortCount += TEncodeCtrl(nCtrl, pBuffer + nEqualPos + 1,
-			nEndPos - nEqualPos - 1, pBuffer + nShortCount);
-	}
-	else
-		nShortCount += TEncodeCtrl(nCtrl, NULL, 0, pBuffer + nShortCount);
-	nReadPos = nEndPos + 1;
-	return true;
+    for (nCtrl = 0; nCtrl < s_nCtrlCount; nCtrl++)
+    {
+        if (nCtrlCodeSize == s_CtrlTable[nCtrl].nCtrlLen && memcmp(pBuffer + nReadPos + 1, s_CtrlTable[nCtrl].szCtrl, nCtrlCodeSize) == 0)
+            break;
+    }
+    if (nCtrl >= s_nCtrlCount)   //æœªæ‰¾åˆ°åŒ¹é…ä¸€è‡´çš„æ§åˆ¶å‘½ä»¤
+        goto NO_MATCHING_CTRL;
+    nCtrl = s_CtrlTable[nCtrl].nCtrl;
+
+    nEndPos = nEqualPos;
+    if (pBuffer[nEqualPos] != '>')
+    {
+        for (nEndPos++; nEndPos < nCount; nEndPos++)
+            if (pBuffer[nEndPos] == '>')
+                break;
+        if (nEndPos >= nCount)
+            goto NO_MATCHING_CTRL;
+        nShortCount += TEncodeCtrl(nCtrl, pBuffer + nEqualPos + 1, nEndPos - nEqualPos - 1, pBuffer + nShortCount);
+    }
+    else
+        nShortCount += TEncodeCtrl(nCtrl, NULL, 0, pBuffer + nShortCount);
+    nReadPos = nEndPos + 1;
+    return true;
 
 NO_MATCHING_CTRL:
-	pBuffer[nShortCount++] = '<';
-	nReadPos++;
-	return false;
+    pBuffer[nShortCount++] = '<';
+    nReadPos++;
+    return false;
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º×ª»»²¢´æ´¢¿ØÖÆÃüÁî¼°¸÷¿ØÖÆ²ÎÊı
+//	åŠŸèƒ½ï¼šè½¬æ¢å¹¶å­˜å‚¨æ§åˆ¶å‘½ä»¤åŠå„æ§åˆ¶å‚æ•°
 //--------------------------------------------------------------------------
-static int TEncodeCtrl(int nCtrl, char* pParamBuffer, int nParamLen, char* pEncodedBuffer)
+static int TEncodeCtrl(int nCtrl, char *pParamBuffer, int nParamLen, char *pEncodedBuffer)
 {
-	_ASSERT(pEncodedBuffer && (nParamLen == 0 || pParamBuffer != NULL));
+    _ASSERT(pEncodedBuffer && (nParamLen == 0 || pParamBuffer != NULL));
 
-	int nEncodedSize = 0;
-	static char	Color[256];
-	static char	szPic[MAXPICTOKENLEN];
+    int nEncodedSize = 0;
+    static char Color[256];
+    static char szPic[MAXPICTOKENLEN];
 
-	switch(nCtrl)
-	{
-	case KTC_ENTER:
-		pEncodedBuffer[nEncodedSize ++] = nCtrl;
-		break;
-	case KTC_INLINE_PIC:	//[wxb 2003-6-19]
-		if (nParamLen == 0 && nParamLen >= MAXPICTOKENLEN)
-			break;
-		{
-			memcpy(szPic, pParamBuffer, nParamLen);
-			szPic[nParamLen] = 0;
-			int nPicIndex = atoi(szPic);
-			if(nPicIndex >= MAX_SYSTEM_INLINE_PICTURES)
-				break;
-			pEncodedBuffer[nEncodedSize] = KTC_INLINE_PIC;
-			*((WORD*)(pEncodedBuffer + nEncodedSize + 1)) = nPicIndex;
-			nEncodedSize += 1 + sizeof(WORD);
-		}		
-		break;
-	case KTC_COLOR:
-		{
-		if (nParamLen == 0)
-		{
-			pEncodedBuffer[nEncodedSize ++] = KTC_COLOR_RESTORE;
-			return nEncodedSize;
-		}
-		else if (nParamLen < 8)
-		{
-			memcpy(Color, pParamBuffer, nParamLen);
-			Color[nParamLen] = 0;
-			for (int i = 0; i < s_nColorCount; i++)
-			{
+    switch (nCtrl)
+    {
+    case KTC_ENTER:
+        pEncodedBuffer[nEncodedSize++] = nCtrl;
+        break;
+    case KTC_INLINE_PIC:   //[wxb 2003-6-19]
+        if (nParamLen == 0 && nParamLen >= MAXPICTOKENLEN)
+            break;
+        {
+            memcpy(szPic, pParamBuffer, nParamLen);
+            szPic[nParamLen] = 0;
+            int nPicIndex = atoi(szPic);
+            if (nPicIndex >= MAX_SYSTEM_INLINE_PICTURES)
+                break;
+            pEncodedBuffer[nEncodedSize] = KTC_INLINE_PIC;
+            *((WORD *)(pEncodedBuffer + nEncodedSize + 1)) = nPicIndex;
+            nEncodedSize += 1 + sizeof(WORD);
+        }
+        break;
+    case KTC_COLOR:
+    {
+        if (nParamLen == 0)
+        {
+            pEncodedBuffer[nEncodedSize++] = KTC_COLOR_RESTORE;
+            return nEncodedSize;
+        }
+        else if (nParamLen < 8)
+        {
+            memcpy(Color, pParamBuffer, nParamLen);
+            Color[nParamLen] = 0;
+            for (int i = 0; i < s_nColorCount; i++)
+            {
 #ifndef __linux
-				if (stricmp(Color,s_ColorTable[i].Token) == 0)
+                if (stricmp(Color, s_ColorTable[i].Token) == 0)
 #else
-				if(strcasecmp(Color,s_ColorTable[i].Token) == 0)
+                if (strcasecmp(Color, s_ColorTable[i].Token) == 0)
 #endif
-				{
-					pEncodedBuffer[nEncodedSize] = KTC_COLOR;
-					pEncodedBuffer[nEncodedSize + 1]= s_ColorTable[i].Red;
-					pEncodedBuffer[nEncodedSize + 2]= s_ColorTable[i].Green;
-					pEncodedBuffer[nEncodedSize + 3]= s_ColorTable[i].Blue;
-					nEncodedSize += 4;
-					return nEncodedSize;
-				}
-			}
-		}
-		memcpy(Color, pParamBuffer, nParamLen);
-		Color[nParamLen] = 0;
-		KRColor uTextColor;
-		uTextColor.Color_dw = TGetColor(Color);
-		pEncodedBuffer[nEncodedSize] = KTC_COLOR;
-		pEncodedBuffer[nEncodedSize + 1]= uTextColor.Color_b.r;
-		pEncodedBuffer[nEncodedSize + 2]= uTextColor.Color_b.g;
-		pEncodedBuffer[nEncodedSize + 3]= uTextColor.Color_b.b;
-		nEncodedSize += 4;
-		}
-		break;
-	case KTC_BORDER_COLOR:
-		{
-		if (nParamLen == 0)
-		{
-			pEncodedBuffer[nEncodedSize ++] = KTC_BORDER_RESTORE;
-			return nEncodedSize;
-		}
-		else if (nParamLen < 8)
-		{
-			memcpy(Color, pParamBuffer, nParamLen);
-			Color[nParamLen] = 0;
-			for (int i = 0; i < s_nColorCount; i++)
-			{
+                {
+                    pEncodedBuffer[nEncodedSize] = KTC_COLOR;
+                    pEncodedBuffer[nEncodedSize + 1] = s_ColorTable[i].Red;
+                    pEncodedBuffer[nEncodedSize + 2] = s_ColorTable[i].Green;
+                    pEncodedBuffer[nEncodedSize + 3] = s_ColorTable[i].Blue;
+                    nEncodedSize += 4;
+                    return nEncodedSize;
+                }
+            }
+        }
+        memcpy(Color, pParamBuffer, nParamLen);
+        Color[nParamLen] = 0;
+        KRColor uTextColor;
+        uTextColor.Color_dw = TGetColor(Color);
+        pEncodedBuffer[nEncodedSize] = KTC_COLOR;
+        pEncodedBuffer[nEncodedSize + 1] = uTextColor.Color_b.r;
+        pEncodedBuffer[nEncodedSize + 2] = uTextColor.Color_b.g;
+        pEncodedBuffer[nEncodedSize + 3] = uTextColor.Color_b.b;
+        nEncodedSize += 4;
+    }
+    break;
+    case KTC_BORDER_COLOR:
+    {
+        if (nParamLen == 0)
+        {
+            pEncodedBuffer[nEncodedSize++] = KTC_BORDER_RESTORE;
+            return nEncodedSize;
+        }
+        else if (nParamLen < 8)
+        {
+            memcpy(Color, pParamBuffer, nParamLen);
+            Color[nParamLen] = 0;
+            for (int i = 0; i < s_nColorCount; i++)
+            {
 #ifndef __linux
-				if (stricmp(Color,s_ColorTable[i].Token) == 0)
+                if (stricmp(Color, s_ColorTable[i].Token) == 0)
 #else
-				if(strcasecmp(Color,s_ColorTable[i].Token) == 0)
+                if (strcasecmp(Color, s_ColorTable[i].Token) == 0)
 #endif
-				{
-					pEncodedBuffer[nEncodedSize] = KTC_BORDER_COLOR;
-					pEncodedBuffer[nEncodedSize + 1]= s_ColorTable[i].Red;
-					pEncodedBuffer[nEncodedSize + 2]= s_ColorTable[i].Green;
-					pEncodedBuffer[nEncodedSize + 3]= s_ColorTable[i].Blue;
-					nEncodedSize += 4;
-					return nEncodedSize;
-				}
-			}
-		}
-		memcpy(Color, pParamBuffer, nParamLen);
-		Color[nParamLen] = 0;
-		KRColor uTextColor;
-		uTextColor.Color_dw = TGetColor(Color);
-		pEncodedBuffer[nEncodedSize] = KTC_BORDER_COLOR;
-		pEncodedBuffer[nEncodedSize + 1]= uTextColor.Color_b.r;
-		pEncodedBuffer[nEncodedSize + 2]= uTextColor.Color_b.g;
-		pEncodedBuffer[nEncodedSize + 3]= uTextColor.Color_b.b;
-		nEncodedSize += 4;
-		}
-		break;
-	}
-	return nEncodedSize;
+                {
+                    pEncodedBuffer[nEncodedSize] = KTC_BORDER_COLOR;
+                    pEncodedBuffer[nEncodedSize + 1] = s_ColorTable[i].Red;
+                    pEncodedBuffer[nEncodedSize + 2] = s_ColorTable[i].Green;
+                    pEncodedBuffer[nEncodedSize + 3] = s_ColorTable[i].Blue;
+                    nEncodedSize += 4;
+                    return nEncodedSize;
+                }
+            }
+        }
+        memcpy(Color, pParamBuffer, nParamLen);
+        Color[nParamLen] = 0;
+        KRColor uTextColor;
+        uTextColor.Color_dw = TGetColor(Color);
+        pEncodedBuffer[nEncodedSize] = KTC_BORDER_COLOR;
+        pEncodedBuffer[nEncodedSize + 1] = uTextColor.Color_b.r;
+        pEncodedBuffer[nEncodedSize + 2] = uTextColor.Color_b.g;
+        pEncodedBuffer[nEncodedSize + 3] = uTextColor.Color_b.b;
+        nEncodedSize += 4;
+    }
+    break;
+    }
+    return nEncodedSize;
+}
+
+extern "C" ENGINE_API int TRemoveCtrlInEncodedText(char *pBuffer, int nCount)
+{
+    int nLen = 0;
+    nCount = TFilterEncodedText(pBuffer, nCount);
+    for (int nPos = 0; nPos < nCount; nPos++)
+    {
+        char cCharacter = pBuffer[nPos];
+        if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+            nPos += 3;
+        else if (cCharacter == KTC_INLINE_PIC)
+            nPos += sizeof(WORD);
+        else if (cCharacter != KTC_COLOR_RESTORE && cCharacter != KTC_BORDER_RESTORE)
+        {
+            pBuffer[nLen] = cCharacter;
+            nLen++;
+        }
+    }
+    return nLen;
+}
+
+//è·å–ç¼–ç æ–‡æœ¬çš„è¡Œæ•°ä¸æœ€å¤§è¡Œå®½
+//å‚æ•°ï¼špBuffer			æ–‡æœ¬ç¼“å†²åŒº
+//		nCount			æ–‡æœ¬æ•°æ®çš„é•¿åº¦
+//		nWrapCharaNum	é™åˆ¶æ¯è¡Œä¸è®¸è¶…è¿‡çš„å­—ç¬¦æ•°ç›®
+//		nMaxLineLen		ç”¨äºè·å–æ–‡æœ¬çš„å®é™…æœ€å¤§è¡Œå®½ï¼ˆå­—ç¬¦æ•°ç›®ï¼‰
+//		nFontSize		é‡‡ç”¨å­—ä½“çš„å¤§å° [wxb 2003-6-19]
+//		nSkipLine		è·³è¿‡å‰é¢å¤šå°‘è¡Œçš„æ•°æ®
+//		nNumLineLimit	æ£€æµ‹çš„æ–‡æœ¬çš„è¡Œæ•°ï¼Œè¶…è¿‡é™åˆ¶è¡Œæ•°ç›®ä¹‹åçš„å†…å®¹è¢«å¿½ç•¥ã€‚å¦‚æœæ­¤å€¼å°äºç­‰äº0åˆ™è¡¨ç¤ºæ— æ­¤é™åˆ¶ã€‚
+//è¿”å›ï¼šæ–‡æœ¬çš„è¡Œæ•°
+extern "C" ENGINE_API int TGetEncodedTextLineCount(const char *pBuffer, int nCount, int nWrapCharaNum, int &nMaxLineLen, int nFontSize, int nSkipLine, int nNumLineLimit, BOOL bPicSingleLine /* = FALSE*/)
+{
+    //è®¾ä¸€ä¸ªæå€¼å…å¾—å‡ºé”™ [wxb 2003-6-20]
+    _ASSERT(nFontSize >= 4 && nFontSize < 64);
+    nFontSize = max(4, nFontSize);
+    nFontSize = min(64, nFontSize);
+
+    float fMaxLineLen = 0;
+    nMaxLineLen = 0;
+    if (pBuffer == 0)
+        return 0;
+
+    if (nCount < 0)
+        nCount = strlen(pBuffer);
+
+    float fNumChars = 0;
+    int nNumLine = 0;
+    int nPos = 0;
+    unsigned char cCode;
+
+    if (nWrapCharaNum <= 0)
+        nWrapCharaNum = 0x7fffffff;
+    if (nSkipLine < 0)
+        nSkipLine = 0;
+    if (nNumLineLimit <= 0)
+        nNumLineLimit = 0x7fffffff;
+
+    bool bNextLine = false;
+    float fNumNextLineChar = 0;
+    int nExtraLineForInlinePic = 0;
+    while (nPos < nCount)
+    {
+        cCode = pBuffer[nPos];
+        if (cCode > 0x80)   //å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
+        {
+            nPos++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)   //é¢œè‰²æ§åˆ¶
+            nPos += 4;
+        else if (cCode == KTC_INLINE_PIC)
+        {
+            //åµŒå…¥å¼å›¾ç‰‡å¤„ç† [wxb 2003-6-19]
+            WORD wPicIndex = *((WORD *)(pBuffer + nPos + 1));
+            nPos += 1 + sizeof(WORD);
+            if (g_pIInlinePicSink)
+            {
+                int nWidth, nHeight;
+                if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
+                {
+                    if (nHeight > nFontSize)
+                    {
+                        int nExtraLines = nHeight - nFontSize;
+                        nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
+                        if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
+                            nExtraLineForInlinePic = nExtraLines;
+                    }
+                    if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
+                    {
+                        bNextLine = true;
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    }
+                    else
+                    {
+                        bNextLine = true;
+                        fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
+                    }
+                }
+            }
+        }
+        else if (cCode == KTC_ENTER)
+        {
+            nPos++;
+            bNextLine = true;
+        }
+        else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
+        {
+            nPos++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else
+        {
+            nPos++;
+        }
+
+        if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
+        {
+            const char *pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
+            if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
+                bNextLine = true;
+        }
+        if (bNextLine)
+        {
+            if (nSkipLine > 0)
+            {
+                nSkipLine -= 1 + nExtraLineForInlinePic;
+
+                //å¤„ç†å›¾ç‰‡å å¤šè¡Œçš„æƒ…å†µ [wxb 2003-6-19]
+                if (nSkipLine < 0)
+                {
+                    if (fMaxLineLen < fNumChars)
+                        fMaxLineLen = fNumChars;
+                    nNumLine += (-nSkipLine);
+                    if (nNumLine >= nNumLineLimit)
+                        break;
+                }
+            }
+            else
+            {
+                if (fMaxLineLen < fNumChars)
+                    fMaxLineLen = fNumChars;
+                nNumLine += 1 + nExtraLineForInlinePic;
+                if (nNumLine >= nNumLineLimit)
+                    break;
+            }
+            nExtraLineForInlinePic = 0;
+            fNumChars = (float)fNumNextLineChar;
+            fNumNextLineChar = 0;
+            bNextLine = false;
+        }
+    }
+    if (nNumLine < nNumLineLimit && fNumChars && nSkipLine == 0)
+    {
+        if (fMaxLineLen < fNumChars)
+            fMaxLineLen = fNumChars;
+        nNumLine += 1 + nExtraLineForInlinePic;
+    }
+
+    nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);   //è¿›1
+    return nNumLine;
+}
+
+extern "C" ENGINE_API int TGetEncodedItemChatLineCount(const char *pBuffer, int nCount, int nWrapCharaNum, int &nMaxLineLen, int nFontSize, int &nFace, int &nLastPos, int &nTotalLen, int nSkipLine, int nNumLineLimit, bool bPicSingleLine /* = false*/)
+{
+    _ASSERT(nFontSize >= 4 && nFontSize < 64);
+    nFontSize = max(4, nFontSize);
+    nFontSize = min(64, nFontSize);
+
+    float fMaxLineLen = 0;
+    nMaxLineLen = 0;
+    if (pBuffer == 0)
+        return 0;
+
+    if (nCount < 0)
+        nCount = strlen(pBuffer);
+    nFace = 0;
+    nLastPos = 0;
+    nTotalLen = 0;
+    float fNumChars = 0;
+    int nNumLine = 0;
+    int nPos = 0;
+    unsigned char cCode;
+
+    if (nWrapCharaNum <= 0)
+        nWrapCharaNum = 0x7fffffff;
+    if (nSkipLine < 0)
+        nSkipLine = 0;
+    if (nNumLineLimit <= 0)
+        nNumLineLimit = 0x7fffffff;
+
+    bool bNextLine = false;
+    float fNumNextLineChar = 0;
+    int nExtraLineForInlinePic = 0;
+    while (nPos < nCount)
+    {
+        cCode = pBuffer[nPos];
+        if (cCode > 0x80)
+        {
+            nPos++;
+            nLastPos++;
+            nTotalLen++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)
+            nPos += 4;
+        else if (cCode == KTC_INLINE_PIC)
+        {
+            nFace++;
+            nTotalLen += 3;
+            WORD wPicIndex = *((WORD *)(pBuffer + nPos + 1));
+            nPos += 1 + sizeof(WORD);
+            if (g_pIInlinePicSink)
+            {
+                int nWidth, nHeight;
+                if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
+                {
+                    if (nHeight > nFontSize)
+                    {
+                        int nExtraLines = nHeight - nFontSize;
+                        nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
+                        if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
+                            nExtraLineForInlinePic = nExtraLines;
+                    }
+                    if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
+                    {
+                        bNextLine = true;
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    }
+                    else
+                    {
+                        bNextLine = true;
+                        fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
+                    }
+                }
+            }
+        }
+        else if (cCode == KTC_ENTER)
+        {
+            nPos++;
+            bNextLine = true;
+        }
+        else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
+        {
+            nPos++;
+            nLastPos++;
+            nTotalLen++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else
+        {
+            nPos++;
+        }
+
+        if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
+        {
+            const char *pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
+            if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
+                bNextLine = true;
+        }
+        if (bNextLine)
+        {
+            if (nSkipLine > 0)
+            {
+                nSkipLine -= 1 + nExtraLineForInlinePic;
+
+                if (nSkipLine < 0)
+                {
+                    if (fMaxLineLen < fNumChars)
+                        fMaxLineLen = fNumChars;
+                    nNumLine += (-nSkipLine);
+                    nLastPos = 0;
+                    if (cCode != KTC_INLINE_PIC)
+                        nFace = 0;
+                    else
+                        nFace = 1;
+                    if (nNumLine >= nNumLineLimit)
+                        break;
+                }
+            }
+            else
+            {
+                if (fMaxLineLen < fNumChars)
+                    fMaxLineLen = fNumChars;
+                nNumLine += 1 + nExtraLineForInlinePic;
+                nLastPos = 0;
+                if (cCode != KTC_INLINE_PIC)
+                    nFace = 0;
+                else
+                    nFace = 1;
+                if (nNumLine >= nNumLineLimit)
+                    break;
+            }
+            nExtraLineForInlinePic = 0;
+            fNumChars = (float)fNumNextLineChar;
+            fNumNextLineChar = 0;
+            bNextLine = false;
+        }
+    }
+    if (nNumLine < nNumLineLimit && fNumChars && nSkipLine == 0)
+    {
+        if (fMaxLineLen < fNumChars)
+            fMaxLineLen = fNumChars;
+        nNumLine += 1 + nExtraLineForInlinePic;
+    }
+
+    nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);
+    return nNumLine;
+}
+
+//è·å¾—æŒ‡å®šè¡Œçš„å¼€å§‹ä½ç½®
+int TGetEncodeStringLineHeadPos(const char *pBuffer, int nCount, int nLine, int nWrapCharaNum, int nFontSize, BOOL bPicSingleLine)
+{
+    //è®¾ä¸€ä¸ªæå€¼å…å¾—å‡ºé”™ [wxb 2003-6-20]
+    _ASSERT(nFontSize > 1 && nFontSize < 64);
+    nFontSize = max(1, nFontSize);
+    nFontSize = min(64, nFontSize);
+
+    float fMaxLineLen = 0;
+    if (pBuffer == 0 || nLine <= 0)
+        return 0;
+
+    if (nCount < 0)
+        nCount = strlen(pBuffer);
+
+    float fNumChars = 0;
+    int nExtraLineForInlinePic = 0;
+    int nPos = 0;
+    unsigned char cCode;
+
+    if (nWrapCharaNum <= 0)
+        nWrapCharaNum = 0x7fffffff;
+
+    bool bNextLine = false;
+    float fNumNextLineChar = 0;
+    while (nPos < nCount)
+    {
+        cCode = pBuffer[nPos];
+        if (cCode > 0x80)   //å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
+        {
+            nPos++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)   //é¢œè‰²æ§åˆ¶
+            nPos += 4;
+        else if (cCode == KTC_INLINE_PIC)
+        {
+            //åµŒå…¥å¼å›¾ç‰‡å¤„ç† [wxb 2003-6-19]
+            WORD wPicIndex = *((WORD *)(pBuffer + nPos + 1));
+            nPos += 1 + sizeof(WORD);
+            if (g_pIInlinePicSink)
+            {
+                int nWidth, nHeight;
+                if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
+                {
+                    if (nHeight > nFontSize)
+                    {
+                        int nExtraLines = nHeight - nFontSize;
+                        nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
+                        if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
+                            nExtraLineForInlinePic = nExtraLines;
+                    }
+                    if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
+                    {
+                        bNextLine = true;
+                        fNumChars += ((float)nWidth) * 2 / nFontSize;
+                    }
+                    else
+                    {
+                        bNextLine = true;
+                        fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
+                    }
+                }
+            }
+        }
+        else if (cCode == KTC_ENTER)
+        {
+            nPos++;
+            bNextLine = true;
+        }
+        else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
+        {
+            nPos++;
+            fNumChars += 1;
+            if (fNumChars >= nWrapCharaNum)
+            {
+                bNextLine = true;
+            }
+        }
+        else
+        {
+            nPos++;
+        }
+
+        if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
+        {
+            const char *pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
+            if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
+                bNextLine = true;
+        }
+        if (bNextLine)
+        {
+            //			if (nSkipLine > 0)
+            //			{
+            //				nSkipLine -= 1 + nExtraLineForInlinePic;
+            //
+            //				//å¤„ç†å›¾ç‰‡å å¤šè¡Œçš„æƒ…å†µ [wxb 2003-6-19]
+            //				if (nSkipLine < 0)
+            //				{
+            //					if (fMaxLineLen < fNumChars)
+            //						fMaxLineLen = fNumChars;
+            //					nNumLine += (-nSkipLine);
+            //					if (nNumLine >= nNumLineLimit)
+            //						break;
+            //				}
+            //			}
+            if ((--nLine) == 0)
+                break;
+            fNumChars = (float)fNumNextLineChar;
+            fNumNextLineChar = 0;
+            bNextLine = false;
+        }
+    }
+
+    return nPos;
 }
 
 extern "C" ENGINE_API
-int	TRemoveCtrlInEncodedText(char* pBuffer, int nCount)
+    //å¦‚æœåŸ(åŒ…å«æ§åˆ¶ç¬¦)å­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
+    const char *
+    TGetLimitLenEncodedString(const char *pOrigString, int nOrigLen, int nFontSize, int nWrapCharaNum, char *pLimitLenString, int &nShortLen, int nLineLimit, int bPicPackInSingleLine /*=false*/)
 {
-	int nLen = 0;
-	nCount = TFilterEncodedText(pBuffer, nCount);
-	for (int nPos = 0; nPos < nCount; nPos++)
-	{
-		char cCharacter = pBuffer[nPos];
-		if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-			nPos += 3;
-		else if (cCharacter == KTC_INLINE_PIC)
-			nPos += sizeof(WORD);
-		else if (cCharacter != KTC_COLOR_RESTORE && cCharacter != KTC_BORDER_RESTORE)
-		{
-			pBuffer[nLen] = cCharacter;
-			nLen ++;
-		}
-	}
-	return nLen;
-}
+    if (pOrigString == NULL || pLimitLenString == NULL || nOrigLen <= 0 || nShortLen < 2 || nLineLimit < 1 || nWrapCharaNum < 2)
+    {
+        nShortLen = 0;
+        return NULL;
+    }
 
-//»ñÈ¡±àÂëÎÄ±¾µÄĞĞÊıÓë×î´óĞĞ¿í
-//²ÎÊı£ºpBuffer			ÎÄ±¾»º³åÇø
-//		nCount			ÎÄ±¾Êı¾İµÄ³¤¶È
-//		nWrapCharaNum	ÏŞÖÆÃ¿ĞĞ²»Ğí³¬¹ıµÄ×Ö·ûÊıÄ¿
-//		nMaxLineLen		ÓÃÓÚ»ñÈ¡ÎÄ±¾µÄÊµ¼Ê×î´óĞĞ¿í£¨×Ö·ûÊıÄ¿£©
-//		nFontSize		²ÉÓÃ×ÖÌåµÄ´óĞ¡ [wxb 2003-6-19]
-//		nSkipLine		Ìø¹ıÇ°Ãæ¶àÉÙĞĞµÄÊı¾İ
-//		nNumLineLimit	¼ì²âµÄÎÄ±¾µÄĞĞÊı£¬³¬¹ıÏŞÖÆĞĞÊıÄ¿Ö®ºóµÄÄÚÈİ±»ºöÂÔ¡£Èç¹û´ËÖµĞ¡ÓÚµÈÓÚ0Ôò±íÊ¾ÎŞ´ËÏŞÖÆ¡£
-//·µ»Ø£ºÎÄ±¾µÄĞĞÊı
-extern "C" ENGINE_API
-int	TGetEncodedTextLineCount(const char* pBuffer, int nCount, int nWrapCharaNum, int& nMaxLineLen, int nFontSize, int nSkipLine, int nNumLineLimit,
-							 BOOL bPicSingleLine/* = FALSE*/)
-{
-	//ÉèÒ»¸ö¼«ÖµÃâµÃ³ö´í [wxb 2003-6-20]
-	_ASSERT(nFontSize >= 4 && nFontSize < 64);
-	nFontSize = max(4, nFontSize);
-	nFontSize = min(64, nFontSize);
+    int nPreLineEndPos = 0, nFinalLineEndPos;
+    if (nLineLimit > 1)   //è·³è¿‡å‰é¢å‡ è¡Œ
+    {
+        nPreLineEndPos = TGetEncodeStringLineHeadPos(pOrigString, nOrigLen, nLineLimit - 1, nWrapCharaNum, nFontSize, bPicPackInSingleLine);
+        if (nPreLineEndPos > nShortLen)
+        {
+            nShortLen = TSplitEncodedString(pOrigString, nOrigLen, nShortLen - 2, true);
+            memcpy(pLimitLenString, pOrigString, nShortLen);
+            pLimitLenString[nShortLen] = '.';
+            pLimitLenString[nShortLen + 1] = '.';
+            nShortLen += 2;
+            return pLimitLenString;
+        }
+    }
 
-	float fMaxLineLen = 0;
-	nMaxLineLen = 0;
-	if (pBuffer == 0)
-		return 0;
+    if (nPreLineEndPos < nOrigLen)
+    {
+        nFinalLineEndPos = TGetEncodeStringLineHeadPos(pOrigString + nPreLineEndPos, nOrigLen - nPreLineEndPos, 1, nWrapCharaNum, nFontSize, bPicPackInSingleLine) + nPreLineEndPos;
+    }
+    else
+        nFinalLineEndPos = nOrigLen;
 
-	if (nCount < 0)
-		nCount = strlen(pBuffer);
+    if (nFinalLineEndPos >= nOrigLen)
+    {
+        nShortLen = TSplitEncodedString(pOrigString, nOrigLen, nShortLen, true);
+        memcpy(pLimitLenString, pOrigString, nShortLen);
+        return pLimitLenString;
+    }
 
-	float fNumChars = 0;
-	int nNumLine = 0;
-	int nPos = 0;
-	unsigned char	cCode;
+    int nDesireLen = (nFinalLineEndPos <= nShortLen) ? nFinalLineEndPos - 2 : nShortLen - 2;
 
-	if (nWrapCharaNum <= 0)
-		nWrapCharaNum = 0x7fffffff;
-	if (nSkipLine < 0)
-		nSkipLine = 0;
-	if (nNumLineLimit <= 0)
-		nNumLineLimit = 0x7fffffff;
+    const char *pFinalLineHead = pOrigString + nPreLineEndPos;
+    int nRemainCount = nOrigLen - nPreLineEndPos;
+    nDesireLen -= nPreLineEndPos;
+    while (true)
+    {
+        nShortLen = TSplitEncodedString(pFinalLineHead, nRemainCount, nDesireLen, true);
+        int nMaxLineLen;
+        TGetEncodedTextLineCount(pFinalLineHead, nShortLen, 0, nMaxLineLen, nFontSize, 0, 1, FALSE);
+        if (nMaxLineLen <= nWrapCharaNum - 2)
+            break;
+        nDesireLen--;
+    }
+    nShortLen += nPreLineEndPos;
 
-	bool bNextLine = false;
-	float fNumNextLineChar = 0;
-	int  nExtraLineForInlinePic = 0;
-	while(nPos < nCount)
-	{
-		cCode = pBuffer[nPos];
-		if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
-		{
-			nPos ++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
-			nPos += 4;
-		else if (cCode == KTC_INLINE_PIC)
-		{
-			//Ç¶ÈëÊ½Í¼Æ¬´¦Àí [wxb 2003-6-19]
-			WORD wPicIndex = *((WORD*)(pBuffer + nPos + 1));
-			nPos += 1 + sizeof(WORD);
-			if (g_pIInlinePicSink)
-			{
-				int nWidth, nHeight;
-				if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
-				{
-					if (nHeight > nFontSize)
-					{
-						int nExtraLines = nHeight - nFontSize;
-						nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
-						if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
-							nExtraLineForInlinePic = nExtraLines;
-					}
-					if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
-					{
-						bNextLine = true;
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					}
-					else
-					{
-						bNextLine = true;
-						fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
-					}
-				}
-			}
-		}
-		else if (cCode == KTC_ENTER)
-		{
-			nPos ++;
-			bNextLine = true;
-		}
-		else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
-		{
-			nPos ++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else
-		{
-			nPos++;
-		}
-
-		if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
-		{
-			const char* pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
-			if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
-				bNextLine = true;
-		}
-		if (bNextLine)
-		{
-			if (nSkipLine > 0)
-			{
-				nSkipLine -= 1 + nExtraLineForInlinePic;
-
-				//´¦ÀíÍ¼Æ¬Õ¼¶àĞĞµÄÇé¿ö [wxb 2003-6-19]
-				if (nSkipLine < 0)
-				{
-					if (fMaxLineLen < fNumChars)
-						fMaxLineLen = fNumChars;
-					nNumLine += (-nSkipLine);
-					if (nNumLine >= nNumLineLimit)
-						break;
-				}
-			}
-			else
-			{
-				if (fMaxLineLen < fNumChars)
-					fMaxLineLen = fNumChars;
-				nNumLine += 1 + nExtraLineForInlinePic;
-				if (nNumLine >= nNumLineLimit)
-					break;
-			}
-			nExtraLineForInlinePic = 0;
-			fNumChars = (float)fNumNextLineChar;
-			fNumNextLineChar = 0;
-			bNextLine = false;
-		}
-	}
-	if (nNumLine < nNumLineLimit && fNumChars && nSkipLine == 0)
-	{
-		if (fMaxLineLen < fNumChars)
-			fMaxLineLen = fNumChars;
-		nNumLine += 1 + nExtraLineForInlinePic;
-	}
-
-	nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);	//½ø1
-	return nNumLine;
-}
-
-
-extern "C" ENGINE_API
-int	TGetEncodedItemChatLineCount(const char* pBuffer, int nCount, int nWrapCharaNum, int& nMaxLineLen, int nFontSize,
-	int& nFace, int& nLastPos, int& nTotalLen, int nSkipLine, int nNumLineLimit, bool bPicSingleLine/* = false*/ )
-{
-	_ASSERT(nFontSize >= 4 && nFontSize < 64);
-	nFontSize = max(4, nFontSize);
-	nFontSize = min(64, nFontSize);
-
-	float fMaxLineLen = 0;
-	nMaxLineLen = 0;
-	if (pBuffer == 0)
-		return 0;
-
-	if (nCount < 0)
-		nCount = strlen(pBuffer);
-	nFace = 0;
-	nLastPos = 0;
-	nTotalLen = 0;
-	float fNumChars = 0;
-	int nNumLine = 0;
-	int nPos = 0;
-	unsigned char	cCode;
-
-	if (nWrapCharaNum <= 0)
-		nWrapCharaNum = 0x7fffffff;
-	if (nSkipLine < 0)
-		nSkipLine = 0;
-	if (nNumLineLimit <= 0)
-		nNumLineLimit = 0x7fffffff;
-
-	bool bNextLine = false;
-	float fNumNextLineChar = 0;
-	int  nExtraLineForInlinePic = 0;
-	while(nPos < nCount)
-	{
-		cCode = pBuffer[nPos];
-		if (cCode > 0x80)
-		{
-			nPos ++;
-			nLastPos ++;
-			nTotalLen ++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)
-			nPos += 4;
-		else if (cCode == KTC_INLINE_PIC)
-		{
-			nFace++;
-			nTotalLen+=3;
-			WORD wPicIndex = *((WORD*)(pBuffer + nPos + 1));
-			nPos += 1 + sizeof(WORD);
-			if (g_pIInlinePicSink)
-			{
-				int nWidth, nHeight;
-				if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
-				{
-					if (nHeight > nFontSize)
-					{
-						int nExtraLines = nHeight - nFontSize;
-						nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
-						if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
-							nExtraLineForInlinePic = nExtraLines;
-					}
-					if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
-					{
-						bNextLine = true;
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					}
-					else
-					{
-						bNextLine = true;
-						fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
-					}
-				}
-			}
-		}
-		else if (cCode == KTC_ENTER)
-		{
-			nPos ++;
-			bNextLine = true;
-		}
-		else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
-		{
-			nPos ++;
-			nLastPos++;
-			nTotalLen++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else
-		{
-			nPos++;
-		}
-
-		if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
-		{
-			const char* pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
-			if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
-				bNextLine = true;
-		}
-		if (bNextLine)
-		{
-			if (nSkipLine > 0)
-			{
-				nSkipLine -= 1 + nExtraLineForInlinePic;
-
-				if (nSkipLine < 0)
-				{
-					if (fMaxLineLen < fNumChars)
-						fMaxLineLen = fNumChars;
-					nNumLine += (-nSkipLine);
-					nLastPos = 0;
-					if (cCode != KTC_INLINE_PIC)
-						nFace = 0;
-					else
-						nFace = 1;
-					if (nNumLine >= nNumLineLimit)
-						break;
-				}
-			}
-			else
-			{
-				if (fMaxLineLen < fNumChars)
-					fMaxLineLen = fNumChars;
-				nNumLine += 1 + nExtraLineForInlinePic;
-				nLastPos = 0;
-				if (cCode != KTC_INLINE_PIC)
-					nFace = 0;
-				else
-					nFace = 1;
-				if (nNumLine >= nNumLineLimit)
-					break;
-			}
-			nExtraLineForInlinePic = 0;
-			fNumChars = (float)fNumNextLineChar;
-			fNumNextLineChar = 0;
-			bNextLine = false;
-		}
-	}
-	if (nNumLine < nNumLineLimit && fNumChars && nSkipLine == 0)
-	{
-		if (fMaxLineLen < fNumChars)
-			fMaxLineLen = fNumChars;
-		nNumLine += 1 + nExtraLineForInlinePic;
-	}
-
-	nMaxLineLen = (int)(fMaxLineLen + (float)0.9999);
-	return nNumLine;
-}
-
-//»ñµÃÖ¸¶¨ĞĞµÄ¿ªÊ¼Î»ÖÃ
-int TGetEncodeStringLineHeadPos(const char* pBuffer, int nCount, int nLine, int nWrapCharaNum, int nFontSize, BOOL bPicSingleLine)
-{
-	//ÉèÒ»¸ö¼«ÖµÃâµÃ³ö´í [wxb 2003-6-20]
-	_ASSERT(nFontSize > 1 && nFontSize < 64);
-	nFontSize = max(1, nFontSize);
-	nFontSize = min(64, nFontSize);
-
-	float fMaxLineLen = 0;
-	if (pBuffer == 0 || nLine <= 0)
-		return 0;
-
-	if (nCount < 0)
-		nCount = strlen(pBuffer);
-
-	float fNumChars = 0;
-	int  nExtraLineForInlinePic = 0;
-	int nPos = 0;
-	unsigned char	cCode;
-
-	if (nWrapCharaNum <= 0)
-		nWrapCharaNum = 0x7fffffff;
-
-	bool bNextLine = false;
-	float fNumNextLineChar = 0;
-	while(nPos < nCount)
-	{
-		cCode = pBuffer[nPos];
-		if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
-		{
-			nPos ++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
-			nPos += 4;
-		else if (cCode == KTC_INLINE_PIC)
-		{
-			//Ç¶ÈëÊ½Í¼Æ¬´¦Àí [wxb 2003-6-19]
-			WORD wPicIndex = *((WORD*)(pBuffer + nPos + 1));
-			nPos += 1 + sizeof(WORD);
-			if (g_pIInlinePicSink)
-			{
-				int nWidth, nHeight;
-				if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(wPicIndex, nWidth, nHeight)))
-				{
-					if (nHeight > nFontSize)
-					{
-						int nExtraLines = nHeight - nFontSize;
-						nExtraLines = nExtraLines / nFontSize + ((nExtraLines % nFontSize) ? 1 : 0);
-						if (nExtraLines > nExtraLineForInlinePic && !bPicSingleLine)
-							nExtraLineForInlinePic = nExtraLines;
-					}
-					if (fNumChars + (((float)nWidth) * 2 / nFontSize) < nWrapCharaNum)
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					else if (fNumChars + (((float)nWidth) * 2 / nFontSize) == nWrapCharaNum || fNumChars == 0)
-					{
-						bNextLine = true;
-						fNumChars += ((float)nWidth) * 2 / nFontSize;
-					}
-					else
-					{
-						bNextLine = true;
-						fNumNextLineChar = ((float)nWidth) * 2 / nFontSize;
-					}
-				}
-			}
-		}
-		else if (cCode == KTC_ENTER)
-		{
-			nPos ++;
-			bNextLine = true;
-		}
-		else if (cCode != KTC_COLOR_RESTORE && cCode != KTC_BORDER_RESTORE)
-		{
-			nPos ++;
-			fNumChars += 1;
-			if (fNumChars >= nWrapCharaNum)
-			{
-				bNextLine = true;
-			}
-		}
-		else
-		{
-			nPos++;
-		}
-
-		if (bNextLine == false && fNumChars && fNumChars + 3 >= nWrapCharaNum)
-		{
-			const char* pNext = TGetSecondVisibleCharacterThisLine(pBuffer, nPos, nCount);
-			if (pNext && TIsCharacterNotAlowAtLineHead(pNext))
-				bNextLine = true;
-		}
-		if (bNextLine)
-		{
-//			if (nSkipLine > 0)
-//			{
-//				nSkipLine -= 1 + nExtraLineForInlinePic;
-//
-//				//´¦ÀíÍ¼Æ¬Õ¼¶àĞĞµÄÇé¿ö [wxb 2003-6-19]
-//				if (nSkipLine < 0)
-//				{
-//					if (fMaxLineLen < fNumChars)
-//						fMaxLineLen = fNumChars;
-//					nNumLine += (-nSkipLine);
-//					if (nNumLine >= nNumLineLimit)
-//						break;
-//				}
-//			}
-			if ((--nLine) == 0)
-				break;
-			fNumChars = (float)fNumNextLineChar;
-			fNumNextLineChar = 0;
-			bNextLine = false;
-		}
-	}
-
-	return nPos;
-}
-
-extern "C" ENGINE_API
-//Èç¹ûÔ­(°üº¬¿ØÖÆ·û)×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
-const char* TGetLimitLenEncodedString(const char* pOrigString, int nOrigLen, int nFontSize,
-	int nWrapCharaNum, char* pLimitLenString, int& nShortLen, int nLineLimit, int bPicPackInSingleLine/*=false*/)
-{
-	if (pOrigString == NULL || pLimitLenString == NULL ||
-		nOrigLen <= 0 || nShortLen < 2 || nLineLimit < 1 || nWrapCharaNum < 2)
-	{
-		nShortLen = 0;
-		return NULL;
-	}
-
-	int nPreLineEndPos = 0, nFinalLineEndPos;
-	if (nLineLimit > 1)	//Ìø¹ıÇ°Ãæ¼¸ĞĞ
-	{
-		nPreLineEndPos = TGetEncodeStringLineHeadPos(pOrigString, nOrigLen, nLineLimit - 1, nWrapCharaNum, nFontSize, bPicPackInSingleLine);
-		if (nPreLineEndPos > nShortLen)
-		{
-			nShortLen = TSplitEncodedString(pOrigString, nOrigLen, nShortLen - 2, true);
-			memcpy(pLimitLenString, pOrigString, nShortLen);
-			pLimitLenString[nShortLen] = '.';
-			pLimitLenString[nShortLen + 1] = '.';
-			nShortLen += 2;
-			return pLimitLenString;
-		}
-	}
-
-	if (nPreLineEndPos < nOrigLen)
-	{
-		nFinalLineEndPos = TGetEncodeStringLineHeadPos(pOrigString + nPreLineEndPos,
-			nOrigLen - nPreLineEndPos, 1, nWrapCharaNum, nFontSize, bPicPackInSingleLine) + nPreLineEndPos;
-	}
-	else
-		nFinalLineEndPos = nOrigLen;
-
-	if (nFinalLineEndPos >= nOrigLen)
-	{
-		nShortLen = TSplitEncodedString(pOrigString, nOrigLen, nShortLen, true);
-		memcpy(pLimitLenString, pOrigString, nShortLen);
-		return pLimitLenString;
-	}
-
-	int nDesireLen = (nFinalLineEndPos <= nShortLen) ? nFinalLineEndPos - 2 : nShortLen - 2;
-
-	const char* pFinalLineHead = pOrigString + nPreLineEndPos;
-	int nRemainCount = nOrigLen - nPreLineEndPos;
-	nDesireLen -= nPreLineEndPos;
-	while(true)
-	{
-		nShortLen = TSplitEncodedString(pFinalLineHead, nRemainCount, nDesireLen, true);
-		int nMaxLineLen;
-		TGetEncodedTextLineCount(pFinalLineHead, nShortLen, 0, nMaxLineLen, nFontSize, 0, 1, FALSE);
-		if (nMaxLineLen <= nWrapCharaNum - 2)
-			break;
-		nDesireLen --;
-	}
-	nShortLen += nPreLineEndPos;
-
-   	memcpy(pLimitLenString, pOrigString, nShortLen);
-	pLimitLenString[nShortLen] = '.';
-	pLimitLenString[nShortLen + 1] = '.';
-	nShortLen += 2;
-	return pLimitLenString;
+    memcpy(pLimitLenString, pOrigString, nShortLen);
+    pLimitLenString[nShortLen] = '.';
+    pLimitLenString[nShortLen + 1] = '.';
+    nShortLen += 2;
+    return pLimitLenString;
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÈç¹ûÔ­×Ö·û´®³¤¶È£¨°üÀ¨½áÎ²·û£©³¬¹ıÏŞ¶¨µÄ³¤¶È£¬Ôò½Ø¶ÌËü²¢¼ÓÉÏ..ºó×º
-//	²ÎÊı£ºpOrigString     --> Ô­×Ö·û´®£¬ÒªÇó²»Îª¿ÕÖ¸Õë
-//		¡¡nOrigLen		  --> Ô­×Ö·û´®³¤¶È£¨²»°üÀ¨½áÎ²·û£©
-//		  pLimitLenString --> Èç¹ûÔ­×Ö·û´®³¬³öÏŞ³¤£¬ÓÃÀ´´æ´¢½Ø¶ÌºóµÄ×Ö·û´®µÄ»º³åÇø£¬ÒªÇó²»Îª¿ÕÖ¸Õë
-//		  nLimitLen		  --> ÏŞ¶¨³¤¶È£¬´ËÖµÒªÇó´óÓÚµÈÓÚ3
-//	·µ»Ø£ºÈçÔ­×Ö·û´®²»³¬¹ıÏŞ³¤£¬Ôò·µ»ØÔ­»º³åÇøÖ¸Õë£¬·ñÔò·µ»ØÓÃÀ´´æ´¢½Ø¶ÌºóµÄ×Ö·û´®µÄ»º³åÇøµÄÖ¸Õë
-//	×¢ÊÍ£ºChinese GBK±àÂë°æ±¾£¬´Ë×Ö·û´®ÖĞ×Ö·ûÈ«²¿ÊÓÎªÏÔÊ¾×Ö·û£¬²»°üº¬¿ØÖÆ×Ö·û
+//	åŠŸèƒ½ï¼šå¦‚æœåŸå­—ç¬¦ä¸²é•¿åº¦ï¼ˆåŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰è¶…è¿‡é™å®šçš„é•¿åº¦ï¼Œåˆ™æˆªçŸ­å®ƒå¹¶åŠ ä¸Š..åç¼€
+//	å‚æ•°ï¼špOrigString     --> åŸå­—ç¬¦ä¸²ï¼Œè¦æ±‚ä¸ä¸ºç©ºæŒ‡é’ˆ
+//		ã€€nOrigLen		  --> åŸå­—ç¬¦ä¸²é•¿åº¦ï¼ˆä¸åŒ…æ‹¬ç»“å°¾ç¬¦ï¼‰
+//		  pLimitLenString --> å¦‚æœåŸå­—ç¬¦ä¸²è¶…å‡ºé™é•¿ï¼Œç”¨æ¥å­˜å‚¨æˆªçŸ­åçš„å­—ç¬¦ä¸²çš„ç¼“å†²åŒºï¼Œè¦æ±‚ä¸ä¸ºç©ºæŒ‡é’ˆ
+//		  nLimitLen		  --> é™å®šé•¿åº¦ï¼Œæ­¤å€¼è¦æ±‚å¤§äºç­‰äº3
+//	è¿”å›ï¼šå¦‚åŸå­—ç¬¦ä¸²ä¸è¶…è¿‡é™é•¿ï¼Œåˆ™è¿”å›åŸç¼“å†²åŒºæŒ‡é’ˆï¼Œå¦åˆ™è¿”å›ç”¨æ¥å­˜å‚¨æˆªçŸ­åçš„å­—ç¬¦ä¸²çš„ç¼“å†²åŒºçš„æŒ‡é’ˆ
+//	æ³¨é‡Šï¼šChinese GBKç¼–ç ç‰ˆæœ¬ï¼Œæ­¤å­—ç¬¦ä¸²ä¸­å­—ç¬¦å…¨éƒ¨è§†ä¸ºæ˜¾ç¤ºå­—ç¬¦ï¼Œä¸åŒ…å«æ§åˆ¶å­—ç¬¦
 //--------------------------------------------------------------------------
-extern "C" ENGINE_API
-const char* TGetLimitLenString(const char* pOrigString, int nOrigLen, char* pLimitLenString, int nLimitLen)
+extern "C" ENGINE_API const char *TGetLimitLenString(const char *pOrigString, int nOrigLen, char *pLimitLenString, int nLimitLen)
 {
-	if (pOrigString && pLimitLenString && nLimitLen > 0)
-	{
-		if (nOrigLen < 0)
-			nOrigLen = strlen(pOrigString);
-		if (nOrigLen < nLimitLen)
-			return pOrigString;
-		if (nLimitLen > 2)
-		{
-			nOrigLen = TSplitString(pOrigString, nLimitLen - 3, true);
-			memcpy(pLimitLenString, pOrigString, nOrigLen);
-			pLimitLenString[nOrigLen] = '.';
-			pLimitLenString[nOrigLen + 1] = '.';
-			pLimitLenString[nOrigLen + 2] = 0;
-		}
-		else if (nLimitLen == 2)
-		{
-			pLimitLenString[0] = '.';
-			pLimitLenString[1] = 0;
-		}
-		return ((nLimitLen >= 2) ? pLimitLenString : NULL);
-	}
-	return NULL;
+    if (pOrigString && pLimitLenString && nLimitLen > 0)
+    {
+        if (nOrigLen < 0)
+            nOrigLen = strlen(pOrigString);
+        if (nOrigLen < nLimitLen)
+            return pOrigString;
+        if (nLimitLen > 2)
+        {
+            nOrigLen = TSplitString(pOrigString, nLimitLen - 3, true);
+            memcpy(pLimitLenString, pOrigString, nOrigLen);
+            pLimitLenString[nOrigLen] = '.';
+            pLimitLenString[nOrigLen + 1] = '.';
+            pLimitLenString[nOrigLen + 2] = 0;
+        }
+        else if (nLimitLen == 2)
+        {
+            pLimitLenString[0] = '.';
+            pLimitLenString[1] = 0;
+        }
+        return ((nLimitLen >= 2) ? pLimitLenString : NULL);
+    }
+    return NULL;
 }
 
-
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬´ÓÖ¸¶¨Î»ÖÃ¿ªÊ¼²éÕÒÖ¸¶¨µÄ¿ØÖÆ·ûºÅµÄÎ»ÖÃ£¬·µ»Ø-1±íÊ¾Î´ÕÒµ½
-extern "C" ENGINE_API
-int	TFindSpecialCtrlInEncodedText(const char* pBuffer, int nCount, int nStartPos, char cControl, char cRetControl/* = 0*/)
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œä»æŒ‡å®šä½ç½®å¼€å§‹æŸ¥æ‰¾æŒ‡å®šçš„æ§åˆ¶ç¬¦å·çš„ä½ç½®ï¼Œè¿”å›-1è¡¨ç¤ºæœªæ‰¾åˆ°
+extern "C" ENGINE_API int TFindSpecialCtrlInEncodedText(const char *pBuffer, int nCount, int nStartPos, char cControl, char cRetControl /* = 0*/)
 {
-	int nFindPos = -1;
-	if (pBuffer)
-	{
-		while(nStartPos < nCount)
-		{
-			unsigned char cCharacter = pBuffer[nStartPos];
-			if(cRetControl && ((unsigned char)cRetControl == cCharacter))
-			{
-				return -1;
-			}
-			if ((unsigned char)cControl == cCharacter)
-			{
-				nFindPos = nStartPos;
-				break;
-			}
-			if (cCharacter > 0x80)	//¿ÉÄÜÊÇÖĞÎÄÎÄ×Ö
-				nStartPos ++;
-			else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-				nStartPos += 4;
-			else if (cCharacter == KTC_INLINE_PIC)
-				nStartPos += 3;
-			else
-				nStartPos ++;
-		}
-	}
-	return nFindPos;
+    int nFindPos = -1;
+    if (pBuffer)
+    {
+        while (nStartPos < nCount)
+        {
+            unsigned char cCharacter = pBuffer[nStartPos];
+            if (cRetControl && ((unsigned char)cRetControl == cCharacter))
+            {
+                return -1;
+            }
+            if ((unsigned char)cControl == cCharacter)
+            {
+                nFindPos = nStartPos;
+                break;
+            }
+            if (cCharacter > 0x80)   //å¯èƒ½æ˜¯ä¸­æ–‡æ–‡å­—
+                nStartPos++;
+            else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+                nStartPos += 4;
+            else if (cCharacter == KTC_INLINE_PIC)
+                nStartPos += 3;
+            else
+                nStartPos++;
+        }
+    }
+    return nFindPos;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬È¥³ıÖ¸¶¨ÀàĞÍµÄ¿ØÖÆ·û
-extern "C" ENGINE_API
-int	TClearSpecialCtrlInEncodedText(char* pBuffer, int nCount, char cControl)
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼Œå»é™¤æŒ‡å®šç±»å‹çš„æ§åˆ¶ç¬¦
+extern "C" ENGINE_API int TClearSpecialCtrlInEncodedText(char *pBuffer, int nCount, char cControl)
 {
-	int nFinalLen = 0;
-	int nReadPos = 0;
-	if (pBuffer)
-	{
-		if ((unsigned char)(cControl) <= 0x80)
-		{
-			int nMatchLen = 1;
-			if (cControl == KTC_COLOR || cControl == KTC_BORDER_COLOR)
-				nMatchLen = 4;
-			else if (cControl == KTC_INLINE_PIC)
-				nMatchLen = 3;
-			while(nReadPos < nCount)
-			{
-				unsigned char cCharacter = pBuffer[nReadPos];
-				if ((unsigned char)cControl == cCharacter)
-				{
-					nReadPos += nMatchLen;
-				}
-				else if (cCharacter > 0x80)
-				{
-					pBuffer[nFinalLen++] = pBuffer[nReadPos++];
-				}
-				else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-				{
-					int nTemp = *(int*)(pBuffer + nReadPos);
-					*(int*)(pBuffer + nFinalLen) = nTemp;
-					nFinalLen += 4;
-					nReadPos += 4;
-				}
-				else if (cCharacter == KTC_INLINE_PIC)
-				{
-					memmove((pBuffer + nFinalLen), (pBuffer + nReadPos), 3);
-					nFinalLen += 3;
-					nReadPos += 3;
-				}
-				else
-				{
-					pBuffer[nFinalLen++] = pBuffer[nReadPos++];
-				}
-			}
-		}
-	}
-	return nFinalLen;
+    int nFinalLen = 0;
+    int nReadPos = 0;
+    if (pBuffer)
+    {
+        if ((unsigned char)(cControl) <= 0x80)
+        {
+            int nMatchLen = 1;
+            if (cControl == KTC_COLOR || cControl == KTC_BORDER_COLOR)
+                nMatchLen = 4;
+            else if (cControl == KTC_INLINE_PIC)
+                nMatchLen = 3;
+            while (nReadPos < nCount)
+            {
+                unsigned char cCharacter = pBuffer[nReadPos];
+                if ((unsigned char)cControl == cCharacter)
+                {
+                    nReadPos += nMatchLen;
+                }
+                else if (cCharacter > 0x80)
+                {
+                    pBuffer[nFinalLen++] = pBuffer[nReadPos++];
+                }
+                else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+                {
+                    int nTemp = *(int *)(pBuffer + nReadPos);
+                    *(int *)(pBuffer + nFinalLen) = nTemp;
+                    nFinalLen += 4;
+                    nReadPos += 4;
+                }
+                else if (cCharacter == KTC_INLINE_PIC)
+                {
+                    memmove((pBuffer + nFinalLen), (pBuffer + nReadPos), 3);
+                    nFinalLen += 3;
+                    nReadPos += 3;
+                }
+                else
+                {
+                    pBuffer[nFinalLen++] = pBuffer[nReadPos++];
+                }
+            }
+        }
+    }
+    return nFinalLen;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨Êä³ö³¤¶ÈµÄÔÚ»º³åÇøÖĞÎ»ÖÃ
-extern "C" ENGINE_API
-int TGetEncodedTextOutputLenPos(const char* pBuffer, int nCount, int& nLen, bool bLess, int nFontSize)
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šè¾“å‡ºé•¿åº¦çš„åœ¨ç¼“å†²åŒºä¸­ä½ç½®
+extern "C" ENGINE_API int TGetEncodedTextOutputLenPos(const char *pBuffer, int nCount, int &nLen, bool bLess, int nFontSize)
 {
-	int nIndex = 0, nLenTemp = 0;
+    int nIndex = 0, nLenTemp = 0;
 
-	_ASSERT(nFontSize >= 4);
-	nFontSize = max(4, nFontSize);
+    _ASSERT(nFontSize >= 4);
+    nFontSize = max(4, nFontSize);
 
     if (pBuffer)
-	{
-		int nWidth, nHeight;
-		int nByteCount = 0, nCurCharLen = 0;
-	    unsigned char cCharacter        = 0;
+    {
+        int nWidth, nHeight;
+        int nByteCount = 0, nCurCharLen = 0;
+        unsigned char cCharacter = 0;
 
-		while(nLenTemp < nLen)
-		{
-			cCharacter = pBuffer[nIndex];
-			//¼ÆËã³öµ±Ç°ÔªËØµÄËùÕ¼×Ö½ÚÊınByteCountºÍÔÚÏÔÊ¾»­ÃæÉÏËùÕ¼¿í¶ÈnCurCharLen
-			if (cCharacter > 0x80)	//¿ÉÄÜÊÇÖĞÎÄÎÄ×Ö
-			{
-                nByteCount  = 1;
-				nCurCharLen = 1;
-			}
-			else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
-			{
-			    nByteCount  = 4;
-				nCurCharLen = 0;
-			}
-			else if (cCharacter == KTC_COLOR_RESTORE && cCharacter == KTC_BORDER_RESTORE)
-			{
-				nByteCount  = 1;
-				nCurCharLen = 0;
-			}
-			else if (cCharacter == KTC_INLINE_PIC)
-			{
-				nByteCount  = 3;
-				if(SUCCEEDED(g_pIInlinePicSink->GetPicSize(
-					*((unsigned short *)(pBuffer + nIndex + 1)), nWidth, nHeight)))
-				{
-					nCurCharLen = ((nWidth * 2 + nFontSize - 1) /  nFontSize);
-				}
-				else
-					nCurCharLen = 0;
-			}
-			else
-			{
-				nByteCount  = 1;
-				nCurCharLen = 1;
-			}
+        while (nLenTemp < nLen)
+        {
+            cCharacter = pBuffer[nIndex];
+            //è®¡ç®—å‡ºå½“å‰å…ƒç´ çš„æ‰€å å­—èŠ‚æ•°nByteCountå’Œåœ¨æ˜¾ç¤ºç”»é¢ä¸Šæ‰€å å®½åº¦nCurCharLen
+            if (cCharacter > 0x80)   //å¯èƒ½æ˜¯ä¸­æ–‡æ–‡å­—
+            {
+                nByteCount = 1;
+                nCurCharLen = 1;
+            }
+            else if (cCharacter == KTC_COLOR || cCharacter == KTC_BORDER_COLOR)
+            {
+                nByteCount = 4;
+                nCurCharLen = 0;
+            }
+            else if (cCharacter == KTC_COLOR_RESTORE && cCharacter == KTC_BORDER_RESTORE)
+            {
+                nByteCount = 1;
+                nCurCharLen = 0;
+            }
+            else if (cCharacter == KTC_INLINE_PIC)
+            {
+                nByteCount = 3;
+                if (SUCCEEDED(g_pIInlinePicSink->GetPicSize(*((unsigned short *)(pBuffer + nIndex + 1)), nWidth, nHeight)))
+                {
+                    nCurCharLen = ((nWidth * 2 + nFontSize - 1) / nFontSize);
+                }
+                else
+                    nCurCharLen = 0;
+            }
+            else
+            {
+                nByteCount = 1;
+                nCurCharLen = 1;
+            }
 
-			//Èç¹û³¬³ö»º³åÇø£¬¾ÍÍ£Ö¹°É
-			if(nIndex + nByteCount > nCount)
-				break;
-			//Èç¹û¿í¶È»¹Ã»³¬¹ıÒªÇó¿í¶È
-			if(nLenTemp + nCurCharLen < nLen)
-			{
-				nLenTemp += nCurCharLen;
-		        nIndex   += nByteCount;
-			}
-			//Èç¹û¿í¶ÈµÈÓÚÒªÇó¿í¶ÈÁË
-			else if(nLenTemp + nCurCharLen == nLen)
-			{
-				nLenTemp += nCurCharLen;
-				nIndex   += nByteCount;
-				break;
-			}
-			//ÕâÀï¾ÍÊÇ³¬¹ıÁË
-			else
-			{
-				nLenTemp = bLess ? nLenTemp : (nLenTemp + nCurCharLen);
-				nIndex   = bLess ? nIndex   : (nIndex + nByteCount);
-				break;
-			}
-		}
-	}
-	nLen = nLenTemp;
-	return nIndex;
+            //å¦‚æœè¶…å‡ºç¼“å†²åŒºï¼Œå°±åœæ­¢å§
+            if (nIndex + nByteCount > nCount)
+                break;
+            //å¦‚æœå®½åº¦è¿˜æ²¡è¶…è¿‡è¦æ±‚å®½åº¦
+            if (nLenTemp + nCurCharLen < nLen)
+            {
+                nLenTemp += nCurCharLen;
+                nIndex += nByteCount;
+            }
+            //å¦‚æœå®½åº¦ç­‰äºè¦æ±‚å®½åº¦äº†
+            else if (nLenTemp + nCurCharLen == nLen)
+            {
+                nLenTemp += nCurCharLen;
+                nIndex += nByteCount;
+                break;
+            }
+            //è¿™é‡Œå°±æ˜¯è¶…è¿‡äº†
+            else
+            {
+                nLenTemp = bLess ? nLenTemp : (nLenTemp + nCurCharLen);
+                nIndex = bLess ? nIndex : (nIndex + nByteCount);
+                break;
+            }
+        }
+    }
+    nLen = nLenTemp;
+    return nIndex;
 }
 
-//¶ÔÒÑ¾­±àÂëµÄÎÄ±¾£¬Ö¸¶¨µÄÇ°¶Î»º³åÇøÖĞ¿ØÖÆ·û£¬¶ÔºóÃæµÄÊä³ö²úÉúĞ§¹ûÓ°Ïì
-extern "C" ENGINE_API
-int TGetEncodedTextEffectCtrls(const char* pBuffer, int nSkipCount, KTP_CTRL& Ctrl0, KTP_CTRL& Ctrl1)
+//å¯¹å·²ç»ç¼–ç çš„æ–‡æœ¬ï¼ŒæŒ‡å®šçš„å‰æ®µç¼“å†²åŒºä¸­æ§åˆ¶ç¬¦ï¼Œå¯¹åé¢çš„è¾“å‡ºäº§ç”Ÿæ•ˆæœå½±å“
+extern "C" ENGINE_API int TGetEncodedTextEffectCtrls(const char *pBuffer, int nSkipCount, KTP_CTRL &Ctrl0, KTP_CTRL &Ctrl1)
 {
-	int nIndex = 0;
-	Ctrl0.cCtrl = Ctrl1.cCtrl = KTC_INVALID;
-	if (pBuffer)
-	{
-		KTP_CTRL PreCtrl0, PreCtrl1;
-		PreCtrl0.cCtrl = PreCtrl1.cCtrl = KTC_INVALID;
+    int nIndex = 0;
+    Ctrl0.cCtrl = Ctrl1.cCtrl = KTC_INVALID;
+    if (pBuffer)
+    {
+        KTP_CTRL PreCtrl0, PreCtrl1;
+        PreCtrl0.cCtrl = PreCtrl1.cCtrl = KTC_INVALID;
 
-		while(nIndex < nSkipCount)
-		{
-			unsigned char cCharacter = pBuffer[nIndex];
-			if (cCharacter == KTC_COLOR)
-			{
-				PreCtrl0  =  Ctrl0;
-				*(int*)(&Ctrl0) = *(int*)(pBuffer + nIndex);
-				nIndex += 4;				
-			}
-			else if (cCharacter == KTC_BORDER_COLOR)
-			{
-				PreCtrl1  =  Ctrl1;
-				*(int*)(&Ctrl1) = *(int*)(pBuffer + nIndex);
-				nIndex += 4;
-			}
-			else if(cCharacter == KTC_COLOR_RESTORE)
-			{
-				Ctrl0 = PreCtrl0;
-				nIndex ++;
-			}
-			else if(cCharacter == KTC_BORDER_RESTORE)
-			{
-				Ctrl1 = PreCtrl1;
-				nIndex ++;
-			}
-			else
-				nIndex ++;
-		}
-	}
-	return nIndex;
+        while (nIndex < nSkipCount)
+        {
+            unsigned char cCharacter = pBuffer[nIndex];
+            if (cCharacter == KTC_COLOR)
+            {
+                PreCtrl0 = Ctrl0;
+                *(int *)(&Ctrl0) = *(int *)(pBuffer + nIndex);
+                nIndex += 4;
+            }
+            else if (cCharacter == KTC_BORDER_COLOR)
+            {
+                PreCtrl1 = Ctrl1;
+                *(int *)(&Ctrl1) = *(int *)(pBuffer + nIndex);
+                nIndex += 4;
+            }
+            else if (cCharacter == KTC_COLOR_RESTORE)
+            {
+                Ctrl0 = PreCtrl0;
+                nIndex++;
+            }
+            else if (cCharacter == KTC_BORDER_RESTORE)
+            {
+                Ctrl1 = PreCtrl1;
+                nIndex++;
+            }
+            else
+                nIndex++;
+        }
+    }
+    return nIndex;
 }
-

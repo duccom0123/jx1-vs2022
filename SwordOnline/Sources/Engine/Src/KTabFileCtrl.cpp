@@ -41,7 +41,7 @@ BOOL	KTabFileCtrl::Load(LPSTR FileName)
 	{
 		long i = 0;
 		char szLine[10000];
-		//¿½±´Ä³Ò»ĞĞµÄÊı¾İÁ÷
+		//æ‹·è´æŸä¸€è¡Œçš„æ•°æ®æµ
 		while(nCurPos <= dwSize)
 		{
 			if (((char*)Buffer)[nCurPos] == 0x0d)
@@ -129,7 +129,7 @@ BOOL	KTabFileCtrl::Save(LPSTR FileName)
 	}
 	return TRUE;
 }
-//»ñµÃÄ³ĞĞµÄÃû
+//è·å¾—æŸè¡Œçš„å
 LPSTR	KTabFileCtrl::GetRowName(int nRow)
 {	
 	TTabLineNode * pLineNode = (TTabLineNode*) m_RowList.GetHead();
@@ -142,7 +142,7 @@ LPSTR	KTabFileCtrl::GetRowName(int nRow)
 	if (!pLineNode) return NULL;
 	return ((TTabColNode *)(pLineNode->pList->GetHead()))->m_Str;
 }
-//»ñµÃÄ³ÁĞµÄÃû
+//è·å¾—æŸåˆ—çš„å
 LPSTR	KTabFileCtrl::GetColName(int nCol)
 {
 	TTabLineNode * pLineNode  = (TTabLineNode *) m_RowList .GetHead();
@@ -197,7 +197,7 @@ int		KTabFileCtrl::FindColumn(LPSTR szColumn)
 	return -1;
 }
 
-// ÒÔ0,0ÎªÆğµã
+// ä»¥0,0ä¸ºèµ·ç‚¹
 BOOL	KTabFileCtrl::GetValue(int nRow, int nColumn, LPSTR& lpRString, DWORD dwSize)
 {
 	if ( nRow < 0 || nColumn < 0) return FALSE;
@@ -228,7 +228,7 @@ BOOL	KTabFileCtrl::SetValue(int nRow, int nColumn, LPSTR lpString, DWORD dwSize,
 	TTabLineNode * pTempNode = pLineNode;
 	for (int i = 0; i < nRow + 1; i ++) 
 	{
-		//Èç¹ûÃ»ÓĞ¸ÃĞĞ½áµãÔò×Ô¶¯Éú³É
+		//å¦‚æœæ²¡æœ‰è¯¥è¡Œç»“ç‚¹åˆ™è‡ªåŠ¨ç”Ÿæˆ
 		pLineNode = pTempNode;	
 		if (!pLineNode)
 		{
@@ -439,14 +439,14 @@ BOOL KTabFileCtrl::InsertBefore(int nRow)
 	pNode->InsertBefore(pNewNode);
 	return TRUE;
 }
-//·µ»ØĞÂÉú³ÉColµÄCol±àºÅ
+//è¿”å›æ–°ç”ŸæˆColçš„Colç¼–å·
 int	KTabFileCtrl::InsertNewCol(LPSTR strNewCol)
 {
 	if (!strNewCol || !strNewCol[0]) return -1;
 
 	int nResult = -1;
 	
-	//Èç¹ûÒÑÓĞ¾Í²»ÓÃÔÙ¼ÓÁË
+	//å¦‚æœå·²æœ‰å°±ä¸ç”¨å†åŠ äº†
 	if ((nResult = FindColumn(strNewCol)) > 0) 	return nResult;
 	
 	nResult = GetWidth() + 1;

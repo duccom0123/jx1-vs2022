@@ -17,10 +17,10 @@
 //---------------------------------------------------------------------------
 ENGINE_API KDirectDraw* g_pDirectDraw = NULL;
 //---------------------------------------------------------------------------
-// º¯Êý:	KDirectDraw
-// ¹¦ÄÜ:	¹ºÔìº¯Êý
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KDirectDraw
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 KDirectDraw::KDirectDraw()
 {
@@ -35,20 +35,20 @@ KDirectDraw::KDirectDraw()
 	m_dwRGBBitCount		= 16;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	~KDirectDraw
-// ¹¦ÄÜ:	ÎöÔìº¯Êý
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KDirectDraw
+// åŠŸèƒ½:	æžé€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 KDirectDraw::~KDirectDraw()
 {
 	Exit();
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Mode
-// ¹¦ÄÜ:	Set screen mode
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Mode
+// åŠŸèƒ½:	Set screen mode
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::Mode(BOOL bFullScreen, int nWidth, int nHeight)
 {
@@ -58,11 +58,11 @@ void KDirectDraw::Mode(BOOL bFullScreen, int nWidth, int nHeight)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êý:	Init
-// ¹¦ÄÜ:	´´½¨DirectDraw¶ÔÏó
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	Init
+// åŠŸèƒ½:	åˆ›å»ºDirectDrawå¯¹è±¡
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::Init()
 {
@@ -118,10 +118,10 @@ BOOL KDirectDraw::Init()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Exit
-// ¹¦ÄÜ:	ÊÍ·ÅDirectDraw¶ÔÏó
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Exit
+// åŠŸèƒ½:	é‡Šæ”¾DirectDrawå¯¹è±¡
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::Exit()
 {
@@ -155,11 +155,11 @@ void KDirectDraw::Exit()
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	CreateDirectDraw
-// ¹¦ÄÜ:	´´½¨DirectDraw¶ÔÏó
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	CreateDirectDraw
+// åŠŸèƒ½:	åˆ›å»ºDirectDrawå¯¹è±¡
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::CreateDirectDraw()
 {
@@ -205,11 +205,11 @@ BOOL KDirectDraw::CreateDirectDraw()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetDisplayMode
-// ¹¦ÄÜ:	ÉèÖÃÏÔÊ¾Ä£Ê½
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	SetDisplayMode
+// åŠŸèƒ½:	è®¾ç½®æ˜¾ç¤ºæ¨¡å¼
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::SetDisplayMode()
 {
@@ -242,11 +242,11 @@ BOOL KDirectDraw::SetDisplayMode()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	GetDisplayMode
-// ¹¦ÄÜ:	È¡µÃÏÔÊ¾Ä£Ê½
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	GetDisplayMode
+// åŠŸèƒ½:	å–å¾—æ˜¾ç¤ºæ¨¡å¼
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::GetDisplayMode()
 {
@@ -286,11 +286,11 @@ BOOL KDirectDraw::GetDisplayMode()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	CreateSurface
-// ¹¦ÄÜ:	´´½¨±íÃæ
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	CreateSurface
+// åŠŸèƒ½:	åˆ›å»ºè¡¨é¢
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::CreateSurface()
 {
@@ -375,11 +375,11 @@ LPDIRECTDRAWSURFACE KDirectDraw::CreateSurface(int nWidth, int nHeight)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êý:	RestoreSurface
-// ¹¦ÄÜ:	»Ö¸´¶ªÊ§µÄ±íÃæ
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	RestoreSurface
+// åŠŸèƒ½:	æ¢å¤ä¸¢å¤±çš„è¡¨é¢
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::RestoreSurface()
 {
@@ -396,11 +396,11 @@ BOOL KDirectDraw::RestoreSurface()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	GetSurfaceDesc
-// ¹¦ÄÜ:	È¡µÃ»æÍ¼±íÃæµÄ²ÎÊý
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	GetSurfaceDesc
+// åŠŸèƒ½:	å–å¾—ç»˜å›¾è¡¨é¢çš„å‚æ•°
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::GetSurfaceDesc()
 {
@@ -445,11 +445,11 @@ BOOL KDirectDraw::GetSurfaceDesc()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	CreateClipper
-// ¹¦ÄÜ:	´´½¨²Ã¼ôÆ÷
-// ²ÎÊý:	void
-// ·µ»Ø:	TRUE	³É¹¦
-//			FALSE	Ê§°Ü
+// å‡½æ•°:	CreateClipper
+// åŠŸèƒ½:	åˆ›å»ºè£å‰ªå™¨
+// å‚æ•°:	void
+// è¿”å›ž:	TRUE	æˆåŠŸ
+//			FALSE	å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KDirectDraw::CreateClipper()
 {
@@ -494,10 +494,10 @@ BOOL KDirectDraw::CreateClipper()
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetClipperHWnd
-// ¹¦ÄÜ:	ÉèÖÃ²Ã¼ôÆ÷µÄ´°¿Ú¾ä±ú
-// ²ÎÊý:	hWnd	´°¿Ú¾ä±ú
-// ·µ»Ø:	void
+// å‡½æ•°:	SetClipperHWnd
+// åŠŸèƒ½:	è®¾ç½®è£å‰ªå™¨çš„çª—å£å¥æŸ„
+// å‚æ•°:	hWnd	çª—å£å¥æŸ„
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::SetClipperHWnd(HWND hWnd)
 {
@@ -515,10 +515,10 @@ void KDirectDraw::SetClipperHWnd(HWND hWnd)
 		m_lpClipper->SetHWnd(0, hWndClip);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	WaitForVerticalBlankBegin
-// ¹¦ÄÜ:	µÈ´ý´¹Ö±»ØÉ¨ÖÜÆÚ¿ªÊ¼
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	WaitForVerticalBlankBegin
+// åŠŸèƒ½:	ç­‰å¾…åž‚ç›´å›žæ‰«å‘¨æœŸå¼€å§‹
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::WaitForVerticalBlankBegin()
 {
@@ -526,10 +526,10 @@ void KDirectDraw::WaitForVerticalBlankBegin()
 		m_lpDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, NULL);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	WaitForVerticalBlankEnd
-// ¹¦ÄÜ:	µÈ´ý´¹Ö±»ØÉ¨ÖÜÆÚ½áÊø
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	WaitForVerticalBlankEnd
+// åŠŸèƒ½:	ç­‰å¾…åž‚ç›´å›žæ‰«å‘¨æœŸç»“æŸ
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::WaitForVerticalBlankEnd()
 {
@@ -537,10 +537,10 @@ void KDirectDraw::WaitForVerticalBlankEnd()
 		m_lpDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKEND, NULL);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	ClearBackBuffer
-// ¹¦ÄÜ:	ÓÃÖ¸¶¨ÑÕÉ«Ìî³ä»æÍ¼±íÃæ
-// ²ÎÊý:	dwColor		ÑÕÉ«Öµ
-// ·µ»Ø:	void
+// å‡½æ•°:	ClearBackBuffer
+// åŠŸèƒ½:	ç”¨æŒ‡å®šé¢œè‰²å¡«å……ç»˜å›¾è¡¨é¢
+// å‚æ•°:	dwColor		é¢œè‰²å€¼
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::FillBackBuffer(DWORD dwColor)
 {
@@ -552,10 +552,10 @@ void KDirectDraw::FillBackBuffer(DWORD dwColor)
 	m_lpDDSBackBuf->Blt(NULL, NULL, NULL, DDBLT_COLORFILL, &ddbltfx);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	UpdateScreenZoom
-// ¹¦ÄÜ:	Ë¢ÐÂÆÁÄ»
-// ²ÎÊý:	LPRECT
-// ·µ»Ø:	void
+// å‡½æ•°:	UpdateScreenZoom
+// åŠŸèƒ½:	åˆ·æ–°å±å¹•
+// å‚æ•°:	LPRECT
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::UpdateScreenZoom(LPRECT lpRect)
 {
@@ -563,10 +563,10 @@ void KDirectDraw::UpdateScreenZoom(LPRECT lpRect)
 		m_lpDDSPrimary->Blt(NULL, m_lpDDSBackBuf, lpRect, DDBLT_WAIT, NULL);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetWindowStyle
-// ¹¦ÄÜ:	¸ù¾ÝÏÔÊ¾Ä£Ê½¸Ä±ä´°¿Ú·ç¸ñ
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	SetWindowStyle
+// åŠŸèƒ½:	æ ¹æ®æ˜¾ç¤ºæ¨¡å¼æ”¹å˜çª—å£é£Žæ ¼
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KDirectDraw::SetWindowStyle()
 {

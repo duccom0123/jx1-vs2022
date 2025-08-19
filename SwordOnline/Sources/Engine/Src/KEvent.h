@@ -12,7 +12,7 @@
 class ENGINE_API KEvent
 {
 private:
-	HANDLE m_hEvent;//用于多进程的线程同步
+	HANDLE m_hEvent;//鐢ㄤ簬澶氳繘绋嬬殑绾跨▼鍚屾
 public:
     KEvent();
     ~KEvent();

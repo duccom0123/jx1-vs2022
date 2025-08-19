@@ -18,7 +18,7 @@
 class ENGINE_API KZipList
 {
 private:
-	KZipCodec	m_ZipCodec;	// ZIPѹ��/��ѹ
+	KZipCodec	m_ZipCodec;	// ZIPÑ¹Ëõ/½âÑ¹
 	KZipData	m_ZipFile[MAX_PAK];
 	int			m_nNumber;
 	int			m_nActive;

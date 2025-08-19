@@ -4,23 +4,23 @@
 // File:	KGraphics.cpp
 // Date:	2002.03.06
 // Code:	Spe
-// Desc:	²»Í¬µÄKBitmapÖ®¼äµÄ´¦Àí
+// Desc:	ä¸åŒçš„KBitmapä¹‹é—´çš„å¤„ç†
 //---------------------------------------------------------------------------
 #include "kwin32.h"
 #include "KEngine.h"
 #include "KBitmap.h"
 #include "KGraphics.h"
 //---------------------------------------------------------------------------
-// º¯Êý:	g_RemoveSamePixel
-// ¹¦ÄÜ:	È¥³ýÄ¿±êÍ¼ÖÐÓëÔ´Í¼ÏàÍ¬µÄµã
-// ²ÎÊý:	*DesBitmap, *SrcBitmap
-// ·µ»Ø:	ÊÇ·ñ³É¹¦´¦Àí
+// å‡½æ•°:	g_RemoveSamePixel
+// åŠŸèƒ½:	åŽ»é™¤ç›®æ ‡å›¾ä¸­ä¸Žæºå›¾ç›¸åŒçš„ç‚¹
+// å‚æ•°:	*DesBitmap, *SrcBitmap
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸå¤„ç†
 //---------------------------------------------------------------------------
 BOOL g_RemoveSamePixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 {
 	BYTE	*pDesBuffer, *pSrcBuffer;
 	int		nHeight, nWidth, i, j;
-	// Ô´Í¼ÓëÄ¿±êÍ¼¿í¸ß²»Í¬£¬ÎÞ·¨±È½ÏÈ¥³ý
+	// æºå›¾ä¸Žç›®æ ‡å›¾å®½é«˜ä¸åŒï¼Œæ— æ³•æ¯”è¾ƒåŽ»é™¤
 	if (DesBitmap->GetHeight() != SrcBitmap->GetHeight()
 		|| DesBitmap->GetWidth() != SrcBitmap->GetWidth())
 		return FALSE;
@@ -42,16 +42,16 @@ BOOL g_RemoveSamePixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êý:	g_RemoveDiffPixel
-// ¹¦ÄÜ:	È¥³ýÄ¿±êÍ¼ÖÐÓëÔ´Í¼²»Í¬µÄµã
-// ²ÎÊý:	*DesBitmap, *SrcBitmap
-// ·µ»Ø:	ÊÇ·ñ³É¹¦´¦Àí
+// å‡½æ•°:	g_RemoveDiffPixel
+// åŠŸèƒ½:	åŽ»é™¤ç›®æ ‡å›¾ä¸­ä¸Žæºå›¾ä¸åŒçš„ç‚¹
+// å‚æ•°:	*DesBitmap, *SrcBitmap
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸå¤„ç†
 //---------------------------------------------------------------------------
 BOOL g_RemoveDiffPixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 {
 	BYTE	*pDesBuffer, *pSrcBuffer;
 	int		nHeight, nWidth, i, j;
-	// Ô´Í¼ÓëÄ¿±êÍ¼¿í¸ß²»Í¬£¬ÎÞ·¨±È½ÏÈ¥³ý
+	// æºå›¾ä¸Žç›®æ ‡å›¾å®½é«˜ä¸åŒï¼Œæ— æ³•æ¯”è¾ƒåŽ»é™¤
 	if (DesBitmap->GetHeight() != SrcBitmap->GetHeight()
 		|| DesBitmap->GetWidth() != SrcBitmap->GetWidth())
 		return FALSE;
@@ -73,17 +73,17 @@ BOOL g_RemoveDiffPixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êý:	g_RemoveNoneZeroPixel
-// ¹¦ÄÜ:	È¥³ýÄ¿±êÍ¼ÖÐÔ´Í¼Î»ÖÃÎª·ÇÁãµãµÄµã
-// ²ÎÊý:	*DesBitmap, *SrcBitmap
-// ·µ»Ø:	ÊÇ·ñ³É¹¦´¦Àí
+// å‡½æ•°:	g_RemoveNoneZeroPixel
+// åŠŸèƒ½:	åŽ»é™¤ç›®æ ‡å›¾ä¸­æºå›¾ä½ç½®ä¸ºéžé›¶ç‚¹çš„ç‚¹
+// å‚æ•°:	*DesBitmap, *SrcBitmap
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸå¤„ç†
 //---------------------------------------------------------------------------
 BOOL g_RemoveNoneZeroPixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 {
 	BYTE	*pDesBuffer, *pSrcBuffer;
 	int		nHeight, nWidth, i, j;
 	KPAL32	*pPal32;
-	// Ô´Í¼ÓëÄ¿±êÍ¼¿í¸ß²»Í¬£¬ÎÞ·¨±È½ÏÈ¥³ý
+	// æºå›¾ä¸Žç›®æ ‡å›¾å®½é«˜ä¸åŒï¼Œæ— æ³•æ¯”è¾ƒåŽ»é™¤
 	if (DesBitmap->GetHeight() != SrcBitmap->GetHeight()
 		|| DesBitmap->GetWidth() != SrcBitmap->GetWidth())
 		return FALSE;
@@ -108,17 +108,17 @@ BOOL g_RemoveNoneZeroPixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êý:	g_RemoveZeroPixel
-// ¹¦ÄÜ:	È¥³ýÄ¿±êÍ¼ÖÐÔ´Í¼Î»ÖÃÎªÁãµãµÄµã
-// ²ÎÊý:	*DesBitmap, *SrcBitmap
-// ·µ»Ø:	ÊÇ·ñ³É¹¦´¦Àí
+// å‡½æ•°:	g_RemoveZeroPixel
+// åŠŸèƒ½:	åŽ»é™¤ç›®æ ‡å›¾ä¸­æºå›¾ä½ç½®ä¸ºé›¶ç‚¹çš„ç‚¹
+// å‚æ•°:	*DesBitmap, *SrcBitmap
+// è¿”å›ž:	æ˜¯å¦æˆåŠŸå¤„ç†
 //---------------------------------------------------------------------------
 BOOL g_RemoveZeroPixel(KBitmap *DesBitmap, KBitmap *SrcBitmap)
 {
 	BYTE	*pDesBuffer, *pSrcBuffer;
 	int		nHeight, nWidth, i, j;
 	KPAL32	*pPal32;
-	// Ô´Í¼ÓëÄ¿±êÍ¼¿í¸ß²»Í¬£¬ÎÞ·¨±È½ÏÈ¥³ý
+	// æºå›¾ä¸Žç›®æ ‡å›¾å®½é«˜ä¸åŒï¼Œæ— æ³•æ¯”è¾ƒåŽ»é™¤
 	if (DesBitmap->GetHeight() != SrcBitmap->GetHeight()
 		|| DesBitmap->GetWidth() != SrcBitmap->GetWidth())
 		return FALSE;

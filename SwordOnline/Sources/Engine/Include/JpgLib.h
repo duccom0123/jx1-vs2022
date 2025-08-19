@@ -15,9 +15,9 @@ extern "C" {
 //---------------------------------------------------------------------------
 // Jpeg file info
 typedef struct {
-	int mode;		// 色彩模式
-	int width;		// 宽度
-	int height;		// 高度
+	int mode;		// 鑹插僵妯″紡
+	int width;		// 瀹藉害
+	int height;		// 楂樺害
 } JPEG_INFO;
 
 // interface

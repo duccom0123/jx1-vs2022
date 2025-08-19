@@ -34,7 +34,7 @@ int S3PAccount::Login(S3PDBConVBC* pConn, const char* strAccName, const char* st
 		return iRet;
 
 	char strSQL[MAX_PATH];
-	sprintf(strSQL, "select iClientID from Account_info where (cAccName = '%s') and (cPassword COLLATE Chinese_PRC_CS_AS = '%s')", strAccName, strPassword);
+	sprintf(strSQL, "select iClientID from Account_info where (cAccName = '%s') and (cPassword = '%s')", strAccName, strPassword);
 	S3PResultVBC* pResult = NULL;
 	if (pConn->QuerySql(strSQL, &pResult))
 	{
@@ -58,7 +58,7 @@ int S3PAccount::Login(S3PDBConVBC* pConn, const char* strAccName, const char* st
 				}
 				else
 				{
-					if (GetLeftSecondsOfDeposit(pConn, strAccName, iLeft, iExp) == ACTION_SUCCESS && iLeft > 1800)	//×îÐ¡Ê£ÓàÊ±¼ä30·ÖÖÓ
+					if (GetLeftSecondsOfDeposit(pConn, strAccName, iLeft, iExp) == ACTION_SUCCESS && iLeft > 1800)	//æœ€å°å‰©ä½™æ—¶é—´30åˆ†é’Ÿ
 					{
 						sprintf(strSQL, "update Account_info set iClientID = %d, dLoginDate = null where (cAccName = '%s')", ClientID, strAccName);
 						if (pConn->Do(strSQL))
@@ -102,7 +102,7 @@ int S3PAccount::LoginGame(S3PDBConVBC* pConn, DWORD ClientID, const char* strAcc
 		if (NewClientID == ClientID)
 		{
 			char strSQL[MAX_PATH];
-			//dLoginDate is null ÒÑ¾­LoginÖ®ºódLoginDate²Å»ánull
+			//dLoginDate is null å·²ç»Loginä¹‹åŽdLoginDateæ‰ä¼šnull
 			sprintf(strSQL, "update Account_info set dLoginDate = getdate() where (cAccName = '%s') and (iClientID = %d) and (dLoginDate is null)", strAccName, ClientID);
 			if (pConn->Do(strSQL))
 			{
@@ -127,15 +127,15 @@ int S3PAccount::Logout(S3PDBConVBC* pConn, DWORD ClientID, const char* strAccNam
 	char strSQL[2*MAX_PATH];
 	sprintf(strSQL, "update View_AccountMoney set iLeftSecond = iLeftSecond - (datediff(second, dLoginDate, getdate())) where (datediff(second, getdate(), dEndDate) <= 0) and (iClientID = %d or iClientID = %d) and (cAccName = '%s') and (dLoginDate is not null)",
 		ClientID, GetGMID(), strAccName);
-	pConn->Do(strSQL);	//¿Ûµã,¼´Ê¹±»µÄ¶³½áÕÊ»§
+	pConn->Do(strSQL);	//æ‰£ç‚¹,å³ä½¿è¢«çš„å†»ç»“å¸æˆ·
 
 	if (nExtPoint != 0)
 	{
 	//	sprintf(strSQL, "update View_AccountMoney set nExtPoint = CASE WHEN nExtPoint - %d >= 0 THEN nExtPoint - %d WHEN nExtPoint - %d < 0 THEN 0 END where (datediff(second, getdate(), dEndDate) <= 0) and (iClientID = %d or iClientID = %d) and (cAccName = '%s') and (dLoginDate is not null)",
 	//		nExtPoint, nExtPoint, nExtPoint, ClientID, GetGMID(), strAccName);
 		sprintf(strSQL,"EXEC Account_ExPoint '%s',%d",strAccName, nExtPoint);
-		pConn->Do(strSQL);	//¿Û¸½¼Óµã,¼´Ê¹±»µÄ¶³½áÕÊ»§
-		//²ð³ÉÁ½¾äÊÇÒòÎªÖ´ÐÐµÄSQLÓÐ³¤¶ÈÏÞÖÆ
+		pConn->Do(strSQL);	//æ‰£é™„åŠ ç‚¹,å³ä½¿è¢«çš„å†»ç»“å¸æˆ·
+		//æ‹†æˆä¸¤å¥æ˜¯å› ä¸ºæ‰§è¡Œçš„SQLæœ‰é•¿åº¦é™åˆ¶
 	}
 
 	DWORD NewClientID = 0;
@@ -465,7 +465,7 @@ int S3PAccount::GetLeftSecondsOfDeposit(S3PDBConVBC* pConn,
 			pResult->get_field_data(2, &extPoint, sizeof(_variant_t));
 			liLeft = left.lVal;
 
-			if (diffDate.vt == VT_I4 && diffDate.lVal > 0)	//°üÔÂÓÐÐ§
+			if (diffDate.vt == VT_I4 && diffDate.lVal > 0)	//åŒ…æœˆæœ‰æ•ˆ
 			{
 				liLeft += diffDate.lVal;
 			}

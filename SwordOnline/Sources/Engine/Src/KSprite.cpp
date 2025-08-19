@@ -15,10 +15,10 @@
 #include "KDrawSpriteAlpha.h"
 #include "KSprite.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KSprite
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KSprite
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KSprite::KSprite()
 {
@@ -36,11 +36,11 @@ KSprite::KSprite()
 	m_pSprite		= NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Load
-// ¹¦ÄÜ:	ÔØÈë
-// ²ÎÊı:	FileName ÎÄ¼şÃû
-// ·µ»Ø:	TRUE£­³É¹¦
-//			FALSE£­Ê§°Ü
+// å‡½æ•°:	Load
+// åŠŸèƒ½:	è½½å…¥
+// å‚æ•°:	FileName æ–‡ä»¶å
+// è¿”å›:	TRUEï¼æˆåŠŸ
+//			FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KSprite::Load(LPSTR FileName)
 {
@@ -85,7 +85,7 @@ BOOL KSprite::Load(LPSTR FileName)
 
 	// setup sprite pointer
 	pTemp += m_nFrames * sizeof(SPROFFS);
-	m_pSprite = (LPBYTE)pTemp; // Ïà¶ÔÆ«ÒÆ
+	m_pSprite = (LPBYTE)pTemp; // ç›¸å¯¹åç§»
 
 	// make color table
 	MakePalette();
@@ -95,11 +95,11 @@ BOOL KSprite::Load(LPSTR FileName)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	LoadFor3D
-// ¹¦ÄÜ:	ÔØÈë  ÎªÈıÎ¬Ä£Ê½Éú³É4444µÄµ÷É«°æÓë¶şÎ¬µ÷É«°æ²»Í¬
-// ²ÎÊı:	FileName ÎÄ¼şÃû
-// ·µ»Ø:	TRUE£­³É¹¦
-//			FALSE£­Ê§°Ü
+// å‡½æ•°:	LoadFor3D
+// åŠŸèƒ½:	è½½å…¥  ä¸ºä¸‰ç»´æ¨¡å¼ç”Ÿæˆ4444çš„è°ƒè‰²ç‰ˆä¸äºŒç»´è°ƒè‰²ç‰ˆä¸åŒ
+// å‚æ•°:	FileName æ–‡ä»¶å
+// è¿”å›:	TRUEï¼æˆåŠŸ
+//			FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KSprite::LoadFor3D(LPSTR FileName)
 {
@@ -144,7 +144,7 @@ BOOL KSprite::LoadFor3D(LPSTR FileName)
 
 	// setup sprite pointer
 	pTemp += m_nFrames * sizeof(SPROFFS);
-	m_pSprite = (LPBYTE)pTemp; // Ïà¶ÔÆ«ÒÆ
+	m_pSprite = (LPBYTE)pTemp; // ç›¸å¯¹åç§»
 
 	// make color table
 	Make4444Palette();
@@ -153,10 +153,10 @@ BOOL KSprite::LoadFor3D(LPSTR FileName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Free
-// ¹¦ÄÜ:	ÊÍ·Å
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Free
+// åŠŸèƒ½:	é‡Šæ”¾
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::Free()
 {
@@ -170,10 +170,10 @@ void KSprite::Free()
 	m_pSprite = NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Make4444Palette
-// ¹¦ÄÜ:	Éú³É4444É«ÅÌ£¬ÆäÖĞalpha²ãÎª0
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Make4444Palette
+// åŠŸèƒ½:	ç”Ÿæˆ4444è‰²ç›˜ï¼Œå…¶ä¸­alphaå±‚ä¸º0
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::Make4444Palette()
 {
@@ -200,10 +200,10 @@ void KSprite::Make4444Palette()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	MakePalette
-// ¹¦ÄÜ:	Éú³ÉÉ«ÅÌ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	MakePalette
+// åŠŸèƒ½:	ç”Ÿæˆè‰²ç›˜
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::MakePalette()
 {
@@ -212,12 +212,12 @@ void KSprite::MakePalette()
 	g_Pal24ToPal16(m_pPal24, m_pPal16, m_nColors);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Draw
-// ¹¦ÄÜ:	Draw Sprite Onto Screen
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	Draw
+// åŠŸèƒ½:	Draw Sprite Onto Screen
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::Draw(int nX, int nY, int nFrame)
 {
@@ -239,12 +239,12 @@ void KSprite::Draw(int nX, int nY, int nFrame)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawCenter
-// ¹¦ÄÜ:	Draw Sprite Onto Screen in a CenterPoint
-// ²ÎÊı:	CX		X×ø±ê
-//			CY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawCenter
+// åŠŸèƒ½:	Draw Sprite Onto Screen in a CenterPoint
+// å‚æ•°:	CX		Xåæ ‡
+//			CY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawCenter(int nX, int nY, int nFrame)
 {
@@ -267,12 +267,12 @@ void KSprite::DrawCenter(int nX, int nY, int nFrame)
 		m_pPal16);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawMixColor
-// ¹¦ÄÜ:	Draw Sprite Onto Screen
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawMixColor
+// åŠŸèƒ½:	Draw Sprite Onto Screen
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawMixColor(int nX, int nY, int nFrame,int nColor,int nAlpha)
 {
@@ -295,12 +295,12 @@ void KSprite::DrawMixColor(int nX, int nY, int nFrame,int nColor,int nAlpha)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawWithColor
-// ¹¦ÄÜ:	Draw Sprite Onto Screen
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawWithColor
+// åŠŸèƒ½:	Draw Sprite Onto Screen
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawWithColor(int nX, int nY, int nFrame,int nColor,int nAlpha)
 {
@@ -322,12 +322,12 @@ void KSprite::DrawWithColor(int nX, int nY, int nFrame,int nColor,int nAlpha)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawAlpha
-// ¹¦ÄÜ:	»æÖÆ´øAlphaµÄ¾«ÁéÍ¼ĞÎ
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawAlpha
+// åŠŸèƒ½:	ç»˜åˆ¶å¸¦Alphaçš„ç²¾çµå›¾å½¢
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawAlpha(int nX, int nY, int nFrame, int nExAlpha)
 {
@@ -348,12 +348,12 @@ void KSprite::DrawAlpha(int nX, int nY, int nFrame, int nExAlpha)
 		m_pPal16, nExAlpha);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawAlphaCenter
-// ¹¦ÄÜ:	ÒÔnX,nYÎªÖĞĞÄ»æÖÆ´øAlphaµÄ¾«ÁéÍ¼ĞÎ
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawAlphaCenter
+// åŠŸèƒ½:	ä»¥nX,nYä¸ºä¸­å¿ƒç»˜åˆ¶å¸¦Alphaçš„ç²¾çµå›¾å½¢
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawAlphaCenter(int nX, int nY, int nFrame, int nExAlpha)
 {
@@ -378,23 +378,23 @@ void KSprite::DrawAlphaCenter(int nX, int nY, int nFrame, int nExAlpha)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawTrans
-// ¹¦ÄÜ:	»æÖÆ´øAlphaµÄ¾«ÁéÍ¼ĞÎ
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawTrans
+// åŠŸèƒ½:	ç»˜åˆ¶å¸¦Alphaçš„ç²¾çµå›¾å½¢
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawTrans(int nX, int nY, int nFrame)
 {
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	DrawBorder
-// ¹¦ÄÜ:	Draw Sprite Onto Screen
-// ²ÎÊı:	nX		X×ø±ê
-//			nY		Y×ø±ê
-//			nFrame	Òª»æÖÆµÄÖ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	DrawBorder
+// åŠŸèƒ½:	Draw Sprite Onto Screen
+// å‚æ•°:	nX		Xåæ ‡
+//			nY		Yåæ ‡
+//			nFrame	è¦ç»˜åˆ¶çš„å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSprite::DrawBorder(int nX, int nY, int nFrame, int nColor)
 {
@@ -412,10 +412,10 @@ void KSprite::DrawBorder(int nX, int nY, int nFrame, int nColor)
 	//g_DrawSpriteBorder(nX, nY, m_nWidth, m_nHeight, nColor, pSprite);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NexFrame
-// ¹¦ÄÜ:	È¡µÃÏÂÒ»Ö¡
-// ²ÎÊı:	nFrame		µ±Ç°Ö¡
-// ·µ»Ø:	ÏÂÒ»Ö¡
+// å‡½æ•°:	NexFrame
+// åŠŸèƒ½:	å–å¾—ä¸‹ä¸€å¸§
+// å‚æ•°:	nFrame		å½“å‰å¸§
+// è¿”å›:	ä¸‹ä¸€å¸§
 //---------------------------------------------------------------------------
 int KSprite::NextFrame(int nFrame)
 {
@@ -427,9 +427,9 @@ int KSprite::NextFrame(int nFrame)
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-// º¯Êı:	GetPixelAlpha
-// ¹¦ÄÜ:	È¡µÃÄ³Ò»µãµÄalphaÖµ
-// ²ÎÊı:	nFrame		µ±Ç°Ö¡
+// å‡½æ•°:	GetPixelAlpha
+// åŠŸèƒ½:	å–å¾—æŸä¸€ç‚¹çš„alphaå€¼
+// å‚æ•°:	nFrame		å½“å‰å¸§
 //---------------------------------------------------------------------------
 int	KSprite::GetPixelAlpha(int nFrame, int x, int y)
 {
@@ -447,10 +447,10 @@ int	KSprite::GetPixelAlpha(int nFrame, int x, int y)
 			y++;
 			_asm
 			{
-				//Ê¹SDIÖ¸ÏòspriteÖĞµÄÍ¼ĞÎÊı¾İÎ»ÖÃ
+				//ä½¿SDIæŒ‡å‘spriteä¸­çš„å›¾å½¢æ•°æ®ä½ç½®
 				mov		esi, pSprite
 			dec_line:
-				dec		y				//¼õµôÒ»ĞĞ
+				dec		y				//å‡æ‰ä¸€è¡Œ
 				jz		last_line
 
 				mov		edx, nNumPixels
@@ -488,10 +488,10 @@ int	KSprite::GetPixelAlpha(int nFrame, int x, int y)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFrame
-// ¹¦ÄÜ:	Get Sprite Frame
-// ²ÎÊı:	nFrame	Ö¡
-// ·µ»Ø:	void
+// å‡½æ•°:	GetFrame
+// åŠŸèƒ½:	Get Sprite Frame
+// å‚æ•°:	nFrame	å¸§
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 LPVOID KSprite::GetFrame(int nFrame)
 {

@@ -107,7 +107,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <AdditionalIncludeDirectories>include;..\KMp3LibClass\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;ENGINE_EXPORTS;USE_STANDALONE_SPR;WINVER=0x0500;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -328,6 +328,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\FilterText.cpp" />
     <ClCompile Include="Src\KAutoMutex.cpp" />
     <ClCompile Include="Src\KAviFile.cpp" />
     <ClCompile Include="Src\KBitmap.cpp" />
@@ -353,8 +354,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KDrawSprite.cpp" />
     <ClCompile Include="Src\KDrawSpriteAlpha.cpp" />
     <ClCompile Include="Src\KDSound.cpp" />
-    <ClCompile Include="Src\KEicScript.cpp" />
-    <ClCompile Include="Src\KEicScriptSet.cpp" />
     <ClCompile Include="Src\KEngine.cpp" />
     <ClCompile Include="Src\KEvent.cpp" />
     <ClCompile Include="Src\KFile.cpp" />
@@ -386,10 +385,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KMessage.cpp" />
     <ClCompile Include="Src\KMouse.cpp" />
     <ClCompile Include="Src\KMp3Music.cpp" />
-    <ClCompile Include="Src\KMp4Audio.cpp" />
-    <ClCompile Include="Src\KMp4Movie.cpp" />
-    <ClCompile Include="Src\KMp4Video.cpp" />
-    <ClCompile Include="Src\KMpgMusic.cpp" />
     <ClCompile Include="Src\KMsgNode.cpp" />
     <ClCompile Include="Src\KMusic.cpp" />
     <ClCompile Include="Src\KMutex.cpp" />
@@ -442,6 +437,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClCompile Include="Src\KZipFile.cpp" />
     <ClCompile Include="Src\KZipList.cpp" />
     <ClCompile Include="Src\md5.cpp" />
+    <ClCompile Include="Src\Regexp.cpp" />
     <ClCompile Include="Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">kwin32.h</PrecompiledHeaderFile>
@@ -577,6 +573,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\FilterText.h" />
     <ClInclude Include="Src\KAutoMutex.h" />
     <ClInclude Include="Src\KAviFile.h" />
     <ClInclude Include="Src\KBinsTree.h" />
@@ -605,8 +602,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KDrawSprite.h" />
     <ClInclude Include="Src\KDrawSpriteAlpha.h" />
     <ClInclude Include="Src\KDSound.h" />
-    <ClInclude Include="Src\KEicScript.h" />
-    <ClInclude Include="Src\KEicScriptSet.h" />
     <ClInclude Include="Src\KEngine.h" />
     <ClInclude Include="Src\KEvent.h" />
     <ClInclude Include="Src\KFile.h" />
@@ -640,10 +635,6 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KMessage.h" />
     <ClInclude Include="Src\KMouse.h" />
     <ClInclude Include="Src\KMp3Music.h" />
-    <ClInclude Include="Src\KMp4Audio.h" />
-    <ClInclude Include="Src\KMp4Movie.h" />
-    <ClInclude Include="Src\KMp4Video.h" />
-    <ClInclude Include="Src\KMpgMusic.h" />
     <ClInclude Include="Src\KMsgNode.h" />
     <ClInclude Include="Src\KMusic.h" />
     <ClInclude Include="Src\KMutex.h" />
@@ -697,6 +688,7 @@ copy Engine___Win32_OutRead_Debug\Engine.dll ..\..\..\bin\server\debug\engine.dl
     <ClInclude Include="Src\KZipList.h" />
     <ClInclude Include="Src\LinkStruct.h" />
     <ClInclude Include="Src\md5.h" />
+    <ClInclude Include="Src\Regexp.h" />
     <ClInclude Include="Src\XPackFile.h" />
     <ClInclude Include="Include\JpgLib.h" />
     <ClInclude Include="Include\LuaLib.h" />

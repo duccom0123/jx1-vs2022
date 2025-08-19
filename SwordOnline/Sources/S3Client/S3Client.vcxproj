@@ -54,7 +54,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Debug\</OutDir>
+    <OutDir>D:\jx1-vs2022\bin\client</OutDir>
     <IntDir>.\Debug\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -70,7 +70,7 @@
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <AdditionalIncludeDirectories>../Engine/src;../Core/src;../Engine/include;../../Headers;..\KMp3LibClass\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;SWORDONLINE_SHOW_DBUG_INFO;SWORDONLINE_USE_MD5_PASSWORD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -278,8 +278,6 @@ copy Release\Game.map ..\..\..\bin\Client\release\Game.map</Command>
     <ClCompile Include="Ui\ShortcutKey.cpp" />
     <ClCompile Include="Ui\UiBase.cpp" />
     <ClCompile Include="Ui\UiShell.cpp" />
-    <ClCompile Include="Ui\ChatFilter.cpp" />
-    <ClCompile Include="Ui\FilterTextLib.cpp" />
     <ClCompile Include="S3Client.cpp" />
     <ClCompile Include="NetConnect\NetConnectAgent.cpp" />
     <ClCompile Include="Login\Login.cpp" />
@@ -399,8 +397,6 @@ copy Release\Game.map ..\..\..\bin\Client\release\Game.map</Command>
     <ClInclude Include="Ui\ShortcutKey.h" />
     <ClInclude Include="Ui\UiBase.h" />
     <ClInclude Include="Ui\UiShell.h" />
-    <ClInclude Include="Ui\ChatFilter.h" />
-    <ClInclude Include="Ui\FilterTextLib.h" />
     <ClInclude Include="S3Client.h" />
     <ClInclude Include="NetConnect\NetConnectAgent.h" />
     <ClInclude Include="NetConnect\NetMsgTargetObject.h" />

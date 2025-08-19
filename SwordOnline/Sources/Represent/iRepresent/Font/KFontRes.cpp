@@ -2,8 +2,8 @@
 // FileName			:	KFontRes.cpp
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-12 9:57:55
-// FileDescription	:	×ÖÌåÍ¼ĞÎ×ÊÔ´Àà
-// Revision Count	:	2002-9-4¸ÄĞ´£¬¸ÄÎª»ùÓÚd3d¡£Wooy
+// FileDescription	:	å­—ä½“å›¾å½¢èµ„æºç±»
+// Revision Count	:	2002-9-4æ”¹å†™ï¼Œæ”¹ä¸ºåŸºäºd3dã€‚Wooy
 *******************************************************************************/
 #include "KFontRes.h"
 
@@ -11,14 +11,14 @@
 
 int KFontRes::m_bEnableTextBorder = true;
 
-//ÆôÓÃ/½ûÓÃÎÄ×Ö±ßÔµĞ§¹û
+//å¯ç”¨/ç¦ç”¨æ–‡å­—è¾¹ç¼˜æ•ˆæœ
 void KFontRes::EnableTextBorder(bool bEnable)
 {
 	m_bEnableTextBorder = (bEnable != false);
 }
 
 /*!*****************************************************************************
-// Purpose		:  ¹¹Ôìº¯Êı
+// Purpose		:  æ„é€ å‡½æ•°
 *****************************************************************************/
 KFontRes::KFontRes()
 {
@@ -32,7 +32,7 @@ KFontRes::KFontRes()
 }
 
 /*!*****************************************************************************
-// Purpose		:  Îö¹¹º¯Êı
+// Purpose		:  ææ„å‡½æ•°
 *****************************************************************************/
 KFontRes::~KFontRes()
 {
@@ -41,10 +41,10 @@ KFontRes::~KFontRes()
 
 /*!*****************************************************************************
 // Function		: KFontRes::Init
-// Purpose		: ³õÊ¼»¯
-// Return		: ÊÇ·ñ³É¹¦
-// Argumant		: const char* pszFontFile      -> ×Ö¿âÎÄ¼şÃû
-// Argumant		: LPDIRECT3DDEVICE8 pd3dDevice -> directx 3d device½Ó¿ÚµÄÊµÀıµÄÖ¸Õë
+// Purpose		: åˆå§‹åŒ–
+// Return		: æ˜¯å¦æˆåŠŸ
+// Argumant		: const char* pszFontFile      -> å­—åº“æ–‡ä»¶å
+// Argumant		: LPDIRECT3DDEVICE8 pd3dDevice -> directx 3d deviceæ¥å£çš„å®ä¾‹çš„æŒ‡é’ˆ
 *****************************************************************************/
 bool KFontRes::Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 {
@@ -54,7 +54,7 @@ bool KFontRes::Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 	if (pszFontFile == NULL)
 		return false;
 
-	//ÔØÈë×Ö¿âÎÄ¼ş
+	//è½½å…¥å­—åº“æ–‡ä»¶
 	if (!m_FontData.Load(pszFontFile))
 	{
 		Terminate();
@@ -81,9 +81,9 @@ bool KFontRes::Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 		return false;
 	}
 
-	//°ÑÌùÍ¼Çå¸É¾²
+	//æŠŠè´´å›¾æ¸…å¹²é™
 /*	{
-		//È¡µÃÌùÍ¼Êı¾İ¿éµÄÖ¸Õë
+		//å–å¾—è´´å›¾æ•°æ®å—çš„æŒ‡é’ˆ
 	    D3DLOCKED_RECT d3dlr;
 		if (m_pCharTexture->LockRect( 0, &d3dlr, 0, 0 ) != D3D_OK)
 		{
@@ -98,7 +98,7 @@ bool KFontRes::Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 		m_pCharTexture->UnlockRect(0);
 	}*/
 
-	//×Ö·û¿íÒÔ¼°×Ö·û¸ß¼ÓÒ»ÊÇÒòÎªÔÚ°Ñ×Ö·ûµãÕóÍ¼ĞÎ´æÈëÌùÍ¼Ê±±£³Ö×Ö·û¼äÒ»¸öÏñËØµÄ¼ä¸ô
+	//å­—ç¬¦å®½ä»¥åŠå­—ç¬¦é«˜åŠ ä¸€æ˜¯å› ä¸ºåœ¨æŠŠå­—ç¬¦ç‚¹é˜µå›¾å½¢å­˜å…¥è´´å›¾æ—¶ä¿æŒå­—ç¬¦é—´ä¸€ä¸ªåƒç´ çš„é—´éš”
 	m_nNumCountH = m_nTextureSideWidth / (m_nFontW + 1);
 	m_nMaxCount = (m_nTextureSideWidth / (m_nFontH + 1)) * m_nNumCountH;
 	return true;
@@ -106,11 +106,11 @@ bool KFontRes::Init(const char* pszFontFile, LPDIRECT3DDEVICE9 pd3dDevice)
 
 /*!*****************************************************************************
 // Function		: KFontRes::GetInfo
-// Purpose		: µÃµ½×ÖÌåµÄ¿í¶È¸ß¶È£¬ÌùÍ¼¿ÉÒÔ»º´æµÄ×Ö·ûµÄ¸öÊı
-// Argumant		: int &nWidth	×Ö·û¿í
-// Argumant		: int &nHeight	×Ö·û¸ß
-// Argumant		: int &nHCount	ÌùÍ¼ÀïÒ»ĞĞ´æ´¢×Ö·ûµÄ¸öÊı
-// Argumant		: int &nCount	»º´æ×Ö·ûµÄ¸öÊı
+// Purpose		: å¾—åˆ°å­—ä½“çš„å®½åº¦é«˜åº¦ï¼Œè´´å›¾å¯ä»¥ç¼“å­˜çš„å­—ç¬¦çš„ä¸ªæ•°
+// Argumant		: int &nWidth	å­—ç¬¦å®½
+// Argumant		: int &nHeight	å­—ç¬¦é«˜
+// Argumant		: int &nHCount	è´´å›¾é‡Œä¸€è¡Œå­˜å‚¨å­—ç¬¦çš„ä¸ªæ•°
+// Argumant		: int &nCount	ç¼“å­˜å­—ç¬¦çš„ä¸ªæ•°
 *****************************************************************************/
 void KFontRes::GetInfo(int &nWidth, int &nHeight, int& nHCount, int &nCount) const
 {
@@ -122,12 +122,12 @@ void KFontRes::GetInfo(int &nWidth, int &nHeight, int& nHCount, int &nCount) con
 
 /*!*****************************************************************************
 // Function		: KFontRes::GetInfo
-// Purpose		: µÃµ½×Ö·ûÔÚÌùÍ¼ÀïµÄ¿í¶È¸ß¶È£¬Ë®Æ½¼ä¸ô£¬ÌùÍ¼¿ÉÒÔ»º´æµÄ×Ö·ûµÄ¸öÊı
-// Argumant		: float& fWidth		×Ö·ûÔÚÌùÍ¼ÀïµÄË®Æ½¿í¶È
-// Argumant		: float& fHeight	×Ö·ûÔÚÌùÍ¼ÀïµÄË®Æ½¸ß¶È
-// Argumant		: float& fHInterval	×Ö·ûÔÚÌùÍ¼ÀïµÄË®Æ½¼ä¸ô
-// Argumant		: float& fVInterval	×Ö·ûÔÚÌùÍ¼ÀïµÄ´¹Ö±¼ä¸ô
-// Argumant		: int& nCount		»º´æ×Ö·ûµÄ¸öÊı
+// Purpose		: å¾—åˆ°å­—ç¬¦åœ¨è´´å›¾é‡Œçš„å®½åº¦é«˜åº¦ï¼Œæ°´å¹³é—´éš”ï¼Œè´´å›¾å¯ä»¥ç¼“å­˜çš„å­—ç¬¦çš„ä¸ªæ•°
+// Argumant		: float& fWidth		å­—ç¬¦åœ¨è´´å›¾é‡Œçš„æ°´å¹³å®½åº¦
+// Argumant		: float& fHeight	å­—ç¬¦åœ¨è´´å›¾é‡Œçš„æ°´å¹³é«˜åº¦
+// Argumant		: float& fHInterval	å­—ç¬¦åœ¨è´´å›¾é‡Œçš„æ°´å¹³é—´éš”
+// Argumant		: float& fVInterval	å­—ç¬¦åœ¨è´´å›¾é‡Œçš„å‚ç›´é—´éš”
+// Argumant		: int& nCount		ç¼“å­˜å­—ç¬¦çš„ä¸ªæ•°
 *****************************************************************************/
 void KFontRes::GetInfo(float& fWidth, float& fHeight, float& fHInterval, float& fVInterval) const
 {
@@ -139,11 +139,11 @@ void KFontRes::GetInfo(float& fWidth, float& fHeight, float& fHInterval, float& 
 
 /*!*****************************************************************************
 // Function		: KFontRes::Terminate
-// Purpose		: ½áÊø£¬Çå³ı²Ù×÷
+// Purpose		: ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 *****************************************************************************/
 void KFontRes::Terminate()
 {
-	//ÊÍ·ÅÌùÍ¼
+	//é‡Šæ”¾è´´å›¾
 	if (m_pCharTexture)
 	{
 		m_pCharTexture->Release();
@@ -157,29 +157,29 @@ void KFontRes::Terminate()
 
 /*!***************************************************************************
 // Function		: KFontRes::Update
-// Purpose		: ¸üĞÂ»º´æ×Ö·û
-// Argumant		: unsigned short * pUpdates	¸üĞÂ×Ö·û±àÂë¼°ÔÚÌùÍ¼ÖĞÎ»ÖÃÊı×é
-						Ê÷×éµÄ½á¹¹Îª¶ÔÓ¦ÓÚÃ¿¸ö¸üĞÂ×Ö·ûÓĞÁ½¸öuintÊıÖµ¡£
-						Ç°Ò»¸ö±íÊ¾×Ö·ûÔÚÌùÍ¼ÖĞµÄÎ»ÖÃ£¬ºóÒ»¸öÎª×Ö·ûµÄ±àÂë
-// Argumant		: int nCount	¸üĞÂ×Ö·ûµÄ¸öÊı
+// Purpose		: æ›´æ–°ç¼“å­˜å­—ç¬¦
+// Argumant		: unsigned short * pUpdates	æ›´æ–°å­—ç¬¦ç¼–ç åŠåœ¨è´´å›¾ä¸­ä½ç½®æ•°ç»„
+						æ ‘ç»„çš„ç»“æ„ä¸ºå¯¹åº”äºæ¯ä¸ªæ›´æ–°å­—ç¬¦æœ‰ä¸¤ä¸ªuintæ•°å€¼ã€‚
+						å‰ä¸€ä¸ªè¡¨ç¤ºå­—ç¬¦åœ¨è´´å›¾ä¸­çš„ä½ç½®ï¼Œåä¸€ä¸ªä¸ºå­—ç¬¦çš„ç¼–ç 
+// Argumant		: int nCount	æ›´æ–°å­—ç¬¦çš„ä¸ªæ•°
 *****************************************************************************/
 void KFontRes::Update(unsigned short * pUpdates, int nCount)
 {
 	int				i;
-	int				nTexIndex;	//×Ö·ûÔÚÌùÍ¼ÀïµÄË÷Òı
-	int				nX, nY;		//×Ö·û×óÉÏ½ÇÔÚÌùÍ¼Àï×ø±ê
+	int				nTexIndex;	//å­—ç¬¦åœ¨è´´å›¾é‡Œçš„ç´¢å¼•
+	int				nX, nY;		//å­—ç¬¦å·¦ä¸Šè§’åœ¨è´´å›¾é‡Œåæ ‡
 
 	if (pUpdates == NULL || nCount <= 0)
 		return;
 
-	//È¡µÃÌùÍ¼Êı¾İ¿éµÄÖ¸Õë
+	//å–å¾—è´´å›¾æ•°æ®å—çš„æŒ‡é’ˆ
 	D3DLOCKED_RECT d3dlr;
 	if (m_pCharTexture->LockRect( 0, &d3dlr, 0, 0 ) != D3D_OK)
 		return;
-	//Öğ¸ö´¦ÀíÒª¸üĞÂµÄ×Ö·û
+	//é€ä¸ªå¤„ç†è¦æ›´æ–°çš„å­—ç¬¦
 	for (i = 0; i < nCount; i++)
 	{
-		//È¡µÃ×Ö·ûÔÚÌùÍ¼ÀïµÄÎ»ÖÃ£¬²¢×÷¼ì²é
+		//å–å¾—å­—ç¬¦åœ¨è´´å›¾é‡Œçš„ä½ç½®ï¼Œå¹¶ä½œæ£€æŸ¥
 		nTexIndex = *pUpdates;
 		if (nTexIndex >= m_nMaxCount)
 		{
@@ -187,17 +187,17 @@ void KFontRes::Update(unsigned short * pUpdates, int nCount)
 			continue;
 		}
 
-		//È¡µÃ×Ö·ûÔÚ×Ö¿âÀïµÄÊı¾İÇøÖ¸Õë
+		//å–å¾—å­—ç¬¦åœ¨å­—åº“é‡Œçš„æ•°æ®åŒºæŒ‡é’ˆ
 		unsigned char* pCharacterData = m_FontData.GetCharacterData(
 			*(((unsigned char*)pUpdates) + 2), *(((unsigned char*)pUpdates) + 3));
 		pUpdates += 2;
 		if (pCharacterData == NULL)
 			continue;		
 		
-		//¼ÆËã×Ö·û×óÉÏ½ÇÔÚÌùÍ¼Àï×ø±ê
+		//è®¡ç®—å­—ç¬¦å·¦ä¸Šè§’åœ¨è´´å›¾é‡Œåæ ‡
 		nX = (m_nFontW + 1) * (nTexIndex % m_nNumCountH);
 		nY = (m_nFontH + 1) * (nTexIndex / m_nNumCountH);
-		//¸üĞÂÌùÍ¼
+		//æ›´æ–°è´´å›¾
 		Update(pCharacterData,
 			((BYTE*)d3dlr.pBits + d3dlr.Pitch * nY + nX * 2), d3dlr.Pitch);
 	}
@@ -206,30 +206,30 @@ void KFontRes::Update(unsigned short * pUpdates, int nCount)
 
 /*!*****************************************************************************
 // Function		: KFontRes::Update
-// Purpose		: ¸üĞÂµ¥¸ö×Ö·ûµÄµãÕóÊı¾İ
-// Argumant		: unsigned char* pCharData	Í¼ĞÎÊı¾İ¿éÆğµã
-// Argumant		: unsigned char* pTexData	ÌùÍ¼Êı¾İ¿éÆğµã
-// Argumant		: int nTexPitch		ÌùÍ¼Êı¾İ¿épitch
+// Purpose		: æ›´æ–°å•ä¸ªå­—ç¬¦çš„ç‚¹é˜µæ•°æ®
+// Argumant		: unsigned char* pCharData	å›¾å½¢æ•°æ®å—èµ·ç‚¹
+// Argumant		: unsigned char* pTexData	è´´å›¾æ•°æ®å—èµ·ç‚¹
+// Argumant		: int nTexPitch		è´´å›¾æ•°æ®å—pitch
 *****************************************************************************/
 void KFontRes::Update(unsigned char* pCharImage, unsigned char* pTexData, int nTexPitch)
 {
-	int		TextureOffset;		//ÌùÍ¼Êı¾İ»»ĞĞµÄÆ«ÒÆ
+	int		TextureOffset;		//è´´å›¾æ•°æ®æ¢è¡Œçš„åç§»
 	int		nWidth, nHeight;
 
 	nWidth = m_nFontW;
 	nHeight = m_nFontH;
 
-	//¼ÆËãÌùÍ¼Êı¾İ»»ĞĞµÄÆ«ÒÆ
+	//è®¡ç®—è´´å›¾æ•°æ®æ¢è¡Œçš„åç§»
 	TextureOffset = nTexPitch - m_nFontW * 2;
 	int bEnableTextBorder = m_bEnableTextBorder;
 
 	__asm
 	{
-		//³õÊ¼»¯ EDI Ö¸ÏòÌùÍ¼Êı¾İÆğµã
+		//åˆå§‹åŒ– EDI æŒ‡å‘è´´å›¾æ•°æ®èµ·ç‚¹
 		mov 	edi, pTexData
-		//³õÊ¼»¯ ESI Ö¸ÏòÍ¼ĞÎÊı¾İÆğµã
+		//åˆå§‹åŒ– ESI æŒ‡å‘å›¾å½¢æ•°æ®èµ·ç‚¹
 		mov		esi, pCharImage
-		//¸ß
+		//é«˜
 		mov		ebx, 0xffff
 
 		mov		eax, bEnableTextBorder
@@ -238,7 +238,7 @@ void KFontRes::Update(unsigned char* pCharImage, unsigned char* pTexData, int nT
 
 		with_border_start_line:
 		{
-			//¿í
+			//å®½
 			mov		edx, nWidth
 
 		with_border_same_alpha_block:
@@ -246,10 +246,10 @@ void KFontRes::Update(unsigned char* pCharImage, unsigned char* pTexData, int nT
 			mov     al, [esi]
 			inc     esi
 			mov		ecx, eax
-			and		ecx, 0x1f			//eaxÎªÁ¬ĞøÏàÍ¬alphaÖµµÄµãµÄ¸öÊı
+			and		ecx, 0x1f			//eaxä¸ºè¿ç»­ç›¸åŒalphaå€¼çš„ç‚¹çš„ä¸ªæ•°
 			sub		edx, ecx
 		
-			shr		eax, 5				//eaxºó3bitÎªalphaÖµ
+			shr		eax, 5				//eaxå3bitä¸ºalphaå€¼
 
 			cmp		eax, 0
 			je		with_border_store_pixel
@@ -277,7 +277,7 @@ void KFontRes::Update(unsigned char* pCharImage, unsigned char* pTexData, int nT
 
 		without_border_start_line:
 		{
-			//¿í
+			//å®½
 			mov		edx, nWidth
 
 		without_border_same_alpha_block:
@@ -285,10 +285,10 @@ void KFontRes::Update(unsigned char* pCharImage, unsigned char* pTexData, int nT
 			mov     al, [esi]
 			inc     esi
 			mov		ecx, eax
-			and		ecx, 0x1f			//eaxÎªÁ¬ĞøÏàÍ¬alphaÖµµÄµãµÄ¸öÊı
+			and		ecx, 0x1f			//eaxä¸ºè¿ç»­ç›¸åŒalphaå€¼çš„ç‚¹çš„ä¸ªæ•°
 			sub		edx, ecx
 		
-			shr		eax, 5				//eaxºó3bitÎªalphaÖµ
+			shr		eax, 5				//eaxå3bitä¸ºalphaå€¼
 
 			cmp		eax, 7
 			je		without_border_alpha_equal_7

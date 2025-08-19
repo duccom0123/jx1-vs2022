@@ -58,8 +58,8 @@ public:
 	int	 GetUserTag() { return m_UserTag; };
 	BOOL RegisterFunctions( TLua_Funcs Funcs[], int n = 0 );
 	BOOL LoadBuffer(PBYTE pBuffer, DWORD dwLen );
-	void SafeCallBegin(int * pIndex);//¼ÇÂ¼µ±Ç°¶ÑÕ»Õ»¶¥Î»ÖÃ£¬²¢±£´æµ½pIndexÖ¸ÏòµÄÊı¾İÖĞ
-	void SafeCallEnd (int nIndex);//»Ö¸´ÖÁµ÷ÓÃÖ®Ç°Õ»¶¥Î»ÖÃ¡£
+	void SafeCallBegin(int * pIndex);//è®°å½•å½“å‰å †æ ˆæ ˆé¡¶ä½ç½®ï¼Œå¹¶ä¿å­˜åˆ°pIndexæŒ‡å‘çš„æ•°æ®ä¸­
+	void SafeCallEnd (int nIndex);//æ¢å¤è‡³è°ƒç”¨ä¹‹å‰æ ˆé¡¶ä½ç½®ã€‚
 	BOOL GetValuesFromStack(char * cFormat , ...);			
 	
 	BOOL Stop();
@@ -81,7 +81,7 @@ public:
 
 //private:
 	void RegisterStandardFunctions();
-	BOOL m_IsRuning;//ÊÇ·ñ¸Ã½Å±¾ÓĞĞ§
+	BOOL m_IsRuning;//æ˜¯å¦è¯¥è„šæœ¬æœ‰æ•ˆ
 	char m_szScriptName[100];
 	int	 m_UserTag;
 	Lua_State * m_LuaState;

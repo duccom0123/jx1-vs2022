@@ -27,7 +27,7 @@ public:
 		int Level;
 		int	Translife;
 		int Money;
-		int Sect;			//ÃÅÅÉ
+		int Sect;			//é—¨æ´¾
 		int FightExp;
 		int KillNum;
 		int Repute;
@@ -43,66 +43,66 @@ public:
 	};
 	struct TStatData
 	{
-		TRoleList LevelStat[LEVELSTATNUM];			//¼¶±ğ×î¶àÅÅÃûÁĞ±í
-		TRoleList MoneyStat[MONEYSTATNUM];			//½ğÇ®×î¶àÅÅÃûÁĞ±í
-		TRoleList KillerStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList ReputeStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList FuYuanStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList AccumStat1[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList AccumStat2[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList HonorStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
+		TRoleList LevelStat[LEVELSTATNUM];			//çº§åˆ«æœ€å¤šæ’ååˆ—è¡¨
+		TRoleList MoneyStat[MONEYSTATNUM];			//é‡‘é’±æœ€å¤šæ’ååˆ—è¡¨
+		TRoleList KillerStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList ReputeStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList FuYuanStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList AccumStat1[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList AccumStat2[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList HonorStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
 		TRoleList TimeStat[DEFAULTSTATNUM];
-		TRoleList TongLvStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList TongMnStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList TongEffStat[DEFAULTSTATNUM];			//É±ÈË×î¶àÅÅÃûÁĞ±í
-		TRoleList MoneyStatBySect[MAX_FACTION+1][SECTMONEYSTATNUM];	//¸÷ÃÅÅÉ½ğÇ®×î¶àÅÅÃûÁĞ±í[ÃÅÅÉ][Íæ¼ÒÊı]
-		TRoleList LevelStatBySect[MAX_FACTION+1][SECTLEVELSTATNUM];	//¸÷ÃÅÅÉ¼¶±ğ×î¶àÅÅÃûÁĞ±í[ÃÅÅÉ][Íæ¼ÒÊı]
-		int SectPlayerNum[MAX_FACTION+1];				//¸÷¸öÃÅÅÉµÄÍæ¼ÒÊı
-		int SectMoneyMost[MAX_FACTION+1];				//²Æ¸»ÅÅÃûÇ°MONEYSTATNUMÍæ¼ÒÖĞ¸÷ÃÅÅÉËùÕ¼±ÈÀıÊı
-		int SectLevelMost[MAX_FACTION+1];				//¼¶±ğÅÅÃûÇ°LEVELSTATNUMÍæ¼ÒÖĞ¸÷ÃÅÅÉËùÕ¼±ÈÀıÊı
+		TRoleList TongLvStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList TongMnStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList TongEffStat[DEFAULTSTATNUM];			//æ€äººæœ€å¤šæ’ååˆ—è¡¨
+		TRoleList MoneyStatBySect[MAX_FACTION+1][SECTMONEYSTATNUM];	//å„é—¨æ´¾é‡‘é’±æœ€å¤šæ’ååˆ—è¡¨[é—¨æ´¾][ç©å®¶æ•°]
+		TRoleList LevelStatBySect[MAX_FACTION+1][SECTLEVELSTATNUM];	//å„é—¨æ´¾çº§åˆ«æœ€å¤šæ’ååˆ—è¡¨[é—¨æ´¾][ç©å®¶æ•°]
+		int SectPlayerNum[MAX_FACTION+1];				//å„ä¸ªé—¨æ´¾çš„ç©å®¶æ•°
+		int SectMoneyMost[MAX_FACTION+1];				//è´¢å¯Œæ’åå‰MONEYSTATNUMç©å®¶ä¸­å„é—¨æ´¾æ‰€å æ¯”ä¾‹æ•°
+		int SectLevelMost[MAX_FACTION+1];				//çº§åˆ«æ’åå‰LEVELSTATNUMç©å®¶ä¸­å„é—¨æ´¾æ‰€å æ¯”ä¾‹æ•°
 		
 	};
 private:
-	enum StatType{stMoney, stLevel, stKiller, stRepute, stFuYuan, stAccumStat1, stAccumStat2, stHonorStat, stTimeStat, stTongLv, stTongMn, stTongEff};//ĞèÒªÅĞ¶ÏµÄÀà±ğ£¨stMoney, stLevel£©
+	enum StatType{stMoney, stLevel, stKiller, stRepute, stFuYuan, stAccumStat1, stAccumStat2, stHonorStat, stTimeStat, stTongLv, stTongMn, stTongEff};//éœ€è¦åˆ¤æ–­çš„ç±»åˆ«ï¼ˆstMoney, stLevelï¼‰
 
-	static TRoleList* GetMin(			//²éÕÒ³öÁĞ±íÖĞÇ®/¼¶±ğ£¨»òÆäËû£©×îÉÙµÄÒ»¸öÔªËØ
-		TRoleList* const aRoleList,	//ÁĞ±í
-		const int n,				//ÁĞ±í´óĞ¡
+	static TRoleList* GetMin(			//æŸ¥æ‰¾å‡ºåˆ—è¡¨ä¸­é’±/çº§åˆ«ï¼ˆæˆ–å…¶ä»–ï¼‰æœ€å°‘çš„ä¸€ä¸ªå…ƒç´ 
+		TRoleList* const aRoleList,	//åˆ—è¡¨
+		const int n,				//åˆ—è¡¨å¤§å°
 		const StatType aType,
-		const char* TongName = 0);		//ĞèÒªÅĞ¶ÏµÄÀà±ğ£¨stMoney, stLevel£©
+		const char* TongName = 0);		//éœ€è¦åˆ¤æ–­çš„ç±»åˆ«ï¼ˆstMoney, stLevelï¼‰
 
-	static TRoleList* GetMax(			//²éÕÒ³öÁĞ±íÖĞÇ®/¼¶±ğ£¨»òÆäËû£©×îÉÙµÄÒ»¸öÔªËØ
-		TRoleList* const aRoleList,	//ÁĞ±í
-		const int n,				//ÁĞ±í´óĞ¡
+	static TRoleList* GetMax(			//æŸ¥æ‰¾å‡ºåˆ—è¡¨ä¸­é’±/çº§åˆ«ï¼ˆæˆ–å…¶ä»–ï¼‰æœ€å°‘çš„ä¸€ä¸ªå…ƒç´ 
+		TRoleList* const aRoleList,	//åˆ—è¡¨
+		const int n,				//åˆ—è¡¨å¤§å°
 		const StatType aType,
-		const char* TongName = 0);		//ĞèÒªÅĞ¶ÏµÄÀà±ğ£¨stMoney, stLevel£©
+		const char* TongName = 0);		//éœ€è¦åˆ¤æ–­çš„ç±»åˆ«ï¼ˆstMoney, stLevelï¼‰
 
-	static void ListSort(			//¶ÔÁĞ±í×öÌØ¶¨µÄÅÅĞò
+	static void ListSort(			//å¯¹åˆ—è¡¨åšç‰¹å®šçš„æ’åº
 		TRoleList* const aRoleList,	
 		const int n,
 		const StatType aType,
 		const bool bSortZA = false);
 	static int GetIndexByName(char* aName, TRoleList* aList, int aListSize);
-	static void RoleDataCopy(TRoleList* Desc, TRoleData* Source, bool bTong= false);//°ÑRoleDataÓĞÓÃµÄ½á¹¹¸´ÖÆµ½RoleList½á¹¹ÖĞ
+	static void RoleDataCopy(TRoleList* Desc, TRoleData* Source, bool bTong= false);//æŠŠRoleDataæœ‰ç”¨çš„ç»“æ„å¤åˆ¶åˆ°RoleListç»“æ„ä¸­
 private:
 	HANDLE m_hThread; 
 	HANDLE m_hManualThread; 
-	static void Backup();			//±¸·İºÍĞ´ÈëÍ³¼ÆÊı¾İ
-	static void MakeSendStatData();	//Éú³É·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹
-	static DWORD WINAPI TimerThreadFunc( LPVOID lpParam );	//±¸·İ¼ÆÊ±Ïß³Ì
-	static DWORD WINAPI ManualThreadFunc( LPVOID lpParam );	//ÊÖ¹¤±¸·İÏß³Ì
+	static void Backup();			//å¤‡ä»½å’Œå†™å…¥ç»Ÿè®¡æ•°æ®
+	static void MakeSendStatData();	//ç”Ÿæˆå‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„
+	static DWORD WINAPI TimerThreadFunc( LPVOID lpParam );	//å¤‡ä»½è®¡æ—¶çº¿ç¨‹
+	static DWORD WINAPI ManualThreadFunc( LPVOID lpParam );	//æ‰‹å·¥å¤‡ä»½çº¿ç¨‹
 public:
 	CDBBackup(char* aPath, char* aName, ZDBTable* aRunTable);
 	virtual ~CDBBackup(){};
-	bool Open(int aTime, DWORD bTime);		//Æô¶¯±¸·İ¼ÆÊ±
-	bool Suspend();						//¹ÒÆğ
-	bool Resume();						//¼ÌĞøÖ´ĞĞÏß³Ì
-	bool Close();						//¹Ø±Õ
-	TGAME_STAT_DATA GetSendStatData();	//È¡µÃ·¢ËÍ¸ø¿Í»§¶ËµÄÍ³¼ÆÊı¾İ½á¹¹
-	bool IsWorking();					//Ïß³ÌÊÇ·ñÔÚ¹¤×÷
-	bool IsBackuping();				//±¸·İÊÇ·ñÔÚ¹¤×÷
-	bool ManualBackup();				//ÊÖ¹¤±¸·İ
-	static void SaveStatInfo();			//°ÑÓÎÏ·ÊÀ½çµÈ¼¶ÅÅÃûĞ´µ½Ö¸¶¨Íæ¼Ò½ÇÉ«ÖĞ
+	bool Open(int aTime, DWORD bTime);		//å¯åŠ¨å¤‡ä»½è®¡æ—¶
+	bool Suspend();						//æŒ‚èµ·
+	bool Resume();						//ç»§ç»­æ‰§è¡Œçº¿ç¨‹
+	bool Close();						//å…³é—­
+	TGAME_STAT_DATA GetSendStatData();	//å–å¾—å‘é€ç»™å®¢æˆ·ç«¯çš„ç»Ÿè®¡æ•°æ®ç»“æ„
+	bool IsWorking();					//çº¿ç¨‹æ˜¯å¦åœ¨å·¥ä½œ
+	bool IsBackuping();				//å¤‡ä»½æ˜¯å¦åœ¨å·¥ä½œ
+	bool ManualBackup();				//æ‰‹å·¥å¤‡ä»½
+	static void SaveStatInfo();			//æŠŠæ¸¸æˆä¸–ç•Œç­‰çº§æ’åå†™åˆ°æŒ‡å®šç©å®¶è§’è‰²ä¸­
 };
 
 #endif // !defined(DBBACKUP_H)

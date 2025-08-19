@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ³¡¾°µØÍ¼µÄÇøÓò¶ÔÏóµÄÀàÉùÃ÷
+// åœºæ™¯åœ°å›¾çš„åŒºåŸŸå¯¹è±¡çš„ç±»å£°æ˜
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-11
@@ -17,7 +17,7 @@ class KPakFile;
 
 //##ModelId=3DB8F89F02D5
 //##Documentation
-//## ³¡¾°µØÍ¼ÖĞµÄÒ»¸öÇøÓò¡££¨¿Í»§¶Ë°æ£©
+//## åœºæ™¯åœ°å›¾ä¸­çš„ä¸€ä¸ªåŒºåŸŸã€‚ï¼ˆå®¢æˆ·ç«¯ç‰ˆï¼‰
 class KScenePlaceRegionC
 {
 	friend class KScenePlaceC;
@@ -25,13 +25,13 @@ class KScenePlaceRegionC
 
 	//##ModelId=3DD7E5A80351
 	//##Documentation
-	//## ÇøÓò¶ÔÏóÔËĞĞÊ±µÄÒ»Ğ©²ÎÊı(Íâ²¿Òà¿ÉÒıÓÃ)
+	//## åŒºåŸŸå¯¹è±¡è¿è¡Œæ—¶çš„ä¸€äº›å‚æ•°(å¤–éƒ¨äº¦å¯å¼•ç”¨)
 	enum KREGION_WORK_PARAM_PUB { 
 		//##Documentation
-		//## µ¥¸öÇøÓòµÄºáÏò¿í¶È£¨µ¥Î»£ºÏñµã£©
+		//## å•ä¸ªåŒºåŸŸçš„æ¨ªå‘å®½åº¦ï¼ˆå•ä½ï¼šåƒç‚¹ï¼‰
 		RWPP_AREGION_WIDTH = 512, 
 		//##Documentation
-		//## µ¥¸öÇøÓòµÄ×İÏò¿í¶È£¨µ¥Î»£ºÏñµã£©
+		//## å•ä¸ªåŒºåŸŸçš„çºµå‘å®½åº¦ï¼ˆå•ä½ï¼šåƒç‚¹ï¼‰
 		RWPP_AREGION_HEIGHT = 1024 };
 
   public:
@@ -44,96 +44,96 @@ class KScenePlaceRegionC
    
 	//##ModelId=3DBDAC140299
 	//##Documentation
-	//## Ö¸Ê¾ÇøÓò¶ÔÏóÓ¦¸Ã¼ÓÔØµÄÇøÓòÊı¾İµÄÇøÓòË÷Òı×ø±ê
+	//## æŒ‡ç¤ºåŒºåŸŸå¯¹è±¡åº”è¯¥åŠ è½½çš„åŒºåŸŸæ•°æ®çš„åŒºåŸŸç´¢å¼•åæ ‡
 	bool ToLoad(
 		//##Documentation
-		//## ÇøÓòµÄºáÏòË÷Òı
+		//## åŒºåŸŸçš„æ¨ªå‘ç´¢å¼•
 		int nIndexX, 
 		//##Documentation
-		//## ÇøÓòµÄ×İÏòË÷Òı
+		//## åŒºåŸŸçš„çºµå‘ç´¢å¼•
 		int nIndexY);
 
 	//##ModelId=3DB901F101CD
 	//##Documentation
-	//## ÔØÈëÇøÓòĞÅÏ¢¡£
-	//## º¯Êı¹ı³Ì²Î¿´[Use Case View\³¡¾°\¿Í»§¶Ë\µ¥¸öÇøÓòµÄ¼ÓÔØ]¡£
+	//## è½½å…¥åŒºåŸŸä¿¡æ¯ã€‚
+	//## å‡½æ•°è¿‡ç¨‹å‚çœ‹[Use Case View\åœºæ™¯\å®¢æˆ·ç«¯\å•ä¸ªåŒºåŸŸçš„åŠ è½½]ã€‚
 	bool Load(
 		//##Documentation
-		//## Ö¸Ïò´æ´¢ÇøÓòĞÅÏ¢µÄ'ÇøÓòÄ¿Â¼'ËùÔÚµÄ¸¸Ä¿Â¼µÄÃû³ÆµÄ»º³åÇø¡£
+		//## æŒ‡å‘å­˜å‚¨åŒºåŸŸä¿¡æ¯çš„'åŒºåŸŸç›®å½•'æ‰€åœ¨çš„çˆ¶ç›®å½•çš„åç§°çš„ç¼“å†²åŒºã€‚
 		const char* pszBaseFolderName);
 
 	//##ModelId=3DD3DD2C0141
 	//##Documentation
-	//## »ñÈ¡ÇøÓòµÄË÷Òı×ø±ê
+	//## è·å–åŒºåŸŸçš„ç´¢å¼•åæ ‡
 	void GetRegionIndex(
 		//##Documentation
-		//## ºáÏòË÷Òı
+		//## æ¨ªå‘ç´¢å¼•
 		int& nX, 
 		//##Documentation
-		//## ×İÏòË÷Òı
+		//## çºµå‘ç´¢å¼•
 		int& nY) const;
 
 	//##ModelId=3DBF876400B2
 	//##Documentation
-	//## Çå¿Õ´Ë¶ÔÏóµÄÊı¾İ
+	//## æ¸…ç©ºæ­¤å¯¹è±¡çš„æ•°æ®
 	void Clear();
 
 	//##ModelId=3DBF9582039A
 	//##Documentation
-	//## Ô¤äÖÈ¾µØ±í²ãÍ¼ĞÎ
+	//## é¢„æ¸²æŸ“åœ°è¡¨å±‚å›¾å½¢
 	bool PrerenderGround(bool bForce);
 
 	//##ModelId=3DDBD8C80309
 	//##Documentation
-	//## »æÖÆ³¡¾°ÇøÓòµØ±í²ã
+	//## ç»˜åˆ¶åœºæ™¯åŒºåŸŸåœ°è¡¨å±‚
 	void PaintGround(bool bPrerenderGroundImg);
 
 	void PaintGroundDirect();
 
 	//##ModelId=3DE29E9102B0
 	//##Documentation
-	//## »ñÈ¡¸ß¿Õ¶ÔÏó×î´óµÄ»æÍ¼´ÎĞò±àºÅ¡£
+	//## è·å–é«˜ç©ºå¯¹è±¡æœ€å¤§çš„ç»˜å›¾æ¬¡åºç¼–å·ã€‚
 	unsigned int GetAboveHeadLayer(
-		//## Ö¸Ïò¸ß¿Õ¶ÔÏóµÄÁĞ±í
+		//## æŒ‡å‘é«˜ç©ºå¯¹è±¡çš„åˆ—è¡¨
 		KBuildinObj*& pObjsAboveHead);
 
 	//##ModelId=3DE29F360221
 	//##Documentation
-	//## »æÖÆ¸ß¿ÕÎïÌå
+	//## ç»˜åˆ¶é«˜ç©ºç‰©ä½“
 	static void PaintAboveHeadObj(
 		KBuildinObj* pObj,
 		RECT* pRepresentArea);
 
 	//##ModelId=3DE33AB30318
 	//##Documentation
-	//## »ñÈ¡ÇøÓòÄÚÄÚ½¨¶ÔÏóµÄÁĞ±í¡£
+	//## è·å–åŒºåŸŸå†…å†…å»ºå¯¹è±¡çš„åˆ—è¡¨ã€‚
 	void GetBuildinObjs(
 		//##Documentation
-		//## Ö¸Ïò°´µã·½Ê½ÅÅĞò¶ÔÏóµÄÁĞ±í
+		//## æŒ‡å‘æŒ‰ç‚¹æ–¹å¼æ’åºå¯¹è±¡çš„åˆ—è¡¨
 		KIpotBuildinObj*& pObjsPointList, 
 		//##Documentation
-		//## °´µã·½Ê½ÅÅĞò¶ÔÏóµÄÊıÄ¿
+		//## æŒ‰ç‚¹æ–¹å¼æ’åºå¯¹è±¡çš„æ•°ç›®
 		unsigned int& nNumObjsPoint, 
 		//##Documentation
-		//## Ö¸Ïò°´Ïß·½Ê½ÅÅĞò¶ÔÏóµÄÁĞ±í
+		//## æŒ‡å‘æŒ‰çº¿æ–¹å¼æ’åºå¯¹è±¡çš„åˆ—è¡¨
 		KIpotBuildinObj*& pObjsLineList,
 		//##Documentation
-		//## °´Ïß·½Ê½ÅÅĞò¶ÔÏóµÄÊıÄ¿
+		//## æŒ‰çº¿æ–¹å¼æ’åºå¯¹è±¡çš„æ•°ç›®
 		unsigned int& nNumObjsLine, 
 		//##Documentation
-		//## Ö¸Ïò°´Ê÷·½Ê½ÅÅĞò¶ÔÏóµÄÁĞ±í
+		//## æŒ‡å‘æŒ‰æ ‘æ–¹å¼æ’åºå¯¹è±¡çš„åˆ—è¡¨
 		KIpotBuildinObj*& pObjsTreeList, 
 		//##Documentation
-		//## °´Ê÷·½Ê½ÅÅĞò¶ÔÏóµÄÊıÄ¿
+		//## æŒ‰æ ‘æ–¹å¼æ’åºå¯¹è±¡çš„æ•°ç›®
 		unsigned int& nNumObjsTree);
 
-	//## »ñÈ¡ÇøÓòÄÚÄÚ½¨Î´³õÊ¼»¯µÄ¶ÔÏóµÄÁĞ±í¡£
+	//## è·å–åŒºåŸŸå†…å†…å»ºæœªåˆå§‹åŒ–çš„å¯¹è±¡çš„åˆ—è¡¨ã€‚
 	void GetBIOSBuildinObjs(
 		KBuildinObj*& pObjsList, 
 		unsigned int& nNumObjs 
     );
 
-	//»ñµÃÄÚ½¨¹âÔ´µÄĞÅÏ¢
+	//è·å¾—å†…å»ºå…‰æºçš„ä¿¡æ¯
 	unsigned int GetBuildinLights(
 		KBuildInLightInfo*& pLights);
 
@@ -149,68 +149,68 @@ class KScenePlaceRegionC
 	void SetHightLightSpecialObject(unsigned int uBioIndex);
 	void UnsetHightLightSpecialObject(unsigned int uBioIndex);
 	
-	// nX nY ÏñËØµã×ø±ê
+	// nX nY åƒç´ ç‚¹åæ ‡
 	BOOL	AddObstacle(int nX, int nY, int nObstacleKind);
-	// nX nY ÏñËØµã×ø±ê
+	// nX nY åƒç´ ç‚¹åæ ‡
 	BOOL	ClearObstacle(int nX, int nY);
 	void	PaintObstacle();
 
   private:
 	
 	//##Documentation
-	//## ÇøÓò¶ÔÏóÔËĞĞÊ±µÄÒ»Ğ©²ÎÊı(½öÄÚ²¿Ê¹ÓÃ)
+	//## åŒºåŸŸå¯¹è±¡è¿è¡Œæ—¶çš„ä¸€äº›å‚æ•°(ä»…å†…éƒ¨ä½¿ç”¨)
 	//##ModelId=3DD7E4C101E9
 	enum KREGION_WORK_PARAM
 	{
 		//##Documentation
-		//## µØ±íºáÏò»®·Ö¸ñ×ÓµÄÊıÄ¿
+		//## åœ°è¡¨æ¨ªå‘åˆ’åˆ†æ ¼å­çš„æ•°ç›®
 		RWP_NUM_GROUND_CELL_H = 16, 
 		//##Documentation
-		//## µØ±í×İÏò»®·Ö¸ñ×ÓµÄÊıÄ¿
+		//## åœ°è¡¨çºµå‘åˆ’åˆ†æ ¼å­çš„æ•°ç›®
 		RWP_NUM_GROUND_CELL_V = 16,
 
 		RWP_NEST_REGION_0 = 1,
 		//##Documentation
-		//## Ä¬ÈÏµØÍ¼¸ñµÄºá¿í¡£
-		//## µØÍ¼¸ñÖ¸³¡¾°µØÍ¼Îª×÷ÕÏ°­µÈ¼ÆËã»®·ÖµÄ×îĞ¡¸ñ×Óµ¥Ôª¡£
+		//## é»˜è®¤åœ°å›¾æ ¼çš„æ¨ªå®½ã€‚
+		//## åœ°å›¾æ ¼æŒ‡åœºæ™¯åœ°å›¾ä¸ºä½œéšœç¢ç­‰è®¡ç®—åˆ’åˆ†çš„æœ€å°æ ¼å­å•å…ƒã€‚
 		RWP_OBSTACLE_WIDTH = 32,
 		//##Documentation
-		//## Ä¬ÈÏµØÍ¼¸ñµÄ×İ¿í¡£
-		//## µØÍ¼¸ñÖ¸³¡¾°µØÍ¼Îª×÷ÕÏ°­µÈ¼ÆËã»®·ÖµÄ×îĞ¡¸ñ×Óµ¥Ôª¡£
+		//## é»˜è®¤åœ°å›¾æ ¼çš„çºµå®½ã€‚
+		//## åœ°å›¾æ ¼æŒ‡åœºæ™¯åœ°å›¾ä¸ºä½œéšœç¢ç­‰è®¡ç®—åˆ’åˆ†çš„æœ€å°æ ¼å­å•å…ƒã€‚
 		RWP_OBSTACLE_HEIGHT = 32,
 	};
 
 	//##ModelId=3DCE75E2003D
 	//##Documentation
-	//## ÇøÓò¶ÔÏóµÄ×´Ì¬Ã¶¾Ù
+	//## åŒºåŸŸå¯¹è±¡çš„çŠ¶æ€æšä¸¾
 	enum KREGION_STATUS { 
 		//##Documentation
-		//## ¿ÕÏĞÎŞÊı¾İ×´Ì¬¡£
+		//## ç©ºé—²æ— æ•°æ®çŠ¶æ€ã€‚
 		REGION_S_IDLE,
 		//##Documentation
-		//## µÈ´ıÖ´ĞĞ¼ÓÔØ
+		//## ç­‰å¾…æ‰§è¡ŒåŠ è½½
 		REGION_S_TO_LOAD,
 		//##Documentation
-		//## ¼ÓÔØÊı¾İÈëÖĞ
+		//## åŠ è½½æ•°æ®å…¥ä¸­
 		REGION_S_LOADING, 
 		//##Documentation
-		//## ¼ÓÔØÊı¾İÍê±Ï£¬¿ÉÒÔ±»Ó¦ÓÃ×´Ì¬¡£
+		//## åŠ è½½æ•°æ®å®Œæ¯•ï¼Œå¯ä»¥è¢«åº”ç”¨çŠ¶æ€ã€‚
 		REGION_S_STANDBY,
 		//##Documentation
-		//## Êı¾İ´¦ÀíÖĞ
+		//## æ•°æ®å¤„ç†ä¸­
 		REGION_S_PROCESSING };
 
 	struct KGroundLayerData
 	{
-		unsigned int uNumGrunode;	//µØ±í¸ñÍ¼ĞÎµÄÊıÄ¿
-		unsigned int uNumObject;	//½ôÌùµØÃæµÄÀàËÆÂ·ÃæÖ®ÀàµÄ¶ÔÏóµÄÊıÄ¿
+		unsigned int uNumGrunode;	//åœ°è¡¨æ ¼å›¾å½¢çš„æ•°ç›®
+		unsigned int uNumObject;	//ç´§è´´åœ°é¢çš„ç±»ä¼¼è·¯é¢ä¹‹ç±»çš„å¯¹è±¡çš„æ•°ç›®
 		KSPRCrunode* pGrunodes;
 		KSPRCoverGroundObj* pObjects;
 	};
 
 	//##ModelId=3DE1311803A3
 	//##Documentation
-	//## ÄÚ½¨¶ÔÏóÊı¾İ
+	//## å†…å»ºå¯¹è±¡æ•°æ®
 	struct KBiosData
 	{
 		KBuildinObjFileHead	Numbers;
@@ -222,33 +222,33 @@ class KScenePlaceRegionC
 
 	//##ModelId=3DB90015018D
 	//##Documentation
-	//## ÔØÈëÕÏ°­ĞÅÏ¢¡£
+	//## è½½å…¥éšœç¢ä¿¡æ¯ã€‚
 	void LoadObstacle(		 
-		//## Êı¾İÎÄ¼ş¶ÔÏóµÄÖ¸Õë
+		//## æ•°æ®æ–‡ä»¶å¯¹è±¡çš„æŒ‡é’ˆ
 		KPakFile* pDataFile,
-		//## Êı¾İÎÄ¼şµÄ´óĞ¡
+		//## æ•°æ®æ–‡ä»¶çš„å¤§å°
 		unsigned int uSize); 
 	//##ModelId=3DBDADE00001
 	//##Documentation
-	//## ÔØÈëÎïÆ·ĞÅÏ¢¡£
+	//## è½½å…¥ç‰©å“ä¿¡æ¯ã€‚
 	bool LoadAboveGroundObjects(
-		//## Êı¾İÎÄ¼ş¶ÔÏóµÄÖ¸Õë
+		//## æ•°æ®æ–‡ä»¶å¯¹è±¡çš„æŒ‡é’ˆ
 		KPakFile* pDataFile,
-		//## Êı¾İÎÄ¼şµÄ´óĞ¡
+		//## æ•°æ®æ–‡ä»¶çš„å¤§å°
 		unsigned int uSize); 
 	//##ModelId=3DB9001D00BD
 	//##Documentation
-	//## ÔØÈëµØ±íĞÅÏ¢
+	//## è½½å…¥åœ°è¡¨ä¿¡æ¯
 	bool LoadGroundLayer(
-		//## Êı¾İÎÄ¼ş¶ÔÏóµÄÖ¸Õë
+		//## æ•°æ®æ–‡ä»¶å¯¹è±¡çš„æŒ‡é’ˆ
 		KPakFile* pDataFile,
-		//## Êı¾İÎÄ¼şµÄ´óĞ¡
+		//## æ•°æ®æ–‡ä»¶çš„å¤§å°
 		unsigned int uSize); 
-	// ÔØÈëÊÂ¼şµãĞÅÏ¢
+	// è½½å…¥äº‹ä»¶ç‚¹ä¿¡æ¯
 	void LoadTrap(
-		//## Êı¾İÎÄ¼ş¶ÔÏóµÄÖ¸Õë
+		//## æ•°æ®æ–‡ä»¶å¯¹è±¡çš„æŒ‡é’ˆ
 		KPakFile* pDataFile,
-		//## Êı¾İÎÄ¼şµÄ´óĞ¡
+		//## æ•°æ®æ–‡ä»¶çš„å¤§å°
 		unsigned int uSize); 
 
 	void AddGrundCoverObj(KSPRCoverGroundObj* pObj);
@@ -259,30 +259,30 @@ class KScenePlaceRegionC
 
 	//##ModelId=3DBD531C02B2
 	//##Documentation
-	//## ×´Ì¬±ê¼Ç
+	//## çŠ¶æ€æ ‡è®°
 	KREGION_STATUS m_Status;
 	
 	//##ModelId=3DDC11C400A3
 	//##Documentation
-	//## Region×óÉÏ½ÇµãÔÚÕû¸ö³¡¾°µØÍ¼ÖĞµÄ×ø±ê£¨µ¥Î»£ºÏñËØµã£©
+	//## Regionå·¦ä¸Šè§’ç‚¹åœ¨æ•´ä¸ªåœºæ™¯åœ°å›¾ä¸­çš„åæ ‡ï¼ˆå•ä½ï¼šåƒç´ ç‚¹ï¼‰
 	POINT m_LeftTopCornerScenePos;
 
 	//##ModelId=3DBE392600F3
 	//##Documentation
-	//## ÇøÓòµÄ×İÏòÓëºáÏòË÷Òı×ø±ê
+	//## åŒºåŸŸçš„çºµå‘ä¸æ¨ªå‘ç´¢å¼•åæ ‡
 	POINT m_RegionIndex;
 
 	//##ModelId=3DE131AE01A0
 	//##Documentation
-	//## ÄÚ½¨¶ÔÏóÊı¾İ
+	//## å†…å»ºå¯¹è±¡æ•°æ®
 	KBiosData m_BiosData;
 
-//-----µØ±í²ãÊı¾İ-----
+//-----åœ°è¡¨å±‚æ•°æ®-----
 	KGroundLayerData	m_GroundLayerData;
 
 	//##ModelId=3DD7F09402D4
 	//##Documentation
-	//## Ô¤ÏÈäÖÈ¾µÄµØ±í²ãÍ¼ĞÎ¡£
+	//## é¢„å…ˆæ¸²æŸ“çš„åœ°è¡¨å±‚å›¾å½¢ã€‚
 	KRUImage* m_pPrerenderGroundImg;
 
 	long		m_ObstacleInfo[RWP_NUM_GROUND_CELL_H][RWP_NUM_GROUND_CELL_V * 2];

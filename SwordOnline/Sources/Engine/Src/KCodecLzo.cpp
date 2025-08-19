@@ -11,19 +11,19 @@
 #include "KMemBase.h"
 #include "KCodecLzo.h"
 //---------------------------------------------------------------------------
-// º¯Êý:	Compress
-// ¹¦ÄÜ:	Ñ¹Ëõ³¤¶ÈÎªdwInLenµÄÊý¾ÝpInµ½pOut£¬·µ»ØÑ¹ËõºóµÄ³¤¶ÈpOutLen
-// ²ÎÊý:	pIn			´ýÑ¹ËõÊý¾ÝÖ¸Õë
-//			dwInLen		´ýÑ¹ËõÊý¾Ý³¤¶È
-//			pOut		Ñ¹ËõºóÊý¾ÝÖ¸Õë
-//			pOutLen		Ñ¹ËõºóÊý¾Ý³¤¶È
-// ·µ»Ø:	Ê£ÓàÃ»ÓÐÑ¹ËõµÄ×Ö½ÚÊý
+// å‡½æ•°:	Compress
+// åŠŸèƒ½:	åŽ‹ç¼©é•¿åº¦ä¸ºdwInLençš„æ•°æ®pInåˆ°pOutï¼Œè¿”å›žåŽ‹ç¼©åŽçš„é•¿åº¦pOutLen
+// å‚æ•°:	pIn			å¾…åŽ‹ç¼©æ•°æ®æŒ‡é’ˆ
+//			dwInLen		å¾…åŽ‹ç¼©æ•°æ®é•¿åº¦
+//			pOut		åŽ‹ç¼©åŽæ•°æ®æŒ‡é’ˆ
+//			pOutLen		åŽ‹ç¼©åŽæ•°æ®é•¿åº¦
+// è¿”å›ž:	å‰©ä½™æ²¡æœ‰åŽ‹ç¼©çš„å­—èŠ‚æ•°
 //---------------------------------------------------------------------------
 DWORD KCodecLzo::Compress(
-	 PBYTE	pIn, 		// ´ýÑ¹ËõÊý¾Ý
-	 DWORD	dwInLen, 	// ´ýÑ¹ËõÊý¾Ý³¤¶È
-	 PBYTE	pOut,		// Ñ¹ËõÊý¾Ý
-	 PDWORD	pOutLen		// Ñ¹ËõÊý¾Ý³¤¶È
+	 PBYTE	pIn, 		// å¾…åŽ‹ç¼©æ•°æ®
+	 DWORD	dwInLen, 	// å¾…åŽ‹ç¼©æ•°æ®é•¿åº¦
+	 PBYTE	pOut,		// åŽ‹ç¼©æ•°æ®
+	 PDWORD	pOutLen		// åŽ‹ç¼©æ•°æ®é•¿åº¦
 	 )
 {
 	BYTE *ip;
@@ -198,11 +198,11 @@ m3_m4_offset:
 	return (DWORD)(in_end - ii);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Encode
-// ¹¦ÄÜ:	Ñ¹Ëõ
-// ²ÎÊý:	pCodeInfo	´ýÑ¹ËõÊý¾ÝÖ¸Õë
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Encode
+// åŠŸèƒ½:	åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	å¾…åŽ‹ç¼©æ•°æ®æŒ‡é’ˆ
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodecLzo::Encode(TCodeInfo* pCodeInfo)
 {
@@ -254,11 +254,11 @@ BOOL KCodecLzo::Encode(TCodeInfo* pCodeInfo)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Decode
-// ¹¦ÄÜ:	½âÑ¹Ëõ
-// ²ÎÊý:	pCodeInfo	Ñ¹ËõÊý¾ÝÖ¸Õë
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	è§£åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	åŽ‹ç¼©æ•°æ®æŒ‡é’ˆ
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodecLzo::Decode(TCodeInfo* pCodeInfo)
 {

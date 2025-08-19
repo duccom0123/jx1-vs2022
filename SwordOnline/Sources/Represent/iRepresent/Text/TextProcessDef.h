@@ -12,16 +12,16 @@ struct KOutputTextParam
 	short 	nNumLine;
 	unsigned int Color;
 	unsigned int BorderColor;
-	unsigned short nVertAlign;	//0:¾ÓÖĞ/1:ÉÏ¶ÔÆë/2:ÏÂ¶ÔÆë
+	unsigned short nVertAlign;	//0:å±…ä¸­/1:ä¸Šå¯¹é½/2:ä¸‹å¯¹é½
 	int bPicPackInSingleLine;
 
-	//¼ÓÒ»¸ö¹¹Ôìº¯Êı,Ö÷ÒªÊÇnVertAlignµÄ³õÊ¼»¯[wxb 2003-7-10]
+	//åŠ ä¸€ä¸ªæ„é€ å‡½æ•°,ä¸»è¦æ˜¯nVertAlignçš„åˆå§‹åŒ–[wxb 2003-7-10]
 	KOutputTextParam()
 	{
 		nX = nY = nZ = 0;
 		nSkipLine = nNumLine = 0;
 		Color = 0;
-		nVertAlign = 1;	//È±Ê¡Îª¾ÓÖĞ
+		nVertAlign = 1;	//ç¼ºçœä¸ºå±…ä¸­
 		bPicPackInSingleLine = false;
 	}
 };

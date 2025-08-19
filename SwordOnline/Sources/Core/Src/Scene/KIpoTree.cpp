@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-// ³¡¾°ÖĞµÄ¶ÔÏóÊ÷
+// åœºæ™¯ä¸­çš„å¯¹è±¡æ ‘
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-19
@@ -98,9 +98,9 @@ void KIpoTree::Paint(RECT* pRepresentArea, IPOT_RENDER_LAYER eLayer)
 {
 	if(eLayer == IPOT_RL_COVER_GROUND && m_bDynamicLighting)
 	{
-		// äÖÈ¾¹âÕÕÍ¼
+		// æ¸²æŸ“å…‰ç…§å›¾
 		RenderLightMap();
-		// ÉèÖÃ±íÏÖÄ£¿éµÄ¹âÕÕĞÅÏ¢
+		// è®¾ç½®è¡¨ç°æ¨¡å—çš„å…‰ç…§ä¿¡æ¯
 		g_pRepresent->SetLightInfo(m_nLeftTopX, m_nLeftTopY, (unsigned int*)pLightingArray);
 	}
 	
@@ -191,7 +191,7 @@ void KIpoTree::Fell()
 	m_DefaultBranch.RemoveAllRtoLeafs(&m_PermanentLeaf);
 	m_DefaultBranch.Clear();
 
-	//Çå³ıËùÓĞÄÚ½¨¶ÔÏóµÄ¹âÔ´
+	//æ¸…é™¤æ‰€æœ‰å†…å»ºå¯¹è±¡çš„å…‰æº
 	list<KLightBase*>::iterator i;
 	for (i = m_LightList.begin(); i != m_LightList.end(); )
 	{
@@ -238,7 +238,7 @@ void KIpoTree::AddLeafPoint(KIpotLeaf* pLeaf)
 		KIpotRuntimeObj* pRtoLeaf = (KIpotRuntimeObj*)pLeaf;
 		if (pRtoLeaf->eLayerParam & IPOT_RL_LIGHT_PROP)
 		{
-			// Ôö¼ÓÒ»¸ö¹âÔ´
+			// å¢åŠ ä¸€ä¸ªå…‰æº
 			KLightBase *pLight = new KLightBase;
 			if(pLight)
 			{
@@ -264,7 +264,7 @@ void KIpoTree::AddLeafPoint(KIpotLeaf* pLeaf)
 						}
 						else
 						{
-							// ÊÇÖ÷½Ç£¬°´Ê±¼äµ÷Õû¹âÔ´ÁÁ¶È
+							// æ˜¯ä¸»è§’ï¼ŒæŒ‰æ—¶é—´è°ƒæ•´å…‰æºäº®åº¦
 							int n = 0;
 							if(m_nCurrentTime >= 480 && m_nCurrentTime <= 960)
 								pLight->m_nRadius = 0;
@@ -378,13 +378,13 @@ void KIpoTree::StrewRtoLeafs(RECT& KeepRtoArea)
 
 	if(m_bDynamicLighting)
 	{
-		// Çå¿ÕÕÚµ²ĞÅÏ¢
+		// æ¸…ç©ºé®æŒ¡ä¿¡æ¯
 		for(int j=0; j<LIGHTING_GRID_WIDTH*LIGHTING_GRID_HEIGHT; j++)
 		{
 			pObstacle[j].nObstacle = 0;
 		}
 
-		// ±éÀúÊ÷£¬¼ÆËãÕÚµ²ĞÅÏ¢
+		// éå†æ ‘ï¼Œè®¡ç®—é®æŒ¡ä¿¡æ¯
 		if (m_pMainBranch)
 			m_pMainBranch->EnumerateObjects(this, ObjectsCallback);
 		else
@@ -392,7 +392,7 @@ void KIpoTree::StrewRtoLeafs(RECT& KeepRtoArea)
 	}
 }
 
-// ±éÀúÊ÷ÖĞ¶ÔÏóÊ±¶ÔÃ¿¸ö¶ÔÏóµÄ»Øµ÷º¯Êı
+// éå†æ ‘ä¸­å¯¹è±¡æ—¶å¯¹æ¯ä¸ªå¯¹è±¡çš„å›è°ƒå‡½æ•°
 void KIpoTree::ObjectsCallback(void* p, KIpotLeaf* pLeaf)
 {
 	_ASSERT(p);
@@ -411,13 +411,13 @@ void KIpoTree::ObjectsCallback(void* p, KIpotLeaf* pLeaf)
 
 	if((pBio->Props & SPBIO_P_BLOCK_LIGHT_MASK) == SPBIO_P_BLOCK_LIGHT_BOTTOM)
 	{
-		// °´Ïß¶Î´¦ÀíÕÚµ²
+		// æŒ‰çº¿æ®µå¤„ç†é®æŒ¡
 		pTree->FillLineObstacle(pObj->oPosition.x - pTree->m_nLeftTopX, pObj->oPosition.y - pTree->m_nLeftTopY, 
 								pObj->oEndPos.x - pTree->m_nLeftTopX, pObj->oEndPos.y - pTree->m_nLeftTopY, nObstacleID);
 	}
 	else if((pBio->Props & SPBIO_P_BLOCK_LIGHT_MASK) == SPBIO_P_BLOCK_LIGHT_CIRCLE)
 	{
-		// °´Ô²´¦Àí¹âÏßÕÚµ²£¬ºöÂÔ°ë¾¶£¬¶¼°´Ò»¸ö¸ñ×Ó´¦Àí
+		// æŒ‰åœ†å¤„ç†å…‰çº¿é®æŒ¡ï¼Œå¿½ç•¥åŠå¾„ï¼Œéƒ½æŒ‰ä¸€ä¸ªæ ¼å­å¤„ç†
 		int nX = pObj->oPosition.x;
 		int nY = pObj->oPosition.y;
 		int nIdx;
@@ -430,7 +430,7 @@ void KIpoTree::ObjectsCallback(void* p, KIpotLeaf* pLeaf)
 			nY = (nY - pTree->m_nLeftTopY) / LIGHTING_GRID_SIZEY;
 			nIdx = nY * LIGHTING_GRID_WIDTH + nX;
 			pTree->pObstacle[nIdx].nObstacle = nObstacleID;
-			// ½«·½ÏòµÄx·ÖÁ¿ÉèÎª0£¬±íÊ¾²»¿¼ÂÇ·½Ïò
+			// å°†æ–¹å‘çš„xåˆ†é‡è®¾ä¸º0ï¼Œè¡¨ç¤ºä¸è€ƒè™‘æ–¹å‘
 			pTree->pObstacle[nIdx].vDir.fX = 0.0f;
 		}
 	}
@@ -457,7 +457,7 @@ void KIpoTree::FillLineObstacle(int x1, int y1, int x2, int y2, int nObstacleID)
 
 	fFlope1 = fdy / fdx;
 
-	// Ğ±ÂÊĞ¡ÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å°äº45åº¦çš„æƒ…å†µ
 	if(fdx >= fdy)
 	{
 		if(gx1 == gx2)
@@ -529,7 +529,7 @@ void KIpoTree::FillLineObstacle(int x1, int y1, int x2, int y2, int nObstacleID)
 			}
 		}
 	}
-	// Ğ±ÂÊ´óÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å¤§äº45åº¦çš„æƒ…å†µ
 	else
 	{
 		if(gy1 == gy2)
@@ -619,13 +619,13 @@ void KIpoTree::RenderLightMap()
 	for (i = m_LightList.begin(); i != m_LightList.end(); ++i)
 	{
 		KLightBase *pLight = *i;
-		// ¹âÔ´Ïà¶ÔÓÚ¾ÅÇøÓò×óÉÏ½ÇµÄ×ø±ê
+		// å…‰æºç›¸å¯¹äºä¹åŒºåŸŸå·¦ä¸Šè§’çš„åæ ‡
 		int nLightPosX = pLight->m_oPosition.nX - m_nLeftTopX;
 		int nLightPosY = pLight->m_oPosition.nY - m_nLeftTopY;
-		// ¹âÔ´µÄ¸ñ×Ó×ø±ê
+		// å…‰æºçš„æ ¼å­åæ ‡
 		int nLightGridX = nLightPosX / LIGHTING_GRID_SIZEX;
 		int nLightGridY = nLightPosY / LIGHTING_GRID_SIZEY;
-		// ¹âÔ´ËùÔÚ¸ñ×ÓÖĞĞÄµÄ×ø±ê
+		// å…‰æºæ‰€åœ¨æ ¼å­ä¸­å¿ƒçš„åæ ‡
 		int nLightGridCenterX = nLightGridX * LIGHTING_GRID_SIZEX + LIGHTING_GRID_SIZEX / 2;
 		int nLightGridCenterY = nLightGridY * LIGHTING_GRID_SIZEY + LIGHTING_GRID_SIZEY / 2;
 
@@ -754,7 +754,7 @@ void KIpoTree::RenderLightMap()
 	int j, nIdx, nLightID=1;
 	KLColor ptp[LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT];
 
-	// °´»·¾³¹âÇå¿Õ¹âÕÕÍ¼
+	// æŒ‰ç¯å¢ƒå…‰æ¸…ç©ºå…‰ç…§å›¾
 	DWORD dwR, dwG, dwB;
 	dwR = (m_dwAmbient & 0x00ff0000) >>16;
 	dwG = (m_dwAmbient & 0x0000ff00) >>8;
@@ -767,25 +767,25 @@ void KIpoTree::RenderLightMap()
 	}
 
 	list<KLightBase*>::iterator i;
-	// ¼ÆËãÃ¿Ò»¸ö¹âÔ´µÄ¹âÕÕ½á¹û
+	// è®¡ç®—æ¯ä¸€ä¸ªå…‰æºçš„å…‰ç…§ç»“æœ
 	for (i = m_LightList.begin(); i != m_LightList.end(); ++i)
 	{
 		nLightID++;
 		KLightBase *pLight = *i;
-		// ¹âÔ´Ïà¶ÔÓÚ¾ÅÇøÓò×óÉÏ½ÇµÄ×ø±ê
+		// å…‰æºç›¸å¯¹äºä¹åŒºåŸŸå·¦ä¸Šè§’çš„åæ ‡
 		int nLightPosX = pLight->m_oPosition.nX - m_nLeftTopX;
 		int nLightPosY = pLight->m_oPosition.nY - m_nLeftTopY;
-		// ¹âÔ´µÄ¸ñ×Ó×ø±ê
+		// å…‰æºçš„æ ¼å­åæ ‡
 		int nLightGridX = nLightPosX / LIGHTING_GRID_SIZEX;
 		int nLightGridY = nLightPosY / LIGHTING_GRID_SIZEY;
 		if(nLightGridX < 0 || nLightGridX >= LIGHTING_GRID_WIDTH || 
 			nLightGridY < 0 || nLightGridY >= LIGHTING_GRID_HEIGHT)
 			continue;
-		// ¹âÔ´ËùÔÚ¸ñ×ÓÖĞĞÄµÄ×ø±ê
+		// å…‰æºæ‰€åœ¨æ ¼å­ä¸­å¿ƒçš„åæ ‡
 		int nLightGridCenterX = nLightGridX * LIGHTING_GRID_SIZEX + LIGHTING_GRID_SIZEX / 2;
 		int nLightGridCenterY = nLightGridY * LIGHTING_GRID_SIZEY + LIGHTING_GRID_SIZEY / 2;
 
-		// »ñÈ¡¹âÔ´µÄr£¬g£¬b·ÖÁ¿
+		// è·å–å…‰æºçš„rï¼Œgï¼Œbåˆ†é‡
 		unsigned int nr, ng, nb;
 
 		nr = (pLight->m_dwColor & 0x00ff0000) >> 18;
@@ -798,7 +798,7 @@ void KIpoTree::RenderLightMap()
 		int nGridRadius = pLight->m_nRadius / LIGHTING_GRID_SIZEX;
 
 		gy = nLightGridY - (nGridRadius - 1);
-		// ´ÓÖĞĞÄµãÏòÍâÀ©Õ¹¼ÆËã¹âÕÕÇ¿¶È
+		// ä»ä¸­å¿ƒç‚¹å‘å¤–æ‰©å±•è®¡ç®—å…‰ç…§å¼ºåº¦
 		for(int r=0; r<nGridRadius; r++)
 		{
 			x = nLightGridCenterX - r * LIGHTING_GRID_SIZEX;
@@ -902,7 +902,7 @@ void KIpoTree::RenderLightMap()
 		}
 	}
 
-	// ¶Ô¹âÕÕÍ¼½øĞĞ¹ıÂË£¬Ê¹ÒõÓ°±ßÑØÆ½»¬
+	// å¯¹å…‰ç…§å›¾è¿›è¡Œè¿‡æ»¤ï¼Œä½¿é˜´å½±è¾¹æ²¿å¹³æ»‘
 	KLColor *pO, *pL, *pR, *pU, *pD, *pDest;
 	for(int m=1; m<LIGHTING_GRID_HEIGHT-1;m++)
 	{
@@ -922,7 +922,7 @@ void KIpoTree::RenderLightMap()
 		}
 	}
 
-	// ½«r£¬g£¬bµÄÖµÏŞÖÆÔÚ0xffÖ®ÄÚ£¬·ÀÖ¹É«²Ê´íÎó
+	// å°†rï¼Œgï¼Œbçš„å€¼é™åˆ¶åœ¨0xffä¹‹å†…ï¼Œé˜²æ­¢è‰²å½©é”™è¯¯
 	for(j=0; j<LIGHTING_GRID_WIDTH*LIGHTING_GRID_HEIGHT; j++)
 	{
 		if(ptp[j].r > 0xff)
@@ -944,15 +944,15 @@ void KIpoTree::RenderLightMap()
 
 	m_dwAmbient = 0xff101010;
 
-	// °´»·¾³¹âÇå¿Õ¹âÕÕÍ¼
+	// æŒ‰ç¯å¢ƒå…‰æ¸…ç©ºå…‰ç…§å›¾
 	DWORD dwR, dwG, dwB;
 	dwR = (m_dwAmbient & 0x00ff0000) >>16;
 	dwG = (m_dwAmbient & 0x0000ff00) >>8;
 	dwB = m_dwAmbient & 0x000000ff;
     KLColor *pTempColor = pLColor;
     
-    // Èç¹ûÃ¿Ò»¸öÑÕÉ«·ÖÁ¿ÊÇ2¸ö×Ö½Ú,¿ÉÒÔ¿¼ÂÇ¶àÒ»¸öÏî,È»ºóÓÃÒ»¸öMMXµÄ¼Ä´æÆ÷´æ·Å
-    // ÕıºÃ8¸ö×Ö½Ú
+    // å¦‚æœæ¯ä¸€ä¸ªé¢œè‰²åˆ†é‡æ˜¯2ä¸ªå­—èŠ‚,å¯ä»¥è€ƒè™‘å¤šä¸€ä¸ªé¡¹,ç„¶åç”¨ä¸€ä¸ªMMXçš„å¯„å­˜å™¨å­˜æ”¾
+    // æ­£å¥½8ä¸ªå­—èŠ‚
 	for(j=0; j < LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT / 4; j++)
 	{
 			pTempColor[0].r = dwR;
@@ -975,26 +975,26 @@ void KIpoTree::RenderLightMap()
 	}
 
 	list<KLightBase*>::iterator i;
-	// ¼ÆËãÃ¿Ò»¸ö¹âÔ´µÄ¹âÕÕ½á¹û
+	// è®¡ç®—æ¯ä¸€ä¸ªå…‰æºçš„å…‰ç…§ç»“æœ
 	for (i = m_LightList.begin(); i != m_LightList.end(); ++i)
 	{
 		nLightID++;
 		KLightBase *pLight = *i;
-		// ¹âÔ´Ïà¶ÔÓÚ¾ÅÇøÓò×óÉÏ½ÇµÄ×ø±ê
+		// å…‰æºç›¸å¯¹äºä¹åŒºåŸŸå·¦ä¸Šè§’çš„åæ ‡
 		int nLightPosX = pLight->m_oPosition.nX - m_nLeftTopX;
 		int nLightPosY = pLight->m_oPosition.nY - m_nLeftTopY;
-		// ¹âÔ´µÄ¸ñ×Ó×ø±ê
+		// å…‰æºçš„æ ¼å­åæ ‡
 		int nLightGridX = nLightPosX / LIGHTING_GRID_SIZEX;
 		int nLightGridY = nLightPosY / LIGHTING_GRID_SIZEY;
 		if(nLightGridX < 0 || nLightGridX >= LIGHTING_GRID_WIDTH || 
 			nLightGridY < 0 || nLightGridY >= LIGHTING_GRID_HEIGHT)
 			continue;
 
-		// ¹âÔ´ËùÔÚ¸ñ×ÓÖĞĞÄµÄ×ø±ê
+		// å…‰æºæ‰€åœ¨æ ¼å­ä¸­å¿ƒçš„åæ ‡
 		int nLightGridCenterX = nLightGridX * LIGHTING_GRID_SIZEX + LIGHTING_GRID_SIZEX / 2;
 		int nLightGridCenterY = nLightGridY * LIGHTING_GRID_SIZEY + LIGHTING_GRID_SIZEY / 2;
 
-		// »ñÈ¡¹âÔ´µÄr£¬g£¬b·ÖÁ¿
+		// è·å–å…‰æºçš„rï¼Œgï¼Œbåˆ†é‡
 		unsigned int ur, ug, ub;
 
 		ur = (pLight->m_dwColor & 0x00ff0000) >> 18;
@@ -1012,7 +1012,7 @@ void KIpoTree::RenderLightMap()
 
 		
 		gy = nLightGridY - (nGridRadius - 1);
-		// ´ÓÖĞĞÄµãÏòÍâÀ©Õ¹¼ÆËã¹âÕÕÇ¿¶È
+		// ä»ä¸­å¿ƒç‚¹å‘å¤–æ‰©å±•è®¡ç®—å…‰ç…§å¼ºåº¦
 		for(int r = 0; r < nGridRadius; r++)
 		{
 			gx = nLightGridX - r;
@@ -1220,7 +1220,7 @@ void KIpoTree::RenderLightMap()
     //memcpy(ptp, pLColor, sizeof(ptp));
 
     
-	// ¶Ô¹âÕÕÍ¼½øĞĞ¹ıÂË£¬Ê¹ÒõÓ°±ßÑØÆ½»¬
+	// å¯¹å…‰ç…§å›¾è¿›è¡Œè¿‡æ»¤ï¼Œä½¿é˜´å½±è¾¹æ²¿å¹³æ»‘
     
 
 	int m;
@@ -1269,7 +1269,7 @@ void KIpoTree::RenderLightMap()
 	}
     
 
-	// ½«r£¬g£¬bµÄÖµÏŞÖÆÔÚ0xffÖ®ÄÚ£¬·ÀÖ¹É«²Ê´íÎó
+	// å°†rï¼Œgï¼Œbçš„å€¼é™åˆ¶åœ¨0xffä¹‹å†…ï¼Œé˜²æ­¢è‰²å½©é”™è¯¯
 //	for(j = 0; j < LIGHTING_GRID_WIDTH * LIGHTING_GRID_HEIGHT; j++)
 //	{
 //        //pLightingArray[j] = 0xff000000 |
@@ -1303,7 +1303,7 @@ void KIpoTree::RenderLightMap()
         pLightingArray[n] = m_dwAmbient | 0xff000000;
         pLightingArray[(LIGHTING_GRID_HEIGHT - 1) * LIGHTING_GRID_WIDTH + n] = m_dwAmbient | 0xff000000;
     }
-    //pLightingArray[0] = m_dwAmbient;    // ÉèÖÃ»·¾³¹â
+    //pLightingArray[0] = m_dwAmbient;    // è®¾ç½®ç¯å¢ƒå…‰
 }
 
 
@@ -1328,10 +1328,10 @@ bool KIpoTree::CanLighting(int x, int y, int nLightPosX, int nLightPosY)
 	fdx = (float)fabs(fLightPosX - fx);
 	fdy = (float)fabs(fLightPosY - fy);
 
-	// Ğ±ÂÊĞ¡ÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å°äº45åº¦çš„æƒ…å†µ
 	if(fdx >= fdy)
 	{
-		// ¼ÆËãÏß¶ÎÇ°½øÀÛ¼ÓÖµ
+		// è®¡ç®—çº¿æ®µå‰è¿›ç´¯åŠ å€¼
 		if(nLightPosX > x)
 		{
 			nGridStep = 1;
@@ -1354,7 +1354,7 @@ bool KIpoTree::CanLighting(int x, int y, int nLightPosX, int nLightPosY)
 			nGridX += nGridStep;
 			if(nGridX == nGridLightPosX)
 			{
-				// Ã»ÓĞÅöµ½ÕÏ°­£¬¸ù¾İÕâµã±¾ÉíÊÇ·ñÕÏ°­ºÍÕÏ°­·½ÏòÅĞ¶ÏÊÇ·ñÊÜ¹â
+				// æ²¡æœ‰ç¢°åˆ°éšœç¢ï¼Œæ ¹æ®è¿™ç‚¹æœ¬èº«æ˜¯å¦éšœç¢å’Œéšœç¢æ–¹å‘åˆ¤æ–­æ˜¯å¦å—å…‰
 				if(nObstacle && vDir.fX != 0.0f)
 				{
 					if(vDir.fX * vLight.fY - vDir.fY * vLight.fX < 0.0f)
@@ -1369,12 +1369,12 @@ bool KIpoTree::CanLighting(int x, int y, int nLightPosX, int nLightPosY)
 			nCurrentGridX = ((int)fx) / LIGHTING_GRID_SIZEX;
 			nCurrentGridY = ((int)fy) / LIGHTING_GRID_SIZEX;
 			nIdx = nCurrentGridY * LIGHTING_GRID_WIDTH + nCurrentGridX;
-			// ¼ì²éÊÇ·ñÅöµ½µ²¹âÕÏ°­
+			// æ£€æŸ¥æ˜¯å¦ç¢°åˆ°æŒ¡å…‰éšœç¢
 			if(pObstacle[nIdx].nObstacle != 0 && pObstacle[nIdx].nObstacle != nObstacle)
 				return false;
 		}
 	}
-	// Ğ±ÂÊ´óÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å¤§äº45åº¦çš„æƒ…å†µ
 	else
 	{
 		if(nLightPosY > y)
@@ -1398,7 +1398,7 @@ bool KIpoTree::CanLighting(int x, int y, int nLightPosX, int nLightPosY)
 			nGridY += nGridStep;
 			if(nGridY == nGridLightPosY)
 			{
-				// Ã»ÓĞÅöµ½ÕÏ°­£¬¸ù¾İÕâµã±¾ÉíÊÇ·ñÕÏ°­ºÍÕÏ°­·½ÏòÅĞ¶ÏÊÇ·ñÊÜ¹â
+				// æ²¡æœ‰ç¢°åˆ°éšœç¢ï¼Œæ ¹æ®è¿™ç‚¹æœ¬èº«æ˜¯å¦éšœç¢å’Œéšœç¢æ–¹å‘åˆ¤æ–­æ˜¯å¦å—å…‰
 				if(nObstacle && vDir.fX != 0.0f)
 				{
 					if(vDir.fX * vLight.fY - vDir.fY * vLight.fX < 0.0f)
@@ -1413,7 +1413,7 @@ bool KIpoTree::CanLighting(int x, int y, int nLightPosX, int nLightPosY)
 			nCurrentGridX = ((int)fx) / LIGHTING_GRID_SIZEX;
 			nCurrentGridY = ((int)fy) / LIGHTING_GRID_SIZEX;
 			nIdx = nCurrentGridY * LIGHTING_GRID_WIDTH + nCurrentGridX;
-			// ¼ì²éÊÇ·ñÅöµ½µ²¹âÕÏ°­
+			// æ£€æŸ¥æ˜¯å¦ç¢°åˆ°æŒ¡å…‰éšœç¢
 			if(pObstacle[nIdx].nObstacle != 0 && pObstacle[nIdx].nObstacle != nObstacle)
 				return false;
 		}
@@ -1442,10 +1442,10 @@ bool KIpoTree::CanLighting(int x1, int y1, int x2, int y2)
 	fdx = (float)fabs(fx2 - fx1);
 	fdy = (float)fabs(fy2 - fy1);
 
-	// Ğ±ÂÊĞ¡ÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å°äº45åº¦çš„æƒ…å†µ
 	if(fdx >= fdy)
 	{
-		// ¼ÆËãÏß¶ÎÇ°½øÀÛ¼ÓÖµ
+		// è®¡ç®—çº¿æ®µå‰è¿›ç´¯åŠ å€¼
 		if(x2 > x1)
 		{
 			gStep = 1;
@@ -1468,7 +1468,7 @@ bool KIpoTree::CanLighting(int x1, int y1, int x2, int y2)
 			gx1 += gStep;
 			if(gx1 == gx2)
 			{
-				// Ã»ÓĞÅöµ½ÕÏ°­£¬¸ù¾İÕâµã±¾ÉíÊÇ·ñÕÏ°­ºÍÕÏ°­·½ÏòÅĞ¶ÏÊÇ·ñÊÜ¹â
+				// æ²¡æœ‰ç¢°åˆ°éšœç¢ï¼Œæ ¹æ®è¿™ç‚¹æœ¬èº«æ˜¯å¦éšœç¢å’Œéšœç¢æ–¹å‘åˆ¤æ–­æ˜¯å¦å—å…‰
 				if(nObstacle && vDir.fX != 0.0f)
 				{
 					if(vDir.fX * vLight.fY - vDir.fY * vLight.fX < 0.0f)
@@ -1483,12 +1483,12 @@ bool KIpoTree::CanLighting(int x1, int y1, int x2, int y2)
 			gx = ((int)fx1) / LIGHTING_GRID_SIZEX;
 			gy = ((int)fy1) / LIGHTING_GRID_SIZEX;
 			nIdx = gy * LIGHTING_GRID_WIDTH + gx;
-			// ¼ì²éÊÇ·ñÅöµ½µ²¹âÕÏ°­
+			// æ£€æŸ¥æ˜¯å¦ç¢°åˆ°æŒ¡å…‰éšœç¢
 			if(pObstacle[nIdx].nObstacle != 0 && pObstacle[nIdx].nObstacle != nObstacle)
 				return false;
 		}
 	}
-	// Ğ±ÂÊ´óÓÚ45¶ÈµÄÇé¿ö
+	// æ–œç‡å¤§äº45åº¦çš„æƒ…å†µ
 	else
 	{
 		if(y2 > y1)
@@ -1512,7 +1512,7 @@ bool KIpoTree::CanLighting(int x1, int y1, int x2, int y2)
 			gy1 += gStep;
 			if(gy1 == gy2)
 			{
-				// Ã»ÓĞÅöµ½ÕÏ°­£¬¸ù¾İÕâµã±¾ÉíÊÇ·ñÕÏ°­ºÍÕÏ°­·½ÏòÅĞ¶ÏÊÇ·ñÊÜ¹â
+				// æ²¡æœ‰ç¢°åˆ°éšœç¢ï¼Œæ ¹æ®è¿™ç‚¹æœ¬èº«æ˜¯å¦éšœç¢å’Œéšœç¢æ–¹å‘åˆ¤æ–­æ˜¯å¦å—å…‰
 				if(nObstacle && vDir.fX != 0.0f)
 				{
 					if(vDir.fX * vLight.fY - vDir.fY * vLight.fX < 0.0f)
@@ -1527,7 +1527,7 @@ bool KIpoTree::CanLighting(int x1, int y1, int x2, int y2)
 			gx = ((int)fx1) / LIGHTING_GRID_SIZEX;
 			gy = ((int)fy1) / LIGHTING_GRID_SIZEX;
 			nIdx = gy * LIGHTING_GRID_WIDTH + gx;
-			// ¼ì²éÊÇ·ñÅöµ½µ²¹âÕÏ°­
+			// æ£€æŸ¥æ˜¯å¦ç¢°åˆ°æŒ¡å…‰éšœç¢
 			if(pObstacle[nIdx].nObstacle != 0 && pObstacle[nIdx].nObstacle != nObstacle)
 				return false;
 		}
@@ -1543,16 +1543,16 @@ void KIpoTree::AddBuildinLight(KBuildInLightInfo* pLights, int nCount)
 
 	for(int i=0; i<nCount; i++)
 	{
-		// Ôö¼ÓÒ»¸ö¹âÔ´
+		// å¢åŠ ä¸€ä¸ªå…‰æº
 		KSelfBreathLight *pLight = new KSelfBreathLight;
 		if(pLight)
 		{
-			// ±£Ö¤nMaxRange´óÓÚnMinRange
+			// ä¿è¯nMaxRangeå¤§äºnMinRange
 			if(pLights[i].nMaxRange >= pLights[i].nMinRange)
 				nMaxRange = pLights[i].nMaxRange, nMinRange = pLights[i].nMinRange;
 			else
 				nMaxRange = pLights[i].nMinRange, nMinRange = pLights[i].nMaxRange;
-			// °ë¾¶Îª¸ºÖµ£¬ºöÂÔÕâ¸ö¹âÔ´
+			// åŠå¾„ä¸ºè´Ÿå€¼ï¼Œå¿½ç•¥è¿™ä¸ªå…‰æº
 			if(nMinRange < 0)
 			{
 				_ASSERT(0);
@@ -1582,7 +1582,7 @@ void KIpoTree::EnableBioLights(bool bEnable)
 
 	if(!bEnable)
 	{
-		//Çå³ıËùÓĞÄÚ½¨¶ÔÏóµÄ¹âÔ´
+		//æ¸…é™¤æ‰€æœ‰å†…å»ºå¯¹è±¡çš„å…‰æº
 		list<KLightBase*>::iterator i;
 		for (i = m_LightList.begin(); i != m_LightList.end(); )
 		{

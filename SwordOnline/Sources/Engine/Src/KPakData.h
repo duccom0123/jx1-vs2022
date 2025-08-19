@@ -15,26 +15,26 @@
 //---------------------------------------------------------------------------
 // pack file header
 typedef struct {
-	BYTE		Signature[8];		// ÎÄ¼ş±êÊ¶ ("PACKAGE")
-	DWORD		FilesInPack;		// °üÖĞµÄÎÄ¼ş×ÜÊı
-	DWORD		CompressMethod;		// Ê¹ÓÃµÄÑ¹ËõËã·¨
+	BYTE		Signature[8];		// æ–‡ä»¶æ ‡è¯† ("PACKAGE")
+	DWORD		FilesInPack;		// åŒ…ä¸­çš„æ–‡ä»¶æ€»æ•°
+	DWORD		CompressMethod;		// ä½¿ç”¨çš„å‹ç¼©ç®—æ³•
 } TPakFileHeader;
 
 // pack file index 
 typedef struct {
-	DWORD		FileId;				// 32bit IdÖµ
-	DWORD		FileOffset;			// ÎÄ¼şÔÚ°üÖĞµÄÆ«ÒÆ
-	DWORD		FileLength;			// ÎÄ¼şµÄÔ­Ê¼³¤¶È
+	DWORD		FileId;				// 32bit Idå€¼
+	DWORD		FileOffset;			// æ–‡ä»¶åœ¨åŒ…ä¸­çš„åç§»
+	DWORD		FileLength;			// æ–‡ä»¶çš„åŸå§‹é•¿åº¦
 } TPakFileIndex;
 //---------------------------------------------------------------------------
 class ENGINE_API KPakData
 {
 private:
-	KFile		m_File;				// PAKÎÄ¼ş
-	KMemClass	m_MemIndex;			// Ë÷ÒıÄÚ´æ
-	KCodec*		m_pCodec;			// ½âÂëÆ÷
-	DWORD		m_nFilesInPack;		// °üÖĞµÄÎÄ¼ş×ÜÊı
-	DWORD		m_nCompressMethod;	// Ñ¹ËõËã·¨
+	KFile		m_File;				// PAKæ–‡ä»¶
+	KMemClass	m_MemIndex;			// ç´¢å¼•å†…å­˜
+	KCodec*		m_pCodec;			// è§£ç å™¨
+	DWORD		m_nFilesInPack;		// åŒ…ä¸­çš„æ–‡ä»¶æ€»æ•°
+	DWORD		m_nCompressMethod;	// å‹ç¼©ç®—æ³•
 
 public:
 	KPakData();

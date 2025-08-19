@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------
-//	ÎÄ¼şÃû		£º	AccountLoginDef.h
-//	´´½¨Õß		£º	ÍòÀï
-//	´´½¨Ê±¼ä	£º	2003-5-2 22:04:24
-//	¹¦ÄÜÃèÊö	£º	
+//	æ–‡ä»¶å		ï¼š	AccountLoginDef.h
+//	åˆ›å»ºè€…		ï¼š	ä¸‡é‡Œ
+//	åˆ›å»ºæ—¶é—´	ï¼š	2003-5-2 22:04:24
+//	åŠŸèƒ½æè¿°	ï¼š	
 //
 // -------------------------------------------------------------------------
 #ifndef __ACCOUNTLOGINDEF_H__
@@ -24,7 +24,7 @@
 #define ACTION_FAILED					0x2
 #define E_ACCOUNT_OR_PASSWORD			0x3
 #define E_ACCOUNT_EXIST					0x4
-#define E_ACCOUNT_NODEPOSIT				0x5 //µã¿¨Óà¶îÎªÁã¡¢»òÎŞµã¿¨
+#define E_ACCOUNT_NODEPOSIT				0x5 //ç‚¹å¡ä½™é¢ä¸ºé›¶ã€æˆ–æ— ç‚¹å¡
 #define E_ACCOUNT_ACCESSDENIED			0x6
 #define E_ADDRESS_OR_PORT				0x7
 #define E_ACCOUNT_FREEZE				0x8
@@ -76,13 +76,13 @@ struct KAccountUserReturn : public KAccountUser
 
 struct KAccountUserReturnExt : public KAccountUserReturn
 {
-	int nExtPoint;        //¿ÉÓÃµÄ¸½ËÍµã
-	DWORD nLeftTime;          //Ê£ÓàÊ±¼ä,ÏÖÔÚÒÔÃëÎªµ¥Î»,ĞèÒªÅ·ÎÄÈ·ÈÏÊÇ·ñ¸ÄÎª·ÖÖÓ
+	int nExtPoint;        //å¯ç”¨çš„é™„é€ç‚¹
+	DWORD nLeftTime;          //å‰©ä½™æ—¶é—´,ç°åœ¨ä»¥ç§’ä¸ºå•ä½,éœ€è¦æ¬§æ–‡ç¡®è®¤æ˜¯å¦æ”¹ä¸ºåˆ†é’Ÿ
 };
 
 struct KAccountUserLogout : public KAccountUser
 {
-	WORD nExtPoint; //½«Òª¿Û³ıµÄ¸½ËÍµã
+	WORD nExtPoint; //å°†è¦æ‰£é™¤çš„é™„é€ç‚¹
 };
 
 struct KAccountUserTimeInfo : public KAccountUserReturn

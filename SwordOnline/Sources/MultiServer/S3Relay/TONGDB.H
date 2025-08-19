@@ -12,20 +12,20 @@
 #include "KTongControl.h"
 
 /*
-enum enumMemberClass		//°ïÖÚÀàĞÍ
+enum enumMemberClass		//å¸®ä¼—ç±»å‹
 {
-	mcMaster = 0,			//°ïÖ÷
-	mcDirector,			//³¤ÀÏ
-	mcManager,			//³¤ÀÏ
-	mcMember			//°ïÖÚ
+	mcMaster = 0,			//å¸®ä¸»
+	mcDirector,			//é•¿è€
+	mcManager,			//é•¿è€
+	mcMember			//å¸®ä¼—
 };
 */
 
 typedef struct
 {
-	int			nCamp;								// °ï»áÕóÓª
-	DWORD		dwMoney;								// °ï»á×Ê½ğ
-	int			nCredit;								// °ï»áÉùÍû
+	int			nCamp;								// å¸®ä¼šé˜µè¥
+	DWORD		dwMoney;								// å¸®ä¼šèµ„é‡‘
+	int			nCredit;								// å¸®ä¼šå£°æœ›
 	BYTE		btLevel;
 	DWORD		dwTotalEff;
 	int			nSaveEff;
@@ -34,33 +34,33 @@ typedef struct
 	BOOL 		bRecruit;
 	int 		nTongParam;
 
-	char		szName[defTONG_NAME_LENGTH_32];			// °ï»áÃû
-	char		szMasterAgname[defTONG_NAME_LENGTH_32];	// °ïÖ÷³ÆºÅ
-	char		szDirectorAgname[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];// ¸÷³¤ÀÏ³ÆºÅ
-	char		szManagerAgname[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// ¸÷¶Ó³¤³ÆºÅ
-	char		szNormalAgname[defTONG_NAME_LENGTH_32];	// °ï»á°ïÖÚ³ÆºÅ
-}TTongStruct;	//ÓÃ×÷´æÈëÊı¾İ¿âµÄ½á¹¹
+	char		szName[defTONG_NAME_LENGTH_32];			// å¸®ä¼šå
+	char		szMasterAgname[defTONG_NAME_LENGTH_32];	// å¸®ä¸»ç§°å·
+	char		szDirectorAgname[defTONG_MAX_DIRECTOR][defTONG_NAME_LENGTH_32];// å„é•¿è€ç§°å·
+	char		szManagerAgname[defTONG_MAX_MANAGER][defTONG_NAME_LENGTH_32];	// å„é˜Ÿé•¿ç§°å·
+	char		szNormalAgname[defTONG_NAME_LENGTH_32];	// å¸®ä¼šå¸®ä¼—ç§°å·
+}TTongStruct;	//ç”¨ä½œå­˜å…¥æ•°æ®åº“çš„ç»“æ„
 
 typedef struct
 {
-	char		szName[defTONG_NAME_LENGTH_32];			// °ïÖÚÃû
-	char		szTong[defTONG_NAME_LENGTH_32];		// °ï»áÃû
-	TONG_MEMBER_FIGURE		MemberClass;			//°ïÖÚÀàĞÍ
-	int			nTitleIndex;					//°ïÖÚ³ÆºÅË÷Òı
+	char		szName[defTONG_NAME_LENGTH_32];			// å¸®ä¼—å
+	char		szTong[defTONG_NAME_LENGTH_32];		// å¸®ä¼šå
+	TONG_MEMBER_FIGURE		MemberClass;			//å¸®ä¼—ç±»å‹
+	int			nTitleIndex;					//å¸®ä¼—ç§°å·ç´¢å¼•
 	int			nSex;
 	int 		nJoinTm;
 	int 		nSaveEff;
-}TMemberStruct;	//ÓÃ×÷´æÈëÊı¾İ¿âµÄ½á¹¹
+}TMemberStruct;	//ç”¨ä½œå­˜å…¥æ•°æ®åº“çš„ç»“æ„
 
 class CTongDB  
 {
 private:
-	ZDBTable* m_TongTable;						//°ï»áÊı¾İ±í
-	ZDBTable* m_MemberTable;					//°ïÖÚÊı¾İ±í
+	ZDBTable* m_TongTable;						//å¸®ä¼šæ•°æ®è¡¨
+	ZDBTable* m_MemberTable;					//å¸®ä¼—æ•°æ®è¡¨
 	// ZDBTable* m_MoneyTable;
 	
-	TTongList m_TongList[MAX_TONG_COUNT];	//°ï»áÁĞ±í
-	int m_TongListCount;						//°ï»áÁĞ±íÊı
+	TTongList m_TongList[MAX_TONG_COUNT];	//å¸®ä¼šåˆ—è¡¨
+	int m_TongListCount;						//å¸®ä¼šåˆ—è¡¨æ•°
 public:
 	CTongDB();
 	virtual ~CTongDB(){};
@@ -69,14 +69,14 @@ public:
 	bool OpenNew();
 	void Close();
 	
-	bool ChangeTong(CTongControl& aTongControl);	//´´½¨ºÍ¸Ä±ä°ïÅÉ
-	bool DelTong(char* aTongName);	//É¾³ı°ïÅÉ
-	bool SearchTong(char* aTongName, CTongControl& aTongControl);	//´ÓÊı¾İ¿âÖĞÈ¡µÃ°ïÅÉ
-	int GetTongCount();							//È¡µÃÃÅÅÉÊı
-	int GetTongList(TTongList* aTongList, int aMaxNum);	//È¡µÃ°ï»áÁĞ±í
+	bool ChangeTong(CTongControl& aTongControl);	//åˆ›å»ºå’Œæ”¹å˜å¸®æ´¾
+	bool DelTong(char* aTongName);	//åˆ é™¤å¸®æ´¾
+	bool SearchTong(char* aTongName, CTongControl& aTongControl);	//ä»æ•°æ®åº“ä¸­å–å¾—å¸®æ´¾
+	int GetTongCount();							//å–å¾—é—¨æ´¾æ•°
+	int GetTongList(TTongList* aTongList, int aMaxNum);	//å–å¾—å¸®ä¼šåˆ—è¡¨
 
-	bool ChangeMember(TMemberStruct aMember);//Ôö¼Ó°ïÖÚ
-	bool DelMember(char* aMemberName);		//É¾³ı°ïÖÚ
+	bool ChangeMember(TMemberStruct aMember);//å¢åŠ å¸®ä¼—
+	bool DelMember(char* aMemberName);		//åˆ é™¤å¸®ä¼—
 };
 
 #endif // !defined(AFX_TONGDB_H__8C487F07_C490_4562_AD01_77953CCCBCE2__INCLUDED_)

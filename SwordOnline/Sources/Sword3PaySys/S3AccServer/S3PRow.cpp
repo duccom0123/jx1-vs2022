@@ -1,12 +1,12 @@
 /**************************************************/
 /*                                                */
-/*  ÎÄ¼şÃû:    S3PRow.cpp                         */
-/*  ÃèÊö    :  Ëü½ÓÊÜÒ»¸öhash±í×÷ÎªÃ¿¸öĞĞµÄÊı¾İ£¬ */
-/*             Ğ­ÖúS3PTableDAOÉú³ÉsqlÓï¾ä         */
+/*  æ–‡ä»¶å:    S3PRow.cpp                         */
+/*  æè¿°    :  å®ƒæ¥å—ä¸€ä¸ªhashè¡¨ä½œä¸ºæ¯ä¸ªè¡Œçš„æ•°æ®ï¼Œ */
+/*             ååŠ©S3PTableDAOç”Ÿæˆsqlè¯­å¥         */
 /*                                                */
-/*	×÷Õß	 : Liu Wansong                        */
-/*	´´½¨ÈÕÆÚ : 8/22/2002                          */
-/*  ĞŞ¸ÄÈÕÆÚ : 8/26/2002                          */
+/*	ä½œè€…	 : Liu Wansong                        */
+/*	åˆ›å»ºæ—¥æœŸ : 8/22/2002                          */
+/*  ä¿®æ”¹æ—¥æœŸ : 8/26/2002                          */
 /**************************************************/
 
 #include "S3PRow.h"
@@ -59,7 +59,7 @@ int S3PRow::GetExpLikeInsert(std::string & exp)
 		}
 		else
 		{
-			// ´íÎó£¬²»ÄÜĞŞÕı×Ö¶ÎµÄÖµ
+			// é”™è¯¯ï¼Œä¸èƒ½ä¿®æ­£å­—æ®µçš„å€¼
 			return -2;
 		}
 	}
@@ -103,7 +103,7 @@ int S3PRow::FixValue(const std::string & key, const std::string & value, std::st
 
 	if ( !bFound )
 	{
-		//Õâ¸ö±íÖĞÃ»ÓĞÕâ¸ö×Ö¶Î
+		//è¿™ä¸ªè¡¨ä¸­æ²¡æœ‰è¿™ä¸ªå­—æ®µ
 		return -1;
 	}
 
@@ -111,7 +111,7 @@ int S3PRow::FixValue(const std::string & key, const std::string & value, std::st
 	{
 		if ( Quote(value, outValue) <= 0 )
 		{
-			//¸øÊı¾İÈ¥µôÃô¸Ğ×Ö·ûÊ±³ö´í
+			//ç»™æ•°æ®å»æ‰æ•æ„Ÿå­—ç¬¦æ—¶å‡ºé”™
 			return -2;
 		}
 	}
@@ -188,7 +188,7 @@ int S3PRow::GetExpLikeUpdate(std::string &exp)
 		}
 		else
 		{
-			// ´íÎó£¬²»ÄÜĞŞÕı×Ö¶ÎµÄÖµ
+			// é”™è¯¯ï¼Œä¸èƒ½ä¿®æ­£å­—æ®µçš„å€¼
 			return -1;
 		}
 	}
@@ -222,7 +222,7 @@ int S3PRow::GetExpLikeWhereAnd(std::string &exp)
 		}
 		else
 		{
-			// ´íÎó£¬²»ÄÜĞŞÕı×Ö¶ÎµÄÖµ
+			// é”™è¯¯ï¼Œä¸èƒ½ä¿®æ­£å­—æ®µçš„å€¼
 			return -1;
 		}
 	}
@@ -281,7 +281,7 @@ int S3PRow::GetExpLikeInsertValue(std::string &exp)
 		}
 		else
 		{
-			// ´íÎó£¬²»ÄÜĞŞÕı×Ö¶ÎµÄÖµ
+			// é”™è¯¯ï¼Œä¸èƒ½ä¿®æ­£å­—æ®µçš„å€¼
 			return -2;
 		}
 	}

@@ -117,7 +117,7 @@ CConnTrack::CONNECTS CConnTrack::DupConns(BYTE fami, BYTE meth)
 		{
 			CONNSET& conns = (*itMeth).second;
 
-			connsRet.reserve(conns.size());	//<==�Ż�
+			connsRet.reserve(conns.size());	//<==ÓÅ»¯
 			for (CONNSET::iterator itConn = conns.begin(); itConn != conns.end(); itConn++)
 				connsRet.push_back((*itConn));
 		}

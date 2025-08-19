@@ -4,16 +4,16 @@
 // File:	KJpegDeocode.cpp
 // Date:	2000.08.08
 // Code:	Daniel Wang
-// Desc:	Jpeg Huffman Table µÄ½âÂë
+// Desc:	Jpeg Huffman Table çš„è§£ç 
 // From:	Cloud Wu's JPEG Decoder
 //---------------------------------------------------------------------------
 #include <windows.h>
 #include "KJpegLib.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	read_DHT
-// ¹¦ÄÜ:	read defined huffman table
-// ²ÎÊı:	stream		JpegÊı¾İÁ÷
-// ·µ»Ø:	void*		JpegÊı¾İÁ÷
+// å‡½æ•°:	read_DHT
+// åŠŸèƒ½:	read defined huffman table
+// å‚æ•°:	stream		Jpegæ•°æ®æµ
+// è¿”å›:	void*		Jpegæ•°æ®æµ
 //---------------------------------------------------------------------------
 PBYTE jpeg_read_DHT(PBYTE stream)
 {
@@ -29,11 +29,11 @@ PBYTE jpeg_read_DHT(PBYTE stream)
 	
 	while (stream < stream_end)
 	{
-		// È¡ĞÅÏ¢Âë
+		// å–ä¿¡æ¯ç 
 		htb_id = READ_BYTE(stream);
 		htb_id = (htb_id & 0x10)? (htb_id & 3 | 4) : (htb_id & 3);
 		
-		// Í³¼ÆHTB³¤¶È,·ÖÅäÄÚ´æ
+		// ç»Ÿè®¡HTBé•¿åº¦,åˆ†é…å†…å­˜
 		code_len = (BYTE *)stream;
 		for (i = 0; i < 16; i++)
 		{
@@ -43,7 +43,7 @@ PBYTE jpeg_read_DHT(PBYTE stream)
 		htb = (JPEG_HCODE*) malloc(jpeg_htable[htb_id].num * sizeof(JPEG_HCODE));
 		jpeg_htable[htb_id].htb = htb;
 
-		// ¼ÆËã´úÂë±í
+		// è®¡ç®—ä»£ç è¡¨
 		for (i = 0, p = 0; i < 16; i++)
 		{
 			for (j = 0; j < code_len[i]; j++)

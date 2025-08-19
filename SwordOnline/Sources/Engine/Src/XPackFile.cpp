@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:42*********************
-//	¶ÁÈ¡´ò°üÎÄ¼ş
+//	è¯»å–æ‰“åŒ…æ–‡ä»¶
 //	Copyright : Kingsoft 2003
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2003-9-16
@@ -9,44 +9,44 @@
 #include "ucl/ucl.h"
 #include <crtdbg.h>
 
-//Ò»¸öPackÎÄ¼ş¾ßÓĞµÄÍ·½á¹¹:
+//ä¸€ä¸ªPackæ–‡ä»¶å…·æœ‰çš„å¤´ç»“æ„:
 struct XPackFileHeader
 {
-	unsigned char cSignature[4];		//ËÄ¸ö×Ö½ÚµÄÎÄ¼şµÄÍ·±êÖ¾£¬¹Ì¶¨Îª×Ö·û´®'PACK'
-	unsigned long uCount;				//Êı¾İµÄÌõÄ¿Êı
-	unsigned long uIndexTableOffset;	//Ë÷ÒıµÄÆ«ÒÆÁ¿
-	unsigned long uDataOffset;			//Êı¾İµÄÆ«ÒÆÁ¿
-	unsigned long uCrc32;				//Ğ£ÑéºÍ
-	unsigned char cReserved[12];		//±£ÁôµÄ×Ö½Ú
+	unsigned char cSignature[4];		//å››ä¸ªå­—èŠ‚çš„æ–‡ä»¶çš„å¤´æ ‡å¿—ï¼Œå›ºå®šä¸ºå­—ç¬¦ä¸²'PACK'
+	unsigned long uCount;				//æ•°æ®çš„æ¡ç›®æ•°
+	unsigned long uIndexTableOffset;	//ç´¢å¼•çš„åç§»é‡
+	unsigned long uDataOffset;			//æ•°æ®çš„åç§»é‡
+	unsigned long uCrc32;				//æ ¡éªŒå’Œ
+	unsigned char cReserved[12];		//ä¿ç•™çš„å­—èŠ‚
 };
 
 #define	XPACKFILE_SIGNATURE_FLAG		0x4b434150	//'PACK'
 
-//PackÖĞ¶ÔÓ¦Ã¿¸ö×ÓÎÄ¼şµÄË÷ÒıĞÅÏ¢Ïî
+//Packä¸­å¯¹åº”æ¯ä¸ªå­æ–‡ä»¶çš„ç´¢å¼•ä¿¡æ¯é¡¹
 struct XPackIndexInfo
 {
-	unsigned long	uId;				//×ÓÎÄ¼şid
-	unsigned long	uOffset;			//×ÓÎÄ¼şÔÚ°üÖĞµÄÆ«ÒÆÎ»ÖÃ
-	long			lSize;				//×ÓÎÄ¼şµÄÔ­Ê¼´óĞ¡
-	long			lCompressSizeFlag;	//×ÓÎÄ¼şÑ¹ËõºóµÄ´óĞ¡ºÍÑ¹Ëõ·½·¨
-										//×î¸ß×Ö½Ú±íÊ¾Ñ¹Ëõ·½·¨£¬¼ûXPACK_METHOD
-										//µÍµÄÈı¸ö×Ö½Ú±íÊ¾×ÓÎÄ¼şÑ¹ËõºóµÄ´óĞ¡
+	unsigned long	uId;				//å­æ–‡ä»¶id
+	unsigned long	uOffset;			//å­æ–‡ä»¶åœ¨åŒ…ä¸­çš„åç§»ä½ç½®
+	long			lSize;				//å­æ–‡ä»¶çš„åŸå§‹å¤§å°
+	long			lCompressSizeFlag;	//å­æ–‡ä»¶å‹ç¼©åçš„å¤§å°å’Œå‹ç¼©æ–¹æ³•
+										//æœ€é«˜å­—èŠ‚è¡¨ç¤ºå‹ç¼©æ–¹æ³•ï¼Œè§XPACK_METHOD
+										//ä½çš„ä¸‰ä¸ªå­—èŠ‚è¡¨ç¤ºå­æ–‡ä»¶å‹ç¼©åçš„å¤§å°
 };
 
-//°üÎÄ¼şµÄÑ¹Ëõ·½Ê½
+//åŒ…æ–‡ä»¶çš„å‹ç¼©æ–¹å¼
 enum XPACK_METHOD
 {
-	TYPE_NONE	= 0x00000000,			//Ã»ÓĞÑ¹Ëõ
-	TYPE_UCL	= 0x01000000,			//UCLÑ¹Ëõ
+	TYPE_NONE	= 0x00000000,			//æ²¡æœ‰å‹ç¼©
+	TYPE_UCL	= 0x01000000,			//UCLå‹ç¼©
 	TYPE_UPL_NEW = 0x20000000, 			//Load Pak new
-	TYPE_BZIP2	= 0x02000000,			//bzip2Ñ¹Ëõ
-	TYPE_FRAME	= 0x10000000,			//Ê¹ÓÃÁË¶ÀÁ¢Ö¡Ñ¹Ëõ,×ÓÎÄ¼şÎªsprÀàĞÍÊ±²Å¿ÉÄÜÓÃµ½
+	TYPE_BZIP2	= 0x02000000,			//bzip2å‹ç¼©
+	TYPE_FRAME	= 0x10000000,			//ä½¿ç”¨äº†ç‹¬ç«‹å¸§å‹ç¼©,å­æ–‡ä»¶ä¸ºsprç±»å‹æ—¶æ‰å¯èƒ½ç”¨åˆ°
 
-	TYPE_METHOD_FILTER = 0x0f000000,	//¹ıÂË±ê¼Ç
-	TYPE_FILTER = 0xff000000,			//¹ıÂË±ê¼Ç
+	TYPE_METHOD_FILTER = 0x0f000000,	//è¿‡æ»¤æ ‡è®°
+	TYPE_FILTER = 0xff000000,			//è¿‡æ»¤æ ‡è®°
 };
 
-//pak°üÖĞ±£´æµÄsprÖ¡ĞÅÏ¢Ïî
+//pakåŒ…ä¸­ä¿å­˜çš„språ¸§ä¿¡æ¯é¡¹
 struct XPackSprFrameInfo
 {
 	long lCompressSize;
@@ -72,8 +72,8 @@ XPackFile::~XPackFile()
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º´ò¿ª°üÎÄ¼ş
-//·µ»Ø£º³É¹¦Óë·ñ
+//åŠŸèƒ½ï¼šæ‰“å¼€åŒ…æ–‡ä»¶
+//è¿”å›ï¼šæˆåŠŸä¸å¦
 //-------------------------------------------------
 bool XPackFile::Open(const char* pszPackFileName, int nSelfIndex)
 {
@@ -92,10 +92,10 @@ bool XPackFile::Open(const char* pszPackFileName, int nSelfIndex)
 		}
 		XPackFileHeader	Header;
 		DWORD			dwListSize, dwReaded;
-		//--¶ÁÈ¡°üÎÄ¼şÍ·--
+		//--è¯»å–åŒ…æ–‡ä»¶å¤´--
 		if (::ReadFile(m_hFile, &Header, sizeof(Header), &dwReaded, NULL) == FALSE)
 			break;
-		//--°üÎÄ¼ş±ê¼ÇÓëÄÚÈİµÄºÏ·¨ĞÔÅĞ¶Ï--
+		//--åŒ…æ–‡ä»¶æ ‡è®°ä¸å†…å®¹çš„åˆæ³•æ€§åˆ¤æ–­--
 		if (dwReaded != sizeof(Header) ||
 			*(int*)(&Header.cSignature) != XPACKFILE_SIGNATURE_FLAG ||
 			Header.uCount == 0 ||
@@ -107,7 +107,7 @@ bool XPackFile::Open(const char* pszPackFileName, int nSelfIndex)
 			break;
 		}
 
-		//--¶ÁÈ¡Ë÷ÒıĞÅÏ¢±í--
+		//--è¯»å–ç´¢å¼•ä¿¡æ¯è¡¨--
 		dwListSize = sizeof(XPackIndexInfo) * Header.uCount;
 		m_pIndexList = (XPackIndexInfo*)malloc(dwListSize);
 		if (m_pIndexList == NULL ||
@@ -130,7 +130,7 @@ bool XPackFile::Open(const char* pszPackFileName, int nSelfIndex)
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º¹Ø±Õ°üÎÄ¼ş
+//åŠŸèƒ½ï¼šå…³é—­åŒ…æ–‡ä»¶
 //-------------------------------------------------
 void XPackFile::Close()
 {
@@ -138,7 +138,7 @@ void XPackFile::Close()
 
 	if (m_pIndexList)
 	{
-		//----Çå³ıcacheÖĞ»º´æµ½µÄ£¨¿ÉÄÜ£©ÊÇ´Ë°üÖĞµÄ×ÓÎÄ¼ş----
+		//----æ¸…é™¤cacheä¸­ç¼“å­˜åˆ°çš„ï¼ˆå¯èƒ½ï¼‰æ˜¯æ­¤åŒ…ä¸­çš„å­æ–‡ä»¶----
 		for (int i = ms_nNumElemFileCache - 1; i >=0; i--)
 		{
 			if (ms_ElemFileCache[i].nPackIndex == m_nSelfIndex)
@@ -165,8 +165,8 @@ void XPackFile::Close()
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£ºÊÍ·ÅÒ»¸öcache½áµãµÄÄÚÈİ
-//·µ»Ø£º³É¹¦Óë·ñ
+//åŠŸèƒ½ï¼šé‡Šæ”¾ä¸€ä¸ªcacheç»“ç‚¹çš„å†…å®¹
+//è¿”å›ï¼šæˆåŠŸä¸å¦
 //-------------------------------------------------
 void XPackFile::FreeElemCache(int nCacheIndex)
 {
@@ -183,8 +183,8 @@ void XPackFile::FreeElemCache(int nCacheIndex)
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£ºÖ±½Ó¶ÁÈ¡°üÎÄ¼şÊı¾İÖĞµÄÊı¾İµ½»º³åÇø
-//·µ»Ø£º³É¹¦Óë·ñ
+//åŠŸèƒ½ï¼šç›´æ¥è¯»å–åŒ…æ–‡ä»¶æ•°æ®ä¸­çš„æ•°æ®åˆ°ç¼“å†²åŒº
+//è¿”å›ï¼šæˆåŠŸä¸å¦
 //-------------------------------------------------
 bool XPackFile::DirectRead(void* pBuffer, unsigned int uOffset, unsigned int uSize) const
 {
@@ -204,13 +204,13 @@ bool XPackFile::DirectRead(void* pBuffer, unsigned int uOffset, unsigned int uSi
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º´ø½âÑ¹µØ¶ÁÈ¡°üÎÄ¼şµ½»º³åÇø
-//²ÎÊı£ºpBuffer --> »º³åÇøÖ¸Õë
-//		uExtractSize  --> Êı¾İ£¨ÆÚÍû£©½âÑ¹ºóµÄ´óĞ¡£¬pBuffer»º³åÇøµÄ´óĞ¡²»Ğ¡ÓÚ´ËÊı
-//		lCompressType --> Ö±½Ó´Ó°üÖĞ¶ÈÈ¡µÃÔ­Ê¼£¨/Ñ¹Ëõ£©´óĞ¡
-//		uOffset  --> ´Ó°üÖĞµÄ´ËÆ«ÒÆÎ»ÖÃ¿ªÊ¼¶ÁÈ¡
-//		uSize    --> ´Ó°üÖĞÖ±½Ó¶ÁÈ¡µÃ£¨Ñ¹Ëõ£©Êı¾İµÄ´óĞ¡
-//·µ»Ø£º³É¹¦Óë·ñ
+//åŠŸèƒ½ï¼šå¸¦è§£å‹åœ°è¯»å–åŒ…æ–‡ä»¶åˆ°ç¼“å†²åŒº
+//å‚æ•°ï¼špBuffer --> ç¼“å†²åŒºæŒ‡é’ˆ
+//		uExtractSize  --> æ•°æ®ï¼ˆæœŸæœ›ï¼‰è§£å‹åçš„å¤§å°ï¼ŒpBufferç¼“å†²åŒºçš„å¤§å°ä¸å°äºæ­¤æ•°
+//		lCompressType --> ç›´æ¥ä»åŒ…ä¸­åº¦å–å¾—åŸå§‹ï¼ˆ/å‹ç¼©ï¼‰å¤§å°
+//		uOffset  --> ä»åŒ…ä¸­çš„æ­¤åç§»ä½ç½®å¼€å§‹è¯»å–
+//		uSize    --> ä»åŒ…ä¸­ç›´æ¥è¯»å–å¾—ï¼ˆå‹ç¼©ï¼‰æ•°æ®çš„å¤§å°
+//è¿”å›ï¼šæˆåŠŸä¸å¦
 //-------------------------------------------------
 bool XPackFile::ExtractRead(void* pBuffer, unsigned int uExtractSize,
 							long lCompressType, unsigned int uOffset, unsigned int uSize) const
@@ -240,8 +240,8 @@ bool XPackFile::ExtractRead(void* pBuffer, unsigned int uExtractSize,
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£ºÔÚË÷Òı±íÖĞ²éÕÒ×ÓÎÄ¼şÏî(¶ş·Ö·¨ÕÒ)
-//·µ»Ø£ºÈçÕÒµ½·µ»ØÔÚË÷Òı±íÖĞµÄÎ»ÖÃ(>=0)£¬ÈçÎ´ÕÒµ½·µ»Ø-1
+//åŠŸèƒ½ï¼šåœ¨ç´¢å¼•è¡¨ä¸­æŸ¥æ‰¾å­æ–‡ä»¶é¡¹(äºŒåˆ†æ³•æ‰¾)
+//è¿”å›ï¼šå¦‚æ‰¾åˆ°è¿”å›åœ¨ç´¢å¼•è¡¨ä¸­çš„ä½ç½®(>=0)ï¼Œå¦‚æœªæ‰¾åˆ°è¿”å›-1
 //-------------------------------------------------
 int XPackFile::FindElemFile(unsigned long ulId) const
 {
@@ -262,10 +262,10 @@ int XPackFile::FindElemFile(unsigned long ulId) const
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º²éÕÒ°üÄÚµÄ×ÓÎÄ¼ş
-//²ÎÊı£ºuId --> ×ÓÎÄ¼şµÄid
-//		ElemRef -->Èç¹ûÕÒµ½ÔòÔÚ´Ë½á¹¹ÀïÌîÉÏ×ÓÎÄ¼şµÄÏà¹ØĞÅÏ¢
-//·µ»Ø£ºÊÇ·ñÕÒµ½
+//åŠŸèƒ½ï¼šæŸ¥æ‰¾åŒ…å†…çš„å­æ–‡ä»¶
+//å‚æ•°ï¼šuId --> å­æ–‡ä»¶çš„id
+//		ElemRef -->å¦‚æœæ‰¾åˆ°åˆ™åœ¨æ­¤ç»“æ„é‡Œå¡«ä¸Šå­æ–‡ä»¶çš„ç›¸å…³ä¿¡æ¯
+//è¿”å›ï¼šæ˜¯å¦æ‰¾åˆ°
 //-------------------------------------------------
 bool XPackFile::FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef)
 {
@@ -299,9 +299,9 @@ bool XPackFile::FindElemFile(unsigned long uId, XPackElemFileRef& ElemRef)
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º·ÖÅä»º³åÇø£¬²¢¶Á°üÄÚµÄ×ÓÎÄ¼şµÄÄÚÈİµ½ÆäÖĞ
-//²ÎÊı£º×ÓÎÄ¼şÔÚ°üÄÚµÄË÷Òı
-//·µ»Ø£º³É¹¦Ôò·µ»Ø»º³åÇøµÄÖ¸Õë£¬·ñÔò·µ»Ø¿ÕÖ¸Õë
+//åŠŸèƒ½ï¼šåˆ†é…ç¼“å†²åŒºï¼Œå¹¶è¯»åŒ…å†…çš„å­æ–‡ä»¶çš„å†…å®¹åˆ°å…¶ä¸­
+//å‚æ•°ï¼šå­æ–‡ä»¶åœ¨åŒ…å†…çš„ç´¢å¼•
+//è¿”å›ï¼šæˆåŠŸåˆ™è¿”å›ç¼“å†²åŒºçš„æŒ‡é’ˆï¼Œå¦åˆ™è¿”å›ç©ºæŒ‡é’ˆ
 //-------------------------------------------------
 void* XPackFile::ReadElemFile(int nElemIndex) const
 {
@@ -323,10 +323,10 @@ void* XPackFile::ReadElemFile(int nElemIndex) const
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£ºÔÚcacheÀï²éÕÒ×ÓÎÄ¼ş
-//²ÎÊı£ºuId --> ×ÓÎÄ¼şid
-//		nDesireIndex --> ÔÚcacheÖĞµÄ¿ÉÄÜÎ»ÖÃ
-//·µ»Ø£º³É¹¦Ôò·µ»Øcache½ÚµãË÷Òı(>=0),Ê§°ÜÔò·µ»Ø-1
+//åŠŸèƒ½ï¼šåœ¨cacheé‡ŒæŸ¥æ‰¾å­æ–‡ä»¶
+//å‚æ•°ï¼šuId --> å­æ–‡ä»¶id
+//		nDesireIndex --> åœ¨cacheä¸­çš„å¯èƒ½ä½ç½®
+//è¿”å›ï¼šæˆåŠŸåˆ™è¿”å›cacheèŠ‚ç‚¹ç´¢å¼•(>=0),å¤±è´¥åˆ™è¿”å›-1
 //-------------------------------------------------
 int XPackFile::FindElemFileInCache(unsigned int uId, int nDesireIndex)
 {
@@ -351,21 +351,21 @@ int XPackFile::FindElemFileInCache(unsigned int uId, int nDesireIndex)
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º°Ñ×ÓÎÄ¼şÊı¾İÌí¼Óµ½cache
-//²ÎÊı£ºpBuffer --> ´æÓĞ×ÓÎÄ¼şÊı¾İµÄ»º³åÇø
-//		nElemIndex --> ×ÓÎÄ¼şÔÚ°üÖĞµÄË÷Òı
-//·µ»Ø£ºÌí¼Óµ½cacheµÄË÷ÒıÎ»ÖÃ
+//åŠŸèƒ½ï¼šæŠŠå­æ–‡ä»¶æ•°æ®æ·»åŠ åˆ°cache
+//å‚æ•°ï¼špBuffer --> å­˜æœ‰å­æ–‡ä»¶æ•°æ®çš„ç¼“å†²åŒº
+//		nElemIndex --> å­æ–‡ä»¶åœ¨åŒ…ä¸­çš„ç´¢å¼•
+//è¿”å›ï¼šæ·»åŠ åˆ°cacheçš„ç´¢å¼•ä½ç½®
 //-------------------------------------------------
 int XPackFile::AddElemFileToCache(void* pBuffer, int nElemIndex)
 {
 	_ASSERT(pBuffer && nElemIndex >= 0 && nElemIndex < m_nElemFileCount);
 	int nCacheIndex;
 	if (ms_nNumElemFileCache < MAX_XPACKFILE_CACHE)
-	{	//ÕÒµ½Ò»¸ö¿ÕÎ»ÖÃ
+	{	//æ‰¾åˆ°ä¸€ä¸ªç©ºä½ç½®
 		nCacheIndex = ms_nNumElemFileCache++;
 	}
 	else
-	{	//ÊÍ·ÅÒ»¸ö¾ÉµÄcache½Úµã
+	{	//é‡Šæ”¾ä¸€ä¸ªæ—§çš„cacheèŠ‚ç‚¹
 		nCacheIndex = 0;
 		if (ms_ElemFileCache[0].uRefFlag)
 			ms_ElemFileCache[0].uRefFlag --;
@@ -389,10 +389,10 @@ int XPackFile::AddElemFileToCache(void* pBuffer, int nElemIndex)
 }
 
 //-------------------------------------------------
-//¹¦ÄÜ£º¶ÁÈ¡×ÓÎÄ¼şÒ»¶¨³¤¶ÈµÄÊı¾İµ½»º³åÇø
-//²ÎÊı£ºpBuffer --> ÓÃÀ´¶ÁÈ¡Êı¾İµÄ»º³åÇø
-//		uSize --> Òª¶ÁÈ¡µÄÊı¾İµÄ³¤¶È
-//·µ»Ø£º³É¹¦¶ÁÈ¡µÃ×Ö½ÚÊı
+//åŠŸèƒ½ï¼šè¯»å–å­æ–‡ä»¶ä¸€å®šé•¿åº¦çš„æ•°æ®åˆ°ç¼“å†²åŒº
+//å‚æ•°ï¼špBuffer --> ç”¨æ¥è¯»å–æ•°æ®çš„ç¼“å†²åŒº
+//		uSize --> è¦è¯»å–çš„æ•°æ®çš„é•¿åº¦
+//è¿”å›ï¼šæˆåŠŸè¯»å–å¾—å­—èŠ‚æ•°
 //-------------------------------------------------
 int XPackFile::ElemFileRead(XPackElemFileRef& ElemRef, void* pBuffer, unsigned uSize)
 {
@@ -401,10 +401,10 @@ int XPackFile::ElemFileRead(XPackElemFileRef& ElemRef, void* pBuffer, unsigned u
 	{
 		EnterCriticalSection(&m_ReadCritical);
 
-		//--ÏÈ¿´ÊÇ·ñÒÑ¾­ÔÚcacheÀïÁË---
+		//--å…ˆçœ‹æ˜¯å¦å·²ç»åœ¨cacheé‡Œäº†---
 		ElemRef.nCacheIndex = FindElemFileInCache(ElemRef.uId, ElemRef.nCacheIndex);
 
-		if (ElemRef.nCacheIndex < 0 &&								//ÔÚcacheÀïÎ´ÕÒµ½
+		if (ElemRef.nCacheIndex < 0 &&								//åœ¨cacheé‡Œæœªæ‰¾åˆ°
 			ElemRef.nElemIndex < m_nElemFileCount &&
 			m_pIndexList[ElemRef.nElemIndex].uId == ElemRef.uId)
 		{
@@ -414,8 +414,8 @@ int XPackFile::ElemFileRead(XPackElemFileRef& ElemRef, void* pBuffer, unsigned u
 		}
 
 		if (ElemRef.nCacheIndex >= 0 &&
-			//´ËÏÂÃæÈıÏîÓ¦¸ÃÕ¹¿ª¼ì²é£¬·ÀÖ¹±»Ä£¿éÍâ²¿¸Ä±ä£¬ÒıÆğ´íÎó¡£
-			//ÎªĞ§ÂÊ¿É¿¼ÂÇÊ¡ÂÔ£¬µ«ĞèÍâ²¿°´ÕÕ¹æÔòËæ±ã¸Ä±äElemRefµÄÄÚÈİ¡£
+			//æ­¤ä¸‹é¢ä¸‰é¡¹åº”è¯¥å±•å¼€æ£€æŸ¥ï¼Œé˜²æ­¢è¢«æ¨¡å—å¤–éƒ¨æ”¹å˜ï¼Œå¼•èµ·é”™è¯¯ã€‚
+			//ä¸ºæ•ˆç‡å¯è€ƒè™‘çœç•¥ï¼Œä½†éœ€å¤–éƒ¨æŒ‰ç…§è§„åˆ™éšä¾¿æ”¹å˜ElemRefçš„å†…å®¹ã€‚
 			ElemRef.nPackIndex == ms_ElemFileCache[ElemRef.nCacheIndex].nPackIndex &&
 			ElemRef.nElemIndex == ms_ElemFileCache[ElemRef.nCacheIndex].nElemIndex &&
 			ElemRef.nSize == ms_ElemFileCache[ElemRef.nCacheIndex].lSize
@@ -461,7 +461,7 @@ SPRHEAD* XPackFile::GetSprHeader(XPackElemFileRef& ElemRef, SPROFFS*& pOffsetTab
 	if(ElemRef.nElemIndex < m_nElemFileCount &&
 		m_pIndexList[ElemRef.nElemIndex].uId == ElemRef.uId)
 	{
-        //Ê×ÏÈ¼ì²éÕâ¸öidÊÇÊ²Ã´ÀàĞÍÑ¹Ëõ·½Ê½
+        //é¦–å…ˆæ£€æŸ¥è¿™ä¸ªidæ˜¯ä»€ä¹ˆç±»å‹å‹ç¼©æ–¹å¼
 		if ((m_pIndexList[ElemRef.nElemIndex].lCompressSizeFlag & TYPE_FRAME) == 0)
 		{
 			pSpr = (SPRHEAD*)ReadElemFile(ElemRef.nElemIndex);
@@ -528,7 +528,7 @@ SPRFRAME* XPackFile::GetSprFrame(SPRHEAD* pSprHeader, int nFrame)
 				bool bOk = false;
 				lCompressType &= TYPE_METHOD_FILTER;
 				long	lTempValue = sizeof(SPRHEAD) + pSprHeader->Colors * 3;
-				//¶Á³öÖ¸¶¨Ö¡µÄĞÅÏ¢
+				//è¯»å‡ºæŒ‡å®šå¸§çš„ä¿¡æ¯
 				XPackSprFrameInfo* pFrameList = (XPackSprFrameInfo *)((char*)pSprHeader + lTempValue);
 				unsigned long	uSrcOffset = m_pIndexList[nNodeIndex].uOffset + lTempValue +pSprHeader->Frames * sizeof(XPackSprFrameInfo);
 			    while(nFrame > 0)

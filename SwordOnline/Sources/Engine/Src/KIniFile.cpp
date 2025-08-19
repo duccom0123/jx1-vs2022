@@ -22,49 +22,49 @@
 
 //---------------------------------------------------------------------------
 typedef struct {
-	DWORD		Id;			// ÎÄ¼ş±êÊ¶ = 0x4b434150 ("PACK")
-	DWORD		DataLen;	// ÎÄ¼şÔ­Ê¼µÄ³¤¶È
-	DWORD		PackLen;	// ÎÄ¼şÑ¹Ëõºó³¤¶È
-	DWORD		Method;		// Ê¹ÓÃµÄÑ¹ËõËã·¨
+	DWORD		Id;			// æ–‡ä»¶æ ‡è¯† = 0x4b434150 ("PACK")
+	DWORD		DataLen;	// æ–‡ä»¶åŸå§‹çš„é•¿åº¦
+	DWORD		PackLen;	// æ–‡ä»¶å‹ç¼©åé•¿åº¦
+	DWORD		Method;		// ä½¿ç”¨çš„å‹ç¼©ç®—æ³•
 } TPackHead;
 //---------------------------------------------------------------------------
 static int  g_nCodec = 0;// codec method = 0,1,2,3,
 //---------------------------------------------------------------------------
-// º¯Êı:	SetCodec
-// ¹¦ÄÜ:	set codec method
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	SetCodec
+// åŠŸèƒ½:	set codec method
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void g_SetIniCodec(int nCodec)
 {
 	g_nCodec = nCodec;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	KIniFile
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KIniFile
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KIniFile::KIniFile()
 {
 	g_MemZero(&m_Header, sizeof(SECNODE));
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KIniFile
-// ¹¦ÄÜ:	ÎöÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KIniFile
+// åŠŸèƒ½:	æé€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KIniFile::~KIniFile()
 {
 	Clear();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Load
-// ¹¦ÄÜ:	¼ÓÔØÒ»¸öINIÎÄ¼ş
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Load
+// åŠŸèƒ½:	åŠ è½½ä¸€ä¸ªINIæ–‡ä»¶
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::Load(LPCSTR FileName)
 {
@@ -105,11 +105,11 @@ BOOL KIniFile::Load(LPCSTR FileName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	LoadPack
-// ¹¦ÄÜ:	´ò¿ªÒ»¸öÑ¹ËõµÄINIÎÄ¼ş
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	LoadPack
+// åŠŸèƒ½:	æ‰“å¼€ä¸€ä¸ªå‹ç¼©çš„INIæ–‡ä»¶
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::LoadPack(LPCSTR FileName)
 {
@@ -179,11 +179,11 @@ BOOL KIniFile::LoadPack(LPCSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Save
-// ¹¦ÄÜ:	±£´æµ±Ç°µÄINIÎÄ¼ş
-// ²ÎÊı:	void
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Save
+// åŠŸèƒ½:	ä¿å­˜å½“å‰çš„INIæ–‡ä»¶
+// å‚æ•°:	void
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::Save(LPCSTR FileName)
 {
@@ -237,11 +237,11 @@ BOOL KIniFile::Save(LPCSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SavePack
-// ¹¦ÄÜ:	±£´æÒ»¸öÑ¹ËõµÄINIÎÄ¼ş
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	SavePack
+// åŠŸèƒ½:	ä¿å­˜ä¸€ä¸ªå‹ç¼©çš„INIæ–‡ä»¶
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::SavePack(LPCSTR FileName)
 {
@@ -328,22 +328,22 @@ BOOL KIniFile::SavePack(LPCSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear
-// ¹¦ÄÜ:	Çå³ıINIÎÄ¼şµÄÄÚÈİ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear
+// åŠŸèƒ½:	æ¸…é™¤INIæ–‡ä»¶çš„å†…å®¹
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::Clear()
 {
 	ReleaseIniLink();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ReadLine
-// ¹¦ÄÜ:	¶ÁÈ¡INIÎÄ¼şµÄÒ»ĞĞ
-// ²ÎÊı:	Buffer	»º´æ
-//			Szie	³¤¶È
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	ReadLine
+// åŠŸèƒ½:	è¯»å–INIæ–‡ä»¶çš„ä¸€è¡Œ
+// å‚æ•°:	Buffer	ç¼“å­˜
+//			Szie	é•¿åº¦
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::ReadLine(LPSTR Buffer,LONG Size)
 {
@@ -365,11 +365,11 @@ BOOL KIniFile::ReadLine(LPSTR Buffer,LONG Size)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	IsKeyChar
-// ¹¦ÄÜ:	ÅĞ¶ÏÒ»¸ö×Ö·ûÊÇ·ñÎª×ÖÄ¸
-// ²ÎÊı:	ch		ÒªÅĞ¶ÏµÄ×Ö·û	
-// ·µ»Ø:	TRUE	ÊÇ×ÖÄ¸
-//			FALSE	²»ÊÇ×ÖÄ¸
+// å‡½æ•°:	IsKeyChar
+// åŠŸèƒ½:	åˆ¤æ–­ä¸€ä¸ªå­—ç¬¦æ˜¯å¦ä¸ºå­—æ¯
+// å‚æ•°:	ch		è¦åˆ¤æ–­çš„å­—ç¬¦	
+// è¿”å›:	TRUE	æ˜¯å­—æ¯
+//			FALSE	ä¸æ˜¯å­—æ¯
 //---------------------------------------------------------------------------
 BOOL KIniFile::IsKeyChar(char ch)
 {
@@ -382,11 +382,11 @@ BOOL KIniFile::IsKeyChar(char ch)
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CreateIniLink
-// ¹¦ÄÜ:	´´½¨IniÁ´±í
-// ²ÎÊı:	pBuffer		»º´æ
-//			nBufLen		³¤¶È
-// ·µ»Ø:	void
+// å‡½æ•°:	CreateIniLink
+// åŠŸèƒ½:	åˆ›å»ºInié“¾è¡¨
+// å‚æ•°:	pBuffer		ç¼“å­˜
+//			nBufLen		é•¿åº¦
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::CreateIniLink(LPVOID pBuffer, LONG nBufLen)
 {
@@ -413,10 +413,10 @@ void KIniFile::CreateIniLink(LPVOID pBuffer, LONG nBufLen)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ReleaseIniLink()
-// ¹¦ÄÜ:	ÊÍ·ÅIniÁ´±í
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	ReleaseIniLink()
+// åŠŸèƒ½:	é‡Šæ”¾Inié“¾è¡¨
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::ReleaseIniLink()
 {
@@ -447,10 +447,10 @@ void KIniFile::ReleaseIniLink()
 	m_MemStack.FreeAllChunks();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	SplitKeyValue
-// ¹¦ÄÜ:	·Ö¸îKeyºÍValue
-// ²ÎÊı:	pString		Key=Value
-// ·µ»Ø:	Ö¸ÏòValue
+// å‡½æ•°:	SplitKeyValue
+// åŠŸèƒ½:	åˆ†å‰²Keyå’ŒValue
+// å‚æ•°:	pString		Key=Value
+// è¿”å›:	æŒ‡å‘Value
 //---------------------------------------------------------------------------
 LPSTR KIniFile::SplitKeyValue(LPSTR pString)
 {
@@ -465,10 +465,10 @@ LPSTR KIniFile::SplitKeyValue(LPSTR pString)
 	return pValue + 1;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	String2Id
-// ¹¦ÄÜ:	×Ö·û´®×ª³É32 bits ID
-// ²ÎÊı:	pString		×Ö·û´®
-// ·µ»Ø:	32 bits ID
+// å‡½æ•°:	String2Id
+// åŠŸèƒ½:	å­—ç¬¦ä¸²è½¬æˆ32 bits ID
+// å‚æ•°:	pString		å­—ç¬¦ä¸²
+// è¿”å›:	32 bits ID
 //---------------------------------------------------------------------------
 DWORD KIniFile::String2Id(LPCSTR pString)
 {
@@ -480,10 +480,10 @@ DWORD KIniFile::String2Id(LPCSTR pString)
 	return Id ^ 0x12345678;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	IsSectionExist
-// ¹¦ÄÜ:	SectionÊÇ·ñ´æÔÚ
-// ²ÎÊı:	pSection	½ÚµÄÃû×Ö
-// ·µ»Ø:	BOOL
+// å‡½æ•°:	IsSectionExist
+// åŠŸèƒ½:	Sectionæ˜¯å¦å­˜åœ¨
+// å‚æ•°:	pSection	èŠ‚çš„åå­—
+// è¿”å›:	BOOL
 //---------------------------------------------------------------------------
 BOOL KIniFile::IsSectionExist(LPCSTR pSection)
 {
@@ -512,10 +512,10 @@ BOOL KIniFile::IsSectionExist(LPCSTR pSection)
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	EraseSection
-// ¹¦ÄÜ:	Çå³ıÒ»¸öSectionµÄÄÚÈİ
-// ²ÎÊı:	pSection	½ÚµÄÃû×Ö
-// ·µ»Ø:	void
+// å‡½æ•°:	EraseSection
+// åŠŸèƒ½:	æ¸…é™¤ä¸€ä¸ªSectionçš„å†…å®¹
+// å‚æ•°:	pSection	èŠ‚çš„åå­—
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::EraseSection(LPCSTR pSection)
 {
@@ -564,10 +564,10 @@ void KIniFile::EraseSection(LPCSTR pSection)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	EraseKey
-// ¹¦ÄÜ:	Çå³ıSectionµÄÏÂÒ»¸öKeyµÄÄÚÈİ
-// ²ÎÊı:	pSection	½ÚµÄÃû×Ö
-// ·µ»Ø:	void
+// å‡½æ•°:	EraseKey
+// åŠŸèƒ½:	æ¸…é™¤Sectionçš„ä¸‹ä¸€ä¸ªKeyçš„å†…å®¹
+// å‚æ•°:	pSection	èŠ‚çš„åå­—
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void	KIniFile::EraseKey(LPCSTR lpSection, LPCSTR lpKey)
 {
@@ -625,12 +625,12 @@ void	KIniFile::EraseKey(LPCSTR lpSection, LPCSTR lpKey)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	SetKeyValue
-// ¹¦ÄÜ:	ÉèÖÃKeyµÄValue
-// ²ÎÊı:	pSection	½ÚÃû
-//			pKey		½¨Ãû
-//			pValue		½¨Öµ
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	SetKeyValue
+// åŠŸèƒ½:	è®¾ç½®Keyçš„Value
+// å‚æ•°:	pSection	èŠ‚å
+//			pKey		å»ºå
+//			pValue		å»ºå€¼
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::SetKeyValue(
 	LPCSTR	pSection,
@@ -721,12 +721,12 @@ BOOL KIniFile::SetKeyValue(
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetKeyValue
-// ¹¦ÄÜ:	È¡µÃKeyµÄValue
-// ²ÎÊı:	pSection	½ÚÃû
-//			pKey		½¨Ãû
-//			pValue		½¨Öµ
-// ·µ»Ø:	TRUE£­³É¹¦ FALSE£­Ê§°Ü
+// å‡½æ•°:	GetKeyValue
+// åŠŸèƒ½:	å–å¾—Keyçš„Value
+// å‚æ•°:	pSection	èŠ‚å
+//			pKey		å»ºå
+//			pValue		å»ºå€¼
+// è¿”å›:	TRUEï¼æˆåŠŸ FALSEï¼å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KIniFile::GetKeyValue(
 	LPCSTR	pSection,
@@ -789,14 +789,14 @@ BOOL KIniFile::GetKeyValue(
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetString
-// ¹¦ÄÜ:	¶ÁÈ¡Ò»¸ö×Ö·û´®
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			lpDefault		È±Ê¡Öµ
-//			lpRString		·µ»ØÖµ
-//			dwSize			·µ»Ø×Ö·û´®µÄ×î´ó³¤¶È
-// ·µ»Ø:	void
+// å‡½æ•°:	GetString
+// åŠŸèƒ½:	è¯»å–ä¸€ä¸ªå­—ç¬¦ä¸²
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			lpDefault		ç¼ºçœå€¼
+//			lpRString		è¿”å›å€¼
+//			dwSize			è¿”å›å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KIniFile::GetString(
 	LPCSTR lpSection,		// points to section name
@@ -812,13 +812,13 @@ BOOL KIniFile::GetString(
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetInteger
-// ¹¦ÄÜ:	¶ÁÈ¡Ò»¸öÕûÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	void
+// å‡½æ•°:	GetInteger
+// åŠŸèƒ½:	è¯»å–ä¸€ä¸ªæ•´æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KIniFile::GetInteger(
 	LPCSTR lpSection,		// points to section name
@@ -840,13 +840,13 @@ BOOL KIniFile::GetInteger(
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetInteger2
-// ¹¦ÄÜ:	¶ÁÈ¡2¸öÕûÊı£¬ÕûÊıÖ®¼äÓÃ¶ººÅ·Ö¸î¡£
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			pnValue1		·µ»ØÖµ1
-//			pnValue2		·µ»ØÖµ2
-// ·µ»Ø:	void
+// å‡½æ•°:	GetInteger2
+// åŠŸèƒ½:	è¯»å–2ä¸ªæ•´æ•°ï¼Œæ•´æ•°ä¹‹é—´ç”¨é€—å·åˆ†å‰²ã€‚
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			pnValue1		è¿”å›å€¼1
+//			pnValue2		è¿”å›å€¼2
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::GetInteger2(
 	LPCSTR lpSection,		// points to section name
@@ -917,13 +917,13 @@ void KIniFile::GetInteger3(
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFloat
-// ¹¦ÄÜ:	¶ÁÈ¡1¸ö¸¡µãÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			fDefault		È±Ê¡Öµ
-//			pfValue			·µ»ØÖµ
-// ·µ»Ø:	void
+// å‡½æ•°:	GetFloat
+// åŠŸèƒ½:	è¯»å–1ä¸ªæµ®ç‚¹æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			fDefault		ç¼ºçœå€¼
+//			pfValue			è¿”å›å€¼
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 BOOL KIniFile::GetFloat(
 	LPCSTR	lpSection,		// points to section name
@@ -945,13 +945,13 @@ BOOL KIniFile::GetFloat(
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFloat2
-// ¹¦ÄÜ:	¶ÁÈ¡2¸ö¸¡µãÊı£¬Ö®¼äÓÃ¶ººÅ·Ö¸î¡£
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			pfValue1		·µ»ØÖµ1
-//			pfValue2		·µ»ØÖµ2
-// ·µ»Ø:	void
+// å‡½æ•°:	GetFloat2
+// åŠŸèƒ½:	è¯»å–2ä¸ªæµ®ç‚¹æ•°ï¼Œä¹‹é—´ç”¨é€—å·åˆ†å‰²ã€‚
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			pfValue1		è¿”å›å€¼1
+//			pfValue2		è¿”å›å€¼2
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::GetFloat2(
 	LPCSTR lpSection,		// points to section name
@@ -979,13 +979,13 @@ void KIniFile::GetFloat2(
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetStruct
-// ¹¦ÄÜ:	¶ÁÈ¡Ò»¸ö½á¹¹
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			lpStruct		»º´æ
-//			dwSize			»º´æ´óĞ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	GetStruct
+// åŠŸèƒ½:	è¯»å–ä¸€ä¸ªç»“æ„
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			lpStruct		ç¼“å­˜
+//			dwSize			ç¼“å­˜å¤§å°
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::GetStruct(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1023,12 +1023,12 @@ void KIniFile::GetStruct(
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteString
-// ¹¦ÄÜ:	Ğ´ÈëÒ»¸ö×Ö·û´®
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			lpString		×Ö·û´®
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteString
+// åŠŸèƒ½:	å†™å…¥ä¸€ä¸ªå­—ç¬¦ä¸²
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			lpString		å­—ç¬¦ä¸²
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteString(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1039,12 +1039,12 @@ void KIniFile::WriteString(
 	SetKeyValue(lpSection, lpKeyName, lpString);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteInteger
-// ¹¦ÄÜ:	Ğ´ÈëÒ»¸öÕûÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			nValue			ÕûÊı
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteInteger
+// åŠŸèƒ½:	å†™å…¥ä¸€ä¸ªæ•´æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			nValue			æ•´æ•°
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteInteger(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1058,13 +1058,13 @@ void KIniFile::WriteInteger(
 	SetKeyValue(lpSection, lpKeyName, Buffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteInteger2
-// ¹¦ÄÜ:	Ğ´Èë2¸öÕûÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			nValue1			ÕûÊı1
-//			nValue2			ÕûÊı2
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteInteger2
+// åŠŸèƒ½:	å†™å…¥2ä¸ªæ•´æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			nValue1			æ•´æ•°1
+//			nValue2			æ•´æ•°2
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteInteger2(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1106,12 +1106,12 @@ void KIniFile::WriteDword(
 	SetKeyValue(lpSection, lpKeyName, Buffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteFloat
-// ¹¦ÄÜ:	Ğ´Èë1¸ö¸¡µãÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			fValue			¸¡µãÊı
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteFloat
+// åŠŸèƒ½:	å†™å…¥1ä¸ªæµ®ç‚¹æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			fValue			æµ®ç‚¹æ•°
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteFloat(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1125,13 +1125,13 @@ void KIniFile::WriteFloat(
 	SetKeyValue(lpSection, lpKeyName, Buffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteFloat2
-// ¹¦ÄÜ:	Ğ´Èë2¸ö¸¡µãÊı
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			fValue1			¸¡µãÊı1
-//			fValue2			¸¡µãÊı2
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteFloat2
+// åŠŸèƒ½:	å†™å…¥2ä¸ªæµ®ç‚¹æ•°
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			fValue1			æµ®ç‚¹æ•°1
+//			fValue2			æµ®ç‚¹æ•°2
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteFloat2(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1146,13 +1146,13 @@ void KIniFile::WriteFloat2(
 	SetKeyValue(lpSection, lpKeyName, Buffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	WriteFloat2
-// ¹¦ÄÜ:	Ğ´ÈëÒ»¸ö½á¹¹
-// ²ÎÊı:	lpSection		½ÚÃû
-//			lpKeyName		½¨Ãû
-//			lpStruct		½á¹¹
-//			dwSize			½á¹¹´óĞ¡
-// ·µ»Ø:	void
+// å‡½æ•°:	WriteFloat2
+// åŠŸèƒ½:	å†™å…¥ä¸€ä¸ªç»“æ„
+// å‚æ•°:	lpSection		èŠ‚å
+//			lpKeyName		å»ºå
+//			lpStruct		ç»“æ„
+//			dwSize			ç»“æ„å¤§å°
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KIniFile::WriteStruct(
 	LPCSTR	lpSection,		// pointer to section name
@@ -1185,7 +1185,7 @@ void KIniFile::WriteStruct(
 BOOL KIniFile::GetNextSection(LPCSTR pSection, LPSTR pNextSection)
 {
 	
-	if (!pSection[0])	//	´«Èë²ÎÊıÎª""Ê±¾ÍÊÇÈ¡µÚÒ»¸öSection
+	if (!pSection[0])	//	ä¼ å…¥å‚æ•°ä¸º""æ—¶å°±æ˜¯å–ç¬¬ä¸€ä¸ªSection
 	{
 		if (!m_Header.pNextNode)
 			return FALSE;
@@ -1207,7 +1207,7 @@ BOOL KIniFile::GetNextSection(LPCSTR pSection, LPSTR pNextSection)
 		{
 			g_StrCpy(szSection, pSection);
 		}
-		//	²éÕÒ²ÎÊı¸ø¶¨µÄSection
+		//	æŸ¥æ‰¾å‚æ•°ç»™å®šçš„Section
 		SECNODE* pThisSecNode = &m_Header;
 		SECNODE* pNextSecNode = pThisSecNode->pNextNode;
 		DWORD dwID = String2Id(szSection);
@@ -1220,14 +1220,14 @@ BOOL KIniFile::GetNextSection(LPCSTR pSection, LPSTR pNextSection)
 			pThisSecNode = pNextSecNode;
 			pNextSecNode = pThisSecNode->pNextNode;
 		}
-		//	Ã»ÓĞÕâ¸öSection£¬ÎŞËùÎ½ÏÂÒ»¸ö
+		//	æ²¡æœ‰è¿™ä¸ªSectionï¼Œæ— æ‰€è°“ä¸‹ä¸€ä¸ª
 		if (!pNextSecNode)
 		{
 			return FALSE;
 		}
 		else
 		{
-			//	²ÎÊı¸ø¶¨µÄSectionÒÑ¾­ÊÇ×îºóÒ»¸öÁË
+			//	å‚æ•°ç»™å®šçš„Sectionå·²ç»æ˜¯æœ€åä¸€ä¸ªäº†
 			if (!pNextSecNode->pNextNode)
 			{
 				return FALSE;
@@ -1254,7 +1254,7 @@ BOOL KIniFile::GetNextKey(LPCSTR pSection, LPCSTR pKey, LPSTR pNextKey)
 	{
 		g_StrCpy(szSection, pSection);
 	}
-	//	²éÕÒ²ÎÊı¸ø¶¨µÄSection
+	//	æŸ¥æ‰¾å‚æ•°ç»™å®šçš„Section
 	SECNODE* pThisSecNode = &m_Header;
 	SECNODE* pNextSecNode = pThisSecNode->pNextNode;
 	DWORD dwID = String2Id(szSection);
@@ -1267,7 +1267,7 @@ BOOL KIniFile::GetNextKey(LPCSTR pSection, LPCSTR pKey, LPSTR pNextKey)
 		pThisSecNode = pNextSecNode;
 		pNextSecNode = pThisSecNode->pNextNode;
 	}
-	//	Ã»ÓĞÕâ¸öSection£¬ÎŞËùÎ½È¡Key
+	//	æ²¡æœ‰è¿™ä¸ªSectionï¼Œæ— æ‰€è°“å–Key
 	if (!pNextSecNode)
 	{
 		return FALSE;
@@ -1276,10 +1276,10 @@ BOOL KIniFile::GetNextKey(LPCSTR pSection, LPCSTR pKey, LPSTR pNextKey)
 	KEYNODE* pThisKeyNode = &pNextSecNode->pKeyNode;
 	KEYNODE* pNextKeyNode = pThisKeyNode->pNextNode;
 
-	//	Key¸øµÄ²ÎÊıÎª""µÄ»°£¬È¡µÚÒ»¸öKey
+	//	Keyç»™çš„å‚æ•°ä¸º""çš„è¯ï¼Œå–ç¬¬ä¸€ä¸ªKey
 	if (!pKey[0])
 	{
-		//	Ã»ÓĞKey£¬·µ»ØÊ§°Ü
+		//	æ²¡æœ‰Keyï¼Œè¿”å›å¤±è´¥
 		if (!pNextKeyNode->pKey)
 		{
 			return FALSE;
@@ -1301,12 +1301,12 @@ BOOL KIniFile::GetNextKey(LPCSTR pSection, LPCSTR pKey, LPSTR pNextKey)
 		pThisKeyNode = pNextKeyNode;
 		pNextKeyNode = pThisKeyNode->pNextNode;
 	}
-	//	ÕÒ²»µ½Ëù¸øµÄKey£¬ÎŞËùÎ½ÏÂÒ»¸ö
+	//	æ‰¾ä¸åˆ°æ‰€ç»™çš„Keyï¼Œæ— æ‰€è°“ä¸‹ä¸€ä¸ª
 	if (!pNextKeyNode)
 	{
 		return FALSE;
 	}
-	//	²ÎÊı¸ø¶¨µÄKeyÒÑ¾­ÊÇ×îºóÒ»¸öÁË
+	//	å‚æ•°ç»™å®šçš„Keyå·²ç»æ˜¯æœ€åä¸€ä¸ªäº†
 	if (!pNextKeyNode->pNextNode)
 	{
 		return FALSE;
@@ -1333,7 +1333,7 @@ int	KIniFile::GetSectionCount()
 	return i;
 }
 
-// Èç¹û´ÓÎÄ¼şÖĞÃ»ÓĞÈ¡µ½¶ÔÓ¦µÄSection ºÍ KeyÔò pRectÀïÃæµÄÖµ²»±ä
+// å¦‚æœä»æ–‡ä»¶ä¸­æ²¡æœ‰å–åˆ°å¯¹åº”çš„Section å’Œ Keyåˆ™ pRecté‡Œé¢çš„å€¼ä¸å˜
 void KIniFile::GetRect(LPCSTR lpSection, LPCSTR lpKeyName, RECT *pRect)
 {
 	char  Buffer[256];

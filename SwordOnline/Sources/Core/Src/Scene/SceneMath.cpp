@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-// ³¡¾°Ä£¿éµÄÒ»Ğ©ÊıÑ§¼ÆËã
+// åœºæ™¯æ¨¡å—çš„ä¸€äº›æ•°å­¦è®¡ç®—
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-20
@@ -32,7 +32,7 @@ int	SM_IsPointOnLine(POINT& LP1, POINT& LP2, POINT point)
 	return nRet;
 }
 
-//µãµ½Ö±ÏßµÄ¾àÀë
+//ç‚¹åˆ°ç›´çº¿çš„è·ç¦»
 int	SM_Distance_PointLine(const POINT& Point, const POINT& LP1, const POINT& LP2)
 {
 	int		x1, y1,x2,y2;
@@ -41,7 +41,7 @@ int	SM_Distance_PointLine(const POINT& Point, const POINT& LP1, const POINT& LP2
 	x2 = LP2.x - Point.x;
 	y2 = LP2.y - Point.y;
 
-//  Ö±Ïß·½³Ì£º
+//  ç›´çº¿æ–¹ç¨‹ï¼š
 //	y(x2-x1) - x(y2-y1) + (x1y2 - x2y1) = 0 
 //	int d = abs(pt.y*(x2-x1) - pt.x*(y2-y1) + (x1*y2 - x2*y1) ) / sqrtf((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
 
@@ -50,7 +50,7 @@ int	SM_Distance_PointLine(const POINT& Point, const POINT& LP1, const POINT& LP2
 	return d;
 }
 
-//µãºÍÖ±ÏßµÄÎ»ÖÃ¹ØÏµ
+//ç‚¹å’Œç›´çº¿çš„ä½ç½®å…³ç³»
 RELATION_ENUM	SM_Relation_PointLine(const POINT& Point, const POINT& LP1, const POINT& LP2)
 {
 //	_ASSERT(LP1.x <= LP2.x);
@@ -79,7 +79,7 @@ RELATION_ENUM	SM_Relation_PointLine(const POINT& Point, const POINT& LP1, const 
 	int /*x0,y0,*/x1,y1,x2,y2;
 //	x0=pt.x; y0=pt.y;
 	x1=p1.x; y1=p1.y; x2=p2.x; y2=p2.y;
-//  Ö±Ïß·½³Ì£º
+//  ç›´çº¿æ–¹ç¨‹ï¼š
 //	y(x2-x1) - x(y2-y1) + (x1y2 - x2y1) = 0 
 	int f = /*y0 * (x2 - x1) - x0 * (y2 - y1) +*/ (x1*y2 - x2*y1);
 	if (f <= TOGGLE_VALUE_0_1 && f >= -TOGGLE_VALUE_0_1)
@@ -92,7 +92,7 @@ RELATION_ENUM	SM_Relation_PointLine(const POINT& Point, const POINT& LP1, const 
 		return RELATION_DOWN;
 }
 
-//µãºÍÖ±ÏßµÄÎ»ÖÃ¹ØÏµ
+//ç‚¹å’Œç›´çº¿çš„ä½ç½®å…³ç³»
 RELATION_ENUM	SM_Relation_PointLine_New(const POINT& Point, const POINT& LP1, const POINT& LP2)
 {
 	POINT p1 = {
@@ -140,7 +140,7 @@ static int gs_nTimerStartFlag = false;
 static unsigned uOldFastCount = 0;
 static unsigned uNewFastCount = 0;
 
-////µãºÍÖ±ÏßµÄÎ»ÖÃ¹ØÏµ
+////ç‚¹å’Œç›´çº¿çš„ä½ç½®å…³ç³»
 //RELATION_ENUM	SM_Relation_PointLine(const POINT& Point, const POINT& LP1, const POINT& LP2)
 //{
 //    //g_pRepresent->OutputText(12, Name, KRF_ZERO_END, nMpsX - 12 * g_StrLen(Name) / 4, nMpsY, dwColor, 0, m_Height + nHeightOff);

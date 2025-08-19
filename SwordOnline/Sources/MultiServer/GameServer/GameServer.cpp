@@ -10,43 +10,21 @@
 #include "KSOServer.h"
 
 extern KSwordOnLineSever g_SOServer;
-/*#ifdef __linux
-#include <unistd.h>
-#include <signal.h> 
-#include <sys/param.h> 
-#include <sys/types.h> 
-#include <sys/stat.h> 
-void init_daemon(void) { 
-	int pid; 
-	int i; 
-	if(pid=fork()) exit(0);			//ÊÇ¸¸½ø³Ì£¬½áÊø¸¸½ø³Ì 
-	else if(pid< 0) exit(1);		//forkÊ§°Ü£¬ÍË³ö 
-//ÊÇµÚÒ»×Ó½ø³Ì£¬ºóÌ¨¼ÌÐøÖ´ÐÐ 
-	setsid();//µÚÒ»×Ó½ø³Ì³ÉÎªÐÂµÄ»á»°×é³¤ºÍ½ø³Ì×é³¤ 
-//²¢Óë¿ØÖÆÖÕ¶Ë·ÖÀë 
-	if(pid = fork()) exit(0);//ÊÇµÚÒ»×Ó½ø³Ì£¬½áÊøµÚÒ»×Ó½ø³Ì 
-	else if(pid< 0) 
-	exit(1);//forkÊ§°Ü£¬ÍË³ö 
-//ÊÇµÚ¶þ×Ó½ø³Ì£¬¼ÌÐø 
-//µÚ¶þ×Ó½ø³Ì²»ÔÙÊÇ»á»°×é³¤ 
 
-	for(i=0; i< NOFILE; ++i) close(i); 
-	umask(0);//ÖØÉèÎÄ¼þ´´½¨ÑÚÄ£ 
-	return; 
-} 
-
-#endif*/
 int g_nPort = 0;
 int main(int argc, char* argv[])
 {
+    SetConsoleCP(65001);         // Input UTF-8
+    SetConsoleOutputCP(65001);   // Output UTF-8
+
+    // Thiáº¿t láº­p mÃ´i trÆ°á»ng cÆ¡ báº£n
+    setlocale(LC_ALL, "en_US.UTF-8");   // Thiáº¿t láº­p locale UTF-8 cá»¥ thá»ƒ
+
 	BOOL bRunning = TRUE;
 	if (argc == 2)
 	{
 		g_nPort = atoi(argv[1]);
 	}
-/*#ifdef __linux
-	init_daemon();
-#endif*/
 
 	if (!g_SOServer.Init())
 		return 0;

@@ -2,7 +2,7 @@
 // FileName			:	KFont3.cpp
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2001-9-13 10:19:21
-// FileDescription	:	×ÖÌåÀà
+// FileDescription	:	å­—ä½“ç±»
 // Revision Count	:	
 *******************************************************************************/
 #include "KFont3.h"
@@ -13,10 +13,10 @@
 #define KF_FONTPOLY (D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX1)
 
 
-//¼ÙÉèÈ«²¿×ÖÌåÒ»¶¨ÊÇ¹«ÓÃÒ»¸ö»æÍ¼Éè±¸£¬ÇÒÔÚÓĞ×ÖÌåÊµÀı´æÔÚµÄÊ±ÆÚÄÚ¶¼²»»á×ö»æÍ¼Éè±¸µÄ
-//±ä»»£¬ËùÒÔ´ËÔ´³ÌĞòÎÄ¼şÖĞ£¬°ÑµÚÒ»´Î³õÊ¼»¯×ÖÌåÊµÀı¶ÔÏóÊ±µÄÉè±¸ÈÏ¶¨ÎªÎ¨Ò»µÄ»æÍ¼Éè±¸£¬
-//²¢Ö»¼ì²éÒ»´ÎÉè±¸¸ú´ËÄ£¿éÏà¹ØµÄĞÅÏ¢¡£
-//Èç¹ûÒÔºó²»·ûºÏÕâÑùµÄÏŞÖÆÇé¿öµÄ£¬ÔòĞèÒª¸Ä¶¯´úÂë£¬ÒÔÊÊÓ¦ĞÂµÄĞèÒª¡£
+//å‡è®¾å…¨éƒ¨å­—ä½“ä¸€å®šæ˜¯å…¬ç”¨ä¸€ä¸ªç»˜å›¾è®¾å¤‡ï¼Œä¸”åœ¨æœ‰å­—ä½“å®ä¾‹å­˜åœ¨çš„æ—¶æœŸå†…éƒ½ä¸ä¼šåšç»˜å›¾è®¾å¤‡çš„
+//å˜æ¢ï¼Œæ‰€ä»¥æ­¤æºç¨‹åºæ–‡ä»¶ä¸­ï¼ŒæŠŠç¬¬ä¸€æ¬¡åˆå§‹åŒ–å­—ä½“å®ä¾‹å¯¹è±¡æ—¶çš„è®¾å¤‡è®¤å®šä¸ºå”¯ä¸€çš„ç»˜å›¾è®¾å¤‡ï¼Œ
+//å¹¶åªæ£€æŸ¥ä¸€æ¬¡è®¾å¤‡è·Ÿæ­¤æ¨¡å—ç›¸å…³çš„ä¿¡æ¯ã€‚
+//å¦‚æœä»¥åä¸ç¬¦åˆè¿™æ ·çš„é™åˆ¶æƒ…å†µçš„ï¼Œåˆ™éœ€è¦æ”¹åŠ¨ä»£ç ï¼Œä»¥é€‚åº”æ–°çš„éœ€è¦ã€‚
 
 #define	ALP_CMP_CAP_HANT_BEEN_CHECKED	D3DCMP_NEVER
 
@@ -27,7 +27,7 @@ unsigned int		KFont3::ms_AlphaRef2	= 0;
 fnRenderText		KFont3::ms_RenderText	= KFont3::RenderTextDirect;
 unsigned int		KFont3::ms_uBorderColor	= 0xff000000;
 
-//¼ì²é»æÍ¼ÉèÉè±¸ËùÖ§³ÖµÄalpha¼ì²â·½·¨
+//æ£€æŸ¥ç»˜å›¾è®¾è®¾å¤‡æ‰€æ”¯æŒçš„alphaæ£€æµ‹æ–¹æ³•
 void KFont3::CheckAlphaCmpCaps()
 {
 	if (ms_pd3dDevice == NULL || ms_AlphaCmpMethod != ALP_CMP_CAP_HANT_BEEN_CHECKED)
@@ -38,7 +38,7 @@ void KFont3::CheckAlphaCmpCaps()
 
 	KFontRes::EnableTextBorder(true);
 
-	//´ËÏÂÁĞÅĞ¶Ï¸ù¾İ»æÍ¼ÔËËãµÄĞ§ÂÊÅÅÁĞ
+	//æ­¤ä¸‹åˆ—åˆ¤æ–­æ ¹æ®ç»˜å›¾è¿ç®—çš„æ•ˆç‡æ’åˆ—
 	if (Caps.AlphaCmpCaps & D3DPCMPCAPS_GREATEREQUAL)
 	{
 		ms_AlphaCmpMethod = D3DCMP_GREATEREQUAL;
@@ -89,7 +89,7 @@ void KFont3::CheckAlphaCmpCaps()
 }
 
 /*!*****************************************************************************
-// Purpose		:  ¹¹Ôìº¯Êı
+// Purpose		:  æ„é€ å‡½æ•°
 *****************************************************************************/
 KFont3::KFont3()
 {
@@ -108,7 +108,7 @@ KFont3::KFont3()
 }
 
 /*!*****************************************************************************
-// Purpose		:  Îö¹¹º¯Êı
+// Purpose		:  ææ„å‡½æ•°
 *****************************************************************************/
 KFont3::~KFont3()
 {
@@ -117,9 +117,9 @@ KFont3::~KFont3()
 
 /*!*****************************************************************************
 // Function		: KFont3::Init
-// Purpose		: ³õÊ¼»¯
-// Return		: bool ÊÇ·ñ³É¹¦
-// Argumant		: void* pDrawDevice -> directx 3d device½Ó¿ÚµÄÊµÀıµÄÖ¸Õë
+// Purpose		: åˆå§‹åŒ–
+// Return		: bool æ˜¯å¦æˆåŠŸ
+// Argumant		: void* pDrawDevice -> directx 3d deviceæ¥å£çš„å®ä¾‹çš„æŒ‡é’ˆ
 *****************************************************************************/
 bool KFont3::Init(void* pDrawDevice)
 {
@@ -140,7 +140,7 @@ bool KFont3::Init(void* pDrawDevice)
 
 /*!*****************************************************************************
 // Function		: KFont3::Init
-// Purpose		: ÊÍ·Å½Ó¿ÚÊµÀı¶ÔÏó
+// Purpose		: é‡Šæ”¾æ¥å£å®ä¾‹å¯¹è±¡
 *****************************************************************************/
 void KFont3::Release()
 {
@@ -150,9 +150,9 @@ void KFont3::Release()
 
 /*!*****************************************************************************
 // Function		: KFont3::Load
-// Purpose		: ÔØÈë×Ö¿â
-// Return		: bool ÊÇ·ñ³É¹¦
-// Argumant		: cosnt char *pszFontFile ×Ö¿âÎÄ¼şÃû
+// Purpose		: è½½å…¥å­—åº“
+// Return		: bool æ˜¯å¦æˆåŠŸ
+// Argumant		: cosnt char *pszFontFile å­—åº“æ–‡ä»¶å
 *****************************************************************************/
 bool KFont3::Load(const char* pszFontFile)
 {
@@ -161,7 +161,7 @@ bool KFont3::Load(const char* pszFontFile)
 	m_bLoaded = false;
 	if (ms_pd3dDevice)
 	{
-	//³õÊ¼»¯×ÖÌå×Ö¿â×ÊÔ´
+	//åˆå§‹åŒ–å­—ä½“å­—åº“èµ„æº
 		if (m_Resources.Init(pszFontFile, ms_pd3dDevice))
 		{
 			int		w, h;
@@ -177,7 +177,7 @@ bool KFont3::Load(const char* pszFontFile)
 
 /*!*****************************************************************************
 // Function		: KFont3::Terminate
-// Purpose		: ½áÊø£¬Çå³ı²Ù×÷
+// Purpose		: ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 *****************************************************************************/
 void KFont3::Terminate()
 {
@@ -203,17 +203,17 @@ void KFont3::Terminate()
 
 /*!*****************************************************************************
 // Function		: KFont3::TextOut
-// Purpose		: ÏÔÊ¾×Ö·û´®
-// Argumant		: cosnt char *pszText ×Ö·û´®
-// Argumant		: int nCount  ×Ö·û´®µÄ³¤¶È(BYTE)£¬Ä¬ÈÏÖµÎª-1£¬±íÊ¾´Ë×Ö·û´®ÊÇÒÔ'\0'½áÎ²¡£
-// Argumant		: int nX	  ×Ö·û´®ÏÔÊ¾Æğµã×ø±êX£¬Èç¹û´«ÈëÖµÎªKF_FOLLOW£¬
-//							  Ôò´Ë×Ö·û´®½ô½ÓÔÚÉÏ´Î×Ö·û´®µÄÊä³öÎ»ÖÃÖ®ºó¡£
-// Argumant		: int nY      ×Ö·û´®ÏÔÊ¾Æğµã×ø±êY, Èç¹û´«ÈëÖµÎªKF_FOLLOW£¬
-//							  Ôò´Ë×Ö·û´®ÓëÇ°Ò»´ÎÊä³ö×Ö·û´®ÔÚÍ¬Ò»ĞĞµÄÎ»ÖÃ¡£
-// Argumant		: uint nColor ×Ö·û´®ÏÔÊ¾ÑÕÉ«£¬Ä¬ÈÏÎªºÚÉ«£¬ÓÃ32bitÊıÒÔARGBµÄ¸ñ
-//							  Ê½±íÊ¾ÑÕÉ«£¬Ã¿¸ö·ÖÁ¿8bit¡£
-// Argumant     : nLineWidth  ×Ô¶¯»»ĞĞµÄĞĞ¿íÏŞÖÆ£¬Èç¹ûÆäÖµĞ¡ÓÚÒ»¸öÈ«½Ç×Ö·û¿í¶È
-//							  Ôò²»×ö×Ô¶¯»»ĞĞ´¦Àí¡£Ä¬ÈÏÖµÎª0£¬¼È²»×ö×Ô¶¯»»ĞĞ´¦Àí¡£
+// Purpose		: æ˜¾ç¤ºå­—ç¬¦ä¸²
+// Argumant		: cosnt char *pszText å­—ç¬¦ä¸²
+// Argumant		: int nCount  å­—ç¬¦ä¸²çš„é•¿åº¦(BYTE)ï¼Œé»˜è®¤å€¼ä¸º-1ï¼Œè¡¨ç¤ºæ­¤å­—ç¬¦ä¸²æ˜¯ä»¥'\0'ç»“å°¾ã€‚
+// Argumant		: int nX	  å­—ç¬¦ä¸²æ˜¾ç¤ºèµ·ç‚¹åæ ‡Xï¼Œå¦‚æœä¼ å…¥å€¼ä¸ºKF_FOLLOWï¼Œ
+//							  åˆ™æ­¤å­—ç¬¦ä¸²ç´§æ¥åœ¨ä¸Šæ¬¡å­—ç¬¦ä¸²çš„è¾“å‡ºä½ç½®ä¹‹åã€‚
+// Argumant		: int nY      å­—ç¬¦ä¸²æ˜¾ç¤ºèµ·ç‚¹åæ ‡Y, å¦‚æœä¼ å…¥å€¼ä¸ºKF_FOLLOWï¼Œ
+//							  åˆ™æ­¤å­—ç¬¦ä¸²ä¸å‰ä¸€æ¬¡è¾“å‡ºå­—ç¬¦ä¸²åœ¨åŒä¸€è¡Œçš„ä½ç½®ã€‚
+// Argumant		: uint nColor å­—ç¬¦ä¸²æ˜¾ç¤ºé¢œè‰²ï¼Œé»˜è®¤ä¸ºé»‘è‰²ï¼Œç”¨32bitæ•°ä»¥ARGBçš„æ ¼
+//							  å¼è¡¨ç¤ºé¢œè‰²ï¼Œæ¯ä¸ªåˆ†é‡8bitã€‚
+// Argumant     : nLineWidth  è‡ªåŠ¨æ¢è¡Œçš„è¡Œå®½é™åˆ¶ï¼Œå¦‚æœå…¶å€¼å°äºä¸€ä¸ªå…¨è§’å­—ç¬¦å®½åº¦
+//							  åˆ™ä¸åšè‡ªåŠ¨æ¢è¡Œå¤„ç†ã€‚é»˜è®¤å€¼ä¸º0ï¼Œæ—¢ä¸åšè‡ªåŠ¨æ¢è¡Œå¤„ç†ã€‚
 *****************************************************************************/
 void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 					   int nX/*= KF_FOLLOW*/, int nY/*= KF_FOLLOW*/,
@@ -230,9 +230,9 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 	int				nDx = 0;
 	int				nHalfIndex = 0;
 
-	//ÒªÌá½»µÄ×Ö·û´®
+	//è¦æäº¤çš„å­—ç¬¦ä¸²
 	unsigned short	nCommitChars[KCS_CHAR_NUM_LIMIT];
-	//ÓÃÓÚ»æÖÆ×Ö·ûµÄ¶à±ßĞÎ
+	//ç”¨äºç»˜åˆ¶å­—ç¬¦çš„å¤šè¾¹å½¢
 	KFontVertex	vCharPolys[KCS_CHAR_NUM_LIMIT * 6];
 
 	if (nCount == KRF_ZERO_END)
@@ -244,9 +244,9 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 
 	h = 0;
 	if (nLineWidth < m_fFontWidth + m_fFontWidth)
-		nLineWidth = 0; //²»×ö×Ô¶¯»»ĞĞ´¦Àí
+		nLineWidth = 0; //ä¸åšè‡ªåŠ¨æ¢è¡Œå¤„ç†
 
-	//»æÖÆÇ°µÄäÖÈ¾×´Ì¬¸Ä±ä
+	//ç»˜åˆ¶å‰çš„æ¸²æŸ“çŠ¶æ€æ”¹å˜
 	{
 		m_pStateBlockSaved->Capture();
 		m_pStateBlockDrawText->Apply();
@@ -258,7 +258,7 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 	{
 		bShowChar = false;
 
-		//*********×Ö·ûµÄÅĞ¶ÏÓë´¦Àí*********
+		//*********å­—ç¬¦çš„åˆ¤æ–­ä¸å¤„ç†*********
 		nL=lpByte[nPos++];
 		nCommitChars[nNumChars] = nL;
 		bShowChar = true;
@@ -272,13 +272,13 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 			nDx = -1;
 		}
 		// end
-		//ÔâÓöÒªÏÔÊ¾µÄ×Ö·û£¬¹¹ÔìÒ»¸öËÄ±ßĞÎ£¬ÓÃÓÚºóÃæ»æÖÆ´Ë×Ö·û¡£
+		//é­é‡è¦æ˜¾ç¤ºçš„å­—ç¬¦ï¼Œæ„é€ ä¸€ä¸ªå››è¾¹å½¢ï¼Œç”¨äºåé¢ç»˜åˆ¶æ­¤å­—ç¬¦ã€‚
 		if (bShowChar)
 		{
 			int n = nNumChars * 6;
             KFontVertex *pCharPoly = &vCharPolys[n];
 
-			//ÉèÖÃ»æÖÆ×Ö·ûµÄÈı½ÇĞÎµÄĞÅÏ¢
+			//è®¾ç½®ç»˜åˆ¶å­—ç¬¦çš„ä¸‰è§’å½¢çš„ä¿¡æ¯
 			pCharPoly[0].x = ((float)(nX + h)) - 0.5f;
 			pCharPoly[0].y = ((float)nY) - 0.5f;
 			
@@ -302,9 +302,9 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 
 			if (nNumChars >= KCS_CHAR_NUM_LIMIT)
 			{
-				//Ïò×Ö¿â×ÊÔ´Ìá½»×Ö·û´®
+				//å‘å­—åº“èµ„æºæäº¤å­—ç¬¦ä¸²
 				m_Resources.CommitText(nCommitChars, nNumChars, vCharPolys);
-				//»æÖÆ×Ö·û´®
+				//ç»˜åˆ¶å­—ç¬¦ä¸²
 				ms_RenderText(vCharPolys, nNumChars * 2);
 				nNumChars = 0;
 			}
@@ -314,7 +314,7 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 
 		if (nDx == -1 || (nLineWidth && h + m_nOutputWidth > nLineWidth))
 		{
-			if (nPos < nCount && lpByte[nPos] == 0x0a && nDx != -1)	//´¦Àí×Ô¶¯»»ĞĞÎ»ÖÃºóÇ¡ºÃ½ô½ÓÒ»¸ö»»ĞĞ·ûºÅ
+			if (nPos < nCount && lpByte[nPos] == 0x0a && nDx != -1)	//å¤„ç†è‡ªåŠ¨æ¢è¡Œä½ç½®åæ°å¥½ç´§æ¥ä¸€ä¸ªæ¢è¡Œç¬¦å·
 				nPos++;
 			h = 0;
 			nY += m_nOutputHeight;
@@ -334,14 +334,14 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 
 	if (nNumChars)
 	{
-		//Ïò×Ö¿â×ÊÔ´Ìá½»×Ö·û´®
+		//å‘å­—åº“èµ„æºæäº¤å­—ç¬¦ä¸²
 		m_Resources.CommitText(nCommitChars, nNumChars, vCharPolys);
-		//»æÖÆ×Ö·û´®
+		//ç»˜åˆ¶å­—ç¬¦ä¸²
 		ms_RenderText(vCharPolys, nNumChars * 2);
 		nNumChars = 0;
 	}
 
-	//»æÖÆºóµÄäÖÈ¾×´Ì¬»¹Ô­
+	//ç»˜åˆ¶åçš„æ¸²æŸ“çŠ¶æ€è¿˜åŸ
 	{
 		m_pStateBlockSaved->Apply();
 	}
@@ -351,20 +351,20 @@ void KFont3::OutputText(const char *pszText, int nCount/*= KF_ZERO_END*/,
 
 /*!*****************************************************************************
 // Function		: KFont3::RenderTextDirect
-// Purpose		: »æÖÆ×Ö·û´®
-// Argumant		: KFontVertex* pPolyVertices  ÓÃÓÚ»æÖÆ×Ö·ûµÄ¶à±ßĞÎ¶¥µãÊı¾İ
-// Argumant		: unsigned int nNumPolys	  ÓÃÓÚ»æÖÆ×Ö·ûµÄ¶à±ßĞÎÊıÄ¿
+// Purpose		: ç»˜åˆ¶å­—ç¬¦ä¸²
+// Argumant		: KFontVertex* pPolyVertices  ç”¨äºç»˜åˆ¶å­—ç¬¦çš„å¤šè¾¹å½¢é¡¶ç‚¹æ•°æ®
+// Argumant		: unsigned int nNumPolys	  ç”¨äºç»˜åˆ¶å­—ç¬¦çš„å¤šè¾¹å½¢æ•°ç›®
 *****************************************************************************/
 void KFont3::RenderTextDirect(KFontVertex* pPolyVertices, unsigned int nNumPolys)
 {
 	//_ASSERT(ms_pd3dDevice && pPolyVertices && nNumPolys);
-	//»æÖÆ×Ö·û¶à±ßĞÎ
+	//ç»˜åˆ¶å­—ç¬¦å¤šè¾¹å½¢
 	ms_pd3dDevice->DrawPrimitiveUP(D3DPT_TRIANGLELIST, nNumPolys,
 		pPolyVertices, sizeof(KFontVertex));
 }
 
 /*!*****************************************************************************
-// Purpose		: »æÖÆ×Ö·û´®
+// Purpose		: ç»˜åˆ¶å­—ç¬¦ä¸²
 *****************************************************************************/
 void KFont3::RenderTextCmp(KFontVertex* pPolyVertices, unsigned int nNumPolys)
 {
@@ -383,7 +383,7 @@ void KFont3::RenderTextCmp(KFontVertex* pPolyVertices, unsigned int nNumPolys)
 }
 
 /*!*****************************************************************************
-// Purpose		: »æÖÆ×Ö·û´®
+// Purpose		: ç»˜åˆ¶å­—ç¬¦ä¸²
 *****************************************************************************/
 void KFont3::RenderTextCmpReverse(KFontVertex* pPolyVertices, unsigned int nNumPolys)
 {
@@ -407,7 +407,7 @@ void KFont3::RenderTextCmpReverse(KFontVertex* pPolyVertices, unsigned int nNumP
 
 /*!*****************************************************************************
 // Function		: KFont3::RestoreDeviceObjects
-// Purpose		: Ê¹Device×´Ì¬ÇĞ»»»áÊÜÓ°ÏìµÄ»æÍ¼Éè±¸Ïà¹ØÄÚÈİÊ§Ğ§
+// Purpose		: ä½¿DeviceçŠ¶æ€åˆ‡æ¢ä¼šå—å½±å“çš„ç»˜å›¾è®¾å¤‡ç›¸å…³å†…å®¹å¤±æ•ˆ
 *****************************************************************************/
 void KFont3::InvalidateDeviceObjects()
 {
@@ -438,8 +438,8 @@ void KFont3::InvalidateDeviceObjects()
 
 /*!*****************************************************************************
 // Function		: KFont3::RestoreDeviceObjects
-// Purpose		: ÔÚD3d DeviceÓÉlost state»Ö¸´Îªoperational stateºóKFont3×÷
-//					d3d DeviceÏà¹ØÄÚÈİµÄ»Ö¸´²Ù×÷¡£
+// Purpose		: åœ¨D3d Deviceç”±lost stateæ¢å¤ä¸ºoperational stateåKFont3ä½œ
+//					d3d Deviceç›¸å…³å†…å®¹çš„æ¢å¤æ“ä½œã€‚
 *****************************************************************************/
 bool KFont3::RestoreDeviceObjects()
 {
@@ -495,13 +495,13 @@ void KFont3::GetFontSize(int* pWidth, int* pHeight)
 		*pHeight = (int)(m_fFontHeight);
 }
 
-//ÉèÖÃ»æÖÆÊ±×Ö·û±ßÔµµÄÑÕÉ«£¬ÈçalphaÎª0±íÊ¾×Ö·û±ßÔµ²»µ¥¶À´¦Àí
+//è®¾ç½®ç»˜åˆ¶æ—¶å­—ç¬¦è¾¹ç¼˜çš„é¢œè‰²ï¼Œå¦‚alphaä¸º0è¡¨ç¤ºå­—ç¬¦è¾¹ç¼˜ä¸å•ç‹¬å¤„ç†
 void KFont3::SetBorderColor(unsigned int uColor)
 {
 	ms_uBorderColor = uColor;
 }
 
-//ÉèÖÃ×Ö·û»æÖÆËõ½ø
+//è®¾ç½®å­—ç¬¦ç»˜åˆ¶ç¼©è¿›
 void KFont3::SetOutputSize(int nOutputWith, int nOutputHeight)
 {
 	if (nOutputWith > 0)
@@ -516,7 +516,7 @@ void KFont3::SetOutputSize(int nOutputWith, int nOutputHeight)
 	m_nFontHalfWidth[1] = (m_nOutputWidth + 1) / 2;
 }
 
-//¿ËÂ¡Ò»¸ö½Ó¿Ú¶ÔÏóÖ¸Õë
+//å…‹éš†ä¸€ä¸ªæ¥å£å¯¹è±¡æŒ‡é’ˆ
 iFont* KFont3::Clone()
 {
 	if (m_nRefCount < 0xffff)

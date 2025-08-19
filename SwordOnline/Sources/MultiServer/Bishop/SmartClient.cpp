@@ -84,7 +84,7 @@ bool CSmartClient::Open( const char * const pAddressToConnectServer,
 
 void CSmartClient::Close()
 {
-	SetClientStatus(enumClientError);	//Í£Ö¹Ïß³Ì
+	SetClientStatus(enumClientError);	//åœæ­¢çº¿ç¨‹
 }
 
 void __stdcall CSmartClient::EventNotify( LPVOID lpParam, 
@@ -300,7 +300,7 @@ void CSmartClient::_Verify(IClient* pClient, bool bDisconnect)
 	{
 		if ( !IsVerifying() )
 		{
-			break;	//ÒòÎªÕı³£µÄ×´Ì¬±ä»¯ÒıÆğµÄÍË³ö
+			break;	//å› ä¸ºæ­£å¸¸çš„çŠ¶æ€å˜åŒ–å¼•èµ·çš„é€€å‡º
 		}
 #ifdef	CONSOLE_DEBUG
 					cprintf( "Wait for verify\n");
@@ -471,12 +471,12 @@ bool CSmartClient::IsError()
 	return (m_ClientStatus == enumClientError);
 }
 
-void CSmartClient::SwitchToConnecting()		//ÇĞ»»×´Ì¬µ½ÖØÁ¬,ÈçÓĞ±ØÒª»áÍ£Ö¹ÖØÁ¬Ïß³Ì
+void CSmartClient::SwitchToConnecting()		//åˆ‡æ¢çŠ¶æ€åˆ°é‡è¿,å¦‚æœ‰å¿…è¦ä¼šåœæ­¢é‡è¿çº¿ç¨‹
 {
 	if (m_bReLink)
 		SetClientStatus(enumClientConnect);
 	else
-		SetClientStatus(enumClientError);	;	//Í£Ö¹Ïß³Ì
+		SetClientStatus(enumClientError);	;	//åœæ­¢çº¿ç¨‹
 }
 
 bool CSmartClient::SetClientStatus(enumClientStatus nNewS)

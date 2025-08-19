@@ -14,12 +14,12 @@
 #include "string.h"
 #include "KScriptList.h"
 
-#define CANCOMPILETOLUB //ÊÇ·ñÖ§³ÖlubÎÄ¼şÒ²¾ÍÊÇÎªµ¥»ú°æ·şÎñµÄ½«Ä³Ğ©Ö¸ÁîIF Óï¾ä»»³ÉGOTOµÄ¹¦ÄÜ
+#define CANCOMPILETOLUB //æ˜¯å¦æ”¯æŒlubæ–‡ä»¶ä¹Ÿå°±æ˜¯ä¸ºå•æœºç‰ˆæœåŠ¡çš„å°†æŸäº›æŒ‡ä»¤IF è¯­å¥æ¢æˆGOTOçš„åŠŸèƒ½
 //---------------------------------------------------------------------------
-// º¯Êı:	KStepLuaScript::KStepLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	
+// å‡½æ•°:	KStepLuaScript::KStepLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KStepLuaScript::KStepLuaScript(void)
 {
@@ -34,10 +34,10 @@ KStepLuaScript::KStepLuaScript(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KStepLuaScript::KStepLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	int StackSize
-// ·µ»Ø:	
+// å‡½æ•°:	KStepLuaScript::KStepLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	int StackSize
+// è¿”å›:	
 //---------------------------------------------------------------------------
 //KStepLuaScript::KStepLuaScript(int StackSize = 0)
 //{
@@ -51,10 +51,10 @@ KStepLuaScript::KStepLuaScript(void)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KStepLuaScript::~KStepLuaScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	
+// å‡½æ•°:	KStepLuaScript::~KStepLuaScript
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KStepLuaScript::~KStepLuaScript(void)
 {
@@ -134,7 +134,7 @@ BOOL KStepLuaScript::Load(LPSTR szFileName)
 	return TRUE;
 }
 
-//Ö´ĞĞ¸ÃĞĞÓï¾ä
+//æ‰§è¡Œè¯¥è¡Œè¯­å¥
 BOOL KStepLuaScript::ExeLine(LPSTR szLine)
 {
 	if (szLine)
@@ -144,12 +144,12 @@ BOOL KStepLuaScript::ExeLine(LPSTR szLine)
 	return FALSE;
 }
 
-BOOL KStepLuaScript::CheckLine(LPSTR szLine)//¼ì²é½«Ö´ĞĞµÄLuaÓï¾äÊÇ·ñ·ûºÏÌõ¼ş£¬Èç²»ÄÜÓĞfor goto 
+BOOL KStepLuaScript::CheckLine(LPSTR szLine)//æ£€æŸ¥å°†æ‰§è¡Œçš„Luaè¯­å¥æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œå¦‚ä¸èƒ½æœ‰for goto 
 {
 	return TRUE;
 }
 
-BOOL KStepLuaScript::GetExeBufferFromFile(char * FileName)//»ñµÃµ±Ç°ÎÄ¼şÖĞÖ´ĞĞ¶ÎµÄÓï¾ä
+BOOL KStepLuaScript::GetExeBufferFromFile(char * FileName)//è·å¾—å½“å‰æ–‡ä»¶ä¸­æ‰§è¡Œæ®µçš„è¯­å¥
 {
 	KPakFile	File;
 	DWORD		Size;
@@ -219,8 +219,8 @@ BOOL KStepLuaScript::GetExeBufferFromFile(char * FileName)//»ñµÃµ±Ç°ÎÄ¼şÖĞÖ´ĞĞ¶Î
 	return TRUE;
 	
 }
-//´ÓBufferÖĞ»ñµÃ´úÂë
-BOOL KStepLuaScript::GetExeBuffer(void * szScriptBuffer, int nLen)//»ñµÃÖ´ĞĞ¶ÎµÄÓï¾ä
+//ä»Bufferä¸­è·å¾—ä»£ç 
+BOOL KStepLuaScript::GetExeBuffer(void * szScriptBuffer, int nLen)//è·å¾—æ‰§è¡Œæ®µçš„è¯­å¥
 {
 	char szLine[100];
 	long nCurPos = 0;
@@ -307,7 +307,7 @@ int KStepLuaScript::Active()
 	{
 		nCurPos = m_CurPos;
 		
-		//µÈ´ıÏûÏ¢ÖĞ....
+		//ç­‰å¾…æ¶ˆæ¯ä¸­....
 		if (IsRunWaitMsg())	return 0;
 		
 		if (GetNextLine((LPBYTE )m_Memory.GetMemPtr(), szLine))
@@ -316,7 +316,7 @@ int KStepLuaScript::Active()
 			lua_settop(m_LuaState, 0);
 		}
 				
-		//»¹ÔÚÖ´ĞĞÄ³¸öÓï¾äÊ±Èçnpcgo£¬
+		//è¿˜åœ¨æ‰§è¡ŒæŸä¸ªè¯­å¥æ—¶å¦‚npcgoï¼Œ
 		if (IsRunFunc())
 		{
 			m_CurPos = nCurPos;
@@ -336,7 +336,7 @@ int KStepLuaScript::Active()
 	return 1 ;
 }
 
-//ÉÏÒ»ĞĞ
+//ä¸Šä¸€è¡Œ
 void	KStepLuaScript::PosUp()
 {
 	int nCurPos = m_CurPos - 2;
@@ -366,7 +366,7 @@ void	KStepLuaScript::GotoLabel( LPSTR szLabelName)
 	
 	if (szindex == NULL)
 	{
-		g_MessageBox("½Å±¾´íÎó: GotoLabel() = %s", szLabelName);
+		g_MessageBox("è„šæœ¬é”™è¯¯: GotoLabel() = %s", szLabelName);
 		return;
 	}
 	

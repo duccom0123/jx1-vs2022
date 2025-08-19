@@ -1,6 +1,6 @@
 
 /*****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43***********************
-//	ÎÄ±¾´®´¦Àí£º»ñÈ¡ÎÄ±¾´®ÖĞµ¥Ò»ĞÔÖÊµÄÍ¬Ò»ĞĞµÄ×Ó´®£¬ÒÔ¼°ÎÄ±¾´®×ÜµÄº¬ÊıÄ¿¡£
+//	æ–‡æœ¬ä¸²å¤„ç†ï¼šè·å–æ–‡æœ¬ä¸²ä¸­å•ä¸€æ€§è´¨çš„åŒä¸€è¡Œçš„å­ä¸²ï¼Œä»¥åŠæ–‡æœ¬ä¸²æ€»çš„å«æ•°ç›®ã€‚
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-8-29
@@ -14,7 +14,7 @@
 #define SUCCEEDED(Status) ((long)(Status) >= 0)
 #endif
 
-extern IInlinePicEngineSink* g_pIInlinePicSinkRP;	//Ç¶ÈëÊ½Í¼Æ¬µÄ´¦Àí½Ó¿Ú[wxb 2003-6-20]
+extern IInlinePicEngineSink* g_pIInlinePicSinkRP;	//åµŒå…¥å¼å›¾ç‰‡çš„å¤„ç†æ¥å£[wxb 2003-6-20]
 
 union	TP_COLOR
 {
@@ -23,7 +23,7 @@ union	TP_COLOR
 };
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KTextProcess::KTextProcess()
 {
@@ -36,7 +36,7 @@ KTextProcess::KTextProcess()
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º¹¹Ôìº¯Êı
+//	åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
 //--------------------------------------------------------------------------
 KTextProcess::KTextProcess(const char* pBuffer, int nCount, int nLineLen)
 {
@@ -44,7 +44,7 @@ KTextProcess::KTextProcess(const char* pBuffer, int nCount, int nLineLen)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÉèÖÃÒª´¦ÀíµÄÎÄ±¾´®ÄÚÈİ
+//	åŠŸèƒ½ï¼šè®¾ç½®è¦å¤„ç†çš„æ–‡æœ¬ä¸²å†…å®¹
 //--------------------------------------------------------------------------
 void KTextProcess::SetContent(const char* pBuffer, int nCount, int nLineLen)
 {
@@ -66,19 +66,19 @@ void KTextProcess::SetContent(const char* pBuffer, int nCount, int nLineLen)
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£º»ñÈ¡×Ö·û´®Àïµ¥Ò»ĞÔÖÊÍ¬ĞĞµÄÒ»¸ö×Ó´®
-//	²ÎÊı£ºint& nSimplexStartPos --> ×Ó´®Í·Ò»¸öÏÔÊ¾×Ö·ûÔÚ×Ö·û´®ÖĞµÄÎ»ÖÃ
-//		¡¡KTP_CTRL& HeadCtrl    --> ×Ó´®¿ªÊ¼Ç°µÄ¿ØÖÆ
-//		¡¡KTP_CTRL& TailCtrl    --> ×Ó´®½áÊøºóµÄ¿ØÖÆ
-//	×¢ÊÍ£º´Ëº¯Êı±àÂëÓëGBK¹æ·¶Ïà¹Ø
-//		¶à´Îµ÷ÓÃGetSimplexText½«Öğ¸ö»ñÈ¡×Ö·û´®ÖĞÍ¬ĞĞµÄµ¥Ò»ĞÔÖÊµÄ×Ó´®£¬ÔÚ×Ö·û´®
-//	±»±éÀ÷Íê±ÏÖ®ºó½«ÔÚÉèÖÃµ÷ÓÃ²ÎÊıTailCtrlÖĞµÄĞĞÄ©¿ØÖÆÂëÎªÎÄ±¾´®½áÊø¿ØÖÆÂë¡£ÏÂ
-//	´ÎÔÙµ÷ÓÃÓÖ½«ÖØĞÂ´ÓÎÄ±¾´®ÆğÊ¼´¦»ñÈ¡×Ó´®¡£
+//	åŠŸèƒ½ï¼šè·å–å­—ç¬¦ä¸²é‡Œå•ä¸€æ€§è´¨åŒè¡Œçš„ä¸€ä¸ªå­ä¸²
+//	å‚æ•°ï¼šint& nSimplexStartPos --> å­ä¸²å¤´ä¸€ä¸ªæ˜¾ç¤ºå­—ç¬¦åœ¨å­—ç¬¦ä¸²ä¸­çš„ä½ç½®
+//		ã€€KTP_CTRL& HeadCtrl    --> å­ä¸²å¼€å§‹å‰çš„æ§åˆ¶
+//		ã€€KTP_CTRL& TailCtrl    --> å­ä¸²ç»“æŸåçš„æ§åˆ¶
+//	æ³¨é‡Šï¼šæ­¤å‡½æ•°ç¼–ç ä¸GBKè§„èŒƒç›¸å…³
+//		å¤šæ¬¡è°ƒç”¨GetSimplexTextå°†é€ä¸ªè·å–å­—ç¬¦ä¸²ä¸­åŒè¡Œçš„å•ä¸€æ€§è´¨çš„å­ä¸²ï¼Œåœ¨å­—ç¬¦ä¸²
+//	è¢«éå‰å®Œæ¯•ä¹‹åå°†åœ¨è®¾ç½®è°ƒç”¨å‚æ•°TailCtrlä¸­çš„è¡Œæœ«æ§åˆ¶ç ä¸ºæ–‡æœ¬ä¸²ç»“æŸæ§åˆ¶ç ã€‚ä¸‹
+//	æ¬¡å†è°ƒç”¨åˆå°†é‡æ–°ä»æ–‡æœ¬ä¸²èµ·å§‹å¤„è·å–å­ä¸²ã€‚
 //--------------------------------------------------------------------------
 int KTextProcess::GetSimplexText(int &nSimplexStartPos, KTP_CTRL& HeadCtrl, KTP_CTRL& TailCtrl, int nFontSize)
 {
 	int nBeforeLen = 0,
-		nVisibleChars = 0;	//´Ë´Î»ñÈ¡µ½µÄÏÔÊ¾×Ö·ûµÄ¸öÊı
+		nVisibleChars = 0;	//æ­¤æ¬¡è·å–åˆ°çš„æ˜¾ç¤ºå­—ç¬¦çš„ä¸ªæ•°
 	nSimplexStartPos = m_nReadPos;
 	HeadCtrl.cCtrl = KTC_INVALID;
 	TailCtrl.cCtrl = KTC_INVALID;
@@ -92,9 +92,9 @@ int KTextProcess::GetSimplexText(int &nSimplexStartPos, KTP_CTRL& HeadCtrl, KTP_
 	while(m_nReadPos < m_nCount)
 	{
 		cCode = m_pBuffer[m_nReadPos];
-		//ÅĞ¶ÏÍ·Ò»¸ö×Ö·ûÊÇ·ñÊÇ¿ØÖÆ·ûºÅ
-		if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
-		{	//×Ö·û´®ÏÈ±»´¦Àí¹ı£¬²»»á³öÏÖµ¥¸öµ¥×Ö½ÚÊıÖµ´óÓÚ0x80µÄ×Ö·û
+		//åˆ¤æ–­å¤´ä¸€ä¸ªå­—ç¬¦æ˜¯å¦æ˜¯æ§åˆ¶ç¬¦å·
+		if (cCode > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
+		{	//å­—ç¬¦ä¸²å…ˆè¢«å¤„ç†è¿‡ï¼Œä¸ä¼šå‡ºç°å•ä¸ªå•å­—èŠ‚æ•°å€¼å¤§äº0x80çš„å­—ç¬¦
 			m_nCurrentLineLen ++;
 			m_fCurrentLineLen += 1;
 			nVisibleChars ++;
@@ -137,7 +137,7 @@ int KTextProcess::GetSimplexText(int &nSimplexStartPos, KTP_CTRL& HeadCtrl, KTP_
 				m_nReadPos += 1 + sizeof(unsigned short);
 			break;
 		}
-		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
+		else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//é¢œè‰²æ§åˆ¶
 		{
 			if (m_nCurrentLineLen > nBeforeLen || HeadCtrl.cCtrl != KTC_INVALID)
 			{
@@ -220,11 +220,11 @@ KS_EXIT:
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÌøµ½Ö¸¶¨ĞĞ¿ªÊ¼´¦
-//	²ÎÊı£ºint nLineIndex --> Ö¸¶¨ĞĞµÄĞĞºÅ£¨´Ó0¿ªÊ¼£©
-//		¡¡KTP_CTRL& Ctrl --> Ö¸¶¨ĞĞ¿ªÊ¼Ç°µÄ¿ØÖÆ
-//	·µ»Ø£ºÈç¹ûÎÄ±¾´®ÖĞ´æÔÚ£¬Ôò·µ»ØÎÄ±¾´®ÖĞÖ¸¶¨ĞĞ¿ªÊ¼´¦µÄÎ»ÖÃ¡£
-//		¡¡Èç¹ûÖ¸¶¨ĞĞ²»´æÔÚ£¬Ôò·µ»Ø-1£¬²¢°ÑÎÄ±¾´®µÄ¶ÁÈ¡Ö¸ÕëÉèÖÃÔÚ±¾×Ö·û´®¿ªÊ¼´¦¡£
+//	åŠŸèƒ½ï¼šè·³åˆ°æŒ‡å®šè¡Œå¼€å§‹å¤„
+//	å‚æ•°ï¼šint nLineIndex --> æŒ‡å®šè¡Œçš„è¡Œå·ï¼ˆä»0å¼€å§‹ï¼‰
+//		ã€€KTP_CTRL& Ctrl --> æŒ‡å®šè¡Œå¼€å§‹å‰çš„æ§åˆ¶
+//	è¿”å›ï¼šå¦‚æœæ–‡æœ¬ä¸²ä¸­å­˜åœ¨ï¼Œåˆ™è¿”å›æ–‡æœ¬ä¸²ä¸­æŒ‡å®šè¡Œå¼€å§‹å¤„çš„ä½ç½®ã€‚
+//		ã€€å¦‚æœæŒ‡å®šè¡Œä¸å­˜åœ¨ï¼Œåˆ™è¿”å›-1ï¼Œå¹¶æŠŠæ–‡æœ¬ä¸²çš„è¯»å–æŒ‡é’ˆè®¾ç½®åœ¨æœ¬å­—ç¬¦ä¸²å¼€å§‹å¤„ã€‚
 //--------------------------------------------------------------------------
 int KTextProcess::SeekToSpecialLine(int nLineIndex, KTP_CTRL& Ctrl1, KTP_CTRL&Ctrl2,
 									int& nSkipedHalfLines, int nFontSize, int bPicPackInSingleLine)
@@ -375,8 +375,8 @@ int KTextProcess::SeekToSpecialLine(int nLineIndex, KTP_CTRL& Ctrl1, KTP_CTRL&Ct
 }
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÔÚÖ¸¶¨µÄÎ»ÖÃ»æÖÆ×Ö·û´®ÖĞÖ¸¶¨µÄÄÚÈİ
-//	·µ»Ø£ºÊµ¼Ê»æÖÆµÄÎÄ×ÖĞĞÊı
+//	åŠŸèƒ½ï¼šåœ¨æŒ‡å®šçš„ä½ç½®ç»˜åˆ¶å­—ç¬¦ä¸²ä¸­æŒ‡å®šçš„å†…å®¹
+//	è¿”å›ï¼šå®é™…ç»˜åˆ¶çš„æ–‡å­—è¡Œæ•°
 //--------------------------------------------------------------------------
 int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pParam)
 {
@@ -389,7 +389,7 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 	int			x = pParam->nX, y = pParam->nY, nLineDrawed = 0;
 
 	int			nHalfIndex = 0, nFontHalfWidth[2];
-	int			nSkipedHalfLines = 0;	//ÒòÎªÇ¶ÈëÊ½Í¼Æ¬Ôì³ÉµÄ¿ç°ëĞĞÏÖÏó
+	int			nSkipedHalfLines = 0;	//å› ä¸ºåµŒå…¥å¼å›¾ç‰‡é€ æˆçš„è·¨åŠè¡Œç°è±¡
 	nFontHalfWidth[0] = nFontSize / 2;
 	nFontHalfWidth[1] = (nFontSize + 1) / 2;
 
@@ -432,16 +432,16 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 				_ASSERT(nSpanLines * nFontSize - nLineHeight >= 0);
 				switch (pParam->nVertAlign)
 				{
-				case 1:	//¾ÓÉÏ
+				case 1:	//å±…ä¸Š
 					if (nLineHeight > nFontSize)
 						y += (nLineHeight - nFontSize) / 2;
 					break;
-				case 2:	//¾ÓÏÂ
+				case 2:	//å±…ä¸‹
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 					if (nLineHeight > nFontSize)
 						y -= (nLineHeight - nFontSize) / 2;
 					break;
-				case 0:	//¾ÓÖĞ
+				case 0:	//å±…ä¸­
 				default:
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 					break;
@@ -489,16 +489,16 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 				//[wxb 2003-6-20][wxb 2003-7-10]
 				switch (pParam->nVertAlign)
 				{
-				case 1:	//¾ÓÉÏ
+				case 1:	//å±…ä¸Š
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 					if (nLineHeight > nFontSize)
 						y -= (nLineHeight - nFontSize) / 2;
 					break;
-				case 2:	//¾ÓÏÂ
+				case 2:	//å±…ä¸‹
 					if (nLineHeight > nFontSize)
 						y += (nLineHeight - nFontSize) / 2;
 					break;
-				case 0:	//¾ÓÖĞ
+				case 0:	//å±…ä¸­
 				default:
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 					break;
@@ -506,7 +506,7 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 			}
 			nLineDrawed += nSpanLines - (bFirstLine ? nSkipedHalfLines : 0);
 			if (nLineDrawed >= pParam->nNumLine)
-				TailCtrl.cCtrl = KTC_TAIL;	//ÎªÁËÖĞÖ¹Ñ­»·
+				TailCtrl.cCtrl = KTC_TAIL;	//ä¸ºäº†ä¸­æ­¢å¾ªç¯
 			else
 				nHalfIndex = 0;
 
@@ -537,16 +537,16 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 					{
 						switch (pParam->nVertAlign)
 						{
-							case 1:	//¾ÓÉÏ
+							case 1:	//å±…ä¸Š
 								if (nLineHeight > nFontSize)
 									nPicY -= (nLineHeight - nFontSize) / 2;
 								break;
-							case 2:	//¾ÓÏÂ
+							case 2:	//å±…ä¸‹
 								nPicY -= (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 								if (nLineHeight > nFontSize)
 									nPicY += (nLineHeight - nFontSize) / 2;
 								break;
-							case 0:	//¾ÓÖĞ
+							case 0:	//å±…ä¸­
 							default:
 								nPicY -= (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 								break;
@@ -574,10 +574,10 @@ int KTextProcess::DrawTextLine(iFont* pFont, int nFontSize, KOutputTextParam* pP
 
 
 //--------------------------------------------------------------------------
-//	¹¦ÄÜ£ºÅĞ¶ÏÄ³Ò»¸ö×ø±ê£¬ÔÚÖ¸¶¨µÄÎ»ÖÃÊä³öµÄ×Ö·û´®ÖĞ£¬ËùÕ¼µÄÆ«ÒÆÁ¿
-//	·µ»Ø£ºÀëÖ¸¶¨×ø±ê×î½üµÄ×Ö·ûÆ«ÒÆ(×Ö·ûÆ«ÒÆ£ºÓĞn¸ö×Ö·û£¬ÄÇ¸ö¾ÍÓĞ0¡«nÒ»¹²n+1¸öÆ«ÒÆ)
-//	×¢Òâ£ºÈç¹û³¬³ö×Ö·ûËùÕ¼µÄ¾ØĞÎÔò·µ»ØµÄÆ«ÒÆÎªÀëÖ¸¶¨×ø±ê×î½üµÄÒ»¸ö×Ö·ûµÄÆ«ÒÆ
-//		  ±¾º¯Êı²»ÄÜ¸ú DrawTextLine(..) º¯ÊıÇ¶Ì×Ê¹ÓÃ
+//	åŠŸèƒ½ï¼šåˆ¤æ–­æŸä¸€ä¸ªåæ ‡ï¼Œåœ¨æŒ‡å®šçš„ä½ç½®è¾“å‡ºçš„å­—ç¬¦ä¸²ä¸­ï¼Œæ‰€å çš„åç§»é‡
+//	è¿”å›ï¼šç¦»æŒ‡å®šåæ ‡æœ€è¿‘çš„å­—ç¬¦åç§»(å­—ç¬¦åç§»ï¼šæœ‰nä¸ªå­—ç¬¦ï¼Œé‚£ä¸ªå°±æœ‰0ï½nä¸€å…±n+1ä¸ªåç§»)
+//	æ³¨æ„ï¼šå¦‚æœè¶…å‡ºå­—ç¬¦æ‰€å çš„çŸ©å½¢åˆ™è¿”å›çš„åç§»ä¸ºç¦»æŒ‡å®šåæ ‡æœ€è¿‘çš„ä¸€ä¸ªå­—ç¬¦çš„åç§»
+//		  æœ¬å‡½æ•°ä¸èƒ½è·Ÿ DrawTextLine(..) å‡½æ•°åµŒå¥—ä½¿ç”¨
 //	[wxb 2003-7-21]
 //--------------------------------------------------------------------------
 int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFontSize, KOutputTextParam* pParam)
@@ -591,7 +591,7 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 	int			x = pParam->nX, y = pParam->nY, nLineDrawed = 0;
 
 	int			nHalfIndex = 0, nFontHalfWidth[2];
-	int			nSkipedHalfLines = 0;	//ÒòÎªÇ¶ÈëÊ½Í¼Æ¬Ôì³ÉµÄ¿ç°ëĞĞÏÖÏó
+	int			nSkipedHalfLines = 0;	//å› ä¸ºåµŒå…¥å¼å›¾ç‰‡é€ æˆçš„è·¨åŠè¡Œç°è±¡
 	nFontHalfWidth[0] = nFontSize / 2;
 	nFontHalfWidth[1] = (nFontSize + 1) / 2;
 
@@ -635,23 +635,23 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 				_ASSERT(nSpanLines * nFontSize - nLineHeight >= 0);
 				switch (pParam->nVertAlign)
 				{
-				case 1:	//¾ÓÉÏ
+				case 1:	//å±…ä¸Š
 					if (nLineHeight > nFontSize)
 						y += (nLineHeight - nFontSize) / 2;
 					break;
-				case 2:	//¾ÓÏÂ
+				case 2:	//å±…ä¸‹
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 					if (nLineHeight > nFontSize)
 						y -= (nLineHeight - nFontSize) / 2;
 					break;
-				case 0:	//¾ÓÖĞ
+				case 0:	//å±…ä¸­
 				default:
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 					break;
 				}
 			}
 
-			nOffsetXThisLine = -1;	//Ã¿Ò»ĞĞ¿ªÊ¼µÄÊ±ºòÇå¿Õ
+			nOffsetXThisLine = -1;	//æ¯ä¸€è¡Œå¼€å§‹çš„æ—¶å€™æ¸…ç©º
 		}
 		nOldReadPos = m_nReadPos;
 		nCount = GetSimplexText(nPos, PreCtrl1, TailCtrl, nFontSize);
@@ -684,7 +684,7 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 				nHalfIndex ^= 1;
 			}
 
-			//¼ÆËãµãÖĞµÄÎ»ÖÃ
+			//è®¡ç®—ç‚¹ä¸­çš„ä½ç½®
 			if (nOffsetXThisLine != -1)
 			{
 				if (nX <= nOldX)
@@ -705,16 +705,16 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 				//[wxb 2003-6-20][wxb 2003-7-10]
 				switch (pParam->nVertAlign)
 				{
-				case 1:	//¾ÓÉÏ
+				case 1:	//å±…ä¸Š
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 					if (nLineHeight > nFontSize)
 						y -= (nLineHeight - nFontSize) / 2;
 					break;
-				case 2:	//¾ÓÏÂ
+				case 2:	//å±…ä¸‹
 					if (nLineHeight > nFontSize)
 						y += (nLineHeight - nFontSize) / 2;
 					break;
-				case 0:	//¾ÓÖĞ
+				case 0:	//å±…ä¸­
 				default:
 					y += (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 					break;
@@ -722,7 +722,7 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 			}
 			nLineDrawed += nSpanLines - (bFirstLine ? nSkipedHalfLines : 0);
 			if (nLineDrawed >= pParam->nNumLine)
-				TailCtrl.cCtrl = KTC_TAIL;	//ÎªÁËÖĞÖ¹Ñ­»·
+				TailCtrl.cCtrl = KTC_TAIL;	//ä¸ºäº†ä¸­æ­¢å¾ªç¯
 			else
 				nHalfIndex = 0;
 
@@ -753,16 +753,16 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 					{
 						switch (pParam->nVertAlign)
 						{
-							case 1:	//¾ÓÉÏ
+							case 1:	//å±…ä¸Š
 								if (nLineHeight > nFontSize)
 									nPicY -= (nLineHeight - nFontSize) / 2;
 								break;
-							case 2:	//¾ÓÏÂ
+							case 2:	//å±…ä¸‹
 								nPicY -= (nSpanLines - nSkipedHalfLines - 1) * nFontSize;
 								if (nLineHeight > nFontSize)
 									nPicY += (nLineHeight - nFontSize) / 2;
 								break;
-							case 0:	//¾ÓÖĞ
+							case 0:	//å±…ä¸­
 							default:
 								nPicY -= (nSpanLines - nSkipedHalfLines - 1) * nFontSize / 2;
 								break;
@@ -778,7 +778,7 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 					{
 						nOldX = x;
 						x += cx;
-						//¼ÆËãµãÖĞµÄÎ»ÖÃ
+						//è®¡ç®—ç‚¹ä¸­çš„ä½ç½®
 						if (nOffsetXThisLine != -1)
 						{
 							if (nX <= nOldX)
@@ -792,7 +792,7 @@ int KTextProcess::TransXYPosToCharOffset(int nX, int nY, iFont* pFont, int nFont
 			break;
 		}
 
-		//ÅĞ¶ÏÊÇ·ñ¾ÍµãÔÚÕâÒ»ĞĞ
+		//åˆ¤æ–­æ˜¯å¦å°±ç‚¹åœ¨è¿™ä¸€è¡Œ
 		if (KTC_ENTER == TailCtrl.cCtrl && y > nY || KTC_TAIL == TailCtrl.cCtrl)
 		{
 			if (nOffsetXThisLine != -1)
@@ -815,7 +815,7 @@ void KTextProcess::GetCurLineHeight(int& nSpanLines, int& nHeight, int nFontSize
 {
 	unsigned short wIndex = 0;
 	nHeight = nFontSize;
-	//¸ÄÎªÍ¼Æ¬ÈçºÎ¶¼Ö»Õ¼Ò»ĞĞ¸ß£¬ËùÒÔ×¢ÊÍÏÂÃæ´úÂë
+	//æ”¹ä¸ºå›¾ç‰‡å¦‚ä½•éƒ½åªå ä¸€è¡Œé«˜ï¼Œæ‰€ä»¥æ³¨é‡Šä¸‹é¢ä»£ç 
 	if (g_pIInlinePicSinkRP && !bPicPackInSingleLine)
 	{
 		Backup();
@@ -824,9 +824,9 @@ void KTextProcess::GetCurLineHeight(int& nSpanLines, int& nHeight, int nFontSize
 		while(m_nReadPos < m_nCount)
 		{
 			cCode = m_pBuffer[m_nReadPos];
-			//ÅĞ¶ÏÍ·Ò»¸ö×Ö·ûÊÇ·ñÊÇ¿ØÖÆ·ûºÅ
-			if (cCode > 0x80)	//¿ÉÄÜÊÇÖĞÎÄ×Ö·û
-			{	//×Ö·û´®ÏÈ±»´¦Àí¹ı£¬²»»á³öÏÖµ¥¸öµ¥×Ö½ÚÊıÖµ´óÓÚ0x80µÄ×Ö·û
+			//åˆ¤æ–­å¤´ä¸€ä¸ªå­—ç¬¦æ˜¯å¦æ˜¯æ§åˆ¶ç¬¦å·
+			if (cCode > 0x80)	//å¯èƒ½æ˜¯ä¸­æ–‡å­—ç¬¦
+			{	//å­—ç¬¦ä¸²å…ˆè¢«å¤„ç†è¿‡ï¼Œä¸ä¼šå‡ºç°å•ä¸ªå•å­—èŠ‚æ•°å€¼å¤§äº0x80çš„å­—ç¬¦
 				m_nCurrentLineLen ++;
 				m_fCurrentLineLen += 1;
 				m_nReadPos ++;
@@ -847,7 +847,7 @@ void KTextProcess::GetCurLineHeight(int& nSpanLines, int& nHeight, int nFontSize
 					}
 				}
 			}
-			else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//ÑÕÉ«¿ØÖÆ
+			else if (cCode == KTC_COLOR || cCode == KTC_BORDER_COLOR)//é¢œè‰²æ§åˆ¶
 				m_nReadPos += 4;
 			else if (cCode == KTC_COLOR_RESTORE || cCode == KTC_BORDER_RESTORE)
 				m_nReadPos += 1;

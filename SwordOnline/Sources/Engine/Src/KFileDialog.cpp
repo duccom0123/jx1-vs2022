@@ -12,10 +12,10 @@
 #include "KWin32Wnd.h"
 #include "KFileDialog.h"
 //---------------------------------------------------------------------------
-// º¯Êý:	KFileDialog
-// ¹¦ÄÜ:	¹ºÔìº¯Êý
-// ²ÎÊý:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KFileDialog
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 KFileDialog::KFileDialog()
 {
@@ -48,35 +48,35 @@ KFileDialog::KFileDialog()
 	m_szDefExt[0]		= 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetTitle
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄ±êÌâ
-// ²ÎÊý:	szTitle		±êÌâ
-// ·µ»Ø:	void
+// å‡½æ•°:	SetTitle
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„æ ‡é¢˜
+// å‚æ•°:	szTitle		æ ‡é¢˜
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetTitle(LPSTR szTitle)
 {
 	g_StrCpy(m_szTitle, szTitle);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetFlags
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄ±êÖ¾
-// ²ÎÊý:	Flags	±êÖ¾
-//				OFN_ALLOWMULTISELECT - ÔÊÐí¶àÑ¡
-//				OFN_OVERWRITEPROMPT - ÎÄ¼þÖØÃûÊ±ÏÔÊ¾ÌáÊ¾
-//				OFN_EXPLORER - ä¯ÀÀÆ÷·ç¸ñ
-// ·µ»Ø:	void
+// å‡½æ•°:	SetFlags
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„æ ‡å¿—
+// å‚æ•°:	Flags	æ ‡å¿—
+//				OFN_ALLOWMULTISELECT - å…è®¸å¤šé€‰
+//				OFN_OVERWRITEPROMPT - æ–‡ä»¶é‡åæ—¶æ˜¾ç¤ºæç¤º
+//				OFN_EXPLORER - æµè§ˆå™¨é£Žæ ¼
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetFlags(DWORD Flags)
 {
 	m_OpenFileName.Flags = Flags | OFN_EXPLORER;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetFilter
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄÎÄ¼þÀ©Õ¹Ãû¹ýÂË
-// ²ÎÊý:	szFilter	¹ýÂËÆ÷
-//			ÀýÈç"Text files (*.txt)|*.TXT";
+// å‡½æ•°:	SetFilter
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„æ–‡ä»¶æ‰©å±•åè¿‡æ»¤
+// å‚æ•°:	szFilter	è¿‡æ»¤å™¨
+//			ä¾‹å¦‚"Text files (*.txt)|*.TXT";
 //				"Text files (*.txt)|*.TXT|Pascal files (*.pas)|*.PAS";
-// ·µ»Ø:	void
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetFilter(LPSTR szFilter)
 {
@@ -96,20 +96,20 @@ void KFileDialog::SetFilter(LPSTR szFilter)
 	m_szFilter[i + 1] = 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetDefExt
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄÈ±Ê¡À©Õ¹Ãû
-// ²ÎÊý:	szDefExt	È±Ê¡À©Õ¹Ãû
-// ·µ»Ø:	void
+// å‡½æ•°:	SetDefExt
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„ç¼ºçœæ‰©å±•å
+// å‚æ•°:	szDefExt	ç¼ºçœæ‰©å±•å
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetDefExt(LPSTR szDefExt)
 {
 	g_StrCpy(m_szDefExt, szDefExt);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetFilePath
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þÂ·¾¶
-// ²ÎÊý:	lpstrPath	ÎÄ¼þÂ·¾¶
-// ·µ»Ø:	void
+// å‡½æ•°:	SetFilePath
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶è·¯å¾„
+// å‚æ•°:	lpstrPath	æ–‡ä»¶è·¯å¾„
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetFilePath(LPSTR lpstrPath)
 {
@@ -124,30 +124,30 @@ void KFileDialog::SetFilePath(LPSTR lpstrPath)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetFileName
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄÎÄ¼þÃû
-// ²ÎÊý:	lpstrFile	ÎÄ¼þÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	SetFileName
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„æ–‡ä»¶å
+// å‚æ•°:	lpstrFile	æ–‡ä»¶å
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetFileName(LPSTR lpstrFile)
 {
 	g_StrCpy(m_szFileName, lpstrFile);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	SetFileTitle
-// ¹¦ÄÜ:	ÉèÖÃÎÄ¼þ¶Ô»°´°µÄÎÄ¼þÃû
-// ²ÎÊý:	lpstrFile	ÎÄ¼þÃû
-// ·µ»Ø:	void
+// å‡½æ•°:	SetFileTitle
+// åŠŸèƒ½:	è®¾ç½®æ–‡ä»¶å¯¹è¯çª—çš„æ–‡ä»¶å
+// å‚æ•°:	lpstrFile	æ–‡ä»¶å
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 void KFileDialog::SetFileTitle(LPSTR lpstrFile)
 {
 	g_StrCpy(m_szFileTitle, lpstrFile);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Open
-// ¹¦ÄÜ:	ÎÄ¼þ´ò¿ª¶Ô»°´°
-// ²ÎÊý:	void
-// ·µ»Ø:	³É¹¦·µ»ØTRUE£¬Ê§°Ü»òÕßÈ¡Ïû·µ»ØFALSE¡£
+// å‡½æ•°:	Open
+// åŠŸèƒ½:	æ–‡ä»¶æ‰“å¼€å¯¹è¯çª—
+// å‚æ•°:	void
+// è¿”å›ž:	æˆåŠŸè¿”å›žTRUEï¼Œå¤±è´¥æˆ–è€…å–æ¶ˆè¿”å›žFALSEã€‚
 //---------------------------------------------------------------------------
 BOOL KFileDialog::Open()
 {
@@ -160,10 +160,10 @@ BOOL KFileDialog::Open()
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Save
-// ¹¦ÄÜ:	ÎÄ¼þ±£´æ¶Ô»°´°
-// ²ÎÊý:	void
-// ·µ»Ø:	³É¹¦·µ»ØTRUE£¬Ê§°Ü»òÕßÈ¡Ïû·µ»ØFALSE¡£
+// å‡½æ•°:	Save
+// åŠŸèƒ½:	æ–‡ä»¶ä¿å­˜å¯¹è¯çª—
+// å‚æ•°:	void
+// è¿”å›ž:	æˆåŠŸè¿”å›žTRUEï¼Œå¤±è´¥æˆ–è€…å–æ¶ˆè¿”å›žFALSEã€‚
 //---------------------------------------------------------------------------
 BOOL KFileDialog::Save()
 {

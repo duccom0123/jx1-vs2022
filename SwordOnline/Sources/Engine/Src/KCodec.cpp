@@ -14,22 +14,22 @@
 //#include "KCodecLha.h"
 #include "KCodecLzo.h"
 //---------------------------------------------------------------------------
-// º¯Êý:	GetPackLen
-// ¹¦ÄÜ:	È¡µÃÑ¹ËõÊä³ö»º´æµÄ×îÐ¡³¤¶È
-// ²ÎÊý:	dwDataLen	´ýÑ¹ËõÊý¾Ý³¤¶È
-// ·µ»Ø:	Ñ¹ËõÊä³ö»º´æµÄ×îÐ¡³¤¶È(in Bytes)
-// ×¢ÊÍ:	ÓÐ¿ÉÄÜÑ¹ËõºóµÄÊý¾Ý±ÈÔ´Êý¾Ý¶à, ËùÒÔÐèÒªµÃµ½Êä³ö»º³åÇøµÄ×îÐ¡³¤¶È
+// å‡½æ•°:	GetPackLen
+// åŠŸèƒ½:	å–å¾—åŽ‹ç¼©è¾“å‡ºç¼“å­˜çš„æœ€å°é•¿åº¦
+// å‚æ•°:	dwDataLen	å¾…åŽ‹ç¼©æ•°æ®é•¿åº¦
+// è¿”å›ž:	åŽ‹ç¼©è¾“å‡ºç¼“å­˜çš„æœ€å°é•¿åº¦(in Bytes)
+// æ³¨é‡Š:	æœ‰å¯èƒ½åŽ‹ç¼©åŽçš„æ•°æ®æ¯”æºæ•°æ®å¤š, æ‰€ä»¥éœ€è¦å¾—åˆ°è¾“å‡ºç¼“å†²åŒºçš„æœ€å°é•¿åº¦
 //---------------------------------------------------------------------------
 DWORD KCodec::GetPackLen(DWORD dwDataLen)
 {
 	return (dwDataLen + dwDataLen / 10 + 1024);
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Encode
-// ¹¦ÄÜ:	Ñ¹Ëõ
-// ²ÎÊý:	pCodeInfo	Ñ¹ËõÊý¾Ý½á¹¹
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Encode
+// åŠŸèƒ½:	åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	åŽ‹ç¼©æ•°æ®ç»“æž„
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodec::Encode(TCodeInfo* pCodeInfo)
 {
@@ -38,11 +38,11 @@ BOOL KCodec::Encode(TCodeInfo* pCodeInfo)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	Decode
-// ¹¦ÄÜ:	½âÑ¹Ëõ
-// ²ÎÊý:	pCodeInfo	Ñ¹ËõÊý¾Ý½á¹¹
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	è§£åŽ‹ç¼©
+// å‚æ•°:	pCodeInfo	åŽ‹ç¼©æ•°æ®ç»“æž„
+// è¿”å›ž:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KCodec::Decode(TCodeInfo* pCodeInfo)
 {
@@ -51,11 +51,11 @@ BOOL KCodec::Decode(TCodeInfo* pCodeInfo)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	g_InitCodec
-// ¹¦ÄÜ:	³õÊ¼»¯±àÂë¡¢½âÂëÆ÷
-// ²ÎÊý:	ppCodec				±àÂë¡¢½âÂëÆ÷Ö¸Õë
-//			nCompressMethod		Ñ¹Ëõ·½·¨
-// ·µ»Ø:	void
+// å‡½æ•°:	g_InitCodec
+// åŠŸèƒ½:	åˆå§‹åŒ–ç¼–ç ã€è§£ç å™¨
+// å‚æ•°:	ppCodec				ç¼–ç ã€è§£ç å™¨æŒ‡é’ˆ
+//			nCompressMethod		åŽ‹ç¼©æ–¹æ³•
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_InitCodec(KCodec** ppCodec, int nCompressMethod)
 {
@@ -78,11 +78,11 @@ ENGINE_API void g_InitCodec(KCodec** ppCodec, int nCompressMethod)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êý:	g_FreeCodec
-// ¹¦ÄÜ:	ÊÍ·Å±àÂë¡¢½âÂëÆ÷
-// ²ÎÊý:	ppCodec				±àÂë¡¢½âÂëÆ÷Ö¸Õë
-//			nCompressMethod		Ñ¹Ëõ·½·¨
-// ·µ»Ø:	void
+// å‡½æ•°:	g_FreeCodec
+// åŠŸèƒ½:	é‡Šæ”¾ç¼–ç ã€è§£ç å™¨
+// å‚æ•°:	ppCodec				ç¼–ç ã€è§£ç å™¨æŒ‡é’ˆ
+//			nCompressMethod		åŽ‹ç¼©æ–¹æ³•
+// è¿”å›ž:	void
 //---------------------------------------------------------------------------
 ENGINE_API void g_FreeCodec(KCodec** ppCodec, int nCompressMethod)
 {

@@ -1,5 +1,5 @@
 // *****************Editer	: duccom0123 EditTime:	2024/06/12 11:48:45*********************
-// ³¡¾°ÖĞµÄ¶ÔÏóÊ÷ÖĞµÄÊ÷Ò¶½á¹¹¶¨Òå
+// åœºæ™¯ä¸­çš„å¯¹è±¡æ ‘ä¸­çš„æ ‘å¶ç»“æ„å®šä¹‰
 // Copyright : Kingsoft 2002
 // Author    : wooy(wu yue)
 // CreateTime: 2002-11-19
@@ -14,82 +14,82 @@
 class KIpotBranch;
 
 struct KIpotLeaf;
-// ¶¨ÒåÃ¶¾Ù»Øµ÷º¯Êı
+// å®šä¹‰æšä¸¾å›è°ƒå‡½æ•°
 typedef void (*ObjectsCallbackFn)(void* p, KIpotLeaf* pLeaf);
 
 #define	POINT_LEAF_Y_ADJUST_VALUE	6
 
 //##ModelId=3DD9B1EA02A3
 //##Documentation
-//## ³¡¾°ÖĞ¶ÔÏó¼¯ºÏÊ÷µÄÊ÷Ò¶¡£
+//## åœºæ™¯ä¸­å¯¹è±¡é›†åˆæ ‘çš„æ ‘å¶ã€‚
 struct KIpotLeaf
 {
 	//##ModelId=3DD9B259020C
 	//##Documentation
-	//## ³¡¾°ÖĞ¶ÔÏó¼¯ºÏÊ÷µÄÊ÷Ò¶£¨±íÊ¾µÄ¶ÔÏó£©µÄÀàĞÍ
+	//## åœºæ™¯ä¸­å¯¹è±¡é›†åˆæ ‘çš„æ ‘å¶ï¼ˆè¡¨ç¤ºçš„å¯¹è±¡ï¼‰çš„ç±»å‹
 	enum IPOTLEAF_TYPE
 	{
 		//##Documentation
-		//## ³¡¾°µØÍ¼µÄÄÚ½¨¶ÔÏó
+		//## åœºæ™¯åœ°å›¾çš„å†…å»ºå¯¹è±¡
 		IPOTL_T_BUILDIN_OBJ, 
 		//##Documentation
-		//## ³¡¾°ÖĞµÄ·¢¹âÔ´
+		//## åœºæ™¯ä¸­çš„å‘å…‰æº
 //		IPOTL_T_LIGHT, 
 		//##Documentation
-		//## ÔËĞĞÊ±(¼ÓÈë)´æÔÚÓÚ³¡¾°µÄ¶ÔÏó¡£
+		//## è¿è¡Œæ—¶(åŠ å…¥)å­˜åœ¨äºåœºæ™¯çš„å¯¹è±¡ã€‚
 		IPOTL_T_RUNTIME_OBJ
 	};
 
 	//##ModelId=3DD9B22D006E
 	//##Documentation
-	//## ¶ÔÏóÇø·ÖÒ¶×ÓµÄÀàĞÍ
+	//## å¯¹è±¡åŒºåˆ†å¶å­çš„ç±»å‹
 	IPOTLEAF_TYPE eLeafType;
 
 	//##ModelId=3DD9DD1203A3
 	//##Documentation
-	//## Ö¸Ïò³¤ÔÚËü±ßÉÏµÄÒ¶×ÓĞÖµÜ¡£
+	//## æŒ‡å‘é•¿åœ¨å®ƒè¾¹ä¸Šçš„å¶å­å…„å¼Ÿã€‚
 	KIpotLeaf* pBrother;
 
-	//×ÓÒ¶×Ó
+	//å­å¶å­
 	KIpotLeaf  *pLChild, *pRChild;
 
 	//##ModelId=3DDBF7F8024B
 	//##Documentation
-	//## ¶ÔÏóµÄÎ»ÖÃ×ø±ê¡£
+	//## å¯¹è±¡çš„ä½ç½®åæ ‡ã€‚
 	POINT oPosition;
 
 };
 
-//## Ã¶¾Ù°üº¬ÔÚÒ¶×ÓÖĞµÄ¶ÔÏó
+//## æšä¸¾åŒ…å«åœ¨å¶å­ä¸­çš„å¯¹è±¡
 void KIpotLeaf_EnumerateObjects(KIpotLeaf* pLeaf, void* p, ObjectsCallbackFn CallbackFn);
-//»æÖÆÒ¶×ÓµÄ¶ÔÏó²ã
+//ç»˜åˆ¶å¶å­çš„å¯¹è±¡å±‚
 void KIpotLeaf_PaintObjectLayer(KIpotLeaf* pLeaf, RECT* pRepresentArea);
-//»æÖÆÒ¶×ÓµÄ¶ÔÏó²ãÖ®ÍâµÄÆäËû²ã
+//ç»˜åˆ¶å¶å­çš„å¯¹è±¡å±‚ä¹‹å¤–çš„å…¶ä»–å±‚
 void KIpotLeaf_PaintNoneObjectLayer(KIpotLeaf* pLeaf, RECT* pRepresentArea, int eLayer);
-//ÒÆ³ıÈ«²¿µÄrtoÒ¶×Ó
+//ç§»é™¤å…¨éƒ¨çš„rtoå¶å­
 void KIpotLeaf_RemoveAllRtoLeafs(KIpotLeaf* pLeaf, KIpotLeaf* pPermanentRto);
-//Çë³ı
+//è¯·é™¤
 void KIpotLeaf_Clear(KIpotLeaf* pLeaf);
 
 
 //##ModelId=3DD9EB4500C5
 //##Documentation
-//## ´¦ÀíÊ÷ÖĞÃèÊöÔËĞĞÊ±¶ÔÏó(´æÔÚÓÚ³¡¾°ÖĞµ«ÊÇ²»Á¥ÊôÓÚ³¡¾°µØÍ¼µÄ¶ÔÏó)µÄÒ¶×Ó
+//## å¤„ç†æ ‘ä¸­æè¿°è¿è¡Œæ—¶å¯¹è±¡(å­˜åœ¨äºåœºæ™¯ä¸­ä½†æ˜¯ä¸éš¶å±äºåœºæ™¯åœ°å›¾çš„å¯¹è±¡)çš„å¶å­
 struct KIpotRuntimeObj : public KIpotLeaf
 {
 	//##ModelId=3DDBD5DB02DA
 	//##Documentation
-	//## Èç¹ûÕâÆ¬Ò¶×ÓÔÚÊ÷Ö¦ÉÏ£¬Ôò°ÑËüÕªÏÂÀ´¡£
+	//## å¦‚æœè¿™ç‰‡å¶å­åœ¨æ ‘æä¸Šï¼Œåˆ™æŠŠå®ƒæ‘˜ä¸‹æ¥ã€‚
 	void Pluck();
 
 	//##ModelId=3DD9EBFE032E
 	//##Documentation
-	//## ¶ÔÏóÀàÊô¡£
+	//## å¯¹è±¡ç±»å±ã€‚
 	unsigned int uGenre;
 
 	//##ModelId=3DD9EC170027
 	//##Documentation
-	//## ¶ÔÏóµÄid
+	//## å¯¹è±¡çš„id
 	int nId;
 
 	int	nPositionZ;
@@ -98,30 +98,30 @@ struct KIpotRuntimeObj : public KIpotLeaf
 
 	//##ModelId=3DDBD19C0345
 	//##Documentation
-	//## Ò¶×ÓµÄËùÔÚµÄÊ÷Ö¦µÄÖ¸Õë
+	//## å¶å­çš„æ‰€åœ¨çš„æ ‘æçš„æŒ‡é’ˆ
 	KIpotBranch* pParentBranch;
 
 	//##Documentation
-	//## Ò¶×ÓµÄ¸¸Ò¶×Ó
+	//## å¶å­çš„çˆ¶å¶å­
 	KIpotLeaf*	pParentLeaf;
-	//pParentBranchÓëpParentLeafÍ¬Ê±×î¶àÖ»¿ÉÓĞÒ»¸öÎª·Ç0¡£
+	//pParentBranchä¸pParentLeafåŒæ—¶æœ€å¤šåªå¯æœ‰ä¸€ä¸ªä¸ºé0ã€‚
 
 	//##ModelId=3DDBD1DC03AB
 	//##Documentation
-	//## ³¤ÔÚÍ¬Ò»Ö§Ê÷Ö¦ÉÏµÄËüÇ°ÃæµÄÒ¶×ÓĞÖµÜ¡£
+	//## é•¿åœ¨åŒä¸€æ”¯æ ‘æä¸Šçš„å®ƒå‰é¢çš„å¶å­å…„å¼Ÿã€‚
 	KIpotLeaf* pAheadBrother;
 };
 
 //##ModelId=3DD9B745022C
 //##Documentation
-//## ³¡¾°µØÍ¼ÉÏµÄÄÚ½¨¶ÔÏó£¬Ò»Ö±´æÔÚ³¡¾°ÖĞ£¬ÓÀÔ¶´æÔÚ£¬Ö±µ½ËùÒÀ¸½µÄ³¡¾°¶ÔÏóÊÙÖÕÕıÇŞ¡£
+//## åœºæ™¯åœ°å›¾ä¸Šçš„å†…å»ºå¯¹è±¡ï¼Œä¸€ç›´å­˜åœ¨åœºæ™¯ä¸­ï¼Œæ°¸è¿œå­˜åœ¨ï¼Œç›´åˆ°æ‰€ä¾é™„çš„åœºæ™¯å¯¹è±¡å¯¿ç»ˆæ­£å¯ã€‚
 struct KIpotBuildinObj : public KIpotLeaf
 {
-	//Éú³ÉÒ»¸ö¿ËÂ¡Ìå
+	//ç”Ÿæˆä¸€ä¸ªå…‹éš†ä½“
 	KIpotBuildinObj* Clone(POINT* pDivisionPos);
 	void PaintABuildinObject(RECT* pRepresentArea);
 
-    //## Í¼ĞÎid
+    //## å›¾å½¢id
     unsigned int uImage;
 
 	POINT	oEndPos;
@@ -129,7 +129,7 @@ struct KIpotBuildinObj : public KIpotLeaf
 	float	fAngleXY;
 	float	fNodicalY;
 
-    //## Í¼ĞÎÔ­À´ÔÚiImageStoreÄÚµÄÎ»ÖÃ¡£
+    //## å›¾å½¢åŸæ¥åœ¨iImageStoreå†…çš„ä½ç½®ã€‚
     short 	nISPosition;
 	bool	bClone;
 	bool	bImgPart;

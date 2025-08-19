@@ -10,7 +10,7 @@
 // The global D3D Shell...
 CD3D_Device g_Device;
 
-// ´´½¨ÏÔÊ¾Éè±¸
+// åˆ›å»ºæ˜¾ç¤ºè®¾å¤‡
 bool CD3D_Device::CreateDevice(D3DAdapterInfo* pAdapter,D3DDeviceInfo* pDevice,D3DModeInfo* pMode)
 {
 	FreeDevice();								// Make sure it's all released and groovie...
@@ -29,7 +29,7 @@ bool CD3D_Device::CreateDevice(D3DAdapterInfo* pAdapter,D3DDeviceInfo* pDevice,D
 	HRESULT hResult = PDIRECT3D->CreateDevice(pAdapter->iAdapterNum,pDevice->DeviceType,g_hWnd,BehaviorFlags,&m_PresentationParam,&m_pD3DDevice);
 	if ((hResult != D3D_OK) || !m_pD3DDevice) 
 	{
-		// ´´½¨Éè±¸Ê§°Ü
+		// åˆ›å»ºè®¾å¤‡å¤±è´¥
 		assert(0);
 		g_DebugLog("[D3DRender]Warning: Device create failed.");
 		return false;
@@ -41,7 +41,7 @@ bool CD3D_Device::CreateDevice(D3DAdapterInfo* pAdapter,D3DDeviceInfo* pDevice,D
 		return false; 
 	}
 	
-	// ¼ì²âÊÇ·ñÖ§³Ö·Ç¶şµÄÃİ´ÎÌùÍ¼³¤¿í
+	// æ£€æµ‹æ˜¯å¦æ”¯æŒéäºŒçš„å¹‚æ¬¡è´´å›¾é•¿å®½
 //	if(m_DeviceCaps.TextureCaps & D3DPTEXTURECAPS_NONPOW2CONDITIONAL)
 //	{
 //		g_bNonPow2Conditional = true;
@@ -50,10 +50,10 @@ bool CD3D_Device::CreateDevice(D3DAdapterInfo* pAdapter,D3DDeviceInfo* pDevice,D
 //	else
 //		g_DebugLog("[D3DRender]D3DPTEXTURECAPS_NONPOW2CONDITIONAL is not supported");
 	
-	// ÉèÖÃÈ±Ê¡µÄäÖÈ¾×´Ì¬
+	// è®¾ç½®ç¼ºçœçš„æ¸²æŸ“çŠ¶æ€
 	SetDefaultRenderStates();
 
-	// ´´½¨ÁËÒ»¸öÈí¼şäÖÈ¾Éè±¸£¬ÏÔÊ¾Ò»¸ö¾¯¸æ
+	// åˆ›å»ºäº†ä¸€ä¸ªè½¯ä»¶æ¸²æŸ“è®¾å¤‡ï¼Œæ˜¾ç¤ºä¸€ä¸ªè­¦å‘Š
 	if (m_pDevice->DeviceType == D3DDEVTYPE_REF)
 		g_DebugLog("[D3DRender]Warning: Couldnt' find any HAL devices, Using reference rasterizer");
 
@@ -95,13 +95,13 @@ void CD3D_Device::FreeDevice()
 	ResetDeviceVars();
 }
 
-// ÊÍ·ÅÉè±¸¶ÔÏó
+// é‡Šæ”¾è®¾å¤‡å¯¹è±¡
 bool CD3D_Device::ReleaseDevObjects()
 {
 	return true; 
 }
 
-// »Ö¸´Éè±¸¶ÔÏó
+// æ¢å¤è®¾å¤‡å¯¹è±¡
 bool CD3D_Device::RestoreDevObjects()
 {
 	return true;
@@ -129,7 +129,7 @@ void CD3D_Device::Reset()
 	m_rcViewport.bottom			= 0;
 }
 
-// ÊÍ·ÅËùÓĞ³ÉÔ±±äÁ¿£¬È»ºóÖØÖÃ
+// é‡Šæ”¾æ‰€æœ‰æˆå‘˜å˜é‡ï¼Œç„¶åé‡ç½®
 void CD3D_Device::FreeAll()
 {
 	FreeDevice();
@@ -154,7 +154,7 @@ void CD3D_Device::SetPresentationParams(D3DPRESENT_PARAMETERS& PresentationParam
 	PresentationParam.Windowed							= g_bRunWindowed;
 	PresentationParam.EnableAutoDepthStencil			= false;
 //	PresentationParam.AutoDepthStencilFormat			= GetDefaultDepthStencilFormat(g_CV_ZBitDepth,g_CV_StencilBitDepth);
-	// ÒªÖ§³ÖÈ«ÆÁÄ£Ê½ÏÂµÄÏµÍ³ÊäÈë·¨£¬ÕâÀï±ØĞëÊÇD3DPRESENTFLAG_LOCKABLE_BACKBUFFER£¬ÔÚÄ³Ğ©ÏÔ¿¨ÉÏ¿ÉÄÜÓĞĞÔÄÜËğÊ§
+	// è¦æ”¯æŒå…¨å±æ¨¡å¼ä¸‹çš„ç³»ç»Ÿè¾“å…¥æ³•ï¼Œè¿™é‡Œå¿…é¡»æ˜¯D3DPRESENTFLAG_LOCKABLE_BACKBUFFERï¼Œåœ¨æŸäº›æ˜¾å¡ä¸Šå¯èƒ½æœ‰æ€§èƒ½æŸå¤±
 	PresentationParam.Flags								= D3DPRESENTFLAG_LOCKABLE_BACKBUFFER;	// puffs, but need it for the console (should get rid of this eventually)...
 	//PresentationParam.Flags								= 0;
 //	PresentationParam.Flags								= 0;
@@ -243,26 +243,26 @@ void CD3D_Device::SetDefaultRenderStates()
 	m_pD3DDevice->SetRenderState(D3DRS_SPECULARMATERIALSOURCE,D3DMCS_MATERIAL);
 
 	// Texture Stage States...
-	// ÉèÖÃÌùÍ¼äÖÈ¾½×¶Î0
-	// ÉèÖÃÑÕÉ«»ìºÏÄ£Ê½
+	// è®¾ç½®è´´å›¾æ¸²æŸ“é˜¶æ®µ0
+	// è®¾ç½®é¢œè‰²æ··åˆæ¨¡å¼
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_COLOROP,   D3DTOP_MODULATE );
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_COLORARG1, D3DTA_TEXTURE );
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_COLORARG2, D3DTA_DIFFUSE );
-	// ÉèÖÃAlpha»ìºÏÄ£Ê½
+	// è®¾ç½®Alphaæ··åˆæ¨¡å¼
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAOP,   D3DTOP_MODULATE );
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE );
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE );
-	// ÉèÖÃ¹ıÂËÄ£Ê½
+	// è®¾ç½®è¿‡æ»¤æ¨¡å¼
     m_pD3DDevice->SetSamplerState( 0, D3DSAMP_MINFILTER, D3DTEXF_POINT );
     m_pD3DDevice->SetSamplerState( 0, D3DSAMP_MAGFILTER, D3DTEXF_POINT );
 
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_TEXCOORDINDEX, 0 );
     m_pD3DDevice->SetTextureStageState( 0, D3DTSS_TEXTURETRANSFORMFLAGS, D3DTTFF_DISABLE );
-	// ¹Ø±Õ0ÒÔÉÏµÄÌùÍ¼äÖÈ¾½×¶Î
+	// å…³é—­0ä»¥ä¸Šçš„è´´å›¾æ¸²æŸ“é˜¶æ®µ
     m_pD3DDevice->SetTextureStageState( 1, D3DTSS_COLOROP,   D3DTOP_DISABLE );
     m_pD3DDevice->SetTextureStageState( 1, D3DTSS_ALPHAOP,   D3DTOP_DISABLE );
 
-	// Çå³ıÌùÍ¼Stage
+	// æ¸…é™¤è´´å›¾Stage
 	m_pD3DDevice->SetTexture(0, 0);
 
 	assert(m_pD3DDevice);
@@ -326,7 +326,7 @@ bool CD3D_Device::IsIn3D()
 	return g_Device.m_bIn3D;
 }
 
-// ´òÓ¡Êä³öÉè±¸ÄÜÁ¦
+// æ‰“å°è¾“å‡ºè®¾å¤‡èƒ½åŠ›
 void CD3D_Device::ListDeviceCaps()
 {
 	if (!m_pD3DDevice || !m_pAdapter || !m_pMode)

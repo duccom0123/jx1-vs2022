@@ -15,7 +15,7 @@ KImageRes::~KImageRes()
 {
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void KImageRes::Release()
 {
 }
@@ -31,7 +31,7 @@ ImageResBmp::~ImageResBmp()
 	Release();
 }
 
-// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 void ImageResBmp::ResetVar()
 {
 	m_pData = NULL;
@@ -43,7 +43,7 @@ void ImageResBmp::ResetVar()
 	m_bLastFrameUsed = false;
 }
 
-// ´´½¨ÄÚ´æ×ÊÔ´
+// åˆ›å»ºå†…å­˜èµ„æº
 bool ImageResBmp::CreateImage(const char* szImage, int nWidth, int nHeight, unsigned int nType)
 {
 	if (!szImage || !szImage[0])
@@ -66,7 +66,7 @@ error:
 	return false;
 }
 
-// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+// ä»æ–‡ä»¶è½½å…¥èµ„æº
 bool ImageResBmp::LoadImage(char* szImage, unsigned int nType)
 {
 	if (!szImage || !szImage[0] || nType != ISI_T_BITMAP16)
@@ -90,7 +90,7 @@ bool ImageResBmp::LoadJpegFile(char* szImage)
 
 	if (File.Open(szImage))
 	{
-		// ²»ÔÚ°üÄÚ
+		// ä¸åœ¨åŒ…å†…
 		pJpg = new BYTE[File.Size()];
 		if (!pJpg)
 			goto error;
@@ -124,9 +124,9 @@ bool ImageResBmp::LoadJpegFile(char* szImage)
 	}
 	else
 	{
-		// ÔÚ°üÄÚ
+		// åœ¨åŒ…å†…
 		//to do
-		//´ÓÑ¹Ëõ°üÖĞ¶ÁÈ¡sprÍ·²¿Êı¾İ£¬ÌîĞ´m_pDataºÍm_nWidth,m_nHeight£¬²ÎÕÕÉÏÃæ´úÂë
+		//ä»å‹ç¼©åŒ…ä¸­è¯»å–språ¤´éƒ¨æ•°æ®ï¼Œå¡«å†™m_pDataå’Œm_nWidth,m_nHeightï¼Œå‚ç…§ä¸Šé¢ä»£ç 
 	}
 
 	return true;
@@ -137,7 +137,7 @@ error:
 	return false;
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void ImageResBmp::Release()
 {
 	SAFE_DELETE_ARRAY(m_pData);
@@ -156,7 +156,7 @@ ImageResSpr::~ImageResSpr()
 	Release();
 }
 
-// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 void ImageResSpr::ResetVar()
 {
 	m_bInPackage = false;
@@ -169,13 +169,13 @@ void ImageResSpr::ResetVar()
 	m_bLastFrameUsed = false;
 }
 
-// ´´½¨ÄÚ´æ×ÊÔ´
+// åˆ›å»ºå†…å­˜èµ„æº
 bool ImageResSpr::CreateImage(const char* szImage, int nWidth, int nHeight, unsigned int nType)
 {
 	return false;
 }
 
-// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+// ä»æ–‡ä»¶è½½å…¥èµ„æº
 bool ImageResSpr::LoadImage(char* szImage, unsigned int nType)
 {
 	if (!szImage || !szImage[0] || nType != ISI_T_SPR)
@@ -243,7 +243,7 @@ bool ImageResSpr::LoadSprFile(char* szImage)
 
 		// setup sprite pointer
 		pTemp += pHeader->Frames * sizeof(SPROFFS);
-		pSprite = (LPBYTE)pTemp; // Ïà¶ÔÆ«ÒÆ
+		pSprite = (LPBYTE)pTemp; // ç›¸å¯¹åç§»
 
 		m_pFrameInfo = new SPRFRAME*[m_Header.Frames];
 		ZeroMemory(m_pFrameInfo, sizeof(SPRFRAME*) * m_Header.Frames);
@@ -261,7 +261,7 @@ bool ImageResSpr::LoadSprFile(char* szImage)
 	else
 	{
 		m_bInPackage = true;
-		// ÎÄ¼şÔÚ°üÄÚ
+		// æ–‡ä»¶åœ¨åŒ…å†…
 		int index = g_pPakList->Search((LPSTR)szImage, 0, 0);
 		if(index == -1)
 			goto error;
@@ -271,7 +271,7 @@ bool ImageResSpr::LoadSprFile(char* szImage)
 			goto error;
 
 		//to do
-		//´ÓÑ¹Ëõ°üÖĞ¶ÁÈ¡sprÍ·²¿Êı¾İ£¬ÌîĞ´m_HeaderºÍm_pPal24£¬²ÎÕÕÉÏÃæ´úÂë
+		//ä»å‹ç¼©åŒ…ä¸­è¯»å–språ¤´éƒ¨æ•°æ®ï¼Œå¡«å†™m_Headerå’Œm_pPal24ï¼Œå‚ç…§ä¸Šé¢ä»£ç 
 
 		m_pFrameInfo = new SPRFRAME*[m_Header.Frames];
 		ZeroMemory(m_pFrameInfo, sizeof(SPRFRAME*) * m_Header.Frames);
@@ -290,7 +290,7 @@ bool ImageResSpr::PrepareFrameData(char *pszImage, int nFrame)
 	if(m_bInPackage)
 	{
 		//to do
-		//´ÓÑ¹Ëõ°üÖĞ¶ÁÈ¡Õâ¸ösprµÄµÚnFrameÖ¡µÄÊı¾İ£¬·ÖÅä²¢ÌîĞ´m_pFrameInfo[nFrame]
+		//ä»å‹ç¼©åŒ…ä¸­è¯»å–è¿™ä¸ªsprçš„ç¬¬nFrameå¸§çš„æ•°æ®ï¼Œåˆ†é…å¹¶å¡«å†™m_pFrameInfo[nFrame]
 	}
 	return true;
 }
@@ -319,10 +319,10 @@ int ImageResSpr::GetPixelAlpha(int nFrame, int x, int y)
 			y++;
 			_asm
 			{
-				//Ê¹SDIÖ¸ÏòspriteÖĞµÄÍ¼ĞÎÊı¾İÎ»ÖÃ
+				//ä½¿SDIæŒ‡å‘spriteä¸­çš„å›¾å½¢æ•°æ®ä½ç½®
 				mov		esi, pSprite
 			dec_line:
-				dec		y				//¼õµôÒ»ĞĞ
+				dec		y				//å‡æ‰ä¸€è¡Œ
 				jz		last_line
 				
 				mov		edx, nNumPixels
@@ -360,18 +360,18 @@ int ImageResSpr::GetPixelAlpha(int nFrame, int x, int y)
 	return nAlpha;
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void ImageResSpr::Release()
 {
 	SAFE_DELETE_ARRAY(m_pPal24);
 	SAFE_DELETE_ARRAY(m_pPal16);
 
-	// ÊÍ·ÅËùÓĞÌùÍ¼ºÍsprÊı¾İ
+	// é‡Šæ”¾æ‰€æœ‰è´´å›¾å’Œspræ•°æ®
 	if(m_pFrameInfo)
 	{
 		for(int i=0; i<m_Header.Frames; i++)
 		{
-			// ÊÍ·ÅµÚiÖ¡µÄÊı¾İ
+			// é‡Šæ”¾ç¬¬iå¸§çš„æ•°æ®
 			SAFE_DELETE_ARRAY(m_pFrameInfo[i]);
 		}
 	}

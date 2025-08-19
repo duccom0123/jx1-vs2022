@@ -11,10 +11,10 @@
 #include "KMemBase.h"
 #include "KHashTable.h"
 //---------------------------------------------------------------------------
-// 函数:	Hash
-// 功能:	get hash code
-// 参数:	char*, int
-// 返回:	DWORD
+// 鍑芥暟:	Hash
+// 鍔熻兘:	get hash code
+// 鍙傛暟:	char*, int
+// 杩斿洖:	DWORD
 //---------------------------------------------------------------------------
 unsigned long g_Hash(char* pStr)
 {
@@ -28,10 +28,10 @@ unsigned long g_Hash(char* pStr)
     return (i % TABLE_SIZE);
 }
 //---------------------------------------------------------------------------
-// 函数:	Add
-// 功能:	add string node to table
-// 参数:	KStrNode*
-// 返回:	void
+// 鍑芥暟:	Add
+// 鍔熻兘:	add string node to table
+// 鍙傛暟:	KStrNode*
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 void KHashTable::Add(KStrNode* pNode)
 {
@@ -41,10 +41,10 @@ void KHashTable::Add(KStrNode* pNode)
 	m_Table[i].AddHead(pStrNode);
 }
 //---------------------------------------------------------------------------
-// 函数:	Delete
-// 功能:	delete string in hash table
-// 参数:	char*
-// 返回:	void
+// 鍑芥暟:	Delete
+// 鍔熻兘:	delete string in hash table
+// 鍙傛暟:	char*
+// 杩斿洖:	void
 //---------------------------------------------------------------------------
 void KHashTable::Delete(char* pStr)
 {
@@ -56,10 +56,10 @@ void KHashTable::Delete(char* pStr)
 	}
 }
 //---------------------------------------------------------------------------
-// 函数:	Find
-// 功能:	find string in hash table
-// 参数:	char*
-// 返回:	KStrNode*
+// 鍑芥暟:	Find
+// 鍔熻兘:	find string in hash table
+// 鍙傛暟:	char*
+// 杩斿洖:	KStrNode*
 //---------------------------------------------------------------------------
 KStrNode* KHashTable::Find(char* pStr)
 {

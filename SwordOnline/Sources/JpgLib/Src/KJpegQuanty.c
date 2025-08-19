@@ -4,16 +4,16 @@
 // File:	KJpegQuanty.cpp
 // Date:	2000.08.08
 // Code:	Daniel Wang
-// Desc:	Jpeg ¶ÁÈ¡ Quantize Table 
+// Desc:	Jpeg è¯»å– Quantize Table 
 // From:	Cloud Wu's JPEG Decoder
 //---------------------------------------------------------------------------
 #include <windows.h>
 #include "KJpegLib.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	read_DQT
-// ¹¦ÄÜ:	¶ÁÈ¡ Quantize Table 
-// ²ÎÊı:	stream		JpegÊı¾İÁ÷
-// ·µ»Ø:	PBYTE		JpegÊı¾İÁ÷
+// å‡½æ•°:	read_DQT
+// åŠŸèƒ½:	è¯»å– Quantize Table 
+// å‚æ•°:	stream		Jpegæ•°æ®æµ
+// è¿”å›:	PBYTE		Jpegæ•°æ®æµ
 //---------------------------------------------------------------------------
 PBYTE jpeg_read_DQT(PBYTE stream)
 {

@@ -14,17 +14,17 @@ using namespace std;
 
 static ZDBTable *db_table = NULL;
 static size_t nMaxRoleCount_InAccount = 3;
-static CDBBackup::TStatData GameStatData;//ÓÎÏ·Í³¼ÆÊı¾İ£¨·şÎñÆ÷³õÊ¼»¯Ê±ÌîÈë£©
+static CDBBackup::TStatData GameStatData;//æ¸¸æˆç»Ÿè®¡æ•°æ®ï¼ˆæœåŠ¡å™¨åˆå§‹åŒ–æ—¶å¡«å…¥ï¼‰
 static CDBBackup* DBBackup = NULL;
 
-static HANDLE hDeadLockThread = NULL;		//¼ì²éÊı¾İ¿âÓĞÃ»ÓĞËÀËøµÄÏß³Ì
-static HANDLE hRemoveLogThread = NULL;	//É¾³ıÃ»ÓÃÈÕÖ¾ÎÄ¼şµÄÏß³Ì
+static HANDLE hDeadLockThread = NULL;		//æ£€æŸ¥æ•°æ®åº“æœ‰æ²¡æœ‰æ­»é”çš„çº¿ç¨‹
+static HANDLE hRemoveLogThread = NULL;	//åˆ é™¤æ²¡ç”¨æ—¥å¿—æ–‡ä»¶çš„çº¿ç¨‹
 
-HWND hListOutput = NULL;	//Êä³ölist
+HWND hListOutput = NULL;	//è¾“å‡ºlist
 
 int get_account(DB *db, const DBT *pkey, const DBT *pdata, DBT *ikey) 
 {
-	//¸ø¶¨Ò»¸öÍêÕûµÄbuffer£¬µÃµ½account×÷ÎªË÷Òı
+	//ç»™å®šä¸€ä¸ªå®Œæ•´çš„bufferï¼Œå¾—åˆ°accountä½œä¸ºç´¢å¼•
 	memset( ikey, 0, sizeof( DBT ) );
 	TRoleData *pRoleData = (TRoleData *)pdata->data;
 
@@ -34,19 +34,19 @@ int get_account(DB *db, const DBT *pkey, const DBT *pdata, DBT *ikey)
 	return 0;
 }
 
-//==========¼ì²éÊı¾İ¿âÓĞÃ»ÓĞËÀËøµÄÏß³Ì Add By Fellow 2003.9.10==============
+//==========æ£€æŸ¥æ•°æ®åº“æœ‰æ²¡æœ‰æ­»é”çš„çº¿ç¨‹ Add By Fellow 2003.9.10==============
 DWORD WINAPI DeadlockProc(LPVOID lpParameter) {
 	while(!db_table->bStop) {
-		Sleep(5 * 1000);	//5ÃëÖÓÒ»´Î
+		Sleep(5 * 1000);	//5ç§’é’Ÿä¸€æ¬¡
 		db_table->deadlock();
 	}
 	return 0;
 }
-//==========É¾³ıÃ»ÓÃÈÕÖ¾ÎÄ¼şµÄÏß³Ì Add By Fellow 2003.9.10==============
+//==========åˆ é™¤æ²¡ç”¨æ—¥å¿—æ–‡ä»¶çš„çº¿ç¨‹ Add By Fellow 2003.9.10==============
 DWORD WINAPI RemoveLogProc(LPVOID lpParameter) {
 	while(!db_table->bStop) {
 		db_table->removeLog();
-		Sleep(60 * 60 * 1000);			//1Ğ¡Ê±Ò»´Î
+		Sleep(60 * 60 * 1000);			//1å°æ—¶ä¸€æ¬¡
 	}
 	return 0;
 }
@@ -72,7 +72,7 @@ BOOL InitDBInterface( size_t nMaxRoleCount )
 			&dwThreadId);		// returns the thread identifier 
 		if(!hDeadLockThread)
 		{
-			//´´½¨Ïß³ÌÊ§°Ü,ÔİÊ±Ã»ÓĞ´¦Àí
+			//åˆ›å»ºçº¿ç¨‹å¤±è´¥,æš‚æ—¶æ²¡æœ‰å¤„ç†
 		}
 */
 
@@ -85,7 +85,7 @@ BOOL InitDBInterface( size_t nMaxRoleCount )
 			&dwThreadId);		// returns the thread identifier 
 		if(!hRemoveLogThread)
 		{
-			//´´½¨Ïß³ÌÊ§°Ü,ÔİÊ±Ã»ÓĞ´¦Àí
+			//åˆ›å»ºçº¿ç¨‹å¤±è´¥,æš‚æ—¶æ²¡æœ‰å¤„ç†
 		}
 
 		return TRUE;
@@ -94,7 +94,7 @@ BOOL InitDBInterface( size_t nMaxRoleCount )
 	return FALSE;
 }
 
-void ReleaseDBInterface()		//ÊÍ·ÅÊı¾İ¿âÒıÇæ
+void ReleaseDBInterface()		//é‡Šæ”¾æ•°æ®åº“å¼•æ“
 {
 	if ( db_table )
 	{
@@ -110,7 +110,7 @@ void ReleaseDBInterface()		//ÊÍ·ÅÊı¾İ¿âÒıÇæ
 
 		db_table->removeLog();
 		
-		StopBackupTimer();//Í£Ö¹±¸·İÏß³Ì
+		StopBackupTimer();//åœæ­¢å¤‡ä»½çº¿ç¨‹
 		
 		db_table->close();
 		delete db_table;
@@ -177,7 +177,7 @@ void *GetRoleInfoForGM(int nInfoID, char * pRoleBuffer, char * strUser, int &nBu
 
 void *GetRoleInfo( char * pRoleBuffer, char * strUser, int &nBufLen )
 {
-	//Êä³öÊı¾İ======
+	//è¾“å‡ºæ•°æ®======
 	char aStr[1024];
 	sprintf(aStr,"GetRoleInfo:%s",strUser);
 	AddOutputString(hListOutput,aStr);
@@ -200,27 +200,27 @@ void *GetRoleInfo( char * pRoleBuffer, char * strUser, int &nBufLen )
 	return pRoleBuffer;
 }
 
-//±£´æ½ÇÉ«µÄĞÅÏ¢£¬Èç¹ûÊı¾İ¿â²»´æÔÚ¸ÃÍæ¼Ò£¬ÔòÔö¼Ó¸ÃÍæ¼Ò
-//bAutoInsertWhenNoExistUser ÉèÎªTRUEÊ±±íÊ¾£¬Èç¹ûĞèÒª±£´æµÄ¸ÃÍæ¼ÒÔÚÊı¾İ¿âÖĞ²¢²»´æÔÚÔò×Ô¶¯¼ÓÈëµ½Êı¾İ¿âÖĞ£¬FALSEÔò²»Ôö¼ÓÖ±½Ó·µ»Ø´íÎó
-//×¢ÒâINIÎÄ¼şÖ»Ğë´æ·Å½«ĞèÒª¸Ä¶¯µÄÊı¾İ£¬²»Ğè¸Ä¶¯µÄÊı¾İ½«×Ô¶¯±£´æÔ­×´¡£
+//ä¿å­˜è§’è‰²çš„ä¿¡æ¯ï¼Œå¦‚æœæ•°æ®åº“ä¸å­˜åœ¨è¯¥ç©å®¶ï¼Œåˆ™å¢åŠ è¯¥ç©å®¶
+//bAutoInsertWhenNoExistUser è®¾ä¸ºTRUEæ—¶è¡¨ç¤ºï¼Œå¦‚æœéœ€è¦ä¿å­˜çš„è¯¥ç©å®¶åœ¨æ•°æ®åº“ä¸­å¹¶ä¸å­˜åœ¨åˆ™è‡ªåŠ¨åŠ å…¥åˆ°æ•°æ®åº“ä¸­ï¼ŒFALSEåˆ™ä¸å¢åŠ ç›´æ¥è¿”å›é”™è¯¯
+//æ³¨æ„INIæ–‡ä»¶åªé¡»å­˜æ”¾å°†éœ€è¦æ”¹åŠ¨çš„æ•°æ®ï¼Œä¸éœ€æ”¹åŠ¨çš„æ•°æ®å°†è‡ªåŠ¨ä¿å­˜åŸçŠ¶ã€‚
 int	SaveRoleInfo( char * pRoleBuffer, const char *strUser, BOOL bAutoInsertWhenNoExistUser , BOOL bAutoDeleteUser )
 {
 	ASSERT( pRoleBuffer );
 
-	//ĞèÒª´æ·ÅÕÊºÅÊ×ÏÈÕÒµ½Êı¾İ
+	//éœ€è¦å­˜æ”¾å¸å·é¦–å…ˆæ‰¾åˆ°æ•°æ®
 	TRoleData *pRoleData = ( TRoleData * )pRoleBuffer;
 	
-	//Êä³öÊı¾İ======
+	//è¾“å‡ºæ•°æ®======
 	char aStr[1024];
 	sprintf(aStr,"SaveRoleInfo:%s dwDataLen=%d",pRoleData->BaseInfo.szName,pRoleData->dwDataLen);
 	AddOutputString(hListOutput,aStr);
 	//===============
 
-	if(pRoleData->dwDataLen >= 64 * 1024) return 0;//Èç¹ûÊı¾İ´óÓÚ64K¾Í²»Ìí¼Óµ½Êı¾İ¿â
+	if(pRoleData->dwDataLen >= 64 * 1024) return 0;//å¦‚æœæ•°æ®å¤§äº64Kå°±ä¸æ·»åŠ åˆ°æ•°æ®åº“
 
 	if(bAutoInsertWhenNoExistUser)
-	{//Èç¹ûÊÇĞÂÔö½ÇÉ«¾Í°ÑÕËºÅÃû×ª³ÉĞ¡Ğ´
-		char *ptr = pRoleData->BaseInfo.caccname;	//°ÑÕËºÅÃû×ª³ÉĞ¡Ğ´
+	{//å¦‚æœæ˜¯æ–°å¢è§’è‰²å°±æŠŠè´¦å·åè½¬æˆå°å†™
+		char *ptr = pRoleData->BaseInfo.caccname;	//æŠŠè´¦å·åè½¬æˆå°å†™
 		while(*ptr) {
 		if(*ptr >= 'A' && *ptr <= 'Z') *ptr += 'a' - 'A';
 		ptr++;
@@ -307,7 +307,7 @@ int	SaveRoleInfo( char * pRoleBuffer, const char *strUser, BOOL bAutoInsertWhenN
 		 */
 		if (bAutoDeleteUser)
 		{
-			//Êä³öÊı¾İ======
+			//è¾“å‡ºæ•°æ®======
 			char aStr[1024];
 			sprintf(aStr,"Search:%s->%s",pName,pNewName);
 			AddOutputString(hListOutput,aStr);
@@ -351,7 +351,7 @@ int	SaveRoleInfo( char * pRoleBuffer, const char *strUser, BOOL bAutoInsertWhenN
 		DeleteRole(pName);
 		if ( db_table->add( pNewName, strlen( pNewName ) + 1, pRoleBuffer, pRoleData->dwDataLen ) )
 		{
-			//Êä³öÊı¾İ======
+			//è¾“å‡ºæ•°æ®======
 			char aStr[1024];
 			sprintf(aStr,"Rename:%s->%s",pName,pNewName);
 			AddOutputString(hListOutput,aStr);
@@ -375,13 +375,13 @@ int GetRoleListOfAccount( char * szAccountName, S3DBI_RoleBaseInfo * RoleBaseLis
 	int size = 0;
 	int count = 0;
 
-	char *ptr = szAccountName;	//°ÑÕËºÅÃû×ª³ÉĞ¡Ğ´
+	char *ptr = szAccountName;	//æŠŠè´¦å·åè½¬æˆå°å†™
 	while(*ptr) {
 		if(*ptr >= 'A' && *ptr <= 'Z') *ptr += 'a' - 'A';
 		ptr++;
 	}
 
-	//Êä³öÊı¾İ======
+	//è¾“å‡ºæ•°æ®======
 	char aStr[1024];
 	sprintf(aStr,"GetRoleListOfAccount:%s",szAccountName);
 	AddOutputString(hListOutput,aStr);
@@ -424,9 +424,9 @@ bool DeleteRole( const char * strUser )
 	return false;
 }
 
-// ÏÂÃæµÄº¯Êı¿ÉÄÜ´æÔÚÄÚ´æĞ¹Â©ÎÊÌâ
+// ä¸‹é¢çš„å‡½æ•°å¯èƒ½å­˜åœ¨å†…å­˜æ³„æ¼é—®é¢˜
 //char* GetAccountByUser(char * strUser)
-//{//Í¨¹ıÓÃ»§Ãû²éÕÒÕÊ»§
+//{//é€šè¿‡ç”¨æˆ·åæŸ¥æ‰¾å¸æˆ·
 //	char* aBuffer = new char[64 * 1024];
 //	TRoleData* pRoleData;
 //	int size;
@@ -444,9 +444,9 @@ bool DeleteRole( const char * strUser )
 //}
 
 //------------------------------------------------------------------------
-//Êı¾İ¿â±¸·İÓëÊı¾İÍ³¼Æ Add By Fellow At 2003.08.14
+//æ•°æ®åº“å¤‡ä»½ä¸æ•°æ®ç»Ÿè®¡ Add By Fellow At 2003.08.14
 bool StartBackupTimer(int aTime, DWORD bTime)
-{//¿ªÊ¼ÔËĞĞ±¸·İÏß³Ì
+{//å¼€å§‹è¿è¡Œå¤‡ä»½çº¿ç¨‹
 	DBBackup = new CDBBackup( "database", "roledb", db_table );
 	DBBackup->SaveStatInfo();
 	bool aStartResult = DBBackup->Open(aTime, bTime);
@@ -454,9 +454,9 @@ bool StartBackupTimer(int aTime, DWORD bTime)
 }
 
 bool StopBackupTimer()
-{//½áÊøÔËĞĞ±¸·İÏß³Ì
+{//ç»“æŸè¿è¡Œå¤‡ä»½çº¿ç¨‹
 	if(!DBBackup)return false;
-	while(IsBackupWorking()){}//µÈ´ı±¸·İÏß³Ì½áÊø
+	while(IsBackupWorking()){}//ç­‰å¾…å¤‡ä»½çº¿ç¨‹ç»“æŸ
 
 	bool aResult = DBBackup->Close();
 	delete DBBackup;
@@ -465,31 +465,31 @@ bool StopBackupTimer()
 }
 
 bool SuspendBackupTimer()
-{//¹ÒÆğÏß³Ì
+{//æŒ‚èµ·çº¿ç¨‹
 	if(!DBBackup)return false;
 	return DBBackup->Suspend();
 }
 
 bool ResumeBackupTimer()
-{//¼ÌĞøÔËĞĞÏß³Ì
+{//ç»§ç»­è¿è¡Œçº¿ç¨‹
 	if(!DBBackup)return false;
 	return DBBackup->Resume();
 }
 
 bool IsBackupThreadWorking()
-{//Ïß³ÌÊÇ·ñÕıÔÚÔËĞĞ
+{//çº¿ç¨‹æ˜¯å¦æ­£åœ¨è¿è¡Œ
 	if(!DBBackup)return false;
 	return DBBackup->IsWorking();
 }
 
 bool IsBackupWorking()
-{//ÊÇ·ñÔÚ±¸·İ
+{//æ˜¯å¦åœ¨å¤‡ä»½
 	if(!DBBackup)return false;
 	return DBBackup->IsBackuping();
 }
 
 bool DoManualBackup()
-{//ÊÖ¹¤±¸·İ
+{//æ‰‹å·¥å¤‡ä»½
 	if(!DBBackup)return false;
 	return DBBackup->ManualBackup();
 }
@@ -503,7 +503,7 @@ bool GetGameStat(TGAME_STAT_DATA* aStatData)
 }
 
 void AddOutputString(HWND hListCtrl, char* aStr)
-{//Ìí¼Ó²Ù×÷Êä³öÎÄ×Ö
+{//æ·»åŠ æ“ä½œè¾“å‡ºæ–‡å­—
 	if ( hListCtrl && ::IsWindow( hListCtrl ) )
 	{
 		int nCount = ::SendMessage( hListCtrl, LB_GETCOUNT, 0, 0 );
@@ -511,6 +511,6 @@ void AddOutputString(HWND hListCtrl, char* aStr)
 		{
 			::SendMessage( hListCtrl, LB_DELETESTRING, 100, 0 );
 		}
-		int nIndex = ::SendMessage( hListCtrl, LB_INSERTSTRING, 0, ( LPARAM )aStr );//°ÑĞÂµÄĞÅÏ¢Ìíµ½µÚÒ»¸ö
+		int nIndex = ::SendMessage( hListCtrl, LB_INSERTSTRING, 0, ( LPARAM )aStr );//æŠŠæ–°çš„ä¿¡æ¯æ·»åˆ°ç¬¬ä¸€ä¸ª
 	}
 }

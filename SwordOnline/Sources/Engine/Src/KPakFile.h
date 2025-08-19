@@ -33,7 +33,7 @@ public:
 	DWORD		Size();
 	BOOL		Save(const char* pszFileName);
 private:
-	KFile		m_File;			// 真实文件(不在包中)
+	KFile		m_File;			// 鐪熷疄鏂囦欢(涓嶅湪鍖呬腑)
 	#ifndef _SERVER
 		XPackElemFileRef	m_PackRef;
 	#endif

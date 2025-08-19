@@ -139,8 +139,8 @@ void S3PDBSocketPool::SendRelayData(unsigned long uID, char* szAccount, const vo
 	RELAY_ASKWAY_DATA relay;
 	relay.ProtocolFamily = pf_relay;
 	relay.ProtocolID = relay_c2c_askwaydata;
-	relay.nFromIP = 0;		//ÓÉÓÚÊÇ·þÎñÆ÷Ö÷¶¯·¢¸ø¿Í»§¶Ë,ËùÒÔÎÞ·¨ÌînFromIP,Ö»ºÃÌî0
-	relay.nFromRelayID = 0; //ÓÉÓÚÊÇ·þÎñÆ÷Ö÷¶¯·¢¸ø¿Í»§¶Ë,ËùÒÔÎÞ·¨ÌînFromRelayID,Ö»ºÃÌî0
+	relay.nFromIP = 0;		//ç”±äºŽæ˜¯æœåŠ¡å™¨ä¸»åŠ¨å‘ç»™å®¢æˆ·ç«¯,æ‰€ä»¥æ— æ³•å¡«nFromIP,åªå¥½å¡«0
+	relay.nFromRelayID = 0; //ç”±äºŽæ˜¯æœåŠ¡å™¨ä¸»åŠ¨å‘ç»™å®¢æˆ·ç«¯,æ‰€ä»¥æ— æ³•å¡«nFromRelayID,åªå¥½å¡«0
 	relay.seekRelayCount = 0;
 	relay.seekMethod = rm_account_id;
 	relay.wMethodDataLength = defACCOUNT_STRING_LENGTH;
@@ -174,8 +174,8 @@ void S3PDBSocketPool::SendRelayData(unsigned long uID, const void * const pSrcDa
 	relayIP.ProtocolID = relay_c2c_data;
 	relayIP.nToIP = 0;
 	relayIP.nToRelayID = 0;
-	relayIP.nFromIP = 0;		//ÓÉÓÚÊÇ·þÎñÆ÷Ö÷¶¯·¢¸ø¿Í»§¶Ë,ËùÒÔÎÞ·¨ÌînFromIP,Ö»ºÃÌî0
-	relayIP.nFromRelayID = 0;	//ÓÉÓÚÊÇ·þÎñÆ÷Ö÷¶¯·¢¸ø¿Í»§¶Ë,ËùÒÔÎÞ·¨ÌînFromRelayID,Ö»ºÃÌî0
+	relayIP.nFromIP = 0;		//ç”±äºŽæ˜¯æœåŠ¡å™¨ä¸»åŠ¨å‘ç»™å®¢æˆ·ç«¯,æ‰€ä»¥æ— æ³•å¡«nFromIP,åªå¥½å¡«0
+	relayIP.nFromRelayID = 0;	//ç”±äºŽæ˜¯æœåŠ¡å™¨ä¸»åŠ¨å‘ç»™å®¢æˆ·ç«¯,æ‰€ä»¥æ— æ³•å¡«nFromRelayID,åªå¥½å¡«0
 	relayIP.routeDateLength = datalength1 + datalength2;
 
 	BYTE *pData = (BYTE *)_alloca(sizeof(relayIP) + relayIP.routeDateLength);
@@ -385,7 +385,7 @@ void S3PDBSocketPool::NotifyRelayLoginInfo(DWORD nGameID, DWORD nClientID, DWORD
 	aInfo.nServerType = server_Login;
 	aInfo.nValue = Address;
 	strncpy(aInfo.Account, ServerName.c_str(), LOGIN_USER_ACCOUNT_MAX_LEN);
-	while (i != m_clientIDs.end())	//ÏÈ¸øÒÑµÇÂ½Õß·¢ËÍ¸ÕµÇÂ½ÕßµÄÐÅÏ¢
+	while (i != m_clientIDs.end())	//å…ˆç»™å·²ç™»é™†è€…å‘é€åˆšç™»é™†è€…çš„ä¿¡æ¯
 	{
 		if (i->second)
 		{
@@ -396,7 +396,7 @@ void S3PDBSocketPool::NotifyRelayLoginInfo(DWORD nGameID, DWORD nClientID, DWORD
 		}
 		i++;
 	}
-	//ÔÙ¸ø¸ÕµÇÂ½Õß·¢ËÍÒÑµÇÂ½ÕßµÄÐÅÏ¢
+	//å†ç»™åˆšç™»é™†è€…å‘é€å·²ç™»é™†è€…çš„ä¿¡æ¯
 	aInfo.nServerType = server_LoginAlready;
 	i = m_clientIDs.begin();
 	while (i != m_clientIDs.end())
@@ -485,7 +485,7 @@ void KGatewayDataProcess::AutoTime()
 	if (!IsStartAutoTime())
 		return;
 	DWORD nNow = GetTickCount();
-	if (nNow - m_LastMoneyTime >= 600000)	//Ê®·ÖÖÓ´ßÒ»´ÎÇ®
+	if (nNow - m_LastMoneyTime >= 600000)	//ååˆ†é’Ÿå‚¬ä¸€æ¬¡é’±
 	{			
 		m_LastMoneyTime = nNow;
 		S3PDBConVBC* pConn = GetDB(0);
@@ -493,7 +493,7 @@ void KGatewayDataProcess::AutoTime()
 			ProAutoTime(pConn);
 	}
 
-	if (nNow - m_LastPingTime >= 180000)	//Èý·ÖÖÓÃ»ÓÐPing
+	if (nNow - m_LastPingTime >= 180000)	//ä¸‰åˆ†é’Ÿæ²¡æœ‰Ping
 	{
 		KPISetEvent(m_hStop);
 	}
@@ -559,7 +559,7 @@ void KGatewayDataProcess::ProcessClientData(const void * pData, DWORD dwDataSize
 		}
 		else
 		{
-			//²»ÐèÒªÊý¾Ý¿âµÄÔÚÇ°Ãæ´¦Àí
+			//ä¸éœ€è¦æ•°æ®åº“çš„åœ¨å‰é¢å¤„ç†
 			S3PDBConVBC* pConn = GetDB(10);
 			ProcessData(pConn, pData, dwDataSize);
 		}
@@ -766,7 +766,7 @@ BOOL KGatewayDataProcess::ProRelayInfo(S3PDBConVBC* pConn, const IBYTE* lpData, 
 			}
 			else if (pSerInfo->nServerType & server_RegisterCount)
 			{
-				//ËùÓÐ×¢²áÓÃ»§
+				//æ‰€æœ‰æ³¨å†Œç”¨æˆ·
 				S3PAccount::GetAccountCount(pConn, 0, FALSE, dValue);
 			}
 			else if (pSerInfo->nServerType & server_PlayerWhere)
@@ -918,7 +918,7 @@ BOOL KGatewayDataProcess::ProGameLogin(S3PDBConVBC* pConn, const IBYTE* lpData, 
 				bRet = TRUE;
 				char szS[200];
 				sprintf(szS, "GlobalExecute(\"dw KickOutAccount([[%s]])\")", pAccInfo->Account);
-				ExecuteAction(szS);//ÌßÈË
+				ExecuteAction(szS);//è¸¢äºº
 				gTrace("Account(%s) is KickOff!", pAccInfo->Account);
 				szDetail = " Success !";
 			}
@@ -950,19 +950,19 @@ BOOL KGatewayDataProcess::ProRelayIPData(const IBYTE* lpData, const DWORD dwData
 		if (pIPData->routeDateLength + sizeof(RELAY_DATA) != dwDataSize)
 			return FALSE;
 
-		if (pIPData->nFromIP == 0)	//¸Õ½øÈëRelayÌåÏµ£¬ÌîÐ´nFromIPºÍnFromRelayID
+		if (pIPData->nFromIP == 0)	//åˆšè¿›å…¥Relayä½“ç³»ï¼Œå¡«å†™nFromIPå’ŒnFromRelayID
 		{
 			pIPData->nFromIP = m_Address;
 			pIPData->nFromRelayID = m_nClientID;
 		}
 
-		if (pIPData->nToIP == 0)	//Ä¿µÄµØÒÑ¾­µ½´ï£¬¿ªÊ¼´¦ÀíÊµ¼ÊÐ­Òé
+		if (pIPData->nToIP == 0)	//ç›®çš„åœ°å·²ç»åˆ°è¾¾ï¼Œå¼€å§‹å¤„ç†å®žé™…åè®®
 		{
 			char* pRelayPackage = (char*)(pIPData + 1);
 			ProcessClientData(pRelayPackage, pIPData->routeDateLength);
 			bRet = TRUE;
 		}
-		else if (pIPData->nToIP == pSocket->m_SelfAddress)	//×îºóÒ»¸öRelay
+		else if (pIPData->nToIP == pSocket->m_SelfAddress)	//æœ€åŽä¸€ä¸ªRelay
 		{
 			DWORD nClient = pIPData->nToRelayID;
 			pIPData->nToIP = 0;
@@ -999,7 +999,7 @@ BOOL KGatewayDataProcess::ProRelayAskData(S3PDBConVBC* pConn, const IBYTE* lpDat
 		if (pIPData->seekMethod == rm_account_id ||
 			pIPData->seekMethod == rm_gm)
 		{
-			if (pIPData->nFromIP == 0)	//¸Õ½øÈëRelayÌåÏµ£¬ÌîÐ´nFromIPºÍnFromRelayID
+			if (pIPData->nFromIP == 0)	//åˆšè¿›å…¥Relayä½“ç³»ï¼Œå¡«å†™nFromIPå’ŒnFromRelayID
 			{
 				pIPData->nFromIP = m_Address;
 				pIPData->nFromRelayID = m_nClientID;
@@ -1028,7 +1028,7 @@ BOOL KGatewayDataProcess::ProRelayAskData(S3PDBConVBC* pConn, const IBYTE* lpDat
 			}
 		}
 
-		if (!bRet)	//µØÖ·²»¿É´ï£¬Í¨ÖªÀ´Ô´relay_s2c_loseway
+		if (!bRet)	//åœ°å€ä¸å¯è¾¾ï¼Œé€šçŸ¥æ¥æºrelay_s2c_loseway
 		{
 			size_t sizeLose = sizeof(RELAY_DATA) + dwDataSize;
 			RELAY_DATA* pLoseData = (RELAY_DATA*)_alloca(sizeLose);
@@ -1197,7 +1197,7 @@ BOOL KGatewayDataProcess::ProAutoTime(S3PDBConVBC* pConn)
 {
 	BOOL bRet = FALSE;
 	DWORD dwMin = 0;
-	dwMin = 1800;	//Ä¬ÈÏ30·ÖÖÓ
+	dwMin = 1800;	//é»˜è®¤30åˆ†é’Ÿ
 	char szMessage[128];
 	if (dwMin > 0)
 	{
@@ -1207,20 +1207,20 @@ BOOL KGatewayDataProcess::ProAutoTime(S3PDBConVBC* pConn)
 			AccountTimeList::iterator i = TimeList.begin();
 			while (i != TimeList.end())
 			{
-				if (i->nTime == 0)		//ÌßÈË
+				if (i->nTime == 0)		//è¸¢äºº
 				{
 					char szS[200];
 					sprintf(szS, "GlobalExecute(\"dw KickOutAccount([[%s]])\")", i->Account);
-					ExecuteAction(szS);//ÌßÈË
+					ExecuteAction(szS);//è¸¢äºº
 					gTrace("Account(%s) is KickOff!", i->Account);
 				}
-				else	//´ß´Ù³äÖµ
+				else	//å‚¬ä¿ƒå……å€¼
 				{
 					int nLen = 0;
 					if (i->nTime >= 60)
-						nLen = sprintf(szMessage, "ÄúÔÚÓÎÏ·ÖÐ»¹¿ÉÒÔÍ£Áô%d·ÖÖÓ, Çë¸Ï¿ì³äÖµ!", i->nTime / 60);
+						nLen = sprintf(szMessage, "æ‚¨åœ¨æ¸¸æˆä¸­è¿˜å¯ä»¥åœç•™%dåˆ†é’Ÿ, è¯·èµ¶å¿«å……å€¼!", i->nTime / 60);
 					else
-						nLen = sprintf(szMessage, "ÄúÔÚÓÎÏ·ÖÐ»¹¿ÉÒÔÍ£Áô%dÃë, Çë¸Ï¿ì³äÖµ!", i->nTime);
+						nLen = sprintf(szMessage, "æ‚¨åœ¨æ¸¸æˆä¸­è¿˜å¯ä»¥åœç•™%dç§’, è¯·èµ¶å¿«å……å€¼!", i->nTime);
 					SendSystemInfo(m_nClientID, i->Account, "GM", szMessage, nLen);
 				}
 				i++;
@@ -1275,7 +1275,7 @@ void KGatewayDataProcess::SendSystemInfo(unsigned long uID, char* szAccount, cha
 	pCccSync->ProtocolType = chat_channelchat;
 	pCccSync->wSize = chatsize - 1;
 	pCccSync->packageID = -1;
-	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // ¿ÉÄÜÐèÒª¸ù¾ÝÍæ¼ÒÉí·Ý¸Ä¶¯
+	strncpy(pCccSync->someone, lpszSendName, _NAME_LEN - 1); // å¯èƒ½éœ€è¦æ ¹æ®çŽ©å®¶èº«ä»½æ”¹åŠ¨
 	pCccSync->channelid = -1;
 	pCccSync->sentlen = nSentenceLength;
 	pCccSync->someflag = 0;

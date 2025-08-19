@@ -3,26 +3,26 @@
 
 struct TextureInfo
 {
-	uint32	nWidth;						// ÌùÍ¼¿í¶È
-	uint32	nHeight;					// ÌùÍ¼¸ß¶È
-	LPDIRECT3DTEXTURE9 pTexture;		// ÌùÍ¼Ö¸Õë
-	uint32	nFrameX;					// ÔÚÕâÒ»Ö¡Í¼ÏóÉÏµÄ×óÉÏ½ÇÎ»ÖÃ
-	uint32	nFrameY;					// ÔÚÕâÒ»Ö¡Í¼ÏóÉÏµÄ×óÉÏ½ÇÎ»ÖÃ
-	int32	nFrameWidth;				// ÌùÍ¼ÉÏÌî³äµÄÊı¾İ¿í¶È
-	int32	nFrameHeight;				// ÌùÍ¼ÉÏÌî³äµÄÊı¾İ¸ß¶È
+	uint32	nWidth;						// è´´å›¾å®½åº¦
+	uint32	nHeight;					// è´´å›¾é«˜åº¦
+	LPDIRECT3DTEXTURE9 pTexture;		// è´´å›¾æŒ‡é’ˆ
+	uint32	nFrameX;					// åœ¨è¿™ä¸€å¸§å›¾è±¡ä¸Šçš„å·¦ä¸Šè§’ä½ç½®
+	uint32	nFrameY;					// åœ¨è¿™ä¸€å¸§å›¾è±¡ä¸Šçš„å·¦ä¸Šè§’ä½ç½®
+	int32	nFrameWidth;				// è´´å›¾ä¸Šå¡«å……çš„æ•°æ®å®½åº¦
+	int32	nFrameHeight;				// è´´å›¾ä¸Šå¡«å……çš„æ•°æ®é«˜åº¦
 };
 
 struct FrameToTexture
 {
-	int32	nTexNum;					// ÕâÒ»Ö¡²ğ·ÖÎª¼¸ÕÅÌùÍ¼
-	int32	nWidth;						// ÕâÒ»Ö¡µÄ¿í¶È
-	int32	nHeight;					// ÕâÒ»Ö¡µÄ¸ß¶È
-	int32	nOffX;						// Ïà¶ÔÓÚÕû¸ösprµÄX×ø±êÆ«ÒÆ
-	int32	nOffY;						// Ïà¶ÔÓÚÕû¸ösprµÄY×ø±êÆ«ÒÆ
-	TextureInfo texInfo[4];				// ÌùÍ¼ĞÅÏ¢Êı×é£¬Ò»¼¶²ğ·Ö£¬×î¶à4ÕÅÌùÍ¼
-	int32	nRawDataLen;				// Ô­Ê¼Êı¾İ³¤¶È
-	BYTE	*pRawData;					// ÕâÒ»Ö¡µÄÔ­Ê¼Êı¾İ
-	void	*pFrame;					// ±£´æSprGetFrame·µ»ØµÄÖ¸Õë£¬¹©SprReleaseFrameÊ¹ÓÃ
+	int32	nTexNum;					// è¿™ä¸€å¸§æ‹†åˆ†ä¸ºå‡ å¼ è´´å›¾
+	int32	nWidth;						// è¿™ä¸€å¸§çš„å®½åº¦
+	int32	nHeight;					// è¿™ä¸€å¸§çš„é«˜åº¦
+	int32	nOffX;						// ç›¸å¯¹äºæ•´ä¸ªsprçš„Xåæ ‡åç§»
+	int32	nOffY;						// ç›¸å¯¹äºæ•´ä¸ªsprçš„Yåæ ‡åç§»
+	TextureInfo texInfo[4];				// è´´å›¾ä¿¡æ¯æ•°ç»„ï¼Œä¸€çº§æ‹†åˆ†ï¼Œæœ€å¤š4å¼ è´´å›¾
+	int32	nRawDataLen;				// åŸå§‹æ•°æ®é•¿åº¦
+	BYTE	*pRawData;					// è¿™ä¸€å¸§çš„åŸå§‹æ•°æ®
+	void	*pFrame;					// ä¿å­˜SprGetFrameè¿”å›çš„æŒ‡é’ˆï¼Œä¾›SprReleaseFrameä½¿ç”¨
 };
 
 class TextureRes
@@ -33,15 +33,15 @@ public:
 	TextureRes();
 	virtual ~TextureRes();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar() = 0;
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, uint32 nType) = 0;
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, uint32 nType) = 0;
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release() = 0;
 	
 	virtual bool InvalidateDeviceObjects(){return true;}
@@ -54,16 +54,16 @@ public:
 
 //private:
 public:
-	uint32		m_nType;					// ×ÊÔ´ÀàĞÍ
+	uint32		m_nType;					// èµ„æºç±»å‹
 
-	D3DFORMAT	m_eTextureFormat;			// ÌùÍ¼¸ñÊ½
-	int32		m_nWidth;					// ×ÊÔ´¿í¶È
-	int32		m_nHeight;					// ×ÊÔ´¸ß¶È
+	D3DFORMAT	m_eTextureFormat;			// è´´å›¾æ ¼å¼
+	int32		m_nWidth;					// èµ„æºå®½åº¦
+	int32		m_nHeight;					// èµ„æºé«˜åº¦
 	
-	// ÓÃÓÚĞÔÄÜÍ³¼Æ
-	unsigned long m_nTexMemUsed;			// ÌùÍ¼ÄÚ´æÕ¼ÓÃÊıÁ¿,µ¥Î»×Ö½Ú
-	unsigned long m_nSprMemUsed;			// ÌùÍ¼ÄÚ´æÕ¼ÓÃÊıÁ¿,µ¥Î»×Ö½Ú
-	bool		m_bLastFrameUsed;			// ÉÏÒ»Ö¡ÊÇ·ñÊ¹ÓÃ
+	// ç”¨äºæ€§èƒ½ç»Ÿè®¡
+	unsigned long m_nTexMemUsed;			// è´´å›¾å†…å­˜å ç”¨æ•°é‡,å•ä½å­—èŠ‚
+	unsigned long m_nSprMemUsed;			// è´´å›¾å†…å­˜å ç”¨æ•°é‡,å•ä½å­—èŠ‚
+	bool		m_bLastFrameUsed;			// ä¸Šä¸€å¸§æ˜¯å¦ä½¿ç”¨
 
 private:
 	
@@ -78,15 +78,15 @@ public:
 	TextureResBmp();
 	~TextureResBmp();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar();
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, uint32 nType);
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, uint32 nType);
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release();
 
 	virtual bool InvalidateDeviceObjects();
@@ -98,15 +98,15 @@ public:
 		return false;
 	}
 
-	// Ëø¶¨Êı¾İ»º³åÇø
+	// é”å®šæ•°æ®ç¼“å†²åŒº
 	bool LockData(void** pData, int32& nPitch);
-	// ½âËøÊı¾İ»º³åÇø
+	// è§£é”æ•°æ®ç¼“å†²åŒº
 	void UnLockData();
 
 //private:
 public:
-	FrameToTexture		m_FrameInfo;		// Ö¡µ½ÌúÍ¼Ó³ÉäĞÅÏ¢
-	LPDIRECT3DTEXTURE9	m_pSysMemTexture;	// ÏµÍ³ÄÚ´æÖĞµÄ¶ÔÓ¦ÌùÍ¼£¬ÓÃÓÚ¸üĞÂºÍÇå³ıÏÔ´æÖĞµÄÌùÍ¼
+	FrameToTexture		m_FrameInfo;		// å¸§åˆ°é“å›¾æ˜ å°„ä¿¡æ¯
+	LPDIRECT3DTEXTURE9	m_pSysMemTexture;	// ç³»ç»Ÿå†…å­˜ä¸­çš„å¯¹åº”è´´å›¾ï¼Œç”¨äºæ›´æ–°å’Œæ¸…é™¤æ˜¾å­˜ä¸­çš„è´´å›¾
 
 private:
 	bool LoadJpegFile(char* szImage);
@@ -121,21 +121,21 @@ public:
 	TextureResSpr();
 	~TextureResSpr();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar();
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, uint32 nType);
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, uint32 nType);
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release();
 
 	virtual bool ReleaseAFrameData();
 
 	bool PrepareFrameData(const char* szImage, int32 nFrame, bool bPrepareTex);
-	// È¡µÃnFrameÖ¡µÄµÚnIdxÕÅÌùÍ¼£¬¸ù¾İ²»Í¬Çé¿önIdxÈ¡ÖµÎª1-4
+	// å–å¾—nFrameå¸§çš„ç¬¬nIdxå¼ è´´å›¾ï¼Œæ ¹æ®ä¸åŒæƒ…å†µnIdxå–å€¼ä¸º1-4
 	LPDIRECT3DTEXTURE9 GetTexture(int32 nFrame, int nIdx);
 
 	uint32 GetCenterX(){ return m_nCenterX; }
@@ -144,7 +144,7 @@ public:
 	uint32 GetDirections(){ return m_nDirections; };
 	uint32 GetInterval(){ return m_nInterval; };
 	
-	// È¡µÃµÚnFrameÖ¡Í¼Ïóx£¬y×ø±êÉÏµÄÏóËØµãalphaÖµ
+	// å–å¾—ç¬¬nFrameå¸§å›¾è±¡xï¼Œyåæ ‡ä¸Šçš„è±¡ç´ ç‚¹alphaå€¼
 	int32 GetPixelAlpha(int32 nFrame, int32 x, int32 y);
 
 //private:
@@ -155,20 +155,20 @@ public:
 	uint32		m_nDirections;
 	uint32		m_nInterval;
 
-	KPAL24*		m_pPal24;					// µ÷É«°å
-	WORD*		m_pPal16;					// 4444µ÷É«°å
-	int32		m_nFrameNum;				// ×ÊÔ´Ö¡Êı
+	KPAL24*		m_pPal24;					// è°ƒè‰²æ¿
+	WORD*		m_pPal16;					// 4444è°ƒè‰²æ¿
+	int32		m_nFrameNum;				// èµ„æºå¸§æ•°
 
-	FrameToTexture*		m_pFrameInfo;		// Ö¡µ½ÌúÍ¼Ó³ÉäĞÅÏ¢Êı×éÖ¸Õë
-	char*		m_pHeader;					// sprÍ·²¿ĞÅÏ¢£¬Èç¹û²»Îª¿ÕÒâÎ¶×Å·ÖÖ¡Ñ¹Ëõ£¬·ñÔòÎªÕûÌåÑ¹Ëõ
-	SPROFFS*	m_pOffset;					// Ö¡Æ«ÒÆÁ¿ĞÅÏ¢
+	FrameToTexture*		m_pFrameInfo;		// å¸§åˆ°é“å›¾æ˜ å°„ä¿¡æ¯æ•°ç»„æŒ‡é’ˆ
+	char*		m_pHeader;					// språ¤´éƒ¨ä¿¡æ¯ï¼Œå¦‚æœä¸ä¸ºç©ºæ„å‘³ç€åˆ†å¸§å‹ç¼©ï¼Œå¦åˆ™ä¸ºæ•´ä½“å‹ç¼©
+	SPROFFS*	m_pOffset;					// å¸§åç§»é‡ä¿¡æ¯
 
 private:
 	bool LoadSprFile(char* szImage);
 	void CreateTexture16Bit(const char* szImage, int32 nFrame);
 	void CreateTexture32Bit(uint32 nFrame);
 
-	// ²ğ·ÖÌùÍ¼£¬½«ÌùÍ¼²ğ·ÖÎª1µ½4ÕÅÒÔ³ä·ÖÀûÓÃÌùÍ¼¿Õ¼ä
+	// æ‹†åˆ†è´´å›¾ï¼Œå°†è´´å›¾æ‹†åˆ†ä¸º1åˆ°4å¼ ä»¥å……åˆ†åˆ©ç”¨è´´å›¾ç©ºé—´
 	int SplitTexture(uint32 nFrame);
 	
 };

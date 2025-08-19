@@ -18,9 +18,9 @@
 #include "string.h"
 #include <cassert>
 
-#define LEFT_TIME		60000	//ÔÊĞí¶ÏÏßºóµÄµÈ´ıÊ±¼ä
-#define PING_TIME		20000	//ÔÊĞíµÈ´ı¿Í»§¶ËPingµÄÊ±¼ä
-#define SENDPING_TIME	0x7fffffff	//Ïò¿Í»§¶Ë·¢ËÍPingµÄÊ±¼ä
+#define LEFT_TIME		60000	//å…è®¸æ–­çº¿åçš„ç­‰å¾…æ—¶é—´
+#define PING_TIME		20000	//å…è®¸ç­‰å¾…å®¢æˆ·ç«¯Pingçš„æ—¶é—´
+#define SENDPING_TIME	0x7fffffff	//å‘å®¢æˆ·ç«¯å‘é€Pingçš„æ—¶é—´
 
 S3PDBSocketPool* S3PDBSocketPool::m_pInstance = NULL;
 
@@ -358,7 +358,7 @@ void KGatewayDataProcess::AutoTime()
 	BLACKLIST::iterator i = m_UserNames.begin();
 	while (i != m_UserNames.end())
 	{
-		if ((nNow - i->second) / 1000 >= 1)	//Ã¿´ÎÑ­»·´¦Àí1¸öÒÑ¾­³¬Ê±µÄÓÃ»§
+		if ((nNow - i->second) / 1000 >= 1)	//æ¯æ¬¡å¾ªç¯å¤„ç†1ä¸ªå·²ç»è¶…æ—¶çš„ç”¨æˆ·
 		{
 			m_UserNames.erase(i);
 			break;
@@ -371,7 +371,7 @@ void KGatewayDataProcess::AutoTime()
 		S3PDBConVBC* pConn = GetDB(0);
 		if (pConn)
 		{
-			S3PAccount::ElapseAll(pConn, m_nGameID);	//Ö»¿ÛÇ®,²»½âËø
+			S3PAccount::ElapseAll(pConn, m_nGameID);	//åªæ‰£é’±,ä¸è§£é”
 			SetStatus(gdp_free);
 			return;
 		}
@@ -462,7 +462,7 @@ DWORD KGatewayDataProcess::ProcessData(S3PDBConVBC* pConn, const void* pData, DW
 			aReturn.Account[0] = 0;
 			pSocket->CustomSend(m_nConnectID, s2c_gatewayverify, &aReturn);
 
-			Sleep(1000);	// È·±£·µ»ØÍø¹ØµÄÏûÏ¢ÔÚÁ¬½Ó¶Ï¿ªÇ°µ½´ï
+			Sleep(1000);	// ç¡®ä¿è¿”å›ç½‘å…³çš„æ¶ˆæ¯åœ¨è¿æ¥æ–­å¼€å‰åˆ°è¾¾
 			
 			bRet = FALSE;
 			bStopConn = TRUE;
@@ -479,7 +479,7 @@ DWORD KGatewayDataProcess::ProcessData(S3PDBConVBC* pConn, const void* pData, DW
 				aReturn.Account[0] = 0;
 				pSocket->CustomSend(m_nConnectID, s2c_gatewayverify, &aReturn);
 
-				Sleep(1000);	// È·±£·µ»ØÍø¹ØµÄÏûÏ¢ÔÚÁ¬½Ó¶Ï¿ªÇ°µ½´ï
+				Sleep(1000);	// ç¡®ä¿è¿”å›ç½‘å…³çš„æ¶ˆæ¯åœ¨è¿æ¥æ–­å¼€å‰åˆ°è¾¾
 
 				bRet = FALSE;
 				bStopConn = TRUE;
@@ -489,7 +489,7 @@ DWORD KGatewayDataProcess::ProcessData(S3PDBConVBC* pConn, const void* pData, DW
 				bRet = ProGetwayVerify(pConn, ((char*)pData) + 1, dwDataSize - 1);
 				if (bRet)
 				{
-					if (nProtocol == c2s_gatewayverify)	//gatewayverify³É¹¦ºóÒª¸ù¾İ×´Ì¬ÇåÀíÏÖ³¡
+					if (nProtocol == c2s_gatewayverify)	//gatewayverifyæˆåŠŸåè¦æ ¹æ®çŠ¶æ€æ¸…ç†ç°åœº
 					{
 						if (GetStatus() == gdp_verifyagain)
 						{
@@ -515,7 +515,7 @@ DWORD KGatewayDataProcess::ProcessData(S3PDBConVBC* pConn, const void* pData, DW
 				}
 				else
 				{
-					Sleep(1000);	// È·±£·µ»ØÍø¹ØµÄÏûÏ¢ÔÚÁ¬½Ó¶Ï¿ªÇ°µ½´ï
+					Sleep(1000);	// ç¡®ä¿è¿”å›ç½‘å…³çš„æ¶ˆæ¯åœ¨è¿æ¥æ–­å¼€å‰åˆ°è¾¾
 					bStopConn = TRUE;
 				}
 			}
@@ -564,7 +564,7 @@ BOOL KGatewayDataProcess::ProAccountLogin(S3PDBConVBC* pConn, const IBYTE* lpDat
 			aReturn.nLeftTime = aReturn.nExtPoint = 0;
 			memcpy(aReturn.Account, pAccInfo->Account, LOGIN_USER_ACCOUNT_MAX_LEN);
 
-			if (m_UserNames.find(*((UserName*)pAccInfo->Account)) == m_UserNames.end())	//²»ÔÚºÚÃûµ¥ÉÏ
+			if (m_UserNames.find(*((UserName*)pAccInfo->Account)) == m_UserNames.end())	//ä¸åœ¨é»‘åå•ä¸Š
 			{
 				if (pAccInfo->Type == AccountUserLoginInfo)
 					aReturn.nReturn = S3PAccount::Login(pConn, pAccInfo->Account, pAccInfo->Password, m_nGameID, aReturn.nExtPoint, aReturn.nLeftTime);
@@ -848,7 +848,7 @@ DWORD KGatewayDataProcess::Main(LPVOID lpParam)
 
 	if ((IsWork() || IsWorkAgain()) && GetDB(0))
 	{
-		S3PAccount::ElapseAll(m_pConn, m_nGameID);	//Ö»¿ÛÇ®,²»½âËø
+		S3PAccount::ElapseAll(m_pConn, m_nGameID);	//åªæ‰£é’±,ä¸è§£é”
 	}
 
 	if (m_pConn)
@@ -896,13 +896,13 @@ BOOL KGatewayDataProcess::ConnectErrorWork(unsigned long nID, unsigned long Addr
 	BOOL bRet = FALSE;
 	Lock();
 
-	if (m_Status == gdp_verify ||	//Ö»ÓĞÕâ¼¸¸ö×´Ì¬ÏÂµÄm_AddressÓĞĞ§
+	if (m_Status == gdp_verify ||	//åªæœ‰è¿™å‡ ä¸ªçŠ¶æ€ä¸‹çš„m_Addressæœ‰æ•ˆ
 		m_Status == gdp_work ||
 		m_Status == gdp_verifyagain ||
 		m_Status == gdp_errorconnect
 		)
 	{
-		if (m_Address == Address)	//ÓĞÒÑ¾­Á¬½ÓµÄAddress
+		if (m_Address == Address)	//æœ‰å·²ç»è¿æ¥çš„Address
 		{
 			bRet = TRUE;
 		}
@@ -993,7 +993,7 @@ BOOL KGatewayDataProcess::OutofWork(unsigned long nID)
 		{
 			m_Status = gdp_again;
 			m_nLeftStatusTime = LEFT_TIME;
-			m_nStatusTime = GetTickCount();	//½«Ê£ÓàÊ±¼äÉèÉÏ,ÎªÁË¿Í»§¶ËÄÜÖØÁ¬ÉÏ
+			m_nStatusTime = GetTickCount();	//å°†å‰©ä½™æ—¶é—´è®¾ä¸Š,ä¸ºäº†å®¢æˆ·ç«¯èƒ½é‡è¿ä¸Š
 			
 			m_LastPingTime = 0;
 			m_nLeftPingTime = 0;
@@ -1005,7 +1005,7 @@ BOOL KGatewayDataProcess::OutofWork(unsigned long nID)
 		if (m_Status == gdp_verifyagain)
 		{
 			m_Status = gdp_again;
-			//²»¸ÄÊ£ÓàÊ±¼ä,ÒÔ¼ÌĞø¼ÆÊ±
+			//ä¸æ”¹å‰©ä½™æ—¶é—´,ä»¥ç»§ç»­è®¡æ—¶
 			bRet = TRUE;
 			goto exit0;
 		}
@@ -1013,7 +1013,7 @@ BOOL KGatewayDataProcess::OutofWork(unsigned long nID)
 		if (m_Status == gdp_verify)
 		{
 			m_Status = gdp_free;
-			//²»¸ÄÊ£ÓàÊ±¼ä,ÒÔ¼ÌĞø¼ÆÊ±
+			//ä¸æ”¹å‰©ä½™æ—¶é—´,ä»¥ç»§ç»­è®¡æ—¶
 			bRet = TRUE;
 			goto exit0;
 		}
@@ -1151,7 +1151,7 @@ bool KGatewayDataProcess::IsVerifyTimeout()
 	if (m_Status == gdp_verify || m_Status == gdp_verifyagain)
 	{
 		if ((GetTickCount() - m_nStatusTime) <= m_nLeftStatusTime)
-		{	//ÕıÈ·×´Ì¬µÄÓĞÏŞÊ±¼äÄÚ,²Å½Ğ²»³¬Ê±
+		{	//æ­£ç¡®çŠ¶æ€çš„æœ‰é™æ—¶é—´å†…,æ‰å«ä¸è¶…æ—¶
 			bRet = false;
 		}
 	}

@@ -20,9 +20,9 @@ class KMutex
 private:
 #ifdef WIN32
 #ifdef SINGLE_PROCESS
-	CRITICAL_SECTION m_CriticalSection;//用于单进程的线程同步
+	CRITICAL_SECTION m_CriticalSection;//鐢ㄤ簬鍗曡繘绋嬬殑绾跨▼鍚屾
 #else
-	HANDLE m_hMutex;//用于多进程的线程同步
+	HANDLE m_hMutex;//鐢ㄤ簬澶氳繘绋嬬殑绾跨▼鍚屾
 #endif
 #else
     pthread_mutex_t mutex;

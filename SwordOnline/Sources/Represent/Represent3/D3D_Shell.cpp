@@ -1,6 +1,6 @@
 // D3D_Shell.h
-// °üÀ¨ Direct3D ¶ÔÏóºÍÏà¹ØĞÅÏ¢.
-// ÔÚäÖÈ¾Ä£¿éÖĞCD3D_Shell¶ÔÏóÖ»ÓĞÒ»¸ö.
+// åŒ…æ‹¬ Direct3D å¯¹è±¡å’Œç›¸å…³ä¿¡æ¯.
+// åœ¨æ¸²æŸ“æ¨¡å—ä¸­CD3D_Shellå¯¹è±¡åªæœ‰ä¸€ä¸ª.
 
 #include "precompile.h"
 #include "d3d_shell.h"
@@ -14,14 +14,14 @@ bool CD3D_Shell::Create()
 {
 	FreeAll();								// Make sure everything is all clean before we start...
 
-	// ´´½¨ D3D ¶ÔÏó(Í¨¹ıËü¿ÉÒÔ²éÑ¯ºÍ´´½¨D3DÉè±¸)...
+	// åˆ›å»º D3D å¯¹è±¡(é€šè¿‡å®ƒå¯ä»¥æŸ¥è¯¢å’Œåˆ›å»ºD3Dè®¾å¤‡)...
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 	if (!m_pD3D) return false;
 
-	// È¡µÃ×ÀÃæÏÔÊ¾Ä£Ê½...
+	// å–å¾—æ¡Œé¢æ˜¾ç¤ºæ¨¡å¼...
 	if (FAILED(m_pD3D->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &m_DesktopFormat))) { FreeAll(); return false; }
 
-	// ´´½¨Éè±¸ÁĞ±í (ÊÊÅäÆ÷, Éè±¸, ÏÔÊ¾Ä£Ê½)...
+	// åˆ›å»ºè®¾å¤‡åˆ—è¡¨ (é€‚é…å™¨, è®¾å¤‡, æ˜¾ç¤ºæ¨¡å¼)...
 	if (!BuildDeviceList()) { FreeAll(); return false; }
 	
 	return true;
@@ -44,17 +44,17 @@ void CD3D_Shell::FreeAll()
 	Reset();
 }
 
-// ´´½¨Éè±¸ÁĞ±í - ÏÂÃæÊÇ»ù±¾²½Öè:
-//	1. Ñ­»·±éÀúÏµÍ³ÖĞµÄËùÓĞÊÊÅäÆ÷ (Í¨³£Ö»ÓĞÒ»¸ö),
-//	2. ÁĞ¾Ù´ËÉè±¸µÄËùÓĞÏÔÊ¾Ä£Ê½ºÍÏóËØ¸ñÊ½.
-//	3. ½«ËùÓĞÉè±¸¼ÓÈëÊÊÅäÆ÷½á¹¹.
-//	4. Ñ¡ÔñÒ»¸öÈ±Ê¡ÊÊÅäÆ÷ºÍÉè±¸ºÍÏÔÊ¾Ä£Ê½...
+// åˆ›å»ºè®¾å¤‡åˆ—è¡¨ - ä¸‹é¢æ˜¯åŸºæœ¬æ­¥éª¤:
+//	1. å¾ªç¯éå†ç³»ç»Ÿä¸­çš„æ‰€æœ‰é€‚é…å™¨ (é€šå¸¸åªæœ‰ä¸€ä¸ª),
+//	2. åˆ—ä¸¾æ­¤è®¾å¤‡çš„æ‰€æœ‰æ˜¾ç¤ºæ¨¡å¼å’Œè±¡ç´ æ ¼å¼.
+//	3. å°†æ‰€æœ‰è®¾å¤‡åŠ å…¥é€‚é…å™¨ç»“æ„.
+//	4. é€‰æ‹©ä¸€ä¸ªç¼ºçœé€‚é…å™¨å’Œè®¾å¤‡å’Œæ˜¾ç¤ºæ¨¡å¼...
 bool CD3D_Shell::BuildDeviceList()
 {
 	if (!m_pD3D) return false;
 	m_AdapterList.clear();				// Clear the Adapter List First...
 
-    // Ñ­»·±éÀúÏµÍ³ÖĞµÄËùÓĞÊÊÅäÆ÷ (Í¨³£Ö»ÓĞÒ»¸ö)
+    // å¾ªç¯éå†ç³»ç»Ÿä¸­çš„æ‰€æœ‰é€‚é…å™¨ (é€šå¸¸åªæœ‰ä¸€ä¸ª)
     for (UINT iAdapter = 0; iAdapter < m_pD3D->GetAdapterCount(); ++iAdapter)
 	{
         D3DAdapterInfo AdapterInfo;		// Fill in adapter info
@@ -70,25 +70,25 @@ bool CD3D_Shell::BuildDeviceList()
 		{
 			uint32 iNumAdapterModes = m_pD3D->GetAdapterModeCount(iAdapter, g_PixelFormat[i]);
 
-			D3DDISPLAYMODE DesktopMode;		// ½«µ±Ç°×ÀÃæÏóËØ¸ñÊ½¼ÓÈëÁĞ±í
+			D3DDISPLAYMODE DesktopMode;		// å°†å½“å‰æ¡Œé¢è±¡ç´ æ ¼å¼åŠ å…¥åˆ—è¡¨
 			m_pD3D->GetAdapterDisplayMode(iAdapter, &DesktopMode);
 			formats.push_back(DesktopMode.Format);
 
-			// ±éÀú´ËÊÊÅäÆ÷µÄËùÓĞÏÔÊ¾Ä£Ê½
+			// éå†æ­¤é€‚é…å™¨çš„æ‰€æœ‰æ˜¾ç¤ºæ¨¡å¼
 			for (uint32 iMode = 0; iMode < iNumAdapterModes; iMode++)
 			{
 				D3DDISPLAYMODE d3dDisplayMode; 
-				// È¡µÃÏÔÊ¾Ä£Ê½ÊôĞÔ
+				// å–å¾—æ˜¾ç¤ºæ¨¡å¼å±æ€§
 				m_pD3D->EnumAdapterModes(iAdapter, g_PixelFormat[i],iMode, &d3dDisplayMode);
 				D3DModeInfo DisplayMode; 
 				DisplayMode.Width	 = d3dDisplayMode.Width; 
 				DisplayMode.Height	 = d3dDisplayMode.Height;
 				DisplayMode.Format	 = d3dDisplayMode.Format;
 
-				// ¹ıÂËµôÌ«µÍµÄ·Ö±æÂÊ
+				// è¿‡æ»¤æ‰å¤ªä½çš„åˆ†è¾¨ç‡
 				if (DisplayMode.Width < 640 || DisplayMode.Height < 480) continue;
 
-				// ¼ì²éÄ£Ê½ÊÇ·ñÒÑ¾­´æÔÚ (¹ıÂËµôÒòÎªË¢ĞÂÂÊ²»Í¬¶øÖØ¸´µÄÄ£Ê½)
+				// æ£€æŸ¥æ¨¡å¼æ˜¯å¦å·²ç»å­˜åœ¨ (è¿‡æ»¤æ‰å› ä¸ºåˆ·æ–°ç‡ä¸åŒè€Œé‡å¤çš„æ¨¡å¼)
 				bool bModeAlreadyExists = false;
 				for (uint32_t m = 0; m < modes.size(); ++m)
 				{
@@ -107,9 +107,9 @@ bool CD3D_Shell::BuildDeviceList()
 			}
 		}
 
-        sort(modes.begin(),modes.end());		// ½«ÏÔÊ¾Ä£Ê½ÅÅĞò
+        sort(modes.begin(),modes.end());		// å°†æ˜¾ç¤ºæ¨¡å¼æ’åº
 
-        // ½«Éè±¸¼ÓÈëÊÊÅäÆ÷Éè±¸ÁĞ±í (Ö»¼ÓÈëÎÒÃÇ¸ĞĞËÈ¤µÄÉè±¸)
+        // å°†è®¾å¤‡åŠ å…¥é€‚é…å™¨è®¾å¤‡åˆ—è¡¨ (åªåŠ å…¥æˆ‘ä»¬æ„Ÿå…´è¶£çš„è®¾å¤‡)
 		uint32		iNumDeviceTypes = 2L;
 		TCHAR*		strDeviceDescs[] = { "HAL", "REF" };
 		D3DDEVTYPE	DeviceTypes[]    = { D3DDEVTYPE_HAL, D3DDEVTYPE_REF };
@@ -126,7 +126,7 @@ bool CD3D_Shell::BuildDeviceList()
             Device.bStereo			 = FALSE;
             Device.MultiSampleType	 = D3DMULTISAMPLE_NONE;
 
-            // ±éÀúËùÓĞÏóËØ¸ñÊ½, ¿´ÊÇ·ñ¿ÉÒÔäÖÈ¾ºÍ×öÓ²¼şT&L¼ÓËÙ
+            // éå†æ‰€æœ‰è±¡ç´ æ ¼å¼, çœ‹æ˜¯å¦å¯ä»¥æ¸²æŸ“å’Œåšç¡¬ä»¶T&LåŠ é€Ÿ
 			vector<bool> bConfirmedFormats;
 			vector<bool> bCanDoHWTnL;
 
@@ -134,7 +134,7 @@ bool CD3D_Shell::BuildDeviceList()
 			{
 				bool bConfirmed = false; bool bHWTnL = false;
 
-                // ¼ì²éÊÇ·ñ¿ÉÒÔäÖÈ¾
+                // æ£€æŸ¥æ˜¯å¦å¯ä»¥æ¸²æŸ“
                 if (FAILED(m_pD3D->CheckDeviceType(iAdapter,Device.DeviceType,formats[f],formats[f],FALSE)))
 				{
 					bConfirmed = false; 
@@ -153,7 +153,7 @@ bool CD3D_Shell::BuildDeviceList()
 				bCanDoHWTnL.push_back(bHWTnL);
 			}
 
-            // ½«ËùÓĞÏóËØ¸ñÊ½·ûºÏÒªÇóµÄÏÔÊ¾Ä£Ê½¼ÓÈëµ½Éè±¸ÏÔÊ¾Ä£Ê½ÁĞ±í
+            // å°†æ‰€æœ‰è±¡ç´ æ ¼å¼ç¬¦åˆè¦æ±‚çš„æ˜¾ç¤ºæ¨¡å¼åŠ å…¥åˆ°è®¾å¤‡æ˜¾ç¤ºæ¨¡å¼åˆ—è¡¨
             for (uint32 m=0; m<modes.size(); ++m)
 			{
                 for (uint32 f=0; f<formats.size(); ++f)
@@ -169,7 +169,7 @@ bool CD3D_Shell::BuildDeviceList()
 				}
 			}
 
-            // Ñ¡ÔñÒ»¸ö800¡Á600Ä£Ê½ÎªÈ±Ê¡Ä£Ê½ (Ï£ÍûÑ¡ÔñÒ»¸ö16Î»Ä£Ê½)
+            // é€‰æ‹©ä¸€ä¸ª800Ã—600æ¨¡å¼ä¸ºç¼ºçœæ¨¡å¼ (å¸Œæœ›é€‰æ‹©ä¸€ä¸ª16ä½æ¨¡å¼)
             for (int m=0; m<Device.Modes.size(); ++m)
 			{
                 if (Device.Modes[m].Width==800 && Device.Modes[m].Height==600)
@@ -180,19 +180,19 @@ bool CD3D_Shell::BuildDeviceList()
 				}
 			}
 
-            // ¼ì²éÉè±¸ÊÇ·ñ¼æÈİÓÚ×ÀÃæÏÔÊ¾Ä£Ê½
-            // (×ÀÃæÏÔÊ¾Ä£Ê½±£´æÔÚformats[0]ÖĞ)
+            // æ£€æŸ¥è®¾å¤‡æ˜¯å¦å…¼å®¹äºæ¡Œé¢æ˜¾ç¤ºæ¨¡å¼
+            // (æ¡Œé¢æ˜¾ç¤ºæ¨¡å¼ä¿å­˜åœ¨formats[0]ä¸­)
             if (bConfirmedFormats[0])
 			{
                 Device.bCanDoWindowed = TRUE;
                 Device.bWindowed      = TRUE;
 			}
 
-            // ·¢ÏÖÁËºÏÊÊµÄÉè±¸, ½«Ëü¼ÓÈëÉè±¸ÁĞ±í
+            // å‘ç°äº†åˆé€‚çš„è®¾å¤‡, å°†å®ƒåŠ å…¥è®¾å¤‡åˆ—è¡¨
 			AdapterInfo.Devices.push_back(Device);
 		}
     
-        // ·¢ÏÖÁËºÏÊÊµÄÉè±¸, ½«Õâ¸öÊÊÅäÆ÷¼ÓÈëÁĞ±í
+        // å‘ç°äº†åˆé€‚çš„è®¾å¤‡, å°†è¿™ä¸ªé€‚é…å™¨åŠ å…¥åˆ—è¡¨
         m_AdapterList.push_back(AdapterInfo); }
 
     // Return an error if no compatible devices were found
@@ -201,7 +201,7 @@ bool CD3D_Shell::BuildDeviceList()
     return true;
 }
 
-// ÓÉ³õÊ¼»¯º¯Êıµ÷ÓÃ£¬Ñ¡ÔñºÍ´´½¨Éè±¸ (g_Device)...
+// ç”±åˆå§‹åŒ–å‡½æ•°è°ƒç”¨ï¼Œé€‰æ‹©å’Œåˆ›å»ºè®¾å¤‡ (g_Device)...
 //	Pick Device Named szDevName if there's one of this name, otherwise, will pick what it thinks is best...
 D3DDeviceInfo* CD3D_Shell::PickDefaultDev(D3DAdapterInfo** pAdapterInfo)
 {
@@ -238,7 +238,7 @@ D3DModeInfo* CD3D_Shell::PickDefaultMode(D3DDeviceInfo* pDeviceInfo,uint32 iBitD
 	return NULL;
 }
 
-// ±éÀúËùÓĞµÄÊÊÅäÆ÷/Éè±¸£¬½«ËûÃÇ´òÓ¡³öÀ´
+// éå†æ‰€æœ‰çš„é€‚é…å™¨/è®¾å¤‡ï¼Œå°†ä»–ä»¬æ‰“å°å‡ºæ¥
 void CD3D_Shell::ListDevices()
 {
 	for (vector<D3DAdapterInfo>::iterator itAdapter = m_AdapterList.begin(); itAdapter != m_AdapterList.end(); ++itAdapter)

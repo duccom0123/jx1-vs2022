@@ -4,16 +4,16 @@
 // File:	KJpegSegment.cpp
 // Date:	2000.08.08
 // Code:	Daniel Wang
-// Desc:	Jpeg ¶ÁÈ¡ Segment
+// Desc:	Jpeg è¯»å– Segment
 // From:	Cloud Wu's JPEG Decoder
 //---------------------------------------------------------------------------
 #include <windows.h>
 #include "KJpegLib.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	skip_SEG
-// ¹¦ÄÜ:	Ìø¹ıÒ»¸öÓĞÄÚÈİµÄ¶Î
-// ²ÎÊı:	stream		JpegÊı¾İÁ÷
-// ·µ»Ø:	PBYTE		JpegÊı¾İÁ÷
+// å‡½æ•°:	skip_SEG
+// åŠŸèƒ½:	è·³è¿‡ä¸€ä¸ªæœ‰å†…å®¹çš„æ®µ
+// å‚æ•°:	stream		Jpegæ•°æ®æµ
+// è¿”å›:	PBYTE		Jpegæ•°æ®æµ
 //---------------------------------------------------------------------------
 PBYTE jpeg_skip_SEG(PBYTE stream)
 {
@@ -28,22 +28,22 @@ PBYTE jpeg_skip_SEG(PBYTE stream)
 SOF0: Start Of Frame 0:
 ~~~~~~~~~~~~~~~~~~~~~~~
   - $ff, $c0 (SOF0)
-  - ³¤¶È (¸ß×Ö½Ú, µÍ×Ö½Ú), 8+components*3
-  - Êı¾İ¾«¶È (1 byte) Ã¿¸öÑù±¾Î»Êı, Í¨³£ÊÇ 8 (´ó¶àÊıÈí¼ş²»Ö§³Ö 12 ºÍ 16)
-  - Í¼Æ¬¸ß¶È (¸ß×Ö½Ú, µÍ×Ö½Ú), Èç¹û²»Ö§³Ö DNL ¾Í±ØĞë >0
-  - Í¼Æ¬¿í¶È (¸ß×Ö½Ú, µÍ×Ö½Ú), Èç¹û²»Ö§³Ö DNL ¾Í±ØĞë >0
-  - components ÊıÁ¿(1 byte), »Ò¶ÈÍ¼ÊÇ 1, YCbCr/YIQ ²ÊÉ«Í¼ÊÇ 3, CMYK ²ÊÉ«Í¼
-    ÊÇ 4
-  - Ã¿¸ö component: 3 bytes
+  - é•¿åº¦ (é«˜å­—èŠ‚, ä½å­—èŠ‚), 8+components*3
+  - æ•°æ®ç²¾åº¦ (1 byte) æ¯ä¸ªæ ·æœ¬ä½æ•°, é€šå¸¸æ˜¯ 8 (å¤§å¤šæ•°è½¯ä»¶ä¸æ”¯æŒ 12 å’Œ 16)
+  - å›¾ç‰‡é«˜åº¦ (é«˜å­—èŠ‚, ä½å­—èŠ‚), å¦‚æœä¸æ”¯æŒ DNL å°±å¿…é¡» >0
+  - å›¾ç‰‡å®½åº¦ (é«˜å­—èŠ‚, ä½å­—èŠ‚), å¦‚æœä¸æ”¯æŒ DNL å°±å¿…é¡» >0
+  - components æ•°é‡(1 byte), ç°åº¦å›¾æ˜¯ 1, YCbCr/YIQ å½©è‰²å›¾æ˜¯ 3, CMYK å½©è‰²å›¾
+    æ˜¯ 4
+  - æ¯ä¸ª component: 3 bytes
      - component id (1 = Y, 2 = Cb, 3 = Cr, 4 = I, 5 = Q)
-     - ²ÉÑùÏµÊı (bit 0-3 vert., 4-7 hor.)
-     - quantization table ºÅ
+     - é‡‡æ ·ç³»æ•° (bit 0-3 vert., 4-7 hor.)
+     - quantization table å·
 ****************************************************************************/
 //---------------------------------------------------------------------------
-// º¯Êı:	read_SOF
-// ¹¦ÄÜ:	read start of frame
-// ²ÎÊı:	stream		JpegÊı¾İÁ÷
-// ·µ»Ø:	PBYTE		JpegÊı¾İÁ÷
+// å‡½æ•°:	read_SOF
+// åŠŸèƒ½:	read start of frame
+// å‚æ•°:	stream		Jpegæ•°æ®æµ
+// è¿”å›:	PBYTE		Jpegæ•°æ®æµ
 //---------------------------------------------------------------------------
 PBYTE jpeg_read_SOF(PBYTE stream)
 {
@@ -62,19 +62,19 @@ PBYTE jpeg_read_SOF(PBYTE stream)
 	jpeg_head.width = w;
 
 	if ((jpeg_head.components = READ_BYTE(stream)) > 3) 
-		return NULL; // ²»Ö§³Ö 3 ¸ö×é¼şÒÔÉÏ
+		return NULL; // ä¸æ”¯æŒ 3 ä¸ªç»„ä»¶ä»¥ä¸Š
 
 	for (i = 0; i < jpeg_head.components; i++)
 	{
 		if ((id=READ_BYTE(stream)) > 3)
-			return NULL; //²»Ö§³ÖµÄÄ£Ê½
+			return NULL; //ä¸æ”¯æŒçš„æ¨¡å¼
 		if (--id < 0)
 			return NULL;
 		q = READ_BYTE(stream);
 		if ((jpeg_head.component[id].v = q & 0xf ) > 2) 
-			return NULL; // ²»Ö§³Ö³¬¹ı 2 µÄ²ÉÑùÂÊ
+			return NULL; // ä¸æ”¯æŒè¶…è¿‡ 2 çš„é‡‡æ ·ç‡
 		if ((jpeg_head.component[id].h = q >> 4) > 2)
-			return NULL; // ²»Ö§³Ö³¬¹ı 2 µÄ²ÉÑùÂÊ
+			return NULL; // ä¸æ”¯æŒè¶…è¿‡ 2 çš„é‡‡æ ·ç‡
 		jpeg_head.component[id].qtb = READ_BYTE(stream) & 3;
 	}
 	return stream_end;
@@ -84,20 +84,20 @@ PBYTE jpeg_read_SOF(PBYTE stream)
 SOS: Start Of Scan:
 ~~~~~~~~~~~~~~~~~~~
   - $ff, $da (SOS)
-  - ³¤¶È (¸ß×Ö½Ú, µÍ×Ö½Ú), ±ØĞëÊÇ 6+2*(É¨ÃèĞĞÄÚ×é¼şµÄÊıÁ¿)
-  - É¨ÃèĞĞÄÚ×é¼şµÄÊıÁ¿ (1 byte), ±ØĞë >= 1 , <=4 (·ñÔòÊÇ´íµÄ) Í¨³£ÊÇ 3
-  - Ã¿¸ö×é¼ş: 2 bytes
-     - component id (1 = Y, 2 = Cb, 3 = Cr, 4 = I, 5 = Q), ¼û SOF0
-     - Ê¹ÓÃµÄ Huffman ±í:
+  - é•¿åº¦ (é«˜å­—èŠ‚, ä½å­—èŠ‚), å¿…é¡»æ˜¯ 6+2*(æ‰«æè¡Œå†…ç»„ä»¶çš„æ•°é‡)
+  - æ‰«æè¡Œå†…ç»„ä»¶çš„æ•°é‡ (1 byte), å¿…é¡» >= 1 , <=4 (å¦åˆ™æ˜¯é”™çš„) é€šå¸¸æ˜¯ 3
+  - æ¯ä¸ªç»„ä»¶: 2 bytes
+     - component id (1 = Y, 2 = Cb, 3 = Cr, 4 = I, 5 = Q), è§ SOF0
+     - ä½¿ç”¨çš„ Huffman è¡¨:
 	- bit 0..3: AC table (0..3)
 	- bit 4..7: DC table (0..3)
-  - ºöÂÔ 3 bytes (???)
+  - å¿½ç•¥ 3 bytes (???)
 ****************************************************************************/
 //---------------------------------------------------------------------------
-// º¯Êı:	read_SOS
-// ¹¦ÄÜ:	read start of scan
-// ²ÎÊı:	stream		JpegÊı¾İÁ÷
-// ·µ»Ø:	PBYTE		JpegÊı¾İÁ÷
+// å‡½æ•°:	read_SOS
+// åŠŸèƒ½:	read start of scan
+// å‚æ•°:	stream		Jpegæ•°æ®æµ
+// è¿”å›:	PBYTE		Jpegæ•°æ®æµ
 //---------------------------------------------------------------------------
 PBYTE jpeg_read_SOS(PBYTE stream)
 {
@@ -109,12 +109,12 @@ PBYTE jpeg_read_SOS(PBYTE stream)
 	stream_end = stream + seg_size - 2;
 
 	if ((com = READ_BYTE(stream)) != jpeg_head.components)
-		return NULL; // ×é¼şÊıÄ¿²»¶Ô
+		return NULL; // ç»„ä»¶æ•°ç›®ä¸å¯¹
 
 	for (i = 0; i < com; i++)
 	{
 		if ((id = READ_BYTE(stream)) > 3)
-			return NULL; //²»Ö§³ÖµÄÄ£Ê½
+			return NULL; //ä¸æ”¯æŒçš„æ¨¡å¼
 		if (--id < 0)
 			return NULL;
 		q = READ_BYTE(stream);

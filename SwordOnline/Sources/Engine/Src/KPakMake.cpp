@@ -34,10 +34,10 @@ typedef	struct
 	DWORD		FileLength;
 } OFFSLIST;
 //---------------------------------------------------------------------------
-// º¯Êı:	KPakMake
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KPakMake
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KPakMake::KPakMake()
 {
@@ -47,23 +47,23 @@ KPakMake::KPakMake()
 	m_nCompressMethod = CODEC_NONE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KPakMake
-// ¹¦ÄÜ:	·ÖÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KPakMake
+// åŠŸèƒ½:	åˆ†é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KPakMake::~KPakMake()
 {
 	g_FreeCodec(&m_pCodec, m_nCompressMethod);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Pack
-// ¹¦ÄÜ:	´ò°ü
-// ²ÎÊı:	lpListFileName		ListÎÄ¼şÃû
-//			lpPackFileName		PackÎÄ¼şÃû
-//			nCompressMethod		Ñ¹Ëõ·½·¨
-// ·µ»Ø:	TRUE				³É¹¦
-//			FALSE				Ê§°Ü
+// å‡½æ•°:	Pack
+// åŠŸèƒ½:	æ‰“åŒ…
+// å‚æ•°:	lpListFileName		Listæ–‡ä»¶å
+//			lpPackFileName		Packæ–‡ä»¶å
+//			nCompressMethod		å‹ç¼©æ–¹æ³•
+// è¿”å›:	TRUE				æˆåŠŸ
+//			FALSE				å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KPakMake::Pack(LPSTR lpListFileName, LPSTR lpPackFileName, int nCompressMethod)
 {
@@ -83,11 +83,11 @@ BOOL KPakMake::Pack(LPSTR lpListFileName, LPSTR lpPackFileName, int nCompressMet
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	PackFileList
-// ¹¦ÄÜ:	´ò°üµÄÎÄ¼ş
-// ²ÎÊı:	lpPackFileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE			³É¹¦
-//			FALSE			Ê§°Ü
+// å‡½æ•°:	PackFileList
+// åŠŸèƒ½:	æ‰“åŒ…çš„æ–‡ä»¶
+// å‚æ•°:	lpPackFileName	æ–‡ä»¶å
+// è¿”å›:	TRUE			æˆåŠŸ
+//			FALSE			å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KPakMake::PackFileList(LPSTR lpPackFileName)
 {
@@ -183,7 +183,7 @@ BOOL KPakMake::PackFileList(LPSTR lpPackFileName)
 			}
 		}
 
-		// Èç¹û×îºóÒ»¿éÊı¾İÑ¹Ëõºó³¬¹ı0x10000, ¾Í±£´æ²»Ñ¹ËõµÄ0x10000×Ö½Ú
+		// å¦‚æœæœ€åä¸€å—æ•°æ®å‹ç¼©åè¶…è¿‡0x10000, å°±ä¿å­˜ä¸å‹ç¼©çš„0x10000å­—èŠ‚
 		if (dwLength > 0)
 		{
 			m_DiskFile.Read(pDataBuf, dwLength);
@@ -231,11 +231,11 @@ BOOL KPakMake::PackFileList(LPSTR lpPackFileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ReadFileList
-// ¹¦ÄÜ:	¶ÁÈ¡Òª´ò°üµÄÎÄ¼şÁĞ±í
-// ²ÎÊı:	lpListFileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE			³É¹¦
-//			FALSE			Ê§°Ü
+// å‡½æ•°:	ReadFileList
+// åŠŸèƒ½:	è¯»å–è¦æ‰“åŒ…çš„æ–‡ä»¶åˆ—è¡¨
+// å‚æ•°:	lpListFileName	æ–‡ä»¶å
+// è¿”å›:	TRUE			æˆåŠŸ
+//			FALSE			å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KPakMake::ReadFileList(LPSTR lpListFileName)
 {
@@ -334,10 +334,10 @@ BOOL KPakMake::ReadFileList(LPSTR lpListFileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	NextLine
-// ¹¦ÄÜ:	ÒÆ¶¯µ½ÏÂÒ»ĞĞÊı¾İ
-// ²ÎÊı:	pList		Êı¾İÖ¸Õë
-// ·µ»Ø:	ÏÂÒ»ĞĞµÄÊı¾İÖ¸Õë
+// å‡½æ•°:	NextLine
+// åŠŸèƒ½:	ç§»åŠ¨åˆ°ä¸‹ä¸€è¡Œæ•°æ®
+// å‚æ•°:	pList		æ•°æ®æŒ‡é’ˆ
+// è¿”å›:	ä¸‹ä¸€è¡Œçš„æ•°æ®æŒ‡é’ˆ
 //---------------------------------------------------------------------------
 LPSTR KPakMake::NextLine(LPSTR pList)
 {
@@ -427,27 +427,27 @@ BOOL KPakMake::ReadFileList(const vector<string> &FileList, const string &RootPa
 }
 
 #include "ZPackFile.h"
-#define MAX_FILE					2004800			//×î¶à20Íò¸öÎÄ¼ş
+#define MAX_FILE					2004800			//æœ€å¤š20ä¸‡ä¸ªæ–‡ä»¶
 #define COMPRESS_BUF_SIZE	10240000
-#define FRAME_SIZE			800 * 1024			//800KÒÔÉÏµÄSPRÎÄ¼şÊ¹ÓÃ·ÖÖ¡µÄÑ¹Ëõ
+#define FRAME_SIZE			800 * 1024			//800Kä»¥ä¸Šçš„SPRæ–‡ä»¶ä½¿ç”¨åˆ†å¸§çš„å‹ç¼©
 #include <ucl/ucl.h>
 typedef struct {
-	BYTE	Comment[4];	// ×¢ÊÍÎÄ×Ö(SPR\0)
-	WORD	Width;		// Í¼Æ¬¿í¶È
-	WORD	Height;		// Í¼Æ¬¸ß¶È
-	WORD	CenterX;	// ÖØĞÄµÄË®Æ½Î»ÒÆ
-	WORD	CenterY;	// ÖØĞÄµÄ´¹Ö±Î»ÒÆ
-	WORD	Frames;		// ×ÜÖ¡Êı
-	WORD	Colors;		// ÑÕÉ«Êı
-	WORD	Directions;	// ·½ÏòÊı
-	WORD	Interval;	// Ã¿Ö¡¼ä¸ô£¨ÒÔÓÎÏ·Ö¡Îªµ¥Î»£©
-	WORD	Reserved[6];// ±£Áô×Ö¶Î£¨µ½ÒÔºóÊ¹ÓÃ£©
+	BYTE	Comment[4];	// æ³¨é‡Šæ–‡å­—(SPR\0)
+	WORD	Width;		// å›¾ç‰‡å®½åº¦
+	WORD	Height;		// å›¾ç‰‡é«˜åº¦
+	WORD	CenterX;	// é‡å¿ƒçš„æ°´å¹³ä½ç§»
+	WORD	CenterY;	// é‡å¿ƒçš„å‚ç›´ä½ç§»
+	WORD	Frames;		// æ€»å¸§æ•°
+	WORD	Colors;		// é¢œè‰²æ•°
+	WORD	Directions;	// æ–¹å‘æ•°
+	WORD	Interval;	// æ¯å¸§é—´éš”ï¼ˆä»¥æ¸¸æˆå¸§ä¸ºå•ä½ï¼‰
+	WORD	Reserved[6];// ä¿ç•™å­—æ®µï¼ˆåˆ°ä»¥åä½¿ç”¨ï¼‰
 } SPRHEAD;
 
 typedef struct
 {
-	DWORD	Offset;		// Ã¿Ò»Ö¡µÄÆ«ÒÆ
-	DWORD	Length;		// Ã¿Ò»Ö¡µÄ³¤¶È
+	DWORD	Offset;		// æ¯ä¸€å¸§çš„åç§»
+	DWORD	Length;		// æ¯ä¸€å¸§çš„é•¿åº¦
 } SPROFFS;
 
 typedef struct {
@@ -462,7 +462,7 @@ typedef struct {
 
 BOOL KPakMake::Pack(LPSTR lpPackFileName,const vector<string>& vFileList,const string& sRootPath,int nCompressMethod)
 {
-	char compress_buffer[COMPRESS_BUF_SIZE];			//10MµÄÑ¹Ëõ»º³åÇø£¬´æ·ÅËùÓĞµÄÖ¡£¬Ò»´ÎĞ´
+	char compress_buffer[COMPRESS_BUF_SIZE];			//10Mçš„å‹ç¼©ç¼“å†²åŒºï¼Œå­˜æ”¾æ‰€æœ‰çš„å¸§ï¼Œä¸€æ¬¡å†™
 	index_info index_list[MAX_FILE];
 	char *temp_buffer[MAX_FILE * sizeof(index_info)];
 	FILE *output = fopen(lpPackFileName, "wb");
@@ -505,9 +505,9 @@ BOOL KPakMake::Pack(LPSTR lpPackFileName,const vector<string>& vFileList,const s
 		ZMapFile map(full_name);
 		int compress_size = 0;
 	
-		unsigned long compress_type = TYPE_UCL;				//Ê¹ÓÃUCLÑ¹Ëõ
+		unsigned long compress_type = TYPE_UCL;				//ä½¿ç”¨UCLå‹ç¼©
 	
-		bool bSPR = false;									//ÊÇ·ñÎªSPRÎÄ¼ş
+		bool bSPR = false;									//æ˜¯å¦ä¸ºSPRæ–‡ä»¶
 		const char *ext = full_name + strlen(full_name) - 3;
 		if(*ext == 's' && *(ext + 1) == 'p' && *(ext + 2) == 'r') bSPR = true;
 	
@@ -533,21 +533,21 @@ BOOL KPakMake::Pack(LPSTR lpPackFileName,const vector<string>& vFileList,const s
 				printf("%s [%d]->[%d]\n", full_name + root_length, map.m_Size, index_list[index].compress_size);
 				index_list[index].compress_size |= (compress_type << 24);
 			}
-			else {								//Ã¿Ö¡¶ÀÁ¢Ñ¹Ëõ
+			else {								//æ¯å¸§ç‹¬ç«‹å‹ç¼©
 				SPRHEAD *head;
 				head = (SPRHEAD *)map.m_Ptr;
-				memmove(ptr, head, sizeof(SPRHEAD) + head->Colors * 3);			//Ç°ÃæµÄÊı¾İ²»Ñ¹Ëõ
+				memmove(ptr, head, sizeof(SPRHEAD) + head->Colors * 3);			//å‰é¢çš„æ•°æ®ä¸å‹ç¼©
 				ptr += sizeof(SPRHEAD) + head->Colors * 3;
-				frame_info *compress_frame_info = (frame_info *)ptr;					//Ñ¹ËõºóÃ¿Ò»Ö¡µÄÊı¾İ
+				frame_info *compress_frame_info = (frame_info *)ptr;					//å‹ç¼©åæ¯ä¸€å¸§çš„æ•°æ®
 				ptr += head->Frames * sizeof(SPROFFS);
-				SPROFFS *frame_info = (SPROFFS *)(map.m_Ptr + sizeof(SPRHEAD) + head->Colors * 3);		//Ô­À´Ã¿Ò»Ö¡µÄÊı¾İ
+				SPROFFS *frame_info = (SPROFFS *)(map.m_Ptr + sizeof(SPRHEAD) + head->Colors * 3);		//åŸæ¥æ¯ä¸€å¸§çš„æ•°æ®
 				char *frame_data = (char *)frame_info + head->Frames * sizeof(SPROFFS);
 				int frame_index;
 	
 				int frame_offset = 0;
 				for(frame_index = 0; frame_index < head->Frames; frame_index++) {
-//Ñ¹ËõÃ¿Ò»Ö¡µÄÄÚÈİ
-					if(frame_info[frame_index].Length >= 256) {				//Ğ¡ÓÚ256×Ö½ÚµÄ²»Ñ¹Ëõ
+//å‹ç¼©æ¯ä¸€å¸§çš„å†…å®¹
+					if(frame_info[frame_index].Length >= 256) {				//å°äº256å­—èŠ‚çš„ä¸å‹ç¼©
 						if(compress_type == TYPE_UCL) {
 							r = ucl_nrv2b_99_compress((BYTE *)frame_data + frame_info[frame_index].Offset, frame_info[frame_index].Length, (BYTE *)ptr, &size, NULL, 10, NULL, NULL);
 						}	
@@ -556,12 +556,12 @@ BOOL KPakMake::Pack(LPSTR lpPackFileName,const vector<string>& vFileList,const s
 //							r = BZ2_bzBuffToBuffCompress(ptr, &size, frame_data + frame_info[frame_index].Offset, frame_info[frame_index].Length, 9, 0, 30);
 						}
 						if(r) return false;
-						compress_frame_info[frame_index].size = frame_info[frame_index].Length;		//¼ÇÂ¼Ô­À´µÄ´óĞ¡
+						compress_frame_info[frame_index].size = frame_info[frame_index].Length;		//è®°å½•åŸæ¥çš„å¤§å°
 					}
 					else {
 						size = frame_info[frame_index].Length;
 						memmove(ptr, (BYTE *)frame_data + frame_info[frame_index].Offset, size);
-						compress_frame_info[frame_index].size = -(long)frame_info[frame_index].Length;		//¼ÇÂ¼Ô­À´µÄ´óĞ¡
+						compress_frame_info[frame_index].size = -(long)frame_info[frame_index].Length;		//è®°å½•åŸæ¥çš„å¤§å°
 					}
 					compress_size += size;
 					compress_frame_info[frame_index].compress_size = size;

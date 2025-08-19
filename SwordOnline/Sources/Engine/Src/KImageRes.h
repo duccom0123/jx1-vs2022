@@ -8,19 +8,19 @@
 
 //##ModelId=3DC0F495038B
 //##Documentation
-//## Í¼ĞÎÀàĞÍ¶¨Òå
+//## å›¾å½¢ç±»å‹å®šä¹‰
 enum KIS_IMAGE_TYPE
 {
     //##Documentation
-    //## 16Î»µ¥Ö¡Î»Í¼¡£
-    //## ISI_T_BITMAP16µÄ¸ñÊ½Îª D3DFMT_R5G6B5 »òÕß D3DFMT_X1R5G5B5
-    //## £¬¾ßÌåÎªÄÄÖÖ¸ñÊ½ÓÉiImageStoreÄÚ²¿È·¶¨¡£¿ÉÒÔÍ¨¹ı·½·¨iImageStore::IsBitmapFormat565À´ÖªµÀÊÇÓÃÄÄÖÖ¸ñÊ½¡£
+    //## 16ä½å•å¸§ä½å›¾ã€‚
+    //## ISI_T_BITMAP16çš„æ ¼å¼ä¸º D3DFMT_R5G6B5 æˆ–è€… D3DFMT_X1R5G5B5
+    //## ï¼Œå…·ä½“ä¸ºå“ªç§æ ¼å¼ç”±iImageStoreå†…éƒ¨ç¡®å®šã€‚å¯ä»¥é€šè¿‡æ–¹æ³•iImageStore::IsBitmapFormat565æ¥çŸ¥é“æ˜¯ç”¨å“ªç§æ ¼å¼ã€‚
     ISI_T_BITMAP16, 
     //##Documentation
-    //##  spr¸ñÊ½µÄ´øalphaÑ¹ËõÍ¼ĞÎ£¬Èô¸ÉÖ¡
+    //##  spræ ¼å¼çš„å¸¦alphaå‹ç¼©å›¾å½¢ï¼Œè‹¥å¹²å¸§
     ISI_T_SPR,
 	//##Documentation
-    //##  ¿É±»ĞŞ¸ÄµÄ£¬spr¸ñÊ½Í¼ĞÎ£¬²»×÷¶¯Ì¬¼ÓÔØ´¦Àí
+    //##  å¯è¢«ä¿®æ”¹çš„ï¼Œspræ ¼å¼å›¾å½¢ï¼Œä¸ä½œåŠ¨æ€åŠ è½½å¤„ç†
 	ISI_T_SPR_CUSTOM,
 };
 
@@ -32,15 +32,15 @@ public:
 	KImageRes();
 	virtual ~KImageRes();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar() = 0;
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, unsigned int nType) = 0;
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, unsigned int nType) = 0;
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release() = 0;
 	
 	int GetWidth(){ return (int)m_nWidth; }
@@ -48,12 +48,12 @@ public:
 
 //private:
 public:
-	unsigned int		m_nType;					// ×ÊÔ´ÀàĞÍ
-	unsigned int		m_nWidth;					// ×ÊÔ´¿í¶È
-	unsigned int		m_nHeight;					// ×ÊÔ´¸ß¶È
+	unsigned int		m_nType;					// èµ„æºç±»å‹
+	unsigned int		m_nWidth;					// èµ„æºå®½åº¦
+	unsigned int		m_nHeight;					// èµ„æºé«˜åº¦
 	
-	unsigned long m_nMemUsed;				// ÄÚ´æÕ¼ÓÃÊıÁ¿,µ¥Î»×Ö½Ú
-	bool		m_bLastFrameUsed;			// ÉÏÒ»Ö¡ÊÇ·ñÊ¹ÓÃ
+	unsigned long m_nMemUsed;				// å†…å­˜å ç”¨æ•°é‡,å•ä½å­—èŠ‚
+	bool		m_bLastFrameUsed;			// ä¸Šä¸€å¸§æ˜¯å¦ä½¿ç”¨
 };
 
 class ImageResBmp : public KImageRes
@@ -64,20 +64,20 @@ public:
 	ImageResBmp();
 	~ImageResBmp();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar();
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, unsigned int nType);
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, unsigned int nType);
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release();
 
 //private:
 public:
-	BYTE *m_pData;		// Í¼ÏóÊı¾İ
+	BYTE *m_pData;		// å›¾è±¡æ•°æ®
 
 private:
 	bool LoadJpegFile(char* szImage);
@@ -92,15 +92,15 @@ public:
 	ImageResSpr();
 	~ImageResSpr();
 
-	// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+	// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 	virtual void ResetVar();
 
-	// ´´½¨ÄÚ´æ×ÊÔ´
+	// åˆ›å»ºå†…å­˜èµ„æº
 	virtual bool CreateImage(const char* szImage, int nWidth, int nHeight, unsigned int nType);
-	// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+	// ä»æ–‡ä»¶è½½å…¥èµ„æº
 	virtual bool LoadImage(char* szImage, unsigned int nType);
 
-	// ÊÍ·ÅÄÚ´æ
+	// é‡Šæ”¾å†…å­˜
 	virtual void Release();
 
 	unsigned int GetCenterX(){ return m_Header.CenterX; }
@@ -109,20 +109,20 @@ public:
 	unsigned int GetDirections(){ return m_Header.Directions; };
 	unsigned int GetInterval(){ return m_Header.Interval; };
 	
-	// È¡µÃµÚnFrameÖ¡Í¼Ïóx£¬y×ø±êÉÏµÄÏóËØµãalphaÖµ
+	// å–å¾—ç¬¬nFrameå¸§å›¾è±¡xï¼Œyåæ ‡ä¸Šçš„è±¡ç´ ç‚¹alphaå€¼
 	int GetPixelAlpha(int nFrame, int x, int y);
 
-	// ×¼±¸Ò»Ö¡Êı¾İ
+	// å‡†å¤‡ä¸€å¸§æ•°æ®
 	bool PrepareFrameData(char *pszImage, int nFrame);
 
 //private:
 public:
-	bool		m_bInPackage;				// Õâ¸ösprÊÇ·ñÔÚ°üÄÚ
-	KPAL24*		m_pPal24;					// µ÷É«°å
-	WORD*		m_pPal16;					// 4444µ÷É«°å
+	bool		m_bInPackage;				// è¿™ä¸ªspræ˜¯å¦åœ¨åŒ…å†…
+	KPAL24*		m_pPal24;					// è°ƒè‰²æ¿
+	WORD*		m_pPal16;					// 4444è°ƒè‰²æ¿
 
-	SPRHEAD		m_Header;					// sprÍ·²¿ĞÅÏ¢
-	SPRFRAME**	m_pFrameInfo;				// Ö¡µ½ÌúÍ¼Ó³ÉäĞÅÏ¢Êı×éÖ¸Õë
+	SPRHEAD		m_Header;					// språ¤´éƒ¨ä¿¡æ¯
+	SPRFRAME**	m_pFrameInfo;				// å¸§åˆ°é“å›¾æ˜ å°„ä¿¡æ¯æ•°ç»„æŒ‡é’ˆ
 
 private:
 	bool LoadSprFile(char* szImage);

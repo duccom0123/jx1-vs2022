@@ -13,9 +13,9 @@
 #include "KLuaScriptSet.h"
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::KLuaScriptSet
-// ¹¦ÄÜ:	
-// ·µ»Ø:	
+// å‡½æ•°:	KLuaScriptSet::KLuaScriptSet
+// åŠŸèƒ½:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KLuaScriptSet::KLuaScriptSet()
 {
@@ -25,9 +25,9 @@ KLuaScriptSet::KLuaScriptSet()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::~KLuaScriptSet
-// ¹¦ÄÜ:	
-// ·µ»Ø:	
+// å‡½æ•°:	KLuaScriptSet::~KLuaScriptSet
+// åŠŸèƒ½:	
+// è¿”å›:	
 //---------------------------------------------------------------------------
 KLuaScriptSet::~KLuaScriptSet()
 {
@@ -35,15 +35,15 @@ KLuaScriptSet::~KLuaScriptSet()
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::CreateScript
-// ¹¦ÄÜ:	
-// ²ÎÊı:	char * szKey
-// ²ÎÊı:	int StackSize
-// ·µ»Ø:	KScript * 
+// å‡½æ•°:	KLuaScriptSet::CreateScript
+// åŠŸèƒ½:	
+// å‚æ•°:	char * szKey
+// å‚æ•°:	int StackSize
+// è¿”å›:	KScript * 
 //---------------------------------------------------------------------------
 KScript * KLuaScriptSet::CreateScript(char * szKey, int StackSize)
 {
-	//ÇåÀí
+	//æ¸…ç†
 	ClearUpSet();	
 	if (szKey == NULL && StackSize < 0) return NULL;
 	char * szFileName =  GetScriptFileNameFromKey(szKey);
@@ -52,7 +52,7 @@ KScript * KLuaScriptSet::CreateScript(char * szKey, int StackSize)
 	KLuaScript * pScript = new KLuaScript(StackSize);
 	if (! pScript) return NULL;
 	
-	//½Å±¾¶ÔÏóµÄ½Å±¾ÃûÎª¹Ø¼ü×ÖÃû
+	//è„šæœ¬å¯¹è±¡çš„è„šæœ¬åä¸ºå…³é”®å­—å
 	if (! pScript->Init()) return NULL;
 	if (! pScript->Load(szFileName)) return NULL;
 	return pScript;
@@ -60,7 +60,7 @@ KScript * KLuaScriptSet::CreateScript(char * szKey, int StackSize)
 
 KScript * KLuaScriptSet::CreateScript(DWORD nKey, int StackSize)
 {
-	//ÇåÀí
+	//æ¸…ç†
 	ClearUpSet();	
 	if (StackSize < 0) return NULL;
 	char * szFileName =  GetScriptFileNameFromKey(nKey);
@@ -69,7 +69,7 @@ KScript * KLuaScriptSet::CreateScript(DWORD nKey, int StackSize)
 	KLuaScript * pScript = new KLuaScript(StackSize);
 	if (! pScript) return NULL;
 	
-	//½Å±¾¶ÔÏóµÄ½Å±¾ÃûÎª¹Ø¼ü×ÖÃû
+	//è„šæœ¬å¯¹è±¡çš„è„šæœ¬åä¸ºå…³é”®å­—å
 	if (! pScript->Init()) return NULL;
 	if (! pScript->Load(szFileName)) return NULL;
 	
@@ -78,10 +78,10 @@ KScript * KLuaScriptSet::CreateScript(DWORD nKey, int StackSize)
 
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::ClearUpSet
-// ¹¦ÄÜ:	
-// ²ÎÊı:	void
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScriptSet::ClearUpSet
+// åŠŸèƒ½:	
+// å‚æ•°:	void
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScriptSet::ClearUpSet(void)
 {
@@ -107,10 +107,10 @@ BOOL KLuaScriptSet::ClearUpSet(void)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::ClearUpSet
-// ¹¦ÄÜ:	°´ÕÕ×î¾ÉÊ¹ÓÃ½Å±¾µÄË³ĞòÉ¾³ınCount¸ö½Å±¾ÊµÀı
-// ²ÎÊı:	DWORD nCount
-// ·µ»Ø:	int ·µ»ØÊµ¼ÊÉ¾³ıµÄ½Å±¾ÊıÁ¿
+// å‡½æ•°:	KLuaScriptSet::ClearUpSet
+// åŠŸèƒ½:	æŒ‰ç…§æœ€æ—§ä½¿ç”¨è„šæœ¬çš„é¡ºåºåˆ é™¤nCountä¸ªè„šæœ¬å®ä¾‹
+// å‚æ•°:	DWORD nCount
+// è¿”å›:	int è¿”å›å®é™…åˆ é™¤çš„è„šæœ¬æ•°é‡
 //---------------------------------------------------------------------------
 DWORD KLuaScriptSet::ClearUpSet(DWORD nCount)
 {
@@ -137,10 +137,10 @@ DWORD KLuaScriptSet::ClearUpSet(DWORD nCount)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::SetMaxScriptNum
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nMaxCount
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScriptSet::SetMaxScriptNum
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nMaxCount
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScriptSet::SetMaxScriptNum(DWORD nMaxCount )
 {
@@ -152,10 +152,10 @@ BOOL KLuaScriptSet::SetMaxScriptNum(DWORD nMaxCount )
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	KLuaScriptSet::SetNumPerClear
-// ¹¦ÄÜ:	
-// ²ÎÊı:	DWORD nNumPerClear
-// ·µ»Ø:	BOOL 
+// å‡½æ•°:	KLuaScriptSet::SetNumPerClear
+// åŠŸèƒ½:	
+// å‚æ•°:	DWORD nNumPerClear
+// è¿”å›:	BOOL 
 //---------------------------------------------------------------------------
 BOOL KLuaScriptSet::SetNumPerClear(DWORD nNumPerClear)
 {

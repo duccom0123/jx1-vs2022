@@ -18,10 +18,10 @@
 #include "KTabFile.h"
 #include <string.h>
 //---------------------------------------------------------------------------
-// º¯Êı:	KTabFile
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KTabFile
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KTabFile::KTabFile()
 {
@@ -29,21 +29,21 @@ KTabFile::KTabFile()
 	m_Height	= 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KTabFile
-// ¹¦ÄÜ:	ÎöÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KTabFile
+// åŠŸèƒ½:	æé€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KTabFile::~KTabFile()
 {
 	Clear();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Load
-// ¹¦ÄÜ:	¼ÓÔØÒ»¸öTabÎÄ¼ş
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Load
+// åŠŸèƒ½:	åŠ è½½ä¸€ä¸ªTabæ–‡ä»¶
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KTabFile::Load(LPSTR FileName)
 {
@@ -84,10 +84,10 @@ BOOL KTabFile::IsTabExist(LPSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	CreateTabOffset
-// ¹¦ÄÜ:	½¨Á¢ÖÆ×÷±í·û·Ö¸ôÎÄ¼şµÄÆ«ÒÆ±í
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	CreateTabOffset
+// åŠŸèƒ½:	å»ºç«‹åˆ¶ä½œè¡¨ç¬¦åˆ†éš”æ–‡ä»¶çš„åç§»è¡¨
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KTabFile::CreateTabOffset()
 {
@@ -102,7 +102,7 @@ void KTabFile::CreateTabOffset()
 	Buffer	= (BYTE *)m_Memory.GetMemPtr();
 	nSize	= m_Memory.GetMemLen();
 
-	// ¶ÁµÚÒ»ĞĞ¾ö¶¨ÓĞ¶àÉÙÁĞ
+	// è¯»ç¬¬ä¸€è¡Œå†³å®šæœ‰å¤šå°‘åˆ—
 	while (*Buffer != 0x0d && *Buffer != 0x0a)
 	{
 		if (*Buffer == 0x09)
@@ -114,13 +114,13 @@ void KTabFile::CreateTabOffset()
 	}
 	if (*Buffer == 0x0d && *(Buffer + 1) == 0x0a)
 	{
-		Buffer += 2;	// 0x0aÌø¹ı		
-		nOffset += 2;	// 0x0aÌø¹ı
+		Buffer += 2;	// 0x0aè·³è¿‡		
+		nOffset += 2;	// 0x0aè·³è¿‡
 	}
 	else
 	{
-		Buffer += 1;	// 0x0aÌø¹ı		
-		nOffset += 1;	// 0x0aÌø¹ı
+		Buffer += 1;	// 0x0aè·³è¿‡		
+		nOffset += 1;	// 0x0aè·³è¿‡
 	}
 	while(nOffset < nSize)
 	{
@@ -134,13 +134,13 @@ void KTabFile::CreateTabOffset()
 		nHeight++;
 		if (*Buffer == 0x0d && *(Buffer + 1) == 0x0a)
 		{
-			Buffer += 2;	// 0x0aÌø¹ı		
-			nOffset += 2;	// 0x0aÌø¹ı
+			Buffer += 2;	// 0x0aè·³è¿‡		
+			nOffset += 2;	// 0x0aè·³è¿‡
 		}
 		else
 		{
-			Buffer += 1;	// 0x0aÌø¹ı		
-			nOffset += 1;	// 0x0aÌø¹ı
+			Buffer += 1;	// 0x0aè·³è¿‡		
+			nOffset += 1;	// 0x0aè·³è¿‡
 		}
 	}
 	m_Width		= nWidth;
@@ -163,11 +163,11 @@ void KTabFile::CreateTabOffset()
 				nOffset++;
 				nLength++;
 			}
-			Buffer++;	// 0x09»ò0x0d»ò0x0a(linux)Ìø¹ı
+			Buffer++;	// 0x09æˆ–0x0dæˆ–0x0a(linux)è·³è¿‡
 			nOffset++;
 			TabBuffer->dwLength = nLength;
 			TabBuffer++;
-			if (*(Buffer - 1) == 0x0a || *(Buffer - 1) == 0x0d)	//	±¾ĞĞÒÑ¾­½áÊøÁË£¬ËäÈ»¿ÉÄÜÃ»µ½nWidth //for linux modified [wxb 2003-7-29]
+			if (*(Buffer - 1) == 0x0a || *(Buffer - 1) == 0x0d)	//	æœ¬è¡Œå·²ç»ç»“æŸäº†ï¼Œè™½ç„¶å¯èƒ½æ²¡åˆ°nWidth //for linux modified [wxb 2003-7-29]
 			{
 				for (int k = j+1; k < nWidth; k++)
 				{
@@ -182,17 +182,17 @@ void KTabFile::CreateTabOffset()
 		//modified for linux [wxb 2003-7-29]
 		if (*(Buffer - 1) == 0x0d && *Buffer == 0x0a)
 		{
-			Buffer++;				// 0x0aÌø¹ı	
-			nOffset++;				// 0x0aÌø¹ı	
+			Buffer++;				// 0x0aè·³è¿‡	
+			nOffset++;				// 0x0aè·³è¿‡	
 		}
 	}
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Str2Column
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	szColumn
-// ·µ»Ø:	µÚ¼¸ÁĞ
+// å‡½æ•°:	Str2Column
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	szColumn
+// è¿”å›:	ç¬¬å‡ åˆ—
 //---------------------------------------------------------------------------
 int KTabFile::Str2Col(LPSTR szColumn)
 {
@@ -209,14 +209,14 @@ int KTabFile::Str2Col(LPSTR szColumn)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	GetString
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ
-//			nColomn			ÁĞ
-//			lpDefault		È±Ê¡Öµ
-//			lpRString		·µ»ØÖµ
-//			dwSize			·µ»Ø×Ö·û´®µÄ×î´ó³¤¶È
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetString
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ
+//			nColomn			åˆ—
+//			lpDefault		ç¼ºçœå€¼
+//			lpRString		è¿”å›å€¼
+//			dwSize			è¿”å›å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetString(int nRow, LPSTR szColumn, LPSTR lpDefault, LPSTR lpRString, DWORD dwSize, BOOL bColumnLab)
 {
@@ -231,14 +231,14 @@ BOOL KTabFile::GetString(int nRow, LPSTR szColumn, LPSTR lpDefault, LPSTR lpRStr
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetString
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	szRow			ĞĞ	£¨¹Ø¼ü×Ö£©
-//			szColomn		ÁĞ	£¨¹Ø¼ü×Ö£©
-//			lpDefault		È±Ê¡Öµ
-//			lpRString		·µ»ØÖµ
-//			dwSize			·µ»Ø×Ö·û´®µÄ×î´ó³¤¶È
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetString
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	szRow			è¡Œ	ï¼ˆå…³é”®å­—ï¼‰
+//			szColomn		åˆ—	ï¼ˆå…³é”®å­—ï¼‰
+//			lpDefault		ç¼ºçœå€¼
+//			lpRString		è¿”å›å€¼
+//			dwSize			è¿”å›å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetString(LPSTR szRow, LPSTR szColumn, LPSTR lpDefault, LPSTR lpRString, DWORD dwSize)
 {
@@ -252,14 +252,14 @@ BOOL KTabFile::GetString(LPSTR szRow, LPSTR szColumn, LPSTR lpDefault, LPSTR lpR
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetString
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ		´Ó1¿ªÊ¼
-//			nColomn			ÁĞ		´Ó1¿ªÊ¼
-//			lpDefault		È±Ê¡Öµ
-//			lpRString		·µ»ØÖµ
-//			dwSize			·µ»Ø×Ö·û´®µÄ×î´ó³¤¶È
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetString
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ		ä»1å¼€å§‹
+//			nColomn			åˆ—		ä»1å¼€å§‹
+//			lpDefault		ç¼ºçœå€¼
+//			lpRString		è¿”å›å€¼
+//			dwSize			è¿”å›å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetString(int nRow, int nColumn, LPSTR lpDefault, LPSTR lpRString, DWORD dwSize)
 {
@@ -269,13 +269,13 @@ BOOL KTabFile::GetString(int nRow, int nColumn, LPSTR lpDefault, LPSTR lpRString
 	return FALSE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetInteger
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ
-//			szColomn		ÁĞ
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetInteger
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ
+//			szColomn		åˆ—
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetInteger(int nRow, LPSTR szColumn, int nDefault, int *pnValue, BOOL bColumnLab)
 {
@@ -297,13 +297,13 @@ BOOL KTabFile::GetInteger(int nRow, LPSTR szColumn, int nDefault, int *pnValue, 
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetInteger
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	szRow			ĞĞ
-//			szColomn		ÁĞ
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetInteger
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	szRow			è¡Œ
+//			szColomn		åˆ—
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetInteger(LPSTR szRow, LPSTR szColumn, int nDefault, int *pnValue)
 {
@@ -324,13 +324,13 @@ BOOL KTabFile::GetInteger(LPSTR szRow, LPSTR szColumn, int nDefault, int *pnValu
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetInteger
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ		´Ó1¿ªÊ¼
-//			nColomn			ÁĞ		´Ó1¿ªÊ¼
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetInteger
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ		ä»1å¼€å§‹
+//			nColomn			åˆ—		ä»1å¼€å§‹
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetInteger(int nRow, int nColumn, int nDefault, int *pnValue)
 {
@@ -348,13 +348,13 @@ BOOL KTabFile::GetInteger(int nRow, int nColumn, int nDefault, int *pnValue)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFloat
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ
-//			szColomn		ÁĞ
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetFloat
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ
+//			szColomn		åˆ—
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetFloat(int nRow, LPSTR szColumn, float fDefault, float *pfValue, BOOL bColumnLab)
 {
@@ -376,13 +376,13 @@ BOOL KTabFile::GetFloat(int nRow, LPSTR szColumn, float fDefault, float *pfValue
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFloat
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	szRow			ĞĞ
-//			szColomn		ÁĞ
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetFloat
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	szRow			è¡Œ
+//			szColomn		åˆ—
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetFloat(LPSTR szRow, LPSTR szColumn, float fDefault, float *pfValue)
 {
@@ -403,13 +403,13 @@ BOOL KTabFile::GetFloat(LPSTR szRow, LPSTR szColumn, float fDefault, float *pfVa
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetFloat
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ		´Ó1¿ªÊ¼
-//			nColomn			ÁĞ		´Ó1¿ªÊ¼
-//			nDefault		È±Ê¡Öµ
-//			pnValue			·µ»ØÖµ
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetFloat
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ		ä»1å¼€å§‹
+//			nColomn			åˆ—		ä»1å¼€å§‹
+//			nDefault		ç¼ºçœå€¼
+//			pnValue			è¿”å›å€¼
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetFloat(int nRow, int nColumn, float fDefault, float *pfValue)
 {
@@ -427,14 +427,14 @@ BOOL KTabFile::GetFloat(int nRow, int nColumn, float fDefault, float *pfValue)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetValue
-// ¹¦ÄÜ:	È¡µÃÄ³ĞĞÄ³ÁĞ×Ö·û´®µÄÖµ
-// ²ÎÊı:	nRow			ĞĞ
-//			nColomn			ÁĞ
-//			lpDefault		È±Ê¡Öµ
-//			lpRString		·µ»ØÖµ
-//			dwSize			·µ»Ø×Ö·û´®µÄ×î´ó³¤¶È
-// ·µ»Ø:	ÊÇ·ñ³É¹¦
+// å‡½æ•°:	GetValue
+// åŠŸèƒ½:	å–å¾—æŸè¡ŒæŸåˆ—å­—ç¬¦ä¸²çš„å€¼
+// å‚æ•°:	nRow			è¡Œ
+//			nColomn			åˆ—
+//			lpDefault		ç¼ºçœå€¼
+//			lpRString		è¿”å›å€¼
+//			dwSize			è¿”å›å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+// è¿”å›:	æ˜¯å¦æˆåŠŸ
 //---------------------------------------------------------------------------
 BOOL KTabFile::GetValue(int nRow, int nColumn, LPSTR lpRString, DWORD dwSize)
 {
@@ -470,10 +470,10 @@ BOOL KTabFile::GetValue(int nRow, int nColumn, LPSTR lpRString, DWORD dwSize)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Clear
-// ¹¦ÄÜ:	Çå³ıTABÎÄ¼şµÄÄÚÈİ
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Clear
+// åŠŸèƒ½:	æ¸…é™¤TABæ–‡ä»¶çš„å†…å®¹
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KTabFile::Clear()
 {
@@ -481,45 +481,45 @@ void KTabFile::Clear()
 	m_OffsetTable.Free();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FindRow
-// ¹¦ÄÜ:	²éÕÒĞĞ¹Ø¼ü×Ö
-// ²ÎÊı:	szRow£¨ĞĞ¹Ø¼ü×Ö£©
-// ·µ»Ø:	int
+// å‡½æ•°:	FindRow
+// åŠŸèƒ½:	æŸ¥æ‰¾è¡Œå…³é”®å­—
+// å‚æ•°:	szRowï¼ˆè¡Œå…³é”®å­—ï¼‰
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KTabFile::FindRow(LPSTR szRow)
 {
 	char	szTemp[128];
-	for (int i = 0; i < m_Height; i++)	// ´Ó1¿ªÊ¼£¬Ìø¹ıµÚÒ»ĞĞµÄ×Ö¶ÎĞĞ
+	for (int i = 0; i < m_Height; i++)	// ä»1å¼€å§‹ï¼Œè·³è¿‡ç¬¬ä¸€è¡Œçš„å­—æ®µè¡Œ
 	{
 		GetValue(i, 0, szTemp, g_StrLen(szRow));
 		if (g_StrCmp(szTemp, szRow))
-			return i + 1; //¸Ä¶¯´Ë´¦Îª¼ÓÒ» by Romandou,¼´·µ»ØÒÔ1ÎªÆğµãµÄ±êºÅ
+			return i + 1; //æ”¹åŠ¨æ­¤å¤„ä¸ºåŠ ä¸€ by Romandou,å³è¿”å›ä»¥1ä¸ºèµ·ç‚¹çš„æ ‡å·
 	}
 	return -1;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	FindColumn
-// ¹¦ÄÜ:	²éÕÒÁĞ¹Ø¼ü×Ö
-// ²ÎÊı:	szColumn£¨ĞĞ¹Ø¼ü×Ö£©
-// ·µ»Ø:	int
+// å‡½æ•°:	FindColumn
+// åŠŸèƒ½:	æŸ¥æ‰¾åˆ—å…³é”®å­—
+// å‚æ•°:	szColumnï¼ˆè¡Œå…³é”®å­—ï¼‰
+// è¿”å›:	int
 //---------------------------------------------------------------------------
 int KTabFile::FindColumn(LPSTR szColumn)
 {
 	char	szTemp[128];
-	for (int i = 0; i < m_Width; i++)	// ´Ó1¿ªÊ¼£¬Ìø¹ıµÚÒ»ÁĞµÄ×Ö¶ÎĞĞ
+	for (int i = 0; i < m_Width; i++)	// ä»1å¼€å§‹ï¼Œè·³è¿‡ç¬¬ä¸€åˆ—çš„å­—æ®µè¡Œ
 	{
 		GetValue(0, i, szTemp, g_StrLen(szColumn));
 		if (g_StrCmp(szTemp, szColumn))
-			return i + 1;//¸Ä¶¯´Ë´¦Îª¼ÓÒ» by Romandou,¼´·µ»ØÒÔ1ÎªÆğµãµÄ±êºÅ
+			return i + 1;//æ”¹åŠ¨æ­¤å¤„ä¸ºåŠ ä¸€ by Romandou,å³è¿”å›ä»¥1ä¸ºèµ·ç‚¹çš„æ ‡å·
 	}
 	return -1;
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Col2Str
-// ¹¦ÄÜ:	°ÑÕûÊı×ª³É×Ö·û´®
-// ²ÎÊı:	szColumn
-// ·µ»Ø:	µÚ¼¸ÁĞ
+// å‡½æ•°:	Col2Str
+// åŠŸèƒ½:	æŠŠæ•´æ•°è½¬æˆå­—ç¬¦ä¸²
+// å‚æ•°:	szColumn
+// è¿”å›:	ç¬¬å‡ åˆ—
 //---------------------------------------------------------------------------
 void KTabFile::Col2Str(int nCol, LPSTR szColumn)
 {

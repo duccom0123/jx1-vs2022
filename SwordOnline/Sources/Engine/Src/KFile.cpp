@@ -13,10 +13,10 @@
 #include "zport.h"
 #endif
 //---------------------------------------------------------------------------
-// º¯Êı:	KFile
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KFile
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KFile::KFile()
 {
@@ -25,50 +25,31 @@ KFile::KFile()
 	m_dwPos	= 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	~KFile
-// ¹¦ÄÜ:	ÎöÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	~KFile
+// åŠŸèƒ½:	æé€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KFile::~KFile()
 {
 	Close();
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Open
-// ¹¦ÄÜ:	´ò¿ªÒ»¸öÎÄ¼ş£¬×¼±¸¶ÁÈ¡
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE¡£
+// å‡½æ•°:	Open
+// åŠŸèƒ½:	æ‰“å¼€ä¸€ä¸ªæ–‡ä»¶ï¼Œå‡†å¤‡è¯»å–
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	æˆåŠŸè¿”å›TRUEï¼Œå¤±è´¥è¿”å›FALSEã€‚
 //---------------------------------------------------------------------------
 BOOL KFile::Open(LPSTR FileName)
 {
 	char PathName[MAXPATH];
 	
-	// close prior file handle
-	//if (m_hFile != INVALID_HANDLE_VALUE)
-	//	Close();
-
 	if (m_hFile != NULL)
 		Close();
 
 	// get full path name
 	g_GetFullPath(PathName, FileName);
-/*#ifndef WIN32
-	char *name_ptr = PathName;
-	while(*name_ptr) {
-		if(*name_ptr == '\\') *name_ptr = '/';
-		name_ptr++;
-	}
-#endif
-	// Open the file for read
-	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_READ,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		OPEN_EXISTING,	// how to create
-		FILE_ATTRIBUTE_NORMAL,// file attributes
-		NULL);			// template file*/
+
 #ifndef WIN32
         char *ptr = PathName;
         while(*ptr) {
@@ -89,10 +70,6 @@ BOOL KFile::Open(LPSTR FileName)
 #endif
 	m_hFile = fopen(PathName, "rb");
 
-	// check file handle
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
-
 	if (m_hFile == NULL)
 	{
 		return FALSE;
@@ -101,10 +78,10 @@ BOOL KFile::Open(LPSTR FileName)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Create
-// ¹¦ÄÜ:	´´½¨Ò»¸öÎÄ¼ş£¬×¼±¸Ğ´Èë¡£
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE¡£
+// å‡½æ•°:	Create
+// åŠŸèƒ½:	åˆ›å»ºä¸€ä¸ªæ–‡ä»¶ï¼Œå‡†å¤‡å†™å…¥ã€‚
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	æˆåŠŸè¿”å›TRUEï¼Œå¤±è´¥è¿”å›FALSEã€‚
 //---------------------------------------------------------------------------
 BOOL KFile::Create(LPSTR FileName)
 {
@@ -120,23 +97,7 @@ BOOL KFile::Create(LPSTR FileName)
 	// get full path name
 	g_GetFullPath(PathName, FileName);
 
-	// change file attribute for write
-//	SetFileAttributes(PathName, FILE_ATTRIBUTE_NORMAL);
-
-	// create file for write
-/*	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_WRITE,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		CREATE_ALWAYS,	// create or over write
-		FILE_ATTRIBUTE_NORMAL, // file attributes
-		NULL);			// template file
-*/	
 	m_hFile = fopen(PathName, "wb+");
-	// check file handle
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
 
 	if (m_hFile == NULL)
 		return FALSE;
@@ -144,10 +105,10 @@ BOOL KFile::Create(LPSTR FileName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Append
-// ¹¦ÄÜ:	´ò¿ªÒ»¸öÎÄ¼ş£¬×¼±¸ÔÚºó²¿Ìí¼ÓÊı¾İ£¬Èç¹û´ËÎÄ¼ş²»´æÔÚ£¬Ôò²úÉúÕâ¸öÎÄ¼ş¡£
-// ²ÎÊı:	FileName	ÎÄ¼şÃû
-// ·µ»Ø:	³É¹¦·µ»ØTRUE£¬Ê§°Ü·µ»ØFALSE¡£
+// å‡½æ•°:	Append
+// åŠŸèƒ½:	æ‰“å¼€ä¸€ä¸ªæ–‡ä»¶ï¼Œå‡†å¤‡åœ¨åéƒ¨æ·»åŠ æ•°æ®ï¼Œå¦‚æœæ­¤æ–‡ä»¶ä¸å­˜åœ¨ï¼Œåˆ™äº§ç”Ÿè¿™ä¸ªæ–‡ä»¶ã€‚
+// å‚æ•°:	FileName	æ–‡ä»¶å
+// è¿”å›:	æˆåŠŸè¿”å›TRUEï¼Œå¤±è´¥è¿”å›FALSEã€‚
 //---------------------------------------------------------------------------
 BOOL KFile::Append(LPSTR FileName)
 {
@@ -163,21 +124,6 @@ BOOL KFile::Append(LPSTR FileName)
 	// get full path name
 	g_GetFullPath(PathName, FileName);
 
-	// change file attribute for write
-//	SetFileAttributes(PathName, FILE_ATTRIBUTE_NORMAL);
-
-	// create file for write
-/*	m_hFile = CreateFile(
-		PathName,		// pointer to name of the file with path
-		GENERIC_WRITE,	// access (read-write) mode
-		FILE_SHARE_READ,// share mode
-		NULL,			// pointer to security attributes
-		OPEN_ALWAYS,	// Opens the file, if it exists. If the file does not exist, the function creates the file as if dwCreationDisposition were CREATE_NEW
-		FILE_ATTRIBUTE_NORMAL, // file attributes
-		NULL);			// template file*/
-	//if (m_hFile == INVALID_HANDLE_VALUE)
-	//	return FALSE;
-	
 	// check file handle
 	m_hFile = fopen(PathName, "ab");
 	if (m_hFile == NULL)
@@ -188,10 +134,10 @@ BOOL KFile::Append(LPSTR FileName)
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	Close
-// ¹¦ÄÜ:	¹Ø±Õ´ò¿ªµÄÎÄ¼ş
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	Close
+// åŠŸèƒ½:	å…³é—­æ‰“å¼€çš„æ–‡ä»¶
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KFile::Close()
 {
@@ -207,11 +153,11 @@ void KFile::Close()
 	m_dwPos	= 0;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Read
-// ¹¦ÄÜ:	¶ÁÈ¡ÎÄ¼şÊı¾İ
-// ²ÎÊı:	lpBuffer	¶ÁÈ¡Êı¾İ´æ·ÅµÄÄÚ´æÇøÓò
-//			dwReadBytes	¶ÁÈ¡Êı¾İµÄ×Ö½ÚÊı
-// ·µ»Ø:	³É¹¦·µ»Ø¶ÁÈ¡µÄ×Ö½ÚÊı£¬Ê§°Ü·µ»Ø0¡£
+// å‡½æ•°:	Read
+// åŠŸèƒ½:	è¯»å–æ–‡ä»¶æ•°æ®
+// å‚æ•°:	lpBuffer	è¯»å–æ•°æ®å­˜æ”¾çš„å†…å­˜åŒºåŸŸ
+//			dwReadBytes	è¯»å–æ•°æ®çš„å­—èŠ‚æ•°
+// è¿”å›:	æˆåŠŸè¿”å›è¯»å–çš„å­—èŠ‚æ•°ï¼Œå¤±è´¥è¿”å›0ã€‚
 //---------------------------------------------------------------------------
 DWORD KFile::Read(LPVOID lpBuffer, DWORD dwReadBytes)
 {
@@ -229,11 +175,11 @@ DWORD KFile::Read(LPVOID lpBuffer, DWORD dwReadBytes)
 	return dwBytesRead;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	write
-// ¹¦ÄÜ:	Ğ´ÈëÎÄ¼şÊı¾İ
-// ²ÎÊı:	lpBuffer		Ğ´ÈëÊı¾İ´æ·ÅµÄÄÚ´æÇøÓò
-//			dwWriteBytes	Ğ´ÈëÊı¾İµÄ×Ö½ÚÊı
-// ·µ»Ø:	³É¹¦·µ»ØĞ´ÈëµÄ×Ö½ÚÊı£¬Ê§°Ü·µ»Ø0¡£
+// å‡½æ•°:	write
+// åŠŸèƒ½:	å†™å…¥æ–‡ä»¶æ•°æ®
+// å‚æ•°:	lpBuffer		å†™å…¥æ•°æ®å­˜æ”¾çš„å†…å­˜åŒºåŸŸ
+//			dwWriteBytes	å†™å…¥æ•°æ®çš„å­—èŠ‚æ•°
+// è¿”å›:	æˆåŠŸè¿”å›å†™å…¥çš„å­—èŠ‚æ•°ï¼Œå¤±è´¥è¿”å›0ã€‚
 //---------------------------------------------------------------------------
 DWORD KFile::Write(LPVOID lpBuffer, DWORD dwWriteBytes)
 {
@@ -253,11 +199,11 @@ DWORD KFile::Write(LPVOID lpBuffer, DWORD dwWriteBytes)
 	return dwBytesWrite;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Seek
-// ¹¦ÄÜ:	ÒÆ¶¯ÎÄ¼şÖ¸ÕëÎ»ÖÃ
-// ²ÎÊı:	lDistance		ÒÆ¶¯³¤¶È
-//			dwMoveMethod	ÒÆ¶¯·½·¨£½FILE_BEGIN£¬FILE_CURRENT£¬FILE_END
-// ·µ»Ø:	³É¹¦·µ»ØÖ¸ÕëÎ»ÖÃ£¬Ê§°Ü·µ»ØSEEK_ERROR¡£
+// å‡½æ•°:	Seek
+// åŠŸèƒ½:	ç§»åŠ¨æ–‡ä»¶æŒ‡é’ˆä½ç½®
+// å‚æ•°:	lDistance		ç§»åŠ¨é•¿åº¦
+//			dwMoveMethod	ç§»åŠ¨æ–¹æ³•ï¼FILE_BEGINï¼ŒFILE_CURRENTï¼ŒFILE_END
+// è¿”å›:	æˆåŠŸè¿”å›æŒ‡é’ˆä½ç½®ï¼Œå¤±è´¥è¿”å›SEEK_ERRORã€‚
 //---------------------------------------------------------------------------
 DWORD KFile::Seek(LONG lDistance, DWORD dwMoveMethod)
 {
@@ -273,10 +219,10 @@ DWORD KFile::Seek(LONG lDistance, DWORD dwMoveMethod)
 	return m_dwPos;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Tell
-// ¹¦ÄÜ:	È¡µÃÎÄ¼şÖ¸ÕëÎ»ÖÃ
-// ²ÎÊı:	void
-// ·µ»Ø:	³É¹¦·µ»ØÖ¸ÕëÎ»ÖÃ£¬Ê§°Ü·µ»ØSEEK_ERROR¡£
+// å‡½æ•°:	Tell
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶æŒ‡é’ˆä½ç½®
+// å‚æ•°:	void
+// è¿”å›:	æˆåŠŸè¿”å›æŒ‡é’ˆä½ç½®ï¼Œå¤±è´¥è¿”å›SEEK_ERRORã€‚
 //---------------------------------------------------------------------------
 DWORD KFile::Tell()
 {
@@ -289,10 +235,10 @@ DWORD KFile::Tell()
 	return m_dwPos;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Size
-// ¹¦ÄÜ:	È¡µÃÎÄ¼ş³¤¶È
-// ²ÎÊı:	void
-// ·µ»Ø:	³É¹¦·µ»ØÎÄ¼ş³¤¶È£¬Ê§°Ü·µ»Ø0¡£
+// å‡½æ•°:	Size
+// åŠŸèƒ½:	å–å¾—æ–‡ä»¶é•¿åº¦
+// å‚æ•°:	void
+// è¿”å›:	æˆåŠŸè¿”å›æ–‡ä»¶é•¿åº¦ï¼Œå¤±è´¥è¿”å›0ã€‚
 //---------------------------------------------------------------------------
 DWORD KFile::Size()
 {

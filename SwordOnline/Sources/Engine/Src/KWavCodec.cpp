@@ -37,10 +37,10 @@ static void ImaDecodeSample(
    int n,            /* samples to decode PER channel, REQUIRE n % 8 == 1  */
    int o_inc);       /* index difference between successive output samples */
 //---------------------------------------------------------------------------
-// º¯Êı:	ImaInitTable
-// ¹¦ÄÜ:	³õÊ¼»¯ imaStateAdjustTable
-// ²ÎÊı:	void 
-// ·µ»Ø:	void
+// å‡½æ•°:	ImaInitTable
+// åŠŸèƒ½:	åˆå§‹åŒ– imaStateAdjustTable
+// å‚æ•°:	void 
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 static void ImaInitTable()
 {
@@ -64,13 +64,13 @@ static void ImaInitTable()
 	bInited = TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	g_ImaAdpcmDecode
-// ¹¦ÄÜ:	½âÂëIMA-ADPCM
-// ²ÎÊı:	lpIn		IMA»º´æ
-//			nInLen		»º´æ³¤¶È
-//			lpOut		PCM»º´æ
-//			nBlockAlign	PCM¿é´óĞ¡ 11.1K=512 22.1k=1024 44.1k=2048
-// ·µ»Ø:	Êµ¼Ê¶ÁÈ¡³¤¶È
+// å‡½æ•°:	g_ImaAdpcmDecode
+// åŠŸèƒ½:	è§£ç IMA-ADPCM
+// å‚æ•°:	lpIn		IMAç¼“å­˜
+//			nInLen		ç¼“å­˜é•¿åº¦
+//			lpOut		PCMç¼“å­˜
+//			nBlockAlign	PCMå—å¤§å° 11.1K=512 22.1k=1024 44.1k=2048
+// è¿”å›:	å®é™…è¯»å–é•¿åº¦
 //---------------------------------------------------------------------------
 DWORD g_ImaAdpcmDecode(PVOID lpIn, int nInLen, PVOID lpOut, int nBlockAlign)
 {
@@ -88,11 +88,11 @@ DWORD g_ImaAdpcmDecode(PVOID lpIn, int nInLen, PVOID lpOut, int nBlockAlign)
 	return blocks * 4 * (nBlockAlign - 7);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ImaDecodeBlock 
-// ¹¦ÄÜ:	·Ö±ğ½âÑ¹Ã¿Block×ó¡¢ÓÒÉùµÀµÄÊı¾İ
-// ²ÎÊı:	lpIma	´ÓIMA_ADPCM¸ñÊ½ÎÄ¼ş¶ÁÈ¡µÄÊı¾İ¿é
-//			lpPcm	½âÑ¹ºóµÄÊı¾İ»º³å
-// ·µ»Ø:	void
+// å‡½æ•°:	ImaDecodeBlock 
+// åŠŸèƒ½:	åˆ†åˆ«è§£å‹æ¯Blockå·¦ã€å³å£°é“çš„æ•°æ®
+// å‚æ•°:	lpIma	ä»IMA_ADPCMæ ¼å¼æ–‡ä»¶è¯»å–çš„æ•°æ®å—
+//			lpPcm	è§£å‹åçš„æ•°æ®ç¼“å†²
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 static void ImaDecodeBlock(PBYTE lpIma, short* lpPcm, int nBlockAlign)
 {
@@ -102,15 +102,15 @@ static void ImaDecodeBlock(PBYTE lpIma, short* lpPcm, int nBlockAlign)
 	ImaDecodeSample(1, 2, lpIma, lpPcm + 1, nBlockAlign - 7, 2);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ImaDecodeSample
-// ¹¦ÄÜ:	½âÑ¹ËõIMA_ADPCM¸ñÊ½WAVÎÄ¼şÖĞBLOCKÖĞµÄÊı¾İ
-// ²ÎÊı:    ch     ÉùµÀºÅ
-//			chans  ÉùµÀ×ÜÊı
-//			ibuff  ÊäÈëµÄ»º³åÇøµØÖ·,Ó¦Îªblock¿éÊ×¿ªÊ¼buffer[blockAlign] 
-//			obuff  Êä³ö»º³å
-//          n      Ã¿ÉùµÀÃ¿block²ÉÑùÊı 16Î»Ó¦Îª1017
-//          o_inc  Êä³öÉùµÀÊı
-// ·µ»Ø:	void
+// å‡½æ•°:	ImaDecodeSample
+// åŠŸèƒ½:	è§£å‹ç¼©IMA_ADPCMæ ¼å¼WAVæ–‡ä»¶ä¸­BLOCKä¸­çš„æ•°æ®
+// å‚æ•°:    ch     å£°é“å·
+//			chans  å£°é“æ€»æ•°
+//			ibuff  è¾“å…¥çš„ç¼“å†²åŒºåœ°å€,åº”ä¸ºblockå—é¦–å¼€å§‹buffer[blockAlign] 
+//			obuff  è¾“å‡ºç¼“å†²
+//          n      æ¯å£°é“æ¯blocké‡‡æ ·æ•° 16ä½åº”ä¸º1017
+//          o_inc  è¾“å‡ºå£°é“æ•°
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 static void ImaDecodeSample(
 	int ch,           /* channel number to decode, REQUIRE 0 <= ch < chans  */
@@ -144,11 +144,11 @@ static void ImaDecodeSample(
 	{	
 		if (i & 1)
 		{	/* 1st of pair */ 
-			cm = * ip & 0x0f; //µ¥µÄ»°£¬È¡µÍËÄÎ»
+			cm = * ip & 0x0f; //å•çš„è¯ï¼Œå–ä½å››ä½
 		} 
 		else
 		{
-			cm = (*ip++) >> 4; //È¡¸ßËÄÎ»£¬²¢ÏòÏÂÒ»¸ñ
+			cm = (*ip++) >> 4; //å–é«˜å››ä½ï¼Œå¹¶å‘ä¸‹ä¸€æ ¼
 			if ((i & 7) == 0)  /* ends the 8-sample input block for this channel */
 				ip += i_inc;   /* skip ip for next group */ 
 		}
@@ -158,7 +158,7 @@ static void ImaDecodeSample(
 		c = cm & 0x07;
 		state = imaStateAdjustTable[state][c];
 		
-#ifdef STRICT_IMA // ÑÏ¸ñµÄIMA½âÂë
+#ifdef STRICT_IMA // ä¸¥æ ¼çš„IMAè§£ç 
 		dp = 0;
 		if (c & 4) dp += step;
 		step = step >> 1;

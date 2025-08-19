@@ -2,7 +2,7 @@
 // FileName			:	KFontData.h
 // FileAuthor		:	Wooy
 // FileCreateDate	:	2002-9-4
-// FileDescription	:	×ÖÌåÍ¼ĞÎÊı¾İÀàÍ·ÎÄ¼ş
+// FileDescription	:	å­—ä½“å›¾å½¢æ•°æ®ç±»å¤´æ–‡ä»¶
 // Revision Count	:	
 *******************************************************************************/
 #include "KFontData.h"
@@ -10,7 +10,7 @@
 #include "../../../Engine/Src/KPakFile.h"
 
 /*!*****************************************************************************
-// Purpose		:  ¹¹Ôìº¯Êı
+// Purpose		:  æ„é€ å‡½æ•°
 *****************************************************************************/
 KFontData::KFontData()
 {
@@ -22,7 +22,7 @@ KFontData::KFontData()
 }
 
 /*!*****************************************************************************
-// Purpose		:  Îö¹¹º¯Êı
+// Purpose		:  ææ„å‡½æ•°
 *****************************************************************************/
 KFontData::~KFontData()
 {
@@ -31,9 +31,9 @@ KFontData::~KFontData()
 
 /*!*****************************************************************************
 // Function		: KFontData::Init
-// Purpose		: ÔØÈë×Ö¿âÎÄ¼ş
-// Return		: ÊÇ·ñ³É¹¦
-// Argumant		: const char* pszFontFile      -> ×Ö¿âÎÄ¼şÃû
+// Purpose		: è½½å…¥å­—åº“æ–‡ä»¶
+// Return		: æ˜¯å¦æˆåŠŸ
+// Argumant		: const char* pszFontFile      -> å­—åº“æ–‡ä»¶å
 *****************************************************************************/
 bool KFontData::Load(const char* pszFontFile)
 {
@@ -45,41 +45,41 @@ bool KFontData::Load(const char* pszFontFile)
 		KPakFile	File;
 		KFontHead	Header;
 
-		//´ò¿ª×Ö¿âÎÄ¼ş
+		//æ‰“å¼€å­—åº“æ–‡ä»¶
 		if (File.Open((char*)pszFontFile) == FALSE)
 			break;
-		//¶Á×Ö¿âÎÄ¼şÍ·½á¹¹
+		//è¯»å­—åº“æ–‡ä»¶å¤´ç»“æ„
 		if (File.Read(&Header, sizeof(Header)) != sizeof(Header))
 			break;
 
-		//¼ì²é×Ö¿âÎÄ¼şID
+		//æ£€æŸ¥å­—åº“æ–‡ä»¶ID
 		if (*((int*)(&Header.Id)) != 0x465341 ||	//"ASF"
 			Header.Count <= 0 || Header.Size <= 0)
 		{
 			break;
 		}
 
-		//·ÖÅä×Ö·ûµãÕóĞÅÏ¢Êı¾İµÄ´æ´¢¿Õ¼ä
+		//åˆ†é…å­—ç¬¦ç‚¹é˜µä¿¡æ¯æ•°æ®çš„å­˜å‚¨ç©ºé—´
 		m_pdwOffs = (unsigned int*)malloc(sizeof(unsigned int) * Header.Count);
 		m_pFontData = (unsigned char*)malloc(Header.Size);
 		if (m_pdwOffs == NULL || m_pFontData == NULL)
 			break;
 
-		//µÃµ½×ÖÌåĞÅÏ¢
+		//å¾—åˆ°å­—ä½“ä¿¡æ¯
 		m_dwDataSize = Header.Size;
 		m_uCharCount = Header.Count;
 		m_nFontW = Header.Width;
 		m_nFontH = Header.Height;
 
-		//¶ÁÈ¡Æ«ÒÆ±í
+		//è¯»å–åç§»è¡¨
 		if (File.Read(m_pdwOffs, m_uCharCount * sizeof(unsigned int)) != m_uCharCount * sizeof(unsigned int))
 			break;
 
-		//¶ÁÈ¡×Ö¿âµãÕóÊı¾İ
+		//è¯»å–å­—åº“ç‚¹é˜µæ•°æ®
 		if (File.Read(m_pFontData, m_dwDataSize) == m_dwDataSize)
 			bOk = true;
 
-		//¹Ø±Õ×Ö¿âÎÄ¼ş
+		//å…³é—­å­—åº“æ–‡ä»¶
 		File.Close();
 		break;
 	};
@@ -92,9 +92,9 @@ bool KFontData::Load(const char* pszFontFile)
 
 /*!*****************************************************************************
 // Function		: KFontData::GetInfo
-// Purpose		: µÃµ½×ÖÌåµÄ¿í¶È¸ß¶È£¬ÌùÍ¼¿ÉÒÔ»º´æµÄ×Ö·ûµÄ¸öÊı
-// Argumant		: int &nWidth	×Ö·û¿í
-// Argumant		: int &nHeight	×Ö·û¸ß
+// Purpose		: å¾—åˆ°å­—ä½“çš„å®½åº¦é«˜åº¦ï¼Œè´´å›¾å¯ä»¥ç¼“å­˜çš„å­—ç¬¦çš„ä¸ªæ•°
+// Argumant		: int &nWidth	å­—ç¬¦å®½
+// Argumant		: int &nHeight	å­—ç¬¦é«˜
 *****************************************************************************/
 void KFontData::GetInfo(int &nWidth, int &nHeight) const
 {
@@ -104,7 +104,7 @@ void KFontData::GetInfo(int &nWidth, int &nHeight) const
 
 /*!*****************************************************************************
 // Function		: KFontData::Terminate
-// Purpose		: ½áÊø£¬Çå³ı²Ù×÷
+// Purpose		: ç»“æŸï¼Œæ¸…é™¤æ“ä½œ
 *****************************************************************************/
 void KFontData::Terminate()
 {
@@ -124,7 +124,7 @@ void KFontData::Terminate()
 
 /*!*****************************************************************************
 // Function		: KFontData::GetCharacterData
-// Purpose		: È¡µÃµ¥¸ö×Ö·ûµÄÊı¾İÇø
+// Purpose		: å–å¾—å•ä¸ªå­—ç¬¦çš„æ•°æ®åŒº
 *****************************************************************************/
 unsigned char*    KFontData::GetCharacterData(unsigned char cFirst, unsigned char cNext) const
 {

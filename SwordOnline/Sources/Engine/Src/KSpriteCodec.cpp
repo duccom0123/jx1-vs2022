@@ -10,10 +10,10 @@
 #include "KDebug.h"
 #include "KSpriteCodec.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	KSpriteCodec
-// ¹¦ÄÜ:	¹ºÔìº¯Êı
-// ²ÎÊı:	void
-// ·µ»Ø:	void
+// å‡½æ•°:	KSpriteCodec
+// åŠŸèƒ½:	è´­é€ å‡½æ•°
+// å‚æ•°:	void
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 KSpriteCodec::KSpriteCodec()
 {
@@ -24,12 +24,12 @@ KSpriteCodec::KSpriteCodec()
 	m_pAlpha  = NULL;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Convert
-// ¹¦ÄÜ:	¸ñÊ½×ª»»
-// ²ÎÊı:	pBitmap		Î»Í¼Ö¸Õë
-//			pAlpha		ALPHAÍ¨µÀ
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Convert
+// åŠŸèƒ½:	æ ¼å¼è½¬æ¢
+// å‚æ•°:	pBitmap		ä½å›¾æŒ‡é’ˆ
+//			pAlpha		ALPHAé€šé“
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KSpriteCodec::Convert(KBitmap* pBitmap, KBitmap* pAlpha)
 {
@@ -59,14 +59,14 @@ BOOL KSpriteCodec::Convert(KBitmap* pBitmap, KBitmap* pAlpha)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ConvertRect
-// ¹¦ÄÜ:	×ª»»Ò»¸ö¾ØĞÎÇøÓò
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-//			nHeight		¸ß¶È
-//			pBuffer		»º´æ
-// ·µ»Ø:	×ª»»ºóµÄ´óĞ¡(in bytes)
+// å‡½æ•°:	ConvertRect
+// åŠŸèƒ½:	è½¬æ¢ä¸€ä¸ªçŸ©å½¢åŒºåŸŸ
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+//			nHeight		é«˜åº¦
+//			pBuffer		ç¼“å­˜
+// è¿”å›:	è½¬æ¢åçš„å¤§å°(in bytes)
 //---------------------------------------------------------------------------
 void KSpriteCodec::ConvertRect(LPRECT lpRect)
 {
@@ -93,13 +93,13 @@ void KSpriteCodec::ConvertRect(LPRECT lpRect)
 	}
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	ConvertLine
-// ¹¦ÄÜ:	×ª»»Ò»ĞĞÍ¼ĞÎÊı¾İ
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-//			pBuffer		»º´æ
-// ·µ»Ø:	×ª»»ºóµÄ´óĞ¡(in bytes)
+// å‡½æ•°:	ConvertLine
+// åŠŸèƒ½:	è½¬æ¢ä¸€è¡Œå›¾å½¢æ•°æ®
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+//			pBuffer		ç¼“å­˜
+// è¿”å›:	è½¬æ¢åçš„å¤§å°(in bytes)
 //---------------------------------------------------------------------------
 long KSpriteCodec::ConvertLine(int nX, int nY, int nWidth, PBYTE pBuffer)
 {
@@ -143,12 +143,12 @@ long KSpriteCodec::ConvertLine(int nX, int nY, int nWidth, PBYTE pBuffer)
 	return (long)(pSprite - pBuffer);
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetAlphaCount
-// ¹¦ÄÜ:	È¡µÃALPHAÖµÏàÍ¬µÄ¸öÊı
-// ²ÎÊı:	nX			X×ø±ê
-//			nY			Y×ø±ê
-//			nWidth		¿í¶È
-// ·µ»Ø:	ALPHAÏàÍ¬ÏóËØµÄ¸öÊı
+// å‡½æ•°:	GetAlphaCount
+// åŠŸèƒ½:	å–å¾—ALPHAå€¼ç›¸åŒçš„ä¸ªæ•°
+// å‚æ•°:	nX			Xåæ ‡
+//			nY			Yåæ ‡
+//			nWidth		å®½åº¦
+// è¿”å›:	ALPHAç›¸åŒè±¡ç´ çš„ä¸ªæ•°
 //---------------------------------------------------------------------------
 BYTE KSpriteCodec::GetAlphaCount(int nX, int nY, int nWidth)
 {
@@ -165,10 +165,10 @@ BYTE KSpriteCodec::GetAlphaCount(int nX, int nY, int nWidth)
 	return byCount;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	GetMiniRect
-// ¹¦ÄÜ:	È¡µÃ°üº¬Í¼ĞÎµÄ×îĞ¡ÇøÓò
-// ²ÎÊı:	lpRect
-// ·µ»Ø:	void
+// å‡½æ•°:	GetMiniRect
+// åŠŸèƒ½:	å–å¾—åŒ…å«å›¾å½¢çš„æœ€å°åŒºåŸŸ
+// å‚æ•°:	lpRect
+// è¿”å›:	void
 //---------------------------------------------------------------------------
 void KSpriteCodec::GetMiniRect(LPRECT lpRect)
 {

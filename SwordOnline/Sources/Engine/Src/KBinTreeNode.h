@@ -1,4 +1,4 @@
-/* ¶ş²æÊ÷£¨¶ş²æÊ÷Ò²¿ÉÓÃÓÚ´´½¨ÆÕÍ¨Ê÷£©½áµã
+/* äºŒå‰æ ‘ï¼ˆäºŒå‰æ ‘ä¹Ÿå¯ç”¨äºåˆ›å»ºæ™®é€šæ ‘ï¼‰ç»“ç‚¹
  * QA Pass
  */
 
@@ -14,39 +14,39 @@ template <class T>
 class TreeNode
 {
    protected:
-      // Ö¸Ïò½áµã×óÓÒº¢×ÓµÄÖ¸Õë
+      // æŒ‡å‘ç»“ç‚¹å·¦å³å­©å­çš„æŒ‡é’ˆ
       TreeNode<T> *left;
       TreeNode<T> *right;
 
    public:
-      // ¹«ÓĞ³ÉÔ±£¬ÔÊĞíÍâ²¿ĞŞ¸ÄµÄÊı¾İÖµ
+      // å…¬æœ‰æˆå‘˜ï¼Œå…è®¸å¤–éƒ¨ä¿®æ”¹çš„æ•°æ®å€¼
       T data;
    
-      // ¹¹Ôìº¯Êı
+      // æ„é€ å‡½æ•°
 	  TreeNode (const T& item, TreeNode<T> *lptr = NULL,
                 TreeNode<T> *rptr = NULL);
    
-      // ·ÃÎÊÖ¸ÕëÓòµÄº¯Êı
+      // è®¿é—®æŒ‡é’ˆåŸŸçš„å‡½æ•°
       TreeNode<T>* Left(void) const;
       TreeNode<T>* Right(void) const;
 
       friend class BinSTree<T>;
 };
 
-// ¹¹Ôìº¯Êı£¬³õÊ¼»¯½áµãµÄÊı¾İºÍÖ¸ÕëÓò£¬¶ÔÓÚ¿Õ×ÓÊ÷£¬½«ÆäÖ¸ÕëÓò¸³ÖµÎª NULL
+// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ç»“ç‚¹çš„æ•°æ®å’ŒæŒ‡é’ˆåŸŸï¼Œå¯¹äºç©ºå­æ ‘ï¼Œå°†å…¶æŒ‡é’ˆåŸŸèµ‹å€¼ä¸º NULL
 template <class T>
 TreeNode<T>::TreeNode (const T& item, TreeNode<T> *lptr,
     TreeNode<T> *rptr): data(item), left(lptr), right(rptr)
 {}
 
-// ÔÊĞíÓÃ»§·ÃÎÊ×óº¢×Ó
+// å…è®¸ç”¨æˆ·è®¿é—®å·¦å­©å­
 template <class T>
 TreeNode<T>* TreeNode<T>::Left(void) const
 {
    return left;
 }
 
-// ÔÊĞíÓÃ»§·ÃÎÊÓÒº¢×Ó
+// å…è®¸ç”¨æˆ·è®¿é—®å³å­©å­
 template <class T>
 TreeNode<T>* TreeNode<T>::Right(void) const
 {

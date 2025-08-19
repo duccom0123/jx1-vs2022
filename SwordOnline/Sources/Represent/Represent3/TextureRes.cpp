@@ -9,22 +9,22 @@ inline void RenderToA4R4G4B4(WORD* pDest, BYTE* pSrc, int width, int height, BYT
 	__asm
 	{
 		
-		//ÉèÖÃÔ´ÓëÄ¿µÄµØÖ·ÖÁesiºÍedi
+		//è®¾ç½®æºä¸ç›®çš„åœ°å€è‡³esiå’Œedi
 		mov		edi, pDest
 		mov		esi, pSrc
 			
 loc_DrawSprite_0100:
 		
-		//edx´æ·Å¿í¶È	
+		//edxå­˜æ”¾å®½åº¦	
 		mov		edx, width
 			
 loc_DrawSprite_0101:
 		
-		//Ñ¹Ëõ¸ñÊ½Îª n¸öalpha [rgba,rgba,.......],alphaÎª0Ê±£¬ÎŞrgba¸÷Öµ
+		//å‹ç¼©æ ¼å¼ä¸º nä¸ªalpha [rgba,rgba,.......],alphaä¸º0æ—¶ï¼Œæ— rgbaå„å€¼
 		
-		movzx	eax, byte ptr[esi]//ax´æ·Ån
+		movzx	eax, byte ptr[esi]//axå­˜æ”¾n
 		inc		esi
-		movzx	ebx, byte ptr[esi]//bx´æ·ÅalphaÖµ
+		movzx	ebx, byte ptr[esi]//bxå­˜æ”¾alphaå€¼
 		//mov		nAlpha, ebx
 		inc		esi
 		or		ebx, ebx
@@ -51,15 +51,15 @@ loc_FillZeroAlpha:
 		jmp		loc_DrawSprite_exit
 		
 			
-			//alphaÖµ²»Îª0Ê±
+			//alphaå€¼ä¸ä¸º0æ—¶
 loc_DrawSprite_0102:
 		
-		push	eax // nÖµ
-		push	edx // µ±Ç°ĞĞ»¹Ê£¶à³¤Î´´¦Àí 
+		push	eax // nå€¼
+		push	edx // å½“å‰è¡Œè¿˜å‰©å¤šé•¿æœªå¤„ç† 
 
 		and		bx, 0x00f0
 		shl		bx, 8
-		push	ebx	// nAlphaÖµ
+		push	ebx	// nAlphaå€¼
 		
 		mov		ecx, eax
 		
@@ -69,19 +69,19 @@ loc_DrawSprite_0103:
 		mov     ebx, pPalette
 		movzx	eax, byte ptr[esi]
 		inc		esi
-		mov		dx, [ebx + eax * 2]  //»ñµÃ 16Î» r4g4b4a4 a = 0
+		mov		dx, [ebx + eax * 2]  //è·å¾— 16ä½ r4g4b4a4 a = 0
 		
 		pop     ebx   //ebx = nAlpha
 		push	ebx  
 		
-		or		dx, bx //Éú³É×îÖÕµÄr4g4b4a4Öµ
+		or		dx, bx //ç”Ÿæˆæœ€ç»ˆçš„r4g4b4a4å€¼
 		mov		[edi], dx
 		inc		edi
 		inc		edi
 		dec		ecx
 		jnz		loc_DrawSprite_0103
 		pop     ebx   //ebx = nAlpha
-		pop		edx   //edx = ¸ÃĞĞÊ£ÓÚ
+		pop		edx   //edx = è¯¥è¡Œå‰©äº
 		pop		eax   //eax = n
 		sub		edx, eax
 		jg		loc_DrawSprite_0101
@@ -101,7 +101,7 @@ TextureRes::~TextureRes()
 {
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void TextureRes::Release()
 {
 }
@@ -119,7 +119,7 @@ TextureResBmp::~TextureResBmp()
 	Release();
 }
 
-// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 void TextureResBmp::ResetVar()
 {
 	m_nWidth		= 0;
@@ -155,7 +155,7 @@ bool TextureResBmp::RestoreDeviceObjects()
 	return true;
 }
 
-// ´´½¨ÄÚ´æ×ÊÔ´
+// åˆ›å»ºå†…å­˜èµ„æº
 bool TextureResBmp::CreateImage(const char* szImage, int nWidth, int nHeight, uint32 nType)
 {
 	if (!szImage || !szImage[0])
@@ -192,7 +192,7 @@ error:
 	return false;
 }
 
-// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+// ä»æ–‡ä»¶è½½å…¥èµ„æº
 bool TextureResBmp::LoadImage(char* szImage, uint32 nType)
 {
 	if (!szImage || !szImage[0] || nType != ISI_T_BITMAP16)
@@ -229,14 +229,14 @@ bool TextureResBmp::LoadJpegFile(char* szImage)
 	m_FrameInfo.nHeight = pImageContent->nHeight;
 	m_FrameInfo.nTexNum = 1;
 
-	// »ñµÃÌùÍ¼³ß´ç£¬·ûºÏ2µÄÃİ´Î
+	// è·å¾—è´´å›¾å°ºå¯¸ï¼Œç¬¦åˆ2çš„å¹‚æ¬¡
 	m_FrameInfo.texInfo[0].nWidth = FitTextureSize(m_nWidth);
 	m_FrameInfo.texInfo[0].nHeight = FitTextureSize(m_nHeight);
 
 	if(m_FrameInfo.texInfo[0].nWidth == 0 || m_FrameInfo.texInfo[0].nHeight == 0)
 		goto error;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(D3DXCreateTexture(PD3DDEVICE, m_FrameInfo.texInfo[0].nWidth, m_FrameInfo.texInfo[0].nHeight, 1,
 								D3DUSAGE_RENDERTARGET, g_16BitFormat, D3DPOOL_DEFAULT, &m_FrameInfo.texInfo[0].pTexture)))
 		goto error;
@@ -295,7 +295,7 @@ void TextureResBmp::UnLockData()
 	PD3DDEVICE->UpdateTexture(m_pSysMemTexture, m_FrameInfo.texInfo[0].pTexture);
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void TextureResBmp::Release()
 {
 	SAFE_RELEASE(m_FrameInfo.texInfo[0].pTexture);
@@ -315,7 +315,7 @@ TextureResSpr::~TextureResSpr()
 	Release();
 }
 
-// ½«³ÉÔ±±äÁ¿ÖÃÎª³õÊ¼Öµ
+// å°†æˆå‘˜å˜é‡ç½®ä¸ºåˆå§‹å€¼
 void TextureResSpr::ResetVar()
 {
 	m_nWidth		= 0;
@@ -337,13 +337,13 @@ void TextureResSpr::ResetVar()
 	m_bLastFrameUsed = false;
 }
 
-// ´´½¨ÄÚ´æ×ÊÔ´
+// åˆ›å»ºå†…å­˜èµ„æº
 bool TextureResSpr::CreateImage(const char* szImage, int nWidth, int nHeight, uint32 nType)
 {
 	return false;
 }
 
-// ´ÓÎÄ¼şÔØÈë×ÊÔ´
+// ä»æ–‡ä»¶è½½å…¥èµ„æº
 bool TextureResSpr::LoadImage(char* szImage, uint32 nType)
 {
 	if (!szImage || !szImage[0] || nType != ISI_T_SPR)
@@ -404,7 +404,7 @@ bool TextureResSpr::LoadSprFile(char* szImage)
 
 	if(pFrameData)
 	{
-		// ÕûÌåÑ¹Ëõ£¬¿½±´ËùÓĞÖ¡µÄÔ­Ê¼Êı¾İ
+		// æ•´ä½“å‹ç¼©ï¼Œæ‹·è´æ‰€æœ‰å¸§çš„åŸå§‹æ•°æ®
 		pSprite = (LPBYTE)pFrameData + m_nFrameNum * sizeof(SPROFFS);
 		pOffset = (SPROFFS*)pFrameData;
 		for(i=0; i<m_nFrameNum; i++)
@@ -424,7 +424,7 @@ bool TextureResSpr::LoadSprFile(char* szImage)
 	}
 	else
 	{
-		// °´Ö¡Ñ¹Ëõ£¬¼ÇÂ¼HeaderÖ¸Õë£¬ÒÔºó´«»ØSprGetFrame
+		// æŒ‰å¸§å‹ç¼©ï¼Œè®°å½•HeaderæŒ‡é’ˆï¼Œä»¥åä¼ å›SprGetFrame
 		m_pHeader = (char*)pHeader;
 		m_pOffset = (SPROFFS*)(m_pHeader + sizeof(SPRHEAD) + m_nColors * sizeof(KPAL24));
 	}
@@ -509,14 +509,14 @@ void TextureResSpr::CreateTexture16Bit(const char* szImage, int32 nFrame)
 						m_pFrameInfo[nFrame].nHeight, (BYTE*)m_pPal16);
 
 /*
-	// Ìî³äÌùÍ¼Êı¾İ
-	uint32 nByteCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
+	// å¡«å……è´´å›¾æ•°æ®
+	uint32 nByteCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
 	uint32 nWidth = m_pFrameInfo[nFrame].nWidth;
 	uint32 nHeight = m_pFrameInfo[nFrame].nHeight;
 	uint32 nFrameLen = m_pFrameInfo[nFrame].nRawDataLen;
 	BYTE *pData = m_pFrameInfo[nFrame].pRawData;
 	BYTE pixelNum, alpha, pixelColor;
-	BYTE *pTexLine = pTempData;						// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexLine = pTempData;						// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 	for(;;)
 	{
 		pixelNum = *pData++;
@@ -543,18 +543,18 @@ void TextureResSpr::CreateTexture16Bit(const char* szImage, int32 nFrame)
 			nByteCount += pixelNum;
 		}
 
-		// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+		// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 		assert(nByteCount <= nFrameLen);
 		if(nByteCount >= nFrameLen)
 			break;
 	}
 */
-	// ´´½¨²¢Ìî³äÌùÍ¼
+	// åˆ›å»ºå¹¶å¡«å……è´´å›¾
 	for(i=0; i<m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		m_nTexMemUsed += m_pFrameInfo[nFrame].texInfo[i].nWidth * m_pFrameInfo[nFrame].texInfo[i].nHeight * 2;
 
-		// ´´½¨ÌùÍ¼
+		// åˆ›å»ºè´´å›¾
 		SAFE_RELEASE(m_pFrameInfo[nFrame].texInfo[i].pTexture);
 		if (FAILED(PD3DDEVICE->CreateTexture(m_pFrameInfo[nFrame].texInfo[i].nWidth, m_pFrameInfo[nFrame].texInfo[i].nHeight, 1,
 								0, D3DFMT_A4R4G4B4, D3DPOOL_MANAGED, &m_pFrameInfo[nFrame].texInfo[i].pTexture, NULL)))
@@ -564,8 +564,8 @@ void TextureResSpr::CreateTexture16Bit(const char* szImage, int32 nFrame)
 		if (FAILED(m_pFrameInfo[nFrame].texInfo[i].pTexture->LockRect(0, &LockedRect, NULL, 0)))
 			goto error;
 
-		// ÏòÌùÍ¼¿½±´Êı¾İ
-		BYTE *pTexData = (BYTE*)LockedRect.pBits;		// ÌùÍ¼Êı¾İ
+		// å‘è´´å›¾æ‹·è´æ•°æ®
+		BYTE *pTexData = (BYTE*)LockedRect.pBits;		// è´´å›¾æ•°æ®
 		BYTE *pTp = pTempData + (m_pFrameInfo[nFrame].texInfo[i].nFrameY * m_pFrameInfo[nFrame].nWidth + 
 					m_pFrameInfo[nFrame].texInfo[i].nFrameX) * 2;
 		for(j=0; j<m_pFrameInfo[nFrame].texInfo[i].nFrameHeight; j++)
@@ -592,7 +592,7 @@ error:
 	return;
 }
 
-/*³éµã
+/*æŠ½ç‚¹
 LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 {
 	if(nFrame >= m_nFrameNum)
@@ -604,7 +604,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 	if(!m_pFrameInfo[nFrame].pRawData)
 		return NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(PD3DDEVICE->CreateTexture(m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_A4R4G4B4, D3DPOOL_MANAGED, &m_pTextureInfo[nFrame].pTexture)))
 		return NULL;
@@ -619,16 +619,16 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 	m_nTexMemUsed += m_pTextureInfo[nFrame].nWidth * m_pTextureInfo[nFrame].nHeight * 2;
 	m_nMemUseful += m_pFrameInfo[nFrame].nWidth * m_pFrameInfo[nFrame].nHeight * 2;
 
-	// Ìî³äÌùÍ¼Êı¾İ
-	uint32 nByteCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
-	uint32 nPixelCount = 0;							// ×ÜÏóËØ¼ÆÊı
+	// å¡«å……è´´å›¾æ•°æ®
+	uint32 nByteCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
+	uint32 nPixelCount = 0;							// æ€»è±¡ç´ è®¡æ•°
 	uint32 nWidth = m_pFrameInfo[nFrame].nWidth;
 	uint32 nHeight = m_pFrameInfo[nFrame].nHeight;
 	uint32 nFrameLen = m_pFrameInfo[nFrame].nRawDataLen;
 	BYTE *pData = m_pFrameInfo[nFrame].pRawData;
 	BYTE pixelNum, alpha, pixelColor;
-	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// ÌùÍ¼Êı¾İ
-	BYTE *pTexLine = pTexData;						// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// è´´å›¾æ•°æ®
+	BYTE *pTexLine = pTexData;						// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 	int nTp2 = 0;
 	for(;;)
 	{
@@ -664,7 +664,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 
 		if(nPixelCount == nWidth)
 		{
-			// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+			// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 			if(nByteCount >= nFrameLen)
 				break;
 			if((nTp2%2) == 1)
@@ -693,7 +693,7 @@ void TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 	if(!m_pFrameInfo[nFrame].pRawData)
 		return NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(PD3DDEVICE->CreateTexture(m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED, &m_pTextureInfo[nFrame].pTexture)))
 		return NULL;
@@ -711,17 +711,17 @@ void TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 	m_nTexMemUsed += m_pTextureInfo[nFrame].nWidth * m_pTextureInfo[nFrame].nHeight * 4;
 	m_nMemUseful += m_pFrameInfo[nFrame].nWidth * m_pFrameInfo[nFrame].nHeight * 4;
 
-	// Ìî³äÌùÍ¼Êı¾İ
-	uint32 nByteCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
-	uint32 nPixelCount = 0;							// ×ÜÏóËØ¼ÆÊı
+	// å¡«å……è´´å›¾æ•°æ®
+	uint32 nByteCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
+	uint32 nPixelCount = 0;							// æ€»è±¡ç´ è®¡æ•°
 	uint32 nWidth = m_pFrameInfo[nFrame].nWidth;
 	uint32 nHeight = m_pFrameInfo[nFrame].nHeight;
-	uint32 nTotlePixelNum = nWidth * nHeight;						// ×ÜÏóËØÊıÄ¿
+	uint32 nTotlePixelNum = nWidth * nHeight;						// æ€»è±¡ç´ æ•°ç›®
 	uint32 nFrameLen = m_pFrameInfo[nFrame].nRawDataLen;
 	BYTE *pData = m_pFrameInfo[nFrame].pRawData;
 	BYTE pixelNum, alpha, pixelColor;
-	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// ÌùÍ¼Êı¾İ
-	BYTE *pTexLine = pTexData;						// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// è´´å›¾æ•°æ®
+	BYTE *pTexLine = pTexData;						// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 	for(;;)
 	{
 		pixelNum = *pData++;
@@ -752,7 +752,7 @@ void TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 
 		if(nPixelCount == nWidth)
 		{
-			// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+			// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 			if(nByteCount >= nFrameLen)
 				break;
 			pTexLine = pTexData = pTexData + LockedRect.Pitch;
@@ -766,7 +766,7 @@ void TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 	return m_pTextureInfo[nFrame].pTexture;*/
 }
 
-/*Ñ¹Ëõ
+/*å‹ç¼©
 LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 {
 	if(nFrame >= m_nFrameNum)
@@ -780,7 +780,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 
 	LPDIRECT3DTEXTURE8 pTexture = NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(D3DXCreateTexture(PD3DDEVICE, m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_A4R4G4B4, D3DPOOL_SYSTEMMEM, &pTexture)))
 		return NULL;
@@ -795,16 +795,16 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 	m_nTexMemUsed += m_pTextureInfo[nFrame].nWidth * m_pTextureInfo[nFrame].nHeight * 2;
 	m_nMemUseful += m_pFrameInfo[nFrame].nWidth * m_pFrameInfo[nFrame].nHeight * 2;
 
-	// Ìî³äÌùÍ¼Êı¾İ
-	uint32 nByteCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
-	uint32 nPixelCount = 0;							// ×ÜÏóËØ¼ÆÊı
+	// å¡«å……è´´å›¾æ•°æ®
+	uint32 nByteCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
+	uint32 nPixelCount = 0;							// æ€»è±¡ç´ è®¡æ•°
 	uint32 nWidth = m_pFrameInfo[nFrame].nWidth;
 	uint32 nHeight = m_pFrameInfo[nFrame].nHeight;
 	uint32 nFrameLen = m_pFrameInfo[nFrame].nRawDataLen;
 	BYTE *pData = m_pFrameInfo[nFrame].pRawData;
 	BYTE pixelNum, alpha, pixelColor;
-	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// ÌùÍ¼Êı¾İ
-	BYTE *pTexLine = pTexData;						// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// è´´å›¾æ•°æ®
+	BYTE *pTexLine = pTexData;						// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 //	uint32 nTotlePixelNum = m_pTextureInfo[nFrame].nWidth * m_pTextureInfo[nFrame].nHeight;	
 	for(;;)
 	{
@@ -813,7 +813,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 		nByteCount += 2;
 		nPixelCount += pixelNum;
 
-		// Èç¹û³¬³öÌùÍ¼Êı¾İ·¶Î§ÔòÍ£Ö¹
+		// å¦‚æœè¶…å‡ºè´´å›¾æ•°æ®èŒƒå›´åˆ™åœæ­¢
 //		if(nPixelCount > nTotlePixelNum)
 //			break;
 
@@ -839,7 +839,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 
 		if(nPixelCount % nWidth == 0)
 		{
-			// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+			// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 			if(nByteCount >= nFrameLen)
 				break;
 			pTexLine = pTexData = pTexData + LockedRect.Pitch;
@@ -851,7 +851,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture16Bit(uint32 nFrame)
 
 	IDirect3DSurface8* pSrcSurface = NULL, *pDesSurface = NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(D3DXCreateTexture(PD3DDEVICE, m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_DXT5, D3DPOOL_MANAGED, &m_pTextureInfo[nFrame].pTexture)))
 		goto error;
@@ -891,7 +891,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 
 	LPDIRECT3DTEXTURE8 pTexture = NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(D3DXCreateTexture(PD3DDEVICE, m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_A8R8G8B8, D3DPOOL_SYSTEMMEM, &pTexture)))
 		return NULL;
@@ -906,17 +906,17 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 	m_nTexMemUsed += m_pTextureInfo[nFrame].nWidth * m_pTextureInfo[nFrame].nHeight * 4;
 	m_nMemUseful += m_pFrameInfo[nFrame].nWidth * m_pFrameInfo[nFrame].nHeight * 4;
 
-	// Ìî³äÌùÍ¼Êı¾İ
-	uint32 nByteCount = 0;							// ×Ü×Ö½Ú¼ÆÊı
-	uint32 nPixelCount = 0;							// ×ÜÏóËØ¼ÆÊı
+	// å¡«å……è´´å›¾æ•°æ®
+	uint32 nByteCount = 0;							// æ€»å­—èŠ‚è®¡æ•°
+	uint32 nPixelCount = 0;							// æ€»è±¡ç´ è®¡æ•°
 	uint32 nWidth = m_pFrameInfo[nFrame].nWidth;
 	uint32 nHeight = m_pFrameInfo[nFrame].nHeight;
-	uint32 nTotlePixelNum = nWidth * nHeight;						// ×ÜÏóËØÊıÄ¿
+	uint32 nTotlePixelNum = nWidth * nHeight;						// æ€»è±¡ç´ æ•°ç›®
 	uint32 nFrameLen = m_pFrameInfo[nFrame].nRawDataLen;
 	BYTE *pData = m_pFrameInfo[nFrame].pRawData;
 	BYTE pixelNum, alpha, pixelColor;
-	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// ÌùÍ¼Êı¾İ
-	BYTE *pTexLine = pTexData;						// ÌùÍ¼Ã¿Ò»ĞĞÊı¾İ
+	BYTE *pTexData = (BYTE*)LockedRect.pBits;		// è´´å›¾æ•°æ®
+	BYTE *pTexLine = pTexData;						// è´´å›¾æ¯ä¸€è¡Œæ•°æ®
 	for(;;)
 	{
 		pixelNum = *pData++;
@@ -947,7 +947,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 
 		if(nPixelCount == nWidth)
 		{
-			// Èç¹ûÒ»Ö¡Êı¾İ½âÍêÔòÍ£Ö¹
+			// å¦‚æœä¸€å¸§æ•°æ®è§£å®Œåˆ™åœæ­¢
 			if(nByteCount >= nFrameLen)
 				break;
 			pTexLine = pTexData = pTexData + LockedRect.Pitch;
@@ -959,7 +959,7 @@ LPDIRECT3DTEXTURE8 TextureResSpr::CreateTexture32Bit(uint32 nFrame)
 
 	IDirect3DSurface8* pSrcSurface = NULL, *pDesSurface = NULL;
 
-	// ´´½¨ÌùÍ¼
+	// åˆ›å»ºè´´å›¾
 	if (FAILED(D3DXCreateTexture(PD3DDEVICE, m_pTextureInfo[nFrame].nWidth, m_pTextureInfo[nFrame].nHeight, 1,
 								0, D3DFMT_DXT5, D3DPOOL_MANAGED, &m_pTextureInfo[nFrame].pTexture)))
 		goto error;
@@ -996,17 +996,17 @@ int32 TextureResSpr::GetPixelAlpha(int32 nFrame, int32 x, int32 y)
 	x -= m_pFrameInfo[nFrame].nOffX;
 	y -= m_pFrameInfo[nFrame].nOffY;
 
-	// ×ø±ê³¬³öÍ¼ĞÎ·¶Î§Ôò·µ»Ø
+	// åæ ‡è¶…å‡ºå›¾å½¢èŒƒå›´åˆ™è¿”å›
 	if (x < 0 || y < 0 || x >= m_pFrameInfo[nFrame].nWidth || 
 		y >= m_pFrameInfo[nFrame].nHeight)
 		return nRet;
 
-	// ±éÀú²ğ·ÖµÄÌùÍ¼£¬ÅĞ¶ÏÏóËØµãalphaÖµ
+	// éå†æ‹†åˆ†çš„è´´å›¾ï¼Œåˆ¤æ–­è±¡ç´ ç‚¹alphaå€¼
 	for(int i=0; i<m_pFrameInfo[nFrame].nTexNum; i++)
 	{
 		int32 tx = x - m_pFrameInfo[nFrame].texInfo[i].nFrameX;
 		int32 ty = y - m_pFrameInfo[nFrame].texInfo[i].nFrameY;
-		// ¼ì²âÏóËØµãÊÇ·ñÂäÔÚµÚiÕÅÌùÍ¼ÉÏ
+		// æ£€æµ‹è±¡ç´ ç‚¹æ˜¯å¦è½åœ¨ç¬¬iå¼ è´´å›¾ä¸Š
 		if (tx >= 0 && ty >= 0 && tx < m_pFrameInfo[nFrame].texInfo[i].nFrameWidth && 
 									ty < m_pFrameInfo[nFrame].texInfo[i].nFrameHeight)
 		{
@@ -1038,13 +1038,13 @@ int32 TextureResSpr::GetPixelAlpha(int32 nFrame, int32 x, int32 y)
 	return nRet;
 }
 
-// ÊÍ·ÅÄÚ´æ
+// é‡Šæ”¾å†…å­˜
 void TextureResSpr::Release()
 {
 	SAFE_DELETE_ARRAY(m_pPal24);
 	SAFE_DELETE_ARRAY(m_pPal16);
 
-	// ÊÍ·ÅËùÓĞÌùÍ¼ºÍsprÊı¾İ
+	// é‡Šæ”¾æ‰€æœ‰è´´å›¾å’Œspræ•°æ®
 	if(m_pFrameInfo)
 	{
 		for(int i=0; i<m_nFrameNum; i++)
@@ -1060,7 +1060,7 @@ void TextureResSpr::Release()
 			}
 			else
 				SAFE_DELETE_ARRAY(m_pFrameInfo[i].pRawData);
-			// ÊÍ·ÅµÚiÖ¡µÄÌùÍ¼
+			// é‡Šæ”¾ç¬¬iå¸§çš„è´´å›¾
 			if(m_pFrameInfo[i].nTexNum)
 			{
 				SAFE_RELEASE(m_pFrameInfo[i].texInfo[0].pTexture);
@@ -1087,7 +1087,7 @@ bool TextureResSpr::ReleaseAFrameData()
 	{
 		for(int i=0; i<m_nFrameNum; i++)
 		{
-			// ÊÍ·ÅµÚiÖ¡µÄÌùÍ¼
+			// é‡Šæ”¾ç¬¬iå¸§çš„è´´å›¾
 			if(m_pFrameInfo[i].texInfo[0].pTexture)
 			{
 				for(int j=0; j<4; j++)
@@ -1107,7 +1107,7 @@ int TextureResSpr::SplitTexture(uint32 nFrame)
 {
 	int nWidth = m_pFrameInfo[nFrame].nWidth;
 	int nHeight = m_pFrameInfo[nFrame].nHeight;
-	// ¼ÆËãÔ­Ê¼ÌùÍ¼³ß´ç
+	// è®¡ç®—åŸå§‹è´´å›¾å°ºå¯¸
 	int nTexWidth = FitTextureSize(nWidth);
 	int nTexHeight = FitTextureSize(nHeight);
 	if(nTexWidth == 0 || nTexHeight == 0)
@@ -1122,10 +1122,10 @@ int TextureResSpr::SplitTexture(uint32 nFrame)
 	int ntw = FitTextureSize(nWidth - nHalfWidth);
 	int nth = FitTextureSize(nHeight - nHalfHeight);
 
-	// °´²»Í¬Çé¿ö½«ÌùÍ¼·ÖÎª4£¬2£¬1·İ£¬ÌîĞ´Ïà¹Ø²ÎÊı
+	// æŒ‰ä¸åŒæƒ…å†µå°†è´´å›¾åˆ†ä¸º4ï¼Œ2ï¼Œ1ä»½ï¼Œå¡«å†™ç›¸å…³å‚æ•°
 	if(nWidth > nHalfWidth && nWidth <= nFourThreeWidth && nHeight > nHalfHeight && nHeight <= nFourThreeHeight)
 	{
-		// ²ğÎª4·İ
+		// æ‹†ä¸º4ä»½
 		m_pFrameInfo[nFrame].nTexNum = 4;
 		m_pFrameInfo[nFrame].texInfo[0].nWidth = nHalfWidth;
 		m_pFrameInfo[nFrame].texInfo[0].nHeight = nHalfHeight;
@@ -1159,7 +1159,7 @@ int TextureResSpr::SplitTexture(uint32 nFrame)
 	}
 	else if(nWidth > nHalfWidth && nWidth <= nFourThreeWidth)
 	{
-		// ²ğÎª×óÓÒÁ½·İ
+		// æ‹†ä¸ºå·¦å³ä¸¤ä»½
 		m_pFrameInfo[nFrame].nTexNum = 2;
 		m_pFrameInfo[nFrame].texInfo[0].nWidth = nHalfWidth;
 		if(nHeight <= nHalfHeight)
@@ -1185,7 +1185,7 @@ int TextureResSpr::SplitTexture(uint32 nFrame)
 	}
 	else if(nHeight > nHalfHeight && nHeight <= nFourThreeHeight)
 	{
-		// ²ğÎªÉÏÏÂÁ½·İ
+		// æ‹†ä¸ºä¸Šä¸‹ä¸¤ä»½
 		m_pFrameInfo[nFrame].nTexNum = 2;
 		if(nWidth <= nHalfWidth)
 			m_pFrameInfo[nFrame].texInfo[0].nWidth = nHalfWidth;
@@ -1211,7 +1211,7 @@ int TextureResSpr::SplitTexture(uint32 nFrame)
 	}
 	else
 	{
-		// ²»²ğ£¬Ò»·İ
+		// ä¸æ‹†ï¼Œä¸€ä»½
 		m_pFrameInfo[nFrame].nTexNum = 1;
 		if(nWidth <= nHalfWidth)
 			m_pFrameInfo[nFrame].texInfo[0].nWidth = nHalfWidth;

@@ -16,7 +16,7 @@ public:
 
 #define MAXNUM 100
 
-//¿Í»§¶Ë µ÷ÓÃ£¬Ëø¶¨¡¢·´Ëø£»È¡Öµ¡¢¸³Öµ
+//å®¢æˆ·ç«¯ è°ƒç”¨ï¼Œé”å®šã€åé”ï¼›å–å€¼ã€èµ‹å€¼
 class KDataManage  
 {
 public:
@@ -35,7 +35,7 @@ public:
 	
 	CORBA::Any* GetData(CORBA::Long MapId, CORBA::Long StyleId, long id);
 	long SetData(CORBA::Long MapId, CORBA::Long StyleId,long id, const CORBA::Any& data) ;
-	//»ñµÃÊı¾İ£¬²¢Ëø×¡Êı¾İ
+	//è·å¾—æ•°æ®ï¼Œå¹¶é”ä½æ•°æ®
 	CORBA::Any* GetDataWithLock(CORBA::Long MapId, CORBA::Long StyleId,long id) ;
 	CORBA::Long SetDataWithLock(CORBA::Long MapId, CORBA::Long StyleId,CORBA::Long id, const CORBA::Any& data) ;
 	CORBA::Any* GetDataWithOnce(CORBA::Long MapId, CORBA::Long StyleId,CORBA::Long id);

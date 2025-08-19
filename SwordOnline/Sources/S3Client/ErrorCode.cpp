@@ -1,8 +1,8 @@
 /**************************************************************************
-ÎÄ¼ş    £º    ErrorCode.cpp
-´´½¨ÈË  £º    Fyt(Fan Zhanpeng)
-´´½¨Ê±¼ä£º    08-01-2003(mm-dd-yyyy)
-¹¦ÄÜÃèÊö£º    µ¯³ö´íÎóÌáÊ¾´°¿Ú
+æ–‡ä»¶    ï¼š    ErrorCode.cpp
+åˆ›å»ºäºº  ï¼š    Fyt(Fan Zhanpeng)
+åˆ›å»ºæ—¶é—´ï¼š    08-01-2003(mm-dd-yyyy)
+åŠŸèƒ½æè¿°ï¼š    å¼¹å‡ºé”™è¯¯æç¤ºçª—å£
 ***************************************************************************/
 
 #include "KWin32.h"
@@ -15,10 +15,10 @@
 #define ERROR_STRING		"\\UI\\ErrorMsg.ini"
 #define	NEXT_LINE_CHARA		'~'
 
-//´íÎó´úÂëÌáÊ¾²¿·Ö¶¨ÒåµÄÈ«¾Ö±äÁ¿
+//é”™è¯¯ä»£ç æç¤ºéƒ¨åˆ†å®šä¹‰çš„å…¨å±€å˜é‡
 static unsigned int s_uErrorCode = 0;
 static char			s_szErrorString[32] = "";
-//´íÎó´úÂëÌáÊ¾²¿·ÖµÄÈ«¾Ö±äÁ¿Ìí¼ÓÍêÁË
+//é”™è¯¯ä»£ç æç¤ºéƒ¨åˆ†çš„å…¨å±€å˜é‡æ·»åŠ å®Œäº†
 
 
 void Error_SetErrorCode(unsigned int uCode)
@@ -33,7 +33,7 @@ void Error_SetErrorString(const char* pcszString)
 }
 
 /**************************************************************************
-*¹¦ÄÜ£ºµ¯³ö´íÎóÃèÊö´°¿Ú
+*åŠŸèƒ½ï¼šå¼¹å‡ºé”™è¯¯æè¿°çª—å£
 ***************************************************************************/
 void Error_Box()
 {
@@ -42,7 +42,7 @@ void Error_Box()
     	KIniFile Ini;
     	char szFormatString[512], szOutputInfo[512], szBuf[16];
 
-        //à»£¬¿ªÊ¼ÏÔÊ¾´íÎóĞÅÏ¢¿©
+        //å—·ï¼Œå¼€å§‹æ˜¾ç¤ºé”™è¯¯ä¿¡æ¯å’¯
 	    Ini.Load(ERROR_STRING);
 
         Ini.GetString("Strings", itoa(s_uErrorCode,szBuf,10), "", szFormatString, sizeof(szFormatString));

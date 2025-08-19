@@ -13,11 +13,11 @@
 #include "KPakFile.h"
 #include "KBmpFile24.h"
 //---------------------------------------------------------------------------
-// º¯Êı:	Load
-// ¹¦ÄÜ:	´ò¿ªBMPÎÄ¿Æ
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Load
+// åŠŸèƒ½:	æ‰“å¼€BMPæ–‡ç§‘
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile24::Load(LPSTR lpFileName, KBitmap16* lpBitmap)
 {
@@ -77,11 +77,11 @@ BOOL KBmpFile24::Load(LPSTR lpFileName, KBitmap16* lpBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Save
-// ¹¦ÄÜ:	±£´æBMPÎÄ¼ş
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Save
+// åŠŸèƒ½:	ä¿å­˜BMPæ–‡ä»¶
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile24::Save(LPSTR lpFileName, KBitmap16* lpBitmap)
 {
@@ -146,12 +146,12 @@ BOOL KBmpFile24::Save(LPSTR lpFileName, KBitmap16* lpBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Decode
-// ¹¦ÄÜ:	½âÂë
-// ²ÎÊı:	pBuffer		24Î»É«Î»Í¼
-//			pBitmap		16Î»É«Î»Í¼
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Decode
+// åŠŸèƒ½:	è§£ç 
+// å‚æ•°:	pBuffer		24ä½è‰²ä½å›¾
+//			pBitmap		16ä½è‰²ä½å›¾
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile24::Decode(PVOID pBuffer, PVOID pBitmap)
 {
@@ -176,12 +176,12 @@ BOOL KBmpFile24::Decode(PVOID pBuffer, PVOID pBitmap)
 	return TRUE;
 }
 //---------------------------------------------------------------------------
-// º¯Êı:	Encode
-// ¹¦ÄÜ:	±àÂë
-// ²ÎÊı:	pBuffer		24Î»É«Î»Í¼
-//			pBitmap		16Î»É«Î»Í¼
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	Encode
+// åŠŸèƒ½:	ç¼–ç 
+// å‚æ•°:	pBuffer		24ä½è‰²ä½å›¾
+//			pBitmap		16ä½è‰²ä½å›¾
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile24::Encode(PVOID pBuffer, PVOID pBitmap)
 {
@@ -220,12 +220,12 @@ BOOL KBmpFile24::SaveBuffer32(LPSTR lpFileName, PVOID pBitmap, int nPitch, int n
 }
 
 //---------------------------------------------------------------------------
-// º¯Êı:	BOOL SaveBuffer(LPSTR lpFileName, PVOID pBitmap, int nWidth, int nHeight, bool bIs24Bit)
-// ¹¦ÄÜ:	±àÂë
-// ²ÎÊı:	lpFileName	ÎÄ¼şÃû
-//			pBitmap		16Î»É«Î»Í¼
-// ·µ»Ø:	TRUE		³É¹¦
-//			FALSE		Ê§°Ü
+// å‡½æ•°:	BOOL SaveBuffer(LPSTR lpFileName, PVOID pBitmap, int nWidth, int nHeight, bool bIs24Bit)
+// åŠŸèƒ½:	ç¼–ç 
+// å‚æ•°:	lpFileName	æ–‡ä»¶å
+//			pBitmap		16ä½è‰²ä½å›¾
+// è¿”å›:	TRUE		æˆåŠŸ
+//			FALSE		å¤±è´¥
 //---------------------------------------------------------------------------
 BOOL KBmpFile24::SaveBuffer(LPSTR lpFileName, PVOID pBitmap, int nPitch, int nWidth, int nHeight, bool bIs24Bit)
 {

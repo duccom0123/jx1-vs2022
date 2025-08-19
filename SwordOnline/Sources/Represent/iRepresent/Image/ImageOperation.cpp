@@ -1,5 +1,5 @@
 /*******************Editer	: duccom0123 EditTime:	2024/06/12 11:48:43*********************
-//  Í¼ĞÎµ½ÄÚ´æÇøÓòµÄ²Ù×÷
+//  å›¾å½¢åˆ°å†…å­˜åŒºåŸŸçš„æ“ä½œ
 //	Copyright : Kingsoft 2002
 //	Author	:   Wooy(Wu yue)
 //	CreateTime:	2002-11
@@ -16,20 +16,20 @@ void RIO_Set16BitImageFormat(int b565)
 
 struct KRClipperInfo
 {
-	int			x;			// ²Ã¼õºóµÄX×ø±ê
-	int			y;			// ²Ã¼õºóµÄY×ø±ê
-	int			width;		// ²Ã¼õºóµÄ¿í¶È
-	int			height;		// ²Ã¼õºóµÄ¸ß¶È
-	int			left;		// ÉÏ±ß½ç²Ã¼ôÁ¿
-	int			top;		// ×ó±ß½ç²Ã¼ôÁ¿
-	int			right;		// ÓÒ±ß½ç²Ã¼ôÁ¿
+	int			x;			// è£å‡åçš„Xåæ ‡
+	int			y;			// è£å‡åçš„Yåæ ‡
+	int			width;		// è£å‡åçš„å®½åº¦
+	int			height;		// è£å‡åçš„é«˜åº¦
+	int			left;		// ä¸Šè¾¹ç•Œè£å‰ªé‡
+	int			top;		// å·¦è¾¹ç•Œè£å‰ªé‡
+	int			right;		// å³è¾¹ç•Œè£å‰ªé‡
 };
 
 
 static int  RIO_ClipCopyRect(int nX, int nY, int nSrcWidth, int nSrcHeight, int nDestWidth, int nDestHeight, KRClipperInfo* pClipper)
 {
 	_ASSERT(pClipper);
-	// ³õÊ¼»¯²Ã¼õÁ¿
+	// åˆå§‹åŒ–è£å‡é‡
 	pClipper->x = nX;
 	pClipper->y = nY;
 	pClipper->width = nSrcWidth;
@@ -38,7 +38,7 @@ static int  RIO_ClipCopyRect(int nX, int nY, int nSrcWidth, int nSrcHeight, int 
 	pClipper->left = 0;
 	pClipper->right = 0;
 
-	// ÉÏ±ß½ç²Ã¼õ
+	// ä¸Šè¾¹ç•Œè£å‡
 	if (pClipper->y < 0)
 	{
 		pClipper->y = 0;
@@ -48,13 +48,13 @@ static int  RIO_ClipCopyRect(int nX, int nY, int nSrcWidth, int nSrcHeight, int 
 	if (pClipper->height <= 0)
 		return 0;
 	
-	// ÏÂ±ß½ç²Ã¼õ
+	// ä¸‹è¾¹ç•Œè£å‡
 	if (pClipper->height > nDestHeight - pClipper->y)
 		pClipper->height = nDestHeight - pClipper->y;
 	if (pClipper->height <= 0)
 		return 0;
 
-	// ×ó±ß½ç²Ã¼õ
+	// å·¦è¾¹ç•Œè£å‡
 	if (pClipper->x < 0)
 	{
 		pClipper->x = 0;
@@ -64,7 +64,7 @@ static int  RIO_ClipCopyRect(int nX, int nY, int nSrcWidth, int nSrcHeight, int 
 	if (pClipper->width <= 0)
 		return 0;
 
-	// ÓÒ±ß½ç²Ã¼õ
+	// å³è¾¹ç•Œè£å‡
 	if (pClipper->width > nDestWidth - pClipper->x)
 	{
 		pClipper->right = pClipper->width + pClipper->x - nDestWidth;
@@ -85,7 +85,7 @@ static int  RIO_ClipCopyRect(int nX, int nY, int nSrcWidth, int nSrcHeight, int 
 				{	mov		bl,  byte ptr[esi]	}	\
 				{	inc		esi					}
 
-#define		copy_pixel_use_eax	/*ebxÖ¸Ïòµ÷É«°å*/	\
+#define		copy_pixel_use_eax	/*ebxæŒ‡å‘è°ƒè‰²æ¿*/	\
 				{	movzx	eax, byte ptr[esi]	}	\
 				{	add		eax, eax			}	\
 				{	inc		esi					}	\
@@ -163,7 +163,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 					 int nX, int nY)
 {
 	_ASSERT(pSpr && pBuffer && pPalette);
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KRClipperInfo Clipper;
 	if (RIO_ClipCopyRect(nX, nY, nSprWidth, nSprHeight, nBufferWidth, nBufferHeight, &Clipper) == 0)
 		return;
@@ -178,7 +178,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 		mov		ebx, nBufferWidth
 		add		ebx, ebx
 
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµãedi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹edi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
 		mov		edi, pBuffer
 		mov		eax, Clipper.y
 		mul		ebx
@@ -193,7 +193,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 		sub		ebx, edx
 		mov		nBuffNextLine, ebx
 
-		//Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		esi, pSpr
 		//_SkipSpriteAheadContent_:
 		{
@@ -230,7 +230,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹
 			_DrawFullLineSection_Line_:
 			{
 				mov		edx, Clipper.width
@@ -313,7 +313,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			_DrawPartLineSection_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -343,7 +343,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			_DrawPartLineSection_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				mov     ebx, pPalette
@@ -370,7 +370,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 				dec		Clipper.height
 				jz		_EXIT_WAY_
 				neg		edx
-				mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+				mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 				jmp		_DrawPartLineSection_LineSkip_
 			}
 		}
@@ -398,7 +398,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			_DrawPartLineSection_SkipLeft_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		edx, nSprSkipPerLine
 				_DrawPartLineSection_SkipLeft_LineSkipLocal_:
 				{
@@ -422,7 +422,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			}
 			_DrawPartLineSection_SkipLeft_LineLocal_Alpha_:
 			{
-				sub		edx, eax		;ÏÈ°Ñeax¼õÁË£¬ÕâÑùááÃæ¾Í¿ÉÒÔ²»ĞèÒª±£ÁôeaxÁË
+				sub		edx, eax		;å…ˆæŠŠeaxå‡äº†ï¼Œè¿™æ ·å¾Œé¢å°±å¯ä»¥ä¸éœ€è¦ä¿ç•™eaxäº†
 				mov		ecx, eax						
 				mov     ebx, pPalette
 				_DrawPartLineSection_SkipLeft_CopyPixel_:
@@ -462,7 +462,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			_DrawPartLineSection_SkipRight_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -489,7 +489,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 			_DrawPartLineSection_SkipRight_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax				
 				mov     ebx, pPalette
@@ -511,7 +511,7 @@ void RIO_CopySprToBuffer(void* pSpr, int nSprWidth, int nSprHeight, void* pPalet
 					loop	_DrawPartLineSection_SkipRight_CopyPixel_Part_
 				}
 				neg		edx
-				mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+				mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 				dec		Clipper.height
 				jg		_DrawPartLineSection_SkipRight_LineSkip_
 				jmp		_EXIT_WAY_
@@ -526,12 +526,12 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 					 int nX, int nY)
 {
 	_ASSERT(pSpr && pBuffer && pPalette);
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KRClipperInfo Clipper;	
 	if (RIO_ClipCopyRect(nX, nY, nSprWidth, nSprHeight, nBufferWidth, nBufferHeight, &Clipper) == 0)
 		return;
 
-	// pBufferÖ¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÎ»ÖÃ (ÒÔ×Ö½Ú¼Æ)
+	// pBufferæŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»ä½ç½® (ä»¥å­—èŠ‚è®¡)
 	long nSprSkip = nSprWidth * Clipper.top + Clipper.left;
 	long nSprSkipPerLine = Clipper.left + Clipper.right;
 	int	 nBuffNextLine, nAlpha;
@@ -542,7 +542,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 		mov		ebx, nBufferWidth
 		add		ebx, ebx
 
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµãedi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹edi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
 		mov		edi, pBuffer
 		mov		eax, Clipper.y
 		mul		ebx
@@ -557,7 +557,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 		sub		ebx, edx
 		mov		nBuffNextLine, ebx
 
-		//Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		esi, pSpr
 		//_SkipSpriteAheadContent_:
 		{
@@ -594,7 +594,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä			
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹			
 			_DrawFullLineSection_Line_:
 			{
 				mov		edx, Clipper.width
@@ -702,7 +702,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			_DrawPartLineSection_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -732,7 +732,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			_DrawPartLineSection_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				cmp		ebx, 255
@@ -782,7 +782,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 					dec		Clipper.height
 					jz		_EXIT_WAY_
 					neg		edx
-					mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					jmp		_DrawPartLineSection_LineSkip_
 				}
 				
@@ -800,7 +800,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 					neg		edx
 					mov		ebx, 128
 					dec		Clipper.height
-					jg		_DrawPartLineSection_LineSkip_//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					jg		_DrawPartLineSection_LineSkip_//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					jmp		_EXIT_WAY_
 				}
 			}
@@ -830,7 +830,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			_DrawPartLineSection_SkipLeft_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		edx, nSprSkipPerLine
 				_DrawPartLineSection_SkipLeft_LineSkipLocal_:
 				{
@@ -854,7 +854,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			}
 			_DrawPartLineSection_SkipLeft_LineLocal_Alpha_:
 			{
-				sub		edx, eax		;ÏÈ°Ñeax¼õÁË£¬ÕâÑùááÃæ¾Í¿ÉÒÔ²»ĞèÒª±£ÁôeaxÁË
+				sub		edx, eax		;å…ˆæŠŠeaxå‡äº†ï¼Œè¿™æ ·å¾Œé¢å°±å¯ä»¥ä¸éœ€è¦ä¿ç•™eaxäº†
 				mov		ecx, eax
 				cmp		ebx, 255
 				jl		_DrawPartLineSection_SkipLeft_LineLocal_nAlpha_
@@ -918,7 +918,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			_DrawPartLineSection_SkipRight_LineSkip_:
 			{
 				add		edi, nBuffNextLine
-				//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+				//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 				mov		eax, edx
 				mov		edx, nSprSkipPerLine
 				or		eax, eax
@@ -945,7 +945,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 			_DrawPartLineSection_SkipRight_LineLocal_Alpha_:
 			{
 				sub		edx, eax
-				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+				jle		_DrawPartLineSection_SkipRight_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 				mov		ecx, eax
 				cmp		ebx, 255
@@ -992,7 +992,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 						loop	_DrawPartLineSection_SkipRight_CopyPixel_Part_
 					}
 					neg		edx
-					mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					dec		Clipper.height
 					jg		_DrawPartLineSection_SkipRight_LineSkip_
 					jmp		_EXIT_WAY_
@@ -1012,7 +1012,7 @@ void RIO_CopySprToBufferAlpha(void* pSpr, int nSprWidth, int nSprHeight, void* p
 					neg		edx
 					mov		ebx, 128
 					dec		Clipper.height
-					jg		_DrawPartLineSection_SkipRight_LineSkip_//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+					jg		_DrawPartLineSection_SkipRight_LineSkip_//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					jmp		_EXIT_WAY_
 				}
 			}
@@ -1026,21 +1026,21 @@ void RIO_CopyBitmap16ToBuffer(void* pBitmap, int nBmpWidth, int nBmpHeight,
 					 void* pBuffer, int nBufferWidth, int nBufferHeight,
 					 int nX, int nY)
 {
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KRClipperInfo Clipper;
 	_ASSERT(pBitmap && pBuffer);
 	if (RIO_ClipCopyRect(nX, nY, nBmpWidth, nBmpHeight, nBufferWidth, nBufferHeight, &Clipper) == 0)
 		return;
 	long nBitmapOffset, nBuffNextLine;
 
-	// »æÖÆº¯ÊıµÄ»ã±à´úÂë
+	// ç»˜åˆ¶å‡½æ•°çš„æ±‡ç¼–ä»£ç 
 	__asm
 	{
 		//ebx = nPitch = nBufferWidth * 2
 		mov		ebx, nBufferWidth
 		add		ebx, ebx
 
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµãedi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹edi = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
 		mov		edi, pBuffer
 		mov		eax, Clipper.y
 		mul		ebx
@@ -1049,7 +1049,7 @@ void RIO_CopyBitmap16ToBuffer(void* pBitmap, int nBmpWidth, int nBmpHeight,
 		add		eax, edx
 		add		edi, eax
 
-		//esiÖ¸ÏòÍ¼¿éÊı¾İ»æÖÆµÄ¿ªÊ¼Î»ÖÃ
+		//esiæŒ‡å‘å›¾å—æ•°æ®ç»˜åˆ¶çš„å¼€å§‹ä½ç½®
 		mov		esi, pBitmap
 		mov		eax, Clipper.top
 		mul		nBmpWidth
@@ -1057,13 +1057,13 @@ void RIO_CopyBitmap16ToBuffer(void* pBitmap, int nBmpWidth, int nBmpHeight,
 		add		eax, eax
 		add		esi, eax
 
-		//¼ÆËã»º³åÇøÏÂÒ»ĞĞµÄÆ«ÒÆ=nPitch - Clipper.width * 2;
+		//è®¡ç®—ç¼“å†²åŒºä¸‹ä¸€è¡Œçš„åç§»=nPitch - Clipper.width * 2;
 		mov		edx, Clipper.width
 		add		edx, edx
 		sub		ebx, edx
 		mov		nBuffNextLine, ebx
 
-		// ¼ÆËãÎ»Í¼ÏÂÒ»ĞĞµÄÆ«ÒÆ
+		// è®¡ç®—ä½å›¾ä¸‹ä¸€è¡Œçš„åç§»
 		mov		eax, nBmpWidth
 		sub		eax, Clipper.width
 		add		eax, eax
@@ -1121,13 +1121,13 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 					 void* pBuffer, int nBufferWidth, int nBufferHeight, int nX, int nY)
 {
 	_ASSERT(pSpr && pBuffer && pPalette);
-	// ¶Ô»æÖÆÇøÓò½øĞĞ²Ã¼ô
+	// å¯¹ç»˜åˆ¶åŒºåŸŸè¿›è¡Œè£å‰ª
 	KRClipperInfo Clipper;	
 	if (RIO_ClipCopyRect(nX, nY, nSprWidth, nSprHeight, nBufferWidth, nBufferHeight, &Clipper) == 0)
 		return;
 
 	int	nPitch = nBufferWidth + nBufferWidth;
-	// pBufferÖ¸ÏòÆÁÄ»ÆğµãµÄÆ«ÒÆÎ»ÖÃ (ÒÔ×Ö½Ú¼Æ)
+	// pBufferæŒ‡å‘å±å¹•èµ·ç‚¹çš„åç§»ä½ç½® (ä»¥å­—èŠ‚è®¡)
 	pBuffer = (char*)pBuffer + Clipper.y * nPitch + Clipper.x * 2;
 	long nBuffNextLine = nPitch - Clipper.width * 2;// next line add
 	long nSprSkip = nSprWidth * Clipper.top + Clipper.left;
@@ -1135,7 +1135,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 
 	__asm
 	{
-		//Ê¹ediÖ¸Ïòbuffer»æÖÆÆğµã,Ê¹esiÖ¸ÏòÍ¼¿éÊı¾İÆğµã,(Ìø¹ınSprSkip¸öÏñµãµÄÍ¼ĞÎÊı¾İ)
+		//ä½¿ediæŒ‡å‘bufferç»˜åˆ¶èµ·ç‚¹,ä½¿esiæŒ‡å‘å›¾å—æ•°æ®èµ·ç‚¹,(è·³è¿‡nSprSkipä¸ªåƒç‚¹çš„å›¾å½¢æ•°æ®)
 		mov		edi, pBuffer
 		mov		esi, pSpr
 
@@ -1174,7 +1174,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 
 		//_DrawFullLineSection_:
 		{
-			//ÒòÎªsprite²»»á¿çĞĞÑ¹Ëõ£¬ÔòÔËĞĞµ½´Ë´¦edx±ØÎª0£¬Èçsprite»á¿çĞĞÑ¹ËõÔò_DrawFullLineSection_Ğè¸Ä			
+			//å› ä¸ºspriteä¸ä¼šè·¨è¡Œå‹ç¼©ï¼Œåˆ™è¿è¡Œåˆ°æ­¤å¤„edxå¿…ä¸º0ï¼Œå¦‚spriteä¼šè·¨è¡Œå‹ç¼©åˆ™_DrawFullLineSection_éœ€æ”¹			
 			_DrawFullLineSection_Line_:
 			{
 				mov		edx, Clipper.width
@@ -1276,7 +1276,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 				_DrawPartLineSection_LineSkip_:
 				{
 					add		edi, nBuffNextLine
-					//Ìø¹ınSprSkipPerLineÏñËØµÄspriteÄÚÈİ
+					//è·³è¿‡nSprSkipPerLineåƒç´ çš„spriteå†…å®¹
 					mov		eax, edx
 					mov		edx, nSprSkipPerLine
 					or		eax, eax
@@ -1309,7 +1309,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 				_DrawPartLineSection_LineLocal_Alpha_:
 				{
 					cmp		eax, edx
-					jnl		_DrawPartLineSection_LineLocal_Alpha_Part_		//²»ÄÜÈ«»­Õâeax¸öÏàÍ¬alphaÖµµÄÏñµã£¬ºóÃæÓĞµãÒÑ¾­³¬³öÇøÓò
+					jnl		_DrawPartLineSection_LineLocal_Alpha_Part_		//ä¸èƒ½å…¨ç”»è¿™eaxä¸ªç›¸åŒalphaå€¼çš„åƒç‚¹ï¼Œåé¢æœ‰ç‚¹å·²ç»è¶…å‡ºåŒºåŸŸ
 
 					push	eax
 					mov		ecx, eax
@@ -1366,7 +1366,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 
 						sub		eax, edx
 						mov		edx, eax
-						mov		ebx, 255	//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+						mov		ebx, 255	//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 						jmp		_DrawPartLineSection_LineSkip_
 					}
 					
@@ -1385,7 +1385,7 @@ void RIO_CopySprToBuffer3LevelAlpha(void* pSpr, int nSprWidth, int nSprHeight, v
 						sub		eax, edx
 						mov		edx, eax
 						mov		ebx, 128
-						jmp		_DrawPartLineSection_LineSkip_//Èç¹ûÏëÒªÈ·ÇĞµÄÔ­ebx(alpha)Öµ¿ÉÒÔÔÚÇ°Í·push ebx£¬´Ë´¦pop»ñµÃ
+						jmp		_DrawPartLineSection_LineSkip_//å¦‚æœæƒ³è¦ç¡®åˆ‡çš„åŸebx(alpha)å€¼å¯ä»¥åœ¨å‰å¤´push ebxï¼Œæ­¤å¤„popè·å¾—
 					}
 				}
 			}
